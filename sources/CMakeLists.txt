@@ -72,12 +72,32 @@ if (GIT_EXECUTABLE)
   ##  Git repositories
   ##
 
-  add_git_repository (https://github.com/blackwinter/apache_image_resizer.git)
-  add_git_repository (https://github.com/blackwinter/apache_secure_download.git)
-  add_git_repository (https://github.com/blackwinter/apache_upload_merger.git)
+  ## Convert database files to various formats.
   add_git_repository (https://github.com/blackwinter/athena.git)
+
+  ## Assist with handling messed up encodings. 
   add_git_repository (https://github.com/blackwinter/cmess.git)
+
+  ## Flatten relational databases.
   add_git_repository (https://github.com/blackwinter/flattendb.git)
+
+  ## Website of prometheus - The digital image archive 
+  add_git_repository (git@github.com:prometheus-ev/promhp.git)
+
+  ## Some extensions to the Ruby programming language. 
+  add_git_repository (git@github.com:prometheus-ev/ruby-nuggets.git)
+
+  ## Ruby bindings to the magic(4) library, revised. 
+  add_git_repository (git@github.com:prometheus-ev/ruby-filemagic.git)
+
+  ## Convert (analyse) Apache log files to COUNTER CSV.
+  add_git_repository (git@github.com:prometheus-ev/log2counter.git)
+
+  ## Fuzzy string matching based on linguistic analysis.
+  add_git_repository (git@github.com:prometheus-ev/perseus_match.git)
+
+  ## Ruby client for the Web Application Description Language.
+  add_git_repository (git@github.com:prometheus-ev/wadl.git)
 
   ##
   ##  Subversion repositories
@@ -86,3 +106,12 @@ if (GIT_EXECUTABLE)
   add_svn_repository (pandora   http://prometheus-app.uni-koeln.de/svn/pandora/trunk)
 
 endif (GIT_EXECUTABLE)
+
+## ==============================================================================
+##
+##  Subdirectories
+##
+## ==============================================================================
+
+add_subdirectory (apache)
+add_subdirectory (jekyll)
