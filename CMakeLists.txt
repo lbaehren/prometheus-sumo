@@ -86,4 +86,5 @@ message (STATUS " .. Include directory .......... = ${RUBY_INCLUDE_DIRS}"       
 message (STATUS " Tools:"                                                       )
 message (STATUS " .. RDoc executable ............ = ${RDOC_EXECUTABLE}"         )
 message (STATUS " .. YARD executable ............ = ${YARD_EXECUTABLE}"         )
+message (STATUS " .. YARD executable version .... = ${YARD_VERSION}"            )
 message (STATUS "------------------------------------------------------------ " )

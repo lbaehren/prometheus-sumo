@@ -57,7 +57,7 @@ if (NOT YARD_FOUND)
     ## Process output in order to extract version number. Yard returns status 0
     ## if run successfully.
     if (NOT YARD_RESULT_VARIABLE)
-      message (STATUS "YARD_OUTPUT_VARIABLE = ${YARD_OUTPUT_VARIABLE}")
+      string(REGEX REPLACE "yard " "" YARD_VERSION ${YARD_OUTPUT_VARIABLE})
     endif (NOT YARD_RESULT_VARIABLE)
   endif (YARD_EXECUTABLE)
   
