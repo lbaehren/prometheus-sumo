@@ -43,8 +43,9 @@ endif (ENABLE_TESTING)
 
 ## Standard CMake modules
 
-find_package (Ruby)
+find_package (Git)
 find_package (Doxygen)
+find_package (Ruby)
 
 ## Custom inspection
 
