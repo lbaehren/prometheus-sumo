@@ -48,8 +48,9 @@ find_package (Doxygen)
 
 ## Custom inspection
 
+include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindYard.cmake)
+
 find_program (RDOC_EXECUTABLE rdoc)
-find_program (YARD_EXECUTABLE yard)
 
 ## ==============================================================================
 ##
