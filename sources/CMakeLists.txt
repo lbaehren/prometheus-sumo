@@ -1,0 +1,88 @@
+
+## ==============================================================================
+##
+##  Macro definitions
+##
+## ==============================================================================
+
+if (GIT_EXECUTABLE)
+  
+  ##__________________________________________________________________
+  ## Macro for dealing with Git repositories
+  
+  macro (add_git_repository _projectRepos)
+    
+    ## Extract project name
+    get_filename_component (_projectName ${_projectRepos} NAME_WE)
+    
+    if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName})
+      ## Update existing clone
+      add_custom_target(update_${_projectName} ALL
+	COMMAND ${GIT_EXECUTABLE} fetch
+	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName}
+	COMMENT "Updating clone of Git repository ${_projectName} ..."
+	)
+    else (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName})
+      ## Create new clone
+      add_custom_target(clone_${_projectName} ALL
+	COMMAND ${GIT_EXECUTABLE} clone --bare ${_projectRepos} ${_projectName}
+	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+	COMMENT "Cloning Git repository ${_projectName} ..."
+	)
+    endif (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName})
+
+  endmacro (add_git_repository)
+  
+  ##__________________________________________________________________
+  ## Macro for dealing with Subversion repositories
+  
+  macro (add_svn_repository _projectName _projectRepos)
+    
+    if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName})
+      
+      add_custom_target(update_${_projectName} ALL
+	COMMAND ${GIT_EXECUTABLE} svn rebase
+	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName}
+	COMMENT "Updating clone of Subversion repository ${_projectName} ..."
+	)
+      
+    else (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName})
+      
+      add_custom_target(clone_${_projectName} ALL
+	COMMAND ${GIT_EXECUTABLE} svn clone ${_projectRepos} ${_projectName}
+	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+	COMMENT "Cloning Git repository ${_projectName} ..."
+	)
+      
+    endif (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName})
+    
+  endmacro (add_svn_repository)
+  
+endif (GIT_EXECUTABLE)
+
+## ==============================================================================
+##
+##  Create/Update clones of repositories
+##
+## ==============================================================================
+
+if (GIT_EXECUTABLE)
+
+  ##
+  ##  Git repositories
+  ##
+
+  add_git_repository (https://github.com/blackwinter/apache_image_resizer.git)
+  add_git_repository (https://github.com/blackwinter/apache_secure_download.git)
+  add_git_repository (https://github.com/blackwinter/apache_upload_merger.git)
+  add_git_repository (https://github.com/blackwinter/athena.git)
+  add_git_repository (https://github.com/blackwinter/cmess.git)
+  add_git_repository (https://github.com/blackwinter/flattendb.git)
+
+  ##
+  ##  Subversion repositories
+  ##
+
+  add_svn_repository (pandora   http://prometheus-app.uni-koeln.de/svn/pandora/trunk)
+
+endif (GIT_EXECUTABLE)
