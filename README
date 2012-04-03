@@ -10,7 +10,8 @@ ________________________________________________________________________________
 >>> 1. Introduction
 
 "prometheus-sumo" is a simple (almost) virtual package, to ease the retrieval of
-the various components 
+the various components in the software stack for "prometheus – The Distributed
+Digital Image Archive for Research and Studies".
 
 
 _________________________________________________________________________________
@@ -37,6 +38,8 @@ apache_image_resizer [https://github.com/blackwinter/apache_image_resizer]
 
 Apache module providing image resizing functionality.
 
+
 _________________________________________________________________________________
 >>> 4. External dependencies
 
+  * CMake, >=2.6 (www.cmake.org)
