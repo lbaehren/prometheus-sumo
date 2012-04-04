@@ -45,6 +45,7 @@ if (NOT RAKE_FOUND)
   ## Extract program version
 
   if (RAKE_EXECUTABLE)
+
     ## Run rake to display version number
     execute_process(
       COMMAND ${RAKE_EXECUTABLE} --version
@@ -54,11 +55,24 @@ if (NOT RAKE_FOUND)
       ERROR_VARIABLE RAKE_ERROR_VARIABLE
       OUTPUT_STRIP_TRAILING_WHITESPACE
       )
+
     ## Process output in order to extract version number. Rake returns status 0
     ## if run successfully.
     if (NOT RAKE_RESULT_VARIABLE)
+
       string(REGEX REPLACE "rake, version " "" RAKE_VERSION ${RAKE_OUTPUT_VARIABLE})
+
+      if (RAKE_VERSION)
+	## Convert string to list of numbers
+	string (REGEX REPLACE "\\." ";" RAKE_VERSION_LIST ${RAKE_VERSION})
+	## Retrieve individual elements in the list
+	list(GET RAKE_VERSION_LIST 0 RAKE_VERSION_MAJOR)
+	list(GET RAKE_VERSION_LIST 1 RAKE_VERSION_MINOR)
+	list(GET RAKE_VERSION_LIST 2 RAKE_VERSION_PATCH)
+      endif (RAKE_VERSION)
+      
     endif (NOT RAKE_RESULT_VARIABLE)
+    
   endif (RAKE_EXECUTABLE)
   
   ##_____________________________________________________________________________

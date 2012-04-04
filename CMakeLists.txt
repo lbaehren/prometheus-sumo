@@ -44,6 +44,7 @@ endif (ENABLE_TESTING)
 if (NOT VERBOSE_CONFIGURE)
   set (GIT_FIND_QUIETLY     YES )
   set (DOXYGEN_FIND_QUIETLY YES )
+  set (RAKE_FIND_QUIETLY    YES )
   set (RDOC_FIND_QUIETLY    YES )
   set (RUBY_FIND_QUIETLY    YES )
   set (_RUBY_DEBUG_OUTPUT   NO  )
@@ -72,15 +73,37 @@ include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindRake.cmake)
 
 ## Extract Doxygen version number - this is not done by the standard module
 if (DOXYGEN_EXECUTABLE)
-    execute_process(
-      COMMAND ${DOXYGEN_EXECUTABLE} --version
-      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-      RESULT_VARIABLE DOXYGEN_RESULT_VARIABLE
-      OUTPUT_VARIABLE DOXYGEN_VERSION
-      ERROR_VARIABLE DOXYGEN_ERROR_VARIABLE
-      OUTPUT_STRIP_TRAILING_WHITESPACE
-      )
+  
+  execute_process(
+    COMMAND ${DOXYGEN_EXECUTABLE} --version
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    RESULT_VARIABLE DOXYGEN_RESULT_VARIABLE
+    OUTPUT_VARIABLE DOXYGEN_VERSION
+    ERROR_VARIABLE DOXYGEN_ERROR_VARIABLE
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
+  
+  if (DOXYGEN_VERSION)
+    ## Convert string to list of numbers
+    string (REGEX REPLACE "\\." ";" DOXYGEN_VERSION_LIST ${DOXYGEN_VERSION})
+    ## Retrieve individual elements in the list
+    list(GET DOXYGEN_VERSION_LIST 0 DOXYGEN_VERSION_MAJOR)
+    list(GET DOXYGEN_VERSION_LIST 1 DOXYGEN_VERSION_MINOR)
+    list(GET DOXYGEN_VERSION_LIST 2 DOXYGEN_VERSION_PATCH)
+  endif (DOXYGEN_VERSION)  
+  
 endif (DOXYGEN_EXECUTABLE)
+
+## Decomposition of Ruby version number - this is not done by the standard module
+
+if (RUBY_VERSION)
+  ## Convert string to list of numbers
+  string (REGEX REPLACE "\\." ";" RUBY_VERSION_LIST ${RUBY_VERSION})
+  ## Retrieve individual elements in the list
+  list(GET RUBY_VERSION_LIST 0 RUBY_VERSION_MAJOR)
+  list(GET RUBY_VERSION_LIST 1 RUBY_VERSION_MINOR)
+  list(GET RUBY_VERSION_LIST 2 RUBY_VERSION_PATCH)
+endif (RUBY_VERSION)
 
 ## ==============================================================================
 ##

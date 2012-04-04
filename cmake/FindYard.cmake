@@ -45,6 +45,7 @@ if (NOT YARD_FOUND)
   ## Extract program version
 
   if (YARD_EXECUTABLE)
+
     ## Run yard to display version number
     execute_process(
       COMMAND ${YARD_EXECUTABLE} --version
@@ -54,11 +55,24 @@ if (NOT YARD_FOUND)
       ERROR_VARIABLE YARD_ERROR_VARIABLE
       OUTPUT_STRIP_TRAILING_WHITESPACE
       )
+
     ## Process output in order to extract version number. Yard returns status 0
     ## if run successfully.
     if (NOT YARD_RESULT_VARIABLE)
+
       string(REGEX REPLACE "yard " "" YARD_VERSION ${YARD_OUTPUT_VARIABLE})
+
+      if (YARD_VERSION)
+	## Convert string to list of numbers
+	string (REGEX REPLACE "\\." ";" YARD_VERSION_LIST ${YARD_VERSION})
+	## Retrieve individual elements in the list
+	list(GET YARD_VERSION_LIST 0 YARD_VERSION_MAJOR)
+	list(GET YARD_VERSION_LIST 1 YARD_VERSION_MINOR)
+	list(GET YARD_VERSION_LIST 2 YARD_VERSION_PATCH)
+      endif (YARD_VERSION)
+      
     endif (NOT YARD_RESULT_VARIABLE)
+
   endif (YARD_EXECUTABLE)
   
   ##_____________________________________________________________________________
