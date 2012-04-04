@@ -84,20 +84,11 @@ if (GIT_EXECUTABLE)
   ## Website of prometheus - The digital image archive 
   add_git_repository (git@github.com:prometheus-ev/promhp.git)
 
-  ## Some extensions to the Ruby programming language. 
-  add_git_repository (git@github.com:prometheus-ev/ruby-nuggets.git)
-
-  ## Ruby bindings to the magic(4) library, revised. 
-  add_git_repository (git@github.com:prometheus-ev/ruby-filemagic.git)
-
   ## Convert (analyse) Apache log files to COUNTER CSV.
   add_git_repository (git@github.com:prometheus-ev/log2counter.git)
 
   ## Fuzzy string matching based on linguistic analysis.
   add_git_repository (git@github.com:prometheus-ev/perseus_match.git)
-
-  ## Ruby client for the Web Application Description Language.
-  add_git_repository (git@github.com:prometheus-ev/wadl.git)
 
   ##
   ##  Subversion repositories
@@ -115,3 +106,4 @@ endif (GIT_EXECUTABLE)
 
 add_subdirectory (apache)
 add_subdirectory (jekyll)
+add_subdirectory (ruby)
