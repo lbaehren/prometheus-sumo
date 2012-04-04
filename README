@@ -2,9 +2,8 @@
 CONTENTS:
 
   1. Introduction
-  2. The image archive
-  3. Software stack
-  4. External dependencies
+  2. External dependencies
+  3. Further reading
 
 _________________________________________________________________________________
 >>> 1. Introduction
@@ -13,33 +12,24 @@ ________________________________________________________________________________
 the various components in the software stack for "prometheus – The Distributed
 Digital Image Archive for Research and Studies".
 
-
-_________________________________________________________________________________
->>> 2. The image archive
-
-prometheus is a digital image archive for Art and Cultural Sciences. prometheus
-enables the convenient search for images on a common user interface within
-different image archives, variable databases from institutes, research facilities
-and museums.
+prometheus (www.prometheus-bildarchiv.de) is a digital image archive for Art and
+Cultural Sciences. prometheus enables the convenient search for images on a
+common user interface within different image archives, variable databases from
+institutes, research facilities and museums.
 
 
 _________________________________________________________________________________
->>> 3. Software stack
+>>> 2. External dependencies
 
-pandora [http://prometheus-app.uni-koeln.de/svn/pandora]
-
-"pandora – The prometheus digital image archive software" is the successor to
-kleio as the driving force behind the prometheus image archive. It's being
-developed since late fall of 2006, on top of the Ruby on Rails framework. pandora
-is Free Software, released under the terms of the GNU Affero General Public
-License. 
-
-apache_image_resizer [https://github.com/blackwinter/apache_image_resizer]
-
-Apache module providing image resizing functionality.
+ | Package/Tool | Version | Website              |
+ +--------------|---------+----------------------|
+ | Git          | >= 1.7  | http://git-scm.com   |
+ | CMake        | >=2.6   | http://www.cmake.org |
 
 
 _________________________________________________________________________________
->>> 4. External dependencies
+>>> 3. Further reading
 
-  * CMake, >=2.6 (www.cmake.org)
+
+
+
