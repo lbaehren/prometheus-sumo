@@ -56,16 +56,31 @@ endif (NOT VERBOSE_CONFIGURE)
 ##
 ## ==============================================================================
 
+##__________________________________________________________
 ## Standard CMake modules
 
 find_package (Git)
 find_package (Doxygen)
 find_package (Ruby)
 
+##__________________________________________________________
 ## Custom inspection
 
 include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindYard.cmake)
 include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindRDoc.cmake)
+include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindRake.cmake)
+
+## Extract Doxygen version number - this is not done by the standard module
+if (DOXYGEN_EXECUTABLE)
+    execute_process(
+      COMMAND ${DOXYGEN_EXECUTABLE} --version
+      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+      RESULT_VARIABLE DOXYGEN_RESULT_VARIABLE
+      OUTPUT_VARIABLE DOXYGEN_VERSION
+      ERROR_VARIABLE DOXYGEN_ERROR_VARIABLE
+      OUTPUT_STRIP_TRAILING_WHITESPACE
+      )
+endif (DOXYGEN_EXECUTABLE)
 
 ## ==============================================================================
 ##
@@ -103,7 +118,11 @@ message (STATUS " .. Ruby executable ............ = ${RUBY_EXECUTABLE}"         
 message (STATUS " .. Ruby version ............... = ${RUBY_VERSION}"            )
 message (STATUS " .. Path to Ruby library ....... = ${RUBY_LIBRARY}"            )
 message (STATUS " .. Include directory .......... = ${RUBY_INCLUDE_DIRS}"       )
-message (STATUS " Tools:"                                                       )
+message (STATUS " .. Rake executable ............ = ${RAKE_EXECUTABLE}"         )
+message (STATUS " .. Rake executable version .... = ${RAKE_VERSION}"            )
+message (STATUS " Documentation tools:"                                         )
+message (STATUS " .. Doxygen executable ......... = ${DOXYGEN_EXECUTABLE}"      )
+message (STATUS " .. Doxygen executable version . = ${DOXYGEN_VERSION}"         )
 message (STATUS " .. RDoc executable ............ = ${RDOC_EXECUTABLE}"         )
 message (STATUS " .. RDoc executable version .... = ${RDOC_VERSION}"            )
 message (STATUS " .. YARD executable ............ = ${YARD_EXECUTABLE}"         )
