@@ -25,7 +25,8 @@ set (${CMAKE_PROJECT_NAME}_VERSION "${${CMAKE_PROJECT_NAME}_VERSION_MAJOR}.${${C
 ##
 ## ==============================================================================
 
-option (ENABLE_TESTING "Enable CTest test driver?" YES )
+option (ENABLE_TESTING    "Enable CTest test driver?"                YES )
+option (VERBOSE_CONFIGURE "Increase verbosity during configuration?" NO  )
 
 set (GIT_REPOSITORY_BASE "git@github.com:prometheus-ev")
 
@@ -36,6 +37,18 @@ if (ENABLE_TESTING)
   include (CTest)
   enable_testing()
 endif (ENABLE_TESTING)
+
+##__________________________________________________________
+## Handle option: Increase verbosity during configuration?
+
+if (NOT VERBOSE_CONFIGURE)
+  set (GIT_FIND_QUIETLY     YES )
+  set (DOXYGEN_FIND_QUIETLY YES )
+  set (RDOC_FIND_QUIETLY    YES )
+  set (RUBY_FIND_QUIETLY    YES )
+  set (_RUBY_DEBUG_OUTPUT   NO  )
+  set (YARD_FIND_QUIETLY    YES )
+endif (NOT VERBOSE_CONFIGURE)
 
 ## ==============================================================================
 ##
@@ -52,8 +65,7 @@ find_package (Ruby)
 ## Custom inspection
 
 include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindYard.cmake)
-
-find_program (RDOC_EXECUTABLE rdoc)
+include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindRDoc.cmake)
 
 ## ==============================================================================
 ##
@@ -84,6 +96,8 @@ message (STATUS " .. size(void*) ................ = ${CMAKE_SIZEOF_VOID_P}"     
 message (STATUS " Project configuration:"                                       )
 message (STATUS " .. Version number ............. = ${${CMAKE_PROJECT_NAME}_VERSION}")
 message (STATUS " .. Git repository base URL .... = ${GIT_REPOSITORY_BASE}"     )
+message (STATUS " .. Enable CTest test driver?    = ${ENABLE_TESTING}"          )
+message (STATUS " .. Verbose configure?           = ${VERBOSE_CONFIGURE}"       )
 message (STATUS " Ruby configuration:"                                          )
 message (STATUS " .. Ruby executable ............ = ${RUBY_EXECUTABLE}"         )
 message (STATUS " .. Ruby version ............... = ${RUBY_VERSION}"            )
@@ -91,6 +105,7 @@ message (STATUS " .. Path to Ruby library ....... = ${RUBY_LIBRARY}"            
 message (STATUS " .. Include directory .......... = ${RUBY_INCLUDE_DIRS}"       )
 message (STATUS " Tools:"                                                       )
 message (STATUS " .. RDoc executable ............ = ${RDOC_EXECUTABLE}"         )
+message (STATUS " .. RDoc executable version .... = ${RDOC_VERSION}"            )
 message (STATUS " .. YARD executable ............ = ${YARD_EXECUTABLE}"         )
 message (STATUS " .. YARD executable version .... = ${YARD_VERSION}"            )
 message (STATUS "------------------------------------------------------------ " )
