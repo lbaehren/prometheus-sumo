@@ -84,9 +84,6 @@ if (GIT_EXECUTABLE)
   ## Website of prometheus - The digital image archive 
   add_git_repository (git@github.com:prometheus-ev/promhp.git)
 
-  ## Convert (analyse) Apache log files to COUNTER CSV.
-  add_git_repository (git@github.com:prometheus-ev/log2counter.git)
-
   ## Fuzzy string matching based on linguistic analysis.
   add_git_repository (git@github.com:prometheus-ev/perseus_match.git)
 
