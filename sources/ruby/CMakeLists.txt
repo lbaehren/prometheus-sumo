@@ -2,10 +2,14 @@
 if (GIT_EXECUTABLE)
 
   foreach (_varRepo
-      ## Some extensions to the Ruby programming language. 
-      ruby-nuggets
+      ## LibXML Ruby extensions
+      libxml-ext
+      ## Backports of newer Ruby features to older versions.
+      ruby-backports
       ## Ruby bindings to the magic(4) library, revised. 
       ruby-filemagic
+      ## Some extensions to the Ruby programming language. 
+      ruby-nuggets
       ## Ruby client for the Web Application Description Language.
       wadl
       )
