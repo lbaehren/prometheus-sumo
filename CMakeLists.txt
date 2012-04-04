@@ -17,7 +17,7 @@ cmake_policy (VERSION 2.8)
 set (${CMAKE_PROJECT_NAME}_VERSION_MAJOR 0 )
 set (${CMAKE_PROJECT_NAME}_VERSION_MINOR 1 )
 set (${CMAKE_PROJECT_NAME}_VERSION_PATCH 0 )
-set (${CMAKE_PROJECT_NAME}_VERSION "${Pandora_VERSION_MAJOR}.${Pandora_VERSION_MINOR}.${Pandora_VERSION_PATCH}")
+set (${CMAKE_PROJECT_NAME}_VERSION "${${CMAKE_PROJECT_NAME}_VERSION_MAJOR}.${${CMAKE_PROJECT_NAME}_VERSION_MINOR}.${${CMAKE_PROJECT_NAME}_VERSION_PATCH}")
 
 ## ==============================================================================
 ##
@@ -26,6 +26,8 @@ set (${CMAKE_PROJECT_NAME}_VERSION "${Pandora_VERSION_MAJOR}.${Pandora_VERSION_M
 ## ==============================================================================
 
 option (ENABLE_TESTING "Enable CTest test driver?" YES )
+
+set (GIT_REPOSITORY_BASE "git@github.com:prometheus-ev")
 
 ##__________________________________________________________
 ## Handle option: Enable CTest test driver?
@@ -79,6 +81,9 @@ message (STATUS " .. System name ................ = ${CMAKE_SYSTEM}"            
 message (STATUS " .. C++ compiler ............... = ${CMAKE_CXX_COMPILER}"      )
 message (STATUS " .. C compiler ................. = ${CMAKE_C_COMPILER}"        )
 message (STATUS " .. size(void*) ................ = ${CMAKE_SIZEOF_VOID_P}"     )
+message (STATUS " Project configuration:"                                       )
+message (STATUS " .. Version number ............. = ${${CMAKE_PROJECT_NAME}_VERSION}")
+message (STATUS " .. Git repository base URL .... = ${GIT_REPOSITORY_BASE}"     )
 message (STATUS " Ruby configuration:"                                          )
 message (STATUS " .. Ruby executable ............ = ${RUBY_EXECUTABLE}"         )
 message (STATUS " .. Ruby version ............... = ${RUBY_VERSION}"            )

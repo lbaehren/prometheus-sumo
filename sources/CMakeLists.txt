@@ -73,19 +73,19 @@ if (GIT_EXECUTABLE)
   ##
 
   ## Convert database files to various formats.
-  add_git_repository (https://github.com/blackwinter/athena.git)
+  add_git_repository (${GIT_REPOSITORY_BASE}/athena.git)
 
   ## Assist with handling messed up encodings. 
-  add_git_repository (https://github.com/blackwinter/cmess.git)
+  add_git_repository (${GIT_REPOSITORY_BASE}/cmess.git)
 
   ## Flatten relational databases.
-  add_git_repository (https://github.com/blackwinter/flattendb.git)
+  add_git_repository (${GIT_REPOSITORY_BASE}/flattendb.git)
 
   ## Website of prometheus - The digital image archive 
-  add_git_repository (git@github.com:prometheus-ev/promhp.git)
+  add_git_repository (${GIT_REPOSITORY_BASE}/promhp.git)
 
   ## Fuzzy string matching based on linguistic analysis.
-  add_git_repository (git@github.com:prometheus-ev/perseus_match.git)
+  add_git_repository (${GIT_REPOSITORY_BASE}/perseus_match.git)
 
   ##
   ##  Subversion repositories
