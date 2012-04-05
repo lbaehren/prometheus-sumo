@@ -6,10 +6,10 @@ if (YARD_EXECUTABLE)
   ## it with your source. This file is placed at the root of your project (in
   ## the directory you run yardoc from) and contains all of arguments you would
   ## otherwise pass to the command-line tool.
-#  configure_file (
-#    ${CMAKE_CURRENT_SOURCE_DIR}/yardopts.in
-#    ${CMAKE_CURRENT_BINARY_DIR}/.yardopts
-#    )
+  configure_file (
+    ${CMAKE_CURRENT_SOURCE_DIR}/yardopts.in
+    ${CMAKE_CURRENT_BINARY_DIR}/.yardopts
+    )
   
   ## Run target to generate the HTML documentation for all components (source
   ## code and extra documentation)
@@ -20,7 +20,7 @@ if (YARD_EXECUTABLE)
     )
 
   add_custom_target (doc_common
-    COMMAND ${YARD_EXECUTABLE} -o ${CMAKE_CURRENT_BINARY_DIR}/html -r ${CMAKE_CURRENT_SOURCE_DIR}/Prometheus.rdoc - ${CMAKE_CURRENT_SOURCE_DIR}/*.rdoc
+    COMMAND ${YARD_EXECUTABLE} --exclude /sources
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     COMMENT "Running YARD to generate code documentation..."
     )
