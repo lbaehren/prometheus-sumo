@@ -11,7 +11,7 @@ if (YARD_EXECUTABLE)
     ${CMAKE_CURRENT_BINARY_DIR}/.yardopts
     )
   
-  ## Run target to generate the HTML documentation for all components (source
+  ## Run YARD to generate the HTML documentation for all components (source
   ## code and extra documentation)
   add_custom_target (doc
     COMMAND ${YARD_EXECUTABLE}
@@ -19,6 +19,8 @@ if (YARD_EXECUTABLE)
     COMMENT "Running YARD to generate code documentation..."
     )
 
+  ## Run YARD to generate the HTML documentation for common information (not
+  ## parsing of source code, therefore much faster)
   add_custom_target (doc_common
     COMMAND ${YARD_EXECUTABLE} --exclude /sources
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
