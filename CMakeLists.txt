@@ -183,7 +183,7 @@ message (STATUS " .. RDoc executable ............ = ${RDOC_EXECUTABLE}"         
 message (STATUS " .. RDoc executable version .... = ${RDOC_VERSION}"             )
 message (STATUS " .. YARD executable ............ = ${YARD_EXECUTABLE}"          )
 message (STATUS " .. YARD executable version .... = ${YARD_VERSION}"             )
-message (STATUS " Databse:"                                                      )
+message (STATUS " Database:"                                                     )
 message (STATUS " .. MySQL include directory .... = ${MYSQL_INCLUDES}"           )
 message (STATUS " .. MySQL client libraries ..... = ${MYSQL_LIBRARIES}"          )
 message (STATUS " Image processing:"                                             )

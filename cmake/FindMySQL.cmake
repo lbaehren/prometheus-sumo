@@ -38,7 +38,7 @@ if (NOT MYSQL_FOUND)
   
   find_path (MYSQL_INCLUDES mysql.h
     HINTS ${MYSQL_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
-    PATH_SUFFIXES include mysql include/mysql
+    PATH_SUFFIXES include mysql include/mysql mysql5/mysql
     )
   
   ##_____________________________________________________________________________
@@ -46,7 +46,7 @@ if (NOT MYSQL_FOUND)
   
   find_library (MYSQL_LIBRARIES mysqlclient
     HINTS ${MYSQL_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
-    PATH_SUFFIXES lib mysql lib/mysql
+    PATH_SUFFIXES lib mysql lib/mysql mysql5/mysql
     )
   
   ##_____________________________________________________________________________
