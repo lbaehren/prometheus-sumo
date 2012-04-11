@@ -94,6 +94,7 @@ find_package (Ruby)
 include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindYard.cmake)
 include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindRDoc.cmake)
 include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindRake.cmake)
+include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindGem.cmake)
 
 include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/RequiredPackages.cmake)
 
@@ -170,6 +171,8 @@ message (STATUS " .. Path to Ruby library ....... = ${RUBY_LIBRARY}"            
 message (STATUS " .. Include directory .......... = ${RUBY_INCLUDE_DIRS}"       )
 message (STATUS " .. Rake executable ............ = ${RAKE_EXECUTABLE}"         )
 message (STATUS " .. Rake executable version .... = ${RAKE_VERSION}"            )
+message (STATUS " .. Gem executable ............. = ${GEM_EXECUTABLE}"          )
+message (STATUS " .. Gem executable version ..... = ${GEM_VERSION}"             )
 message (STATUS " Documentation tools:"                                         )
 message (STATUS " .. Doxygen executable ......... = ${DOXYGEN_EXECUTABLE}"      )
 message (STATUS " .. Doxygen executable version . = ${DOXYGEN_VERSION}"         )
