@@ -58,6 +58,23 @@ endif (NOT VERBOSE_CONFIGURE)
 ## ==============================================================================
 
 ##__________________________________________________________
+## Identify operating system
+
+if (UNIX)
+  if (APPLE)
+    set (CMAKE_OS_NAME "OSX")
+  else (APPLE)
+    ## Check for Debian GNU/Linux
+    find_file (DEBIAN_FOUND debian_version debconf.conf
+      PATHS /etc
+      )
+    if (DEBIAN_FOUND)
+      set (CMAKE_OS_NAME "Debian")
+    endif (DEBIAN_FOUND)
+  endif (APPLE)
+endif (UNIX)
+
+##__________________________________________________________
 ## Standard CMake modules
 
 find_package (Git)
@@ -70,6 +87,8 @@ find_package (Ruby)
 include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindYard.cmake)
 include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindRDoc.cmake)
 include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindRake.cmake)
+
+include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/RequiredPackages.cmake)
 
 ## Extract Doxygen version number - this is not done by the standard module
 if (DOXYGEN_EXECUTABLE)
@@ -128,6 +147,7 @@ message (STATUS " .. Processor type ............. = ${CMAKE_SYSTEM_PROCESSOR}"  
 message (STATUS " .. CMake executable ........... = ${CMAKE_COMMAND}"           )
 message (STATUS " .. CMake version .............. = ${CMAKE_VERSION}"           )
 message (STATUS " .. System name ................ = ${CMAKE_SYSTEM}"            )
+message (STATUS " .. Operating system name ...... = ${CMAKE_OS_NAME}"           )
 message (STATUS " .. C++ compiler ............... = ${CMAKE_CXX_COMPILER}"      )
 message (STATUS " .. C compiler ................. = ${CMAKE_C_COMPILER}"        )
 message (STATUS " .. size(void*) ................ = ${CMAKE_SIZEOF_VOID_P}"     )
