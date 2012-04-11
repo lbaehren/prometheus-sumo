@@ -71,7 +71,14 @@ if (UNIX)
     if (DEBIAN_FOUND)
       set (CMAKE_OS_NAME "Debian")
     endif (DEBIAN_FOUND)
+    ##  Check for RedHat
+    find_file (REDHAT_FOUND redhat-release inittab.RH
+      PATHS /etc
+      )
   endif (APPLE)
+    if (REDHAT_FOUND)
+      set (CMAKE_OS_NAME "RedHat")
+    endif (REDHAT_FOUND)
 endif (UNIX)
 
 ##__________________________________________________________
