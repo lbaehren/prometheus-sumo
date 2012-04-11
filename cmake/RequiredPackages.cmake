@@ -35,34 +35,6 @@ if (DEBIAN_FOUND)
 
 endif (DEBIAN_FOUND)
 
-##____________________________________________________________________
-## Packages required on RedHat
-
-if (REDHAT_FOUND)
-  
-  set (required_packages
-    ruby
-    rubygems
-    rdoc
-    ri
-    irb
-    eruby
-    libxml2-devel
-    mysql-server
-    mysql-client
-    mysql-devel
-    apache2
-    #  (mod_ruby???)
-    postfix
-    subversion
-    subversion-tools
-    libapache2-svn
-    ImageMagick
-    ImageMagick-devel 
-    )
-
-endif (REDHAT_FOUND)
-
 ## Packages required on Mac OS X
 
 if (APPLE)
