@@ -26,12 +26,13 @@ if (DEBIAN_FOUND)
     libmysqlclient-dev
     apache2
     libapache2-mod-ruby
+    libapache2-mod-proxy-html
     subversion
     libxml2-dev
     libmagic-dev
     libmagickwand-dev
     )
-  
+
 endif (DEBIAN_FOUND)
 
 ##____________________________________________________________________
@@ -62,6 +63,31 @@ if (REDHAT_FOUND)
 
 endif (REDHAT_FOUND)
 
+## Packages required on Mac OS X
+
+if (APPLE)
+
+  set (required_packages
+    mysql5-devel
+    )
+
+endif (APPLE)
+
+## ==============================================================================
+##
+##  Apache configuration
+##
+## ==============================================================================
+
+add_custom_target (apache_enable_modes
+  COMMAND a2enmod rewrite
+  COMMAND a2enmod proxy_balancer
+  COMMAND a2enmod proxy_http
+  COMMAND /etc/init.d/apache2 restart
+  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+  COMMENT "Enabling Apache modes ..."
+  )
+
 ## ==============================================================================
 ##
 ##  Ruby Gems
@@ -71,6 +97,7 @@ endif (REDHAT_FOUND)
 if (GEM_EXECUTABLE)
 
   add_custom_target (install_gems
+    COMMAND gem install yard
     COMMAND gem install rake
     COMMAND gem install libxml-ruby
     COMMAND gem install hpricot
@@ -85,7 +112,23 @@ if (GEM_EXECUTABLE)
     COMMAND gem install apache_image_resizer
     COMMAND gem install ruby-nuggets
     COMMAND gem install libxml-ext 
+    COMMAND gem install gruff
+    COMMAND gem install blackwinter-gnuplot
+    COMMAND gem install fastercsv
+    COMMAND gem install highline
+    COMMAND gem install ruby-backports
+    COMMAND gem install ferret
+    COMMAND gem install unicode
+    COMMAND gem install mime-types
+    COMMAND gem install ruby-filemagic
+    COMMAND gem install mail
+    COMMAND gem install ar_mailer
+    COMMAND gem install lockfile
+    COMMAND gem install oauth
+    COMMAND gem install ruby-hmac
+    COMMAND gem install wadl 
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    COMMENT "Installing Ruby Gems ..."
     )
   
 endif (GEM_EXECUTABLE)
