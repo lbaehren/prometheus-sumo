@@ -6,35 +6,6 @@
 ## ==============================================================================
 
 ##____________________________________________________________________
-## Packages required on Debian GNU/Linux
-
-if (DEBIAN_FOUND)
-  
-  set (required_packages
-    ruby
-    ruby1.8-dev
-    rubygems
-    rdoc
-    ri
-    irb
-    libmysql-ruby
-    libtermios-ruby
-    libopenssl-ruby
-    librmagick-ruby
-    mysql-server
-    mysql-client
-    libmysqlclient-dev
-    apache2
-    libapache2-mod-ruby
-    libapache2-mod-proxy-html
-    subversion
-    libxml2-dev
-    libmagic-dev
-    libmagickwand-dev
-    )
-
-endif (DEBIAN_FOUND)
-
 ## Packages required on Mac OS X
 
 if (APPLE)
