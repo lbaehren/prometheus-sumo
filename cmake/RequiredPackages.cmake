@@ -79,7 +79,12 @@ if (GEM_EXECUTABLE)
     COMMAND gem install mongrel_cluster
     COMMAND gem install piston
     COMMAND gem install capistrano
-    COMMAND gem install ruby-debug 
+    COMMAND gem install ruby-debug
+    COMMAND gem install pdf-reader
+    COMMAND gem install apache_secure_download
+    COMMAND gem install apache_image_resizer
+    COMMAND gem install ruby-nuggets
+    COMMAND gem install libxml-ext 
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     )
   
