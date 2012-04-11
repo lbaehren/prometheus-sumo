@@ -87,6 +87,7 @@ endif (UNIX)
 find_package (Git)
 find_package (Doxygen)
 find_package (Ruby)
+find_package (ImageMagick)
 
 ##__________________________________________________________
 ## Custom inspection
@@ -180,4 +181,7 @@ message (STATUS " .. RDoc executable ............ = ${RDOC_EXECUTABLE}"         
 message (STATUS " .. RDoc executable version .... = ${RDOC_VERSION}"            )
 message (STATUS " .. YARD executable ............ = ${YARD_EXECUTABLE}"         )
 message (STATUS " .. YARD executable version .... = ${YARD_VERSION}"            )
+message (STATUS " Image processing:"                                            )
+message (STATUS " .. ImageMagick binary suite ... = ${ImageMagick_FOUND}"       )
+message (STATUS " .. ImageMagick convert tool ... = ${ImageMagick_convert_FOUND}")
 message (STATUS "------------------------------------------------------------ " )
