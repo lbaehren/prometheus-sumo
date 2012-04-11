@@ -42,6 +42,7 @@ endif (ENABLE_TESTING)
 ## Handle option: Increase verbosity during configuration?
 
 if (NOT VERBOSE_CONFIGURE)
+  set (GEM_FIND_QUIETLY     YES )
   set (GIT_FIND_QUIETLY     YES )
   set (DOXYGEN_FIND_QUIETLY YES )
   set (RAKE_FIND_QUIETLY    YES )
@@ -96,6 +97,7 @@ include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindYard.cmake)
 include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindRDoc.cmake)
 include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindRake.cmake)
 include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindGem.cmake)
+include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindMySQL.cmake)
 
 include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/RequiredPackages.cmake)
 
@@ -181,6 +183,9 @@ message (STATUS " .. RDoc executable ............ = ${RDOC_EXECUTABLE}"         
 message (STATUS " .. RDoc executable version .... = ${RDOC_VERSION}"             )
 message (STATUS " .. YARD executable ............ = ${YARD_EXECUTABLE}"          )
 message (STATUS " .. YARD executable version .... = ${YARD_VERSION}"             )
+message (STATUS " Databse:"                                                      )
+message (STATUS " .. MySQL include directory .... = ${MYSQL_INCLUDES}"           )
+message (STATUS " .. MySQL client libraries ..... = ${MYSQL_LIBRARIES}"          )
 message (STATUS " Image processing:"                                             )
 message (STATUS " .. ImageMagick binary suite ... = ${ImageMagick_FOUND}"        )
 message (STATUS " .. ImageMagick convert tool ... = ${ImageMagick_convert_EXECUTABLE}")
