@@ -1,4 +1,8 @@
 
+add_custom_target (InstallGems
+  COMMENT "Installing required system packages..."
+  )
+
 ##_______________________________________________________________________________
 ## Installation of the individual packages
 
@@ -38,17 +42,17 @@ if (GEM_EXECUTABLE)
       )
     
     ## Installation instructions for the package
-    ExternalProject_Add (install_gem_${varPackage}
+    ExternalProject_Add (InstallGem_${varPackage}
       PREFIX ${CMAKE_CURRENT_BINARY_DIR}
       DOWNLOAD_COMMAND ""
       CONFIGURE_COMMAND ""
       BUILD_COMMAND ""
       INSTALL_COMMAND ${GEM_EXECUTABLE} install ${varPackage}
-      COMMENT "Installing Redhat package ${varPackage} ..."
+      COMMENT "Installing Ruby Gem ${varPackage} ..."
       )
     
     ## Connection with collective target
-    add_dependencies (InstallPackages install_package_${varPackage})
+    add_dependencies (InstallGems InstallGem_${varPackage})
     
   endforeach (varPackage)
   

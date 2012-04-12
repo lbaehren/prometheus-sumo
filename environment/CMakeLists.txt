@@ -73,16 +73,21 @@ if (UNIX)
 
 endif (UNIX)
 
-##_______________________________________________________________________________
+## ==============================================================================
+##
+##  Installation of packages
+##
+## ==============================================================================
+
+##__________________________________________________________
 ## Define top-level collective build target
 
 add_custom_target (InstallPackages
   COMMENT "Installing required system packages..."
   )
 
-##_______________________________________________________________________________
-## Select platform-dependent installation instructions for the individual
-## packages
+##__________________________________________________________
+## Add platform-dependent instructions
 
 if (DEBIAN_FOUND)
   add_subdirectory (debian)
@@ -96,3 +101,7 @@ if (UBUNTU_FOUND)
   add_subdirectory (ubuntu)
 endif (UBUNTU_FOUND)
 
+##__________________________________________________________
+## Installation of Ruby Gems
+
+include (${CMAKE_CURRENT_SOURCE_DIR}/InstallRubyGems.cmake)
