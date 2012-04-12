@@ -46,7 +46,7 @@ if (APT_EXECUTABLE)
       )
     
     ## Connection with collective target
-    add_dependencies (InstallPackages install_package_${varPackage})
+    add_dependencies (InstallPackages InstallPackage_${varPackage})
     
   endforeach (varPackage)
   

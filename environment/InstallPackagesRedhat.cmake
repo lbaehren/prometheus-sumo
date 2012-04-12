@@ -44,7 +44,7 @@ if (YUM_EXECUTABLE)
       )
     
     ## Connection with collective target
-    add_dependencies (InstallPackages install_package_${package_redhat})
+    add_dependencies (InstallPackages InstallPackage_${package_redhat})
     
   endforeach (package_redhat)
   
