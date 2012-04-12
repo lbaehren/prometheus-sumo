@@ -9,7 +9,7 @@ if (UNIX)
 
   if (APPLE)
 
-    set (CMAKE_OS_NAME "OSX")
+    set (CMAKE_OS_NAME "OSX" CACHE STRING "Operating system name" FORCE)
 
   else (APPLE)
 
@@ -19,7 +19,7 @@ if (UNIX)
       PATHS /etc
       )
     if (DEBIAN_FOUND)
-      set (CMAKE_OS_NAME "Debian")
+      set (CMAKE_OS_NAME "Debian" CACHE STRING "Operating system name" FORCE)
     endif (DEBIAN_FOUND)
 
     ##  Check for Fedora _________________________
@@ -28,7 +28,7 @@ if (UNIX)
       PATHS /etc
       )
     if (FEDORA_FOUND)
-      set (CMAKE_OS_NAME "Fedora")
+      set (CMAKE_OS_NAME "Fedora" CACHE STRING "Operating system name" FORCE)
     endif (FEDORA_FOUND)
 
     ##  Check for RedHat _________________________
@@ -37,11 +37,11 @@ if (UNIX)
       PATHS /etc
       )
     if (REDHAT_FOUND)
-      set (CMAKE_OS_NAME "RedHat")
+      set (CMAKE_OS_NAME "RedHat" CACHE STRING "Operating system name" FORCE)
     endif (REDHAT_FOUND)
-
+    
     ## Extra check for Ubuntu ____________________
-
+    
     if (DEBIAN_FOUND)
 
       ## At its core Ubuntu is a Debian system, with
@@ -61,7 +61,7 @@ if (UNIX)
 	  )
 	## Check result of
 	if (UBUNTU_FOUND)
-	  set (CMAKE_OS_NAME "Ubuntu")
+	  set (CMAKE_OS_NAME "Ubuntu" CACHE STRING "Operating system name" FORCE)
 	endif (UBUNTU_FOUND)
 
       endif (UBUNTU_EXTRA)
