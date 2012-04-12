@@ -29,7 +29,6 @@ if (GEM_EXECUTABLE)
       fastercsv
       highline
       ruby-backports
-      ferret
       unicode
       mime-types
       ruby-filemagic
