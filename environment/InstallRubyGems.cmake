@@ -55,5 +55,23 @@ if (GEM_EXECUTABLE)
     add_dependencies (InstallGems InstallGem_${varPackage})
     
   endforeach (varPackage)
-  
+
+  ##________________________________________________________
+  ## Gems for which a specific version is required
+  ## (see 'pandora/config/environment.rb')
+  ## 
+  ## 'ferret'      => '= 0.11.8.1',
+  ## 'libxml-ruby' => '>= 1.1.3',
+  ## 'unicode'     => '>= 0.1.1'
+
+  ExternalProject_Add (InstallGem_ferret
+    PREFIX ${CMAKE_CURRENT_BINARY_DIR}
+    DOWNLOAD_COMMAND ""
+    CONFIGURE_COMMAND ""
+    BUILD_COMMAND ""
+    INSTALL_COMMAND ${GEM_EXECUTABLE} install ferret -v 0.11.8.1 --source http://prometheus-app.uni-koeln.de/rubygems
+    COMMENT "Installing Ruby Gem ${varPackage} ..."
+    )
+  add_dependencies (InstallGems InstallGem_ferret)
+
 endif (GEM_EXECUTABLE)
