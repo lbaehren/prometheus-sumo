@@ -65,7 +65,6 @@ endif (NOT VERBOSE_CONFIGURE)
 find_package (Git)
 find_package (Doxygen)
 find_package (Ruby)
-find_package (ImageMagick)
 
 ##__________________________________________________________
 ## Custom inspection
@@ -164,9 +163,4 @@ message (STATUS " .. YARD executable version .... = ${YARD_VERSION}"            
 message (STATUS " Database:"                                                     )
 message (STATUS " .. MySQL include directory .... = ${MYSQL_INCLUDES}"           )
 message (STATUS " .. MySQL client libraries ..... = ${MYSQL_LIBRARIES}"          )
-message (STATUS " Image processing:"                                             )
-message (STATUS " .. ImageMagick binary suite ... = ${ImageMagick_FOUND}"        )
-message (STATUS " .. ImageMagick convert tool ... = ${ImageMagick_convert_EXECUTABLE}")
-message (STATUS " .. ImageMagick import tool .... = ${ImageMagick_import_EXECUTABLE}" )
-message (STATUS " .. ImageMagick mogrify tool ... = ${ImageMagick_mogrify_EXECUTABLE}")
 message (STATUS "------------------------------------------------------------ "  )
