@@ -84,13 +84,13 @@ add_custom_target (InstallPackages
 ## packages
 
 if (DEBIAN_FOUND)
-  include (${CMAKE_CURRENT_SOURCE_DIR}/InstallPackagesDebian.cmake)
+  add_subdirectory (debian)
 endif (DEBIAN_FOUND)
 
 if (REDHAT_FOUND)
-  include (${CMAKE_CURRENT_SOURCE_DIR}/InstallPackagesRedhat.cmake)
+  add_subdirectory (redhat)
 endif (REDHAT_FOUND)
 
 if (UBUNTU_FOUND)
-  include (${CMAKE_CURRENT_SOURCE_DIR}/InstallPackagesUbuntu.cmake)
+  add_subdirectory (ubuntu)
 endif (UBUNTU_FOUND)
