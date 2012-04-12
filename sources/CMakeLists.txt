@@ -25,7 +25,7 @@ if (GIT_EXECUTABLE)
     else (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName})
       ## Create new clone
       add_custom_target(clone_${_projectName} ALL
-	COMMAND ${GIT_EXECUTABLE} clone --bare ${_projectRepos} ${_projectName}
+	COMMAND ${GIT_EXECUTABLE} clone ${_projectRepos} ${_projectName}
 	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 	COMMENT "Cloning Git repository ${_projectName} ..."
 	)
