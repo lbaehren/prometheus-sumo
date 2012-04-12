@@ -22,10 +22,16 @@ institutes, research facilities and museums.
 _________________________________________________________________________________
 >>> 2. External dependencies
 
- | Package/Tool | Version | Website              |
- +--------------|---------+----------------------|
- | Git          | >= 1.7  | http://git-scm.com   |
- | CMake        | >= 2.6  | http://www.cmake.org |
+External dependencies are kept to a minimum for this package - further
+dependencies, as required when developing the prometheus software packages, are
+handled as part of this tool.
+
+ +--------------|-----------+----------------------|
+ | Package/Tool | Version   | Website              |
+ +--------------|-----------+----------------------|
+ | Git          | >= 1.7    | http://git-scm.com   |
+ | CMake        | >= 2.8.3  | http://www.cmake.org |
+ +--------------|-----------+----------------------|
 
 
 _________________________________________________________________________________
