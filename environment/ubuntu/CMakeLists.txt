@@ -20,6 +20,7 @@ if (APT_EXECUTABLE)
       rdoc
       ri
       irb
+      rails-ruby1.8
       libmysql-ruby
       libtermios-ruby
       libopenssl-ruby
