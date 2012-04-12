@@ -22,6 +22,15 @@ if (UNIX)
       set (CMAKE_OS_NAME "Debian")
     endif (DEBIAN_FOUND)
 
+    ##  Check for Fedora _________________________
+
+    find_file (FEDORA_FOUND fedora-release
+      PATHS /etc
+      )
+    if (FEDORA_FOUND)
+      set (CMAKE_OS_NAME "Fedora")
+    endif (FEDORA_FOUND)
+
     ##  Check for RedHat _________________________
 
     find_file (REDHAT_FOUND redhat-release inittab.RH
