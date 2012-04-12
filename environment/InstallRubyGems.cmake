@@ -49,7 +49,7 @@ if (GEM_EXECUTABLE)
       INSTALL_COMMAND ${GEM_EXECUTABLE} install ${varPackage}
       COMMENT "Installing Ruby Gem ${varPackage} ..."
       )
-    
+
     ## Connection with collective target
     add_dependencies (InstallGems InstallGem_${varPackage})
     
@@ -71,6 +71,9 @@ if (GEM_EXECUTABLE)
     INSTALL_COMMAND ${GEM_EXECUTABLE} install ferret -v 0.11.8.1 --source http://prometheus-app.uni-koeln.de/rubygems
     COMMENT "Installing Ruby Gem ${varPackage} ..."
     )
+  ## Downstream dependencies
+  add_dependencies (InstallGem_ferret InstallGem_rake)
+  ## Upstream dependencies
   add_dependencies (InstallGems InstallGem_ferret)
 
 endif (GEM_EXECUTABLE)
