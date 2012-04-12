@@ -8,10 +8,10 @@
 project (prometheus-sumo)
 
 ## Minimum required version of CMake to configure the project
-cmake_minimum_required (VERSION 2.8)
+cmake_minimum_required (VERSION 2.8.3)
 
 ## Enforced CMake policy
-cmake_policy (VERSION 2.8)
+cmake_policy (VERSION 2.8.3)
 
 ## Project release version (major.minor.patch)
 set (${CMAKE_PROJECT_NAME}_VERSION_MAJOR 0 )
