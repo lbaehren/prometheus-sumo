@@ -9,35 +9,36 @@ add_custom_target (InstallGems
 if (GEM_EXECUTABLE)
   
   foreach (varPackage
-      yard
-      rake
-      libxml-ruby
+      apache_image_resizer
+      apache_secure_download
+      ar_mailer
+      blackwinter-gnuplot
+      capistrano
+      fastercsv
+      gruff
+      highline
       hpricot
       json
+      libxml-ext 
+      libxml-ruby
+      lockfile
+      mail
+      mime-types
       mongrel
       mongrel_cluster
-      piston
-      capistrano
-      ruby-debug
-      pdf-reader
-      apache_secure_download
-      apache_image_resizer
-      ruby-nuggets
-      libxml-ext 
-      gruff
-      blackwinter-gnuplot
-      fastercsv
-      highline
-      ruby-backports
-      unicode
-      mime-types
-      ruby-filemagic
-      mail
-      ar_mailer
-      lockfile
+      mysql
       oauth
+      pdf-reader
+      piston
+      rake
+      ruby-backports
+      ruby-debug
+      ruby-filemagic
       ruby-hmac
+      ruby-nuggets
+      unicode
       wadl 
+      yard
       )
     
     ## Installation instructions for the package
