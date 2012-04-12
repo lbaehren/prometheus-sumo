@@ -91,7 +91,7 @@ if (GIT_EXECUTABLE)
   ##  Subversion repositories
   ##
 
-  add_svn_repository (pandora   http://prometheus-app.uni-koeln.de/svn/pandora/trunk)
+  add_svn_repository (pandora http://prometheus-app.uni-koeln.de/svn/pandora/trunk)
 
 endif (GIT_EXECUTABLE)
 
