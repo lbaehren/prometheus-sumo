@@ -59,9 +59,10 @@ if (UNIX)
 	file (STRINGS ${UBUNTU_EXTRA} UBUNTU_FOUND
 	  REGEX Ubuntu
 	  )
-	## Check result of
+	## Check result of string search
 	if (UBUNTU_FOUND)
 	  set (CMAKE_OS_NAME "Ubuntu" CACHE STRING "Operating system name" FORCE)
+	  set (DEBIAN_FOUND FALSE)
 	endif (UBUNTU_FOUND)
 
       endif (UBUNTU_EXTRA)
@@ -94,3 +95,4 @@ endif (REDHAT_FOUND)
 if (UBUNTU_FOUND)
   add_subdirectory (ubuntu)
 endif (UBUNTU_FOUND)
+
