@@ -40,6 +40,7 @@ if (GEM_EXECUTABLE)
     ## Installation instructions for the package
     ExternalProject_Add (install_gem_${varPackage}
       PREFIX ${CMAKE_CURRENT_BINARY_DIR}
+      DOWNLOAD_COMMAND ""
       CONFIGURE_COMMAND ""
       BUILD_COMMAND ""
       INSTALL_COMMAND ${GEM_EXECUTABLE} install ${varPackage}
