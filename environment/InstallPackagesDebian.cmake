@@ -37,7 +37,7 @@ if (APT_EXECUTABLE)
       )
     
     ## Installation instructions for the package
-    ExternalProject_Add (install_package_${varPackage}
+    ExternalProject_Add (InstallPackage_${varPackage}
       PREFIX ${CMAKE_CURRENT_BINARY_DIR}
       DOWNLOAD_COMMAND ""
       CONFIGURE_COMMAND ""

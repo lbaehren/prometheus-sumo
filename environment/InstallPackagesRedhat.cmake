@@ -34,7 +34,7 @@ if (YUM_EXECUTABLE)
       )
     
     ## Installation instructions for the package
-    ExternalProject_Add (install_package_${package_redhat}
+    ExternalProject_Add (InstallPackage_${package_redhat}
       PREFIX ${CMAKE_CURRENT_BINARY_DIR}
       DOWNLOAD_COMMAND ""
       CONFIGURE_COMMAND ""
