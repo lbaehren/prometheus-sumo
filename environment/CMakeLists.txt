@@ -82,12 +82,17 @@ endif (UNIX)
 ##__________________________________________________________
 ## Define top-level collective build target
 
-add_custom_target (InstallPackages
+add_custom_target (InstallPackages ALL
+  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
   COMMENT "Installing required system packages..."
   )
 
 ##__________________________________________________________
 ## Add platform-dependent instructions
+
+if (APPLE)
+  add_subdirectory (osx)
+endif (APPLE)
 
 if (DEBIAN_FOUND)
   add_subdirectory (debian)
