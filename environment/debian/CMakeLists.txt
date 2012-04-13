@@ -53,9 +53,10 @@ if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
       )
     
     ## Installation instructions for the package ___________
+
     add_custom_command (
       TARGET InstallPackages
-      PRE_BUILD
+      POST_BUILD
       COMMAND ${APT_EXECUTABLE} install ${varPackage}
       WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
       COMMENT "Installing Debian package ${varPackage} ..."
