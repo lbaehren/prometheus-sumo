@@ -25,10 +25,12 @@ set (${CMAKE_PROJECT_NAME}_VERSION "${${CMAKE_PROJECT_NAME}_VERSION_MAJOR}.${${C
 ##
 ## ==============================================================================
 
-option (ENABLE_TESTING    "Enable CTest test driver?"                YES )
-option (VERBOSE_CONFIGURE "Increase verbosity during configuration?" NO  )
+option (ENABLE_TESTING        "Enable CTest test driver?"                YES )
+option (VERBOSE_CONFIGURE     "Increase verbosity during configuration?" NO  )
 
-set (GIT_REPOSITORY_BASE "git@github.com:prometheus-ev")
+
+set (REQUIRED_VERSION_RUBY  1.8 )
+set (GIT_REPOSITORY_BASE    "git@github.com:prometheus-ev")
 
 ##__________________________________________________________
 ## Handle option: Enable CTest test driver?
@@ -149,6 +151,7 @@ message (STATUS " .. Git repository base URL .... = ${GIT_REPOSITORY_BASE}"     
 message (STATUS " .. Enable CTest test driver?    = ${ENABLE_TESTING}"           )
 message (STATUS " .. Verbose configure?           = ${VERBOSE_CONFIGURE}"        )
 message (STATUS " Ruby configuration:"                                           )
+message (STATUS " .. Required version ........... = ${REQUIRED_VERSION_RUBY}"    )
 message (STATUS " .. Ruby executable ............ = ${RUBY_EXECUTABLE}"          )
 message (STATUS " .. Ruby version ............... = ${RUBY_VERSION}"             )
 message (STATUS " .. Path to Ruby library ....... = ${RUBY_LIBRARY}"             )

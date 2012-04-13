@@ -19,16 +19,16 @@ find_program (DPKG_EXECUTABLE dpkg
 if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
   
   foreach (varPackage
-      ruby
-      ruby1.8-dev
+      ruby${REQUIRED_VERSION_RUBY}
+      ruby${REQUIRED_VERSION_RUBY}-dev
       rubygems
       rdoc
       ri
       irb
-      libmysql-ruby
-      libtermios-ruby
-      libopenssl-ruby
-      librmagick-ruby
+      libmysql-ruby${REQUIRED_VERSION_RUBY}
+      libtermios-ruby${REQUIRED_VERSION_RUBY}
+      libopenssl-ruby${${REQUIRED_VERSION_RUBY}}
+      librmagick-ruby${REQUIRED_VERSION_RUBY}
       mysql-server
       mysql-client
       libmysqlclient-dev
