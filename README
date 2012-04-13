@@ -3,8 +3,9 @@ CONTENTS:
 
   1. Introduction
   2. External dependencies
-  3. Configuration options
-  4. Further reading
+  3. Organization of the source code
+  4. Configuration options
+  5. Further reading
 
 _________________________________________________________________________________
 >>> 1. Introduction
@@ -35,7 +36,26 @@ handled as part of this tool.
 
 
 _________________________________________________________________________________
->>> 3. Configuration options
+>>> 3. Organization of the source code
+
+Once cloning into a working copy has completed, the following directory structure
+can be found:
+
+  .
+  |-- CMakeLists.txt          ...  Top-level CMake script for the project
+  |-- README                  ...  This README file
+  |-- cmake                   ...  Collection of CMake scripts and modules
+  |-- doc                     ...  Documentation sources (other than source)
+  |-- environment             ...  Environment preparation scripts
+  |   |-- debian
+  |   |-- fedora
+  |   |-- osx
+  |   |-- redhat
+  |   `-- ubuntu
+  `-- sources                 ...  Source of the project(s)
+
+_________________________________________________________________________________
+>>> 4. Configuration options
 
 The behaviour and processing can - to a certain degree - be controlled when
 running CMake to configure the project; the list below shows the available 
@@ -50,5 +70,7 @@ syntax from the command line.
 
 
 _________________________________________________________________________________
->>> 4. Further reading
+>>> 5. Further reading
 
+  * http://www.prometheus-bildarchiv.de - prometheus website
+  * http://prometheus.uni-koeln.de/pandora - pandora website
