@@ -1,0 +1,207 @@
+
+= Deploying a new release of pandora
+
+== Introduction
+
++++ add some high-level descrition here +++
+
+== Procedure
+
+=== Commit changes in trunk
+
+The very first step before starting the actual deploy procedure
+
+    $ rake spec
+
+Commit all the changes to be included into the trunk of the Subversion repository:
+
+    $ svn commit -m "<commit message>"
+
+Review changes since last deploy; in order to get the version number used for
+the last deploy, go to the {http://prometheus.uni-koeln.de/pandora/en/pandora/about About pandora} page on the prometheus website
+
+    $ svn log -r 3679:HEAD
+
+=== Increment version number
+
+The version number is encoded in the following files, where it must be adjusted
+manually:
+
+  * lib/pandora/version
+  * README
+
+Push the previous changes upstream:
+
+    $ svn commit -m "lib/pandora/version.rb : v0.6.5 -- Added news-box to sidebar."
+
+Comitting the changes to the server will be acknowledged:
+
+    Sending        trunk/README
+    Sending        trunk/lib/pandora/version.rb
+    Transmitting file data ..
+    Committed revision 3705.
+
+=== Tag for new release
+
+Once the version number has been adjusted, it is time to create a new tagged
+version of the code base:
+
+    $ svn copy ^/trunk ^/tags/0.6.5 -m "Tagging the pandora 0.6.5 release"
+
+=== Create stable branch
+
+In order to propagate the same set of changes, as previously tagged with the new
+version, to a stable branch, we need to merge the changes submitted to the
++trunk+; for this change into the directory of the targetted release version
+
+    cd pandora/branches/0.6-stable
+
+and instruct Subversion to perform the merge:
+
+    $ svn merge ^/trunk
+
+Which versions exactly have been included in the merge, can be retrieved through
+
+    $ svn diff --depth=empty
+
+The output from that will look something like:
+
+   Property changes on: .
+   ___________________________________________________________________
+   Modified: svn:mergeinfo
+      Merged /trunk:r3677-3706
+
+With the above information we now have everything available to commit the new stable
+version:
+
+    $ svn commit -m "Merged r3677-3706 from trunk. (v0.6.5)"
+
+The commit itself will once more display the list of files which are being pushed
+onto the server:
+
+    Sending        0.6-stable
+    Sending        0.6-stable/README
+    ...
+    Adding         0.6-stable/public/images/sidebar
+    Adding  (bin)  0.6-stable/public/images/sidebar/box_close.gif
+    Transmitting file data ...............................................
+    Committed revision 3707.
+
+=== Deploy stable version
+
+Before rolling out the new version on the production system, one always should
+check the effect of the changes on the _stable_ system
+
+  http://prometheus-test.uni-koeln.de/pandora-stable/login
+
+The actual deployment is done through _capistrano_:
+
+    $ cap stable deploy:restart
+
+The output will look something like this:
+
+    * executing `stable'
+    * executing `deploy:restart'
+      triggering before callbacks for `deploy:restart'
+    * executing "svnversion /var/local/prometheus/app/pandora/stable"
+      servers: ["134.95.80.12"]
+
+At this point you will be questioned for your password to commit the changed into the 
+subversion repository.
+
+    [134.95.80.12] executing command
+    executing locally: "svn info http://prometheus-srv.uni-koeln.de/svn/pandora/trunk  -rHEAD"
+    command finished in 42ms
+    command finished in 594ms
+  * executing `deploy:mongrel:restart'
+  * executing "sudo -p 'AFS Password: ' mongrel_rails cluster::restart -C /var/local/prometheus/app/pandora/stable/config/mongrel_cluster.yml.$CAPISTRANO:HOST$"
+    servers: ["134.95.80.12"]
+    [134.95.80.12] executing command
+ ** [out :: 134.95.80.12] 
+ ** [out :: 134.95.80.12] We trust you have received the usual lecture from the local System
+ ** [out :: 134.95.80.12] Administrator. It usually boils down to these three things:
+ ** [out :: 134.95.80.12] 
+ ** [out :: 134.95.80.12] #1) Respect the privacy of others.
+ ** [out :: 134.95.80.12] #2) Think before you type.
+ ** [out :: 134.95.80.12] #3) With great power comes great responsibility.
+ ** [out :: 134.95.80.12] 
+ ** [out :: 134.95.80.12] 
+ ** [out :: 134.95.80.12] stopping port 8050
+ ** [out :: 134.95.80.12] stopping port 8051
+ ** [out :: 134.95.80.12] starting port 8050
+ ** [out :: 134.95.80.12] starting port 8051
+    command finished in 3444ms
+
+=== Check status of the cluster
+
+Log in onto the web-server
+
+    $ ssh <login>@prometheus-web1.uni-koeln.de
+
+The +pandora_cluster+ tool is used to inspect the status of the server; if the
++bin+ directory of the prometheus installation already is in your +PATH+ simply
+type
+
+    $ TARGET=stable pandora_cluster ps
+
+Otherwise provide the full path to the executable:
+
+    $ TARGET=stable /var/local/prometheus/bin/pandora_cluster ps
+
+If the result is empty, none of the required cluster processes is active; in such
+case it will be necessary to start them manually via
+
+    $ TARGET=stable ./bin/pandora_cluster start
+
+=== Deploy new production system
+
+Deployment from the stable version onto the production system can be controlled
+through capistrano:
+
+    $ cap production deploy
+
+Amongst the log messages provided you should see e.g.
+
+    * executing `production'
+    * executing `deploy'
+    * executing `deploy:update'
+   ** transaction: start
+    * executing `deploy:update_code'
+      executing locally: "svn info http://<pandora SVN root>/branches/0.6-stable  -rHEAD"
+      command finished in 38ms
+    * executing "svn checkout -q  -r3707 http://<pandora SVN root>/branches/0.6-stable /var/local/prometheus/app/pandora/releases/20120416143435 && (echo 3707 > /var/local/prometheus/app/pandora/releases/20120416143435/REVISION)"
+
+
+== Troubleshooting
+
+=== No documentation generated
+
+Part of the deployment process is the generation of the documentation; if this
+step fails, the new version will not be activated
+
+Log in onto the web-server
+
+    $ ssh <login>@prometheus-web1.uni-koeln.de
+
+and change into the documentation sub-directory of the _prometheus_ installation:
+
+  /var/local/prometheus/app/pandora/shared/doc
+  |-- app
+  |-- plugins
+  `-- rails
+
+Closer inspection of the permissions shows that the _app_ directory is not group-writable:
+
+    drwxr-sr-x  4 willej prometheus 4096 23. Mar 23:09 app
+    drwxrwsr-x 12 willej prometheus 4096 18. Nov 2009  plugins
+    drwxrwsr-x  4 willej prometheus 4096 18. Nov 2009  rails
+
+Change the permissions:
+
+    $ sudo chmod -R g+w app
+
+=== Unable to run pandora_cluster executable
+
+Most likely the +bin+ directory of the prometheus installation is not in your path:
+
+    $ export PATH=$PATH:/var/local/prometheus/bin
