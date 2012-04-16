@@ -11,6 +11,9 @@ if (YARD_EXECUTABLE)
     ${CMAKE_CURRENT_BINARY_DIR}/.yardopts
     )
   
+  ## Find all the *.rdoc files within this directory
+  file (GLOB DocumentationSources ${CMAKE_CURRENT_SOURCE_DIR}/*.rdoc)
+
   ## Run YARD to generate the HTML documentation for all components (source
   ## code and extra documentation)
   add_custom_target (doc
@@ -22,7 +25,7 @@ if (YARD_EXECUTABLE)
   ## Run YARD to generate the HTML documentation for common information (not
   ## parsing of source code, therefore much faster)
   add_custom_target (doc_common
-    COMMAND ${YARD_EXECUTABLE} --exclude /sources
+    COMMAND yard -r ${CMAKE_CURRENT_SOURCE_DIR}/Prometheus.rdoc - *.rdoc
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     COMMENT "Running YARD to generate code documentation..."
     )
