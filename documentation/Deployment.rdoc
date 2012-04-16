@@ -26,8 +26,9 @@ Commit all the changes to be included into the trunk of the Subversion repositor
 
     $ svn commit -m "<commit message>"
 
-Review changes since last deploy; in order to get the version number used for
-the last deploy, go to the {http://prometheus.uni-koeln.de/pandora/en/pandora/about About pandora} page on the prometheus website
+Review changes since last deploy; in order to get the version number used for the
+last deploy, go to the {http://prometheus.uni-koeln.de/pandora/about About pandora}
+page on the prometheus website.
 
     $ svn log -r 3679:HEAD
 
@@ -36,12 +37,12 @@ the last deploy, go to the {http://prometheus.uni-koeln.de/pandora/en/pandora/ab
 The version number is encoded in the following files, where it must be adjusted
 manually:
 
-  * lib/pandora/version
+  * lib/pandora/version.rb
   * README
 
 Push the previous changes upstream:
 
-    $ svn commit -m "lib/pandora/version.rb : v0.6.5 -- Added news-box to sidebar."
+    $ svn commit -m "lib/pandora/version.rb: v0.6.5 -- Added news-box to sidebar."
 
 Comitting the changes to the server will be acknowledged:
 
@@ -101,9 +102,10 @@ onto the server:
 Before rolling out the new version on the production system, one always should
 check the effect of the changes on the _stable_ system
 
-  http://prometheus-test.uni-koeln.de/pandora-stable/login
+  http://prometheus-test.uni-koeln.de/pandora-stable/
 
-The actual deployment is done through _capistrano_:
+The actual deployment is controlled through _capistrano_. E.g., to restart the
+stable cluster:
 
     $ cap stable deploy:restart
 
@@ -115,8 +117,7 @@ The output will look something like this:
     * executing "svnversion /var/local/prometheus/app/pandora/stable"
       servers: ["134.95.80.12"]
 
-At this point you will be questioned for your password to commit the changed into the 
-subversion repository.
+At this point you will be questioned for your password to log into the remote server.
 
     [134.95.80.12] executing command
     executing locally: "svn info http://prometheus-srv.uni-koeln.de/svn/pandora/trunk  -rHEAD"
@@ -126,26 +127,17 @@ subversion repository.
   * executing "sudo -p 'AFS Password: ' mongrel_rails cluster::restart -C /var/local/prometheus/app/pandora/stable/config/mongrel_cluster.yml.$CAPISTRANO:HOST$"
     servers: ["134.95.80.12"]
     [134.95.80.12] executing command
- ** [out :: 134.95.80.12] 
- ** [out :: 134.95.80.12] We trust you have received the usual lecture from the local System
- ** [out :: 134.95.80.12] Administrator. It usually boils down to these three things:
- ** [out :: 134.95.80.12] 
- ** [out :: 134.95.80.12] #1) Respect the privacy of others.
- ** [out :: 134.95.80.12] #2) Think before you type.
- ** [out :: 134.95.80.12] #3) With great power comes great responsibility.
- ** [out :: 134.95.80.12] 
- ** [out :: 134.95.80.12] 
  ** [out :: 134.95.80.12] stopping port 8050
  ** [out :: 134.95.80.12] stopping port 8051
  ** [out :: 134.95.80.12] starting port 8050
  ** [out :: 134.95.80.12] starting port 8051
     command finished in 3444ms
 
-=== Check status of the cluster
+=== Check status of the staging cluster
 
-Log in onto the web-server
+Log in onto the staging server
 
-    $ ssh <login>@prometheus-web1.uni-koeln.de
+    $ ssh <login>@prometheus2.uni-koeln.de
 
 The +pandora_cluster+ tool is used to inspect the status of the server; if the
 +bin+ directory of the prometheus installation already is in your +PATH+ simply
@@ -160,7 +152,12 @@ Otherwise provide the full path to the executable:
 If the result is empty, none of the required cluster processes is active; in such
 case it will be necessary to start them manually via
 
-    $ TARGET=stable ./bin/pandora_cluster start
+    $ TARGET=stable pandora_cluster start
+
+Where +TARGET+ designates the stage to apply the command to. It's either +current+
+(default) for the production system, +stable+ for the "stable" staging environment,
+or +trunk+ for the "development" (cutting edge) staging environment. The former
+lives on prometheus1.uni-koeln.de, the latter two on prometheus2.uni-koeln.de.
 
 === Deploy new production system
 
@@ -182,32 +179,6 @@ Amongst the log messages provided you should see e.g.
 
 
 == Troubleshooting
-
-=== No documentation generated
-
-Part of the deployment process is the generation of the documentation; if this
-step fails, the new version will not be activated
-
-Log in onto the web-server
-
-    $ ssh <login>@prometheus-web1.uni-koeln.de
-
-and change into the documentation sub-directory of the _prometheus_ installation:
-
-  /var/local/prometheus/app/pandora/shared/doc
-  |-- app
-  |-- plugins
-  `-- rails
-
-Closer inspection of the permissions shows that the _app_ directory is not group-writable:
-
-    drwxr-sr-x  4 willej prometheus 4096 23. Mar 23:09 app
-    drwxrwsr-x 12 willej prometheus 4096 18. Nov 2009  plugins
-    drwxrwsr-x  4 willej prometheus 4096 18. Nov 2009  rails
-
-Change the permissions:
-
-    $ sudo chmod -R g+w app
 
 === Unable to run pandora_cluster executable
 
