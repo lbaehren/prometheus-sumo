@@ -88,23 +88,32 @@ add_custom_target (InstallPackages ALL
   )
 
 ##__________________________________________________________
-## Add platform-dependent instructions
+## Add platform-dependent instructions: only add the 
+## sub-directory matching the previously determined platform
 
 if (APPLE)
+  
   add_subdirectory (osx)
+  
+else (APPLE)
+  
+  if (DEBIAN_FOUND)
+    add_subdirectory (debian)
+  endif (DEBIAN_FOUND)
+  
+  if (FEDORA_FOUND)
+    add_subdirectory (fedora)
+  endif (FEDORA_FOUND)
+  
+  if (REDHAT_FOUND)
+    add_subdirectory (redhat)
+  endif (REDHAT_FOUND)
+  
+  if (UBUNTU_FOUND)
+    add_subdirectory (ubuntu)
+  endif (UBUNTU_FOUND)
+  
 endif (APPLE)
-
-if (DEBIAN_FOUND)
-  add_subdirectory (debian)
-endif (DEBIAN_FOUND)
-
-if (REDHAT_FOUND)
-  add_subdirectory (redhat)
-endif (REDHAT_FOUND)
-
-if (UBUNTU_FOUND)
-  add_subdirectory (ubuntu)
-endif (UBUNTU_FOUND)
 
 ##__________________________________________________________
 ## Installation of Ruby Gems
