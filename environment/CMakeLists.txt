@@ -82,7 +82,7 @@ endif (UNIX)
 ##__________________________________________________________
 ## Define top-level collective build target
 
-add_custom_target (InstallPackages ALL
+add_custom_target (InstallPackages
   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
   COMMENT "Installing required system packages..."
   )
