@@ -3,7 +3,16 @@
 
 == Introduction
 
-+++ add some high-level descrition here +++
+Deploying a new production version of _pandora_ (The prometheus digital image
+archive software) requires the completion of a number of steps, some of them 
+locally through a working copy of the source code, others on the server hosting
+the live versions of the archive software. The steps include
+
+- Marking the release version
+- Creating a tag for the release
+- Creating a new release on the stable branch
+- Deploying the stable version on the test system
+- Deploying the stable version on the production system
 
 == Procedure
 
