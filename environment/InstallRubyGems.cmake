@@ -31,6 +31,7 @@ if (GEM_EXECUTABLE)
       pdf-reader
       piston
       rake
+      redcarpet
       ruby-backports
       ruby-debug
       ruby-filemagic
