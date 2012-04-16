@@ -171,32 +171,6 @@ Amongst the log messages provided you should see e.g.
 
 == Troubleshooting
 
-=== No documentation generated
-
-Part of the deployment process is the generation of the documentation; if this
-step fails, the new version will not be activated
-
-Log in onto the web-server
-
-    $ ssh <login>@prometheus-web1.uni-koeln.de
-
-and change into the documentation sub-directory of the _prometheus_ installation:
-
-  /var/local/prometheus/app/pandora/shared/doc
-  |-- app
-  |-- plugins
-  `-- rails
-
-Closer inspection of the permissions shows that the _app_ directory is not group-writable:
-
-    drwxr-sr-x  4 willej prometheus 4096 23. Mar 23:09 app
-    drwxrwsr-x 12 willej prometheus 4096 18. Nov 2009  plugins
-    drwxrwsr-x  4 willej prometheus 4096 18. Nov 2009  rails
-
-Change the permissions:
-
-    $ sudo chmod -R g+w app
-
 === Unable to run pandora_cluster executable
 
 Most likely the +bin+ directory of the prometheus installation is not in your path:
