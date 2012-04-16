@@ -123,7 +123,7 @@ endif (RUBY_VERSION)
 ##
 ## ==============================================================================
 
-add_subdirectory (doc)
+add_subdirectory (documentation)
 add_subdirectory (environment)
 add_subdirectory (sources)
 

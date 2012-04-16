@@ -1,0 +1,4 @@
+-o ${CMAKE_CURRENT_BINARY_DIR}/html
+-r ${CMAKE_CURRENT_SOURCE_DIR}/Prometheus.rdoc
+-
+${CMAKE_CURRENT_SOURCE_DIR}/*.rdoc
