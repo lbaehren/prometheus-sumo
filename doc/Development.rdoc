@@ -1,0 +1,110 @@
+
+= Development
+
+== Organization of the source code
+
+Checking out a full working copy from the Subversion repository
+
+   http://prometheus-srv.uni-koeln.de/svn/pandora
+
+will create a directory structure like this:
+
+  pandora
+  ¦
+  ¦-- branches
+  |   |-- 0.1-stable
+  |   |-- 0.2-stable
+  |   |-- 0.3-stable
+  |   |-- 0.4-stable
+  |   |-- ...
+  ¦-- tags
+  |   |-- 0.1.0
+  |   |-- 0.1.1
+  |   |-- 0.1.2
+  |   |-- ...
+  `-- trunk
+      ¦-- app
+      ¦-- config
+      ¦-- db
+      ¦-- doc
+      ¦-- index
+      ¦-- ...
+
+
+== Installation of a development system
+
+The installation/configuration of a new development system/environment entails
+a number of steps:
+
+- Install required system packages
+- Install Ruby gems
+- Check out working copy of the source code
+- Start up pandora
+
+The sections below  
+
+=== Required system packages
+
+==== ... on Debian GNU/Linux
+
+  * ruby${REQUIRED_VERSION_RUBY}
+  * ruby${REQUIRED_VERSION_RUBY}-dev
+  * rubygems
+  * rdoc
+  * ri
+  * irb
+  * libmysql-ruby${REQUIRED_VERSION_RUBY}
+  * libtermios-ruby${REQUIRED_VERSION_RUBY}
+  * libopenssl-ruby${${REQUIRED_VERSION_RUBY}}
+  * librmagick-ruby${REQUIRED_VERSION_RUBY}
+  * mysql-server
+  * mysql-client
+  * libmysqlclient-dev
+  * apache2
+  * libapache2-mod-ruby
+  * libapache2-mod-proxy-html
+  * subversion
+  * libxml2-dev
+  * libmagic-dev
+  * libmagickwand-dev
+
+==== ... on RedHat
+
+  * ruby
+  * rubygems
+  * rdoc
+  * ri
+  * irb
+  * eruby
+  * libxml2-devel
+  * mysql-server
+  * mysql-client
+  * mysql-devel
+  * apache2
+  * postfix
+  * subversion
+  * subversion-tools
+  * libapache2-svn
+  * ImageMagick
+  * ImageMagick-devel
+
+=== Start up pandora
+
+In order to initialize your pandora installation run the following from within the pandora directory:
+
+    rake pandora:setup
+
+For a list of all available rake tasks type
+
+    rake -T
+
+Start up the server
+
+    ./scripts/server
+
+If everything went fine, you should be getting a status message like this
+
+    ** Signals ready.  TERM => stop.  USR2 => restart.  INT => stop (no restart).
+    ** Rails signals registered.  HUP => reload (without restart).  It might not work well.
+    ** Mongrel 1.1.5 available at 0.0.0.0:3000
+    ** Use CTRL-C to stop.
