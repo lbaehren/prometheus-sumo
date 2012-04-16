@@ -1,6 +1,17 @@
 
 ## ==============================================================================
 ##
+##  Top-level target for updating clones of working copies
+##
+## ==============================================================================
+
+add_custom_target (UpdateSources ALL
+  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+  COMMENT "Updating clones of working copies ..."
+  )
+
+## ==============================================================================
+##
 ##  Macro definitions
 ##
 ## ==============================================================================
@@ -17,14 +28,18 @@ if (GIT_EXECUTABLE)
     
     if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName})
       ## Update existing clone
-      add_custom_target(update_${_projectName} ALL
+      add_custom_command (
+	TARGET UpdateSources
+        POST_BUILD
 	COMMAND ${GIT_EXECUTABLE} fetch
 	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName}
 	COMMENT "Updating clone of Git repository ${_projectName} ..."
 	)
     else (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName})
       ## Create new clone
-      add_custom_target(clone_${_projectName} ALL
+      add_custom_command (
+	TARGET UpdateSources
+        POST_BUILD
 	COMMAND ${GIT_EXECUTABLE} clone ${_projectRepos} ${_projectName}
 	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 	COMMENT "Cloning Git repository ${_projectName} ..."
@@ -40,7 +55,9 @@ if (GIT_EXECUTABLE)
     
     if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName})
       
-      add_custom_target(update_${_projectName} ALL
+      add_custom_command (
+	TARGET UpdateSources
+        POST_BUILD
 	COMMAND ${GIT_EXECUTABLE} svn rebase
 	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName}
 	COMMENT "Updating clone of Subversion repository ${_projectName} ..."
@@ -48,7 +65,9 @@ if (GIT_EXECUTABLE)
       
     else (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName})
       
-      add_custom_target(clone_${_projectName} ALL
+      add_custom_command (
+	TARGET UpdateSources
+        POST_BUILD
 	COMMAND ${GIT_EXECUTABLE} svn clone ${_projectRepos} ${_projectName}
 	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 	COMMENT "Cloning Git repository ${_projectName} ..."
