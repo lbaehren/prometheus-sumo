@@ -18,6 +18,9 @@ if (GEM_EXECUTABLE)
       gruff
       highline
       hpricot
+      jekyll
+      jekyll-localization
+      jekyll-tagging
       json
       libxml-ext 
       libxml-ruby
