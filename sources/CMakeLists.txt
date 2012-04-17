@@ -25,7 +25,7 @@ if (GIT_EXECUTABLE)
     
     ## Extract project name
     get_filename_component (_projectName ${_projectRepos} NAME_WE)
-    
+
     if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName})
       ## Update existing clone
       add_custom_command (
@@ -46,6 +46,12 @@ if (GIT_EXECUTABLE)
 	)
     endif (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName})
 
+    set_property (DIRECTORY
+      APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES
+      ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName}
+      )
+    
+    
   endmacro (add_git_repository)
   
   ##__________________________________________________________________
@@ -87,10 +93,6 @@ endif (GIT_EXECUTABLE)
 
 if (GIT_EXECUTABLE)
 
-  ##
-  ##  Git repositories
-  ##
-
   ## Convert database files to various formats.
   add_git_repository (${GIT_REPOSITORY_BASE}/athena.git)
 
@@ -106,6 +108,48 @@ if (GIT_EXECUTABLE)
   ## Fuzzy string matching based on linguistic analysis.
   add_git_repository (${GIT_REPOSITORY_BASE}/perseus_match.git)
 
+  ##________________________________________________________
+  ## Apache modules
+
+  ## Apache module providing upload merging functionality.
+  add_git_repository (${GIT_REPOSITORY_BASE}/apache_upload_merger.git)
+  ## Apache module providing image resizing functionality.
+  add_git_repository (${GIT_REPOSITORY_BASE}/apache_image_resizer.git)
+  ## Apache module providing secure downloading functionality, just like Mongrel
+  ## Secure Download does for mongrel.
+  add_git_repository (${GIT_REPOSITORY_BASE}/apache_secure_download.git)
+  ## Convert (analyse) Apache log files to COUNTER CSV.
+  add_git_repository (${GIT_REPOSITORY_BASE}/log2counter.git)
+
+  ##________________________________________________________
+  ## Jekyll modules/plugins
+
+  ## Jekyll plugin that adds localization features to the rendering engine
+  add_git_repository (${GIT_REPOSITORY_BASE}/jekyll-localization.git)
+  ## Jekyll plugin to extend the pagination generator
+  add_git_repository (${GIT_REPOSITORY_BASE}/jekyll-pagination.git)
+  ## Jekyll plugin to provide alternative rendering engines
+  add_git_repository (${GIT_REPOSITORY_BASE}/jekyll-rendering.git)
+  ## Jekyll plugin to automatically generate a tag cloud and tag pages
+  add_git_repository (${GIT_REPOSITORY_BASE}/jekyll-tagging.git)
+  ## A Sinatra based web interface, to maintain a Jekyll website, including
+  ## git version control. 
+  add_git_repository (${GIT_REPOSITORY_BASE}/JekyllCommander.git)
+
+  ##________________________________________________________
+  ## Ruby extensions/modules
+  
+  ## LibXML Ruby extensions
+  add_git_repository (${GIT_REPOSITORY_BASE}/libxml-ext.git)
+  ## Backports of newer Ruby features to older versions.
+  add_git_repository (${GIT_REPOSITORY_BASE}/ruby-backports.git)
+  ## Ruby bindings to the magic(4) library, revised. 
+  add_git_repository (${GIT_REPOSITORY_BASE}/ruby-filemagic.git)
+  ## Some extensions to the Ruby programming language. 
+  add_git_repository (${GIT_REPOSITORY_BASE}/ruby-nuggets.git)
+  ## Ruby client for the Web Application Description Language.
+  add_git_repository (${GIT_REPOSITORY_BASE}/wadl.git)
+  
   ##
   ##  Subversion repositories
   ##
@@ -113,13 +157,3 @@ if (GIT_EXECUTABLE)
   add_svn_repository (pandora http://prometheus-srv.uni-koeln.de/svn/pandora)
 
 endif (GIT_EXECUTABLE)
-
-## ==============================================================================
-##
-##  Subdirectories
-##
-## ==============================================================================
-
-add_subdirectory (apache)
-add_subdirectory (jekyll)
-add_subdirectory (ruby)
