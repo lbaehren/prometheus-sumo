@@ -93,24 +93,24 @@ add_custom_target (InstallPackages
 
 if (APPLE)
   
-  add_subdirectory (osx)
+    include (${CMAKE_CURRENT_SOURCE_DIR}/PackagesOSX.cmake)
   
 else (APPLE)
   
   if (DEBIAN_FOUND)
-    add_subdirectory (debian)
+    include (${CMAKE_CURRENT_SOURCE_DIR}/PackagesDebian.cmake)
   endif (DEBIAN_FOUND)
   
   if (FEDORA_FOUND)
-    add_subdirectory (fedora)
+    include (${CMAKE_CURRENT_SOURCE_DIR}/PackagesFedora.cmake)
   endif (FEDORA_FOUND)
   
   if (REDHAT_FOUND)
-    add_subdirectory (redhat)
+    include (${CMAKE_CURRENT_SOURCE_DIR}/PackagesRedhat.cmake)
   endif (REDHAT_FOUND)
   
   if (UBUNTU_FOUND)
-    add_subdirectory (ubuntu)
+    include (${CMAKE_CURRENT_SOURCE_DIR}/PackagesUbuntu.cmake)
   endif (UBUNTU_FOUND)
   
 endif (APPLE)
