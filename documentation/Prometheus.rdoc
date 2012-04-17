@@ -59,3 +59,11 @@ The major components of the project work was distributed between the universitie
 [Meta-Image] {http://www2.leuphana.de/meta-image Meta-Image} fügt bestehende Komponenten zu einer virtuellen Arbeits- und Forschungsumgebung für den Bilddiskurs in der Kunstgeschichte zusammen. Meta-Image verbindet dazu die digitalen Bildbestände des Verbundes kunsthistorischer Bilddatenbanken prometheus und ein auf die Verlinkung und Anreicherung von Bildcorpora spezialisiertes Bild-Beschreibungs-Tool mit dem Ziel einer integrativen Cyberinfrastructure für die kunsthistorische Forschungsarbeit direkt am Bild. Meta-Image reichert die formellen dokumentarisch-archivarischen Informationen und Sacherschließungen des Repositorys um die Ergebnisse der informellen Forschungstätigkeiten der Fachcommunity an, wobei Ursprung und Kontext der Meta-Informationen stets transparent bleiben. 
 
 [HyperImage] Mit {http://www.uni-lueneburg.de/hyperimage/hyperimage HyperImage} können beliebig viele Details innerhalb eines Bildes präzise markiert und beschrieben sowie Annotationen des Corpus untereinander verlinkt und über Indizes erschlossen werden. Zwischenergebnisse wie endgültige Fassungen lassen sich jederzeit als hypermediale online- oder offline-Publikation erstellen. Verschiedene einzeln eingeführte und erprobte Verfahren und Datenrepositorien sind in HyperImage zu einer einzeln oder gemeinschaftlich nutzbaren Forschungs- und Publikationsumgebung zusammengeführt.
+
+Besides the above mentioned front-end applications, there also exists a larger
+collection of support tools (applications, libraries, modules, etc.) working in
+background:
+
+[JekyllCommander] {https://github.com/prometheus-ev/JekyllCommander JekyllCommander} is a Sinatra based web application, to give non-technical users the ability to maintain a complex {http://jekyllrb.com Jekyll} website, including git version control, without any scary terminal experiences.
+
+[wadl] A Ruby client for the Web Application Description Language. It hides the details of HTTP communication between a web service client and a REST or HTTP+POX web service.
