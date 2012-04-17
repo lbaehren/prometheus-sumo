@@ -47,11 +47,7 @@ can be found:
   |-- cmake                   ...  Collection of CMake scripts and modules
   |-- doc                     ...  Documentation sources (other than source)
   |-- environment             ...  Environment preparation scripts
-  |   |-- debian
-  |   |-- fedora
-  |   |-- osx
-  |   |-- redhat
-  |   `-- ubuntu
+  |   `-- CMakeLists.txt
   `-- sources                 ...  Source of the project(s)
 
 _________________________________________________________________________________
