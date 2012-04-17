@@ -16,24 +16,22 @@ if (PORT_EXECUTABLE)
   ## List of packages ______________________________________
 
   foreach (varPackage
+      mod_ruby
       mysql5-devel
+      rb-rubygems
+      ruby
       )
     
     ## Installation instructions for the package ___________
     
-    ExternalProject_Add (InstallPackage_${varPackage}
-      PREFIX ${CMAKE_CURRENT_BINARY_DIR}
-      DOWNLOAD_COMMAND ""
-      CONFIGURE_COMMAND ""
-      BUILD_COMMAND ""
-      INSTALL_COMMAND ${PORT_EXECUTABLE} install ${varPackage}
+    add_custom_command (
+      TARGET InstallPackages
+      POST_BUILD
+      COMMAND ${PORT_EXECUTABLE} install ${varPackage}
+      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
       COMMENT "Installing MacPorts package ${varPackage} ..."
       )
-   
-    ## Connection with collective target ___________________
-    
-    add_dependencies (InstallPackages InstallPackage_${varPackage})
-    
+
   endforeach (varPackage)
   
 endif (PORT_EXECUTABLE)
