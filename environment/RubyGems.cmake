@@ -20,6 +20,7 @@ if (GEM_EXECUTABLE)
       hpricot
       jekyll
       jekyll-localization
+      jekyll-pagination
       jekyll-tagging
       json
       libxml-ext 
