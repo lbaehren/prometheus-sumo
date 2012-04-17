@@ -66,4 +66,6 @@ background:
 
 [JekyllCommander] {https://github.com/prometheus-ev/JekyllCommander JekyllCommander} is a Sinatra based web application, to give non-technical users the ability to maintain a complex {http://jekyllrb.com Jekyll} website, including git version control, without any scary terminal experiences.
 
+[apache_secure_download] Apache module providing secure downloading functionality, just like Mongrel Secure Download does for mongrel.
+
 [wadl] A Ruby client for the Web Application Description Language. It hides the details of HTTP communication between a web service client and a REST or HTTP+POX web service.
