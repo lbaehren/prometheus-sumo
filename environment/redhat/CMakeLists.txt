@@ -12,7 +12,7 @@ find_program (YUM_EXECUTABLE yum
 
 if (YUM_EXECUTABLE)
   
-  foreach (package_redhat
+  foreach (varPackage
       ruby
       rubygems
       rdoc
@@ -34,18 +34,15 @@ if (YUM_EXECUTABLE)
       )
     
     ## Installation instructions for the package
-    ExternalProject_Add (InstallPackage_${package_redhat}
-      PREFIX ${CMAKE_CURRENT_BINARY_DIR}
-      DOWNLOAD_COMMAND ""
-      CONFIGURE_COMMAND ""
-      BUILD_COMMAND ""
-      INSTALL_COMMAND ${YUM_EXECUTABLE} install ${package_redhat}
-      COMMENT "Installing Redhat package ${package_redhat} ..."
+
+    add_custom_command (
+      TARGET InstallPackages
+      POST_BUILD
+      COMMAND ${YUM_EXECUTABLE} install ${varPackage}
+      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+      COMMENT "Installing Redhat package ${varPackage} ..."
       )
-    
-    ## Connection with collective target
-    add_dependencies (InstallPackages InstallPackage_${package_redhat})
-    
-  endforeach (package_redhat)
+
+  endforeach (varPackage)
   
 endif (YUM_EXECUTABLE)

@@ -34,18 +34,15 @@ if (YUM_EXECUTABLE)
       )
     
     ## Installation instructions for the package
-    ExternalProject_Add (InstallPackage_${varPackage}
-      PREFIX ${CMAKE_CURRENT_BINARY_DIR}
-      DOWNLOAD_COMMAND ""
-      CONFIGURE_COMMAND ""
-      BUILD_COMMAND ""
-      INSTALL_COMMAND ${YUM_EXECUTABLE} install ${varPackage}
+
+    add_custom_command (
+      TARGET InstallPackages
+      POST_BUILD
+      COMMAND ${YUM_EXECUTABLE} install ${varPackage}
+      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
       COMMENT "Installing Fedorax package ${varPackage} ..."
       )
-    
-    ## Connection with collective target
-    add_dependencies (InstallPackages InstallPackage_${varPackage})
-    
+
   endforeach (varPackage)
   
 endif (YUM_EXECUTABLE)

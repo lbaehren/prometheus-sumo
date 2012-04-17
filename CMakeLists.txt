@@ -65,8 +65,6 @@ endif (NOT VERBOSE_CONFIGURE)
 ##__________________________________________________________
 ## Standard CMake modules
 
-include (ExternalProject)
-
 find_package (Git)
 find_package (Doxygen)
 find_package (Ruby)

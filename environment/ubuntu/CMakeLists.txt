@@ -37,17 +37,13 @@ if (APT_EXECUTABLE)
       )
     
     ## Installation instructions for the package
-    ExternalProject_Add (InstallPackage_${varPackage}
-      PREFIX ${CMAKE_CURRENT_BINARY_DIR}
-      DOWNLOAD_COMMAND ""
-      CONFIGURE_COMMAND ""
-      BUILD_COMMAND ""
-      INSTALL_COMMAND ${APT_EXECUTABLE} install ${varPackage}
-      COMMENT "Installing Debian package ${varPackage} ..."
+    add_custom_command (
+      TARGET InstallPackages
+      POST_BUILD
+      COMMAND ${APT_EXECUTABLE} install ${varPackage}
+      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+      COMMENT "Installing Ubuntu package ${varPackage} ..."
       )
-    
-    ## Connection with collective target
-    add_dependencies (InstallPackages InstallPackage_${varPackage})
     
   endforeach (varPackage)
   
