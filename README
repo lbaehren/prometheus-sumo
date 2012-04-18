@@ -1,14 +1,15 @@
 
-CONTENTS:
+= prometheus-sumo
 
-  1. Introduction
-  2. External dependencies
-  3. Organization of the source code
-  4. Configuration options
-  5. Further reading
+Contents:
 
-_________________________________________________________________________________
->>> 1. Introduction
+1. Introduction
+2. External dependencies
+3. Organization of the source code
+4. Configuration options
+5. Further reading
+
+== Introduction
 
 "prometheus-sumo" is a simple (almost) virtual package, to ease the retrieval of
 the various components in the software stack for "prometheus – The Distributed
@@ -20,23 +21,16 @@ common user interface within different image archives, variable databases from
 institutes, research facilities and museums.
 
 
-_________________________________________________________________________________
->>> 2. External dependencies
+== External dependencies
 
 External dependencies are kept to a minimum for this package - further
 dependencies, as required when developing the prometheus software packages, are
 handled as part of this tool.
 
- +--------------|-----------+----------------------|
- | Package/Tool | Version   | Website              |
- +--------------|-----------+----------------------|
- | Git          | >= 1.7    | http://git-scm.com   |
- | CMake        | >= 2.8    | http://www.cmake.org |
- +--------------|-----------+----------------------|
+* Git   (>= 1.7) <http://git-scm.com>
+* CMake (>= 2.8) <http://www.cmake.org>
 
-
-_________________________________________________________________________________
->>> 3. Organization of the source code
+== Organization of the source code
 
 Once cloning into a working copy has completed, the following directory structure
 can be found:
@@ -50,8 +44,8 @@ can be found:
   |   `-- CMakeLists.txt
   `-- sources                 ...  Source of the project(s)
 
-_________________________________________________________________________________
->>> 4. Configuration options
+
+== Configuration options
 
 The behaviour and processing can - to a certain degree - be controlled when
 running CMake to configure the project; the list below shows the available 
@@ -59,14 +53,13 @@ options which can be passed along through the
 
   -D<Option>=<Value>
 
-syntax from the command line.
+syntax from the command line. At the moment the following options are available
+(default values in parenthesis):
 
- * ENABLE_TESTING      [YES]
- * GIT_REPOSITORY_BASE [git@github.com:prometheus-ev]
+    ENABLE_TESTING       "Enable CTest test driver?"                [ YES ]
+    VERBOSE_CONFIGURE    "Increase verbosity during configuration?" [ NO  ]
 
+== Further reading
 
-_________________________________________________________________________________
->>> 5. Further reading
-
-  * http://www.prometheus-bildarchiv.de - prometheus website
-  * http://prometheus.uni-koeln.de/pandora - pandora website
+* prometheus website <http://www.prometheus-bildarchiv.de>
+* pandora website <http://prometheus.uni-koeln.de/pandora>
