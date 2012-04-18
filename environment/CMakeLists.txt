@@ -45,7 +45,7 @@ if (UNIX)
     if (DEBIAN_FOUND)
 
       ## At its core Ubuntu is a Debian system, with
-      ## a slighty altered configuration; hence from
+      ## a slightly altered configuration; hence from
       ## a first superficial inspection a system will
       ## be considered as Debian, which signifies an
       ## extra check is required.
