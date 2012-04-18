@@ -90,6 +90,8 @@ The sections below
 
 === Start up pandora
 
+==== Initialize the installation
+
 In order to initialize your pandora installation run the following from within the pandora directory:
 
     rake pandora:setup
@@ -97,6 +99,17 @@ In order to initialize your pandora installation run the following from within t
 For a list of all available rake tasks type
 
     rake -T
+
+==== Configuration scripts
+
+Provide the required configuration scripts:
+
+    config
+    |-- apache2.conf
+    |-- database.yml
+    `-- secrets.yml
+
+==== Startup
 
 Start up the server
 
