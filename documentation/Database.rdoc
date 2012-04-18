@@ -1,0 +1,148 @@
+
+= Database(s)
+
+
+== Schema Information
+
+
+=== Accounts
+
+[Table name] accounts
+[Schema version] 135
+[Implementation] app/models/account.rb
+
+   id                             :integer(11)   not null, primary key
+   email                          :string(255)
+   login                          :string(255)
+   firstname                      :string(255)
+   lastname                       :string(255)
+   title                          :string(255)
+   addressline                    :string(255)
+   postalcode                     :string(255)
+   city                           :string(255)
+   country                        :string(255)
+   institution_id                 :integer(11)
+   crypted_password               :string(40)
+   salt                           :string(40)
+   created_at                     :datetime
+   updated_at                     :datetime
+   expires_at                     :datetime
+   notified_at                    :datetime
+   newsletter                     :boolean(1)    default(TRUE)
+   member_since                   :datetime
+   remember_token                 :string(255)
+   remember_token_expires_at      :datetime
+   notes                          :text
+   local_identifier               :string(255)
+   registered_at                  :datetime
+   code                           :string(255)
+   announcement_hide_time         :datetime
+   email_verified_at              :datetime
+   accepted_terms_of_use_at       :datetime
+   status                         :string(255)
+   mode                           :string(255)
+   creator_id                     :integer(11)
+   about                          :text
+   about_de                       :text
+   accepted_terms_of_use_revision :integer(11)
+   login_failed_at                :datetime
+   failed_logins                  :integer(11)   default(0)
+   disabled_at                    :datetime
+
+
+=== Role
+
+[Table name] roles
+[Schema version] 135
+[Implementation] app/models/role.rb
+
+   id    :integer(11)   not null, primary key
+   title :string(255)
+
+
+=== Settings
+
+[Table name] settings
+[Schema version] 135
+[Implementation] app/models/settings.rb
+
+   id             :integer(11)   not null, primary key
+   user_id        :integer(11)
+   type           :string(255)
+   zoom           :boolean(1)
+   per_page       :integer(11)
+   list_per_page  :integer(11)
+   order          :string(255)
+   list_order     :string(255)
+   direction      :string(255)
+   list_direction :string(255)
+   view           :string(255)
+   locale         :string(255)
+   start_page     :string(255)
+   facets         :boolean(1)
+
+
+=== Stats 
+
+[Table name] stats
+[Schema version] 135
+[Implementation] app/models/stats.rb
+
+   id                :integer(11)   not null, primary key
+   pid               :string(255)
+   host              :string(255)
+   controller        :string(255)
+   action            :string(255)
+   ip                :string(255)
+   datetime          :datetime
+   request_method    :string(255)
+   sid               :string(255)
+   params            :text
+   params_hash       :string(255)
+   user_agent        :string(255)
+   accept_language   :string(255)
+   runtime           :float
+   rendering_runtime :float
+   db_runtime        :float
+   status            :string(255)
+   request_uri       :text
+   created_at        :datetime
+   updated_at        :datetime
+   referer           :text
+   year              :integer(11)
+   month             :integer(11)
+   day               :integer(11)
+   token_type        :string(255)
+   token             :string(255)
+   user_id           :integer(11)
+   client_id         :integer(11)
+   institution_id    :integer(11)
+   flags             :(0)
+
+
+=== Sum Stats
+
+[Table name] sum_stats
+[Schema version] 135
+[Implementation] app/models/sum_stats.rb
+
+   id                     :integer(11)   not null, primary key
+   year                   :integer(11)
+   month                  :integer(11)
+   day                    :integer(11)
+   sessions_campus        :integer(11)   default(0)
+   sessions_personalized  :integer(11)   default(0)
+   searches_campus        :integer(11)   default(0)
+   searches_personalized  :integer(11)   default(0)
+   downloads_campus       :integer(11)   default(0)
+   downloads_personalized :integer(11)   default(0)
+   hits_campus            :integer(11)   default(0)
+   hits_personalized      :integer(11)   default(0)
+   runtime_sum            :float         default(0.0)
+   runtime_sqr            :float         default(0.0)
+   runtime_min            :float         default(0.0)
+   runtime_max            :float         default(0.0)
+   runtime_count          :integer(11)   default(0)
+   created_at             :datetime
+   updated_at             :datetime
+   institution_id         :integer(11)
