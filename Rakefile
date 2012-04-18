@@ -44,9 +44,10 @@ end
 
 ## === Generation of documentation ==============================================
 
-desc "Generate documentation"
-task :doc do
-    sh "yard -r README documentation"
+Rake::RDocTask.new do |rd|
+    rd.main = "README"
+    rd.rdoc_files.include("README", "documentation/*.rdoc")
+    rd.rdoc_dir = "build/documentation/html"
 end
 
 ## === Default target ===========================================================
