@@ -41,7 +41,9 @@ a number of steps:
 - Check out working copy of the source code
 - Start up pandora
 
-The sections below  
+The sections below explain in further detail what needs do be done at each of the
+steps along the way. If you are more interesting in learning about
+{file:Testing Testing}, please visit the separate page on that topic.
 
 === Required system packages
 

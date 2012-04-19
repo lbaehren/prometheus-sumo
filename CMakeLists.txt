@@ -63,6 +63,14 @@ endif (NOT VERBOSE_CONFIGURE)
 ## ==============================================================================
 
 ##__________________________________________________________
+## Register local additions to collection of modules
+
+set (CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/config/cmake" CACHE PATH
+  "CMake module path"
+  FORCE
+  )
+
+##__________________________________________________________
 ## Standard CMake modules
 
 find_package (Git)
@@ -72,14 +80,14 @@ find_package (Ruby)
 ##__________________________________________________________
 ## Custom inspection
 
-include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindYard.cmake)
-include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindRDoc.cmake)
-include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindRake.cmake)
-include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindGem.cmake)
-include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindMagicLib.cmake)
-include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindMySQL.cmake)
+find_package (Yard)
+find_package (RDoc)
+find_package (Rake)
+find_package (Gem)
+find_package (MagicLib)
+find_package (MySQL)
 
-include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/RequiredPackages.cmake)
+include (RequiredPackages)
 
 ## Extract Doxygen version number - this is not done by the standard module
 if (DOXYGEN_EXECUTABLE)
