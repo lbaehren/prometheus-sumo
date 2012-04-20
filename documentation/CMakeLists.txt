@@ -1,7 +1,6 @@
 
 if (YARD_EXECUTABLE)
 
-
   ##_____________________________________________________________________________
   ## Run YARD to generate the HTML documentation for all components (source
   ## code and extra documentation)

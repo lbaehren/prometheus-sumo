@@ -82,6 +82,44 @@
    facets         :boolean(1)
 
 
+=== Source
+
+[Table name] sources
+[Schema version] 135
+[Implementation] app/models/source.rb
+
+   id                :integer(11)   not null, primary key
+   title             :string(255)
+   name              :string(255)
+   kind              :string(255)
+   type              :string(255)
+   institution_id    :integer(11)
+   contact_id        :integer(11)
+   admin_id          :integer(11)
+   created_at        :datetime
+   updated_at        :datetime
+   description       :text
+   url               :text
+   email             :string(255)
+   technical_info    :text
+   encoding          :string(255)   default("utf-8")
+   record_count      :integer(11)   default(0)
+   prometheus        :boolean(1)
+   loaded_at         :datetime
+   dbuser_id         :integer(11)
+   rating            :float
+   description_de    :text
+   technical_info_de :text
+   skip              :boolean(1)
+
+There are several conditions characterizing a source: e.g. in order to determine
+whether a source is considered an +open_source+
+
+    def self.conditions_for_open_sources
+      conditions_for_open_access.merge_conditions(conditions_for_active)
+    end
+
+
 === Stats 
 
 [Table name] stats

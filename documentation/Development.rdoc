@@ -191,3 +191,6 @@ If everything went fine, you should be getting a status message like this
     ** Rails signals registered.  HUP => reload (without restart).  It might not work well.
     ** Mongrel 1.1.5 available at 0.0.0.0:3000
     ** Use CTRL-C to stop.
+
+== Virtual machines
+
