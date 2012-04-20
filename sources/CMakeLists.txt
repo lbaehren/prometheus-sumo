@@ -56,6 +56,9 @@ if (GIT_EXECUTABLE)
   
   ##__________________________________________________________________
   ## Macro for dealing with Subversion repositories
+  ##
+  ##  In order to be complete, the checkout should be performed from 
+  ##  the root level of the repository and not the trunk only.
   
   macro (add_svn_repository _projectName _projectRepos)
     
@@ -74,7 +77,7 @@ if (GIT_EXECUTABLE)
       add_custom_command (
 	TARGET UpdateSources
         POST_BUILD
-	COMMAND ${GIT_EXECUTABLE} svn clone ${_projectRepos} ${_projectName}
+	COMMAND ${GIT_EXECUTABLE} svn clone -s ${_projectRepos} ${_projectName}
 	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 	COMMENT "Cloning Git repository ${_projectName} ..."
 	)
