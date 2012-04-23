@@ -95,7 +95,7 @@ Database(s)
     image_id        :string(255)
     presentation_id :integer(11)
 
-A comment given to by an individual user (+author_id+) on a resource, such as a collection or a slide.
+A comment given to by an individual user (``author_id``) on a resource, such as a collection or a slide.
 
 
 ### Image
@@ -270,7 +270,7 @@ A comment given to by an individual user (+author_id+) on a resource, such as a 
     skip              :boolean(1)
 
 There are several conditions characterizing a source: e.g. in order to determine
-whether a source is considered an +open_source+
+whether a source is considered an ``open_source``
 
     def self.conditions_for_active
       { :conditions => ['record_count > ?', 0] }.merge_conditions(

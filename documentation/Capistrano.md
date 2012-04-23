@@ -1,5 +1,6 @@
 
-= Capistrano
+Capistrano
+==========
 
 Capistrano is an open source tool for running scripts on multiple servers; its main use is deploying web applications. It automates the process of making a new version of an application available on one or more web servers, including supporting tasks such as changing databases.
 
@@ -13,7 +14,7 @@ Capistrano is a utility and framework for executing commands in parallel on mult
 
 Capistrano was originally designed to simplify and automate deployment of web applications to distributed environments, and originally came bundled with a set of tasks designed for deploying Rails applications. The deployment tasks are now (as of Capistrano 2.0) opt-in and require clients to explicitly put "load 'deploy'" in their recipes.
 
-== Installation
+## Installation
 
 Capistrano is actually comprised of the Capistrano gem itself, and
 
@@ -26,7 +27,7 @@ Capistrano and its dependencies with the following:
 
     $ gem install capistrano
 
-== Assumptions
+## Assumptions
 
 Capistrano makes a few assumptions about your servers. In order to use Capistrano, you will need to comply with these assumptions:
 
@@ -38,7 +39,7 @@ Capistrano also makes a few assumptions about your own familiarity with computer
 
 To take full advantage of Capistrano, you should be comfortable (or at least, minimally familiar) with the Ruby programming language. When you write your own Capistrano tasks, you do so in Ruby.
 
-== Capfile
+## Capfile
 
 Capistrano reads its instructions from a +capfile+. (For those of you familiar with the “make” or “rake” utilities, the concept is the same as a “makefile” or “rakefile”.) If you create a file called +capfile+ (or +Capfile+, if you prefer), Capistrano will read that file and process the instructions in it.
 
@@ -48,7 +49,7 @@ You can use any editor you want to write your Capfiles; they are just simple tex
 
 Note: As capistrano is helpful, it will search up your file tree until it finds a capfile, this is intended to insure if you are anywhere within your application, and you try and run cap, it will find the correct +capfile+; this has been known to catch people out though; your home directory is also searched.
 
-== References 
+## References 
 
 - {http://www.capify.org Capistrano Home}
 - {http://capify.stikipad.com/wiki Capistrano Wiki}

@@ -1,4 +1,3 @@
---markup markdown
 -o ${CMAKE_CURRENT_BINARY_DIR}/html
 -r ${PROJECT_SOURCE_DIR}/README
 -

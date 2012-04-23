@@ -1,14 +1,14 @@
 
-= Development
+# Development
 
-== Checking out the source code
+## Checking out the source code
 
 The source code of _pandora_ is hosted in a central
 {http://subversion.apache.org Subversion} repository at
 
     http://prometheus-srv.uni-koeln.de/svn/pandora
 
-=== ... using Subversion
+### ... using Subversion
 
 Checking out a full working copy from the Subversion repository
 
@@ -40,7 +40,7 @@ will create a directory structure like this:
         |-- index
         |-- ...
 
-=== ... using Git
+### ... using Git
 
 If at a later point in time you want to be able to create new (release) branches
 and tags then accordingly, you will have to clone from the top-level of the 
@@ -90,16 +90,21 @@ As of git v1.6.1 the creation of branches in the SVN repository is supported via
 
 with the additional options
 
-[-m, --message] Allows to specify the commit message.
-[-t, --tag] Create a tag by using the tags_subdir instead of the branches_subdir specified during git svn init.
+<dl>
+  <dt>-m, --message</dt>
+    <dd>Allows to specify the commit message.</dd>
+
+  <dt>-t, --tag</dt>
+    <dd>Create a tag by using the tags_subdir instead of the branches_subdir specified during git svn init.</dd>
+</dl>
 
 The options will be required when {file:Deployment deploying a new version of pandora},
-where we a) need to create a sub-directory in +tags+ and b) attach a standardized
+where we a) need to create a sub-directory in ``tags`` and b) attach a standardized
 commit message:
 
-   git svn branch -t -m "Tagging the pandora 0.6.5 release" 0.6.5
+    git svn branch -t -m "Tagging the pandora 0.6.5 release" 0.6.5
 
-== Installation of a development system
+## Installation of a development system
 
 The installation/configuration of a new development system/environment entails
 a number of steps:
@@ -113,20 +118,20 @@ The sections below explain in further detail what needs do be done at each of th
 steps along the way. If you are more interesting in learning about
 {file:Testing Testing}, please visit the separate page on that topic.
 
-=== Required system packages
+### Required system packages
 
-==== ... on Debian GNU/Linux
+#### ... on Debian GNU/Linux
 
-  * ruby${REQUIRED_VERSION_RUBY}
-  * ruby${REQUIRED_VERSION_RUBY}-dev
+  * ruby``<REQUIRED_VERSION_RUBY>``
+  * ruby``<REQUIRED_VERSION_RUBY>``-dev
   * rubygems
   * rdoc
   * ri
   * irb
-  * libmysql-ruby${REQUIRED_VERSION_RUBY}
-  * libtermios-ruby${REQUIRED_VERSION_RUBY}
-  * libopenssl-ruby{${REQUIRED_VERSION_RUBY}
-  * librmagick-ruby${REQUIRED_VERSION_RUBY}
+  * libmysql-ruby``<REQUIRED_VERSION_RUBY>``
+  * libtermios-ruby``<REQUIRED_VERSION_RUBY>``
+  * libopenssl-ruby``<REQUIRED_VERSION_RUBY>``
+  * librmagick-ruby``<REQUIRED_VERSION_RUBY>``
   * mysql-server
   * mysql-client
   * libmysqlclient-dev
@@ -138,7 +143,7 @@ steps along the way. If you are more interesting in learning about
   * libmagic-dev
   * libmagickwand-dev
 
-==== ... on RedHat
+#### ... on RedHat
 
   * ruby
   * rubygems
@@ -158,9 +163,9 @@ steps along the way. If you are more interesting in learning about
   * ImageMagick
   * ImageMagick-devel
 
-=== Start up pandora
+### Start up pandora
 
-==== Initialize the installation
+#### Initialize the installation
 
 In order to initialize your pandora installation run the following from within the pandora directory:
 
@@ -170,7 +175,7 @@ For a list of all available rake tasks type
 
     rake -T
 
-==== Configuration scripts
+#### Configuration scripts
 
 Provide the required configuration scripts:
 
@@ -179,7 +184,7 @@ Provide the required configuration scripts:
     |-- database.yml
     `-- secrets.yml
 
-==== Startup
+#### Startup
 
 Start up the server
 
@@ -192,5 +197,5 @@ If everything went fine, you should be getting a status message like this
     ** Mongrel 1.1.5 available at 0.0.0.0:3000
     ** Use CTRL-C to stop.
 
-== Virtual machines
+## Virtual machines
 
