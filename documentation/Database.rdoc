@@ -50,6 +50,142 @@
    disabled_at                    :datetime
 
 
+=== Collection
+
+[Table name] collections
+[Schema version] 135
+[Implementation] app/models/collection.rb
+
+   id                :integer(11)   not null, primary key
+   title             :string(255)
+   description       :text
+   created_at        :datetime
+   updated_at        :datetime
+   owner_id          :integer(11)
+   notes             :text
+   parent_id         :integer(11)
+   forked_at         :datetime
+   public_access     :string(255)
+   thumbnail_id      :string(255)
+   links             :text
+   changed_at        :datetime
+   references        :text
+   meta_image        :boolean(1)
+   meta_image_reader :string(255)
+
+
+=== Comment
+
+[Table name] comments
+[Schema version] 135
+[Implementation] app/models/comment.rb
+
+   id              :integer(11)   not null, primary key
+   collection_id   :integer(11)
+   parent_id       :integer(11)
+   author_id       :integer(11)
+   text            :text
+   created_at      :datetime
+   updated_at      :datetime
+   image_id        :string(255)
+   presentation_id :integer(11)
+
+A comment given to by an individual user (+author_id+) on a resource, such as a collection or a slide.
+
+
+=== Image
+
+[Table name] images
+[Schema version] 135
+[Implementation] app/models/image.rb
+
+   pid        :string(255)   not null, primary key
+   source_id  :integer(11)
+   votes      :integer(11)   default(0)
+   score      :integer(11)   default(0)
+   checked_at :datetime
+
+
+=== Institution
+
+[Table name] institutions
+[Schema version] 135
+[Implementation] app/models/institution.rb
+
+   id             :integer(11)   not null, primary key
+   name           :string(255)
+   title          :string(255)
+   description    :text
+   addressline    :string(255)
+   postalcode     :string(255)
+   city           :string(255)
+   country        :string(255)
+   email          :string(255)
+   homepage       :string(255)
+   contact_id     :integer(11)
+   ipranges       :text
+   ipuser_id      :integer(11)
+   created_at     :datetime
+   updated_at     :datetime
+   campus_id      :integer(11)
+   member_since   :datetime
+   notes          :text
+   public_info    :text
+   issuer         :string(255)
+   parsed_ranges  :text
+   short          :string(255)
+   hostnames      :text
+
+
+=== Invoice
+
+[Table name] invoices
+[Schema version] 135
+[Implementation] app/models/invoice.rb
+
+   id              :integer(11)   not null, primary key
+   due             :datetime
+   end             :datetime
+   amount          :float
+   issued_at       :datetime
+   paid_at         :datetime
+   reminded_at     :datetime
+   issuer          :string(255)
+   license_id      :integer(11)
+   license_type_id :integer(11)
+   invoice_no      :string(255)
+
+
+=== License
+
+[Table name] licenses
+[Schema version] 135
+[Implementation] app/models/license.rb
+
+   id                 :integer(11)   not null, primary key
+   license_type_id    :integer(11)
+   institution_id     :integer(11)
+   account_id         :integer(11)
+   created_at         :datetime
+   updated_at         :datetime
+   expires_at         :datetime
+   terminates_at      :datetime
+   amount             :float
+   valid_from         :datetime
+   paid_from          :datetime
+
+
+=== License Type
+
+[Table name] license_types
+[Schema version] 135
+[Implementation] app/models/license_type.rb
+
+   id     :integer(11)   not null, primary key
+   title  :string(255)
+   amount :integer(11)
+
+
 === Role
 
 [Table name] roles
@@ -115,9 +251,19 @@
 There are several conditions characterizing a source: e.g. in order to determine
 whether a source is considered an +open_source+
 
-    def self.conditions_for_open_sources
-      conditions_for_open_access.merge_conditions(conditions_for_active)
-    end
+  def self.conditions_for_active
+    { :conditions => ['record_count > ?', 0] }.merge_conditions(
+      production? && ['kind <> ?', KIND_OF_DUMMY]
+    )
+  end
+
+  def self.conditions_for_open_access
+   { :conditions => "#{quoted_table_name}.dbuser_id IS NOT NULL" }
+  end
+
+  def self.conditions_for_open_sources
+    conditions_for_open_access.merge_conditions(conditions_for_active)
+  end
 
 
 === Stats 
