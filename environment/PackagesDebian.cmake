@@ -24,6 +24,7 @@ if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
       rubygems
       rdoc
       ri
+      rake
       irb
       libmysql-ruby${REQUIRED_VERSION_RUBY}
       libtermios-ruby${REQUIRED_VERSION_RUBY}
@@ -62,5 +63,15 @@ if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
       )
 
   endforeach (varPackage)
+
+  ## Update the Ruby Gems
+  
+  add_custom_command (
+    TARGET InstallPackages
+    POST_BUILD
+    COMMAND env REALLY_GEM_UPDATE_SYSTEM=1 gem update --system
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    COMMENT "Updating Ruby gems ..."
+    )
   
 endif (APT_EXECUTABLE AND DPKG_EXECUTABLE)

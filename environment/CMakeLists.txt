@@ -118,4 +118,8 @@ endif (APPLE)
 ##__________________________________________________________
 ## Installation of Ruby Gems
 
-include (${CMAKE_CURRENT_SOURCE_DIR}/RubyGems.cmake)
+if (GEM_EXECUTABLE)
+
+  include (${CMAKE_CURRENT_SOURCE_DIR}/RubyGems.cmake)
+  
+endif (GEM_EXECUTABLE)
