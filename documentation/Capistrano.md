@@ -2,7 +2,7 @@
 Capistrano
 ==========
 
-Capistrano is an open source tool for running scripts on multiple servers; its main use is deploying web applications. It automates the process of making a new version of an application available on one or more web servers, including supporting tasks such as changing databases.
+{http://www.capify.org Capistrano} is an open source tool for running scripts on multiple servers; its main use is deploying web applications. It automates the process of making a new version of an application available on one or more web servers, including supporting tasks such as changing databases.
 
 Capistrano is written in the Ruby language and is distributed using the RubyGems distribution channel. It is an outgrowth of the Ruby on Rails web application framework, but has also been used to deploy web applications written using other frameworks, including ones written in PHP.
 
@@ -16,7 +16,7 @@ Capistrano was originally designed to simplify and automate deployment of web ap
 
 ## Installation
 
-Capistrano is actually comprised of the Capistrano gem itself, and
+{http://www.capify.org Capistrano} is actually comprised of the Capistrano gem itself, and
 
     $ gem sources -a http://gems.github.com/
     $ gem -v
@@ -29,7 +29,7 @@ Capistrano and its dependencies with the following:
 
 ## Assumptions
 
-Capistrano makes a few assumptions about your servers. In order to use Capistrano, you will need to comply with these assumptions:
+{http://www.capify.org Capistrano} makes a few assumptions about your servers. In order to use Capistrano, you will need to comply with these assumptions:
 
 - You are using SSH to access your remote machines. Telnet and FTP are not supported.
 - Your remote servers have a POSIX-compatible shell installed. The shell must be called “sh” and must reside in the default system path.
@@ -41,7 +41,7 @@ To take full advantage of Capistrano, you should be comfortable (or at least, mi
 
 ## Capfile
 
-Capistrano reads its instructions from a ``capfile``. (For those of you familiar with the ``make`` or ``rake`` utilities, the concept is the same as a ``makefile`` or ``rakefile``.) If you create a file called ``capfile`` (or ``Capfile``, if you prefer), Capistrano will read that file and process the instructions in it.
+{http://www.capify.org Capistrano} reads its instructions from a ``capfile``. (For those of you familiar with the ``make`` or ``rake`` utilities, the concept is the same as a ``makefile`` or ``rakefile``.) If you create a file called ``capfile`` (or ``Capfile``, if you prefer), Capistrano will read that file and process the instructions in it.
 
 The Capfile is where you will tell Capistrano about the servers you want to connect to and the tasks you want to perform on those servers. It is essentially just a Ruby script, but augmented with a large set of “helper” syntax, to make it easy to define server roles and tasks. (Using the lingo of those in the know, the Capfile is written using a custom DSL on top of Ruby.)
 
@@ -51,7 +51,6 @@ Note: As capistrano is helpful, it will search up your file tree until it finds 
 
 ## References 
 
-- {http://www.capify.org Capistrano Home}
 - {http://capify.stikipad.com/wiki Capistrano Wiki}
 - {http://wiki.rubyonrails.org/rails/pages/Capistrano Capistrano in Ruby on Rails} (rubyonrails.org)
 - {http://manuals.rubyonrails.com/read/book/17 Capistrano: Automating Application Deployment}
