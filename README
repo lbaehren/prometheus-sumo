@@ -58,8 +58,9 @@ options which can be passed along through the
 syntax from the command line. At the moment the following options are available
 (default values in parenthesis):
 
-    TESTING_ENABLE       "Enable CTest test driver?"                [ YES ]
-    CONFIGURE_VERBOSE    "Increase verbosity during configuration?" [ NO  ]
+    TESTING_ENABLE        "Enable CTest test driver?"                    [ YES ]
+    CONFIGURE_VERBOSE     "Increase verbosity during configuration?"     [ NO  ]
+    DOCUMENTATION_PANDORA "Enable documentation of pandora source code?" [ NO  ]
 
 == Further reading
 
