@@ -120,6 +120,11 @@ steps along the way. If you are more interesting in learning about
 
 ### Required system packages
 
+If you are using the ``prometheus-sumo`` package_ you can run the following
+commands, in order to handle the instalation of the required packages
+
+    make InstallPackages
+
 #### ... on Debian GNU/Linux
 
   * ruby``<REQUIRED_VERSION_RUBY>``
