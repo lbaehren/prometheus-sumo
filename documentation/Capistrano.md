@@ -41,11 +41,11 @@ To take full advantage of Capistrano, you should be comfortable (or at least, mi
 
 ## Capfile
 
-Capistrano reads its instructions from a +capfile+. (For those of you familiar with the “make” or “rake” utilities, the concept is the same as a “makefile” or “rakefile”.) If you create a file called +capfile+ (or +Capfile+, if you prefer), Capistrano will read that file and process the instructions in it.
+Capistrano reads its instructions from a ``capfile``. (For those of you familiar with the ``make`` or ``rake`` utilities, the concept is the same as a ``makefile`` or ``rakefile``.) If you create a file called ``capfile`` (or ``Capfile``, if you prefer), Capistrano will read that file and process the instructions in it.
 
 The Capfile is where you will tell Capistrano about the servers you want to connect to and the tasks you want to perform on those servers. It is essentially just a Ruby script, but augmented with a large set of “helper” syntax, to make it easy to define server roles and tasks. (Using the lingo of those in the know, the Capfile is written using a custom DSL on top of Ruby.)
 
-You can use any editor you want to write your Capfiles; they are just simple text files. I recommend something designed for programmers, like vim, emacs, TextMate, Eclipse, and so forth. Choose whatever you’re comfortable with, but make sure whatever you choose can save files as plain text, and will not automatically append a extension like ”.txt” to the filename. The Capfile should be called “capfile” or “Capfile”, without any extension.
+You can use any editor you want to write your Capfiles; they are just simple text files. I recommend something designed for programmers, like _vim_, _emacs_, {http://macromates.com TextMate}, {http://www.eclipse.org Eclipse}, and so forth. Choose whatever you’re comfortable with, but make sure whatever you choose can save files as plain text, and will not automatically append a extension like ``.txt`` to the filename. The Capfile should be called ``capfile`` or ``Capfile``, without any extension.
 
 Note: As capistrano is helpful, it will search up your file tree until it finds a capfile, this is intended to insure if you are anywhere within your application, and you try and run cap, it will find the correct +capfile+; this has been known to catch people out though; your home directory is also searched.
 
