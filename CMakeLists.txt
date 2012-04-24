@@ -21,8 +21,8 @@ set (${CMAKE_PROJECT_NAME}_VERSION "${${CMAKE_PROJECT_NAME}_VERSION_MAJOR}.${${C
 
 ## Commonly used variables
 
-set (REQUIRED_VERSION_RUBY  1.8                           )
-set (GIT_REPOSITORY_BASE    "git@github.com:prometheus-ev")
+set (REQUIRED_VERSION_RUBY  1.8                            )
+set (GIT_REPOSITORY_BASE    "git@github.com:prometheus-ev" )
 
 ## ==============================================================================
 ##
@@ -127,6 +127,24 @@ endif (RUBY_VERSION)
 
 ## ==============================================================================
 ##
+##  Installation location
+##
+## ==============================================================================
+
+## By default all the component are installed into "/var/local/prometheus", at
+## least on the development and production system. However by passing along
+## CMAKE_INSTALL_PREFIX on the command line, we can select a custom installation
+## location.
+
+if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+
+  set (CMAKE_INSTALL_PREFIX
+    "/var/local/prometheus" CACHE PATH "prometheus install prefix" FORCE
+    )
+endif (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+
+## ==============================================================================
+##
 ##  Project sub-directories
 ##
 ## ==============================================================================
@@ -156,8 +174,9 @@ message (STATUS " .. size(void*) ................ = ${CMAKE_SIZEOF_VOID_P}"     
 message (STATUS " Project configuration:"                                       )
 message (STATUS " .. Version number ............. = ${${CMAKE_PROJECT_NAME}_VERSION}")
 message (STATUS " .. Git repository base URL .... = ${GIT_REPOSITORY_BASE}"      )
-message (STATUS " .. Enable CTest test driver?    = ${TESTING_ENABLE}"           )
-message (STATUS " .. Verbose configure?           = ${CONFIGURE_VERBOSE}"        )
+message (STATUS " .. Enable CTest test driver? .. = ${TESTING_ENABLE}"           )
+message (STATUS " .. Verbose configure? ......... = ${CONFIGURE_VERBOSE}"        )
+message (STATUS " .. Installation prefix ........ = ${CMAKE_INSTALL_PREFIX}"     )
 message (STATUS " Ruby configuration:"                                           )
 message (STATUS " .. Required version ........... = ${REQUIRED_VERSION_RUBY}"    )
 message (STATUS " .. Ruby executable ............ = ${RUBY_EXECUTABLE}"          )
