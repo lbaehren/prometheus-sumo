@@ -354,11 +354,12 @@ whether a source is considered an ``open_source``
     updated_at             :datetime
     institution_id         :integer(11)
 
-## Ingesting a new (external) database
+## Importing a new (external) database
 
-The ingestion of a new database ist channeled through the generation and then
+The import of a new database is channeled through the generation and subsequent
 reading of an XML schema; the latter is either provided directly by the
-maintainer(s) of the external database, or generated from e.g. a SQL dump.
+maintainer(s) of the external database, or generated from e.g. a SQL dump of the
+original database.
 
 Models or new sources can be found in
 
