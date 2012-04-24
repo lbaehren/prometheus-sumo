@@ -58,8 +58,8 @@ options which can be passed along through the
 syntax from the command line. At the moment the following options are available
 (default values in parenthesis):
 
-    ENABLE_TESTING       "Enable CTest test driver?"                [ YES ]
-    VERBOSE_CONFIGURE    "Increase verbosity during configuration?" [ NO  ]
+    TESTING_ENABLE       "Enable CTest test driver?"                [ YES ]
+    CONFIGURE_VERBOSE    "Increase verbosity during configuration?" [ NO  ]
 
 == Further reading
 

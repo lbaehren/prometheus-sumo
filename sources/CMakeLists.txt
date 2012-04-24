@@ -160,3 +160,20 @@ if (GIT_EXECUTABLE)
   add_svn_repository (pandora http://prometheus-srv.uni-koeln.de/svn/pandora)
 
 endif (GIT_EXECUTABLE)
+
+## ==============================================================================
+##
+##  Documentation generation
+##
+## ==============================================================================
+
+if (DOCUMENTATION_PANDORA)
+  
+  if (EXISTS pandora)
+  else (EXISTS pandora)
+    ## We are only able to generate the documentation, if the source code
+    ## is available; else disable this feature
+    set (DOCUMENTATION_PANDORA FALSE)
+  endif (EXISTS pandora)
+
+endif (DOCUMENTATION_PANDORA)

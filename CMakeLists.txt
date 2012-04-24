@@ -19,31 +19,33 @@ set (${CMAKE_PROJECT_NAME}_VERSION_MINOR 1 )
 set (${CMAKE_PROJECT_NAME}_VERSION_PATCH 0 )
 set (${CMAKE_PROJECT_NAME}_VERSION "${${CMAKE_PROJECT_NAME}_VERSION_MAJOR}.${${CMAKE_PROJECT_NAME}_VERSION_MINOR}.${${CMAKE_PROJECT_NAME}_VERSION_PATCH}")
 
+## Commonly used variables
+
+set (REQUIRED_VERSION_RUBY  1.8                           )
+set (GIT_REPOSITORY_BASE    "git@github.com:prometheus-ev")
+
 ## ==============================================================================
 ##
 ##  Configuration/Build options
 ##
 ## ==============================================================================
 
-option (ENABLE_TESTING        "Enable CTest test driver?"                YES )
-option (VERBOSE_CONFIGURE     "Increase verbosity during configuration?" NO  )
-
-
-set (REQUIRED_VERSION_RUBY  1.8 )
-set (GIT_REPOSITORY_BASE    "git@github.com:prometheus-ev")
+option (TESTING_ENABLE        "Enable CTest test driver?"                    YES )
+option (CONFIGURE_VERBOSE     "Increase verbosity during configuration?"     NO  )
+option (DOCUMENTATION_PANDORA "Enable documentation of pandora source code?" NO  )
 
 ##__________________________________________________________
 ## Handle option: Enable CTest test driver?
 
-if (ENABLE_TESTING)
+if (TESTING_ENABLE)
   include (CTest)
   enable_testing()
-endif (ENABLE_TESTING)
+endif (TESTING_ENABLE)
 
 ##__________________________________________________________
 ## Handle option: Increase verbosity during configuration?
 
-if (NOT VERBOSE_CONFIGURE)
+if (NOT CONFIGURE_VERBOSE)
   set (GEM_FIND_QUIETLY     YES )
   set (GIT_FIND_QUIETLY     YES )
   set (DOXYGEN_FIND_QUIETLY YES )
@@ -54,7 +56,7 @@ if (NOT VERBOSE_CONFIGURE)
   set (RUBY_FIND_QUIETLY    YES )
   set (_RUBY_DEBUG_OUTPUT   NO  )
   set (YARD_FIND_QUIETLY    YES )
-endif (NOT VERBOSE_CONFIGURE)
+endif (NOT CONFIGURE_VERBOSE)
 
 ## ==============================================================================
 ##
@@ -154,8 +156,8 @@ message (STATUS " .. size(void*) ................ = ${CMAKE_SIZEOF_VOID_P}"     
 message (STATUS " Project configuration:"                                       )
 message (STATUS " .. Version number ............. = ${${CMAKE_PROJECT_NAME}_VERSION}")
 message (STATUS " .. Git repository base URL .... = ${GIT_REPOSITORY_BASE}"      )
-message (STATUS " .. Enable CTest test driver?    = ${ENABLE_TESTING}"           )
-message (STATUS " .. Verbose configure?           = ${VERBOSE_CONFIGURE}"        )
+message (STATUS " .. Enable CTest test driver?    = ${TESTING_ENABLE}"           )
+message (STATUS " .. Verbose configure?           = ${CONFIGURE_VERBOSE}"        )
 message (STATUS " Ruby configuration:"                                           )
 message (STATUS " .. Required version ........... = ${REQUIRED_VERSION_RUBY}"    )
 message (STATUS " .. Ruby executable ............ = ${RUBY_EXECUTABLE}"          )
