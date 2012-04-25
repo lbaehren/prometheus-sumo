@@ -10,7 +10,8 @@ if (YARD_EXECUTABLE)
   file (APPEND ${YARDOPTS} "--main ${PROJECT_SOURCE_DIR}/README\n" )
   
   if (DOCUMENTATION_PANDORA)
-    file (APPEND ${YARDOPTS} "${PROJECT_SOURCE_DIR}/repositories/pandora\n"  )
+    file (APPEND ${YARDOPTS} "${PROJECT_SOURCE_DIR}/repositories/pandora/app\n"  )
+    file (APPEND ${YARDOPTS} "${PROJECT_SOURCE_DIR}/repositories/pandora/lib\n"  )
   endif (DOCUMENTATION_PANDORA)
   
   file (APPEND ${YARDOPTS} "-\n"                                   )
