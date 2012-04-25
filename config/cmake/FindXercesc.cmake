@@ -79,7 +79,11 @@ if (NOT XERCESC_FOUND)
     find_program (XERCESC_${varProgramUpper}_EXECUTABLE varProgram
       HINTS ${XERCESC_ROOT_DIR}  ${CMAKE_INSTALL_PREFIX}
       PATH_SUFFIXES bin
-      )  
+      )
+    ## Mark the variable as advanced
+    mark_as_advanced (
+      XERCESC_${varProgramUpper}_EXECUTABLE
+      )
   endforeach (varProgram)
   
   ##_____________________________________________________________________________
