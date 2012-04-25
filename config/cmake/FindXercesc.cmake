@@ -47,7 +47,7 @@ if (NOT XERCESC_FOUND)
   ##_____________________________________________________________________________
   ## Check for the library
   
-  find_library (XERCESC_LIBRARIES libxerces-c
+  find_library (XERCESC_LIBRARIES xerces-c
     HINTS ${XERCESC_ROOT_DIR}  ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES lib
     )
