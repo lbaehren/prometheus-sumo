@@ -9,7 +9,7 @@ Database(s)
 <dl>
   <dt>Table name</dt>     <dd>accounts</dd>
   <dt>Schema version</dt> <dd>135</dd>
-  <dt>Implementation</dt> <dd>app/models/account.rb</dd>
+  <dt>Implementation</dt> <dd>{Account app/models/account.rb}</dd>
 </dl>
 
     id                             :integer(11)   not null, primary key
@@ -56,7 +56,7 @@ Database(s)
 <dl>
   <dt>Table name</dt>     <dd>collections</dd>
   <dt>Schema version</dt> <dd>135</dd>
-  <dt>Implementation</dt> <dd>app/models/collection.rb</dd>
+  <dt>Implementation</dt> <dd>{Collection app/models/collection.rb}</dd>
 </dl>
 
     id                :integer(11)   not null, primary key
@@ -82,7 +82,7 @@ Database(s)
 <dl>
   <dt>Table name</dt>     <dd>comments</dd>
   <dt>Schema version</dt> <dd>135</dd>
-  <dt>Implementation</dt> <dd>app/models/comment.rb</dd>
+  <dt>Implementation</dt> <dd>{Comment app/models/comment.rb}</dd>
 </dl>
 
     id              :integer(11)   not null, primary key
@@ -103,7 +103,7 @@ A comment given to by an individual user (``author_id``) on a resource, such as 
 <dl>
   <dt>Table name</dt>     <dd>images</dd>
   <dt>Schema version</dt> <dd>135</dd>
-  <dt>Implementation</dt> <dd>app/models/image.rb</dd>
+  <dt>Implementation</dt> <dd>{Image app/models/image.rb}</dd>
 </dl>
 
     pid        :string(255)   not null, primary key
@@ -118,7 +118,7 @@ A comment given to by an individual user (``author_id``) on a resource, such as 
 <dl>
   <dt>Table name</dt>     <dd>institutions</dd>
   <dt>Schema version</dt> <dd>135</dd>
-  <dt>Implementation</dt> <dd>app/models/institution.rb</dd>
+  <dt>Implementation</dt> <dd>{Institution app/models/institution.rb}</dd>
 </dl>
 
     id             :integer(11)   not null, primary key
@@ -172,7 +172,7 @@ A comment given to by an individual user (``author_id``) on a resource, such as 
 <dl>
   <dt>Table name</dt>     <dd>licenses</dd>
   <dt>Schema version</dt> <dd>135</dd>
-  <dt>Implementation</dt> <dd>app/models/license.rb</dd>
+  <dt>Implementation</dt> <dd>{License app/models/license.rb}</dd>
 </dl>
 
     id                 :integer(11)   not null, primary key
@@ -206,7 +206,7 @@ A comment given to by an individual user (``author_id``) on a resource, such as 
 <dl>
   <dt>Table name</dt>     <dd>roles</dd>
   <dt>Schema version</dt> <dd>135</dd>
-  <dt>Implementation</dt> <dd>app/models/role.rb</dd>
+  <dt>Implementation</dt> <dd>{Role app/models/role.rb}</dd>
 </dl>
 
     id    :integer(11)   not null, primary key
@@ -242,7 +242,7 @@ A comment given to by an individual user (``author_id``) on a resource, such as 
 <dl>
   <dt>Table name</dt>     <dd>sources</dd>
   <dt>Schema version</dt> <dd>135</dd>
-  <dt>Implementation</dt> <dd>app/models/source.rb</dd>
+  <dt>Implementation</dt> <dd>{Source app/models/source.rb}</dd>
 </dl>
 
     id                :integer(11)   not null, primary key
