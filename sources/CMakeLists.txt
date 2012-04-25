@@ -160,3 +160,11 @@ if (GIT_EXECUTABLE)
   add_svn_repository (pandora http://prometheus-srv.uni-koeln.de/svn/pandora)
 
 endif (GIT_EXECUTABLE)
+
+## ==============================================================================
+##
+##  Sub-directories
+##
+## ==============================================================================
+
+add_subdirectory (xml)
