@@ -43,11 +43,39 @@ can be found:
   `-- sources                 ...  Source files
 
 
-== Configuration options
+== Configuration and build
+
+=== Getting the source code
+
+The source for _prometheus-sumo_ is hosted on Github at;
+{https://github.com/lbaehren/prometheus-sumo go there} to read about the various
+options to retrieve a working copy of the code. In the simplest case, were you
+need a read-only copy, simply run
+
+    git clone git://github.com/lbaehren/prometheus-sumo.git
+
+in order to to clone into a local working copy.
+
+=== Build directory
+
+The _prometheus-sumo_ uses the {http://www.cmake.org CMake} Cross-Platform
+Makefile Generator for configuration and control of the build.
+
+Once your checkout from the Git repository is complete you will have a directory
+structure on disk as described in section "Organization of the source code"
+above. In order to now configure and build the project "out of source" - hence
+keeping your options open to cleanly remove intermediate/temporary files - create
+a separate *build* directory from within to continue:
+
+    mkdir build
+    cd build
+    cmake ..
+
+=== Configuration options
 
 The behaviour and processing can - to a certain degree - be controlled when
-running CMake to configure the project; the list below shows the available 
-options which can be passed along through the
+running _CMake_ to configure the project; the list below
+shows the available options which can be passed along through the
 
   -D<Option>=<Value>
 
