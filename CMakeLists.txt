@@ -32,7 +32,7 @@ set (GIT_REPOSITORY_BASE    "git@github.com:prometheus-ev" )
 
 option (TESTING_ENABLE        "Enable CTest test driver?"                    YES )
 option (CONFIGURE_VERBOSE     "Increase verbosity during configuration?"     NO  )
-option (DOCUMENTATION_PANDORA "Enable documentation of pandora source code?" NO  )
+option (DOCUMENTATION_PANDORA "Enable documentation of pandora source code?" YES )
 
 ##__________________________________________________________
 ## Handle option: Enable CTest test driver?
@@ -200,10 +200,9 @@ message (STATUS " .. YARD executable version .... = ${YARD_VERSION}"            
 message (STATUS " Database:"                                                     )
 message (STATUS " .. MySQL include directory .... = ${MYSQL_INCLUDES}"           )
 message (STATUS " .. MySQL client libraries ..... = ${MYSQL_LIBRARIES}"          )
-message (STATUS " Image processing tools:"                                       )
+message (STATUS " Processing tools & libraries:"                                 )
 message (STATUS " .. Magic include directory .... = ${MAGIC_INCLUDES}"           )
 message (STATUS " .. Magic library .............. = ${MAGIC_LIBRARIES}"          )
-message (STATUS " XML processing tools:")
-message (STATUS " .. Xercesc include directory .. = ${XERCESC_INCLUDES}"           )
-message (STATUS " .. Xercesc library ............ = ${XERCESC_LIBRARIES}"          )
+message (STATUS " .. Xercesc include directory .. = ${XERCESC_INCLUDES}"         )
+message (STATUS " .. Xercesc library ............ = ${XERCESC_LIBRARIES}"        )
 message (STATUS "------------------------------------------------------------ "  )
