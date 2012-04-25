@@ -1,13 +1,6 @@
 
 = prometheus-sumo
 
-Contents:
-
-1. Introduction
-2. External dependencies
-3. Organization of the source code
-4. Configuration options
-5. Further reading
 
 == Introduction
 
@@ -23,12 +16,14 @@ institutes, research facilities and museums.
 
 == External dependencies
 
-External dependencies are kept to a minimum for this package - further
-dependencies, as required when developing the prometheus software packages, are
-handled as part of this tool.
+External dependencies are kept to a minimum for this package:
 
 * Git   (>= 1.7) <http://git-scm.com>
 * CMake (>= 2.8) <http://www.cmake.org>
+
+Further dependencies, as required when developing the prometheus software
+packages, are handled as part of this tool.
+
 
 == Organization of the source code
 
@@ -44,7 +39,8 @@ can be found:
   |-- doc                     ...  Documentation sources (other than source)
   |-- environment             ...  Environment preparation scripts
   |   `-- CMakeLists.txt
-  `-- sources                 ...  Source of the project(s)
+  |-- repositories            ...  Working copies of related projects
+  `-- sources                 ...  Source files
 
 
 == Configuration options
