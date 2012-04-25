@@ -172,7 +172,7 @@ commands, in order to handle the installation of the required packages
 
 #### Initialize the installation
 
-In order to initialize your pandora installation run the following from within the pandora directory:
+In order to initialize your pandora installation, run the following from the top-level directory of the {file:Rails Rails application}
 
     rake pandora:setup
 
