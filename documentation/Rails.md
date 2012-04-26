@@ -135,6 +135,29 @@ configured; a newly created application will support the following tasks:
     rake tmp:clear          # Clear session, cache, and socket files from tmp/ (narrow w/ tmp:sessions:clear, tmp:cache:clear, tmp:sockets:clear)
     rake tmp:create         # Creates tmp directories for sessions, cache, sockets, and pids
 
+### Creating a new model
+
+Using the ``create`` command it is possible to create the necessary files for a
+new _model_, _view_ or _controller_:
+
+    $ rails generate model Book
+
+The output from that task reports the files created on disk:
+
+      invoke  active_record
+      create    db/migrate/20120426064746_create_book.rb
+      create    app/models/book.rb
+      invoke    test_unit
+      create      test/unit/book_test.rb
+      create      test/fixtures/book.yml
+
+The class responsible for implementing the new model at this point is populated
+with the bare minimum of code:
+
+    class Book < ActiveRecord::Base
+      # attr_accessible :title, :body
+    end
+
 
 ## References
 
