@@ -1,4 +1,12 @@
 
+# By default we are using YARD as tool to generate documentation from the
+# source files and any extra files (such as the ones carrying installation 
+# instructions, etc.); however YARD is an extra package which (typically) does
+# not get installed automatically along with Ruby, hence we need a fallback in
+# order to still be able to generate the documentation. Therefore if YARD is
+# not installed (or at least: not found), we try to use RDoc, which is the more
+# traditional documentation generation tool in the Ruby world.
+
 if (YARD_EXECUTABLE)
 
   ##_____________________________________________________________________________
@@ -36,6 +44,18 @@ if (YARD_EXECUTABLE)
   
 else (YARD_EXECUTABLE)
   
-  ## Optional handling of documentation generation in case Yard is not available.
+  if (RDOC_EXECUTABLE)
+
+    add_custom_target (doc
+      COMMAND ${RDOC_EXECUTABLE} -o ${CMAKE_CURRENT_BINARY_DIR}/html ${CMAKE_CURRENT_SOURCE_DIR}/*.md
+      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+      COMMENT "Running YARD to generate code documentation..."
+      )
+
+  else (RDOC_EXECUTABLE)
+  
+    message (STATUS "No fallback found for documentation generation!")
+
+  endif (RDOC_EXECUTABLE)
 
 endif (YARD_EXECUTABLE)
