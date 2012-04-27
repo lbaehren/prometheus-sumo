@@ -166,3 +166,5 @@ with the bare minimum of code:
 * {http://www.ruby-auf-schienen.de/buch/index.html Ruby on Rails 3.0 und 3.1}
 * {http://guides.rubyonrails.org/testing.html A Guide to Testing Rails Applications}
 * {http://rav.rubyforge.org Rails Application Visualizer}
+* {http://weblog.jamisbuck.org/2006/9/22/inspecting-a-live-ruby-process Inspecting a live Ruby process}
+* {http://eigenclass.org/hiki/ruby+live+process+introspection Inspecting a live Ruby process, easier if you cheat}
