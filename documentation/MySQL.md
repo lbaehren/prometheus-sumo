@@ -27,6 +27,10 @@ Editing the attributes associated with an account also can be done from within M
       `country` = '<country>',
       `status` = 'active' WHERE `accounts`.`id` =5;
 
+For __Source__ entries:
+
+    UPDATE `pandora_development`.`sources` SET `description` = '<text>' WHERE `sources`.`id` =1;
+
 ## References 
 
 * {http://dev.mysql.com/doc/refman/5.0/en/charset-collation-effect.html Examples of the Effect of Collation} (mysql.com)
