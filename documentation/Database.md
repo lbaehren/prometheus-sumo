@@ -452,13 +452,13 @@ In order to have a closer look at e.g. the information related to a specific acc
 you can utilize the additional ``WHERE`` parameter to narrow down the displayed
 selection:
 
-    mysql> SELECT * FROM accounts WHERE `firstname`="<name>";
+    mysql> SELECT * FROM pandora_development.accounts WHERE `firstname`="<name>";
 
 ### Making changes
 
 Set the status of an account to _activated_:
 
-    mysql> UPDATE `pandora_development`.`accounts` SET `status`='activated' WHERE `accounts`.`id`=5;
+    mysql> UPDATE pandora_development.accounts SET `status`='activated' WHERE `accounts`.`id`=5;
 
 
 ## Importing a new (external) database
