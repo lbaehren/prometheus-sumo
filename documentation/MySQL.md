@@ -31,6 +31,45 @@ For __Source__ entries:
 
     UPDATE `pandora_development`.`sources` SET `description` = '<text>' WHERE `sources`.`id` =1;
 
+## Installation
+
+### ... on Mac OS X
+
+If you ar using {http://www.macports.org MacPorts}, you can retrieve and install
+the server package via
+
+    $ sudo port install mysql5-server
+
+If this is a new install, in order to setup the database you might want to run:
+
+    $ sudo -u _mysql mysql_install_db5
+
+To start ``mysqld`` at boot time you have to copy ``support-files/mysql.server`` to
+the right place for your system
+
+PLEASE REMEMBER TO SET A PASSWORD FOR THE MySQL root USER !
+To do so, start the server, then issue the following commands:
+
+    /opt/local/lib/mysql5/bin/mysqladmin -u root password 'new-password'
+    /opt/local/lib/mysql5/bin/mysqladmin -u root -h MacBook15inch.local password 'new-password'
+
+Alternatively you can run:
+
+    /opt/local/lib/mysql5/bin/mysql_secure_installation
+
+which will also give you the option of removing the test databases and anonymous
+user created by default.  This is strongly recommended for production servers.
+
+See the manual for more instructions.
+
+You can start the MySQL daemon with:
+
+    cd /opt/local ; /opt/local/lib/mysql5/bin/mysqld_safe &
+
+You can test the MySQL daemon with mysql-test-run.pl
+
+    cd /opt/local/mysql-test ; perl mysql-test-run.pl
+
 ## References 
 
 * {http://dev.mysql.com/doc/refman/5.0/en/charset-collation-effect.html Examples of the Effect of Collation} (mysql.com)
