@@ -31,10 +31,6 @@ at: {https://www.jacobs-university.de/shss/visual-archives Visual Archives in th
 
 ## Software Development
 
-### Articles
-
-* Benjamin Krause, Mathias Meyer (2008) {http://www.heise.de/developer/artikel/Ferret-Lucene-Nachfolger-fuer-Ruby-227116.html Ferret: Lucene-Nachfolger für Ruby}
-
 ### Blogs
 
 * {http://www.mysqlperformanceblog.com MySQL Performance Blog}. Percona's MySQL & InnoDB performance and scalability blog

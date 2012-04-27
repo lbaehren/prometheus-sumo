@@ -1,11 +1,18 @@
 
-# Search index
-
-## Ferret search engine
+# Ferret search engine
 
 Ferret is a Ruby port of the {http://jakarta.apache.org/lucene Java Lucene} search engine. In the same way as Lucene, it is not a standalone application, but a library you can use to index documents and search for things in them later.
 
-### Creating an index
+
+## Concepts
+
+* Index: Sequence of documents
+* Document: Sequence of fields
+* Field: Named sequence of terms
+* Term: A text string, keyed by field name
+
+
+## Creating an index
 
 To create an in memory index is very simple;
 
@@ -25,7 +32,8 @@ here, eg;
 
 For more options when creating an Index refer to Ferret::Index::Index.
 
-### Adding Documents
+
+## Adding Documents
 
 To add a document you can simply add a string or an array of strings. This will
 store all the strings in the "" (ie empty string) field (unless you specify the
@@ -67,7 +75,8 @@ If you need to add a field to an already open index you do so like this:
 
     index.field_infos.add_field(:new_field, :store => :yes)
 
-### Searching
+
+## Searching
 
 Now that we have data in our index, how do we actually use this index to
 search the data? The Index offers two search methods, Index#search and
@@ -99,21 +108,8 @@ query language, see Ferret::QueryParser. You can also construct even more
 complex queries like Ferret::Search::Spans by hand. See Ferret::Search::Query
 for more information.
 
-## Index generation
 
-Prerequisite for a working search is an index.
+## References
 
-    <installation root>/app/pandora/shared
-    `-- index
-         `-- production
-             |-- 0_11_8
-             |   |-- image
-             |   |   |-- 1332541248
-             |   |   |-- 1333630394
-             |   |   |-- 1334590731
-             |   |   `-- 1334932732
-             |   `-- resource
-             |       |-- 1327917072
-             |       |-- 1330708669
-             |       `-- 1331304781
-             `-- 0_11_8_1 -> 0_11_8
+* Benjamin Krause, Mathias Meyer (2008) {http://www.heise.de/developer/artikel/Ferret-Lucene-Nachfolger-fuer-Ruby-227116.html Ferret: Lucene-Nachfolger für Ruby}
+

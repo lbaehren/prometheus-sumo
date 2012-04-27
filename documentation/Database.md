@@ -357,7 +357,7 @@ whether a source is considered an ``open_source``
 ## Exploring the database
 
 You can explore the contents of your database - including the various tables
-contained therein - directly: after starting up the {files:MySQL} command line
+contained therein - directly: after starting up the {file:MySQL} command line
 tool via
 
     $ mysql -u <login> -p
@@ -412,6 +412,36 @@ If the database has been initialized, the output will look like this:
     | ...                           |
     +-------------------------------+
     51 rows in set (0.00 sec)
+
+### Table columns
+
+In order to list the columns within a given table, use the ``SHOW COLUMNS`` command:
+
+    mysql> SHOW COLUMNS IN pandora_development.accounts;
+
+which will list the columns:
+
+    +--------------------------------+--------------+------+-----+---------+----------------+
+    | Field                          | Type         | Null | Key | Default | Extra          |
+    +--------------------------------+--------------+------+-----+---------+----------------+
+    | id                             | int(11)      | NO   | PRI | NULL    | auto_increment |
+    | email                          | varchar(255) | YES  | MUL | NULL    |                |
+    | login                          | varchar(255) | YES  | MUL | NULL    |                |
+    | firstname                      | varchar(255) | YES  |     | NULL    |                |
+    | lastname                       | varchar(255) | YES  |     | NULL    |                |
+    | title                          | varchar(255) | YES  |     | NULL    |                |
+    | addressline                    | varchar(255) | YES  |     | NULL    |                |
+    | postalcode                     | varchar(255) | YES  |     | NULL    |                |
+    | city                           | varchar(255) | YES  |     | NULL    |                |
+    | country                        | varchar(255) | YES  |     | NULL    |                |
+    | institution_id                 | int(11)      | YES  | MUL | NULL    |                |
+    | crypted_password               | varchar(40)  | YES  |     | NULL    |                |
+    | salt                           | varchar(40)  | YES  |     | NULL    |                |
+    | created_at                     | datetime     | YES  |     | NULL    |                |
+    | updated_at                     | datetime     | YES  |     | NULL    |                |
+    | ...                            | ...          | ...  |     | ...     |                |
+    +--------------------------------+--------------+------+-----+---------+----------------+
+    37 rows in set (0.00 sec)
 
 
 
@@ -490,3 +520,21 @@ accessible to _pandora_
           end
 
 
+## Index generation
+
+Prerequisite for a working search is an index.
+
+    <installation root>/app/pandora/shared
+    `-- index
+         `-- production
+             |-- 0_11_8
+             |   |-- image
+             |   |   |-- 1332541248
+             |   |   |-- 1333630394
+             |   |   |-- 1334590731
+             |   |   `-- 1334932732
+             |   `-- resource
+             |       |-- 1327917072
+             |       |-- 1330708669
+             |       `-- 1331304781
+             `-- 0_11_8_1 -> 0_11_8
