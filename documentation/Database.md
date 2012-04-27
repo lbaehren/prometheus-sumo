@@ -383,7 +383,7 @@ like this:
 Having identified the database used by **pandora**, we now can obtain a listing
 of the tables contained therein:
 
-    mysql> SHOW TABLES IN `pandora_development`
+    mysql> SHOW TABLES IN `pandora_development`;
 
 If the database has been initialized, the output will look like this:
 
@@ -446,7 +446,19 @@ which will list the columns:
 If we now want to retrieve more information on the actual contents stored within
 table columns, we can do so using the ``SELECT`` command:
 
-    mysql> SELECT * FROM pandora_development.accounts LIMIT 0,10
+    mysql> SELECT * FROM pandora_development.accounts LIMIT 0,10;
+
+In order to have a closer look at e.g. the information related to a specific account
+you can utilize the additional ``WHERE`` parameter to narrow down the displayed
+selection:
+
+    mysql> SELECT * FROM accounts WHERE `firstname`="<name>";
+
+### Making changes
+
+Set the status of an account to _activated_:
+
+    mysql> UPDATE `pandora_development`.`accounts` SET `status`='activated' WHERE `accounts`.`id`=5;
 
 
 ## Importing a new (external) database
