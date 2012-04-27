@@ -443,6 +443,10 @@ which will list the columns:
     +--------------------------------+--------------+------+-----+---------+----------------+
     37 rows in set (0.00 sec)
 
+If we now want to retrieve more information on the actual contents stored within
+table columns, we can do so using the ``SELECT`` command:
+
+    mysql> SELECT * FROM pandora_development.accounts LIMIT 0,10
 
 
 ## Importing a new (external) database
