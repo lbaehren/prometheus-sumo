@@ -30,6 +30,25 @@ and keep up with the changes - Trunk does break from time-to-time.
 
 ### ... on Mac OS X
 
+### ... on Debian GNU/Linux
+
+A redmine debian package is available in _squeeze_, _sid_ and _lenny-backports_, featuring:
+
+* automatic database configuration,
+* multiple instances support.
+* The core package is redmine.
+* Three packages (``redmine-*``) provide correct dependencies for mysql, pgsql, sqlite.
+* Several configurations are given as working examples in : ``/usr/share/doc/redmine/examples``
+* Explanations of how the configuration is dealt with are given in : ``/usr/share/doc/redmine/README.Debian.gz``
+
+There is no per-instance support for plugins, but those dropped to : ``/usr/share/redmine/vendor/plugins`` should be ok. The ``migrate_plugins`` task is called upon each (re)configuration or upgrade. Since custom plugins are often bound to a specific redmine version, it is advised to remove them before upgrades.
+
+Install the necessary packages:
+
+    apt-get install libapache2-mod-passenger
+    apt-get install mysql-server
+    apt-get install redmine-mysql
+    apt-get install redmine
 
 ## References
 
