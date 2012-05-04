@@ -57,6 +57,7 @@ if (NOT CONFIGURE_VERBOSE)
   set (RUBY_FIND_QUIETLY     YES )
   set (_RUBY_DEBUG_OUTPUT    NO  )
   set (XERCESC_FIND_QUIETLY  YES )
+  set (YAML_FIND_QUIETLY     YES )
   set (YARD_FIND_QUIETLY     YES )
 endif (NOT CONFIGURE_VERBOSE)
 
@@ -84,7 +85,6 @@ find_package (Ruby)
 ##__________________________________________________________
 ## Custom inspection
 
-find_package (Yard)
 find_package (RDoc)
 find_package (Rails)
 find_package (Rake)
@@ -92,6 +92,8 @@ find_package (Gem)
 find_package (MagicLib)
 find_package (MySQL)
 find_package (Xercesc)
+find_package (Yaml)
+find_package (Yard)
 
 include (RequiredPackages)
 
@@ -204,6 +206,8 @@ message (STATUS " .. YARD executable version .... = ${YARD_VERSION}"            
 message (STATUS " Database:"                                                     )
 message (STATUS " .. MySQL include directory .... = ${MYSQL_INCLUDES}"           )
 message (STATUS " .. MySQL client libraries ..... = ${MYSQL_LIBRARIES}"          )
+message (STATUS " .. Yaml include directory ..... = ${YAML_INCLUDES}"            )
+message (STATUS " .. Yaml libraries ............. = ${YAML_LIBRARIES}"           )
 message (STATUS " Processing tools & libraries:"                                 )
 message (STATUS " .. Magic include directory .... = ${MAGIC_INCLUDES}"           )
 message (STATUS " .. Magic library .............. = ${MAGIC_LIBRARIES}"          )
