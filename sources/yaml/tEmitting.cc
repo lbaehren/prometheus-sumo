@@ -10,6 +10,7 @@
 //_______________________________________________________________________________
 //                                                                    hello_world
 
+//! Emit a simple message
 void hello_world ()
 {
   std::cout << "\n[tEmitting::hello_world]\n" << std::endl;
@@ -23,6 +24,7 @@ void hello_world ()
 //_______________________________________________________________________________
 //                                                                      emit_list
 
+//! Emit a simple list of elements
 void emit_list ()
 {
   std::cout << "\n[tEmitting::emit_list]\n" << std::endl;
