@@ -158,31 +158,31 @@ The following code will parse the example file ``monsters.yaml`` listed above:
        node["damage"] >> power.damage;
     }
 
-void operator >> (const YAML::Node& node, Monster& monster) {
-   node["name"] >> monster.name;
-   node["position"] >> monster.position;
-   const YAML::Node& powers = node["powers"];
-   for(unsigned i=0;i<powers.size();i++) {
-      Power power;
-      powers[i] >> power;
-      monster.powers.push_back(power);
-   }
-}
-
-int main()
-{
-   std::ifstream fin("monsters.yaml");
-   YAML::Parser parser(fin);
-   YAML::Node doc;
-   parser.GetNextDocument(doc);
-   for(unsigned i=0;i<doc.size();i++) {
-      Monster monster;
-      doc[i] >> monster;
-      std::cout << monster.name << "\n";
-   }
-
-   return 0;
-}
+    void operator >> (const YAML::Node& node, Monster& monster) {
+       node["name"] >> monster.name;
+       node["position"] >> monster.position;
+       const YAML::Node& powers = node["powers"];
+       for(unsigned i=0;i<powers.size();i++) {
+          Power power;
+          powers[i] >> power;
+          monster.powers.push_back(power);
+       }
+    }
+    
+    int main()
+    {
+       std::ifstream fin("monsters.yaml");
+       YAML::Parser parser(fin);
+       YAML::Node doc;
+       parser.GetNextDocument(doc);
+       for(unsigned i=0;i<doc.size();i++) {
+          Monster monster;
+          doc[i] >> monster;
+          std::cout << monster.name << "\n";
+       }
+    
+       return 0;
+    }
 
 ## References 
 
