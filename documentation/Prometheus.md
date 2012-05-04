@@ -8,6 +8,20 @@ is a digital image archive for Art and Cultural Sciences. prometheus enables the
 convenient search for images on a common user interface within different image 
 archives, variable databases from institutes, research facilities and museums.
 
+## Websites
+
+* {http://www.prometheus-bildarchiv.de prometheus-bildarchiv.de}
+* {http://prometheus.uni-koeln.de/pandora Pandora Homepage}
+
+Social networking sites:
+
+* {http://facebook.com/prometheus.bildarchiv Facebook}
+* {http://www.flickr.com/photos/prometheus_ev Flickr}
+* {https://plus.google.com/u/0/103268334729481987839 Google+}
+* {https://github.com/prometheus-ev Github}
+* {http://twitter.com/prometheus_eV Twitter}
+* {http://vimeo.com/prometheusbildarchiv Vimeo}
+
 ## The image archive
 
 prometheus is a digital image archive for Art and Cultural Sciences. prometheus enables the convenient search for images on a common user interface within different image archives, variable databases from institutes, research facilities and museums.
