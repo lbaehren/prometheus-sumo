@@ -4,7 +4,7 @@ Capistrano
 
 {http://www.capify.org Capistrano} is an open source tool for running scripts on multiple servers; its main use is deploying web applications. It automates the process of making a new version of an application available on one or more web servers, including supporting tasks such as changing databases.
 
-Capistrano is written in the Ruby language and is distributed using the RubyGems distribution channel. It is an outgrowth of the Ruby on Rails web application framework, but has also been used to deploy web applications written using other frameworks, including ones written in PHP.
+Capistrano is written in the Ruby language and is distributed using the RubyGems distribution channel. It is an outgrowth of the {file:Rails Ruby on Rails} web application framework, but has also been used to deploy web applications written using other frameworks, including ones written in PHP.
 
 Capistrano is implemented primarily for use on the bash command line. Users of the Ruby on Rails framework may choose from many Capistrano recipes, e.g. to deploy current changes to the web application or roll back to the previous deployment state.
 
