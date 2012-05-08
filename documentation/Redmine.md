@@ -43,12 +43,41 @@ A redmine debian package is available in _squeeze_, _sid_ and _lenny-backports_,
 
 There is no per-instance support for plugins, but those dropped to : ``/usr/share/redmine/vendor/plugins`` should be ok. The ``migrate_plugins`` task is called upon each (re)configuration or upgrade. Since custom plugins are often bound to a specific redmine version, it is advised to remove them before upgrades.
 
+#### Required packages
+
 Install the necessary packages:
 
     apt-get install libapache2-mod-passenger
     apt-get install mysql-server
     apt-get install redmine-mysql
     apt-get install redmine
+
+#### Organization of files and directories
+
+After installation, files and directories are distributed as follows:
+
+    /etc
+    |-- redmine/                   ...  Configuration files (redmine/config)
+    |   `-- default
+    |       |-- database.yml
+    |       `-- session.yml
+    |-- usr
+    |   `--share
+    |      |-- doc
+    |      |   `-- redmine
+    |      |       `-- examples    ...  Example configuration files
+    |      `-- redmine             ...  Root directory of the application
+    `-- var
+        |-- cache
+        |   `-- redmine
+        |-- lib
+        |   `-- redmine
+        |-- log
+        |   `-- redmine
+        |-- run
+        |   `-- redmine
+        `-- redmine
+
 
 ## References
 
