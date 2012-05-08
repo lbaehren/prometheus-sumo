@@ -16,6 +16,7 @@ if (YARD_EXECUTABLE)
 
   file (WRITE  ${YARDOPTS} "-o ${CMAKE_CURRENT_BINARY_DIR}/html\n" )
   file (APPEND ${YARDOPTS} "--main ${PROJECT_SOURCE_DIR}/README\n" )
+  file (APPEND ${YARDOPTS} "${PROJECT_SOURCE_DIR}/sources\n"  )
   
   if (DOCUMENTATION_PANDORA)
     file (APPEND ${YARDOPTS} "${PROJECT_SOURCE_DIR}/repositories/pandora/app\n"  )
