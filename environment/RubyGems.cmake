@@ -14,6 +14,7 @@ if (GEM_EXECUTABLE)
       ar_mailer
       blackwinter-gnuplot
       capistrano
+      exifr
       fastercsv
       gruff
       highline
