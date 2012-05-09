@@ -3,6 +3,8 @@ add_custom_target (InstallGems
   COMMENT "Installing required system packages..."
   )
 
+find_package (RubyGems)
+
 ##_______________________________________________________________________________
 ## Installation of the individual packages
 
