@@ -23,6 +23,7 @@ set (${CMAKE_PROJECT_NAME}_VERSION "${${CMAKE_PROJECT_NAME}_VERSION_MAJOR}.${${C
 
 set (REQUIRED_VERSION_RUBY  1.8                            )
 set (GIT_REPOSITORY_BASE    "git@github.com:prometheus-ev" )
+set (NOF_SKIPPED_TESTS      0                              )
 
 ## ==============================================================================
 ##
@@ -55,6 +56,7 @@ if (NOT CONFIGURE_VERBOSE)
   set (RAKE_FIND_QUIETLY     YES )
   set (RDOC_FIND_QUIETLY     YES )
   set (RUBY_FIND_QUIETLY     YES )
+  set (RUBYGEMS_FIND_QUIETLY YES )
   set (_RUBY_DEBUG_OUTPUT    NO  )
   set (XERCESC_FIND_QUIETLY  YES )
   set (YAML_FIND_QUIETLY     YES )

@@ -21,10 +21,9 @@
 # - Check for the presence of RUBYGEMS
 #
 # The following variables are set when RUBYGEMS is found:
-#  RUBYGEMS_FOUND      = Set to true, if all components of RUBYGEMS have been found.
-#  RUBYGEMS_INCLUDES   = Include path for the header files of RUBYGEMS
-#  RUBYGEMS_LIBRARIES  = Link these to use RUBYGEMS
-#  RUBYGEMS_LFLAGS     = Linker flags (optional)
+#  RUBYGEMS_FOUND          = Set to true, Ruby Gem has been found.
+#  RUBYGEM_<PACKAGE>_FOUND = Set true, if the individual <PACKAGE> has been
+#                            found.
 
 if (NOT RUBYGEMS_FOUND)
     
@@ -38,6 +37,8 @@ if (NOT RUBYGEMS_FOUND)
   if (NOT GEM_EXECUTABLE)
     find_package (Gem)
   endif (NOT GEM_EXECUTABLE)
+
+  set (RUBYGEMS_FOUND ${GEM_FOUND})
   
   ##_____________________________________________________________________________
   ## Set up the list of Gems to search for
@@ -114,7 +115,9 @@ if (NOT RUBYGEMS_FOUND)
 	  set (RUBYGEM_${VAR_GEM_UPPER}_FOUND FALSE)
 	endif (${VAR_GEM}_FOUND)
 
-	message (STATUS "Ruby gem ${VAR_GEM} found? - ${RUBYGEM_${VAR_GEM_UPPER}_FOUND}")
+	if (NOT RUBYGEMS_FIND_QUIETLY)
+	  message (STATUS "Ruby gem ${VAR_GEM} found? - ${RUBYGEM_${VAR_GEM_UPPER}_FOUND}")
+	endif (NOT RUBYGEMS_FIND_QUIETLY)
 
       endforeach (VAR_GEM)
       
