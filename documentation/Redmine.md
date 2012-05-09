@@ -83,3 +83,4 @@ After installation, files and directories are distributed as follows:
 
 * {http://www.redmine.org redmine.org} - Project homepage
 * {http://www.redmine.org/projects/redmine/wiki/RedmineInstall Installing Redmine}
+* {https://github.com/koppen/redmine_github_hook Redmine Github Hook plugin}
