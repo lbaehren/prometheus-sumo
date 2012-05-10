@@ -3,6 +3,8 @@ add_custom_target (InstallGems
   COMMENT "Installing required system packages..."
   )
 
+find_package (RubyGems)
+
 ##_______________________________________________________________________________
 ## Installation of the individual packages
 
@@ -14,6 +16,7 @@ if (GEM_EXECUTABLE)
       ar_mailer
       blackwinter-gnuplot
       capistrano
+      exifr
       fastercsv
       gruff
       highline
