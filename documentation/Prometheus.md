@@ -3,24 +3,25 @@
 
 ## Introduction
 
-prometheus ({http://www.prometheus-bildarchiv.de www.prometheus-bildarchiv.de})
+prometheus ([www.prometheus-bildarchiv.de](http://www.prometheus-bildarchiv.de))
 is a digital image archive for Art and Cultural Sciences. prometheus enables the
 convenient search for images on a common user interface within different image 
 archives, variable databases from institutes, research facilities and museums.
 
 ## Websites
 
-* {http://www.prometheus-bildarchiv.de prometheus-bildarchiv.de}
-* {http://prometheus.uni-koeln.de/pandora Pandora Homepage}
+* [prometheus-bildarchiv.de](http://www.prometheus-bildarchiv.de)
+* [Pandora Homepage](http://prometheus.uni-koeln.de/pandora)
+* [Redmine issue tracker](http://prometheus-srv.uni-koeln.de/redmine)
 
 Social networking sites:
 
-* {http://facebook.com/prometheus.bildarchiv Facebook}
-* {http://www.flickr.com/photos/prometheus_ev Flickr}
-* {https://plus.google.com/u/0/103268334729481987839 Google+}
-* {https://github.com/prometheus-ev Github}
-* {http://twitter.com/prometheus_eV Twitter}
-* {http://vimeo.com/prometheusbildarchiv Vimeo}
+* [Facebook](http://facebook.com/prometheus.bildarchiv)
+* [Flickr](http://www.flickr.com/photos/prometheus_ev)
+* [Google+](https://plus.google.com/u/0/103268334729481987839)
+* [Github](https://github.com/prometheus-ev)
+* [Twitter](http://twitter.com/prometheus_eV)
+* [Vimeo](http://vimeo.com/prometheusbildarchiv)
 
 ## The image archive
 
@@ -45,30 +46,29 @@ prometheus is a digital image archive for Art and Cultural Sciences. prometheus 
 
 ## History
 
-{http://www.prometheus-bildarchiv.de prometheus – The Distributed Digital Image
-Archive for Research and Studies} started on April 1, 2001 as a cooperative
+[prometheus – The Distributed Digital Image Archive for Research and Studies](http://www.prometheus-bildarchiv.de) started on April 1, 2001 as a cooperative
 project in Germany. Within the frame work of New Media in Education, prometheus
-was supported by the {http://www.bmbf.de Federal Ministry for Education and
-Research} (bmb+f) with a total amount of 1.8 Mio. €. The project’s executing
+was supported by the [Federal Ministry for Education and
+Research](http://www.bmbf.de) (bmb+f) with a total amount of 1.8 Mio. €. The project’s executing
 organization “New Media in Education” was associated with the
-{http://www.dlr.de German Institute for Aerospace industry} (DLR).
+[German Institute for Aerospace industry](http://www.dlr.de) (DLR).
 
 During the 3 years of the project’s development and implementation, the project team consisted of 9 project managers, and a total of 50 staff members and assistants from 4 universities and 8 institutes. From the very beginning of the project, the established objective was to encourage close interdisciplinary interaction to enable all staff members to gain an understanding of varied subject areas, and to participate in decision making. 
 
 The major components of the project work was distributed between the universities and institutes as follows:
 
-* {http://www.hs-anhalt.de University of Anhalt} (FH)
-  * {http://www.inf.hs-anhalt.de Computer Sciences} (Köthen): Programming of the research modules (TimeLine) and the off-line work folder
-  * {http://www.design.hs-anhalt.de Design} (Dessau): Layout and conception of the image archive (research, work folders, navigation) and the home page; development of the educational program
+* [University of Anhalt](http://www.hs-anhalt.de) (FH)
+  * [Computer Sciences](http://www.inf.hs-anhalt.de) (Köthen): Programming of the research modules (TimeLine) and the off-line work folder
+  * [Design](http://www.design.hs-anhalt.de) (Dessau): Layout and conception of the image archive (research, work folders, navigation) and the home page; development of the educational program
 
-* {http://www.hu-berlin.de Humboldt University Berlin}
+* [Humboldt University Berlin](http://www.hu-berlin.de)
   * Fine Arts: Database imago_diathek, database of the virtual art, development of the educational program
 
-* {http://www.uni-giessen.de Justus-Liebig University Giessen}
+* [Justus-Liebig University Giessen](http://www.uni-giessen.de)
   * Professorship for Archeology: Database EikonLine, development of the educational program
   * Professorships for Art history: Database digital Diathek, database DigiDiathek, coordination of the associated partners
 
-* {http://www.uni-koeln.de University of Cologne}
+* [University of Cologne](http://www.uni-koeln.de)
   * Institute of Art History: Project management and project coordination, database DaDa Web
   * Institute for Data Processing of Cultural Studies: Technology of the central server, technical realization of the design and organization of the image archive
   * Pedagogical Department: Development of the educational program, evaluation.
@@ -78,13 +78,13 @@ The major components of the project work was distributed between the universitie
 <dl>
 
   <dt>pandora</dt>
-    <dd>{http://prometheus.uni-koeln.de/pandora/en/about pandora} (The prometheus digital image archive software) is the successor to kleio as the driving force behind the prometheus image archive. It's being developed since late fall of 2006, on top of the {http://rubyonrails.org Ruby on Rails} framework. pandora is Free Software, released under the terms of the {http://www.gnu.org/licenses/#AGPL GNU Affero General Public License}. </dd>
+    <dd>[pandora](http://prometheus.uni-koeln.de/pandora/en/about) (The prometheus digital image archive software) is the successor to kleio as the driving force behind the prometheus image archive. It's being developed since late fall of 2006, on top of the [Ruby on Rails](http://rubyonrails.org) framework. pandora is Free Software, released under the terms of the [GNU Affero General Public License](http://www.gnu.org/licenses/#AGPL). </dd>
 
   <dt>Meta-Image</dt>
-    <dd>{http://www2.leuphana.de/meta-image Meta-Image} fügt bestehende Komponenten zu einer virtuellen Arbeits- und Forschungsumgebung für den Bilddiskurs in der Kunstgeschichte zusammen. Meta-Image verbindet dazu die digitalen Bildbestände des Verbundes kunsthistorischer Bilddatenbanken prometheus und ein auf die Verlinkung und Anreicherung von Bildcorpora spezialisiertes Bild-Beschreibungs-Tool mit dem Ziel einer integrativen Cyberinfrastructure für die kunsthistorische Forschungsarbeit direkt am Bild. Meta-Image reichert die formellen dokumentarisch-archivarischen Informationen und Sacherschließungen des Repositorys um die Ergebnisse der informellen Forschungstätigkeiten der Fachcommunity an, wobei Ursprung und Kontext der Meta-Informationen stets transparent bleiben.</dd>
+    <dd>[Meta-Image](http://www2.leuphana.de/meta-image) fügt bestehende Komponenten zu einer virtuellen Arbeits- und Forschungsumgebung für den Bilddiskurs in der Kunstgeschichte zusammen. Meta-Image verbindet dazu die digitalen Bildbestände des Verbundes kunsthistorischer Bilddatenbanken prometheus und ein auf die Verlinkung und Anreicherung von Bildcorpora spezialisiertes Bild-Beschreibungs-Tool mit dem Ziel einer integrativen Cyberinfrastructure für die kunsthistorische Forschungsarbeit direkt am Bild. Meta-Image reichert die formellen dokumentarisch-archivarischen Informationen und Sacherschließungen des Repositorys um die Ergebnisse der informellen Forschungstätigkeiten der Fachcommunity an, wobei Ursprung und Kontext der Meta-Informationen stets transparent bleiben.</dd>
 
   <dt>HyperImage</dt>
-    <dd>Mit {http://www.uni-lueneburg.de/hyperimage/hyperimage HyperImage} können beliebig viele Details innerhalb eines Bildes präzise markiert und beschrieben sowie Annotationen des Corpus untereinander verlinkt und über Indizes erschlossen werden. Zwischenergebnisse wie endgültige Fassungen lassen sich jederzeit als hypermediale online- oder offline-Publikation erstellen. Verschiedene einzeln eingeführte und erprobte Verfahren und Datenrepositorien sind in HyperImage zu einer einzeln oder gemeinschaftlich nutzbaren Forschungs- und Publikationsumgebung zusammengeführt.</dd>
+    <dd>Mit [HyperImage](http://www.uni-lueneburg.de/hyperimage/hyperimage) können beliebig viele Details innerhalb eines Bildes präzise markiert und beschrieben sowie Annotationen des Corpus untereinander verlinkt und über Indizes erschlossen werden. Zwischenergebnisse wie endgültige Fassungen lassen sich jederzeit als hypermediale online- oder offline-Publikation erstellen. Verschiedene einzeln eingeführte und erprobte Verfahren und Datenrepositorien sind in HyperImage zu einer einzeln oder gemeinschaftlich nutzbaren Forschungs- und Publikationsumgebung zusammengeführt.</dd>
 </dl>
 
 Besides the above mentioned front-end applications, there also exists a larger
@@ -93,7 +93,7 @@ background:
 
 <dl>
   <dt>JekyllCommander</dt>
-    <dd>{https://github.com/prometheus-ev/JekyllCommander JekyllCommander} is a Sinatra based web application, to give non-technical users the ability to maintain a complex {http://jekyllrb.com Jekyll} website, including git version control, without any scary terminal experiences.</dd>
+    <dd>[JekyllCommander](https://github.com/prometheus-ev/JekyllCommander) is a Sinatra based web application, to give non-technical users the ability to maintain a complex [Jekyll](http://jekyllrb.com) website, including git version control, without any scary terminal experiences.</dd>
 
   <dt>apache_secure_download</dt>
     <dd>Apache module providing secure downloading functionality, just like Mongrel Secure Download does for mongrel.</dd>

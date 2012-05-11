@@ -4,7 +4,7 @@
 ## Checking out the source code
 
 The source code of _pandora_ is hosted in a central
-{http://subversion.apache.org Subversion} repository at
+[Subversion](http://subversion.apache.org) repository at
 
     http://prometheus-srv.uni-koeln.de/svn/pandora
 
@@ -44,7 +44,7 @@ will create a directory structure like this:
 
 If at a later point in time you want to be able to create new (release) branches
 and tags then accordingly, you will have to clone from the top-level of the 
-Subversion repository, telling {http://git-scm.com Git} import from a standard
+Subversion repository, telling [Git](http://git-scm.com) import from a standard
 directory layout: 
 
     git svn clone -s http://prometheus-srv.uni-koeln.de/svn/pandora pandora
@@ -204,3 +204,10 @@ If everything went fine, you should be getting a status message like this
 
 ## Virtual machines
 
+
+## References 
+
+* [Git SCM](http://git-scm.com)
+* [Subversion](http://subversion.apache.org)
+* [Doxygen](http://www.doxygen.org)
+* [Markdown support with Doxygen](http://www.stack.nl/~dimitri/doxygen/markdown.html)
