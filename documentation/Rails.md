@@ -161,10 +161,10 @@ with the bare minimum of code:
 
 ## References
 
-* {http://ruby.railstutorial.org/ruby-on-rails-tutorial-book Ruby on Rails Tutorial}
-* {http://guides.rubyonrails.org/getting_started.html Getting Started with Rails}
-* {http://www.ruby-auf-schienen.de/buch/index.html Ruby on Rails 3.0 und 3.1}
-* {http://guides.rubyonrails.org/testing.html A Guide to Testing Rails Applications}
-* {http://rav.rubyforge.org Rails Application Visualizer}
-* {http://weblog.jamisbuck.org/2006/9/22/inspecting-a-live-ruby-process Inspecting a live Ruby process}
-* {http://eigenclass.org/hiki/ruby+live+process+introspection Inspecting a live Ruby process, easier if you cheat}
+* [Ruby on Rails Tutorial](http://ruby.railstutorial.org/ruby-on-rails-tutorial-book)
+* [Getting Started with Rails](http://guides.rubyonrails.org/getting_started.html)
+* [Ruby on Rails 3.0 und 3.1](http://www.ruby-auf-schienen.de/buch/index.html)
+* [A Guide to Testing Rails Applications](http://guides.rubyonrails.org/testing.html])
+* [Rails Application Visualizer](http://rav.rubyforge.org)
+* [Inspecting a live Ruby process](http://weblog.jamisbuck.org/2006/9/22/inspecting-a-live-ruby-process)
+* [Inspecting a live Ruby process, easier if you cheat](http://eigenclass.org/hiki/ruby+live+process+introspection)

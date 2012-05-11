@@ -23,10 +23,10 @@ The PostgreSQL server can handle multiple concurrent connections from clients. T
 
 ## References 
 
-* {http://www.postgresql.org postgresql.org}
-  * {http://www.postgresql.org/files/documentation/books/aw_pgsql Introduction and Concepts}
-  * {http://www.postgresql.org/docs/manuals Manuals}
-  * {http://www.postgresql.org/docs/books Books}
-  * {http://wiki.postgresql.org/wiki Wiki}
-  * {http://www.postgresql.org/about/featurematrix Feature matrix}
-* {http://prometheus.khi.uni-koeln.de/media/misc/dbms/cs-200611-postgres_video.mp4 Chaos-Seminar PostgreSQLslides}
+* [postgresql.org](http://www.postgresql.org)
+  * [Introduction and Concepts](http://www.postgresql.org/files/documentation/books/aw_pgsql)
+  * [Manuals](http://www.postgresql.org/docs/manuals)
+  * [Books](http://www.postgresql.org/docs/books)
+  * [Wiki](http://wiki.postgresql.org/wiki)
+  * [Feature matrix](http://www.postgresql.org/about/featurematrix)
+* [Chaos-Seminar PostgreSQLslides](http://prometheus.khi.uni-koeln.de/media/misc/dbms/cs-200611-postgres_video.mp4)

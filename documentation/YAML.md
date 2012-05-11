@@ -186,4 +186,4 @@ The following code will parse the example file ``monsters.yaml`` listed above:
 
 ## References 
 
-* {http://code.google.com/p/yaml-cpp/wiki/HowToParseADocument Basic methods for parsing a YAML document}
+* [Basic methods for parsing a YAML document](http://code.google.com/p/yaml-cpp/wiki/HowToParseADocument)

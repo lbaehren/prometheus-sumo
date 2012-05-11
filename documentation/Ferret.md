@@ -1,7 +1,7 @@
 
 # Ferret search engine
 
-Ferret is a Ruby port of the {http://jakarta.apache.org/lucene Java Lucene} search engine. In the same way as Lucene, it is not a standalone application, but a library you can use to index documents and search for things in them later.
+Ferret is a Ruby port of the [Java Lucene](http://jakarta.apache.org/lucene) search engine. In the same way as Lucene, it is not a standalone application, but a library you can use to index documents and search for things in them later.
 
 
 ## Concepts
@@ -111,5 +111,5 @@ for more information.
 
 ## References
 
-* Benjamin Krause, Mathias Meyer (2008) {http://www.heise.de/developer/artikel/Ferret-Lucene-Nachfolger-fuer-Ruby-227116.html Ferret: Lucene-Nachfolger für Ruby}
+* Benjamin Krause, Mathias Meyer (2008) [Ferret: Lucene-Nachfolger für Ruby](http://www.heise.de/developer/artikel/Ferret-Lucene-Nachfolger-fuer-Ruby-227116.html)
 
