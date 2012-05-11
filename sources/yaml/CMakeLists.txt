@@ -9,6 +9,7 @@ if (YAML_FOUND)
 
   foreach (testYaml
       tEmitting
+      tParseAccount
       )
 
     ## compiler instructions
