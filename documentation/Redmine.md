@@ -7,7 +7,7 @@
 
 #### Operating system
 
-Redmine should run on most Unix, Linux, {http://www.redmine.org/projects/redmine/wiki/RedmineInstallOSX Mac}, Mac Server and Windows systems as long as Ruby is available on this platform. See specific installation HowTos {http://www.redmine.org/projects/redmine/wiki/HowTos here}.
+Redmine should run on most Unix, Linux, [Mac](http://www.redmine.org/projects/redmine/wiki/RedmineInstallOSX), Mac Server and Windows systems as long as Ruby is available on this platform. See specific installation HowTos [here](http://www.redmine.org/projects/redmine/wiki/HowTos).
 
 #### Database
 
@@ -81,6 +81,6 @@ After installation, files and directories are distributed as follows:
 
 ## References
 
-* {http://www.redmine.org redmine.org} - Project homepage
-* {http://www.redmine.org/projects/redmine/wiki/RedmineInstall Installing Redmine}
-* {https://github.com/koppen/redmine_github_hook Redmine Github Hook plugin}
+* [redmine.org](http://www.redmine.org) - Project homepage
+* [Installing Redmine](http://www.redmine.org/projects/redmine/wiki/RedmineInstall)
+* [Redmine Github Hook plugin](https://github.com/koppen/redmine_github_hook)
