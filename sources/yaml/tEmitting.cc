@@ -1,3 +1,7 @@
+/*!
+  \file tEmitting.cc
+  \author Lars Baehren
+*/
 
 #include <yaml-cpp/yaml.h>
 
@@ -69,6 +73,7 @@ void emit_map ()
 //
 // ==============================================================================
 
+//! Main routine of the test program
 int main()
 {
   hello_world();
