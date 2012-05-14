@@ -215,7 +215,7 @@ through prometheus.
       - Museum database
 
 The first entry in the file (``:dumps:``) describes the path to the directory containing
-database dumps.
+database dumps; if no dumps can be found on your system, dummy entries will be generated.
 
 ### Start up pandora
 
