@@ -7,20 +7,22 @@ if (YAML_FOUND)
   ##_____________________________________________________________________________
   ## Tests
 
-  foreach (testYaml
-      tEmitting
-      tParseAccount
-      )
+  file (GLOB testsYAML t*.cc)
+
+  foreach (testYAML ${testsYAML})
+
+    ## Strip extension from filename
+    get_filename_component (varFilename ${testYAML} NAME_WE)
 
     ## compiler instructions
-    add_executable (${testYaml} ${testYaml}.cc)
+    add_executable (${varFilename} ${varFilename}.cc)
 
     ## linker instructions
-    target_link_libraries (${testYaml} ${YAML_LIBRARIES})
+    target_link_libraries (${varFilename} ${YAML_LIBRARIES})
 
     ## test registration
-    add_test (${testYaml} ${testYaml})
+    add_test (${varFilename} ${varFilename})
 
-  endforeach (testYaml)
+  endforeach (testYAML)
   
 endif (YAML_FOUND)
