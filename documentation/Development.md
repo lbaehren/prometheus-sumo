@@ -214,6 +214,9 @@ through prometheus.
       - Research database
       - Museum database
 
+The first entry in the file (``:dumps:``) describes the path to the directory containing
+database dumps.
+
 ### Start up pandora
 
 #### Initialize the installation
