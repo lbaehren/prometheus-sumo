@@ -19,13 +19,16 @@ int main (int argc, char *argv[])
   }
   
   /* Open input stream */
+  try {
   std::ifstream fin(filename.c_str());
   YAML::Parser parser(fin);
   
   YAML::Node doc;
-  // while(parser.GetNextDocument(doc)) {
-  //   // ...
-  // }
+  parser.GetNextDocument(doc);
+
+  } catch(YAML::ParserException& e) {
+    std::cout << e.what() << std::endl;
+  }
 
   return 0;
 }
