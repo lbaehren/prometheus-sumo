@@ -32,8 +32,11 @@ set (NOF_SKIPPED_TESTS      0                              )
 
 option (TESTING_ENABLE        "Enable CTest test driver?"                     YES )
 option (CONFIGURE_VERBOSE     "Increase verbosity during configuration?"      NO  )
-option (DOCUMENTATION_PANDORA "Enable documentation of pandora source code?"  YES )
 option (GIT_REPOSITORIES_RW   "Check out Github repositories for r/w access?" NO  )
+
+## Configuration options specific to pandora
+
+option (PANDORA_GENERATE_DOCS "Enable documentation of pandora source code?"  YES )
 
 ##__________________________________________________________
 ## Handle option: Enable CTest test driver?
@@ -166,6 +169,7 @@ endif (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 ##
 ## ==============================================================================
 
+add_subdirectory (data)
 add_subdirectory (documentation)
 add_subdirectory (environment)
 add_subdirectory (repositories)

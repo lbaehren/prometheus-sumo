@@ -18,10 +18,10 @@ if (YARD_EXECUTABLE)
   file (APPEND ${YARDOPTS} "--main ${PROJECT_SOURCE_DIR}/README\n" )
   file (APPEND ${YARDOPTS} "${PROJECT_SOURCE_DIR}/sources\n"  )
   
-  if (DOCUMENTATION_PANDORA)
+  if (PANDORA_GENERATE_DOCS)
     file (APPEND ${YARDOPTS} "${PROJECT_SOURCE_DIR}/repositories/pandora/app\n"  )
     file (APPEND ${YARDOPTS} "${PROJECT_SOURCE_DIR}/repositories/pandora/lib\n"  )
-  endif (DOCUMENTATION_PANDORA)
+  endif (PANDORA_GENERATE_DOCS)
   
   file (APPEND ${YARDOPTS} "-\n"                                   )
   file (APPEND ${YARDOPTS} "${CMAKE_CURRENT_SOURCE_DIR}/*.md\n"    )
