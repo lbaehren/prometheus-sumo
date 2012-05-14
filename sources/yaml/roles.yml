@@ -1,0 +1,31 @@
+---
+roles_001:
+  title: superadmin
+  id: "1"
+roles_002:
+  title: admin
+  id: "2"
+roles_003:
+  title: useradmin
+  id: "3"
+roles_004:
+  title: webadmin
+  id: "4"
+roles_005:
+  title: user
+  id: "5"
+roles_006:
+  title: dbuser
+  id: "6"
+roles_007:
+  title: visitor
+  id: "7"
+roles_008:
+  title: ipuser
+  id: "8"
+roles_009:
+  title: dbadmin
+  id: "9"
+roles_010:
+  title: subscriber
+  id: "10"

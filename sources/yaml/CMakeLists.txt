@@ -4,9 +4,7 @@ if (YAML_FOUND)
   ## location of header files
   include_directories (${YAML_INCLUDES})
 
-  ##_____________________________________________________________________________
-  ## Tests
-
+  ## List of source files
   file (GLOB testsYAML t*.cc)
 
   foreach (testYAML ${testsYAML})
@@ -20,9 +18,14 @@ if (YAML_FOUND)
     ## linker instructions
     target_link_libraries (${varFilename} ${YAML_LIBRARIES})
 
-    ## test registration
+    ## Default test setup
     add_test (${varFilename} ${varFilename})
-
+    
   endforeach (testYAML)
+  
+  ##_____________________________________________________________________________
+  ## Additional tests requiring extra parameters
+  
+  add_test (tParseFixtures_roles tParseFixtures roles.yml)
   
 endif (YAML_FOUND)
