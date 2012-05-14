@@ -201,7 +201,7 @@ the access rights to it:
       database: <%= database_name %>_development
       <<: *common
 
-``app/source.yml`` defined the layout of the tables, storing information on an
+``app/source.yml`` defines the layout of the tables, storing information on an
 external database, of which images (and their associated metadata) are available
 through prometheus.
 
