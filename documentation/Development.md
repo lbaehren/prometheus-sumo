@@ -168,6 +168,52 @@ commands, in order to handle the installation of the required packages
   * ImageMagick
   * ImageMagick-devel
 
+### Configuration scripts
+
+Though the later ``setup`` script will take care of most of the required
+configuration tasks -- most important of all the initial migration of the 
+database -- 
+
+    config
+    |-- apache2.conf               ...  Configuration for Apache Web Server
+    |-- database.yml               ...  Location of and access to database
+    |-- environment.rb             ...  Inspection of the environment (checks dependencies)
+    |-- secrets.yml                ...  Access secrets
+    |-- app
+    |   `-- source.yml             ...  Parameters for a database source
+    |-- deploy
+    |-- environments
+    |-- initializers
+    `-- src
+
+``database.yml`` defines the location of the underlying database, as well as
+the access rights to it:
+
+    common: &common
+      adapter:  <%= database_adapter %>
+      encoding: <%= database_encoding %>
+      host:     <%= database_host %>
+      socket:   <%= database_socket %>
+      username: <%= database_user %>
+      password: <%= database_pass %>
+    
+    development: &development
+      database: <%= database_name %>_development
+      <<: *common
+
+``app/source.yml`` defined the layout of the tables, storing information on an
+external database, of which images (and their associated metadata) are available
+through prometheus.
+
+    :dumps: /var/local/prometheus/app/pandora/data
+    :paths: /var/local/prometheus/app/pandora/shared/paths_%s.marshal
+    :change_pids: /var/local/prometheus/app/pandora/data/change_pids
+    
+    :kinds:
+      - Institutional database
+      - Research database
+      - Museum database
+
 ### Start up pandora
 
 #### Initialize the installation
@@ -179,15 +225,6 @@ In order to initialize your pandora installation, run the following from the top
 For a list of all available rake tasks type
 
     rake -T
-
-#### Configuration scripts
-
-Provide the required configuration scripts:
-
-    config
-    |-- apache2.conf
-    |-- database.yml
-    `-- secrets.yml
 
 #### Startup
 
