@@ -1,0 +1,12 @@
+/*!
+
+  \mainpage prometheus Developers Manual
+
+  \section manual_intro Introduction
+
+  \section manual_toc Table of contents 
+
+  - \subpage manual_prom
+  - \subpage manual_pandora
+ 
+*/
