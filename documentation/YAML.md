@@ -1,42 +1,15 @@
 
 # YAML
 
-## Parsing a document
-
-Here's a complete example of how to parse a complex YAML file (``monsters.yaml``):
-
-    - name: Ogre
-      position: [0, 5, 0]
-      powers:
-        - name: Club
-          damage: 10
-        - name: Fist
-          damage: 8
-    - name: Dragon
-      position: [1, 0, 10]
-      powers:
-        - name: Fire Breath
-          damage: 25
-        - name: Claws
-          damage: 15
-    - name: Wizard
-      position: [5, -3, 0]
-      powers:
-        - name: Acid Rain
-          damage: 50
-        - name: Staff
-          damage: 3
+## Emitting a document
 
 ### ... using Ruby
 
-
 ### ... using C++
 
-#### Emitting a YAML document
+#### Basic Emitting
 
-##### Basic Emitting
-
-The model for emitting YAML is std::ostream manipulators. A YAML::Emitter objects acts as an output stream, and its output can be retrieved through the c_str() function (as in std::string). For a simple example:
+The model for emitting YAML is ``std::ostream manipulators``. A ``YAML::Emitter`` objects acts as an output stream, and its output can be retrieved through the ``c_str()`` function (as in ``std::string``). For a simple example:
 
     #include "yaml.h"
     
@@ -49,9 +22,9 @@ The model for emitting YAML is std::ostream manipulators. A YAML::Emitter object
        return 0;
     }
 
-##### Simple Lists and Maps
+#### Simple Lists and Maps
 
-A YAML::Emitter object acts as a state machine, and we use manipulators to move it between states. Here's a simple sequence:
+A ``YAML::Emitter`` object acts as a state machine, and we use manipulators to move it between states. Here's a simple sequence:
 
     YAML::Emitter out;
     out << YAML::BeginSeq;
@@ -98,6 +71,37 @@ produces
       - Sasha
       - Malia
 
+## Parsing a document
+
+Here's a complete example of how to parse a complex YAML file (``monsters.yaml``):
+
+    - name: Ogre
+      position: [0, 5, 0]
+      powers:
+        - name: Club
+          damage: 10
+        - name: Fist
+          damage: 8
+    - name: Dragon
+      position: [1, 0, 10]
+      powers:
+        - name: Fire Breath
+          damage: 25
+        - name: Claws
+          damage: 15
+    - name: Wizard
+      position: [5, -3, 0]
+      powers:
+        - name: Acid Rain
+          damage: 50
+        - name: Staff
+          damage: 3
+
+### ... using Ruby
+
+
+### ... using C++
+
 #### Basic parsing
 
 The parser accepts streams, not file names, so you need to first load the file.
@@ -119,6 +123,56 @@ simple way to parse a YAML file might be:
     
         return 0;
     }
+
+#### Reading From the Document
+
+Suppose we have a document consisting only of a scalar. We can read that scalar like this:
+
+    YAML::Node doc;    // let's say we've already parsed this document
+    std::string scalar;
+    doc >> scalar;
+    std::cout << "That scalar was: " << scalar << std::endl;
+
+How about sequences? Let's say our document now consists only of a sequences of scalars. We can use an iterator:
+
+    YAML::Node doc;    // already parsed
+    for(YAML::Iterator it=doc.begin();it!=doc.end();++it) {
+        std::string scalar;
+        *it >> scalar;
+        std::cout << "Found scalar: " << scalar << std::endl;
+    }
+
+... or we can just loop through:
+
+    YAML::Node doc;    // already parsed
+    for(unsigned i=0;i<doc.size();i++) {
+        std::string scalar;
+        doc[i] >> scalar;
+        std::cout << "Found scalar: " << scalar << std::endl;
+    }
+
+And finally maps. For now, let's say our document is a map with all keys/values being scalars. Again, we can iterate:
+
+    YAML::Node doc;    // already parsed
+    for(YAML::Iterator it=doc.begin();it!=doc.end();++it) {
+        std::string key, value;
+        it.first() >> key;
+        it.second() >> value;
+        std::cout << "Key: " << key << ", value: " << value << std::endl;
+    }
+
+Note that dereferencing a map iterator is undefined; instead, use the first and second methods to get the key and value nodes, respectively.
+
+Alternatively, we can pick off the values one-by-one, if we know the keys:
+
+    YAML::Node doc;    // already parsed
+    std::string name;
+    doc["name"] >> name;
+    int age;
+    doc["age"] >> age;
+    std::cout << "Found entry with name '" << name << "' and age '" << age << "'\n";
+
+One thing to be keep in mind: reading a map by key (as immediately above) requires looping through all entries until we find the right key, which is an O(n) operation. So if you're reading the entire map this way, it'll be O(n^2). For small n, this isn't a big deal, but I wouldn't recommend reading maps with a very large number of entries (>100, say) this way. 
 
 #### A complete example
 
