@@ -1,0 +1,8 @@
+NOTE:
+
+  While most of the general documentation has been set up to work with multiple
+  documentation generation tools, it was found that when trying to generate information
+  organized as a manual, none of the tools available for the Ruby programming language
+  would be able to provide functionality matching that of Doxygen. Hence it was decided
+  to deviate from the earlier practice and have the source files for the manual set up
+  in such a way to optimize the resulting output when processed through Doxygen.
