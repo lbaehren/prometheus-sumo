@@ -4,7 +4,7 @@ if (DOXYGEN_EXECUTABLE)
   ##__________________________________________________________  
   ## Generate configuration file for Doxygen
   
-  set (MANUAL_PROJECT_NAME   "prometheus Developer's Manual")
+  set (MANUAL_PROJECT_NAME   "prometheus Reference Manual")
   set (MANUAL_INPUT          "${CMAKE_CURRENT_SOURCE_DIR}"  )
   set (MANUAL_GENERATE_LATEX "YES"                          )
 

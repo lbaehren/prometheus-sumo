@@ -1,6 +1,8 @@
 /*!
 
-  \mainpage prometheus Developers Manual
+  \mainpage prometheus Reference Manual
+
+  \tableofcontents
 
   \section manual_intro Introduction
 
@@ -9,7 +11,8 @@
   convenient search for images on a common user interface within different image 
   archives, variable databases from institutes, research facilities and museums.
 
-  For further reading visit the following online resources:
+  \section refman_online_resources Online resources
+
   <ul>
     <li>[prometheus-bildarchiv.de](http://www.prometheus-bildarchiv.de)
     <li>[Pandora Homepage](http://prometheus.uni-koeln.de/pandora)
@@ -22,10 +25,24 @@
     <li>[Twitter](http://twitter.com/prometheus_eV)
     <li>[Vimeo](http://vimeo.com/prometheusbildarchiv)
   </ul>
-
-  \section manual_toc Table of contents 
-
-  - \subpage manual_image_archive
-  - \subpage manual_pandora
  
+  \section refman_contents Organization of the contents
+
+  The reminder of this document is organized as follows:
+
+  <ul>
+
+    <li>Chapter 2 (\subpage manual_image_archive) provides a general introduction to
+    the prometheus digital image archive; this includes an overview of the main
+    features and the history of the project.
+
+    <li>Chapter 3 (\subpage refman_software) presents a brief rundown of the various
+    software packages, which have been developed as part of the project, as well as
+    a list of the most important open sources packages utilized.
+
+    <li>Chapter 4 (\subpage manual_pandora) focusses on the software package acting
+    as the driving force behind the prometheus image archive.
+
+  </ul>
+
 */
