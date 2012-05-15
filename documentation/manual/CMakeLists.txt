@@ -1,5 +1,10 @@
 
 if (DOXYGEN_EXECUTABLE)
+
+  find_PATH (DOXYGEN_EXAMPLE_PATH monster.yaml
+    PATHS ${PROJECT_SOURCE_DIR}
+    PATH_SUFFIXES documentation documentation/examples
+    )
   
   ##__________________________________________________________  
   ## Generate configuration file for Doxygen
