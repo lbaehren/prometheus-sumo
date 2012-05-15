@@ -49,16 +49,41 @@ if (GEM_EXECUTABLE)
       yard
       )
 
-    add_custom_command (
-      TARGET InstallGems
-      POST_BUILD
-      COMMAND ${GEM_EXECUTABLE} install ${varPackage}
+    ##______________________________________________________
+    ## In order to unnecessary installation processes, we
+    ## first check if the Gem is installed already; if this
+    ## this is the case, we skip over the package, otherwise
+    ## it is added to the list available through the
+    ## 'InstallGems' target.
+
+    message (STATUS "Checking whether Ruby Gem ${varPackage} is installed")
+
+    execute_process (
+      COMMAND ${GEM_EXECUTABLE} list ${varPackage}
       WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-      COMMENT "Installing Ruby Gem ${varPackage} ..."
+      RESULT_VARIABLE GEM_RESULT_VARIABLE
+      OUTPUT_VARIABLE GEM_OUTPUT_VARIABLE
+      ERROR_VARIABLE GEM_ERROR_VARIABLE
+      OUTPUT_STRIP_TRAILING_WHITESPACE
       )
+
+    if (GEM_OUTPUT_VARIABLE)
+      message (STATUS "Checking whether Ruby Gem ${varPackage} is installed - true")
+    else (GEM_OUTPUT_VARIABLE)
+      ## Feedback
+      message (STATUS "Checking whether Ruby Gem ${varPackage} is installed - false")
+      ## Installation instructions
+      add_custom_command (
+	TARGET InstallGems
+	POST_BUILD
+	COMMAND ${GEM_EXECUTABLE} install ${varPackage}
+	WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+	COMMENT "Installing Ruby Gem ${varPackage} ..."
+	)
+    endif (GEM_OUTPUT_VARIABLE)
     
   endforeach (varPackage)
-
+  
   ##________________________________________________________
   ## Gems for which a specific version is required
   ## (see 'pandora/config/environment.rb')
