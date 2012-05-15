@@ -4,8 +4,9 @@ if (DOXYGEN_EXECUTABLE)
   ##__________________________________________________________  
   ## Generate configuration file for Doxygen
   
-  set (MANUAL_PROJECT_NAME "prometheus Developer's Manual")
-  set (MANUAL_INPUT        "${CMAKE_CURRENT_SOURCE_DIR}"  )
+  set (MANUAL_PROJECT_NAME   "prometheus Developer's Manual")
+  set (MANUAL_INPUT          "${CMAKE_CURRENT_SOURCE_DIR}"  )
+  set (MANUAL_GENERATE_LATEX "YES"                          )
 
   configure_file (
     ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in
@@ -19,6 +20,14 @@ if (DOXYGEN_EXECUTABLE)
     COMMAND ${DOXYGEN_EXECUTABLE} Doxyfile
     DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    )
+
+  add_custom_command (
+    TARGET Manual
+    POST_BUILD
+    COMMAND make
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/latex
+    COMMENT "Generating PDF version of manual ..."
     )
   
   set_property (DIRECTORY
