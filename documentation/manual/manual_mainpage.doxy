@@ -4,9 +4,28 @@
 
   \section manual_intro Introduction
 
+  prometheus ([www.prometheus-bildarchiv.de](http://www.prometheus-bildarchiv.de))
+  is a digital image archive for Art and Cultural Sciences. prometheus enables the
+  convenient search for images on a common user interface within different image 
+  archives, variable databases from institutes, research facilities and museums.
+
+  For further reading visit the following online resources:
+  <ul>
+    <li>[prometheus-bildarchiv.de](http://www.prometheus-bildarchiv.de)
+    <li>[Pandora Homepage](http://prometheus.uni-koeln.de/pandora)
+    <li>[Redmine issue tracker](http://prometheus-srv.uni-koeln.de/redmine)
+
+    <li>[Facebook](http://facebook.com/prometheus.bildarchiv)
+    <li>[Flickr](http://www.flickr.com/photos/prometheus_ev)
+    <li>[Google+](https://plus.google.com/u/0/103268334729481987839)
+    <li>[Github](https://github.com/prometheus-ev)
+    <li>[Twitter](http://twitter.com/prometheus_eV)
+    <li>[Vimeo](http://vimeo.com/prometheusbildarchiv)
+  </ul>
+
   \section manual_toc Table of contents 
 
-  - \subpage manual_prom
+  - \subpage manual_image_archive
   - \subpage manual_pandora
  
 */

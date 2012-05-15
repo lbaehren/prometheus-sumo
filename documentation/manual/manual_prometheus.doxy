@@ -1,30 +1,6 @@
 /*!
 
-  \page manual_prom prometheus – The Distributed Digital Image Archive for Research and Studies
-
-  \section manual_prom_intro Introduction
-
-  prometheus ([www.prometheus-bildarchiv.de](http://www.prometheus-bildarchiv.de))
-  is a digital image archive for Art and Cultural Sciences. prometheus enables the
-  convenient search for images on a common user interface within different image 
-  archives, variable databases from institutes, research facilities and museums.
-
-  \section manual_prom_websites Websites
-
-  - [prometheus-bildarchiv.de](http://www.prometheus-bildarchiv.de)
-  - [Pandora Homepage](http://prometheus.uni-koeln.de/pandora)
-  - [Redmine issue tracker](http://prometheus-srv.uni-koeln.de/redmine)
-
-  Social networking sites:
-
-  - [Facebook](http://facebook.com/prometheus.bildarchiv)
-  - [Flickr](http://www.flickr.com/photos/prometheus_ev)
-  - [Google+](https://plus.google.com/u/0/103268334729481987839)
-  - [Github](https://github.com/prometheus-ev)
-  - [Twitter](http://twitter.com/prometheus_eV)
-  - [Vimeo](http://vimeo.com/prometheusbildarchiv)
-
-  \section manual_prom_archive The image archive
+  \page manual_image_archive The image archive
 
   prometheus is a digital image archive for Art and Cultural Sciences. prometheus
   enables the  convenient search for images on a common user interface within

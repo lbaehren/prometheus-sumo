@@ -21,8 +21,8 @@ set (${CMAKE_PROJECT_NAME}_VERSION "${${CMAKE_PROJECT_NAME}_VERSION_MAJOR}.${${C
 
 ## Commonly used variables
 
-set (REQUIRED_VERSION_RUBY  1.8                            )
-set (NOF_SKIPPED_TESTS      0                              )
+set (REQUIRED_VERSION_RUBY  1.8  )
+set (NOF_SKIPPED_TESTS      0    )
 
 ## ==============================================================================
 ##
