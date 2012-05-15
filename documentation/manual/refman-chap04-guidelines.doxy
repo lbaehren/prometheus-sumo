@@ -1,0 +1,55 @@
+/*!
+
+  \page refman_guidelines Coding guidelines
+
+  \tableofcontents
+
+  \section refman_guidelines_general General
+
+  \li always indent by 2 spaces, except where not (see below); needless to say: don't ever use tabs!
+  \li always align beginning and end of a block
+  \li try hard to keep line length below 80 characters (see below for details)
+  \li coding (and commenting) language is english; i.e., variable, method, class, and module names, as well as CSS class names and IDs, are meaningful english words (or sensible abbreviations thereof)
+  \li use full-line comments to explain the algorithm; use end-of-line comments to point out subtleties and oddities
+  \li comment anything that has puzzled or tricked you
+  \li consider whether it's better to rewrite than to comment
+  \li check the spelling, syntax, and sanity - and consistency! - of your documentation
+  \li use RDoc simple markup in comments if appropriate
+  \code
+  _italic_
+  *bold*
+  +typewriter+
+  \endcode
+  \li use tags (common: \c NOTE, \C TODO, \c FIXME, ...; rails specific: EdgeRails, Rails2.0, ...) 
+  \code
+  # NOTE: some note...
+  
+  # in {EdgeRails} we have...
+  \endcode
+  in HTML text:
+  \code
+  <p>[TODO] project description...</p>
+  \endcode
+  \li always use \c \\A and \c \\z, not \c ^ and \c $, as string boundary anchors; use \c \\z, not \c \\Z, to indicate "end of string"
+  \li consider matching arbitrary whitespace (\s), rather than specific whitespace characters
+  \li use capturing parentheses only when you intend to capture; always give captured substrings proper names
+  \li prevent useless backtracking!
+  \li raise/throw exceptions instead of returning special values or setting flags
+  \li place original code inline, place duplicated code in a subroutine, place duplicated subroutines in a module
+  \li don't optimize code - benchmark it; don't optimize data structures - measure them; don't optimize applications - profile them
+  \li be careful to preserve semantics when refactoring syntax
+  \li don't be clever; if you must rely on cleverness, encapsulate it
+  \li be consistent!
+
+  \section refman_guidelines_ruby Ruby & Rails
+
+
+  \section refman_guidelines_html HTML
+
+
+  \section refman_guidelines_javascript Javascript
+
+
+  \section refman_guidelines_css CSS
+
+*/

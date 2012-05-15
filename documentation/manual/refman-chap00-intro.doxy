@@ -43,6 +43,8 @@
     <li>Chapter 4 (\subpage manual_pandora) focusses on the software package acting
     as the driving force behind the prometheus image archive.
 
+    <li>\subpage refman_guidelines
+
   </ul>
 
 */
