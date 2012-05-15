@@ -56,11 +56,14 @@
 
   \section refman_software_external External 3rd-party packages
 
-  \li Git
-  \li Subversion
+  \li [Git](http://www.git-scm.com)
+  \li [Subversion](http://subversion.apache.org)
   \li Ruby
   \li Ruby on Rails
   \li \ref refman_capistrano
   \li \ref refman_ferret
+  \li \ref refman_mysql
+  \li \ref refman_redmine
+  \li \ref refman_yaml
 
 */
