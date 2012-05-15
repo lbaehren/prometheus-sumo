@@ -25,5 +25,9 @@ if (DOXYGEN_EXECUTABLE)
     APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES
     ${CMAKE_CURRENT_BINARY_DIR}/html
     )
+
+  ## Target dependency
+
+  add_dependencies(doc Manual)
   
 endif (DOXYGEN_EXECUTABLE)
