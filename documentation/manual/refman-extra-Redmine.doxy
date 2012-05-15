@@ -1,0 +1,158 @@
+/*!
+
+  \page refman_redmine Redmine
+
+  \tableofcontents
+
+  \section refman_redmine_overview Overview
+
+  \b Redmine is a free and open source, web-based project management and
+  bug-tracking tool. It includes a calendar and Gantt charts to aid visual
+  representation of projects and their deadlines. It handles multiple projects.
+  Redmine provides integrated project management features, issue tracking, and
+  for multiple version control options.
+
+  The design of Redmine is significantly influenced by Trac, a software package
+  with some similar features.
+
+  Redmine is written using the Ruby on Rails framework. It is cross-platform and
+  cross-database. It is part of the Bitnami app library that provides an
+  installer and virtual machine for ease of deployment.
+
+  Redmine is open source and released under the terms of the GNU General Public
+  License v2 (GPL).
+
+  \section refman_redmine_install Installation
+
+  \subsection refman_redmine_install_requirements Requirements
+
+  \subsubsection refman_redmine_install_requirements_os Operating system
+
+  Redmine should run on most Unix, Linux, [Mac](http://www.redmine.org/projects/redmine/wiki/RedmineInstallOSX), Mac Server and Windows systems as long as Ruby is available on this platform. See specific installation HowTos [here](http://www.redmine.org/projects/redmine/wiki/HowTos).
+
+  \subsubsection refman_redmine_install_requirements_db Database
+
+* \ref refman_mysql 5.0 or higher (recommended)
+  * make sure to install the C bindings for Ruby that dramatically improve performance. You can get them by running gem install mysql2. If you have problem installing the mysql gem refer Rails Wiki pages
+
+* \ref refman_postgresql 8 or higher
+  * make sure your database datestyle is set to ISO (Postgresql default setting). You can set it using: ``ALTER DATABASE "redmine_db" SET datestyle="ISO,MDY";``
+  * some bugs in PostgreSQL 8.4.0 and 8.4.1 affect Redmine behavior (#4259, #4314), they are fixed in PostgreSQL 8.4.2
+
+* SQLite 3
+
+  \subsubsection refman_redmine_install_requirements_version Redmine Version
+
+It is recommended that the majority of users install the proper point releases of
+redmine. Redmine currently releases a new version every 6 months, and these
+releases are considered very usable and stable. It is not recommended to install
+redmine from trunk, unless you are deeply familiar with {file:Rails Ruby on Rails}
+and keep up with the changes - Trunk does break from time-to-time.
+
+  \subsection refman_redmine_install_osx  ... on Mac OS X
+
+  \subsection refman_redmine_install_debian ... on Debian GNU/Linux
+
+  A redmine debian package is available in _squeeze_, _sid_ and _lenny-backports_, featuring:
+
+  \li automatic database configuration,
+  \li multiple instances support.
+  \li The core package is redmine.
+  \li Three packages (``redmine-*``) provide correct dependencies for mysql, pgsql, sqlite.
+  \li Several configurations are given as working examples in : ``/usr/share/doc/redmine/examples``
+  \li Explanations of how the configuration is dealt with are given in : ``/usr/share/doc/redmine/README.Debian.gz``
+
+There is no per-instance support for plugins, but those dropped to : ``/usr/share/redmine/vendor/plugins`` should be ok. The ``migrate_plugins`` task is called upon each (re)configuration or upgrade. Since custom plugins are often bound to a specific redmine version, it is advised to remove them before upgrades.
+
+  \subsubsection refman_redmine_install_debian_packages Required packages
+
+  Install the necessary packages:
+
+  \verbatim
+  apt-get install libapache2-mod-passenger
+  apt-get install mysql-server
+  apt-get install redmine-mysql
+  apt-get install redmine
+  \endverbatim
+
+  \subsubsection refman_redmine_install_debian_files Organization of files and directories
+
+  After installation, files and directories are distributed as follows:
+
+  \verbatim
+  /etc
+  |-- redmine/                   ...  Configuration files (redmine/config)
+  |   `-- default
+  |       |-- database.yml
+  |       `-- session.yml
+  |-- usr
+  |   `--share
+  |      |-- doc
+  |      |   `-- redmine
+  |      |       `-- examples    ...  Example configuration files
+  |      `-- redmine             ...  Root directory of the application
+  `-- var
+      |-- cache
+      |   `-- redmine
+      |-- lib
+      |   `-- redmine
+      |-- log
+      |   `-- redmine
+      |-- run
+      |   `-- redmine
+      `-- redmine
+  \endverbatim
+
+  \section refman_redmine_github HowTo keep Redmine in sync with GitHub
+
+  According to the various articles and help pages available online, there do
+  exist two main routes for integrating a Git repository as part of a project
+  tarcked through Redmine:
+
+  <ol>
+    <li>Create a \b local and \b bare Git repository and update its contents
+    via a cronjob.
+    <li>Create a \b local and \b bare Git repository and update its contents
+    by placing a \c post-commit hook into the project's repository.
+  </ol>
+
+  While the first of the two methods is rather straight forward, getting the
+  latter to work properly turns out to be a bit more work:
+
+  <ol>
+    <li>Install the [GitHub Hook plugin](http://www.redmine.org/plugins/redmine_github_hook),
+    it works with Redmine 1.2.1 too
+
+    <li>In Redmine, go to Administration/Settings and click on the Repository tab
+
+    \li Enable Git as SCM.
+    \li Select "auto-fetch commits"
+    \li Click on "Enable WS for repository management", generate an API key and copy it, we'll need it in a few minutes.
+    \li Click "Save".
+
+   <li>Now, you have to create a local repository on the machine Redmine is installed
+
+     \li Use specifically the command git clone --mirror [repo_url].
+     \li Pay attention to the fact that Redmine needs read permissions on this folder.
+     \li Then go into your projects settings, in the "repository tab". Select "Git" as SCM, and fill the absolute path to the local repository you created just above.
+
+  <li>Finally go to GitHub
+
+    \li Select your repository and click on "Admin".
+    \li Click on the "Service Hooks" tab and select Redmine in the list.
+    \li Scroll up to fill needed information, don't forget the API Key we generated earlier. For instance, if your project url is http://redmine.mydomain.com/projects/my_project:
+    \verbatim
+    Adress = http://redmine.mydomain.com
+    Project = my_project
+    API Key = the API key we got from Redmine
+    \endverbatim
+    \li Click "Update Settings" and you are done!
+  </ol>
+
+  \section refman_redmine_references References
+
+  \li [redmine.org](http://www.redmine.org) - Project homepage
+  \li [Installing Redmine](http://www.redmine.org/projects/redmine/wiki/RedmineInstall)
+  \li [Redmine Github Hook plugin](https://github.com/koppen/redmine_github_hook)
+
+*/
