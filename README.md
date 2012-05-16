@@ -48,7 +48,7 @@ can be found:
 ### Getting the source code
 
 The source for _prometheus-sumo_ is hosted on Github at;
-{https://github.com/lbaehren/prometheus-sumo go there} to read about the various
+[go there](https://github.com/lbaehren/prometheus-sumo) to read about the various
 options to retrieve a working copy of the code. In the simplest case, were you
 need a read-only copy, simply run
 
