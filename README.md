@@ -1,8 +1,7 @@
+# prometheus-sumo
 
-= prometheus-sumo
 
-
-== Introduction
+## Introduction
 
 "prometheus-sumo" is a simple (almost) virtual package, to ease the retrieval of
 the various components in the software stack for "prometheus – The Distributed
@@ -14,7 +13,7 @@ common user interface within different image archives, variable databases from
 institutes, research facilities and museums.
 
 
-== External dependencies
+## External dependencies
 
 External dependencies are kept to a minimum for this package:
 
@@ -25,27 +24,26 @@ Further dependencies, as required when developing the prometheus software
 packages, are handled as part of this tool.
 
 
-== Organization of the source code
+## Organization of the source code
 
 Once cloning into a working copy has completed, the following directory structure
 can be found:
 
-  .
-  |-- CMakeLists.txt          ...  Top-level CMake script for the project
-  |-- README                  ...  This README file
-  |-- config
-  |   |-- cmake               ...  Collection of CMake scripts and modules
-  |   `-- rake                ...  Collection of Rake scripts and modules
-  |-- doc                     ...  Documentation sources (other than source)
-  |-- environment             ...  Environment preparation scripts
-  |   `-- CMakeLists.txt
-  |-- repositories            ...  Working copies of related projects
-  `-- sources                 ...  Source files
+   .
+    |-- CMakeLists.txt          ...  Top-level CMake script for the project
+    |-- README                  ...  This README file
+    |-- config
+    |   |-- cmake               ...  Collection of CMake scripts and modules
+    |   `-- rake                ...  Collection of Rake scripts and modules
+    |-- doc                     ...  Documentation sources (other than source)
+    |-- environment             ...  Environment preparation scripts
+    |   `-- CMakeLists.txt
+    |-- repositories            ...  Working copies of related projects
+    `-- sources                 ...  Source files
 
+## Configuration and build
 
-== Configuration and build
-
-=== Getting the source code
+### Getting the source code
 
 The source for _prometheus-sumo_ is hosted on Github at;
 {https://github.com/lbaehren/prometheus-sumo go there} to read about the various
