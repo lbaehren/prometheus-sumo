@@ -115,7 +115,7 @@ There is no per-instance support for plugins, but those dropped to : ``/usr/shar
 
   Redmine provides the following code modules:
 
-  \li <em>Issue tracking</em>: provides Issue tracking feature, including issue categories, versions, the Roadmap and version overviews
+  \li <em>Issue tracking</em>: provides [Issue tracking](http://www.redmine.org/projects/redmine/wiki/RedmineIssues) feature, including issue categories, versions, the [Roadmap](http://www.redmine.org/projects/redmine/wiki/RedmineRoadmap) and version overviews
   \li <em>Time tracking</em>: provides Time tracking feature
   \li \em News: provides News feature
   \li \em Documents: provides Documents feature
