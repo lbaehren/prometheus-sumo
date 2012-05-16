@@ -42,28 +42,29 @@ if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
       libmagickwand-dev
       )
     
-    ## Check if the package is installed already ___________
+    ## Installation instructions for the package; check
+    ## first, if the package is installed already __________
+
     execute_process (
-      COMMAND ${DPKG_EXECUTABLE} --get-selections
-      COMMAND grep ${varPackage}
+      COMMAND ${DPKG_EXECUTABLE} --get-selections ${varPackage}
       WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
       RESULT_VARIABLE DPKG_RESULT_VARIABLE
       OUTPUT_VARIABLE DPKG_OUTPUT_VARIABLE
       ERROR_VARIABLE DPKG_ERROR_VARIABLE
       )
     
-    ## Installation instructions for the package ___________
-
-    add_custom_command (
-      TARGET InstallPackages
-      POST_BUILD
-      COMMAND ${APT_EXECUTABLE} install ${varPackage}
-      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-      COMMENT "Installing Debian package ${varPackage} ..."
-      )
-
+    if (NOT DPKG_OUTPUT_VARIABLE)
+      add_custom_command (
+	TARGET InstallPackages
+	POST_BUILD
+	COMMAND ${APT_EXECUTABLE} install ${varPackage}
+	WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+	COMMENT "Installing Debian package ${varPackage} ..."
+	)
+    endif (NOT DPKG_OUTPUT_VARIABLE)
+    
   endforeach (varPackage)
-
+  
   ## Update the Ruby Gems
   
   add_custom_command (
