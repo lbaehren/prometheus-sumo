@@ -244,6 +244,62 @@
 
   \section refman_pandora_release Deploying a new release version
 
+  Deploying a new production version of _pandora_ (The prometheus digital image
+  archive software) requires the completion of a number of steps, some of them 
+  locally through a working copy of the source code, others on the server hosting
+  the live versions of the archive software. The steps include
+
+  \li Marking the release version
+  \li Creating a tag for the release
+  \li Creating a new release on the stable branch
+  \li Deploying the stable version on the test system
+  \li Deploying the stable version on the production system
+
+  \subsection pandora_release_commit Commit changes into the trunk
+
+  The very first step before starting the actual deploy procedure
+
+  \code
+  $ rake spec
+  \endcode
+
+  Commit all the changes to be included into the trunk of the Subversion repository:
+
+  \code
+  $ svn commit -m "<commit message>"
+  \endcode
+
+  Review changes since last deploy; in order to get the version number used for the
+  last deploy, go to the [About pandora](http://prometheus.uni-koeln.de/pandora/about)
+  page on the prometheus website.
+
+  \code
+  $ svn log -r 3679:HEAD
+  \endcode
+
+  \subsection pandora_release_version Increment version number
+
+  The version number is encoded in the following files, where it must be adjusted
+  manually:
+
+  \li \c lib/pandora/version.rb
+  \li \c README
+
+  Push the previous changes upstream:
+
+  \code
+  $ svn commit -m "lib/pandora/version.rb: v0.6.5 -- Added news-box to sidebar."
+  \endcode
+
+  Comitting the changes to the server will be acknowledged:
+
+  \code
+  Sending        trunk/README
+  Sending        trunk/lib/pandora/version.rb
+  Transmitting file data ..
+  Committed revision 3705.
+  \endcode
+
   \subsection refman_pandora_release_tagging Tagging the release version
 
   Once the version number has been adjusted, it is time to create a new tagged
@@ -266,5 +322,57 @@
   \verbatim
   git svn branch -t -m "Tagging the pandora 0.6.5 release" 0.6.5
   \endverbatim
+
+  \subsection pandora_release_stable Create stable branch
+
+  In order to propagate the same set of changes, as previously tagged with the new
+  version, to a stable branch, we need to merge the changes submitted to the
+  ``trunk``; for this change into the directory of the targetted release version
+
+  \code
+  cd pandora/branches/0.6-stable
+  \endcode
+
+  and instruct Subversion to perform the merge:
+
+  \code
+  $ svn merge ^/trunk
+  \endcode
+
+  Which versions exactly have been included in the merge, can be retrieved through
+
+  \code
+  $ svn diff --depth=empty
+  \endcode
+
+  The output from that will look something like:
+
+  \verbatim
+  Property changes on: .
+  ___________________________________________________________________
+  Modified: svn:mergeinfo
+     Merged /trunk:r3677-3706
+  \endverbatim
+
+  With the above information we now have everything available to commit the new stable
+  version:
+
+  \code
+  $ svn commit -m "Merged r3677-3706 from trunk. (v0.6.5)"
+  \endcode
+
+  The commit itself will once more display the list of files which are being pushed
+  onto the server:
+
+  \verbatim
+  Sending        0.6-stable
+  Sending        0.6-stable/README
+  ...
+  Adding         0.6-stable/public/images/sidebar
+  Adding  (bin)  0.6-stable/public/images/sidebar/box_close.gif
+  Transmitting file data ...............................................
+  Committed revision 3707.
+  \endverbatim
+
 
 */
