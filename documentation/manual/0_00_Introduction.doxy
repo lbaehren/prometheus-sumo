@@ -40,7 +40,7 @@
     software packages, which have been developed as part of the project, as well as
     a list of the most important open sources packages utilized.
 
-    <li>The chapter \ref infrastructure provides an overview of the various server
+    <li>The chapter \subpage infrastructure provides an overview of the various server
     machines, domains and repositories, which utilized by the prometheus project.
 
     <li>The chapter \subpage manual_pandora focusses on the software package acting
