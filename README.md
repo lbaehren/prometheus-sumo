@@ -17,8 +17,10 @@ institutes, research facilities and museums.
 
 External dependencies are kept to a minimum for this package:
 
-* Git   (>= 1.7) <http://git-scm.com>
-* CMake (>= 2.8) <http://www.cmake.org>
+| Package | Version | Website              |
+|---------|---------|----------------------|
+| Git     | >= 1.7  | http://git-scm.com   |
+| CMake   | >= 2.8  | http://www.cmake.org |
 
 Further dependencies, as required when developing the prometheus software
 packages, are handled as part of this tool.
@@ -54,7 +56,7 @@ need a read-only copy, simply run
 
 in order to to clone into a local working copy.
 
-=== Build directory
+### Build directory
 
 The _prometheus-sumo_ uses the {http://www.cmake.org CMake} Cross-Platform
 Makefile Generator for configuration and control of the build.
@@ -69,13 +71,13 @@ a separate *build* directory from within to continue:
     cd build
     cmake ..
 
-=== Configuration options
+### Configuration options
 
 The behaviour and processing can - to a certain degree - be controlled when
 running _CMake_ to configure the project; the list below
 shows the available options which can be passed along through the
 
-  -D<Option>=<Value>
+    -D<Option>=<Value>
 
 syntax from the command line. At the moment the following options are available
 (default values in parenthesis):
@@ -85,7 +87,7 @@ syntax from the command line. At the moment the following options are available
     GIT_REPOSITORIES_RW   "Check out Github repositories for r/w access?" [ NO  ]
     PANDORA_GENERATE_DOCS "Enable documentation of pandora source code?"  [ YES ]
 
-== Further reading
+## Further reading
 
 * prometheus website <http://www.prometheus-bildarchiv.de>
 * pandora website <http://prometheus.uni-koeln.de/pandora>
