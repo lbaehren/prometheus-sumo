@@ -114,9 +114,46 @@
 
   The sections below explain in further detail what needs do be done at each of the
   steps along the way. If you are more interesting in learning about
-  {file:Testing Testing}, please visit the separate page on that topic.
+  \ref refman_pandora_testing, please skip to the section below.
 
-  
+
+  \section refman_pandora_install_production Installation of a production system
+
+  \verbatim
+  /var/local/prometheus
+  |-- app/pandora
+  |   |-- current -> ../releases/20120416143435        ...  Pointer to the current version
+  |   |-- data
+  |   |   `-- change_pids
+  |   |-- log                                          ...  Releases
+  |   |-- releases
+  |   |   |-- 20120323220813
+  |   |   `-- 20120416143435
+  |   |-- shared
+  |   |   |-- codes
+  |   |   |-- config
+  |   |   |-- doc
+  |   |   |-- index                                    ... Search index
+  |   |   |   `-- production
+  |   |   |       |-- 0_11_8
+  |   |   |       |   |-- image
+  |   |   |       |   |   |-- 1334932732
+  |   |   |       |   |   |-- 1336407501
+  |   |   |       |   |   `-- 1336491043
+  |   |   |       |   `-- resource
+  |   |   |       |       |-- 1327917072
+  |   |   |       |       |-- 1330708669
+  |   |   |       |       `-- 1331304781
+  |   |   |       `-- 0_11_8_1 -> 0_11_8
+  |   |   |-- log -> /var/log/prometheus
+  |   |   |-- pids
+  |   |   `-- system
+  |   `-- stats
+  `-- data
+        |-- images
+        `-- pandora -> ../app/pandora/data
+  \endverbatim
+
   \section refman_pandora_testing Testing
 
   \subsection refman_pandora_testing_specification Test specifications
