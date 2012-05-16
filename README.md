@@ -31,7 +31,7 @@ packages, are handled as part of this tool.
 Once cloning into a working copy has completed, the following directory structure
 can be found:
 
-   .
+    .
     |-- CMakeLists.txt          ...  Top-level CMake script for the project
     |-- README                  ...  This README file
     |-- config
