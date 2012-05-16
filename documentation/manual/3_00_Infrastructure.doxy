@@ -30,6 +30,30 @@
 
   \section infrastructure_repositories Repositories
 
+  | Package  | Description |
+  |----------|-------------|
+  | apache_image_resizer | Apache module providing image resizing functionality |
+  | apache_secure_download | Apache module providing secure downloading functionality |
+  | apache_upload_merger | Apache module providing upload merging functionality |
+  | athena | Convert database files to various formats |
+  | cmess | Assist with handling messed up encodings |
+  | flattendb | Flatten relational databases |
+  | jekyll-localization | Jekyll plugin that adds localization features to the rendering engine |
+  | jekyll-paginatio | Jekyll plugin to extend the pagination generator |
+  | jekyll-rendering | Jekyll plugin to provide alternative rendering engines |
+  | jekyll-tagging | Jekyll plugin to automatically generate a tag cloud and tag pages |
+  | JekyllCommander | A Sinatra based web interface, to maintain a Jekyll website, including git version control. |
+  | libxml-ext | LibXML Ruby extensions |
+  | log2counter | Convert (analyse) Apache log files to COUNTER CSV |
+  | pandora | The prometheus digital image archive software |
+  | perseus_match | Fuzzy string matching based on linguistic analysis |
+  | promdilps | Fork of the DILPS code base that drives the prometheus promDILPS service |
+  | promhp | The Jekyll source for this website |
+  | promwiki | Fork of the PmWiki code base that drives the prometheus wiki |
+  | ruby-backports | Backports of newer Ruby features to older versions |
+  | ruby-filemagic | Ruby bindings to the magic(4) library, revised |
+  | ruby-nuggets | Some extensions to the Ruby programming language |
+  | wadl | Ruby client for the Web Application Description Language |
 
 */
 

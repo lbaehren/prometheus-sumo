@@ -115,16 +115,19 @@ There is no per-instance support for plugins, but those dropped to : ``/usr/shar
 
   Redmine provides the following code modules:
 
-  \li <em>Issue tracking</em>: provides [Issue tracking](http://www.redmine.org/projects/redmine/wiki/RedmineIssues) feature, including issue categories, versions, the [Roadmap](http://www.redmine.org/projects/redmine/wiki/RedmineRoadmap) and version overviews
-  \li <em>Time tracking</em>: provides Time tracking feature
-  \li \em News: provides News feature
-  \li \em Documents: provides Documents feature
-  \li \em Files: provides Files feature
-  \li \em Wiki: provides Wiki feature
-  \li \em Repository: provides Repository feature
-  \li \em Boards: provides Forum feature
-  \li \em Calendar: provides Calendar feature
-  \li \em Gantt: provides Gantt feature
+
+  | Module | Description            |
+  |--------|------------------------|
+  | Issue tracking | provides [Issue tracking](http://www.redmine.org/projects/redmine/wiki/RedmineIssues) feature, including issue categories, versions, the [Roadmap](http://www.redmine.org/projects/redmine/wiki/RedmineRoadmap) and version overviews |
+  | Time tracking | provides Time tracking feature |
+  | News | provides News feature |
+  | Documents | provides Documents feature |
+  | Files | provides Files feature |
+  | Wiki | provides Wiki feature |
+  | Repository | provides Repository feature |
+  | Boards | provides Forum feature |
+  | Calendar | provides Calendar feature |
+  | Gantt  | provides Gantt feature |
 
   Additional modules can be added to the system using Redmine plugins.
   \ref redmine_plugins can only be installed by the administrator.
