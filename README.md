@@ -58,7 +58,7 @@ in order to to clone into a local working copy.
 
 ### Build directory
 
-The _prometheus-sumo_ uses the {http://www.cmake.org CMake} Cross-Platform
+The _prometheus-sumo_ uses the [CMake](http://www.cmake.org) Cross-Platform
 Makefile Generator for configuration and control of the build.
 
 Once your checkout from the Git repository is complete you will have a directory
