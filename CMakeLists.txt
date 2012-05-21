@@ -95,7 +95,6 @@ set (CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/config/cmake" CACHE PATH
 
 find_package (Git)
 find_package (Doxygen)
-find_package (LATEX)
 find_package (Ruby)
 
 ##__________________________________________________________

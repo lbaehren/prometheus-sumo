@@ -1,6 +1,9 @@
 
 if (DOXYGEN_EXECUTABLE)
 
+  ##________________________________________________________
+  ## Locate directories containing code examples and images
+
   find_path (DOXYGEN_EXAMPLE_PATH monster.yaml
     PATHS ${PROJECT_SOURCE_DIR}
     PATH_SUFFIXES documentation documentation/examples
@@ -11,19 +14,75 @@ if (DOXYGEN_EXECUTABLE)
     PATHS ${PROJECT_SOURCE_DIR}
     PATH_SUFFIXES documentation documentation/images
     )
+
+  ##__________________________________________________________  
+  ## Test LaTeX installation
+  
+  find_package (LATEX)
+
+  if (LATEX_COMPILER)
+    set (_latexTest ${CMAKE_CURRENT_BINARY_DIR}/TestLATEX.tex)
+    
+    foreach (_latexPackage
+	a4wide
+	eurosym
+	fancyhdr
+	float
+	fncychap
+	graphicx
+	hyperref
+	kvoptions
+	latexsym
+	listings
+	makeidx
+	url
+	)
+      
+      message (STATUS "Checking for LaTeX package ${_latexPackage}")
+      
+      string (TOUPPER ${_latexPackage} _latexPackageVar)
+      
+      ## Generate LaTeX source file
+      file (WRITE  ${_latexTest} "\\documentclass[a4paper,fontsize=10pt]{scrartcl}"\n )
+      file (APPEND ${_latexTest} "\\usepackage{"${_latexPackage}}\n )
+      file (APPEND ${_latexTest} "\\begin{document}"\n )
+      file (APPEND ${_latexTest} "This is a simple test document."\n )
+      file (APPEND ${_latexTest} "\\end{document}"\n )
+      
+      ## Run the test file through LaTeX
+      
+      execute_process(
+	COMMAND ${LATEX_COMPILER} ${_latexTest}
+	TIMEOUT 5
+	WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+	RESULT_VARIABLE _latexTestResult
+	OUTPUT_VARIABLE _latexTestOutput
+	ERROR_VARIABLE _latexTestError
+	)
+      
+      if (_latexTestResult)
+	set (LATEX_${_latexPackageVar}_PACKAGE FALSE)
+	message (STATUS "Checking for LaTeX package ${_latexPackage} - FAIL")
+      else (_latexTestResult)
+	set (LATEX_${_latexPackageVar}_PACKAGE TRUE)
+	message (STATUS "Checking for LaTeX package ${_latexPackage} - Success")
+      endif (_latexTestResult)
+      
+    endforeach (_latexPackage)
+  endif (LATEX_COMPILER)
   
   ##__________________________________________________________  
   ## Generate configuration file for Doxygen
   
   set (MANUAL_PROJECT_NAME   "prometheus Reference Manual")
   set (MANUAL_INPUT          "${CMAKE_CURRENT_SOURCE_DIR}"  )
-  
-  if (LATEX_COMPILER)
+
+  if (LATEX_COMPILER AND LATEX_FLOAT_PACKAGE)
     set (MANUAL_GENERATE_LATEX "YES" )
-  else (LATEX_COMPILER)
+  else ()
     set (MANUAL_GENERATE_LATEX "NO" )
-  endif (LATEX_COMPILER)
-  
+  endif ()
+    
   configure_file (
     ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in
     ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
