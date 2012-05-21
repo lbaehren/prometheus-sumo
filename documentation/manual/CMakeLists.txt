@@ -26,7 +26,7 @@ if (DOXYGEN_EXECUTABLE)
     set (_latexTest ${CMAKE_CURRENT_BINARY_DIR}/TestLATEX.tex)
     
     foreach (_latexPackage
-      color
+#      color
       float
       listings
       )
@@ -74,7 +74,13 @@ if (DOXYGEN_EXECUTABLE)
   else ()
     set (MANUAL_GENERATE_LATEX "NO" )
   endif ()
-    
+
+  if (PDFLATEX_COMPILER)
+    set (DOXYGEN_USE_PDFLATEX "YES" )
+  else (PDFLATEX_COMPILER)
+    set (DOXYGEN_USE_PDFLATEX "YES" )
+  endif (PDFLATEX_COMPILER)
+
   configure_file (
     ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in
     ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile

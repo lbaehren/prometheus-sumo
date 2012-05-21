@@ -1,0 +1,85 @@
+/*!
+  \page homepage Homepage
+
+  \tableofcontents
+
+  \section homepage_code Getting the source code
+  
+  The source code for the homepage is hosted on Github; depending on the access
+  permission a working copy can be obtained through one of the following
+  methods:
+
+  \li Read/Write access
+  \verbatim
+  git clone git@github.com:prometheus-ev/promhp.git promhp
+  \endverbatim
+  \li Read-only access
+  \verbatim
+  git clone git://github.com/prometheus-ev/promhp.git promhp
+  \endverbatim
+
+  \section homepage_structure Organization of the source code
+
+  After checkout out a working copy from the repository hosted on Github,
+  the following directory structure can be found on disk:
+
+  \verbatim
+  .
+  |-- _config
+  |-- _includes
+  |   `-- series
+  |-- _layouts
+  |-- _lib
+  |-- _plugins
+  |-- _posts
+  |-- about
+  |   |-- association
+  |   |-- jobs
+  |   `-- tagung2011
+  |-- blog
+  |-- databases
+  |-- faq
+  |-- files
+  |   |-- blog
+  |   |-- icons
+  |   |-- images
+  |   |-- media
+  |   |-- modules
+  |   `-- text
+  |-- images
+  |-- inc
+  |-- javascripts
+  |-- license
+  |-- projects
+  |-- prometheus
+  |   |-- newsletter
+  |   `-- publications
+  |-- series                            ...  Image series
+  |-- stylesheets
+  `-- tools
+  \endverbatim
+
+  \li The \c images subdirectory contains (small) images used as part of the
+  page layout and its navigation elements:
+  \verbatim
+  .
+  `-- images/
+      |-- icon
+      |-- misc
+      `-- sidebar
+  \endverbatim
+
+  \li Configuration settings of and postings to the Blog are split across two
+  directories: while rendering settings are stored in \c blog, the actual
+  blog entries are collected in \c _posts.
+  \verbatim
+  .
+  |-- _posts
+  `-- blog
+  \endverbatim
+
+  \li Configuration files for Jekyll - the tool used to build the static HTML
+  pages - can be found in \c _config.
+
+*/
+
