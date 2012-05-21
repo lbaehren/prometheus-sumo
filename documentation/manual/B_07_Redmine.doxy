@@ -205,9 +205,18 @@ There is no per-instance support for plugins, but those dropped to : ``/usr/shar
 
   \section redmine_usage Usage
   
-  \subsection redmine_usage_issues Issues
+  \subsection redmine_usage_issues Issues page
+
+  As long as the module "Issue Tracking" is enabled for a project (which it is
+  by default), the row of tabs will contain an entry \b Issues; clicking on the
+  tab will reveal the page shown below.
 
   \image html "Redmine - Issues overview.png"
+
+  \image html "Redmine - Issues display options.png"
+
+  \subsection redmine_usage_activity Activity overview
+
 
   \section redmine_references References
 
