@@ -53,7 +53,7 @@ if (DOXYGEN_EXECUTABLE)
       
       execute_process(
 	COMMAND ${LATEX_COMPILER} ${_latexTest}
-	TIMEOUT 5
+	TIMEOUT 2
 	WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 	RESULT_VARIABLE _latexTestResult
 	OUTPUT_VARIABLE _latexTestOutput
