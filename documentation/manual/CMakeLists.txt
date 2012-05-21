@@ -24,19 +24,10 @@ if (DOXYGEN_EXECUTABLE)
     set (_latexTest ${CMAKE_CURRENT_BINARY_DIR}/TestLATEX.tex)
     
     foreach (_latexPackage
-	a4wide
-	eurosym
-	fancyhdr
-	float
-	fncychap
-	graphicx
-	hyperref
-	kvoptions
-	latexsym
-	listings
-	makeidx
-	url
-	)
+      color
+      float
+      listings
+      )
       
       message (STATUS "Checking for LaTeX package ${_latexPackage}")
       
