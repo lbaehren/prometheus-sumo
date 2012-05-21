@@ -1,9 +1,15 @@
 
 if (DOXYGEN_EXECUTABLE)
 
-  find_PATH (DOXYGEN_EXAMPLE_PATH monster.yaml
+  find_path (DOXYGEN_EXAMPLE_PATH monster.yaml
     PATHS ${PROJECT_SOURCE_DIR}
     PATH_SUFFIXES documentation documentation/examples
+    )
+
+  find_path (DOXYGEN_IMAGE_PATH
+    NAMES Database_dump.png Redmine_Issues_Overview.png
+    PATHS ${PROJECT_SOURCE_DIR}
+    PATH_SUFFIXES documentation documentation/images
     )
   
   ##__________________________________________________________  
