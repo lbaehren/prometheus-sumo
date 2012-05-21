@@ -78,6 +78,21 @@
   `-- blog
   \endverbatim
 
+  \li Stylesheets for the various representations/renderings of the homepage
+  are collected within the \c styleheets directory:
+  \verbatim
+  .
+  `-- stylesheets/
+      |-- application.css
+      |-- application_ie.css
+      |-- application_ie7.css
+      |-- mobile.css
+      |-- noscript.css
+      |-- print.css
+      |-- screen.css
+      `-- syntax.css
+  \endverbatim
+
   \li Configuration files for Jekyll - the tool used to build the static HTML
   pages - can be found in \c _config.
 
