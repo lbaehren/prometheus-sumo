@@ -7,7 +7,7 @@ if (DOXYGEN_EXECUTABLE)
     )
 
   find_path (DOXYGEN_IMAGE_PATH
-    NAMES "Redmine - Issues overview.png"
+    NAMES "Redmine - Issues overview.png" "Redmine - Issues by project.png"
     PATHS ${PROJECT_SOURCE_DIR}
     PATH_SUFFIXES documentation documentation/images
     )

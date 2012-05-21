@@ -203,6 +203,12 @@ There is no per-instance support for plugins, but those dropped to : ``/usr/shar
     \li Click "Update Settings" and you are done!
   </ol>
 
+  \section redmine_usage Usage
+  
+  \subsection redmine_usage_issues Issues
+
+  \image html "Redmine - Issues overview.png"
+
   \section redmine_references References
 
   \li [redmine.org](http://www.redmine.org) - Project homepage
