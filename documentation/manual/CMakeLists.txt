@@ -21,6 +21,8 @@ if (DOXYGEN_EXECUTABLE)
   find_package (LATEX)
 
   if (LATEX_COMPILER)
+
+    set (DOXYGEN_GENERATE_LATEX TRUE)
     set (_latexTest ${CMAKE_CURRENT_BINARY_DIR}/TestLATEX.tex)
     
     foreach (_latexPackage
@@ -52,10 +54,9 @@ if (DOXYGEN_EXECUTABLE)
 	)
       
       if (_latexTestResult)
-	set (LATEX_${_latexPackageVar}_PACKAGE FALSE)
+        set (DOXYGEN_GENERATE_LATEX FALSE)
 	message (STATUS "Checking for LaTeX package ${_latexPackage} - FAIL")
       else (_latexTestResult)
-	set (LATEX_${_latexPackageVar}_PACKAGE TRUE)
 	message (STATUS "Checking for LaTeX package ${_latexPackage} - Success")
       endif (_latexTestResult)
       
@@ -68,7 +69,7 @@ if (DOXYGEN_EXECUTABLE)
   set (MANUAL_PROJECT_NAME   "prometheus Reference Manual")
   set (MANUAL_INPUT          "${CMAKE_CURRENT_SOURCE_DIR}"  )
 
-  if (LATEX_COMPILER AND LATEX_FLOAT_PACKAGE)
+  if (DOXYGEN_GENERATE_LATEX)
     set (MANUAL_GENERATE_LATEX "YES" )
   else ()
     set (MANUAL_GENERATE_LATEX "NO" )
@@ -88,22 +89,20 @@ if (DOXYGEN_EXECUTABLE)
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     )
 
-  add_custom_command (
-    TARGET Manual
-    POST_BUILD
-    COMMAND make
-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/latex
-    COMMENT "Generating PDF version of manual ..."
-    )
-  
-  ## LaTeX version of manual only can be generated if the LaTeX compiler
-  ## is installed on the system
-  if (LATEX_COMPILER)
-    set_property (DIRECTORY
-      APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES
-      ${CMAKE_CURRENT_BINARY_DIR}/html
+  if (DOXYGEN_GENERATE_LATEX)
+     add_custom_command (
+      TARGET Manual
+      POST_BUILD
+      COMMAND make
+      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/latex
+      COMMENT "Generating PDF version of manual ..."
       )
-  endif (LATEX_COMPILER)
+  endif (DOXYGEN_GENERATE_LATEX)
+
+  set_property (DIRECTORY
+    APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/html
+    )
   
   ## Target dependency
   
