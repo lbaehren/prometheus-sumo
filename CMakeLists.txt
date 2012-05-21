@@ -62,6 +62,7 @@ if (NOT CONFIGURE_VERBOSE)
   set (GEM_FIND_QUIETLY      YES )
   set (GIT_FIND_QUIETLY      YES )
   set (DOXYGEN_FIND_QUIETLY  YES )
+  set (LATEX_FIND_QUIETLY    YES )
   set (MAGIC_FIND_QUIETLY    YES )
   set (MYSQL_FIND_QUIETLY    YES )
   set (RAILS_FIND_QUIETLY    YES )
@@ -94,6 +95,7 @@ set (CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/config/cmake" CACHE PATH
 
 find_package (Git)
 find_package (Doxygen)
+find_package (LATEX)
 find_package (Ruby)
 
 ##__________________________________________________________

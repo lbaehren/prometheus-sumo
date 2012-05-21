@@ -217,6 +217,7 @@ There is no per-instance support for plugins, but those dropped to : ``/usr/shar
 
   \subsection redmine_usage_activity Activity overview
 
+  \image html "Redmine - Activity overview.png"
 
   \section redmine_references References
 

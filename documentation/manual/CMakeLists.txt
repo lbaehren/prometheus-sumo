@@ -17,8 +17,13 @@ if (DOXYGEN_EXECUTABLE)
   
   set (MANUAL_PROJECT_NAME   "prometheus Reference Manual")
   set (MANUAL_INPUT          "${CMAKE_CURRENT_SOURCE_DIR}"  )
-  set (MANUAL_GENERATE_LATEX "YES"                          )
-
+  
+  if (LATEX_COMPILER)
+    set (MANUAL_GENERATE_LATEX "YES" )
+  else (LATEX_COMPILER)
+    set (MANUAL_GENERATE_LATEX "NO" )
+  endif (LATEX_COMPILER)
+  
   configure_file (
     ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in
     ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
@@ -41,13 +46,17 @@ if (DOXYGEN_EXECUTABLE)
     COMMENT "Generating PDF version of manual ..."
     )
   
-  set_property (DIRECTORY
-    APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES
-    ${CMAKE_CURRENT_BINARY_DIR}/html
-    )
-
+  ## LaTeX version of manual only can be generated if the LaTeX compiler
+  ## is installed on the system
+  if (LATEX_COMPILER)
+    set_property (DIRECTORY
+      APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES
+      ${CMAKE_CURRENT_BINARY_DIR}/html
+      )
+  endif (LATEX_COMPILER)
+  
   ## Target dependency
-
+  
   add_dependencies(doc Manual)
   
 endif (DOXYGEN_EXECUTABLE)
