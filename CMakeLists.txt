@@ -110,8 +110,6 @@ find_package (Xercesc)
 find_package (Yaml)
 find_package (Yard)
 
-include (RequiredPackages)
-
 ## Extract Doxygen version number - this is not done by the standard module
 if (DOXYGEN_EXECUTABLE)
   
