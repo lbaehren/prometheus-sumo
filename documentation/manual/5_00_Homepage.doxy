@@ -114,13 +114,20 @@
   \li Editing the files within the local working copy obtained from the code
   repository.
 
-  \li Modifying files through the [Jekyll Commander](http://prometheus-app.uni-koeln.de/promhp), a Sinatra based web interface, to maintain a Jekyll website, including Git version control.
+  \li Modifying files through the [Jekyll Commander](https://github.com/prometheus-ev/JekyllCommander), a Sinatra based web interface, to maintain a Jekyll website, including Git version control.
 
   While the first of the two methods - w.r.t. the editing of the source files -
   is no different from any other source code working copy, the resulting static
   webpages need to be generated locally as, in order to verify the changes.
 
+  Starting up the [Jekyll Commander](http://prometheus-app.uni-koeln.de/promhp)
+  it will take a few seconds before the interface is initialized for usage; the
+  for this is, that in the background a working copy of the source code is being
+  updated, such that changes can be submitted once they have been carried out.
+  
   \image html "promhp - Jekyll Commander.png"
+
+  \image html "promhp - Edit page.png"
 
   \section homepage_build Building the website
 
