@@ -106,7 +106,32 @@
       `-- 2012
   \endverbatim
 
+  \section homepage_editing Editing the homepage
+
+  Editing the contents (i.e. the pages) of the website can be done in two different
+  ways:
+
+  \li Editing the files within the local working copy obtained from the code
+  repository.
+
+  \li Modifying files through the [Jekyll Commander](http://prometheus-app.uni-koeln.de/promhp), a Sinatra based web interface, to maintain a Jekyll website, including Git version control.
+
+  While the first of the two methods - w.r.t. the editing of the source files -
+  is no different from any other source code working copy, the resulting static
+  webpages need to be generated locally as, in order to verify the changes.
+
+  \image html "promhp - Jekyll Commander.png"
+
   \section homepage_build Building the website
+
+  \subsection homepage_build_pre Prerequisites
+  
+  \li [pygmentize](https://github.com/djanowski/pygmentize) - A standalone Pygments for Ruby
+  \code
+  gem install pygmentize
+  \endcode
+  
+  \subsection homepage_build_tasks Rake tasks
 
   Building the website from the sources files is controlled through a number of
   Rake tasks; in order to get a list of the available tasks run
@@ -114,11 +139,11 @@
   rake -T
   \endcode
   Available tasks are:
-  | Task       | Description |
-  |------------|-------------|
-  | rake build | Build the site |
-  | rake clean | Remove current site |
-  | rake live  | Run following tasks in live environment |
+  | Task                | Description |
+  |---------------------|-------------|
+  | rake build          | Build the site |
+  | rake clean          | Remove current site |
+  | rake live           | Run following tasks in live environment |
   | rake series_preview | Build preview for start page with NUM's (yyyy/ww) image series |
   | rake setup          | Set up build environment |
   | rake staging        | Run following tasks in staging environment |
