@@ -96,5 +96,64 @@
   \li Configuration files for Jekyll - the tool used to build the static HTML
   pages - can be found in \c _config.
 
+  \li The directory \c series contains data - images and descriptions - for the 
+  image series featured on the homepage.
+  \verbatim
+  .
+  `-- series/
+      |-- 2010
+      |-- 2011
+      `-- 2012
+  \endverbatim
+
+  \section homepage_build Building the website
+
+  Building the website from the sources files is controlled through a number of
+  Rake tasks; in order to get a list of the available tasks run
+  \code
+  rake -T
+  \endcode
+  Available tasks are:
+  | Task       | Description |
+  |------------|-------------|
+  | rake build | Build the site |
+  | rake clean | Remove current site |
+  | rake live  | Run following tasks in live environment |
+  | rake series_preview | Build preview for start page with NUM's (yyyy/ww) image series |
+  | rake setup          | Set up build environment |
+  | rake staging        | Run following tasks in staging environment |
+  | rake tag            | Tag release |
+
+  To build the website from the sources, run
+  \verbatim
+  rake setup
+  rake build
+  \endverbatim
+  Unless defined otherwise, the generated site will be placed into the \c _site
+  directory
+  \verbatim
+  .
+  `-- _site/
+      |-- about
+      |-- blog
+      |-- databases
+      |-- files
+      |-- images
+      |-- inc
+      |-- javascripts
+      |-- license
+      |-- page2
+      |-- page3
+      |-- page4
+      |-- page5
+      |-- page6
+      |-- projects
+      |-- prometheus
+      |-- series
+      |-- stylesheets
+      |-- tag
+      `-- tools
+  \endverbatim
+
 */
 
