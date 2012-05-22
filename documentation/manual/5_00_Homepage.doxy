@@ -126,9 +126,24 @@
 
   \subsection homepage_build_pre Prerequisites
   
-  \li [pygmentize](https://github.com/djanowski/pygmentize) - A standalone Pygments for Ruby
+  \li \b Pygments aims to be a generic syntax highlighter for general use in all
+  kinds of software such as forum systems, wikis or other applications that need
+  to prettify source code. You can check if the command-line tool is available
+  via
+  \verbatim
+  which pygmentize
+  \endverbatim
+  If the result turns out to be empty, there are at least two routes to install
+  the tool:
+  - Using Ruby Gems, where [pygmentize](https://github.com/djanowski/pygmentize)
+  provides a standalone Pygments for Ruby
   \code
   gem install pygmentize
+  \endcode
+  - Using the system's package manager (e.g. \c apt-get on
+  [Debian GNU/Linux](http://www.debian.org))
+  \code
+  apt-get install python-pygments
   \endcode
   
   \subsection homepage_build_tasks Rake tasks
