@@ -35,8 +35,8 @@
 * \ref refman_mysql 5.0 or higher (recommended)
   * make sure to install the C bindings for Ruby that dramatically improve performance. You can get them by running gem install mysql2. If you have problem installing the mysql gem refer Rails Wiki pages
 
-* \ref refman_postgresql 8 or higher
-  * make sure your database datestyle is set to ISO (Postgresql default setting). You can set it using: ``ALTER DATABASE "redmine_db" SET datestyle="ISO,MDY";``
+* PostgreSQL 8 or higher
+  * make sure your database datestyle is set to ISO (PostgreSQL default setting). You can set it using: ``ALTER DATABASE "redmine_db" SET datestyle="ISO,MDY";``
   * some bugs in PostgreSQL 8.4.0 and 8.4.1 affect Redmine behavior (#4259, #4314), they are fixed in PostgreSQL 8.4.2
 
 * SQLite 3
@@ -46,7 +46,7 @@
 It is recommended that the majority of users install the proper point releases of
 redmine. Redmine currently releases a new version every 6 months, and these
 releases are considered very usable and stable. It is not recommended to install
-redmine from trunk, unless you are deeply familiar with {file:Rails Ruby on Rails}
+redmine from trunk, unless you are deeply familiar with \ref refman_rails
 and keep up with the changes - Trunk does break from time-to-time.
 
   \subsection redmine_install_osx  ... on Mac OS X
@@ -103,38 +103,9 @@ There is no per-instance support for plugins, but those dropped to : ``/usr/shar
       `-- redmine
   \endverbatim
 
-  \section redmine_modules Modules
+  \subsection redmine_install_plugins Plugins
 
-  Disabling a module doesn't delete the associated data. It only prevents users
-  from accessing it. After a module was disabled, it can be re-enabled with all
-  its data.
-
-  You can for example disable 'Issue tracking' module for a single project.
-  Existing issues are not deleted. You will be able to access them if you re-enable
-  the module.
-
-  Redmine provides the following code modules:
-
-
-  | Module | Description            |
-  |--------|------------------------|
-  | Issue tracking | provides [Issue tracking](http://www.redmine.org/projects/redmine/wiki/RedmineIssues) feature, including issue categories, versions, the [Roadmap](http://www.redmine.org/projects/redmine/wiki/RedmineRoadmap) and version overviews |
-  | Time tracking | provides Time tracking feature |
-  | News | provides News feature |
-  | Documents | provides Documents feature |
-  | Files | provides Files feature |
-  | Wiki | provides Wiki feature |
-  | Repository | provides Repository feature |
-  | Boards | provides Forum feature |
-  | Calendar | provides Calendar feature |
-  | Gantt  | provides Gantt feature |
-
-  Additional modules can be added to the system using Redmine plugins.
-  \ref redmine_plugins can only be installed by the administrator.
-
-  \section redmine_plugins Plugins
-
-  \subsection redmine_plugins_roadmap Advanced Roadmap
+  \subsubsection redmine_plugins_roadmap Advanced Roadmap
 
   Installation steps:
 
@@ -157,7 +128,7 @@ There is no per-instance support for plugins, but those dropped to : ``/usr/shar
      - Milestones are edited on the project Settings tab (create, edit (associate versions to them) and delete).
      - Milestone information is shown into the Roadmap view, above the Version list, into a Milestone list. When a milestone view is clicked a view similar to Roadmap is shown, but instead of showing the project versions list, a list of the milestone versions list is shown.
 
-  \subsection redmine_plguins_github GitHub Hook
+  \subsubsection redmine_plguins_github GitHub Hook
 
   According to the various articles and help pages available online, there do
   exist two main routes for integrating a Git repository as part of a project
@@ -202,6 +173,39 @@ There is no per-instance support for plugins, but those dropped to : ``/usr/shar
     \endverbatim
     \li Click "Update Settings" and you are done!
   </ol>
+
+  \section redmine_configuration Configuration
+
+  \subsection redmine_configuration_projects Projects
+
+  \subsection redmine_configuration_modules Modules
+
+  Disabling a module doesn't delete the associated data. It only prevents users
+  from accessing it. After a module was disabled, it can be re-enabled with all
+  its data.
+
+  You can for example disable 'Issue tracking' module for a single project.
+  Existing issues are not deleted. You will be able to access them if you re-enable
+  the module.
+
+  Redmine provides the following code modules:
+
+
+  | Module | Description            |
+  |--------|------------------------|
+  | Issue tracking | provides [Issue tracking](http://www.redmine.org/projects/redmine/wiki/RedmineIssues) feature, including issue categories, versions, the [Roadmap](http://www.redmine.org/projects/redmine/wiki/RedmineRoadmap) and version overviews |
+  | Time tracking | provides Time tracking feature |
+  | News | provides News feature |
+  | Documents | provides Documents feature |
+  | Files | provides Files feature |
+  | Wiki | provides Wiki feature |
+  | Repository | provides Repository feature |
+  | Boards | provides Forum feature |
+  | Calendar | provides Calendar feature |
+  | Gantt  | provides Gantt feature |
+
+  Additional modules can be added to the system using Redmine plugins.
+  \ref redmine_plugins can only be installed by the administrator.
 
   \section redmine_usage Usage
   
