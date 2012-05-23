@@ -9,6 +9,12 @@
   deliver the contents of the website to a minimum, all the pages are served as
   \a static pages.
 
+  The [sources of our website](https://github.com/prometheus-ev/promhp) are
+  living in a Git repository, from which they can be cloned directly (see 
+  section \ref homepage_code below) or through a tool called
+  [Jekyll Commander](https://github.com/prometheus-ev/JekyllCommander), which
+  also generates previews for the changes.
+
   \section homepage_code Getting the source code
   
   The source code for the homepage is hosted on Github; depending on the access
@@ -126,14 +132,37 @@
   is no different from any other source code working copy, the resulting static
   webpages need to be generated locally as, in order to verify the changes.
 
+  \subsection homepage_editing_manual ... manually
+
+  \subsection homepage_editing_command ... using the Jekyll Commander
+
   Starting up the [Jekyll Commander](http://prometheus-app.uni-koeln.de/promhp)
   it will take a few seconds before the interface is initialized for usage; the
   for this is, that in the background a working copy of the source code is being
   updated, such that changes can be submitted once they have been carried out.
   
-  \image html "promhp - Jekyll Commander.png"
+  \image html promhp__Jekyll_Commander.png
+  \image latex promhp__Jekyll_Commander.png "Start page of the Jekyll Commander" width=.9\textwidth
 
-  \image html "promhp - Edit page.png"
+  If you want to edit a specific page, use the navigation panel to the left in
+  order to select it.; clicking on the filename will open up the file contents
+  in an embedded editor:
+
+  \image html promhp__Edit_page.png
+  \image latex promhp__Edit_page.png "Editing a page within Jekyll Commander" width=.9\textwidth
+
+  All changes an user made will be merged into a staging version of the website
+  when he/she decides that everything is done so far. This staging repo, which
+  has its own preview, combines the commits of all user.
+
+  \image html promhp__Safe_changes.png
+  \image latex promhp__Safe_changes.png "Saving changes" width=.9\textwidth
+
+  And at one point, in the case that everything is alright, it can go public. This
+  means (in the background) that all changes will be pushed to the live repo.
+  In our case this (or rather pushing a tag) triggers the system to generate the
+  webside and move it into the document root of our webserver. There are our
+  scripts in the "example" folder for a better understanding.
 
   \section homepage_build Building the website
 
