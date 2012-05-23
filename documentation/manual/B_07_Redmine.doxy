@@ -157,7 +157,7 @@ There is no per-instance support for plugins, but those dropped to : ``/usr/shar
 
    <li>Now, you have to create a local repository on the machine Redmine is installed
 
-     \li Use specifically the command git clone --mirror [repo_url].
+     \li Use specifically the command \code git clone --mirror [repo_url] \endcode
      \li Pay attention to the fact that Redmine needs read permissions on this folder.
      \li Then go into your projects settings, in the "repository tab". Select "Git" as SCM, and fill the absolute path to the local repository you created just above.
 
@@ -205,7 +205,7 @@ There is no per-instance support for plugins, but those dropped to : ``/usr/shar
   | Gantt  | provides Gantt feature |
 
   Additional modules can be added to the system using Redmine plugins.
-  \ref redmine_plugins can only be installed by the administrator.
+  \ref redmine_install_plugins can only be installed by the administrator.
 
   \section redmine_usage Usage
   
