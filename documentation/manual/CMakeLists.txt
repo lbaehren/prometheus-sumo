@@ -1,8 +1,11 @@
 
 if (DOXYGEN_EXECUTABLE)
 
-  ##________________________________________________________
-  ## Locate directories containing code examples and images
+  ## ============================================================================
+  ##
+  ##  Locate directories and files
+  ##
+  ## ============================================================================
 
   find_path (DOXYGEN_EXAMPLE_PATH monster.yaml
     PATHS ${PROJECT_SOURCE_DIR}
@@ -15,10 +18,19 @@ if (DOXYGEN_EXECUTABLE)
     PATH_SUFFIXES documentation documentation/images
     )
 
+  ## ============================================================================
+  ##
+  ##  Test LaTeX installation
+  ##
+  ## ============================================================================
+
   ##__________________________________________________________  
-  ## Test LaTeX installation
-  
+  ## Find LaTeX installation
+
   find_package (LATEX)
+
+  ##__________________________________________________________  
+  ## Test for LaTeX modules
 
   if (LATEX_COMPILER)
 
@@ -26,7 +38,6 @@ if (DOXYGEN_EXECUTABLE)
     set (_latexTest ${CMAKE_CURRENT_BINARY_DIR}/TestLATEX.tex)
     
     foreach (_latexPackage
-#      color
       float
       listings
       )
@@ -64,10 +75,25 @@ if (DOXYGEN_EXECUTABLE)
   endif (LATEX_COMPILER)
   
   ##__________________________________________________________  
-  ## Generate configuration file for Doxygen
+  ##  Set Doxygen configuration parameters
+
+  if (PDFLATEX_COMPILER)
+    set (DOXYGEN_USE_PDFLATEX "YES" )
+  else (PDFLATEX_COMPILER)
+    set (DOXYGEN_USE_PDFLATEX "YES" )
+  endif (PDFLATEX_COMPILER)
   
-  set (MANUAL_PROJECT_NAME   "prometheus Reference Manual")
-  set (MANUAL_INPUT          "${CMAKE_CURRENT_SOURCE_DIR}"  )
+  ## ============================================================================
+  ##
+  ##  Generate configuration file for Doxygen
+  ##
+  ## ============================================================================
+  
+  set (MANUAL_PROJECT_NAME     "prometheus"                    )
+  set (MANUAL_PROJECT_BRIEF    "The Distributed Digital Image Archive for Research and Studies"              )
+  set (MANUAL_INPUT            "${CMAKE_CURRENT_SOURCE_DIR}"                            )
+  set (DOXYGEN_HTML_STYLESHEET "${CMAKE_CURRENT_BINARY_DIR}/doxygen_html_stylesheet.css")
+  set (DOXYGEN_HTML_FOOTER     "${CMAKE_CURRENT_BINARY_DIR}/doxygen_html_footer.html"   )
 
   if (DOXYGEN_GENERATE_LATEX)
     set (MANUAL_GENERATE_LATEX "YES" )
@@ -75,25 +101,36 @@ if (DOXYGEN_EXECUTABLE)
     set (MANUAL_GENERATE_LATEX "NO" )
   endif ()
 
-  if (PDFLATEX_COMPILER)
-    set (DOXYGEN_USE_PDFLATEX "YES" )
-  else (PDFLATEX_COMPILER)
-    set (DOXYGEN_USE_PDFLATEX "YES" )
-  endif (PDFLATEX_COMPILER)
-
+  configure_file (
+    ${CMAKE_CURRENT_SOURCE_DIR}/doxygen_html_stylesheet.css.in
+    ${DOXYGEN_HTML_STYLESHEET}
+    )
+  
+  configure_file (
+    ${CMAKE_CURRENT_SOURCE_DIR}/doxygen_html_footer.html.in
+    ${DOXYGEN_HTML_FOOTER}
+    )
+  
   configure_file (
     ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in
     ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
     )
   
-  ##__________________________________________________________  
-  ## Run Doxygen to generate documentation from sources
+  ## ============================================================================
+  ##
+  ##  Build targets
+  ##
+  ## ============================================================================
+
+  ## HTML output
   
   add_custom_target (Manual
     COMMAND ${DOXYGEN_EXECUTABLE} Doxyfile
     DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     )
+
+  ## LaTeX / PDF output
 
   if (DOXYGEN_GENERATE_LATEX)
      add_custom_command (
@@ -104,6 +141,8 @@ if (DOXYGEN_EXECUTABLE)
       COMMENT "Generating PDF version of manual ..."
       )
   endif (DOXYGEN_GENERATE_LATEX)
+
+  ## Directory cleanup
 
   set_property (DIRECTORY
     APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES
