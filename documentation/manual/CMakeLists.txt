@@ -90,7 +90,7 @@ if (DOXYGEN_EXECUTABLE)
   ## ============================================================================
   
   set (MANUAL_PROJECT_NAME     "prometheus"                    )
-  set (MANUAL_PROJECT_BRIEF    "Reference Manual for developers and users"              )
+  set (MANUAL_PROJECT_BRIEF    "The Distributed Digital Image Archive for Research and Studies"              )
   set (MANUAL_INPUT            "${CMAKE_CURRENT_SOURCE_DIR}"                            )
   set (DOXYGEN_HTML_STYLESHEET "${CMAKE_CURRENT_BINARY_DIR}/doxygen_html_stylesheet.css")
   set (DOXYGEN_HTML_FOOTER     "${CMAKE_CURRENT_BINARY_DIR}/doxygen_html_footer.html"   )
