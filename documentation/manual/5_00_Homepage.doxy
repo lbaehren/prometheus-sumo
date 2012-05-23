@@ -3,6 +3,12 @@
 
   \tableofcontents
 
+  \section homepage_overview Overview
+
+  In order to keep the amount of processing needed behind the scenes in order to
+  deliver the contents of the website to a minimum, all the pages are served as
+  \a static pages.
+
   \section homepage_code Getting the source code
   
   The source code for the homepage is hosted on Github; depending on the access
