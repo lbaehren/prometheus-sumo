@@ -55,5 +55,14 @@
   | ruby-nuggets | Some extensions to the Ruby programming language |
   | wadl | Ruby client for the Web Application Description Language |
 
+  \section infrastructure_wiki Wiki
+
+  A considerable fraction of living documents and documentation is hosted on the 
+  [prometheus Wiki](http://prometheus-bildarchiv.de/wiki)
+
+  \image html "Wiki - Login.png"
+
+  \image html "Wiki - Startpage.png"
+
 */
 
