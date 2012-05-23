@@ -11,6 +11,9 @@
 
 <hr class="footer"/>
 
+<address class="footer"
+<small>
+
 [
 <a href="http://www.prometheus-bildarchiv.de">Homepage</a>
 |
@@ -19,6 +22,11 @@
 <a href="http://prometheus-srv.uni-koeln.de/redmine">Issue tracker</a>
 
 ]
+
+</small>
+</address>
+
+<hr class="footer"/>
 
 <!--END !GENERATE_TREEVIEW-->
 
