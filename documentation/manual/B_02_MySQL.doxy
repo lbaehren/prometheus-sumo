@@ -1,23 +1,23 @@
 /*!
 
-  \page refman_mysql MySQL
+  \page mysql MySQL
 
   \tableofcontents
 
-  \section refman_mysql_about About
+  \section mysql_about About
 
   \b MySQL is the world's most popular open source database software, with over
   100 million copies of its software downloaded or distributed throughout it's history. With its superior speed, reliability, and ease of use, MySQL has become the preferred choice for Web, Web 2.0, SaaS, ISV, Telecom companies and forward-thinking corporate IT Managers because it eliminates the major problems associated with downtime, maintenance and administration for modern, online applications.
 
   MySQL is a key part of LAMP (Linux, Apache, MySQL, PHP / Perl / Python), the fast-growing open source enterprise software stack. More and more companies are using LAMP as an alternative to expensive proprietary software stacks because of its lower cost and freedom from platform lock-in.
 
-  \section refman_mysql_depoy Deployment
+  \section mysql_depoy Deployment
 
   \b MySQL can be built and installed manually from source code, but this can be tedious so it is more commonly installed from a binary package unless special customizations are required. On most Linux distributions the package management system can download and install MySQL with minimal effort, though further configuration is often required to adjust security and optimization settings.
 
   Though MySQL began as a low-end alternative to more powerful proprietary databases, it has gradually evolved to support higher-scale needs as well. It is still most commonly used in small to medium scale single-server deployments, either as a component in a LAMP-based web application or as a standalone database server. Much of MySQL's appeal originates in its relative simplicity and ease of use, which is enabled by an ecosystem of open source tools such as phpMyAdmin. In the medium range, MySQL can be scaled by deploying it on more powerful hardware, such as a multi-processor server with gigabytes of memory.
 
-  \section refman_mysql_forks Forks
+  \section mysql_forks Forks
 
   \li [Drizzle](http://drizzle.org) – a fork targeted at the web-infrastructure and cloud computing markets. The developers of the product describe it as a "smaller, slimmer and (hopefully) faster version of MySQL". As such is planned to have many common MySQL features stripped out, including stored procedures, query cache, prepared statements, views, and triggers. This is a complete rewrite of the server that does not maintain compatibility with MySQL.
 
@@ -27,9 +27,9 @@
 
   \li [OurDelta](http://ourdelta.org) – a fork compiled with various patches, including patches from MariaDB, Percona, and Google.
 
-  \section refman_mysql_usage Usage
+  \section mysql_usage Usage
 
-  \subsection refman_mysql_editing_tables Editing tables
+  \subsection mysql_editing_tables Editing tables
 
   Editing the attributes associated with an account also can be done from within MySQL directly:
 
@@ -47,9 +47,9 @@
   UPDATE `pandora_development`.`sources` SET `description` = '<text>' WHERE `sources`.`id` =1;
   \endcode
 
-  \section refman_mysql_install Installation
+  \section mysql_install Installation
 
-  \subsection refman_mysql_install_osx ... on Mac OS X
+  \subsection mysql_install_osx ... on Mac OS X
 
   If you are using [MacPorts](http://www.macports.org), you can retrieve and
   install the server package via
@@ -97,7 +97,7 @@ If this is a new install, in order to setup the database you might want to run:
   $ cd /opt/local/mysql-test ; perl mysql-test-run.pl
   \endcode
 
-  \section refman_mysql_references References 
+  \section mysql_references References 
 
   \li [Examples of the Effect of Collation](http://dev.mysql.com/doc/refman/5.0/en/charset-collation-effect.html) (mysql.com)
   \li [Wikipedia article](http://en.wikipedia.org/wiki/MySQL)

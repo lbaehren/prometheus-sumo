@@ -32,7 +32,7 @@
 
   \subsubsection redmine_install_requirements_db Database
 
-* \ref refman_mysql 5.0 or higher (recommended)
+* \ref mysql 5.0 or higher (recommended)
   * make sure to install the C bindings for Ruby that dramatically improve performance. You can get them by running gem install mysql2. If you have problem installing the mysql gem refer Rails Wiki pages
 
 * PostgreSQL 8 or higher

@@ -60,9 +60,9 @@
   \li [Subversion](http://subversion.apache.org)
   \li [Ruby](http://ruby-lang.org)
   \li \ref refman_rails
-  \li \ref refman_capistrano
-  \li \ref refman_ferret
-  \li \ref refman_mysql
+  \li \ref capistrano
+  \li \ref ferret
+  \li \ref mysql
   \li \ref redmine
   \li \ref refman_yaml
 

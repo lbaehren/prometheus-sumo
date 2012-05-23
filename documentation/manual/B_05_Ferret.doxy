@@ -1,19 +1,19 @@
 /*!
 
-  \page refman_ferret Ferret search engine
+  \page ferret Ferret search engine
 
   \tableofcontents
 
   Ferret is a Ruby port of the [Java Lucene](http://jakarta.apache.org/lucene) search engine. In the same way as Lucene, it is not a standalone application, but a library you can use to index documents and search for things in them later.
 
-  \section refman_ferret_concepts Concepts
+  \section ferret_concepts Concepts
 
   - Index: Sequence of documents
   - Document: Sequence of fields
   - Field: Named sequence of terms
   - Term: A text string, keyed by field name
 
-  \section refman_ferret_index Creating an index
+  \section ferret_index Creating an index
 
   To create an in memory index is very simple;
 
@@ -39,7 +39,7 @@ here, eg;
 
   For more options when creating an Index refer to Ferret::Index::Index.
 
-  \section refman_ferret_documents Adding Documents
+  \section ferret_documents Adding Documents
 
 To add a document you can simply add a string or an array of strings. This will
 store all the strings in the "" (ie empty string) field (unless you specify the
@@ -93,7 +93,7 @@ add a FieldInfo to field_infos.
   index.field_infos.add_field(:new_field, :store => :yes)
   \endcode
 
-  \section refman_ferret_search Searching
+  \section ferret_search Searching
 
   Now that we have data in our index, how do we actually use this index to
   search the data? The Index offers two search methods, Index#search and
@@ -127,7 +127,7 @@ query language, see Ferret::QueryParser. You can also construct even more
 complex queries like Ferret::Search::Spans by hand. See Ferret::Search::Query
 for more information.
 
-  \section refman_ferret_references References
+  \section ferret_references References
 
   - Benjamin Krause, Mathias Meyer (2008) [Ferret: Lucene-Nachfolger für Ruby](http://www.heise.de/developer/artikel/Ferret-Lucene-Nachfolger-fuer-Ruby-227116.html)
 
