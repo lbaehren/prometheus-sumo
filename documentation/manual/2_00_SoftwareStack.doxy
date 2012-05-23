@@ -63,7 +63,7 @@
   \li \ref refman_capistrano
   \li \ref refman_ferret
   \li \ref refman_mysql
-  \li \ref refman_redmine
+  \li \ref redmine
   \li \ref refman_yaml
 
 */
