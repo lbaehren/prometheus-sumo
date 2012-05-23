@@ -265,6 +265,20 @@
           should show the given institution
   \endverbatim
 
+  \subsection pandora_testing_trouble Troubleshooting
+
+  \b Problem: Specs fail, because resources have PID 0.
+
+  \li \b Description: In der Datenbank der Test-Umgebung ist \c Resource#pid nicht vom Typ String, wie erwartet, sondern vom Typ Integer.
+  \code
+  >> Resource.column_by_name(:pid).type
+  => :integer
+  \endcode
+  \li \b Solution: The table \a Resources needs to be created anew.
+  \code
+  rake db:test:setup  # fängt quasi bei "Null" wieder an
+  \endcode
+
   \section refman_pandora_release Deploying a new release version
 
   Deploying a new production version of _pandora_ (The prometheus digital image
