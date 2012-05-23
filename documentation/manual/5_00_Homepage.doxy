@@ -134,6 +134,22 @@
 
   \subsection homepage_editing_manual ... manually
 
+  \li Check out a working copy of the source files, as described in section
+  \ref homepage_code above.
+  
+  \li Make the changes you would like to make, using your favorite text editor.
+
+  \li Preview the result of your changes, following the procedure described in
+  section \ref homepage_build below.
+
+  \li If the result ok -- possibly after iterating through the previous two
+  points a number of times -- you can check in your changes
+  \code
+  git add <files>
+  git commit -m <commit message>
+  \endcode
+  and push them back to the repository on Github.
+
   \subsection homepage_editing_command ... using the Jekyll Commander
 
   Starting up the [Jekyll Commander](http://prometheus-app.uni-koeln.de/promhp)
