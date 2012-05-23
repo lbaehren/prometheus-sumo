@@ -66,8 +66,10 @@ if (DOXYGEN_EXECUTABLE)
   ##__________________________________________________________  
   ## Generate configuration file for Doxygen
   
-  set (MANUAL_PROJECT_NAME   "prometheus Reference Manual")
-  set (MANUAL_INPUT          "${CMAKE_CURRENT_SOURCE_DIR}"  )
+  set (MANUAL_PROJECT_NAME     "prometheus Reference Manual"   )
+  set (MANUAL_INPUT            "${CMAKE_CURRENT_SOURCE_DIR}"   )
+  set (DOXYGEN_HTML_STYLESHEET "${CMAKE_CURRENT_BINARY_DIR}/doxygen_html_stylesheet.css")
+  set (DOXYGEN_HTML_FOOTER     "${CMAKE_CURRENT_BINARY_DIR}/doxygen_html_footer.html")
 
   if (DOXYGEN_GENERATE_LATEX)
     set (MANUAL_GENERATE_LATEX "YES" )
@@ -81,6 +83,16 @@ if (DOXYGEN_EXECUTABLE)
     set (DOXYGEN_USE_PDFLATEX "YES" )
   endif (PDFLATEX_COMPILER)
 
+  configure_file (
+    ${CMAKE_CURRENT_SOURCE_DIR}/doxygen_html_stylesheet.css.in
+    ${DOXYGEN_HTML_STYLESHEET}
+    )
+  
+  configure_file (
+    ${CMAKE_CURRENT_SOURCE_DIR}/doxygen_html_footer.html.in
+    ${DOXYGEN_HTML_FOOTER}
+    )
+  
   configure_file (
     ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in
     ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile

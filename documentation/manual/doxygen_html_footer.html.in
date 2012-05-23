@@ -1,0 +1,27 @@
+
+<!--BEGIN GENERATE_TREEVIEW-->
+    <li class="footer">$generatedby
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> $doxygenversion </li>
+   </ul>
+ </div>
+<!--END GENERATE_TREEVIEW-->
+
+<!--BEGIN !GENERATE_TREEVIEW-->
+
+<hr class="footer"/>
+
+[
+<a href="http://www.prometheus-bildarchiv.de">Homepage</a>
+|
+<a href="http://prometheus.uni-koeln.de/pandora">pandora</a>
+|
+<a href="http://prometheus-srv.uni-koeln.de/redmine">Issue tracker</a>
+
+]
+
+<!--END !GENERATE_TREEVIEW-->
+
+</body>
+
+</html>
