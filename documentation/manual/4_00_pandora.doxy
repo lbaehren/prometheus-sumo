@@ -7,11 +7,7 @@
 
   [pandora](http://prometheus.uni-koeln.de/pandora/en/about) (The prometheus digital image archive software) is the successor to kleio as the driving force behind the prometheus image archive. It's being developed since late fall of 2006, on top of the [Ruby on Rails](http://rubyonrails.org) framework. pandora is Free Software, released under the terms of the [GNU Affero General Public License](http://www.gnu.org/licenses/#AGPL).
 
-
-  \section refman_pandora_architecture Architectural Fundamentals
-
-
-  \section refman_pandora_checkout Checking out the source code
+  \section refman_pandora_checkout Getting the source code
 
   The source code of _pandora_ is hosted in a central 
   [Subversion](http://subversion.apache.org) repository at
@@ -100,6 +96,33 @@
                 |   |...
                 |   `-- 0.6.5
                 `-- trunk
+  \endverbatim
+
+  \subsection pandora_checkout_structure Organization of the source code
+
+  While we already described the overall directory structure created on disk
+  when checking out a working copy from the Subversion repository, this section
+  provides a summary of the directory structure of the software package itself.
+
+  \verbatim
+  pandora
+  |-- app                          ...  Source files of the Rails application
+  |   |-- controllers
+  |   |-- helpers
+  |   |-- models                   ...  Information data of the application
+  |   `-- views                    ...  The user interface of the application
+  |-- config
+  |-- db
+  |-- doc
+  |-- index
+  |-- lib
+  |-- log
+  |-- public
+  |-- script                       ...  Helper scripts
+  |-- spec
+  |-- test
+  |-- tmp                          ...  Temporary files
+  `-- vendor
   \endverbatim
 
   \section refman_pandora_install_devel Installation of a development system
