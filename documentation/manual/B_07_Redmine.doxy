@@ -211,13 +211,16 @@ There is no per-instance support for plugins, but those dropped to : ``/usr/shar
   by default), the row of tabs will contain an entry \b Issues; clicking on the
   tab will reveal the page shown below.
 
-  \image html "Redmine - Issues overview.png"
+  \image html Redmine__Issues_Overview.png
+  \image latex Redmine__Issues_Overview.png "Project overview page" width=.9\textwidth
 
-  \image html "Redmine - Issues display options.png"
+  \image html Redmine__Issues_display_options.png
+  \image latex Redmine__Issues_display_options.png "User selectable options for displaying the list of issues being tracked." width=.9\textwidth
 
   \subsection redmine_usage_activity Activity overview
 
-  \image html "Redmine - Activity overview.png"
+  \image html Redmine__Activity_overview.png
+  \image latex Redmine__Activity_overview.png "Overview on recent activities (including sub-projects)" width=.9\textwidth
 
   \section redmine_references References
 
