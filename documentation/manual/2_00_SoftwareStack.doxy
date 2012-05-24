@@ -37,7 +37,7 @@
   <dl>
 
     <dt>prometheus-sumo</dt>
-      <dd>“prometheus-sumo” is a simple (almost) virtual package, to ease the retrieval of the various components in the software stack for “prometheus – The Distributed Digital Image Archive for Research and Studies”.</dd>
+      <dd>[prometheus-sumo](https://github.com/lbaehren/prometheus-sumo) is a simple (almost) virtual package, to ease the retrieval of the various components in the software stack for “prometheus – The Distributed Digital Image Archive for Research and Studies”.</dd>
 
   </dl>
 
