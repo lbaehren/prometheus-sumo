@@ -29,7 +29,7 @@ if (GIT_EXECUTABLE)
       add_custom_command (
 	TARGET FetchRepositories
         POST_BUILD
-	COMMAND ${GIT_EXECUTABLE} clone ${_projectRepos} ${_projectName}
+	COMMAND ${GIT_CLONE_COMMAND} ${_projectRepos} ${_projectName}
 	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 	COMMENT "Cloning Git repository ${_projectName} ..."
 	)
