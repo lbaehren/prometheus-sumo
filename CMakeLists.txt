@@ -171,7 +171,7 @@ endif (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 add_subdirectory (data)
 add_subdirectory (documentation)
 add_subdirectory (environment)
-add_subdirectory (repositories)
+#add_subdirectory (packages)
 add_subdirectory (sources)
 
 ## ==============================================================================
@@ -180,10 +180,16 @@ add_subdirectory (sources)
 ##
 ## ==============================================================================
 
-message (STATUS "------------------------------------------------------------"  )
-message (STATUS "[prometheus-sumo] Configuration summary."                      )
-message (STATUS "------------------------------------------------------------ " )
-message (STATUS " System configuration:"                                        )
+## Generate file with project version number
+
+file (WRITE ${CMAKE_CURRENT_BINARY_DIR}/VERSION "${${CMAKE_PROJECT_NAME}_VERSION}")
+
+## Display summary of configuration settings
+
+message (STATUS "------------------------------------------------------------"   )
+message (STATUS "[prometheus-sumo] Configuration summary."                       )
+message (STATUS "------------------------------------------------------------ "  )
+message (STATUS " System configuration:"                                         )
 message (STATUS " .. Processor type .............. = ${CMAKE_SYSTEM_PROCESSOR}"  )
 message (STATUS " .. CMake executable ............ = ${CMAKE_COMMAND}"           )
 message (STATUS " .. CMake version ............... = ${CMAKE_VERSION}"           )
