@@ -55,8 +55,6 @@ else (GIT_REPOSITORIES_RW)
   set (GIT_REPOSITORY_BASE    "git://github.com/prometheus-ev" )
 endif (GIT_REPOSITORIES_RW)
 
-set (GIT_CLONE_COMMAND "${GIT_EXECUTABLE} clone --bare")
-
 ##__________________________________________________________
 ## Handle option: Increase verbosity during configuration?
 
