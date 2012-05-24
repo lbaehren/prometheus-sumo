@@ -30,3 +30,11 @@ configure_file (
   ${CMAKE_CURRENT_SOURCE_DIR}/source.yml.in
   ${CMAKE_CURRENT_BINARY_DIR}/source.yml
   )
+
+## ==============================================================================
+##
+##  Sub-directories
+##
+## ==============================================================================
+
+add_subdirectory (repositories)
