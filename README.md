@@ -4,7 +4,7 @@
 ## Introduction
 
 "prometheus-sumo" is a simple (almost) virtual package, to ease the retrieval of
-the various components in the software stack for "prometheus – The Distributed
+the various components in the software stack for "prometheus - The Distributed
 Digital Image Archive for Research and Studies".
 
 prometheus (www.prometheus-bildarchiv.de) is a digital image archive for Art and
@@ -17,10 +17,10 @@ institutes, research facilities and museums.
 
 External dependencies are kept to a minimum for this package:
 
-| Package | Version | Website              |
-|---------|---------|----------------------|
-| Git     | >= 1.7  | http://git-scm.com   |
-| CMake   | >= 2.8  | http://www.cmake.org |
+| Package | Version   | Website              |
+|---------|-----------|----------------------|
+| Git     | >= 1.7    | http://git-scm.com   |
+| CMake   | >= 2.8.3  | http://www.cmake.org |
 
 Further dependencies, as required when developing the prometheus software
 packages, are handled as part of this tool.
@@ -45,6 +45,7 @@ can be found:
     |   `-- manual              ...  Reference Manual
     |-- packages                ...  Wrappers for installation of the various packages
     `-- sources                 ...  Source files
+
 
 ## Configuration and build
 
@@ -89,6 +90,7 @@ syntax from the command line. At the moment the following options are available
     CONFIGURE_VERBOSE     "Increase verbosity during configuration?"      [ NO  ]
     GIT_REPOSITORIES_RW   "Check out Github repositories for r/w access?" [ NO  ]
     PANDORA_GENERATE_DOCS "Enable documentation of pandora source code?"  [ YES ]
+
 
 ## Further reading
 
