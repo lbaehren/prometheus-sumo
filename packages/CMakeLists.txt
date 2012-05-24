@@ -5,7 +5,7 @@
 ##
 ## ==============================================================================
 
-add_custom_target (UpdateSources ALL
+add_custom_target (FetchRepositories ALL
   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
   COMMENT "Updating clones of working copies ..."
   )
@@ -29,7 +29,7 @@ if (GIT_EXECUTABLE)
     if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName})
       ## Update existing clone
       add_custom_command (
-	TARGET UpdateSources
+	TARGET FetchRepositories
         POST_BUILD
 	COMMAND ${GIT_EXECUTABLE} fetch
 	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName}
@@ -38,7 +38,7 @@ if (GIT_EXECUTABLE)
     else (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName})
       ## Create new clone
       add_custom_command (
-	TARGET UpdateSources
+	TARGET FetchRepositories
         POST_BUILD
 	COMMAND ${GIT_EXECUTABLE} clone ${_projectRepos} ${_projectName}
 	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
@@ -65,7 +65,7 @@ if (GIT_EXECUTABLE)
     if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName})
       
       add_custom_command (
-	TARGET UpdateSources
+	TARGET FetchRepositories
         POST_BUILD
 	COMMAND ${GIT_EXECUTABLE} svn rebase
 	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName}
@@ -75,7 +75,7 @@ if (GIT_EXECUTABLE)
     else (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName})
       
       add_custom_command (
-	TARGET UpdateSources
+	TARGET FetchRepositories
         POST_BUILD
 	COMMAND ${GIT_EXECUTABLE} svn clone -s ${_projectRepos} ${_projectName}
 	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}

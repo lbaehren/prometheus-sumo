@@ -71,7 +71,7 @@ if (promhp_FORCE_BUILD)
       BUILD_IN_SOURCE 1
       CONFIGURE_COMMAND ${RAKE_EXECUTABLE} setup
       BUILD_COMMAND ${RAKE_EXECUTABLE} build
-      INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_directory source/_site ${CMAKE_INSTALL_PREFIX}/share/promhp
+      INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_BINARY_DIR}/source/_site ${CMAKE_INSTALL_PREFIX}/share/promhp
       )
   
   else (promhp_FROM_REPOS)
