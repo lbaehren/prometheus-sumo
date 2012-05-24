@@ -37,10 +37,11 @@ can be found:
     |-- config
     |   |-- cmake               ...  Collection of CMake scripts and modules
     |   `-- rake                ...  Collection of Rake scripts and modules
-    |-- doc                     ...  Documentation sources (other than source)
-    |-- environment             ...  Environment preparation scripts
-    |   `-- CMakeLists.txt
-    |-- repositories            ...  Working copies of related projects
+    |-- documentation           ...  Extended documentation
+    |   |-- examples            ...  Code examples to be included into the documentation
+    |   |-- images              ...  Images to be included into the documentation
+    |   `-- manual              ...  Reference Manual
+    |-- packages                ...  Wrappers for installation of the various packages
     `-- sources                 ...  Source files
 
 ## Configuration and build
