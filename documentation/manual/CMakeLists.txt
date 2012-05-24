@@ -92,7 +92,7 @@ if (DOXYGEN_EXECUTABLE)
   set (MANUAL_PROJECT_NAME     "prometheus"                    )
   set (MANUAL_PROJECT_BRIEF    "The Distributed Digital Image Archive for Research and Studies"              )
   set (MANUAL_INPUT            "${CMAKE_CURRENT_SOURCE_DIR}"                            )
-  set (DOXYGEN_HTML_STYLESHEET "${CMAKE_CURRENT_BINARY_DIR}/doxygen_html_stylesheet.css")
+  set (DOXYGEN_HTML_STYLESHEET "${CMAKE_CURRENT_BINARY_DIR}/stylesheet_custom.css")
   set (DOXYGEN_HTML_FOOTER     "${CMAKE_CURRENT_BINARY_DIR}/doxygen_html_footer.html"   )
 
   if (DOXYGEN_GENERATE_LATEX)
@@ -102,7 +102,7 @@ if (DOXYGEN_EXECUTABLE)
   endif ()
 
   configure_file (
-    ${CMAKE_CURRENT_SOURCE_DIR}/doxygen_html_stylesheet.css.in
+    ${CMAKE_CURRENT_SOURCE_DIR}/stylesheet_custom.css.in
     ${DOXYGEN_HTML_STYLESHEET}
     )
   
