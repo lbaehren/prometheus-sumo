@@ -37,6 +37,8 @@ can be found:
     |-- config
     |   |-- cmake               ...  Collection of CMake scripts and modules
     |   `-- rake                ...  Collection of Rake scripts and modules
+    |-- data
+    |   `-- repositories        ...  Working copies of the various code repositories
     |-- documentation           ...  Extended documentation
     |   |-- examples            ...  Code examples to be included into the documentation
     |   |-- images              ...  Images to be included into the documentation
