@@ -12,10 +12,13 @@ find_program (PORT_EXECUTABLE port
 ## Installation of the individual packages
 
 if (PORT_EXECUTABLE)
+
+  message (STATUS "Checking MacPorts installation ...")
   
   ## List of packages ______________________________________
 
   foreach (varPackage
+      doxygen
       mod_ruby
       mysql5-devel
       rb-rubygems
@@ -36,9 +39,9 @@ if (PORT_EXECUTABLE)
     ## Installation instructions for the package ___________
     
     if (PORT_OUTPUT_VARIABLE)
-      message (STATUS "Checking whether port ${varPackage} is installed - yes")
+      message ("   [OK] ${varPackage}")
     else (PORT_OUTPUT_VARIABLE)
-      message (STATUS "Checking whether port ${varPackage} is installed - no")
+      message ("   [--] ${varPackage}")
       add_custom_command (
 	TARGET InstallPackages
 	POST_BUILD

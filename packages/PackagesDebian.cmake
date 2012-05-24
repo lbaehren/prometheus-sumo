@@ -18,6 +18,8 @@ find_program (DPKG_EXECUTABLE dpkg
 
 if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
   
+  message (STATUS "Checking Debian packages ...")
+  
   foreach (varPackage
       ruby${REQUIRED_VERSION_RUBY}
       ruby${REQUIRED_VERSION_RUBY}-dev
@@ -53,7 +55,10 @@ if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
       ERROR_VARIABLE DPKG_ERROR_VARIABLE
       )
     
-    if (NOT DPKG_OUTPUT_VARIABLE)
+    if (DPKG_OUTPUT_VARIABLE)
+      message ("   [OK] ${varPackage}")
+    if (DPKG_OUTPUT_VARIABLE)
+      message ("   [--] ${varPackage}")
       add_custom_command (
 	TARGET InstallPackages
 	POST_BUILD
@@ -61,7 +66,7 @@ if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
 	WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 	COMMENT "Installing Debian package ${varPackage} ..."
 	)
-    endif (NOT DPKG_OUTPUT_VARIABLE)
+    endif (DPKG_OUTPUT_VARIABLE)
     
   endforeach (varPackage)
   

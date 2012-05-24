@@ -9,6 +9,8 @@ find_package (RubyGems)
 ## Installation of the individual packages
 
 if (GEM_EXECUTABLE)
+
+  message (STATUS "Checking Ruby Gems ...")
   
   foreach (varPackage
       apache_image_resizer
@@ -56,8 +58,6 @@ if (GEM_EXECUTABLE)
     ## it is added to the list available through the
     ## 'InstallGems' target.
 
-    message (STATUS "Checking whether Ruby Gem ${varPackage} is installed")
-
     execute_process (
       COMMAND ${GEM_EXECUTABLE} list ${varPackage}
       WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
@@ -68,10 +68,10 @@ if (GEM_EXECUTABLE)
       )
 
     if (GEM_OUTPUT_VARIABLE)
-      message (STATUS "Checking whether Ruby Gem ${varPackage} is installed - true")
+      message ("   [OK] ${varPackage}")
     else (GEM_OUTPUT_VARIABLE)
       ## Feedback
-      message (STATUS "Checking whether Ruby Gem ${varPackage} is installed - false")
+      message ("   [--] ${varPackage}")
       ## Installation instructions
       add_custom_command (
 	TARGET InstallGems
