@@ -8,10 +8,10 @@
 project (prometheus-sumo)
 
 ## Minimum required version of CMake to configure the project
-cmake_minimum_required (VERSION 2.8.2)
+cmake_minimum_required (VERSION 2.8.3)
 
 ## Enforced CMake policy
-cmake_policy (VERSION 2.8.2)
+cmake_policy (VERSION 2.8.3)
 
 ## Project release version (major.minor.patch)
 set (${CMAKE_PROJECT_NAME}_VERSION_MAJOR 0 )
@@ -93,6 +93,7 @@ set (CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/config/cmake" CACHE PATH
 ##__________________________________________________________
 ## Standard CMake modules
 
+include(ExternalProject)
 find_package (Git)
 find_package (Doxygen)
 find_package (Ruby)
@@ -171,7 +172,7 @@ endif (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 add_subdirectory (data)
 add_subdirectory (documentation)
 add_subdirectory (environment)
-#add_subdirectory (packages)
+add_subdirectory (packages)
 add_subdirectory (sources)
 
 ## ==============================================================================
