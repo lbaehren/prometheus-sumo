@@ -170,9 +170,9 @@ endif (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 ## ==============================================================================
 
 add_subdirectory (data)
-add_subdirectory (documentation)
 add_subdirectory (packages)
 add_subdirectory (sources)
+add_subdirectory (documentation)
 
 ## ==============================================================================
 ##
