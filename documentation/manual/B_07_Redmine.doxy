@@ -174,6 +174,30 @@ There is no per-instance support for plugins, but those dropped to : ``/usr/shar
     \li Click "Update Settings" and you are done!
   </ol>
 
+  That’s it. Github will now send a HTTP POST to the Redmine Github Hook plugin
+  whenever changes are pushed to Github. The plugin then takes care of pulling
+  the changes to the local repository and updating the Redmine database with
+  them.
+
+  On the part of [Github](https://github.com) the required functionality is
+  implemented as a [Github service](https://github.com/blog/964-all-of-the-hooks).
+
+  \code
+  class Service::Redmine < Service
+    string :address, :project, :api_key
+    white_list :address, :project
+  
+    def receive_push
+      http.ssl[:verify] = false
+      http.url_prefix = data['address']
+      http_get "sys/fetch_changesets" do |req|
+        req.params['key'] = data['api_key']
+        req.params['id'] = data['project']
+      end
+    end
+  end
+  \endcode
+
   \section redmine_configuration Configuration
 
   \subsection redmine_configuration_projects Projects
