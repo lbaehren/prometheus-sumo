@@ -884,12 +884,13 @@ dl.section dd {
 
 #titlearea
 {
-	padding: 0px;
-	margin: 0px;
-	width: 100%;
-	border-bottom: 1px solid #5373B4;
-	color:             #ffffff;
-	background-color:  #262626;
+    font-family:      monospace;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    border-bottom: 1px solid #5373B4;
+    color:             #ffffff;
+    background-color:  #262626;
 }
 
 .image
