@@ -91,6 +91,12 @@ syntax from the command line. At the moment the following options are available
     GIT_REPOSITORIES_RW   "Check out Github repositories for r/w access?" [ NO  ]
     PANDORA_GENERATE_DOCS "Enable documentation of pandora source code?"  [ YES ]
 
+Besides these options probably the most commonly used command line parameter 
+passed to CMake in the configuration is the customization of the installation
+prefix:
+
+    -DCMAKE_INSTALL_PREFIX=<prefix>
+
 
 ### Installation
 
