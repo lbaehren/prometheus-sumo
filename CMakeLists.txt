@@ -151,15 +151,16 @@ endif (RUBY_VERSION)
 ##
 ## ==============================================================================
 
-## By default all the component are installed into "/var/local/prometheus", at
-## least on the development and production system. However by passing along
-## CMAKE_INSTALL_PREFIX on the command line, we can select a custom installation
-## location.
+## For a production and development system on one of the server machines the
+## installation is done into "/var/local/prometheus". If however development
+## (or even just test installation) is carried out on a different system with
+## the user/developer not having write permissions to "/var/local" we need to
+## move to the installation root to a different point.
 
 if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 
   set (CMAKE_INSTALL_PREFIX
-    "/var/local/prometheus" CACHE PATH "prometheus install prefix" FORCE
+    "${PROJECT_SOURCE_DIR}/release" CACHE PATH "prometheus install prefix" FORCE
     )
 endif (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 
