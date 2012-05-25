@@ -17,9 +17,9 @@ find_program (DPKG_EXECUTABLE dpkg
 ## Installation of the individual packages
 
 if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
-  
+
   message (STATUS "Checking Debian packages ...")
-  
+
   foreach (varPackage
       ruby${REQUIRED_VERSION_RUBY}
       ruby${REQUIRED_VERSION_RUBY}-dev
@@ -57,7 +57,7 @@ if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
     
     if (DPKG_OUTPUT_VARIABLE)
       message ("   [OK] ${varPackage}")
-    if (DPKG_OUTPUT_VARIABLE)
+    else (DPKG_OUTPUT_VARIABLE)
       message ("   [--] ${varPackage}")
       add_custom_command (
 	TARGET InstallPackages
@@ -81,3 +81,4 @@ if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
     )
   
 endif (APT_EXECUTABLE AND DPKG_EXECUTABLE)
+
