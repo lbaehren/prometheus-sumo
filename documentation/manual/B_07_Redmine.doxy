@@ -255,5 +255,6 @@ There is no per-instance support for plugins, but those dropped to : ``/usr/shar
   \li [redmine.org](http://www.redmine.org) - Project homepage
   \li [Installing Redmine](http://www.redmine.org/projects/redmine/wiki/RedmineInstall)
   \li [Redmine Github Hook plugin](https://github.com/koppen/redmine_github_hook)
+  \li [Syncronizing Redmine & BitBucket repositories](http://blog.bigpixel.ro/2011/12/syncronizing-redmine-bitbucket-repositories)
 
 */
