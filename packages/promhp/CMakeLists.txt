@@ -30,22 +30,39 @@ option (promhp_FORCE_BUILD    "Force build and installation of package?" NO  )
 option (promhp_FROM_REPOS     "Install package from repository?"         YES )
 option (promhp_ENABLE_TESTING "Enable testing and experimental builds?"  YES )
 
-## Handle options
+##__________________________________________________________
+## Handle option: Enable testing and experimental builds?
 
 if (promhp_ENABLE_TESTING)
   include (CTest)
   enable_testing()
 endif (promhp_ENABLE_TESTING)
 
+##__________________________________________________________
+## Handle option: Install package from repository?
+
+if (promhp_FROM_REPOS)
+
+  set (promhp_FORCE_BUILD TRUE)
+
+  ## Check if a local version of the repository is available already
+  find_path (promhp_LOCAL_REPOS
+    NAMES .git/HEAD .git/config .git/description
+    HINTS ${prometheus-sumo_SOURCE_DIR} ${CMAKE_INSTALL_PREFIX}
+    PATH_SUFFIXES data/repositories/promhp
+    )
+  
+  if (promhp_LOCAL_REPOS)
+    set (promhp_GIT ${promhp_LOCAL_REPOS})
+  endif (promhp_LOCAL_REPOS)
+  
+endif (promhp_FROM_REPOS)
+
 ## ==============================================================================
 ##
 ##  Build instructions
 ##
 ## ==============================================================================
-
-if (promhp_FROM_REPOS)
-  set (promhp_FORCE_BUILD TRUE)
-endif (promhp_FROM_REPOS)
 
 if (promhp_FORCE_BUILD)
   
