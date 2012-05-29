@@ -794,7 +794,7 @@ div.header
 
 div.headertitle
 {
-	padding: 5px 5px 5px 7px;
+    padding: 5px 5px 5px 7px;
 }
 
 dl
@@ -889,8 +889,12 @@ dl.section dd {
     margin: 0px;
     width: 100%;
     border-bottom: 1px solid #5373B4;
+    color:             #111111;
+    background-color:  #dddddd;
+/*
     color:             #ffffff;
     background-color:  #262626;
+*/
 }
 
 .image
