@@ -109,7 +109,7 @@ There is no per-instance support for plugins, but those dropped to : ``/usr/shar
 
   Installation steps:
 
-  \li Download last version from \c /redmine/projects/advanced-roadmap/files.
+  \li Download last version from [http://www.redmine.org/plugins/advanced_roadmap](www.redmine.org/plugins/advanced_roadmap).
   \li Unzip on your Redmine folder \c /vendor/plugins.
   \li Rename the folder from \c advanced_roadmap_x.y.z to \c advanced_roadmap.
   \li Into the Redmine root folder migrate plugins:
