@@ -178,12 +178,10 @@ There is no per-instance support for plugins, but those dropped to : ``/usr/shar
 
     \li Select your repository and click on "Admin".
     \li Click on the "Service Hooks" tab and select Redmine in the list.
+    \image html Redmine__Select_Github_hook.png
     \li Scroll up to fill needed information, don't forget the API Key we generated earlier. For instance, if your project url is http://redmine.mydomain.com/projects/my_project:
-    \verbatim
-    Adress = http://redmine.mydomain.com
-    Project = my_project
-    API Key = the API key we got from Redmine
-    \endverbatim
+    \image html Redmine__Set_Github_hook.png
+    \image latex Redmine__Set_Github_hook.png "Setting up the Github service hook for Redmine." width=.9\textwidth
     \li Click "Update Settings" and you are done!
   </ol>
 
