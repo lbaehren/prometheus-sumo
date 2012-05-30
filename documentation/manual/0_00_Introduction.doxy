@@ -44,7 +44,8 @@
     machines, domains and repositories, which utilized by the prometheus project.
 
     <li>The chapter \subpage manual_pandora focusses on the software package acting
-    as the driving force behind the prometheus image archive.
+    as the driving force behind the prometheus image archive, as well as the
+    underlying \subpage database.
 
     <li>The chapter \subpage homepage summarizes the setup for the generation
     of the homepage, into which the actual image archive is embedded.
