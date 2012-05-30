@@ -45,16 +45,18 @@ if (promhp_FROM_REPOS)
 
   set (promhp_FORCE_BUILD TRUE)
 
-  ## Check if a local version of the repository is available already
-  find_path (promhp_LOCAL_REPOS
-    NAMES .git/HEAD .git/config .git/description
+  ## Check if a local version of the repository is available already;
+  ## we need to be rather carefull here, in order not to accidentally
+  ## pick up the Git repository files of the host project.
+  find_file (PROMHP_REPOS_HEAD
+    NAMES promhp/.git/HEAD promhp/HEAD
     HINTS ${prometheus-sumo_SOURCE_DIR} ${CMAKE_INSTALL_PREFIX}
-    PATH_SUFFIXES data/repositories/promhp
+    PATH_SUFFIXES data/repositories
     )
   
-  if (promhp_LOCAL_REPOS)
-    set (promhp_GIT ${promhp_LOCAL_REPOS})
-  endif (promhp_LOCAL_REPOS)
+  if (PROMHP_REPOS_HEAD)
+    get_filename_component (promhp_GIT ${PROMHP_REPOS_HEAD} PATH)
+  endif (PROMHP_REPOS_HEAD)
   
 endif (promhp_FROM_REPOS)
 
