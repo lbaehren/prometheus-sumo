@@ -1,0 +1,49 @@
+/*!
+  \page faq FAQ
+
+  \tableofcontents
+
+  \section faq_download_presentation Herunterladen einer Präsentation
+
+  Hallo, ich habe ein Problem beim Herunterladen einer Präsentation auf meinen Rechner.
+Die Präsentation ist fertig, ich klicke auf das Zeichen für Herunterladen, das Herunterladen startet und läuft, es kommt aber nicht die Präsentation als Gesamtwerk an, sondern nur in Gestalt der ausgewählten Bilder.
+Was mache ich falsch?
+
+  \b Answer: 
+
+  über den Download-Button (mit dem dicken Pfeil), werden alle Elemente einer
+  Präsentation als zip-Datei heruntergeladen. Hierbei wird für jede Folie ein
+  Ordner angelegt. Diese Elemente können Sie dann frei nach belieben weiter
+  verwenden und in eine Präsentation einbauen. 
+
+  Falls Sie Ihre Präsentation aus prometheus mit der dort gestalteten Formatierung
+  exportieren möchten, so können Sie das über den pdf-Button rechts daneben tun.
+  Auch eine pdf-Datei kann man, ähnlich wie eine PowerPointPräsentation,
+  präsentieren, indem Sie in der oberen Menüleiste auf 'Fenster' gehen und den
+  'Vollbildmodus' auswählen. 
+
+  \section faq_sortierung_ergebnisliste Sortierung der Ergebnisliste
+
+  Kann man tatsächlich die Ergebnisse nicht nach Datierung sortieren?? Es
+  wäre sehr praktisch, Werke in chronologischer Reihenfolge aufzulisten.
+  Wenn ich diese Funktion übersehen haben sollte, würde ich mich über
+  einen Hinweis freuen.
+
+  \b Answer:
+
+  Das Feld zur Datierung ist leider mit einigen Schwierigkeiten behaftet. Es
+  wäre sehr wünschenswert hier eine einheitliche Lösung zu finden. Da
+  prometheus heterogene Datenbanken unter einer Oberfläche vereint, sind wir
+  an die jeweilige Schreibweise der einzelnen Datenbankgeber gebunden. Gerade
+  bei älteren Werken gibt es dabei nicht nur strittige oder unklare
+  Zuschreibungen, sondern zudem differiert die Schreibweise vor allem bei der
+  Angabe von Zeiträumen immer wieder. 
+
+  Generell werden Datensätze in der Trefferliste bei prometheus bereits in
+  gewisser Weise nach der Datierung sortiert, allerdings funktioniert dies aus
+  technischen Gründen nicht nach einer klaren Chronologie, sondern orientiert
+  sich an den unterschiedlichen Eingaben. Wir haben uns daher dagegen
+  entscheiden, eine Sortierung nach Datierung einzuführen.
+
+*/
+
