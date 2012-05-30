@@ -134,49 +134,49 @@
 
   we get:
   
-  \verbatim
-+--------------------------------+--------------+------+-----+---------+----------------+
-| Field                          | Type         | Null | Key | Default | Extra          |
-+--------------------------------+--------------+------+-----+---------+----------------+
-| id                             | int(11)      | NO   | PRI | NULL    | auto_increment |
-| email                          | varchar(255) | YES  | MUL | NULL    |                |
-| login                          | varchar(255) | YES  | MUL | NULL    |                |
-| firstname                      | varchar(255) | YES  |     | NULL    |                |
-| lastname                       | varchar(255) | YES  |     | NULL    |                |
-| title                          | varchar(255) | YES  |     | NULL    |                |
-| addressline                    | varchar(255) | YES  |     | NULL    |                |
-| postalcode                     | varchar(255) | YES  |     | NULL    |                |
-| city                           | varchar(255) | YES  |     | NULL    |                |
-| country                        | varchar(255) | YES  |     | NULL    |                |
-| institution_id                 | int(11)      | YES  | MUL | NULL    |                |
-| crypted_password               | varchar(40)  | YES  |     | NULL    |                |
-| salt                           | varchar(40)  | YES  |     | NULL    |                |
-| created_at                     | datetime     | YES  |     | NULL    |                |
-| updated_at                     | datetime     | YES  |     | NULL    |                |
-| expires_at                     | datetime     | YES  |     | NULL    |                |
-| notified_at                    | datetime     | YES  |     | NULL    |                |
-| newsletter                     | tinyint(1)   | YES  |     | 1       |                |
-| member_since                   | datetime     | YES  |     | NULL    |                |
-| remember_token                 | varchar(255) | YES  | MUL | NULL    |                |
-| remember_token_expires_at      | datetime     | YES  |     | NULL    |                |
-| notes                          | text         | YES  |     | NULL    |                |
-| local_identifier               | varchar(255) | YES  |     | NULL    |                |
-| registered_at                  | datetime     | YES  |     | NULL    |                |
-| code                           | varchar(255) | YES  | MUL | NULL    |                |
-| announcement_hide_time         | datetime     | YES  |     | NULL    |                |
-| email_verified_at              | datetime     | YES  |     | NULL    |                |
-| accepted_terms_of_use_at       | datetime     | YES  |     | NULL    |                |
-| status                         | varchar(255) | YES  |     | NULL    |                |
-| mode                           | varchar(255) | YES  |     | NULL    |                |
-| creator_id                     | int(11)      | YES  |     | NULL    |                |
-| about                          | text         | YES  |     | NULL    |                |
-| about_de                       | text         | YES  |     | NULL    |                |
-| accepted_terms_of_use_revision | int(11)      | YES  |     | NULL    |                |
-| login_failed_at                | datetime     | YES  |     | NULL    |                |
-| failed_logins                  | int(11)      | YES  |     | 0       |                |
-| disabled_at                    | datetime     | YES  |     | NULL    |                |
-+--------------------------------+--------------+------+-----+---------+----------------+
-  \endverbatim
+  \htmlonly <center> \endhtmlonly
+  \latexonly {\small \endlatexonly
+  | Field                          | Type         | Null | Key | Default | Extra          |
+  |--------------------------------|--------------|------|-----|---------|----------------|
+  | id                             | int(11)      | NO   | PRI | NULL    | auto_increment |
+  | email                          | varchar(255) | YES  | MUL | NULL    |                |
+  | login                          | varchar(255) | YES  | MUL | NULL    |                |
+  | firstname                      | varchar(255) | YES  |     | NULL    |                |
+  | lastname                       | varchar(255) | YES  |     | NULL    |                |
+  | title                          | varchar(255) | YES  |     | NULL    |                |
+  | addressline                    | varchar(255) | YES  |     | NULL    |                |
+  | postalcode                     | varchar(255) | YES  |     | NULL    |                |
+  | city                           | varchar(255) | YES  |     | NULL    |                |
+  | country                        | varchar(255) | YES  |     | NULL    |                |
+  | institution_id                 | int(11)      | YES  | MUL | NULL    |                |
+  | crypted_password               | varchar(40)  | YES  |     | NULL    |                |
+  | salt                           | varchar(40)  | YES  |     | NULL    |                |
+  | created_at                     | datetime     | YES  |     | NULL    |                |
+  | updated_at                     | datetime     | YES  |     | NULL    |                |
+  | expires_at                     | datetime     | YES  |     | NULL    |                |
+  | notified_at                    | datetime     | YES  |     | NULL    |                |
+  | newsletter                     | tinyint(1)   | YES  |     | 1       |                |
+  | member_since                   | datetime     | YES  |     | NULL    |                |
+  | remember_token                 | varchar(255) | YES  | MUL | NULL    |                |
+  | remember_token_expires_at      | datetime     | YES  |     | NULL    |                |
+  | notes                          | text         | YES  |     | NULL    |                |
+  | local_identifier               | varchar(255) | YES  |     | NULL    |                |
+  | registered_at                  | datetime     | YES  |     | NULL    |                |
+  | code                           | varchar(255) | YES  | MUL | NULL    |                |
+  | announcement_hide_time         | datetime     | YES  |     | NULL    |                |
+  | email_verified_at              | datetime     | YES  |     | NULL    |                |
+  | accepted_terms_of_use_at       | datetime     | YES  |     | NULL    |                |
+  | status                         | varchar(255) | YES  |     | NULL    |                |
+  | mode                           | varchar(255) | YES  |     | NULL    |                |
+  | creator_id                     | int(11)      | YES  |     | NULL    |                |
+  | about                          | text         | YES  |     | NULL    |                |
+  | about_de                       | text         | YES  |     | NULL    |                |
+  | accepted_terms_of_use_revision | int(11)      | YES  |     | NULL    |                |
+  | login_failed_at                | datetime     | YES  |     | NULL    |                |
+  | failed_logins                  | int(11)      | YES  |     | 0       |                |
+  | disabled_at                    | datetime     | YES  |     | NULL    |                |
+  \htmlonly </center> \endhtmlonly
+  \latexonly } \endlatexonly
 
   \subsection database_tables_accounts_roles Accounts roles
 
@@ -185,14 +185,44 @@
   SHOW FIELDS FROM `pandora_development`.`accounts_roles`;
   \endcode
   we get:
-  \verbatim
-  +------------+---------+------+-----+---------+-------+
+
+  \htmlonly <center> \endhtmlonly
+  \latexonly {\small \endlatexonly
   | Field      | Type    | Null | Key | Default | Extra |
-  +------------+---------+------+-----+---------+-------+
+  |------------|---------|------|-----|---------|-------|
   | account_id | int(11) | YES  | MUL | NULL    |       |
   | role_id    | int(11) | YES  |     | NULL    |       |
-  +------------+---------+------+-----+---------+-------+
-  \endverbatim
+  \htmlonly </center> \endhtmlonly
+  \latexonly } \endlatexonly
+
+  \subsection database_tables_sum_stats Summed statistics
+
+  \htmlonly <center> \endhtmlonly
+  \latexonly {\small \endlatexonly
+  | Field                  | Type     | Null | Key | Default | Extra          |
+  |------------------------|----------|------|-----|---------|----------------|
+  | id                     | int(11)  | NO   | PRI | NULL    | auto_increment |
+  | year                   | int(11)  | YES  | MUL | NULL    |                |
+  | month                  | int(11)  | YES  |     | NULL    |                |
+  | day                    | int(11)  | YES  |     | NULL    |                |
+  | sessions_campus        | int(11)  | YES  |     | 0       |                |
+  | sessions_personalized  | int(11)  | YES  |     | 0       |                |
+  | searches_campus        | int(11)  | YES  |     | 0       |                |
+  | searches_personalized  | int(11)  | YES  |     | 0       |                |
+  | downloads_campus       | int(11)  | YES  |     | 0       |                |
+  | downloads_personalized | int(11)  | YES  |     | 0       |                |
+  | hits_campus            | int(11)  | YES  |     | 0       |                |
+  | hits_personalized      | int(11)  | YES  |     | 0       |                |
+  | runtime_sum            | float    | YES  |     | 0       |                |
+  | runtime_sqr            | float    | YES  |     | 0       |                |
+  | runtime_min            | float    | YES  |     | 0       |                |
+  | runtime_max            | float    | YES  |     | 0       |                |
+  | runtime_count          | int(11)  | YES  |     | 0       |                |
+  | created_at             | datetime | YES  |     | NULL    |                |
+  | updated_at             | datetime | YES  |     | NULL    |                |
+  | institution_id         | int(11)  | YES  | MUL | NULL    |                |
+  \htmlonly </center> \endhtmlonly
+  \latexonly } \endlatexonly
 
   \section database_update Updating fields in the database
 
