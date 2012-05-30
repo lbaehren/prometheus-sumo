@@ -1,4 +1,5 @@
 build
+release
 data/repositories/JekyllCommander
 data/repositories/apache_image_resizer
 data/repositories/apache_secure_download
