@@ -157,8 +157,21 @@ There is no per-instance support for plugins, but those dropped to : ``/usr/shar
 
    <li>Now, you have to create a local repository on the machine Redmine is installed
 
+     \li In order to keep things organized, all the local repositories are
+     collected within the \c vendor/repositories folder:
+     \verbatim
+     vendor/
+     |-- plugins
+     |-- repositories
+     `-- ruby
+     \endverbatim
      \li Use specifically the command \code git clone --mirror [repo_url] \endcode
-     \li Pay attention to the fact that Redmine needs read permissions on this folder.
+     \li Pay attention to the fact that Redmine needs read permissions on this folder:
+     \code
+     cd [redmine_root_dir]
+     chown -R www-data:prometheus vendor/repositories
+     chmod -R ug+rw vendor/repositories
+     \endcode
      \li Then go into your projects settings, in the "repository tab". Select "Git" as SCM, and fill the absolute path to the local repository you created just above.
 
   <li>Finally go to GitHub
