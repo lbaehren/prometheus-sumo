@@ -72,6 +72,11 @@ if (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
   ## Configuration files for the installed tools
 
   configure_file (
+    ${PROJECT_SOURCE_DIR}/clamd.conf.in
+    ${PROJECT_BINARY_DIR}/clamd.conf
+    )
+
+  configure_file (
     ${PROJECT_SOURCE_DIR}/freshclam.conf.in
     ${PROJECT_BINARY_DIR}/freshclam.conf
     )
