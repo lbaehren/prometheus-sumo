@@ -83,26 +83,3 @@ Amongst the log messages provided you should see e.g.
       command finished in 38ms
     * executing "svn checkout -q  -r3707 http://<pandora SVN root>/branches/0.6-stable /var/local/prometheus/app/pandora/releases/20120416143435 && (echo 3707 > /var/local/prometheus/app/pandora/releases/20120416143435/REVISION)"
 
-
-## Troubleshooting
-
-There are quite a number of reasons why the deployment process might fail or stop
-along the lines - first point to retrieve diagnostics information should be the
-log messages generated while the deploy is running.
-
-### Unable to run pandora_cluster executable
-
-Most likely the ``bin`` directory of the prometheus installation is not in your path:
-
-    $ export PATH=$PATH:/var/local/prometheus/bin
-
-### No documentation generated
-
-Part of the deployment process is the generation of the documentation; if this
-step fails, the new version will not be activated. One of the possible causes
-might be that the user trying to deploy the new version does not have sufficient
-accss permissions to the files and directories which need to be touched in the 
-process - ideally this aspects should be covered by the Rake and Capistrano
-scripts. In order to investigate (and possibly mitigate) this problem, you
-will have to log onto the server, in order to have a closer look at the 
-files and directories in question.

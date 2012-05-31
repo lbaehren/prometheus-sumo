@@ -499,6 +499,37 @@
   Committed revision 3707.
   \endverbatim
 
+
+  \subsection pandora_release_trouble Troubleshooting
+
+  There are quite a number of reasons why the deployment process might fail or stop
+  along the lines - first point to retrieve diagnostics information should be the
+  log messages generated while the deploy is running.
+
+  <dl>
+
+    <dt>Unable to run \c pandora_cluster executable.</dt>
+    <dd>
+    Most likely the ``bin`` directory of the prometheus installation is not in your path:
+    \code
+    $ export PATH=$PATH:/var/local/prometheus/bin
+    \endcode
+    </dd>
+
+    <dt>No documentation generated.</dt>
+    <dd>
+    Part of the deployment process is the generation of the documentation; if this
+    step fails, the new version will not be activated. One of the possible causes
+    might be that the user trying to deploy the new version does not have sufficient
+    accss permissions to the files and directories which need to be touched in the 
+    process - ideally this aspects should be covered by the Rake and Capistrano
+    scripts. In order to investigate (and possibly mitigate) this problem, you
+    will have to log onto the server, in order to have a closer look at the 
+    files and directories in question.
+    </dd>
+  </dl>
+
+
   \section pandora_import_database Importing a new (external) database
 
   The import of a new database is channeled through the generation and subsequent
