@@ -116,10 +116,10 @@ if (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
   ## Set up database
   
   ExternalProject_Add_Step (clamav download_databases
-    COMMAND freshclam
+    COMMAND ${CMAKE_INSTALL_PREFIX}/bin/freshclam
     COMMENT "Updating databases with virus signatures"
     DEPENDEES install
-    WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin
+    WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
     )
   
 else (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
