@@ -57,6 +57,7 @@ endif (CLAMAV_FROM_REPOS)
 
 if (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
   
+  ##________________________________________________________
   ## Locate source file to build from
   
   find_file (CLAMAV_SOURCE ${CLAMAV_SOURCE_ARCHIVE}
@@ -66,7 +67,16 @@ if (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
   if (NOT CLAMAV_SOURCE)
     set (CLAMAV_SOURCE ${CLAMAV_URL})
   endif (NOT CLAMAV_SOURCE)
-  
+
+  ##________________________________________________________
+  ## Configuration files for the installed tools
+
+  configure_file (
+    ${PROJECT_SOURCE_DIR}/freshclam.conf.in
+    ${PROJECT_BINARY_DIR}/freshclam.conf
+    )
+
+  ##________________________________________________________
   ## Build package from source
   
   if (CLAMAV_FROM_REPOS)
@@ -77,6 +87,7 @@ if (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
       SOURCE_DIR source
       GIT_REPOSITORY ${CLAMAV_GIT}
       BUILD_IN_SOURCE 1
+      PATCH_COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_BINARY_DIR}/freshclam.conf ${PROJECT_BINARY_DIR}/source/etc
       CONFIGURE_COMMAND ${PROJECT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --disable-clamav
       INSTALL_COMMAND ${PORT_INSTALL_COMMAND} make install
       )
@@ -89,11 +100,22 @@ if (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
       SOURCE_DIR source
       URL ${CLAMAV_SOURCE}
       BUILD_IN_SOURCE 1
+      PATCH_COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_BINARY_DIR}/freshclam.conf ${PROJECT_BINARY_DIR}/source/etc
       CONFIGURE_COMMAND ${PROJECT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --disable-clamav
       INSTALL_COMMAND ${PORT_INSTALL_COMMAND} make install
       )
     
   endif (CLAMAV_FROM_REPOS)
+
+  ##________________________________________________________
+  ## Set up database
+  
+  ExternalProject_Add_Step (clamav download_databases
+    COMMAND freshclam
+    COMMENT "Updating databases with virus signatures"
+    DEPENDEES install
+    WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin
+    )
   
 else (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
   
