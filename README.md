@@ -86,7 +86,7 @@ shows the available options which can be passed along through the
 syntax from the command line. At the moment the following options are available
 (default values in parenthesis):
 
-    TESTING_ENABLE        "Enable CTest test driver?"                     [ YES ]
+    ENABLE_TESTING        "Enable CTest test driver?"                     [ YES ]
     CONFIGURE_VERBOSE     "Increase verbosity during configuration?"      [ NO  ]
     GIT_REPOSITORIES_RW   "Check out Github repositories for r/w access?" [ NO  ]
     PANDORA_GENERATE_DOCS "Enable documentation of pandora source code?"  [ YES ]

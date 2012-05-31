@@ -30,7 +30,7 @@ set (NOF_SKIPPED_TESTS      0    )
 ##
 ## ==============================================================================
 
-option (TESTING_ENABLE        "Enable CTest test driver?"                     YES )
+option (ENABLE_TESTING        "Enable CTest test driver?"                     YES )
 option (CONFIGURE_VERBOSE     "Increase verbosity during configuration?"      NO  )
 option (GIT_REPOSITORIES_RW   "Check out Github repositories for r/w access?" NO  )
 
@@ -41,10 +41,10 @@ option (PANDORA_GENERATE_DOCS "Enable documentation of pandora source code?"  YE
 ##__________________________________________________________
 ## Handle option: Enable CTest test driver?
 
-if (TESTING_ENABLE)
+if (ENABLE_TESTING)
   include (CTest)
   enable_testing()
-endif (TESTING_ENABLE)
+endif (ENABLE_TESTING)
 
 ##__________________________________________________________
 ## Handle option: Check out Github repositories for r/w access?
@@ -59,9 +59,10 @@ endif (GIT_REPOSITORIES_RW)
 ## Handle option: Increase verbosity during configuration?
 
 if (NOT CONFIGURE_VERBOSE)
+  set (CLAMAV_FIND_QUIETLY   YES )
+  set (DOXYGEN_FIND_QUIETLY  YES )
   set (GEM_FIND_QUIETLY      YES )
   set (GIT_FIND_QUIETLY      YES )
-  set (DOXYGEN_FIND_QUIETLY  YES )
   set (LATEX_FIND_QUIETLY    YES )
   set (MAGIC_FIND_QUIETLY    YES )
   set (MYSQL_FIND_QUIETLY    YES )
@@ -204,7 +205,7 @@ message (STATUS " .. Version number .............. = ${${CMAKE_PROJECT_NAME}_VER
 message (STATUS " .. Installation prefix ......... = ${CMAKE_INSTALL_PREFIX}"    )
 message (STATUS " .. Git repository base URL ..... = ${GIT_REPOSITORY_BASE}"     )
 message (STATUS " .. Clone Github repositories r/w = ${GIT_REPOSITORIES_RW}"     )
-message (STATUS " .. Enable CTest test driver? ... = ${TESTING_ENABLE}"          )
+message (STATUS " .. Enable CTest test driver? ... = ${ENABLE_TESTING}"          )
 message (STATUS " .. Verbose configure? .......... = ${CONFIGURE_VERBOSE}"       )
 message (STATUS " .. pandora database dumps ...... = ${PANDORA_DATA_DIR}"        )
 message (STATUS " Ruby configuration:"                                           )

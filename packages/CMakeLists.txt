@@ -131,4 +131,5 @@ endif (GEM_EXECUTABLE)
 ##
 ## ==============================================================================
 
+add_subdirectory (clamav)
 add_subdirectory (promhp)
