@@ -26,8 +26,8 @@ set (CLAMAV_GIT            "git://git.clamav.net/git/clamav-devel" )
 ##
 ## ==============================================================================
 
-option (CLAMAV_FORCE_BUILD    "Force build and installation of package?" NO )
-option (CLAMAV_FROM_REPOS     "Install package from repository?"         NO )
+option (CLAMAV_FORCE_BUILD    "Force build and installation of package?" NO  )
+option (CLAMAV_FROM_REPOS     "Install package from repository?"         YES )
 option (CLAMAV_ENABLE_TESTING "Enable testing and experimental builds?"  YES )
 
 ## Handle options
