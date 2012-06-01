@@ -34,9 +34,8 @@ option (ENABLE_TESTING        "Enable CTest test driver?"                     YE
 option (CONFIGURE_VERBOSE     "Increase verbosity during configuration?"      NO  )
 option (GIT_REPOSITORIES_RW   "Check out Github repositories for r/w access?" NO  )
 
-## Configuration options specific to pandora
-
-option (PANDORA_GENERATE_DOCS "Enable documentation of pandora source code?"  YES )
+option (WITH_CLAMAV       "Enable ClamAV antivirus software tool-kit?"    YES )
+option (WITH_PANDORA_DOCS "Enable documentation of pandora source code?"  NO  )
 
 ##__________________________________________________________
 ## Handle option: Enable CTest test driver?

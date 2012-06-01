@@ -89,7 +89,7 @@ syntax from the command line. At the moment the following options are available
     ENABLE_TESTING        "Enable CTest test driver?"                     [ YES ]
     CONFIGURE_VERBOSE     "Increase verbosity during configuration?"      [ NO  ]
     GIT_REPOSITORIES_RW   "Check out Github repositories for r/w access?" [ NO  ]
-    PANDORA_GENERATE_DOCS "Enable documentation of pandora source code?"  [ YES ]
+    WITH_PANDORA_DOCS     "Enable documentation of pandora source code?"  [ NO  ]
 
 Besides these options probably the most commonly used command line parameter 
 passed to CMake in the configuration is the customization of the installation
