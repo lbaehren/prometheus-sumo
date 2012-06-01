@@ -115,6 +115,14 @@ if (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
   ##________________________________________________________
   ## Set up database
   
+  ExternalProject_Add_Step (clamav create_share_clamav
+    COMMAND ${CMAKE_COMMAND} -E make_directory share/clamav
+    COMMENT "Updating databases with virus signatures"
+    DEPENDEES build
+    DEPENDERS install
+    WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX}
+    )
+
   ExternalProject_Add_Step (clamav download_databases
     COMMAND ${CMAKE_INSTALL_PREFIX}/bin/freshclam
     COMMENT "Updating databases with virus signatures"
