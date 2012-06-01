@@ -114,6 +114,11 @@ if (NOT CLAMAV_FOUND)
     PATH_SUFFIXES etc etc/clamav share share/clamav
     )
   
+  find_file (CLAMAV_MIRRORS_DAT mirrors.dat
+    HINTS ${CLAMAV_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
+    PATH_SUFFIXES etc etc/clamav share share/clamav
+    )
+  
   ##_____________________________________________________________________________
   ## Actions taken when all components have been found
   
@@ -140,6 +145,7 @@ if (NOT CLAMAV_FOUND)
       message (STATUS "CLAMAV_BYTECODE_CVD = ${CLAMAV_BYTECODE_CVD}")
       message (STATUS "CLAMAV_DAILY_CVD    = ${CLAMAV_DAILY_CVD}")
       message (STATUS "CLAMAV_MAIN_CVD     = ${CLAMAV_MAIN_CVD}")
+      message (STATUS "CLAMAV_MIRRORS_DAT  = ${CLAMAV_MIRRORS_DAT}")
     endif (NOT CLAMAV_FIND_QUIETLY)
   else (CLAMAV_FOUND)
     if (CLAMAV_FIND_REQUIRED)
@@ -153,7 +159,15 @@ if (NOT CLAMAV_FOUND)
   mark_as_advanced (
     CLAMAV_ROOT_DIR
     CLAMAV_INCLUDES
+    CLAMAV_CLAMAV_LIBRARY
     CLAMAV_LIBRARIES
+    CLAMAV_CLAMBC_EXECUTABLE
+    CLAMAV_CLAMCONF_EXECUTABLE
+    CLAMAV_CLAMDSCAN_EXECUTABLE
+    CLAMAV_BYTECODE_CVD
+    CLAMAV_DAILY_CVD
+    CLAMAV_MAIN_CVD
+    CLAMAV_MIRRORS_DAT
     )
   
 endif (NOT CLAMAV_FOUND)
