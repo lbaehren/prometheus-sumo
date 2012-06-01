@@ -95,6 +95,24 @@ if (NOT CLAMAV_FOUND)
       )
     
   endforeach (clamavProgram)
+
+  ##_____________________________________________________________________________
+  ## Check for the virus signature collections
+  
+  find_file (CLAMAV_BYTECODE_CVD bytecode.cvd
+    HINTS ${CLAMAV_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
+    PATH_SUFFIXES etc etc/clamav share share/clamav
+    )
+  
+  find_file (CLAMAV_DAILY_CVD daily.cvd
+    HINTS ${CLAMAV_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
+    PATH_SUFFIXES etc etc/clamav share share/clamav
+    )
+  
+  find_file (CLAMAV_MAIN_CVD main.cvd
+    HINTS ${CLAMAV_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
+    PATH_SUFFIXES etc etc/clamav share share/clamav
+    )
   
   ##_____________________________________________________________________________
   ## Actions taken when all components have been found
@@ -116,9 +134,12 @@ if (NOT CLAMAV_FOUND)
   if (CLAMAV_FOUND)
     if (NOT CLAMAV_FIND_QUIETLY)
       message (STATUS "Found components for CLAMAV")
-      message (STATUS "CLAMAV_ROOT_DIR  = ${CLAMAV_ROOT_DIR}")
-      message (STATUS "CLAMAV_INCLUDES  = ${CLAMAV_INCLUDES}")
-      message (STATUS "CLAMAV_LIBRARIES = ${CLAMAV_LIBRARIES}")
+      message (STATUS "CLAMAV_ROOT_DIR     = ${CLAMAV_ROOT_DIR}")
+      message (STATUS "CLAMAV_INCLUDES     = ${CLAMAV_INCLUDES}")
+      message (STATUS "CLAMAV_LIBRARIES    = ${CLAMAV_LIBRARIES}")
+      message (STATUS "CLAMAV_BYTECODE_CVD = ${CLAMAV_BYTECODE_CVD}")
+      message (STATUS "CLAMAV_DAILY_CVD    = ${CLAMAV_DAILY_CVD}")
+      message (STATUS "CLAMAV_MAIN_CVD     = ${CLAMAV_MAIN_CVD}")
     endif (NOT CLAMAV_FIND_QUIETLY)
   else (CLAMAV_FOUND)
     if (CLAMAV_FIND_REQUIRED)
