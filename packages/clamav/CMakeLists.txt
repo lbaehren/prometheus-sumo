@@ -121,7 +121,7 @@ if (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
     DEPENDEES install
     WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
     )
-  
+
 else (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
   
   add_custom_target (clamav
@@ -130,3 +130,14 @@ else (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
     )
   
 endif (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
+
+## ==============================================================================
+##
+##  Install support scripts
+##
+## ==============================================================================
+
+configure_file (
+  ${PROJECT_SOURCE_DIR}/scanImages.bash.in
+  ${CMAKE_INSTALL_PREFIX}/bin/scanImages.bash
+  )

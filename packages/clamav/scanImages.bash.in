@@ -1,0 +1,38 @@
+#!/bin/bash
+
+## === Variables and Settings ===================================================
+
+varDatabase=${CMAKE_INSTALL_PREFIX}/share/clamav
+varDate=`date +%Y-%m-%d`
+varLogfile="scan-$varDate.log"
+
+## === Feedback =================================================================
+
+echo "[scanImages]"
+echo " - Database = $varDatabase"
+echo " - Logfile  = $varLogfile"
+
+## === Processing ===============================================================
+
+## Update the virus signatures
+
+echo ""
+echo "[scanImages] Updating virus signatures ..."
+echo ""
+
+freshclam --datadir=$varDatabase
+
+## Scan directories and files
+
+echo ""
+echo "[scanImages] Scanning directories and files ..."
+echo ""
+
+clamscan --infected -r images --database=$varDatabase --log=$varLogfile
+
+## Report completion of job
+
+echo ""
+echo "[scanImages] Finished."
+echo " - Logfile : $varLogfile"
+echo ""
