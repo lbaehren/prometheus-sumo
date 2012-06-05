@@ -18,7 +18,7 @@ cmake_policy (VERSION 2.8)
 set (SPHINX_VERSION        "2.0.4" )
 set (SPHINX_SOURCE_ARCHIVE "sphinx-${SPHINX_VERSION}-release.tar.gz" )
 set (SPHINX_URL            "http://sphinxsearch.com/files/${SPHINX_SOURCE_ARCHIVE}" )
-set (SPHINX_SVN            "" )
+set (SPHINX_SVN            "http://sphinxsearch.googlecode.com/svn" )
 
 ## ==============================================================================
 ##
