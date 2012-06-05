@@ -28,9 +28,17 @@
 #  ICONV_LFLAGS     = Linker flags (optional)
 
 if (NOT ICONV_FOUND)
-    
+  
   if (NOT ICONV_ROOT_DIR)
-    set (ICONV_ROOT_DIR ${CMAKE_INSTALL_PREFIX})
+    ## We need some extra instruction here, in case inspection is done on
+    ## Mac OS X: apparently the default /usr/lib/libiconv is missing some of
+    ## the symbols, hence we prefer using the library version as installed
+    ## via MacPorts.
+    if (APPLE)
+      set (ICONV_ROOT_DIR /opt/local)
+    else (APPLE)
+      set (ICONV_ROOT_DIR ${CMAKE_INSTALL_PREFIX})
+    endif (APPLE)
   endif (NOT ICONV_ROOT_DIR)
   
   ##_____________________________________________________________________________
