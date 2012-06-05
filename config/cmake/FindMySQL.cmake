@@ -49,6 +49,11 @@ if (NOT MYSQL_FOUND)
     PATH_SUFFIXES lib mysql lib/mysql mysql5/mysql
     )
   
+  ## Extract the library path
+  if (MYSQL_LIBRARIES)
+    get_filename_component (MYSQL_LIBRARY_PATH ${MYSQL_LIBRARIES} PATH)
+  endif (MYSQL_LIBRARIES)
+  
   ##_____________________________________________________________________________
   ## Actions taken when all components have been found
   
