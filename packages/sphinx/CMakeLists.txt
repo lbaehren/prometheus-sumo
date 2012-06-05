@@ -70,7 +70,19 @@ if (NOT SPHINX_FOUND OR SPHINX_FORCE_BUILD)
   ## Configure patch file: due to a hack in the original configure file,
   ## the Autotools-based search for the iconv library tends to end up
   ## pointing to an inclomplete version.
-
+  
+  if (ICONV_INCLUDES)
+    set (CONFIGURE_ICONV_INCLUDES ${ICONV_INCLUDES})
+  else (ICONV_INCLUDES)
+    set (CONFIGURE_ICONV_INCLUDES /usr/include)
+  endif (ICONV_INCLUDES)
+  
+  if (ICONV_LIBRARY_PATH)
+    set (CONFIGURE_ICONV_LIBRARY_PATH ${ICONV_LIBRARY_PATH})
+  else (ICONV_LIBRARY_PATH)
+    set (CONFIGURE_ICONV_LIBRARY_PATH /usr/lib)
+  endif (ICONV_LIBRARY_PATH)
+  
   configure_file (
     ${PROJECT_SOURCE_DIR}/configure.patch.in
     ${PROJECT_BINARY_DIR}/configure.patch
