@@ -66,6 +66,15 @@ if (NOT SPHINX_FOUND OR SPHINX_FORCE_BUILD)
   if (NOT SPHINX_SOURCE)
     set (SPHINX_SOURCE ${SPHINX_URL})
   endif (NOT SPHINX_SOURCE)
+
+  ## Configure patch file: due to a hack in the original configure file,
+  ## the Autotools-based search for the iconv library tends to end up
+  ## pointing to an inclomplete version.
+
+  configure_file (
+    ${PROJECT_SOURCE_DIR}/configure.patch.in
+    ${PROJECT_BINARY_DIR}/configure.patch
+    )
   
   ## Build package from source
   
@@ -89,7 +98,8 @@ if (NOT SPHINX_FOUND OR SPHINX_FORCE_BUILD)
       SOURCE_DIR source
       URL ${SPHINX_SOURCE}
       BUILD_IN_SOURCE 1
-      CONFIGURE_COMMAND ${PROJECT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --with-mysql-includes=${MYSQL_INCLUDES} --with-mysql-libs=${MYSQL_LIBRARY_PATH} --without-iconv
+      PATCH_COMMAND patch < ${PROJECT_BINARY_DIR}/configure.patch
+      CONFIGURE_COMMAND ${PROJECT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --with-mysql-includes=${MYSQL_INCLUDES} --with-mysql-libs=${MYSQL_LIBRARY_PATH}
       INSTALL_COMMAND ${PORT_INSTALL_COMMAND} make install
       )
     
