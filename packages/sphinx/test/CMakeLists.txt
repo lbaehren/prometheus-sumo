@@ -12,7 +12,8 @@
 ##
 ## ==============================================================================
 
-## === Configure Python script to use correct paths =============================
+##__________________________________________________________
+## Configure Python script to use correct paths
 
 configure_file (
   ${CMAKE_CURRENT_SOURCE_DIR}/create_flat.py.in
@@ -36,7 +37,8 @@ configure_file (
   ${CMAKE_CURRENT_BINARY_DIR}/sphinx.conf
   )
 
-## === Download data to run the tests with ======================================
+##__________________________________________________________
+## Download and pre-process data to run the tests with
 
 ExternalProject_Add (sphinx_data_ohsumed
   PREFIX ${PROJECT_BINARY_DIR}
@@ -51,6 +53,9 @@ ExternalProject_Add (sphinx_data_ohsumed
   TEST_COMMAND ${CMAKE_INSTALL_PREFIX}/bin/indexer --config ${CMAKE_CURRENT_BINARY_DIR}/sphinx.conf medindex
   )
 
-## Target dependencies (mainly ensuring Sphinx is installed first
-
 add_dependencies (sphinx_data_ohsumed sphinx)
+
+##__________________________________________________________
+## Testing
+
+add_test (sphinx_indexer ${CMAKE_INSTALL_PREFIX}/bin/indexer --config ${CMAKE_CURRENT_BINARY_DIR}/sphinx.conf medindex)
