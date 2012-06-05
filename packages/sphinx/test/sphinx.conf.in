@@ -1,0 +1,22 @@
+source medindex_src
+{
+  type = xmlpipe2
+  xmlpipe_command = cat ${CMAKE_CURRENT_BINARY_DIR}/build.xml
+}
+
+index medindex
+{
+  source = medindex_src
+  path = ${CMAKE_CURRENT_BINARY_DIR}/medindex
+  charset_type = utf-8
+}
+
+searchd
+{
+  address = 127.0.0.1
+  port = 8002
+  log = ${CMAKE_CURRENT_BINARY_DIR}/search.log
+  query_log = ${CMAKE_CURRENT_BINARY_DIR}/query.log
+  pid_file = ${CMAKE_CURRENT_BINARY_DIR}/search.pid
+}
+
