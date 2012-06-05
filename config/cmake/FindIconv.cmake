@@ -44,7 +44,7 @@ if (NOT ICONV_FOUND)
   ##_____________________________________________________________________________
   ## Check for the header files
   
-  find_path (ICONV_INCLUDES inconv.h
+  find_path (ICONV_INCLUDES iconv.h
     HINTS ${ICONV_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES include include/iconv
     )
@@ -56,6 +56,12 @@ if (NOT ICONV_FOUND)
     HINTS ${ICONV_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES lib
     )
+
+  ## Extract library path and library name
+  if (ICONV_LIBRARIES)
+    get_filename_component (ICONV_LIBRARY_NAME ${ICONV_LIBRARIES} NAME)
+    get_filename_component (ICONV_LIBRARY_PATH ${ICONV_LIBRARIES} PATH)
+  endif (ICONV_LIBRARIES)
   
   ##_____________________________________________________________________________
   ## Check for the executable
@@ -103,6 +109,7 @@ if (NOT ICONV_FOUND)
     ICONV_ROOT_DIR
     ICONV_INCLUDES
     ICONV_LIBRARIES
+    ICONV_LIBRARY_PATH
     ICONV_EXECUTABLE
     )
   
