@@ -131,8 +131,12 @@ endif (GEM_EXECUTABLE)
 ##
 ## ==============================================================================
 
+add_subdirectory (promhp)
+
 if (WITH_CLAMAV)
   add_subdirectory (clamav)
 endif (WITH_CLAMAV)
 
-add_subdirectory (promhp)
+if (MYSQL_FOUND)
+  add_subdirectory (sphinx)
+endif (MYSQL_FOUND)
