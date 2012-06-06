@@ -63,26 +63,35 @@ if (NOT RAILS_FOUND)
       ERROR_VARIABLE RAILS_ERROR_VARIABLE
       OUTPUT_STRIP_TRAILING_WHITESPACE
       )
-
+    
     ## Process output in order to extract version number. Rails returns status 0
     ## if run successfully.
     if (NOT RAILS_RESULT_VARIABLE)
 
-      string(REGEX REPLACE "Rails " "" RAILS_VERSION ${RAILS_OUTPUT_VARIABLE})
-
-      if (RAILS_VERSION)
-	## Convert string to list of numbers
-	string (REGEX REPLACE "\\." ";" RAILS_VERSION_LIST ${RAILS_VERSION})
-	## Retrieve individual elements in the list
-	list(GET RAILS_VERSION_LIST 0 RAILS_VERSION_MAJOR)
-	list(GET RAILS_VERSION_LIST 1 RAILS_VERSION_MINOR)
-	list(GET RAILS_VERSION_LIST 2 RAILS_VERSION_PATCH)
-      endif (RAILS_VERSION)
+      ## If the Rails installation is incomplete, the '--version' inspection will
+      ## fail and produce a message asking the user to install Rails; this output
+      ## does not contain a version number, hence we need to catch that case.
+      string(REGEX MATCH "install" RAILS_INSTALL_MISSING ${RAILS_OUTPUT_VARIABLE})
+      
+      if (NOT RAILS_INSTALL_MISSING)
+	
+	string(REGEX REPLACE "Rails " "" RAILS_VERSION ${RAILS_OUTPUT_VARIABLE})
+	
+	if (RAILS_VERSION)
+	  ## Convert string to list of numbers
+	  string (REGEX REPLACE "\\." ";" RAILS_VERSION_LIST ${RAILS_VERSION})
+	  ## Retrieve individual elements in the list
+	  list(GET RAILS_VERSION_LIST 0 RAILS_VERSION_MAJOR)
+	  list(GET RAILS_VERSION_LIST 1 RAILS_VERSION_MINOR)
+	  list(GET RAILS_VERSION_LIST 2 RAILS_VERSION_PATCH)
+	endif (RAILS_VERSION)
+	
+      endif (NOT RAILS_INSTALL_MISSING)
       
     endif (NOT RAILS_RESULT_VARIABLE)
-
+    
   endif (RAILS_EXECUTABLE)
-
+  
   ##_____________________________________________________________________________
   ## Actions taken when all components have been found
   
