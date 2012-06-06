@@ -11,14 +11,22 @@ include Ferret
 ##__________________________________________________________
 ## Process input from command line
  
-infile = ARGV[0]
+infile  = ARGV[0]
+outfile = ARGV[1]
  
 if infile.nil?
- puts "use: indexer.rb <infile>"
+ puts "use: indexer.rb <infile> <outfile>"
  exit
 end
+
+if outfile.nil?
+  outfile="ferret-test"
+end
+
+##__________________________________________________________
+## Initialize indexer
  
-index = Index::Index.new(:default_field => 'content', :path => 'ferret-test')
+index = Index::Index.new(:default_field => 'content', :path => outfile)
 
 # Start the timer
 timeStart = Time.now
@@ -26,8 +34,6 @@ timeStart = Time.now
 numFiles=0
  
 Find.find(infile) do |path|
- 
-    puts "Indexing: #{path}"
  
     numFiles=numFiles+1
  
@@ -46,6 +52,9 @@ end
 # Stop the timer
 timeElapsed = Time.now - timeStart
  
-## Summary of used resources
-puts "Files: #{numFiles}"
-puts "Elapsed time: #{timeElapsed} secs\n"
+##__________________________________________________________
+## Summary of the indexing
+
+puts "Index file   = #{outfile}\n"
+puts "nof. files   = #{numFiles}\n"
+puts "Elapsed time = #{timeElapsed} secs\n"
