@@ -38,7 +38,7 @@ if (UNIX)
       PATHS /etc
       )
     if (REDHAT_FOUND)
-      set (CMAKE_OS_NAME "RedHat" CACHE STRING "Operating system name" FORCE)
+     set (CMAKE_OS_NAME "RedHat" CACHE STRING "Operating system name" FORCE)
     endif (REDHAT_FOUND)
     
     ## Extra check for Ubuntu ____________________
@@ -131,6 +131,7 @@ endif (GEM_EXECUTABLE)
 ##
 ## ==============================================================================
 
+add_subdirectory (ferret)
 add_subdirectory (promhp)
 
 if (WITH_CLAMAV)
