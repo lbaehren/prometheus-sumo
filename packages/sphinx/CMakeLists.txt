@@ -126,12 +126,3 @@ else (NOT SPHINX_FOUND OR SPHINX_FORCE_BUILD)
   
 endif (NOT SPHINX_FOUND OR SPHINX_FORCE_BUILD)
 
-## ==============================================================================
-##
-##  Tests
-##
-## ==============================================================================
-
-if (SPHINX_ENABLE_TESTING)
-  add_subdirectory (test)
-endif (SPHINX_ENABLE_TESTING)
