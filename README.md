@@ -12,6 +12,10 @@ Cultural Sciences. prometheus enables the convenient search for images on a
 common user interface within different image archives, variable databases from
 institutes, research facilities and museums.
 
+For further information visit one of the following websites:
+
+* [prometheus website](http://www.prometheus-bildarchiv.de)
+* [pandora website](http://prometheus.uni-koeln.de/pandora)
 
 ## External dependencies
 
@@ -130,8 +134,3 @@ The following directory structure is established below the installation prefix:
     |     `-- pandora -> ../app/pandora/data
     |-- srv
     `-- web
-
-## Further reading
-
-* prometheus website <http://www.prometheus-bildarchiv.de>
-* pandora website <http://prometheus.uni-koeln.de/pandora>
