@@ -49,10 +49,8 @@ endmacro(prepare_test_dataset)
 ##__________________________________________________________
 ## Linux kernel sources
 
-set (KERNEL_VERSION_MAJOR  "2")
-set (KERNEL_VERSION_MINOR  "6")
+set (KERNEL_VERSION_SERIES "2.6")
 set (KERNEL_VERSION_PATCH  "39")
-set (KERNEL_VERSION_SERIES "${KERNEL_VERSION_MAJOR}.${KERNEL_VERSION_MINOR}")
 set (KERNEL_VERSION        "${KERNEL_VERSION_SERIES}.${KERNEL_VERSION_PATCH}")
 set (KERNEL_SOURCE_ARCHIVE "linux-${KERNEL_VERSION}.tar.gz")
 set (KERNEL_URL            "ftp://ftp.kernel.org/pub/linux/kernel/v${KERNEL_VERSION_SERIES}/${KERNEL_SOURCE_ARCHIVE}")
