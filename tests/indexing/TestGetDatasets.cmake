@@ -37,15 +37,19 @@ macro(get_test_dataset varName varSourceArchive varUrl)
   endif (NOT varSource)
 
   ## Decompose the filename
-  get_filename_component (varFilenameExt  ${varSource} EXT     )
   get_filename_component (varFilenameName ${varSource} NAME_WE )
+  get_filename_component (varFilenameExt  ${varSource} EXT     )
   
-  ## Expand the source archive
-  message (STATUS "Expanding source archive ${varSourceArchive} ...")
-  execute_process(
-    COMMAND ${TAR_EXECUTABLE} -xzf ${varSource}
-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-    )
+  if (varFilenameExt MATCHES ".gz")
+    
+    ## Expand the source archive
+    message (STATUS "Expanding source archive ${varSourceArchive} ...")
+    execute_process(
+      COMMAND tar -xzf ${varSource}
+      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+      )
+    
+  endif (varFilenameExt MATCHES ".gz")
   
 endmacro(get_test_dataset)
 
@@ -74,3 +78,10 @@ set (OHSUMED_URL            "http://trec.nist.gov/data/filtering/${OHSUMED_SOURC
 
 get_test_dataset (ohsumed ${OHSUMED_SOURCE_ARCHIVE} ${OHSUMED_URL})
 
+##__________________________________________________________
+## Project Gutenberg EBook of Ulysses, by James Joyce
+
+set (ULYSSES_SOURCE_ARCHIVE "pg4300.txt")
+set (ULYSSES_URL            "http://www.gutenberg.org/cache/epub/4300/${ULYSSES_SOURCE_ARCHIVE}")
+
+get_test_dataset (ulysses ${ULYSSES_SOURCE_ARCHIVE} ${ULYSSES_URL})
