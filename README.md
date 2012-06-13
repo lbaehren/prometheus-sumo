@@ -130,6 +130,21 @@ The following directory structure is established below the installation prefix:
     |     `-- pandora -> ../app/pandora/data
     |-- srv
     `-- web
+    
+## Testing 
+
+A [public dashboard](http://my.cdash.org/index.php?project=prometheus-sumo) for _prometheus-sumo_
+is hosted on my.cdash.org. [CDash](http://www.cdash.org) is an open-source web-based server
+for continuous integration. CDash aggregates, analyzes and displays the results of software
+testing processes submitted from clients located around the world. Developers depend on CDash
+to convey the state of a software system, and to continually improve its quality.
+
+In order to submit the results of an experimental build, simply run
+
+    make Experimental
+
+This will trigger CTest to configure and build the project, before running the tests defined
+therein - the collected results then will be submitted to CDash for visualization and analysis.
 
 ## Further reading
 
