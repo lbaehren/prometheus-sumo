@@ -21,6 +21,10 @@ cmake_policy (VERSION 2.8)
 ##
 ## ==============================================================================
 
+set (FERRET_VERSION        "0.11.6" )
+set (FERRET_SOURCE_ARCHIVE "ferret-${FERRET_VERSION}.tgz" )
+set (FERRET_URL            "http://rubyforge.org/frs/download.php/28550/${FERRET_SOURCE_ARCHIVE}")
+
 if (RUBY_EXECUTABLE)
   add_subdirectory (test)
 endif (RUBY_EXECUTABLE)
