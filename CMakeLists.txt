@@ -177,6 +177,10 @@ add_subdirectory (packages)
 add_subdirectory (sources)
 add_subdirectory (documentation)
 
+if (ENABLE_TESTING)
+  add_subdirectory (tests)
+endif (ENABLE_TESTING)
+
 ## ==============================================================================
 ##
 ##  Configuration summary
