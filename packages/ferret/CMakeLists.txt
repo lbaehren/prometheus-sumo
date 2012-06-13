@@ -86,13 +86,3 @@ else (NOT FERRET_FOUND OR FERRET_FORCE_BUILD)
     )
   
 endif (NOT FERRET_FOUND OR FERRET_FORCE_BUILD)
-
-## ==============================================================================
-##
-##  Project sub-directories
-##
-## ==============================================================================
-
-if (RUBY_EXECUTABLE)
-  add_subdirectory (test)
-endif (RUBY_EXECUTABLE)
