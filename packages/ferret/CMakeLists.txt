@@ -51,9 +51,9 @@ if (NOT FERRET_FOUND OR FERRET_FORCE_BUILD)
       SOURCE_DIR source
       SVN_REPOSITORY ${FERRET_SVN}
       BUILD_IN_SOURCE 1
-      CONFIGURE_COMMAND ruby setup.rb config --prefix=${CMAKE_INSTALL_PREFIX}
-      BUILD_COMMAND ruby setup.rb setup
-      INSTALL_COMMAND ruby setup.rb install --prefix=${CMAKE_INSTALL_PREFIX}
+      CONFIGURE_COMMAND ${RUBY_EXECUTABLE} setup.rb config --prefix=${CMAKE_INSTALL_PREFIX}
+      BUILD_COMMAND ${RUBY_EXECUTABLE} setup.rb setup
+      INSTALL_COMMAND ${RUBY_EXECUTABLE} setup.rb install --prefix=${CMAKE_INSTALL_PREFIX}
       )
   
   else (FERRET_FROM_REPOS)
@@ -64,9 +64,9 @@ if (NOT FERRET_FOUND OR FERRET_FORCE_BUILD)
       SOURCE_DIR source
       URL ${FERRET_SOURCE}
       BUILD_IN_SOURCE 1
-      CONFIGURE_COMMAND ruby setup.rb config --prefix=${CMAKE_INSTALL_PREFIX}
-      BUILD_COMMAND ruby setup.rb setup
-      INSTALL_COMMAND ruby setup.rb install --prefix=${CMAKE_INSTALL_PREFIX}
+      CONFIGURE_COMMAND ${RUBY_EXECUTABLE} setup.rb config --prefix=${CMAKE_INSTALL_PREFIX}
+      BUILD_COMMAND ${RUBY_EXECUTABLE} setup.rb setup
+      INSTALL_COMMAND ${RUBY_EXECUTABLE} setup.rb install --prefix=${CMAKE_INSTALL_PREFIX}
       )
     
   endif (FERRET_FROM_REPOS)
