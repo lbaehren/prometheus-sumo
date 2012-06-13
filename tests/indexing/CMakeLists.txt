@@ -27,7 +27,7 @@ find_file (ferret_test_search_rb ferret_search.rb
 add_test (ferret_index_kernel ${RUBY_EXECUTABLE} ${ferret_test_indexer_rb} ${CMAKE_CURRENT_BINARY_DIR}/data_kernel ${CMAKE_CURRENT_BINARY_DIR}/ferret-index)
 
 ##__________________________________________________________
-## Test: Search the generated index
+## Tests: Search the generated index
 
 foreach (ferretSearchTerm
     net
@@ -76,3 +76,29 @@ configure_file (
   ${CMAKE_CURRENT_SOURCE_DIR}/sphinx.conf.in
   ${CMAKE_CURRENT_BINARY_DIR}/sphinx.conf
   )
+
+##__________________________________________________________
+## Test preparation
+
+add_test (sphinx_flat      python ${CMAKE_CURRENT_BINARY_DIR}/sphinx_flat.py      )
+add_test (sphinx_queries   python ${CMAKE_CURRENT_BINARY_DIR}/sphinx_queries.py   )
+add_test (sphinx_build_xml python ${CMAKE_CURRENT_BINARY_DIR}/sphinx_build_xml.py )
+
+set_tests_properties (sphinx_flat
+  PROPERTIES
+  DEPENDS get_test_datasets
+  )
+
+set_tests_properties (sphinx_queries
+  PROPERTIES
+  DEPENDS sphinx_flat
+  )
+
+set_tests_properties (sphinx_build_xml
+  PROPERTIES
+  DEPENDS sphinx_queries
+  )
+
+##__________________________________________________________
+## Run the tests
+

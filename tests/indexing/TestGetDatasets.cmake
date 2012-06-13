@@ -42,8 +42,7 @@ macro(get_test_dataset varName varSourceArchive varUrl)
   ## Decompose the filename
 
   set (varTargetDir ${CMAKE_CURRENT_BINARY_DIR}/data_${varName})
-  get_filename_component (varFilenameName ${varSource} NAME_WE )
-  get_filename_component (varFilenameExt  ${varSource} EXT     )
+  get_filename_component (varFilenameName ${varSource} NAME )
   
   ##________________________________________________________
   ## Check on target directory into which the data are expanded
@@ -56,7 +55,7 @@ macro(get_test_dataset varName varSourceArchive varUrl)
   ##________________________________________________________
   ## Expand the source archive
 
-  message (STATUS "Expanding source archive ${varSourceArchive} ...")
+  message (STATUS "Expanding source archive ${varFilenameName} ...")
   execute_process(
     COMMAND tar -xzf ${varSource}
     WORKING_DIRECTORY ${varTargetDir}
@@ -65,7 +64,7 @@ macro(get_test_dataset varName varSourceArchive varUrl)
   ##________________________________________________________
   ## Reset variables
 
-  unset (varSource)
+  set (varSource "")
   
 endmacro(get_test_dataset)
 

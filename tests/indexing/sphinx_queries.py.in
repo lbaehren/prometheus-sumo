@@ -3,7 +3,7 @@
 d = {}
 topicid = None
 
-for line in open("${CMAKE_CURRENT_BINARY_DIR}/source/trec9-train/query.ohsu.1-63", "r"):
+for line in open("${CMAKE_CURRENT_BINARY_DIR}/data_ohsumed/trec9-train/query.ohsu.1-63", "r"):
   if line.startswith("<num>"):
     topicid = line.split()[-1].strip()
   if line.startswith("<title>"):
