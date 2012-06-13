@@ -9,7 +9,7 @@ add_test (get_test_datasets ${CMAKE_COMMAND} -D PROJECT_SOURCE_DIR=${PROJECT_SOU
 
 ## ==============================================================================
 ##
-##  Run the tests
+##  Tests using Ferret search engine
 ##
 ## ==============================================================================
 
@@ -24,7 +24,7 @@ find_file (ferret_test_search_rb ferret_search.rb
 ##__________________________________________________________
 ## Test: Index the sources of the Linux kernel
 
-add_test (ferret_index_kernel ${RUBY_EXECUTABLE} ${ferret_test_indexer_rb} ${CMAKE_CURRENT_BINARY_DIR}/source ${CMAKE_CURRENT_BINARY_DIR}/ferret-index)
+add_test (ferret_index_kernel ${RUBY_EXECUTABLE} ${ferret_test_indexer_rb} ${CMAKE_CURRENT_BINARY_DIR}/data_kernel ${CMAKE_CURRENT_BINARY_DIR}/ferret-index)
 
 ##__________________________________________________________
 ## Test: Search the generated index
@@ -45,3 +45,34 @@ foreach (ferretSearchTerm
     )
 
 endforeach (ferretSearchTerm)
+
+## ==============================================================================
+##
+##  Tests using Sphinx search engine
+##
+## ==============================================================================
+
+##__________________________________________________________
+## Configure Python script to use correct paths
+
+configure_file (
+  ${CMAKE_CURRENT_SOURCE_DIR}/sphinx_flat.py.in
+  ${CMAKE_CURRENT_BINARY_DIR}/sphinx_flat.py
+  )
+
+configure_file (
+  ${CMAKE_CURRENT_SOURCE_DIR}/sphinx_queries.py.in
+  ${CMAKE_CURRENT_BINARY_DIR}/sphinx_queries.py
+  )
+
+# Generates build.xml for sphinx indexing
+configure_file (
+  ${CMAKE_CURRENT_SOURCE_DIR}/sphinx_build_xml.py.in
+  ${CMAKE_CURRENT_BINARY_DIR}/sphinx_build_xml.py
+  )
+
+# Configuration file for Sphinx
+configure_file (
+  ${CMAKE_CURRENT_SOURCE_DIR}/sphinx.conf.in
+  ${CMAKE_CURRENT_BINARY_DIR}/sphinx.conf
+  )

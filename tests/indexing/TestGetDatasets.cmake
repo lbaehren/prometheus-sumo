@@ -19,7 +19,9 @@
 
 macro(get_test_dataset varName varSourceArchive varUrl)
 
+  ##________________________________________________________
   ## Check if the source file is available already
+
   message (STATUS "Checking for local copy of ${varSourceArchive} ...")
   find_file (varSource
     NAMES ${varSourceArchive}
@@ -36,20 +38,34 @@ macro(get_test_dataset varName varSourceArchive varUrl)
     set (varSource ${CMAKE_CURRENT_BINARY_DIR}/${varSourceArchive})
   endif (NOT varSource)
 
+  ##________________________________________________________
   ## Decompose the filename
+
+  set (varTargetDir ${CMAKE_CURRENT_BINARY_DIR}/data_${varName})
   get_filename_component (varFilenameName ${varSource} NAME_WE )
   get_filename_component (varFilenameExt  ${varSource} EXT     )
   
-  if (varFilenameExt MATCHES ".gz")
-    
-    ## Expand the source archive
-    message (STATUS "Expanding source archive ${varSourceArchive} ...")
-    execute_process(
-      COMMAND tar -xzf ${varSource}
-      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-      )
-    
-  endif (varFilenameExt MATCHES ".gz")
+  ##________________________________________________________
+  ## Check on target directory into which the data are expanded
+
+  if (NOT EXISTS ${varTargetDir})
+    message (STATUS "Creating directory ${varTargetDir}")
+    file(MAKE_DIRECTORY ${varTargetDir})
+  endif (NOT EXISTS ${varTargetDir})
+  
+  ##________________________________________________________
+  ## Expand the source archive
+
+  message (STATUS "Expanding source archive ${varSourceArchive} ...")
+  execute_process(
+    COMMAND tar -xzf ${varSource}
+    WORKING_DIRECTORY ${varTargetDir}
+    )
+  
+  ##________________________________________________________
+  ## Reset variables
+
+  unset (varSource)
   
 endmacro(get_test_dataset)
 
