@@ -198,7 +198,7 @@
   \subsection pandora_initialize_install Initialize the installation
 
   In order to initialize your pandora installation, run the following from the
-  top-level directory of the {file:Rails Rails application}
+  top-level directory of the \ref refman_rails application
 
   \code
   rake pandora:setup
