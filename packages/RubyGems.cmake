@@ -28,7 +28,7 @@ if (GEM_EXECUTABLE)
       jekyll-pagination
       jekyll-tagging
       json
-      libxml-ext 
+      libxml-ext
       libxml-ruby
       lockfile
       mail
@@ -37,6 +37,7 @@ if (GEM_EXECUTABLE)
       mongrel_cluster
       mysql
       oauth
+      pbkdf2
       pdf-reader
       piston
       rake
@@ -47,7 +48,7 @@ if (GEM_EXECUTABLE)
       ruby-hmac
       ruby-nuggets
       unicode
-      wadl 
+      wadl
       yard
       )
 
