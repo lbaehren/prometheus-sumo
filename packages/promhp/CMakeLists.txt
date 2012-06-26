@@ -64,6 +64,11 @@ endif (promhp_FROM_REPOS)
 ##
 ##  Build instructions
 ##
+##  - gem install jekyll
+##  - gem install jekyll-rendering
+##  - gem install jekyll-localization
+##  - gem install RedCloth
+##
 ## ==============================================================================
 
 if (promhp_FORCE_BUILD)
