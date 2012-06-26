@@ -200,23 +200,23 @@
   In order to initialize your pandora installation, run the following from the
   top-level directory of the \ref refman_rails application
 
-  \code
+  \verbatim
   rake pandora:setup
-  \endcode
+  \endverbatim
 
   For a list of all available rake tasks type
 
-  \code
+  \verbatim
   rake -T
-  \endcode
+  \endverbatim
 
   \subsection pandora_server_startup Starting up the server
 
   Start up the server
 
-  \code
+  \verbatim
   ./scripts/server
-  \endcode
+  \endverbatim
 
   If everything went fine, you should be getting a status message like this
 
@@ -288,9 +288,9 @@
 
   In order to get a list of all available tests, use the command
 
-  \code
+  \verbatim
   rake -T spec
-  \endcode
+  \endverbatim
 
   The resulting list should contain entries like this:
 
@@ -316,23 +316,23 @@
   Since essentially the specs are groups into Rake tasks, running them is as
   simple as e.g. 
 
-  \code
+  \verbatim
   rake spec:models
-  \endcode
+  \endverbatim
 
   If however you want a bit more control over the test carried out, you e.g. can
   utilize the ``SPEC`` option to pass along an individual file with test instructions:
 
-  \code
+  \verbatim
   rake spec SPEC=spec/models/image_spec.rb
-  \endcode
+  \endverbatim
 
   Using ``SPEC_OPTS`` it is possible to pass along options e.g. to influence the
   formatting of the output.
 
-  \code
+  \verbatim
   rake spec SPEC=spec/controllers/institution_controller_spec.rb SPEC_OPTS="--format nested --color"
-  \endcode
+  \endverbatim
 
   which will result in something like this (color missing here though):
 
@@ -358,14 +358,14 @@
   \b Problem: Specs fail, because resources have PID 0.
 
   \li \b Description: In der Datenbank der Test-Umgebung ist \c Resource#pid nicht vom Typ String, wie erwartet, sondern vom Typ Integer.
-  \code
+  \verbatim
   >> Resource.column_by_name(:pid).type
   => :integer
-  \endcode
+  \endverbatim
   \li \b Solution: The table \a Resources needs to be created anew.
-  \code
+  \verbatim
   rake db:test:setup  # fängt quasi bei "Null" wieder an
-  \endcode
+  \endverbatim
 
   \section refman_pandora_release Deploying a new release version
 
@@ -384,23 +384,23 @@
 
   The very first step before starting the actual deploy procedure
 
-  \code
+  \verbatim
   $ rake spec
-  \endcode
+  \endverbatim
 
   Commit all the changes to be included into the trunk of the Subversion repository:
 
-  \code
+  \verbatim
   $ svn commit -m "<commit message>"
-  \endcode
+  \endverbatim
 
   Review changes since last deploy; in order to get the version number used for the
   last deploy, go to the [About pandora](http://prometheus.uni-koeln.de/pandora/about)
   page on the prometheus website.
 
-  \code
+  \verbatim
   $ svn log -r 3679:HEAD
-  \endcode
+  \endverbatim
 
   \subsection pandora_release_version Increment version number
 
@@ -412,18 +412,18 @@
 
   Push the previous changes upstream:
 
-  \code
+  \verbatim
   $ svn commit -m "lib/pandora/version.rb: v0.6.5 -- Added news-box to sidebar."
-  \endcode
+  \endverbatim
 
   Comitting the changes to the server will be acknowledged:
 
-  \code
+  \verbatim
   Sending        trunk/README
   Sending        trunk/lib/pandora/version.rb
   Transmitting file data ..
   Committed revision 3705.
-  \endcode
+  \endverbatim
 
   \subsection refman_pandora_release_tagging Tagging the release version
 
@@ -454,21 +454,21 @@
   version, to a stable branch, we need to merge the changes submitted to the
   ``trunk``; for this change into the directory of the targetted release version
 
-  \code
+  \verbatim
   cd pandora/branches/0.6-stable
-  \endcode
+  \endverbatim
 
   and instruct Subversion to perform the merge:
 
-  \code
+  \verbatim
   $ svn merge ^/trunk
-  \endcode
+  \endverbatim
 
   Which versions exactly have been included in the merge, can be retrieved through
 
-  \code
+  \verbatim
   $ svn diff --depth=empty
-  \endcode
+  \endverbatim
 
   The output from that will look something like:
 
@@ -482,9 +482,9 @@
   With the above information we now have everything available to commit the new stable
   version:
 
-  \code
+  \verbatim
   $ svn commit -m "Merged r3677-3706 from trunk. (v0.6.5)"
-  \endcode
+  \endverbatim
 
   The commit itself will once more display the list of files which are being pushed
   onto the server:
@@ -511,9 +511,9 @@
     <dt>Unable to run \c pandora_cluster executable.</dt>
     <dd>
     Most likely the ``bin`` directory of the prometheus installation is not in your path:
-    \code
+    \verbatim
     $ export PATH=$PATH:/var/local/prometheus/bin
-    \endcode
+    \endverbatim
     </dd>
 
     <dt>No documentation generated.</dt>
@@ -556,7 +556,7 @@
 
   \subsection pandora_database_xml XML schema for the original data
 
-  \code
+  \verbatim
     <?xml version="1.0" encoding="UTF-8"?>
     <dataroot>
     <row>
@@ -579,14 +579,14 @@
       <objekt_id>11839</objekt_id>
       <titel>Entwurf zu einer Villa, Grund- und Aufriß der Gartenfassade</titel>
     </row>
-  \endcode
+  \endverbatim
 
   \subsection pandora_database_model Source model
 
   Once the XML schema for the new data is available, the information can be
   accessible to \b pandora
 
-  \code
+  \verbatim
     class Source
     
       class Kassel < XMLSource::Document
@@ -608,7 +608,7 @@
           def artists_for_vgbk
             ["#{self/'kuenstler'}".sub(/ \(.*/, '').split(', ').reverse.join(' ')]
           end
-  \endcode
+  \endverbatim
 
   \section pandora_references References 
 

@@ -112,8 +112,8 @@ if (DOXYGEN_EXECUTABLE)
     )
   
   configure_file (
-    ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in
-    ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
+    ${CMAKE_CURRENT_SOURCE_DIR}/doxygen.config.in
+    ${CMAKE_CURRENT_BINARY_DIR}/doxygen.config
     )
   
   ## ============================================================================
@@ -125,8 +125,8 @@ if (DOXYGEN_EXECUTABLE)
   ## HTML output
   
   add_custom_target (Manual
-    COMMAND ${DOXYGEN_EXECUTABLE} Doxyfile
-    DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
+    COMMAND ${DOXYGEN_EXECUTABLE} doxygen.config
+    DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/doxygen.config
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     )
 
