@@ -146,22 +146,22 @@
   database -- 
 
   \verbatim
-  config
-  |-- apache2.conf               ...  Configuration for Apache Web Server
-  |-- database.yml               ...  Location of and access to database
-  |-- environment.rb             ...  Inspection of the environment (checks dependencies)
-  |-- secrets.yml                ...  Access secrets
-  |-- app
-  |   `-- source.yml             ...  Parameters for a database source
-  |-- deploy
-  |-- environments
-  |-- initializers
-  `-- src
+  pandora
+  `-- config
+      |-- apache2.conf               ...  Configuration for Apache Web Server
+      |-- database.yml               ...  Location of and access to database
+      |-- environment.rb             ...  Inspection of the environment (checks dependencies)
+      |-- secrets.yml                ...  Access secrets
+      |-- app
+      |   `-- source.yml             ...  Parameters for a database source
+      |-- deploy
+      |-- environments
+      |-- initializers
+      `-- src
   \endverbatim
 
-  \c database.yml defines the location of the underlying database, as well as
+  \li \c database.yml defines the location of the underlying database, as well as
   the access rights to it:
-
   \verbatim
     common: &common
       adapter:  <%= database_adapter %>
@@ -176,10 +176,9 @@
       <<: *common
   \endverbatim
 
-  \c app/source.yml defines the layout of the tables, storing information on an
+  \li \c app/source.yml defines the layout of the tables, storing information on an
   external database, of which images (and their associated metadata) are available
   through prometheus.
-
   \verbatim
     :dumps: /var/local/prometheus/app/pandora/data
     :paths: /var/local/prometheus/app/pandora/shared/paths_%s.marshal
@@ -190,7 +189,6 @@
       - Research database
       - Museum database
   \endverbatim
-
   The first entry in the file (``:dumps:``) describes the path to the directory
   containing database dumps; if no dumps can be found on your system, dummy
   entries will be generated.
