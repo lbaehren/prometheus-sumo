@@ -113,6 +113,17 @@ if (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
   endif (CLAMAV_FROM_REPOS)
 
   ##________________________________________________________
+  ## Patch LLVM sub-module
+  
+  ExternalProject_Add_Step (clamav create_llvm_projects
+    COMMAND ${CMAKE_COMMAND} -E make_directory libclamav/c++/llvm/projects
+    COMMENT "Creating LLVM projects sub-directory"
+    DEPENDEES patch
+    DEPENDERS configure
+    WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/source
+    )
+
+  ##________________________________________________________
   ## Set up database
   
   ExternalProject_Add_Step (clamav create_share_clamav
