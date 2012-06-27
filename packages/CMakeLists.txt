@@ -132,6 +132,7 @@ endif (GEM_EXECUTABLE)
 ## ==============================================================================
 
 add_subdirectory (ferret)
+add_subdirectory (pandora)
 add_subdirectory (promhp)
 
 if (WITH_CLAMAV)
