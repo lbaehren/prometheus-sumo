@@ -30,8 +30,8 @@ if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
       irb
       libmysql-ruby${REQUIRED_VERSION_RUBY}
       libtermios-ruby${REQUIRED_VERSION_RUBY}
-      libopenssl-ruby${REQUIRED_VERSION_RUBY}
       librmagick-ruby${REQUIRED_VERSION_RUBY}
+      libruby${REQUIRED_VERSION_RUBY}
       mysql-server
       mysql-client
       libmysqlclient-dev
