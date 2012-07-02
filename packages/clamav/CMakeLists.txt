@@ -5,15 +5,6 @@
 ##
 ## ==============================================================================
 
-## Name of the project handled by CMake
-project (CLAMAV)
-
-## Minimum required version of CMake to configure the project
-cmake_minimum_required (VERSION 2.8)
-
-## Enforced CMake policy 
-cmake_policy (VERSION 2.8)
-
 ##  Package information
 set (CLAMAV_VERSION        "0.97.4" )
 set (CLAMAV_SOURCE_ARCHIVE "clamav-${CLAMAV_VERSION}.tar.gz" )
@@ -61,7 +52,7 @@ if (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
   ## Locate source file to build from
   
   find_file (CLAMAV_SOURCE ${CLAMAV_SOURCE_ARCHIVE}
-    PATHS ${PROJECT_SOURCE_DIR}
+    PATHS ${CMAKE_CURRENT_SOURCE_DIR}
     )
   
   if (NOT CLAMAV_SOURCE)
@@ -72,13 +63,13 @@ if (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
   ## Configuration files for the installed tools
 
   configure_file (
-    ${PROJECT_SOURCE_DIR}/clamd.conf.in
-    ${PROJECT_BINARY_DIR}/clamd.conf
+    ${CMAKE_CURRENT_SOURCE_DIR}/clamd.conf.in
+    ${CMAKE_CURRENT_BINARY_DIR}/clamd.conf
     )
 
   configure_file (
-    ${PROJECT_SOURCE_DIR}/freshclam.conf.in
-    ${PROJECT_BINARY_DIR}/freshclam.conf
+    ${CMAKE_CURRENT_SOURCE_DIR}/freshclam.conf.in
+    ${CMAKE_CURRENT_BINARY_DIR}/freshclam.conf
     )
 
   ##________________________________________________________
@@ -87,26 +78,26 @@ if (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
   if (CLAMAV_FROM_REPOS)
     
     ExternalProject_Add (clamav
-      PREFIX ${PROJECT_BINARY_DIR}
+      PREFIX ${CMAKE_CURRENT_BINARY_DIR}
       DOWNLOAD_DIR download
       SOURCE_DIR source
       GIT_REPOSITORY ${CLAMAV_GIT}
       BUILD_IN_SOURCE 1
-      PATCH_COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_BINARY_DIR}/freshclam.conf ${PROJECT_BINARY_DIR}/source/etc
-      CONFIGURE_COMMAND ${PROJECT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --disable-clamav
+      PATCH_COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_BINARY_DIR}/freshclam.conf ${CMAKE_CURRENT_BINARY_DIR}/source/etc
+      CONFIGURE_COMMAND ${CMAKE_CURRENT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --disable-clamav
       INSTALL_COMMAND ${PORT_INSTALL_COMMAND} make install
       )
   
   else (CLAMAV_FROM_REPOS)
     
     ExternalProject_Add (clamav
-      PREFIX ${PROJECT_BINARY_DIR}
+      PREFIX ${CMAKE_CURRENT_BINARY_DIR}
       DOWNLOAD_DIR download
       SOURCE_DIR source
       URL ${CLAMAV_SOURCE}
       BUILD_IN_SOURCE 1
-      PATCH_COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_BINARY_DIR}/freshclam.conf ${PROJECT_BINARY_DIR}/source/etc
-      CONFIGURE_COMMAND ${PROJECT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --disable-clamav
+      PATCH_COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_BINARY_DIR}/freshclam.conf ${CMAKE_CURRENT_BINARY_DIR}/source/etc
+      CONFIGURE_COMMAND ${CMAKE_CURRENT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --disable-clamav
       INSTALL_COMMAND ${PORT_INSTALL_COMMAND} make install
       )
     
@@ -120,7 +111,7 @@ if (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
     COMMENT "Creating LLVM projects sub-directory"
     DEPENDEES patch
     DEPENDERS configure
-    WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/source
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/source
     )
 
   ##________________________________________________________
@@ -138,13 +129,13 @@ if (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
     COMMAND ${CMAKE_INSTALL_PREFIX}/bin/freshclam
     COMMENT "Updating databases with virus signatures"
     DEPENDEES install
-    WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     )
 
 else (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
   
   add_custom_target (clamav
-    WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     COMMENT "[clamav] Found system-wide installation; skipping rebuild!"
     )
   
@@ -157,6 +148,6 @@ endif (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
 ## ==============================================================================
 
 configure_file (
-  ${PROJECT_SOURCE_DIR}/scanImages.bash.in
+  ${CMAKE_CURRENT_SOURCE_DIR}/scanImages.bash.in
   ${CMAKE_INSTALL_PREFIX}/bin/scanImages.bash
   )
