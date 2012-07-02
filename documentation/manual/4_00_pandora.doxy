@@ -25,29 +25,29 @@
   will create a directory structure like this:
 
   \verbatim
-    pandora
-    |
-    |-- branches
-    |   |-- 0.1-stable
-    |   |-- 0.2-stable
-    |   |-- 0.3-stable
-    |   |-- 0.4-stable
-    |   |-- 0.5-stable
-    |   |-- 0.6-stable
-    |   `-- restructuring_models_search_and_everything
-    |-- tags
-    |   |-- 0.1.0
-    |   |-- 0.1.1
-    |   |-- 0.1.2
-    |   |-- ...
-    |   `-- 0.6.5
-    `-- trunk
-        |-- app
-        |-- config
-        |-- db
-        |-- doc
-        |-- index
-        |-- ...
+  pandora
+  |
+  |-- branches
+  |   |-- 0.1-stable
+  |   |-- 0.2-stable
+  |   |-- 0.3-stable
+  |   |-- 0.4-stable
+  |   |-- 0.5-stable
+  |   |-- 0.6-stable
+  |   `-- restructuring_models_search_and_everything
+  |-- tags
+  |   |-- 0.1.0
+  |   |-- 0.1.1
+  |   |-- 0.1.2
+  |   |-- ...
+  |   `-- 0.6.5
+  `-- trunk
+      |-- app
+      |-- config
+      |-- db
+      |-- doc
+      |-- index
+      |-- ...
   \endverbatim
 
   \subsection refman_pandora_checkout_git ... using Git

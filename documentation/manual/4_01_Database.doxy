@@ -10,15 +10,15 @@
   contained therein - directly: after starting up the \ref mysql command line
   tool via
 
-  \code
+  \verbatim
   $ mysql -u <login> -p
-  \endcode
+  \endverbatim
 
   you can inspect the available databases:
 
-  \code
+  \verbatim
   mysql> SHOW DATABASES;
-  \endcode
+  \endverbatim
 
   Depending on the population of your database the result might look something
   like this:
@@ -39,9 +39,9 @@
   Having identified the database used by \ref pandora, we now can obtain a listing
   of the tables contained therein:
 
-  \code
+  \verbatim
   mysql> SHOW TABLES IN `pandora_development`;
-  \endcode
+  \endverbatim
 
   If the database has been initialized, the output will look like this:
 
@@ -77,9 +77,9 @@
 
   In order to list the columns within a given table, use the ``SHOW COLUMNS`` command:
 
-  \code
+  \verbatim
   mysql> SHOW COLUMNS IN pandora_development.accounts;
-  \endcode
+  \endverbatim
 
   which will list the columns:
 
@@ -110,17 +110,17 @@
   If we now want to retrieve more information on the actual contents stored within
   table columns, we can do so using the \c SELECT command:
 
-  \code
+  \verbatim
   mysql> SELECT * FROM pandora_development.accounts LIMIT 0,10;
-  \endcode
+  \endverbatim
 
   In order to have a closer look at e.g. the information related to a specific account
   you can utilize the additional \c WHERE parameter to narrow down the displayed
   selection:
 
-  \code
+  \verbatim
   mysql> SELECT * FROM pandora_development.accounts WHERE `firstname`="<name>";
-  \endcode
+  \endverbatim
 
   \section database_tables Database tables
 
@@ -128,9 +128,9 @@
 
   Using the SQL statement
 
-  \code
+  \verbatim
   SHOW FIELDS FROM `pandora_development`.`accounts`;
-  \endcode
+  \endverbatim
 
   we get:
   
@@ -228,8 +228,8 @@
 
   Set the status of an account to \a activated:
 
-  \code
+  \verbatim
   mysql> UPDATE pandora_development.accounts SET `status`='activated' WHERE `accounts`.`id`=5;
-  \endcode
+  \endverbatim
 
 */
