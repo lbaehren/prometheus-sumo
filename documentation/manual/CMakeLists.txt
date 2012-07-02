@@ -149,8 +149,4 @@ if (DOXYGEN_EXECUTABLE)
     ${CMAKE_CURRENT_BINARY_DIR}/html
     )
   
-  ## Target dependency
-  
-  add_dependencies(doc Manual)
-  
 endif (DOXYGEN_EXECUTABLE)
