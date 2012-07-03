@@ -5,10 +5,19 @@
 ##
 ## ==============================================================================
 
+configure_file (
+  ${CMAKE_CURRENT_SOURCE_DIR}/ConfigurationSummary.doxy.in
+  ${CMAKE_CURRENT_BINARY_DIR}/ConfigurationSummary.doxy
+  )
+
+## Path to directory with examples files
+
 find_path (DOXYGEN_EXAMPLE_PATH monster.yaml
   PATHS ${PROJECT_SOURCE_DIR}
   PATH_SUFFIXES documentation documentation/examples
   )
+
+## Path to directory with image files
 
 find_path (DOXYGEN_IMAGE_PATH
   NAMES "Redmine - Issues overview.png" "Redmine - Issues by project.png"
@@ -18,7 +27,7 @@ find_path (DOXYGEN_IMAGE_PATH
 
 if (DOXYGEN_EXECUTABLE)
 
-  set (DOCUMENTATION_INPUT "${CMAKE_CURRENT_SOURCE_DIR}")
+  set (DOCUMENTATION_INPUT "${PROJECT_SOURCE_DIR}")
 
   ## Configuration file for Doxygen
   configure_file (
