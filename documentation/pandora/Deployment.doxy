@@ -217,11 +217,13 @@ module Pandora
   \verbatim
   $ TARGET=stable pandora_cluster start
   \endverbatim
-  Where \c TARGET designates the stage to apply the command to. It's either
-  current (default) for the production system, stable for the "stable" staging
-  environment, or trunk for the "development" (cutting edge) staging environment.
-  The former lives on \a prometheus1.uni-koeln.de, the latter two on 
-  \a prometheus2.uni-koeln.de. 
+  Where \c TARGET designates the stage to apply the command to
+  (\c [*] marks default):
+  | Target name | Staging environment |          Hosting machine |
+  |-------------|---------------------|--------------------------|
+  | current[*]  | production          | prometheus1.uni-koeln.de |
+  | stable      | stable              | prometheus2.uni-koeln.de |
+  | trunk       | development         | prometheus2.uni-koeln.de |
 
   \section pandora_release_trouble Troubleshooting
 
