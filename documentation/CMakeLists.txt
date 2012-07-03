@@ -41,6 +41,10 @@ if (DOXYGEN_EXECUTABLE)
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     )
 
+  if (ENABLE_TESTING)
+    add_test (documentation Documentation)
+  endif (ENABLE_TESTING)
+
 endif (DOXYGEN_EXECUTABLE)
 
 ## ==============================================================================
