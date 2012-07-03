@@ -134,6 +134,6 @@ if (DOXYGEN_EXECUTABLE)
   
   ## Target dependency
   
-  add_dependencies(Documentation Manual)
+  # add_dependencies(Documentation Manual)
   
 endif (DOXYGEN_EXECUTABLE)
