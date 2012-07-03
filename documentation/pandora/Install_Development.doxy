@@ -1,6 +1,8 @@
 /*!
   \page pandora_install_devel Installation of a development system
 
+  \tableofcontents
+
   The installation/configuration of a new development system/environment entails
   a number of steps:
 

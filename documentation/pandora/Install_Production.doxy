@@ -1,6 +1,10 @@
 /*!
   \page pandora_install_production Installation of a production system
 
+  \tableofcontents
+
+  \section pandora_production_layout Directory layout
+
   \verbatim
   /var/local/prometheus
   |-- app/pandora
