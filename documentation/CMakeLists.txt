@@ -1,4 +1,54 @@
 
+## ==============================================================================
+##
+##  General documentation
+##
+## ==============================================================================
+
+configure_file (
+  ${CMAKE_CURRENT_SOURCE_DIR}/ConfigurationSummary.doxy.in
+  ${CMAKE_CURRENT_BINARY_DIR}/ConfigurationSummary.doxy
+  )
+
+## Path to directory with examples files
+
+find_path (DOXYGEN_EXAMPLE_PATH monster.yaml
+  PATHS ${PROJECT_SOURCE_DIR}
+  PATH_SUFFIXES documentation documentation/examples
+  )
+
+## Path to directory with image files
+
+find_path (DOXYGEN_IMAGE_PATH
+  NAMES "Redmine - Issues overview.png" "Redmine - Issues by project.png"
+  PATHS ${PROJECT_SOURCE_DIR}
+  PATH_SUFFIXES documentation documentation/images
+  )
+
+if (DOXYGEN_EXECUTABLE)
+
+  set (DOCUMENTATION_INPUT "${PROJECT_SOURCE_DIR}")
+
+  ## Configuration file for Doxygen
+  configure_file (
+    ${CMAKE_CURRENT_SOURCE_DIR}/doxygen.config.in
+    ${CMAKE_CURRENT_BINARY_DIR}/doxygen.config
+    )
+  
+  add_custom_target (Documentation
+    COMMAND ${DOXYGEN_EXECUTABLE} doxygen.config
+    DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/doxygen.config
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    )
+
+endif (DOXYGEN_EXECUTABLE)
+
+## ==============================================================================
+##
+##  Source code documentation
+##
+## ==============================================================================
+
 # By default we are using YARD as tool to generate documentation from the
 # source files and any extra files (such as the ones carrying installation 
 # instructions, etc.); however YARD is an extra package which (typically) does
@@ -34,7 +84,7 @@ if (YARD_EXECUTABLE)
     )
   
   if (HAVE_YARDOPTS)
-    add_custom_target (doc
+    add_custom_target (DocumentationSources
       COMMAND ${YARD_EXECUTABLE} --yardopts ${YARDOPTS}
       WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
       COMMENT "Running YARD to generate code documentation..."
@@ -47,7 +97,7 @@ else (YARD_EXECUTABLE)
   
   if (RDOC_EXECUTABLE)
 
-    add_custom_target (doc
+    add_custom_target (DocumentationSources
       COMMAND ${RDOC_EXECUTABLE} -o ${CMAKE_CURRENT_BINARY_DIR}/html ${CMAKE_CURRENT_SOURCE_DIR}/*.md
       WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
       COMMENT "Running YARD to generate code documentation..."
@@ -61,6 +111,10 @@ else (YARD_EXECUTABLE)
 
 endif (YARD_EXECUTABLE)
 
-### === Developer's Manual ======================================================
+## ==============================================================================
+##
+##  Developer's Manual
+##
+## ==============================================================================
 
 add_subdirectory (manual)

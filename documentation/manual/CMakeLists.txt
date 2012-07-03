@@ -3,23 +3,6 @@ if (DOXYGEN_EXECUTABLE)
 
   ## ============================================================================
   ##
-  ##  Locate directories and files
-  ##
-  ## ============================================================================
-
-  find_path (DOXYGEN_EXAMPLE_PATH monster.yaml
-    PATHS ${PROJECT_SOURCE_DIR}
-    PATH_SUFFIXES documentation documentation/examples
-    )
-
-  find_path (DOXYGEN_IMAGE_PATH
-    NAMES "Redmine - Issues overview.png" "Redmine - Issues by project.png"
-    PATHS ${PROJECT_SOURCE_DIR}
-    PATH_SUFFIXES documentation documentation/images
-    )
-
-  ## ============================================================================
-  ##
   ##  Test LaTeX installation
   ##
   ## ============================================================================
@@ -151,6 +134,6 @@ if (DOXYGEN_EXECUTABLE)
   
   ## Target dependency
   
-  add_dependencies(doc Manual)
+  add_dependencies(Documentation Manual)
   
 endif (DOXYGEN_EXECUTABLE)

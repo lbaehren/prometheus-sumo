@@ -26,7 +26,7 @@ DOXYFILE_ENCODING      = UTF-8
 # identify the project. Note that if you do not use Doxywizard you need
 # to put quotes around the project name if it contains spaces.
 
-PROJECT_NAME           = "${CMAKE_PROJECT_NAME}"
+PROJECT_NAME           = "prometheus"
 
 # The PROJECT_NUMBER tag can be used to enter a project or revision number.
 # This could be handy for archiving the generated documentation or
@@ -38,7 +38,7 @@ PROJECT_NUMBER         =
 # for a project that appears at the top of each page and should give viewer
 # a quick idea about the purpose of the project. Keep the description short.
 
-PROJECT_BRIEF          =
+PROJECT_BRIEF          = "The Distributed Digital Image Archive for Research and Studies"
 
 # With the PROJECT_LOGO tag one can specify an logo or icon that is
 # included in the documentation. The maximum height of the logo should not
@@ -553,12 +553,6 @@ MAX_INITIALIZER_LINES  = 30
 
 SHOW_USED_FILES        = YES
 
-# If the sources in your project are distributed over multiple directories
-# then setting the SHOW_DIRECTORIES tag to YES will show the directory hierarchy
-# in the documentation. The default is NO.
-
-SHOW_DIRECTORIES       = YES
-
 # Set the SHOW_FILES tag to NO to disable the generation of the Files page.
 # This will remove the Files entry from the Quick Index and from the
 # Folder Tree View (if specified). The default is YES.
@@ -661,7 +655,7 @@ WARN_LOGFILE           = ${CMAKE_CURRENT_BINARY_DIR}/doxygen_error.log
 # directories like "/usr/src/myproject". Separate the files or directories
 # with spaces.
 
-INPUT                  = ${PROJECT_SOURCE_DIR}
+INPUT                  = ${DOCUMENTATION_INPUT}
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding, which is
@@ -679,7 +673,7 @@ INPUT_ENCODING         = UTF-8
 # *.hxx *.hpp *.h++ *.idl *.odl *.cs *.php *.php3 *.inc *.m *.mm *.dox *.py
 # *.f90 *.f *.for *.vhd *.vhdl
 
-FILE_PATTERNS          = *.cc *.md
+FILE_PATTERNS          = *.doxy
 
 # The RECURSIVE tag can be used to turn specify whether or not subdirectories
 # should be searched for input files as well. Possible values are YES and NO.
@@ -693,7 +687,7 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                =
+EXCLUDE                = manual
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
@@ -721,14 +715,14 @@ EXCLUDE_SYMBOLS        =
 # directories that contain example code fragments that are included (see
 # the \include command).
 
-EXAMPLE_PATH           =
+EXAMPLE_PATH           = ${DOXYGEN_EXAMPLE_PATH}
 
 # If the value of the EXAMPLE_PATH tag contains directories, you can use the
 # EXAMPLE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp
 # and *.h) to filter out the source-files in the directories. If left
 # blank all files are included.
 
-EXAMPLE_PATTERNS       =
+EXAMPLE_PATTERNS       = *.cpp *.cc *.h *.rb *.yaml
 
 # If the EXAMPLE_RECURSIVE tag is set to YES then subdirectories will be
 # searched for input files to be used with the \include or \dontinclude
@@ -741,7 +735,7 @@ EXAMPLE_RECURSIVE      = NO
 # directories that contain image that are included in the documentation (see
 # the \image command).
 
-IMAGE_PATH             =
+IMAGE_PATH             = ${DOXYGEN_IMAGE_PATH}
 
 # The INPUT_FILTER tag can be used to specify a program that doxygen should
 # invoke to filter for each input file. Doxygen will invoke the filter program
@@ -896,7 +890,7 @@ HTML_HEADER            =
 # each generated HTML page. If it is left blank doxygen will generate a
 # standard footer.
 
-HTML_FOOTER            =
+HTML_FOOTER            = ${DOXYGEN_HTML_FOOTER}
 
 # The HTML_STYLESHEET tag can be used to specify a user-defined cascading
 # style sheet that is used by each HTML page. It can be used to
@@ -905,7 +899,7 @@ HTML_FOOTER            =
 # the style sheet file to the HTML output directory, so don't put your own
 # style sheet in the HTML output directory as well, or it will be erased!
 
-HTML_STYLESHEET        =
+HTML_STYLESHEET        = ${DOXYGEN_HTML_STYLESHEET}
 
 # The HTML_EXTRA_FILES tag can be used to specify one or more extra images or
 # other source files which should be copied to the HTML output directory. Note
@@ -946,12 +940,6 @@ HTML_COLORSTYLE_GAMMA  = 80
 # this to NO can help when comparing the output of multiple runs.
 
 HTML_TIMESTAMP         = YES
-
-# If the HTML_ALIGN_MEMBERS tag is set to YES, the members of classes,
-# files or namespaces will be aligned in HTML using tables. If set to
-# NO a bullet list will be used.
-
-HTML_ALIGN_MEMBERS     = YES
 
 # If the HTML_DYNAMIC_SECTIONS tag is set to YES then the generated HTML
 # documentation will contain sections that can be hidden and shown after the
@@ -1139,11 +1127,6 @@ GENERATE_TREEVIEW      = NO
 
 ENUM_VALUES_PER_LINE   = 4
 
-# By enabling USE_INLINE_TREES, doxygen will generate the Groups, Directories,
-# and Class Hierarchy pages using a tree view instead of an ordered list.
-
-USE_INLINE_TREES       = NO
-
 # If the treeview is enabled (see GENERATE_TREEVIEW) then this tag can be
 # used to set the initial width (in pixels) of the frame in which the tree
 # is shown.
@@ -1288,7 +1271,7 @@ PDF_HYPERLINKS         = YES
 # plain latex in the generated Makefile. Set this option to YES to get a
 # higher quality PDF documentation.
 
-USE_PDFLATEX           = YES
+USE_PDFLATEX           = ${DOXYGEN_USE_PDFLATEX}
 
 # If the LATEX_BATCHMODE tag is set to YES, doxygen will add the \\batchmode.
 # command to the generated LaTeX files. This will instruct LaTeX to keep
@@ -1301,7 +1284,7 @@ LATEX_BATCHMODE        = NO
 # include the index chapters (such as File Index, Compound Index, etc.)
 # in the output.
 
-LATEX_HIDE_INDICES     = NO
+LATEX_HIDE_INDICES     = YES
 
 # If LATEX_SOURCE_CODE is set to YES then doxygen will include
 # source code with syntax highlighting in the LaTeX output.
