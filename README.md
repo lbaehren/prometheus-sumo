@@ -102,39 +102,6 @@ prefix:
     -DCMAKE_INSTALL_PREFIX=<prefix>
 
 
-### Installation
-
-The following directory structure is established below the installation prefix:
-
-    <prometheus install prefix>
-    .
-    |-- app/pandora
-    |   |-- current -> ../releases/20120416143435        ...  Pointer to the current version
-    |   |-- data
-    |   |   `-- change_pids
-    |   |-- log                                          ...  Releases
-    |   |-- releases
-    |   |   |-- 20120323220813
-    |   |   `-- 20120416143435
-    |   |-- shared
-    |   |   |-- codes
-    |   |   |-- config
-    |   |   |-- doc
-    |   |   |-- index                                    ... Search index
-    |   |   |   `-- production
-    |   |   |       `-- 0_11_8
-    |   |   |           |-- image
-    |   |   |           `-- resource
-    |   |   |-- log
-    |   |   |-- pids
-    |   |   `-- system
-    |   `-- stats
-    |-- data
-    |     |-- images
-    |     `-- pandora -> ../app/pandora/data
-    |-- srv
-    `-- web
-    
 ## Testing 
 
 A [public dashboard](http://my.cdash.org/index.php?project=prometheus-sumo) for _prometheus-sumo_
