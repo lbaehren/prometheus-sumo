@@ -35,6 +35,11 @@ endif (CLAMAV_ENABLE_TESTING)
 ## ==============================================================================
 
 find_package (ClamAV)
+find_package (ZLIB)
+
+if (NOT ZLIB_FOUND)
+  message (WARNING "Unable to build ClamAV - missing ZLIB.")
+endif (NOT ZLIB_FOUND)
 
 ## ==============================================================================
 ##
