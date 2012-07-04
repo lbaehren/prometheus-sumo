@@ -229,6 +229,7 @@ message (STATUS " .. Rails executable version .... = ${RAILS_VERSION}"          
 message (STATUS " Documentation tools:"                                          )
 message (STATUS " .. Doxygen executable .......... = ${DOXYGEN_EXECUTABLE}"      )
 message (STATUS " .. Doxygen executable version .. = ${DOXYGEN_VERSION}"         )
+message (STATUS " .. Doxygen images directory .... = ${DOXYGEN_IMAGE_PATH}")
 message (STATUS " .. RDoc executable ............. = ${RDOC_EXECUTABLE}"         )
 message (STATUS " .. RDoc executable version ..... = ${RDOC_VERSION}"            )
 message (STATUS " .. YARD executable ............. = ${YARD_EXECUTABLE}"         )
