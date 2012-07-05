@@ -1,0 +1,51 @@
+/*!
+  \page settings Settings
+
+  \tableofcontents
+
+  \section settings_models Models
+
+  Database migration for the model:
+
+  \code
+class CreateSettings < ActiveRecord::Migration
+  def self.up
+    create_table :settings, :force => true do |t|
+      t.references :user
+      t.string     :type  # STI
+
+      t.boolean :zoom
+      t.integer :per_page,  :list_per_page
+      t.string  :order,     :list_order,
+                :direction, :list_direction,
+                :view,
+                :locale,
+                :start_page
+    end
+
+    Account.each { |user|
+      user.settings.update_attribute(:locale, user[:locale])
+    }
+
+    remove_column :accounts, :locale
+    add_index :settings, [:type, :user_id]
+  end
+
+  def self.down
+    add_column :accounts, :locale, :string
+
+    Account.each { |user|
+      user.update_attribute(:locale, user.settings.locale)
+    }
+
+    drop_table :settings
+  rescue
+  end
+end
+  \endcode
+
+  \section settings_controllers Controllers
+
+  \section settings_views Views
+
+*/

@@ -9,16 +9,22 @@
 
   \subsection sidebar_models_box Box
 
-  | Field | Type | Description      |
-  |-------|------|------------------|
-  | id    | integer | ID of the box |
-  | user_id | integer | ID of the user to which the box belongs |
-  | position | integer | Position within the sequence of boxes |
-  | expanded | boolean | Is the box display in an expanded view? |
+  | Field           | Type    | Description      |
+  |-----------------|---------|------------------|
+  | id              | integer | Primary key, ID of the box    |
+  | user_id         | integer | References to the user account to which the box is attached |
+  | position        | integer | Position within the sequence of boxes |
+  | expanded        | boolean | Is the box display in an expanded view? |
+  | per_page        | integer | Available options for the nof. items to display per expanded box |
+  | box_per_page | integer | nof. items to display per expanded box |
+  | order | string | Available options for the metadata field by which the entries are ordered |
+  | box_order | string | Metadata field by which the entries are ordered |
+  | direction | string | Available options for ordering the items inside the box |
+  | box_direction | string | Direction in which the items are ordered inside the box |
   | image_id | integer | ID of the image |
-  | collection_id | integer | ID of the collection |
+  | collection_id | integer | ID of the image collection |
   | presentation_id | integer | ID of the presentation |
- 
+
   Database migration for the model:
 
   \code
@@ -27,8 +33,22 @@ class CreateBoxes < ActiveRecord::Migration
     create_table :boxes do |t|
       ## References to the user account to which the box is attached
       t.references :user
+      ## Position of the box within the sequence of boxes
+      t.integer    :position
       ## Is the box display in an expanded view?
       t.boolean    :expanded
+      ## Available options for the nof. items to display per expanded box
+      t.integer    :per_page
+      ## nof. items to display per expanded box
+      t.integer    :box_per_page
+      ## Available options for the metadata field by which the entries are ordered
+      t.string     :order
+      ## Metadata field by which the entries are ordered
+      t.string     :box_order
+      ## Available options for ordering the items inside the box
+      t.string     :direction
+      ## Direction in which the items are ordered inside the box
+      t.string     :box_direction
       ## ID of the image
       t.integer    :image_id
       ## ID of the image collection
@@ -45,6 +65,11 @@ class CreateBoxes < ActiveRecord::Migration
   end
 end
   \endcode
+
+  \section sidebar_Controllers Controllers
+
+  \section sidebar_views Views
+
 
 */
 
