@@ -1,13 +1,21 @@
 /*!
-  \page sidebar Sidebar
+  \page boxes Boxes
 
   \tableofcontents
+
+  \section boxes_considerations Basic considerations
   
-  \section sidebar_models Models
+  \li Items from the main desk can be dragged into the sidebar -> this generates
+  a box.
+  \li The contentsof of a box can be expanded onto the main desk.
+  \li The sequence of boxes can be customized by the user.
+  \li A box is attached (\c belongs_to) to an Account.
+
+  \section boxes_models Models
   
   \image html Association_Box.png
 
-  \subsection sidebar_models_box Box
+  \subsection boxes_models_box Box
 
   | Field           | Type    | Description      |
   |-----------------|---------|------------------|
@@ -25,7 +33,12 @@
   | collection_id | integer | ID of the image collection |
   | presentation_id | integer | ID of the presentation |
 
-  Database migration for the model:
+  \subsection boxes_models_settings BoxSettings
+
+
+  \section boxes_migrations Database migrations
+
+  Database migration for the model (\c 139_create_boxes.rb):
 
   \code
 class CreateBoxes < ActiveRecord::Migration
@@ -61,14 +74,14 @@ class CreateBoxes < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :boxes
+    drop_table :boxes rescue nil
   end
 end
   \endcode
 
-  \section sidebar_Controllers Controllers
+  \section boxes_Controllers Controllers
 
-  \section sidebar_views Views
+  \section boxes_views Views
 
 
 */

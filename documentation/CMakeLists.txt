@@ -23,6 +23,13 @@ find_path (DOXYGEN_IMAGE_PATH
   PATH_SUFFIXES documentation documentation/images images
   )
 
+## Custom stylesheet
+
+find_file (DOXYGEN_HTML_STYLESHEET stylesheet.css
+  PATHS ${PROJECT_SOURCE_DIR}
+  PATH_SUFFIXES documentation
+  )
+
 if (DOXYGEN_EXECUTABLE)
 
   set (DOCUMENTATION_INPUT "${PROJECT_SOURCE_DIR}")
@@ -47,7 +54,7 @@ if (DOXYGEN_EXECUTABLE)
   
   add_custom_target (Documentation
     COMMAND ${DOXYGEN_EXECUTABLE} doxygen.config
-    DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/doxygen.config
+    DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/doxygen.config ${DOXYGEN_HTML_STYLESHEET}
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     )
   
