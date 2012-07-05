@@ -23,17 +23,22 @@ find_path (DOXYGEN_IMAGE_PATH
   PATH_SUFFIXES documentation documentation/images images
   )
 
-## Configuration summary page
-
-configure_file (
-  ${CMAKE_CURRENT_SOURCE_DIR}/ConfigurationSummary.doxy.in
-  ${CMAKE_CURRENT_BINARY_DIR}/ConfigurationSummary.doxy
-  )
-
 if (DOXYGEN_EXECUTABLE)
 
   set (DOCUMENTATION_INPUT "${PROJECT_SOURCE_DIR}")
 
+  if (DOXYGEN_DOT_FOUND)
+    set (HAVE_DOT "YES")
+  else (DOXYGEN_DOT_FOUND)
+    set (HAVE_DOT "NO")
+  endif (DOXYGEN_DOT_FOUND)
+  
+  ## Configuration summary page
+  configure_file (
+    ${CMAKE_CURRENT_SOURCE_DIR}/ConfigurationSummary.doxy.in
+    ${CMAKE_CURRENT_BINARY_DIR}/ConfigurationSummary.doxy
+    )
+  
   ## Configuration file for Doxygen
   configure_file (
     ${CMAKE_CURRENT_SOURCE_DIR}/doxygen.config.in
@@ -45,11 +50,11 @@ if (DOXYGEN_EXECUTABLE)
     DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/doxygen.config
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     )
-
+  
   if (ENABLE_TESTING)
     add_test (documentation Documentation)
   endif (ENABLE_TESTING)
-
+  
 endif (DOXYGEN_EXECUTABLE)
 
 ## ==============================================================================
