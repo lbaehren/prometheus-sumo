@@ -54,7 +54,7 @@ if (DOXYGEN_EXECUTABLE)
   
   add_custom_target (Documentation
     COMMAND ${DOXYGEN_EXECUTABLE} doxygen.config
-    DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/doxygen.config ${DOXYGEN_HTML_STYLESHEET}
+    DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/doxygen.config
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     )
   
