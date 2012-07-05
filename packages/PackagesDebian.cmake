@@ -18,7 +18,11 @@ find_program (DPKG_EXECUTABLE dpkg
 
 if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
 
-  message (STATUS "Checking Debian packages ...")
+  message (STATUS "Checking Debian packages")
+
+  ## Initialize counters
+  set (NOF_PACKAGES       0 )
+  set (NOF_PACKAGES_FOUND 0 )
 
   foreach (varPackage
       ruby${REQUIRED_VERSION_RUBY}
@@ -44,6 +48,9 @@ if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
       libmagickwand-dev
       )
     
+    ## Inrement package counter
+    math (EXPR NOF_PACKAGES "${NOF_PACKAGES}+1")
+
     ## Installation instructions for the package; check
     ## first, if the package is installed already __________
 
@@ -56,7 +63,10 @@ if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
       )
     
     if (DPKG_OUTPUT_VARIABLE)
-      message ("   [OK] ${varPackage}")
+      if (CONFIGURE_VERBOSE)
+	message ("   [OK] ${varPackage}")
+      endif (CONFIGURE_VERBOSE)
+      math (EXPR NOF_PACKAGES_FOUND "${NOF_PACKAGES_FOUND}+1")
     else (DPKG_OUTPUT_VARIABLE)
       message ("   [--] ${varPackage}")
       add_custom_command (
@@ -69,6 +79,10 @@ if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
     endif (DPKG_OUTPUT_VARIABLE)
     
   endforeach (varPackage)
+
+  ## Summary of package check
+
+  message (STATUS "Checking Debian packages - found ${NOF_PACKAGES_FOUND} of ${NOF_PACKAGES} packages")
   
   ## Update the Ruby Gems
   
