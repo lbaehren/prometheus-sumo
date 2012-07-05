@@ -1,0 +1,23 @@
+/*!
+  \page presentation Presentation
+
+  \tableofcontents
+  
+  You can integrate the images which you found or assembled in an image
+  collection in a presentation. The layout of the slides is flexible, the
+  presentation can be started easily in any browser. You are also allowed to
+  download the images to integrate them in your local presentation program.
+
+  \section presentation_models Models
+
+  \image html Association_Presentation.png
+
+  \subsection presentation_models_presentation Presentation
+
+  \subsection presentation_models_slide Slide
+
+  \subsection presentation_models_item Slide Item
+
+
+*/
+

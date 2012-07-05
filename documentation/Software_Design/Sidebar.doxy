@@ -1,0 +1,50 @@
+/*!
+  \page sidebar Sidebar
+
+  \tableofcontents
+  
+  \section sidebar_models Models
+  
+  \image html Association_Box.png
+
+  \subsection sidebar_models_box Box
+
+  | Field | Type | Description      |
+  |-------|------|------------------|
+  | id    | integer | ID of the box |
+  | user_id | integer | ID of the user to which the box belongs |
+  | position | integer | Position within the sequence of boxes |
+  | expanded | boolean | Is the box display in an expanded view? |
+  | image_id | integer | ID of the image |
+  | collection_id | integer | ID of the collection |
+  | presentation_id | integer | ID of the presentation |
+ 
+  Database migration for the model:
+
+  \code
+class CreateBoxes < ActiveRecord::Migration
+  def self.up
+    create_table :boxes do |t|
+      ## References to the user account to which the box is attached
+      t.references :user
+      ## Is the box display in an expanded view?
+      t.boolean    :expanded
+      ## ID of the image
+      t.integer    :image_id
+      ## ID of the image collection
+      t.integer    :collection_id
+      ## ID of the presentation
+      t.integer    :presentation_id
+      ## Timestamps (created_at, updated_at)
+      t.timestamps
+    end
+  end
+
+  def self.down
+    drop_table :boxes
+  end
+end
+  \endcode
+
+*/
+
