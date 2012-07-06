@@ -7,9 +7,23 @@
   
   \li Items from the main desk can be dragged into the sidebar -> this generates
   a box.
-  \li The contentsof of a box can be expanded onto the main desk.
-  \li The sequence of boxes can be customized by the user.
-  \li A box is attached (\c belongs_to) to an Account.
+  \li The contents of of a box can be expanded onto the main desk.
+  \li The sequence of boxes can be customized by the user -> settings are persistent
+  \li A box is attached (\c belongs_to) to an Account.	
+  \verbatim
+  belongs_to :user, :class_name => 'Account', :foreign_key => 'user_id'
+  \endverbatim
+  \li All specific types of boxes are derived from a common (virtual) base class,
+  which defines the interface and basic behaviour.
+  \verbatim
+  Box
+  |-- ImageBox
+  |-- CollectionBox
+  |-- PresentationBox
+  `-- StatisticsBox
+  \endverbatim
+
+  \image html Styleguide_Favourites.png
 
   \section boxes_models Models
   
@@ -21,6 +35,7 @@
   |-----------------|---------|------------------|
   | id              | integer | Primary key, ID of the box    |
   | user_id         | integer | References to the user account to which the box is attached |
+  | type            | string  | Type of the box (Image, Collection, Presentation, etc.) |
   | position        | integer | Position within the sequence of boxes |
   | expanded        | boolean | Is the box display in an expanded view? |
   | per_page        | integer | Available options for the nof. items to display per expanded box |
@@ -46,6 +61,8 @@ class CreateBoxes < ActiveRecord::Migration
     create_table :boxes do |t|
       ## References to the user account to which the box is attached
       t.references :user
+      ## Type of the box (Image, Collection, Presentation, etc.)
+      t.string     :type
       ## Position of the box within the sequence of boxes
       t.integer    :position
       ## Is the box display in an expanded view?
