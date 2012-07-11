@@ -99,6 +99,7 @@ include(ExternalProject)
 find_package (Git)
 find_package (Doxygen)
 find_package (Ruby)
+find_package (Boost)
 
 ##__________________________________________________________
 ## Custom inspection

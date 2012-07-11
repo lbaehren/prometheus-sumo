@@ -1,6 +1,23 @@
 
 ## ==============================================================================
 ##
+##  CVS dataset test programs
+##
+## ==============================================================================
+
+## Parse CSV file with Boost Tokenizer
+
+if (Boost_FOUND)
+
+  ## Boost header files
+  include_directories(${Boost_INCLUDE_DIRS})
+  ## Compiler instructions
+  add_executable(TestBoostTokenizerCSV TestBoostTokenizerCSV.cc)
+
+endif ()
+
+## ==============================================================================
+##
 ##  Ruby test programs
 ##
 ## ==============================================================================
