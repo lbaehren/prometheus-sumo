@@ -32,7 +32,7 @@ find_file (DOXYGEN_HTML_STYLESHEET stylesheet.css
 
 if (DOXYGEN_EXECUTABLE)
 
-  set (DOCUMENTATION_INPUT "${PROJECT_SOURCE_DIR}")
+  set (DOCUMENTATION_INPUT "${PROJECT_SOURCE_DIR}/documentation ${PROJECT_SOURCE_DIR}/sources")
 
   if (DOXYGEN_DOT_FOUND)
     set (HAVE_DOT "YES")
@@ -56,6 +56,7 @@ if (DOXYGEN_EXECUTABLE)
     COMMAND ${DOXYGEN_EXECUTABLE} doxygen.config
     DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/doxygen.config
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    COMMENT "Running Doxygen to generate documentation ..."
     )
   
   if (ENABLE_TESTING)
