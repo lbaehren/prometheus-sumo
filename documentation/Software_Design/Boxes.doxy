@@ -20,6 +20,7 @@
   |-- ImageBox
   |-- CollectionBox
   |-- PresentationBox
+  |-- MemoBox
   `-- StatisticsBox
   \endverbatim
 
@@ -39,17 +40,31 @@
   | position        | integer | Position within the sequence of boxes |
   | expanded        | boolean | Is the box display in an expanded view? |
   | per_page        | integer | Available options for the nof. items to display per expanded box |
-  | box_per_page | integer | nof. items to display per expanded box |
-  | order | string | Available options for the metadata field by which the entries are ordered |
-  | box_order | string | Metadata field by which the entries are ordered |
-  | direction | string | Available options for ordering the items inside the box |
-  | box_direction | string | Direction in which the items are ordered inside the box |
-  | image_id | integer | ID of the image |
-  | collection_id | integer | ID of the image collection |
+  | box_per_page    | integer | nof. items to display per expanded box |
+  | order           | string  | Available options for the metadata field by which the entries are ordered |
+  | box_order       | string  | Metadata field by which the entries are ordered |
+  | direction       | string  | Available options for ordering the items inside the box |
+  | box_direction   | string  | Direction in which the items are ordered inside the box |
+  | image_id        | integer | ID of the image |
+  | collection_id   | integer | ID of the image collection |
   | presentation_id | integer | ID of the presentation |
+  | notes           | text    | Notes/Comments attached to the box |
 
-  \subsection boxes_models_settings BoxSettings
+  \subsection boxes_models_image ImageBox
 
+  A simple box containing a single image.
+
+  \subsection boxes_models_collection CollectionBox
+
+  A box containing a collection of images, providing a reference to an existing
+  image \a Collection.
+
+  \subsection boxes_models_presentation PresentationBox
+
+  \subsection boxes_models_memo MemoBox
+
+  A simple box acting as a container to hold notes and comments (like a sticky
+  note).
 
   \section boxes_migrations Database migrations
 
@@ -85,6 +100,8 @@ class CreateBoxes < ActiveRecord::Migration
       t.integer    :collection_id
       ## ID of the presentation
       t.integer    :presentation_id
+      ## Notes/Comments attached to the box
+      t.text       :notes
       ## Timestamps (created_at, updated_at)
       t.timestamps
     end
@@ -99,6 +116,58 @@ end
   \section boxes_Controllers Controllers
 
   \section boxes_views Views
+
+  \section boxes_implementation Implementation details
+
+  \subsection boxes_implementation_sources Source files
+
+  \verbatim
+.
+|-- controllers
+|   '-- collection_box_controller.rb
+|-- helpers
+|-- models
+|   |-- box.rb
+|   '-- collection_box.rb
+'-- views
+    |-- account
+    |-- administration
+    |-- announcement
+    |-- ar_mailer
+    |-- bounce_email
+    |-- box
+    |-- collection
+    |-- collection_box
+    |   |-- list.html.erb
+    |   |-- new.html.erb
+    |   '-- show.html.erb
+    |-- comment
+    |-- email
+    |-- help
+    |-- image
+    |-- institution
+    |-- layouts
+    |   `--application.html.erb
+    |-- mailer
+    |-- meta_image
+    |-- oauth
+    |-- oauth_clients
+    |-- pandora
+    |-- presentation
+    |-- rights_exploiter
+    |-- search
+    |-- shared
+    |   |-- history
+    |   |-- i18n
+    |   |-- image
+    |   |-- layout
+    |   |-- list
+    |   |-- misc
+    |   '-- resourceful
+    |-- source
+    |-- stats
+    '-- translate
+\endverbatim
 
 
 */
