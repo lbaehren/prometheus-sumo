@@ -5,6 +5,6 @@
 ##
 ## ==============================================================================
 
-add_subdirectory (ruby)
+add_subdirectory (tests)
+
 add_subdirectory (xml)
-add_subdirectory (yaml)
