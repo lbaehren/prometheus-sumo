@@ -13,6 +13,8 @@ if (Boost_FOUND)
   include_directories(${Boost_INCLUDE_DIRS})
   ## Compiler instructions
   add_executable(TestBoostTokenizerCSV TestBoostTokenizerCSV.cc)
+  ## Linker instructions
+  target_link_libraries (TestBoostTokenizerCSV prometheus)
 
 endif ()
 

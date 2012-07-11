@@ -21,17 +21,26 @@
 #include <string>
 #include <algorithm>
 #include <iterator>
+#include <set>
+#include <map>
 
 #include <boost/tokenizer.hpp>
+
+#include <lib/Common.h>
 
 int main(int argc, char *argv[])
 {
   using namespace std;
   using namespace boost;
   
-  std::string data      = "data.csv";
-  unsigned int nofLines = 0;
-  
+  std::string data          = "data.csv";
+  unsigned int nofLines     = 0;
+  unsigned int nofDownloads = 0;
+  unsigned int nofSearches  = 0;
+  std::vector<std::string> columns;
+  std::set<std::string> dates;
+  std::set<std::string> institutions;
+
   //________________________________________________________
   // Process parameters from the command line
   
@@ -49,10 +58,15 @@ int main(int argc, char *argv[])
   
   typedef tokenizer< escaped_list_separator<char> > Tokenizer;
   
-  vector< string > vec;
-  string line;
+  std::vector<std::string> vec;
+  std::string line;
 
-  cout << "\n------------------------------------------------------------" << endl;
+  /* Extract the first line with the column headers */
+  {
+    getline(in,line);
+    Tokenizer tok(line);
+    columns.assign(tok.begin(),tok.end());
+  }
   
   while (getline(in,line))
     {
@@ -61,16 +75,32 @@ int main(int argc, char *argv[])
       
       if (vec.size() < 3) continue;
       
-      copy(vec.begin(), vec.end(),
-	   ostream_iterator<string>(cout, "|"));
+      /* Display current line of data */
+      // copy(vec.begin(), vec.end(),
+      // 	   ostream_iterator<string>(cout, "|"));
 
-      // Increment line counter
+      /* Book-keeping */
+      dates.insert(vec[0]);
+      institutions.insert(vec[1]);
+      nofSearches  += atoi((vec[6]).c_str());
+      nofDownloads += atoi((vec[7]).c_str());
+
+      /* Increment line counter */
       ++nofLines;
       
-      cout << "\n------------------------------------------------------------" << endl;
     }
+ 
+  //________________________________________________________
+  // Processing summary
 
-  std::cout << "-- Completed scanning input file - processed " << nofLines
-	    << " lines of data." 
-	    << std::endl;
+  std::cout << "-- Completed scanning input file."                << std::endl;
+  std::cout << "  -- Lines of data     = " << nofLines            << std::endl;
+  std::cout << "  -- nof. data columns = " << columns.size()      << std::endl;
+  std::cout << "  -- nof. institutions = " << institutions.size() << std::endl;
+  std::cout << "  -- nof. searches     = " << nofSearches         << std::endl;
+  std::cout << "  -- nof. downloads    = " << nofDownloads        << std::endl;
+  std::cout << "  -- Data columns      = " << columns             << std::endl;
+  std::cout << "  -- Periods in time   = " << dates               << std::endl;
+  std::cout << "  -- Institution names = " << institutions        << std::endl;
+
 }
