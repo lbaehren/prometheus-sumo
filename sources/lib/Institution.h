@@ -1,4 +1,7 @@
 
+#ifndef INSTITUTION_H
+#define INSTITUTION_H
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -121,3 +124,5 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   };
   
 }  //  namespace prometheus -- END
+
+#endif

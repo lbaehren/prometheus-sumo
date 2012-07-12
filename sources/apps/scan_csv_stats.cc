@@ -1,5 +1,5 @@
 /*!
-  \file TestBoostTokenizerCSV.cc
+  \file scan_csv_stats.cc
   \brief Parse CSV file with Boost Tokenizer
 
   Boost provides tokenizers that are easy to construct and use. To setup a
@@ -26,12 +26,15 @@
 
 #include <boost/tokenizer.hpp>
 
-#include <lib/Common.h>
+#include <lib/StatisticsHBZ.h>
+
+// === Main routine =============================================================
 
 int main(int argc, char *argv[])
 {
   using namespace std;
   using namespace boost;
+  using namespace prometheus;
   
   std::string data          = "data.csv";
   unsigned int nofLines     = 0;
@@ -40,6 +43,8 @@ int main(int argc, char *argv[])
   std::vector<std::string> columns;
   std::set<std::string> dates;
   std::set<std::string> institutions;
+  std::vector<StatisticsHBZ> entries;
+  std::vector<StatisticsHBZ>::iterator it;
 
   //________________________________________________________
   // Process parameters from the command line
@@ -68,33 +73,39 @@ int main(int argc, char *argv[])
     columns.assign(tok.begin(),tok.end());
   }
   
-  while (getline(in,line))
-    {
-      Tokenizer tok(line);
-      vec.assign(tok.begin(),tok.end());
-      
-      if (vec.size() < 3) continue;
-      
-      /* Display current line of data */
-      // copy(vec.begin(), vec.end(),
-      // 	   ostream_iterator<string>(cout, "|"));
+  while (getline(in,line)) {
+    Tokenizer tok(line);
+    vec.assign(tok.begin(),tok.end());
+    
+    if (vec.size() < 3) continue;
+    
+    /* Display current line of data */
+    // copy(vec.begin(), vec.end(),
+    // 	   ostream_iterator<string>(cout, "|"));
+    
+    /* Book-keeping */
+    institutions.insert(vec[1]);
+    nofSearches  += atoi((vec[6]).c_str());
+    nofDownloads += atoi((vec[7]).c_str());
+    
+    entries.push_back(StatisticsHBZ(vec[0],vec[1],vec[2],vec[3]));
+    
+    /* Increment line counter */
+    ++nofLines;
+  }
 
-      /* Book-keeping */
-      dates.insert(vec[0]);
-      institutions.insert(vec[1]);
-      nofSearches  += atoi((vec[6]).c_str());
-      nofDownloads += atoi((vec[7]).c_str());
+  //________________________________________________________
+  // Accumulation of data
 
-      /* Increment line counter */
-      ++nofLines;
-      
-    }
- 
+  for (it=entries.begin(); it!=entries.end(); ++it) {
+    dates.insert(it->time());
+  }
+  
   //________________________________________________________
   // Processing summary
 
   std::cout << "-- Completed scanning input file."                << std::endl;
-  std::cout << "  -- Lines of data     = " << nofLines            << std::endl;
+  std::cout << "  -- Lines of data     = " << entries.size()      << std::endl;
   std::cout << "  -- nof. data columns = " << columns.size()      << std::endl;
   std::cout << "  -- nof. institutions = " << institutions.size() << std::endl;
   std::cout << "  -- nof. searches     = " << nofSearches         << std::endl;
