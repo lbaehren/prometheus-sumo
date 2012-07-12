@@ -18,7 +18,6 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     
     std::vector<std::string> itsColumns;
     std::vector<StatisticsHBZ> itsEntries;
-    std::vector<StatisticsHBZ>::iterator itsEntriesIterator;
     
   public:
     
@@ -32,6 +31,24 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 
     //! Read and process the input data file
     bool processFile ();
+
+    //! Get the number of entries in the statistics data file
+    inline unsigned int nofEntries () {
+      itsEntries.size();
+    }
+
+    //! Columns names
+    inline std::vector<std::string> columns () {
+      return itsColumns;
+    }
+
+    //! Number of data columns
+    inline unsigned int nofColumns () {
+      itsColumns.size();
+    }
+
+    //! Get the names of the institutions
+    std::set<std::string> institutions ();
 
     //! Provide a summary of the object's internal parameters and status
     void summary (std::ostream &os);

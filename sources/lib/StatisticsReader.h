@@ -66,6 +66,8 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 
     // === Private methods ======================================================
 
+    bool checkFile ();
+
   };
   
 }  //  namespace prometheus -- END

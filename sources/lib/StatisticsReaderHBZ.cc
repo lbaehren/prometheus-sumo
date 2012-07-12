@@ -5,6 +5,17 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   
   // ============================================================================
   //
+  //  Construction
+  //
+  // ============================================================================
+
+  StatisticsReaderHBZ::StatisticsReaderHBZ (std::string const &filename)
+    : StatisticsReader (filename)
+  {
+  }
+
+  // ============================================================================
+  //
   //  Public methods
   //
   // ============================================================================
@@ -16,19 +27,52 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   {
     bool status = true;
     std::string line;
-    
-    //______________________________________________________
-    // Open input data file
-    
+    std::vector<std::string> data;
+
+    /* Open stream for the input data ... */
     std::ifstream in (itsFilename.c_str());
+    /* ... and check if the stream is ok */
     if (!in.is_open()) return false;
-    
+    /* Reset the internal storage for the actual entries */
+    itsEntries.clear();
+
     //______________________________________________________
     // Extract the first line with the column headers
 
     status *= extactColumnHeaders (in);
 
+    //______________________________________________________
+    // Process the rows containing the actual data
+    
+    while (getline(in,line)) {
+      /* Pass the line to the Tokenizer */
+      Tokenizer tok(line);
+      /* Retrieve the individual tokens */
+      data.assign(tok.begin(),tok.end());
+      
+      if (data.size() < 3) {
+	continue;
+      }
+      
+      itsEntries.push_back(StatisticsHBZ(data[0],data[1],data[2],data[3]));
+    }
+    
     return status;
+  }
+
+  //_____________________________________________________________________________
+  //                                                                      summary
+
+  std::set<std::string> StatisticsReaderHBZ::institutions ()
+  {
+    std::vector<StatisticsHBZ>::iterator it;
+    std::set<std::string> data;
+
+    for (it=itsEntries.begin(); it!=itsEntries.end(); ++it) {
+      data.insert(it->consortium());
+    }
+
+    return data;
   }
 
   //_____________________________________________________________________________
@@ -56,11 +100,13 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     Tokenizer tok(line);
     itsColumns.assign(tok.begin(),tok.end());
 
+    if (itsColumns.empty()) {
+      std::cerr << "[StatisticsReaderHBZ::extactColumnHeaders]"
+		<< " No column headers extracted!"
+		<< std::endl;
+    }
+
     return status;
   }
   
-  
 }  //  namespace prometheus -- END
-
-#endif
-
