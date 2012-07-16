@@ -53,7 +53,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 
     //! Get the number of entries in the statistics data file
     inline unsigned int nofEntries () {
-      itsEntries.size();
+      return itsEntries.size();
     }
 
     //! Columns names
@@ -63,7 +63,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 
     //! Number of data columns
     inline unsigned int nofColumns () {
-      itsColumns.size();
+      return itsColumns.size();
     }
 
     //! Get the names of the institutions
