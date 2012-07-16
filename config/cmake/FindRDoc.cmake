@@ -58,6 +58,7 @@ if (NOT RDOC_FOUND)
     ## if run successfully.
     if (NOT RDOC_RESULT_VARIABLE)
       string(REGEX REPLACE "rdoc " "" RDOC_VERSION ${RDOC_OUTPUT_VARIABLE})
+      string(REGEX REPLACE "RDoc " "" RDOC_VERSION ${RDOC_VERSION})
     endif (NOT RDOC_RESULT_VARIABLE)
   endif (RDOC_EXECUTABLE)
   
