@@ -12,6 +12,7 @@ foreach (varTest ${varTestsCpp})
   get_filename_component (varFilename ${varTest} NAME_WE)
   ## build executable of test program
   add_executable (${varFilename} ${varTest})
+  target_link_libraries (${varFilename} prometheus)
 endforeach (varTest)
 
 ## ==============================================================================

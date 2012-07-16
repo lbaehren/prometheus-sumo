@@ -22,6 +22,12 @@
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
   
+  // ============================================================================
+  //
+  //  Construction
+  //
+  // ============================================================================
+  
   /*!
     \param id         -- Identifier for the box.
     \param userId     -- User/Account ID.
@@ -31,12 +37,25 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   Box::Box (unsigned int const &id,
 	    unsigned int const &userId,
 	    Box::Type const &objectType,
-	    int const &objectId)
+	    unsigned int const &objectId)
   {
     itsId         = id;
     itsUserId     = userId;
     itsObjectType = objectType;
     itsObjectId   = objectId;
+  }
+  
+  // ============================================================================
+  //
+  //  Public methods
+  //
+  // ============================================================================
+  
+  void Box::summary (std::ostream &os)
+  {
+    os << "[Box] Summary of internal parameters." << std::endl;
+    os << "-- Box ID  = " << itsId     << std::endl;
+    os << "-- User ID = " << itsUserId << std::endl;
   }
   
 }  //  namespace prometheus -- END

@@ -64,6 +64,10 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     inline std::string email () const {
       return itsEmail;
     }
+    //! Set the email address for the account    
+    inline void setEmail (std::string const &email) {
+      itsEmail = email;
+    }
 
     //! Get the login for the account
     inline std::string login () const {

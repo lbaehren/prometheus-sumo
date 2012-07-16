@@ -18,69 +18,40 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef COLLECTION_H
-#define COLLECTION_H
-
-#include "Account.h"
+#include "CollectionBox.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
   
-  /*!
-    \class Collection
-    \ingroup prometheus
-    \ingroup Models
-    \author Lars Baehren
-  */
-  class Collection {
-
-    //! Identifier for the collection
-    unsigned int itsId;
-    //! Title for the collection
-    std::string itsTitle;
-    //! Description for the collection
-    std::string itsDescription;
-    //! ID of the collection's owner
-    unsigned int itsOwnerId;
-
-  public:
-
-    //! Argumented construction
-    Collection (unsigned int const &id,
-		std::string const &title,
-		unsigned int const &ownerId);
-
-    // === Parameter access =====================================================
-
-    //! Get the identifier for the collection
-    inline unsigned int id () const {
-      return itsId;
-    };
-
-    //! Get the title for the collection
-    inline std::string title () const {
-      return itsTitle;
-    };
-
-    //! Get the description for the collection
-    inline std::string description () const {
-      return itsDescription;
-    };
-
-    //! Get the ID of the collection's owner
-    inline unsigned int ownerId () const {
-      return itsOwnerId;
-    };
-
-  private:
-    
-    //! Initialize internal parameters
-    void init (unsigned int const &id,
-	       std::string const &title,
-	       std::string const &description,
-	       unsigned int const &ownerId);
-    
-  };  //  class Collection -- END
+  // ============================================================================
+  //
+  //  Construction
+  //
+  // ============================================================================
+  
+  CollectionBox::CollectionBox (unsigned int const &id,
+				class Collection const &collection)
+    : Box (id,
+  	   0,
+  	   Box::Collection,
+  	   0)
+    // : Box (id,
+    // 	   collection.ownerId(),
+    // 	   Box::Collection,
+    // 	   collection.id())
+  {
+  }
+  
+  // ============================================================================
+  //
+  //  Public methods
+  //
+  // ============================================================================
+  
+  void CollectionBox::summary (std::ostream &os)
+  {
+    os << "[CollectionBox] Summary of internal parameters." << std::endl;
+    os << "-- Box ID  = " << itsId     << std::endl;
+    os << "-- User ID = " << itsUserId << std::endl;
+  }
   
 }  //  namespace prometheus -- END
-
-#endif

@@ -43,23 +43,6 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 	  ownerId);
   }
   
-  /*!
-    \param id    -- Identifier for the collection
-    \param title -- Title for the collection
-    \param owner -- Owner of the collection
-  */
-  Collection::Collection (unsigned int const &id,
-			  std::string const &title,
-			  Account const &owner)
-  {
-    unsigned int ownerId = owner.id();
-
-    init (id,
-	  title,
-	  "",
-	  ownerId);
-  }
-  
   // ============================================================================
   //
   //  Private methods

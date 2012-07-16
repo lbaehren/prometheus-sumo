@@ -18,18 +18,40 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef COLLECTIONBOX_H
+#define COLLECTIONBOX_H
+
 #include "Box.h"
+#include "Collection.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   /*!
     \class CollectionBox
     \ingroup prometheus
+    \ingroup Models
   */
   class CollectionBox : public Box {
 
   public:
+
+    //! Argumented constructor
+    CollectionBox (unsigned int const &id,
+     		   class Collection const &collection);
     
-  };
+    // === Public methods =======================================================
+    
+    //! Provide a summary of the internal status
+    inline void summary () {
+      summary (std::cout);
+    }
+    
+    //! Provide a summary of the internal status to output stream \c os
+    void summary (std::ostream &os);
+    
+  };  //  class CollectionBox -- END
   
 }  //  namespace prometheus -- END
+
+#endif
+

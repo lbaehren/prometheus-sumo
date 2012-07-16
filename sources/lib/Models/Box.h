@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef BOX_H
+#define BOX_H
+
 #include <iostream>
 #include <string>
 
@@ -60,15 +63,19 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     //! Type of the object the box is connected to
     Box::Type itsObjectType;
     //! ID of the object the box is connected to
-    int itsObjectId;
+    unsigned int itsObjectId;
     
   public:
+
+    // === Construction =========================================================
     
     //! Argumented constructor
     Box (unsigned int const &id,
 	 unsigned int const &userId,
 	 Box::Type const &objectType,
-	 int const &objectId);
+	 unsigned int const &objectId);
+
+    // === Parameter access =====================================================
     
     //! Get the identifier for the box
     inline unsigned int id () {
@@ -85,6 +92,19 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       return itsObjectType;
     }
 
+    // === Public methods =======================================================
+
+    //! Provide a summary of the internal status
+    inline void summary () {
+      summary (std::cout);
+    }
+    
+    //! Provide a summary of the internal status to output stream \c os
+    void summary (std::ostream &os);
+
   };
   
 }  //  namespace prometheus -- END
+
+#endif
+
