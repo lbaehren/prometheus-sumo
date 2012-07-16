@@ -57,7 +57,7 @@ if (NOT RDOC_FOUND)
     ## Process output in order to extract version number. Rdoc returns status 0
     ## if run successfully.
     if (NOT RDOC_RESULT_VARIABLE)
-      string(REGEX REPLACE "RDoc " "" RDOC_VERSION ${RDOC_OUTPUT_VARIABLE})
+      string(REGEX REPLACE "rdoc " "" RDOC_VERSION ${RDOC_OUTPUT_VARIABLE})
     endif (NOT RDOC_RESULT_VARIABLE)
   endif (RDOC_EXECUTABLE)
   
