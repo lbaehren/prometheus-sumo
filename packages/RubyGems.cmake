@@ -31,6 +31,7 @@ if (GEM_EXECUTABLE)
       gruff
       highline
       hpricot
+      ipaddress
       jekyll
       jekyll-localization
       jekyll-pagination
