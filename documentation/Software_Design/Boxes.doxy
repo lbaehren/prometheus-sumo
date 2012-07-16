@@ -32,11 +32,12 @@
 
   \subsection boxes_models_box Box
 
-  | Field           | Type    | Description      |
-  |-----------------|---------|------------------|
-  | id              | integer | Primary key, ID of the box    |
+  | Field           | Type    | Description                |
+  |-----------------|---------|----------------------------|
+  | id              | integer | Primary key, ID of the box |
   | user_id         | integer | References to the user account to which the box is attached |
-  | type            | string  | Type of the box (Image, Collection, Presentation, etc.) |
+  | object_type     | string  | Type of the box (Image, Collection, Presentation, etc.) |
+  | object_id       | integer | ID of the object referenced by the box |
   | position        | integer | Position within the sequence of boxes |
   | expanded        | boolean | Is the box display in an expanded view? |
   | per_page        | integer | Available options for the nof. items to display per expanded box |
@@ -45,9 +46,6 @@
   | box_order       | string  | Metadata field by which the entries are ordered |
   | direction       | string  | Available options for ordering the items inside the box |
   | box_direction   | string  | Direction in which the items are ordered inside the box |
-  | image_id        | integer | ID of the image |
-  | collection_id   | integer | ID of the image collection |
-  | presentation_id | integer | ID of the presentation |
   | notes           | text    | Notes/Comments attached to the box |
 
   \subsection boxes_models_image ImageBox
@@ -77,7 +75,9 @@ class CreateBoxes < ActiveRecord::Migration
       ## References to the user account to which the box is attached
       t.references :user
       ## Type of the box (Image, Collection, Presentation, etc.)
-      t.string     :type
+      t.string     :object_type
+      ## ID of the object referenced by the box
+      t.integer    :object_id
       ## Position of the box within the sequence of boxes
       t.integer    :position
       ## Is the box display in an expanded view?
@@ -94,12 +94,6 @@ class CreateBoxes < ActiveRecord::Migration
       t.string     :direction
       ## Direction in which the items are ordered inside the box
       t.string     :box_direction
-      ## ID of the image
-      t.integer    :image_id
-      ## ID of the image collection
-      t.integer    :collection_id
-      ## ID of the presentation
-      t.integer    :presentation_id
       ## Notes/Comments attached to the box
       t.text       :notes
       ## Timestamps (created_at, updated_at)

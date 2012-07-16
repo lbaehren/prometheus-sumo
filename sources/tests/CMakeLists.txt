@@ -1,6 +1,21 @@
 
 ## ==============================================================================
 ##
+##  C++ test programs
+##
+## ==============================================================================
+
+file (GLOB varTestsCpp Test*.cc)
+
+foreach (varTest ${varTestsCpp})
+  ## remove file extension
+  get_filename_component (varFilename ${varTest} NAME_WE)
+  ## build executable of test program
+  add_executable (${varFilename} ${varTest})
+endforeach (varTest)
+
+## ==============================================================================
+##
 ##  Ruby test programs
 ##
 ## ==============================================================================
