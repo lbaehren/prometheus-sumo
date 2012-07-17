@@ -57,5 +57,25 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     os << "-- Box ID  = " << itsId     << std::endl;
     os << "-- User ID = " << itsUserId << std::endl;
   }
+
+  // ============================================================================
+  //
+  //  Public methods
+  //
+  // ============================================================================
+  
+  std::set<std::string> Box::types ()
+  {
+    std::set<std::string> var;
+
+    var.insert("Image");
+    var.insert("Collection");
+    var.insert("Presentation");
+    var.insert("Search");
+    var.insert("CollectionSearch");
+    var.insert("PresentationSearch");
+
+    return var;
+  }
   
 }  //  namespace prometheus -- END

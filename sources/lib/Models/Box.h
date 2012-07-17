@@ -22,6 +22,7 @@
 #define BOX_H
 
 #include <iostream>
+#include <set>
 #include <string>
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
@@ -101,6 +102,11 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     
     //! Provide a summary of the internal status to output stream \c os
     void summary (std::ostream &os);
+
+    // === Static methods =======================================================
+
+    //! Get a list of the available box types
+    static std::set<std::string> types ();
 
   };
   
