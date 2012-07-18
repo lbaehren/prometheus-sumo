@@ -31,13 +31,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   CollectionBox::CollectionBox (unsigned int const &id,
 				class Collection const &collection)
     : Box (id,
-  	   0,
-  	   Box::Collection,
-  	   0)
-    // : Box (id,
-    // 	   collection.ownerId(),
-    // 	   Box::Collection,
-    // 	   collection.id())
+  	   collection)
   {
   }
   

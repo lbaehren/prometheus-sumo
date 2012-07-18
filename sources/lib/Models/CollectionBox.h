@@ -22,7 +22,6 @@
 #define COLLECTIONBOX_H
 
 #include "Box.h"
-#include "Collection.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
 

@@ -1,3 +1,4 @@
+
 /***************************************************************************
  *   Copyright (C) 2012                                                    *
  *   Lars B"ahren (lbaehren@gmail.com)                                     *
@@ -18,28 +19,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PRESENTATION_BOX_H
-#define PRESENTATION_BOX_H
-
-#include "Box.h"
+#include "PresentationBox.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
   
   /*!
-    \class PresentationBox
-    \ingroup prometheus
-  */
-  class PresentationBox : public Box {
-
-  public:
-    
-    //! Create a box for a Presentation
-    PresentationBox (unsigned int const &id,
-		     class Presentation const &presentation);
-    
-  };
+    \param id           -- Identifier for the Box.
+    \param presentation -- Presentation for which the box will be created.
+   */
+  PresentationBox::PresentationBox (unsigned int const &id,
+				    class Presentation const &presentation)
+    : Box(id, presentation)
+  {}
   
 }  //  namespace prometheus -- END
-
-#endif
-

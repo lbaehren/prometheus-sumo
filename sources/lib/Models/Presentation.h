@@ -18,28 +18,69 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PRESENTATION_BOX_H
-#define PRESENTATION_BOX_H
+#ifndef PRESENTATION_H
+#define PRESENTATION_H
 
-#include "Box.h"
+#include "Account.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
   
   /*!
-    \class PresentationBox
+    \class Presentation
     \ingroup prometheus
+    \ingroup Models
+    \author Lars Baehren
   */
-  class PresentationBox : public Box {
+  class Presentation {
+
+    //! Identifier for the presentation
+    unsigned int itsId;
+    //! Title for the presentation
+    std::string itsTitle;
+    //! Description for the presentation
+    std::string itsDescription;
+    //! ID of the presentation's owner
+    unsigned int itsOwnerId;
 
   public:
+
+    //! Argumented construction
+    Presentation (unsigned int const &id,
+		std::string const &title,
+		unsigned int const &ownerId);
+
+    // === Parameter access =====================================================
+
+    //! Get the identifier for the presentation
+    inline unsigned int id () const {
+      return itsId;
+    };
+
+    //! Get the title for the presentation
+    inline std::string title () const {
+      return itsTitle;
+    };
+
+    //! Get the description for the presentation
+    inline std::string description () const {
+      return itsDescription;
+    };
+
+    //! Get the ID of the presentation's owner
+    inline unsigned int ownerId () const {
+      return itsOwnerId;
+    };
+
+  private:
     
-    //! Create a box for a Presentation
-    PresentationBox (unsigned int const &id,
-		     class Presentation const &presentation);
+    //! Initialize internal parameters
+    void init (unsigned int const &id,
+	       std::string const &title,
+	       std::string const &description,
+	       unsigned int const &ownerId);
     
-  };
+  };  //  class Presentation -- END
   
 }  //  namespace prometheus -- END
 
 #endif
-

@@ -25,6 +25,9 @@
 #include <set>
 #include <string>
 
+#include "Collection.h"
+#include "Presentation.h"
+
 namespace prometheus {  //  namespace prometheus -- BEGIN
   
   /*!
@@ -76,6 +79,14 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 	 Box::Type const &objectType,
 	 unsigned int const &objectId);
 
+    //! Create a box for a Collection
+    Box (unsigned int const &id,
+	 class Collection const &collection);
+
+    //! Create a box for a Presentation
+    Box (unsigned int const &id,
+	 class Presentation const &presentation);
+
     // === Parameter access =====================================================
     
     //! Get the identifier for the box
@@ -94,6 +105,14 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     }
 
     // === Public methods =======================================================
+
+    //! Show the contents of the Box
+    inline void show () {
+      summary (std::cout);
+    }
+    
+    //! Show the contents of the Box, writing the output to stream \c os
+    void show (std::ostream &os);
 
     //! Provide a summary of the internal status
     inline void summary () {

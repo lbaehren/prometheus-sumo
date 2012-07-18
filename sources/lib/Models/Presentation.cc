@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "Box.h"
+#include "Presentation.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
   
@@ -29,71 +29,35 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   // ============================================================================
   
   /*!
-    \param id         -- Identifier for the box.
-    \param userId     -- User/Account ID.
-    \param objectType -- Type of the object the box is connected to.
-    \param objectId   -- ID of the object the box is connected to.
+    \param id      -- Identifier for the presentation
+    \param title   -- Title for the presentation
+    \param ownerId -- ID of the presentation's owner
   */
-  Box::Box (unsigned int const &id,
-	    unsigned int const &userId,
-	    Box::Type const &objectType,
-	    unsigned int const &objectId)
+  Presentation::Presentation (unsigned int const &id,
+			  std::string const &title,
+			  unsigned int const &ownerId)
   {
-    itsId         = id;
-    itsUserId     = userId;
-    itsObjectType = objectType;
-    itsObjectId   = objectId;
-  }
-  
-  /*!
-    \param id         -- Identifier for the box.
-    \param collection -- Collection for which the box is created.
-  */
-  Box::Box (unsigned int const &id,
-	    class Collection const &collection)
-  {
-    itsId         = id;
-    itsUserId     = collection.ownerId();
-    itsObjectType = Box::Collection;
-    itsObjectId   = collection.id();
+    init (id,
+	  title,
+	  "",
+	  ownerId);
   }
   
   // ============================================================================
   //
-  //  Public methods
+  //  Private methods
   //
   // ============================================================================
   
-  void Box::show (std::ostream &os)
+  void Presentation::init (unsigned int const &id,
+			 std::string const &title,
+			 std::string const &description,
+			 unsigned int const &ownerId)
   {
-    os << "This is box no. " << itsId << " for user no. " << itsUserId << std::endl;
+    itsId          = id;
+    itsTitle       = title;
+    itsDescription = description;
+    itsOwnerId     = ownerId;
   }
 
-  void Box::summary (std::ostream &os)
-  {
-    os << "[Box] Summary of internal parameters." << std::endl;
-    os << "-- Box ID  = " << itsId     << std::endl;
-    os << "-- User ID = " << itsUserId << std::endl;
-  }
-
-  // ============================================================================
-  //
-  //  Public methods
-  //
-  // ============================================================================
-  
-  std::set<std::string> Box::types ()
-  {
-    std::set<std::string> var;
-
-    var.insert("Image");
-    var.insert("Collection");
-    var.insert("Presentation");
-    var.insert("Search");
-    var.insert("CollectionSearch");
-    var.insert("PresentationSearch");
-
-    return var;
-  }
-  
 }  //  namespace prometheus -- END
