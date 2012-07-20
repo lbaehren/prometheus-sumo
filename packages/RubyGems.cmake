@@ -25,6 +25,7 @@ if (GEM_EXECUTABLE)
       apache_secure_download
       ar_mailer
       blackwinter-gnuplot
+      blackwinter-ipaddress
       capistrano
       exifr
       fastercsv
