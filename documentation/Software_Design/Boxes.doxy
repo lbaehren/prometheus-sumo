@@ -32,21 +32,21 @@
 
   \subsection boxes_models_box Box
 
-  | Field           | Type    | Description                |
-  |-----------------|---------|----------------------------|
-  | id              | integer | Primary key, ID of the box |
-  | user_id         | integer | References to the user account to which the box is attached |
-  | object_type     | string  | Type of the box (Image, Collection, Presentation, etc.) |
-  | object_id       | integer | ID of the object referenced by the box |
-  | position        | integer | Position within the sequence of boxes |
-  | expanded        | boolean | Is the box display in an expanded view? |
-  | per_page        | integer | Available options for the nof. items to display per expanded box |
-  | box_per_page    | integer | nof. items to display per expanded box |
-  | order           | string  | Available options for the metadata field by which the entries are ordered |
-  | box_order       | string  | Metadata field by which the entries are ordered |
-  | direction       | string  | Available options for ordering the items inside the box |
-  | box_direction   | string  | Direction in which the items are ordered inside the box |
-  | notes           | text    | Notes/Comments attached to the box |
+  | Field         | Type    | Description                |
+  |---------------|---------|----------------------------|
+  | id            | integer | Primary key, ID of the box |
+  | owner_id      | integer | References to the user account to which the box is attached |
+  | type          | string  | Type of the box (Image, Collection, Presentation, etc.) |
+  | object_id     | integer | ID of the object referenced by the box |
+  | position      | integer | Position within the sequence of boxes |
+  | expanded      | boolean | Is the box display in an expanded view? |
+  | per_page      | integer | Available options for the nof. items to display per expanded box |
+  | box_per_page  | integer | nof. items to display per expanded box |
+  | order         | string  | Available options for the metadata field by which the entries are ordered |
+  | box_order     | string  | Metadata field by which the entries are ordered |
+  | direction     | string  | Available options for ordering the items inside the box |
+  | box_direction | string  | Direction in which the items are ordered inside the box |
+  | notes         | text    | Notes/Comments attached to the box |
 
   \subsection boxes_models_image ImageBox
 
