@@ -62,8 +62,8 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     
     //! Identifier for the box
     unsigned int itsId;
-    //! User/Account ID 
-    unsigned int itsUserId;
+    //! Owner/Account ID 
+    unsigned int itsOwnerId;
     //! Type of the object the box is connected to
     Box::Type itsObjectType;
     //! ID of the object the box is connected to
@@ -75,7 +75,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     
     //! Argumented constructor
     Box (unsigned int const &id,
-	 unsigned int const &userId,
+	 unsigned int const &ownerId,
 	 Box::Type const &objectType,
 	 unsigned int const &objectId);
 
@@ -95,8 +95,8 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     }
 
     //! Get the account ID for the box
-    inline unsigned int userId () {
-      return itsUserId;
+    inline unsigned int ownerId () {
+      return itsOwnerId;
     }
 
     //! Get the type of the object the box is connected to

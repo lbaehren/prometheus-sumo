@@ -30,17 +30,17 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   
   /*!
     \param id         -- Identifier for the box.
-    \param userId     -- User/Account ID.
+    \param ownerId     -- Owner/Account ID.
     \param objectType -- Type of the object the box is connected to.
     \param objectId   -- ID of the object the box is connected to.
   */
   Box::Box (unsigned int const &id,
-	    unsigned int const &userId,
+	    unsigned int const &ownerId,
 	    Box::Type const &objectType,
 	    unsigned int const &objectId)
   {
     itsId         = id;
-    itsUserId     = userId;
+    itsOwnerId     = ownerId;
     itsObjectType = objectType;
     itsObjectId   = objectId;
   }
@@ -53,7 +53,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 	    class Collection const &collection)
   {
     itsId         = id;
-    itsUserId     = collection.ownerId();
+    itsOwnerId    = collection.ownerId();
     itsObjectType = Box::Collection;
     itsObjectId   = collection.id();
   }
@@ -66,14 +66,14 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   
   void Box::show (std::ostream &os)
   {
-    os << "This is box no. " << itsId << " for user no. " << itsUserId << std::endl;
+    os << "This is box no. " << itsId << " for owner no. " << itsOwnerId << std::endl;
   }
 
   void Box::summary (std::ostream &os)
   {
     os << "[Box] Summary of internal parameters." << std::endl;
-    os << "-- Box ID  = " << itsId     << std::endl;
-    os << "-- User ID = " << itsUserId << std::endl;
+    os << "-- Box ID   = " << itsId     << std::endl;
+    os << "-- Owner ID = " << itsOwnerId << std::endl;
   }
 
   // ============================================================================

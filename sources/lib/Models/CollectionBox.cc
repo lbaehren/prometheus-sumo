@@ -44,8 +44,8 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   void CollectionBox::summary (std::ostream &os)
   {
     os << "[CollectionBox] Summary of internal parameters." << std::endl;
-    os << "-- Box ID  = " << itsId     << std::endl;
-    os << "-- User ID = " << itsUserId << std::endl;
+    os << "-- Box ID   = " << itsId     << std::endl;
+    os << "-- Owner ID = " << itsOwnerId << std::endl;
   }
   
 }  //  namespace prometheus -- END
