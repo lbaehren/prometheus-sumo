@@ -31,6 +31,7 @@ if (APT_EXECUTABLE)
       libapache2-mod-ruby
       libapache2-mod-proxy-html
       subversion
+      doxygen
       libxml2-dev
       libmagic-dev
       libmagickwand-dev
