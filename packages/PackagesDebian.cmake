@@ -44,6 +44,7 @@ if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
       libapache2-mod-proxy-html
       subversion
       doxygen
+      libboost-dev
       libxml2-dev
       libmagic-dev
       libmagickwand-dev
