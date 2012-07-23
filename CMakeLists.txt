@@ -58,6 +58,7 @@ endif (GIT_REPOSITORIES_RW)
 ## Handle option: Increase verbosity during configuration?
 
 if (NOT CONFIGURE_VERBOSE)
+  set (BOOST_FIND_QUIETLY    YES )
   set (CLAMAV_FIND_QUIETLY   YES )
   set (DOXYGEN_FIND_QUIETLY  YES )
   set (GEM_FIND_QUIETLY      YES )
@@ -100,6 +101,7 @@ find_package (Git)
 find_package (Doxygen)
 find_package (Ruby)
 find_package (Boost)
+find_package (Subversion)
 
 ##__________________________________________________________
 ## Custom inspection

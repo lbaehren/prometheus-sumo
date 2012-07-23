@@ -28,10 +28,8 @@ if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
       ruby${REQUIRED_VERSION_RUBY}
       ruby${REQUIRED_VERSION_RUBY}-dev
       rubygems
-      rdoc
       ri
       rake
-      irb
       libmysql-ruby${REQUIRED_VERSION_RUBY}
       libtermios-ruby${REQUIRED_VERSION_RUBY}
       librmagick-ruby${REQUIRED_VERSION_RUBY}
@@ -43,6 +41,8 @@ if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
       libapache2-mod-ruby
       libapache2-mod-proxy-html
       subversion
+      doxygen
+      libboost-dev
       libxml2-dev
       libmagic-dev
       libmagickwand-dev

@@ -62,7 +62,8 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 
     //______________________________________________________
     // Process the rows containing the actual data
-    
+
+#ifdef WITH_BOOST    
     while (getline(in,line)) {
       /* Pass the line to the Tokenizer */
       Tokenizer tok(line);
@@ -75,6 +76,9 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       
       itsEntries.push_back(StatisticsHBZ(data[0],data[1],data[2],data[3]));
     }
+#else
+    status = false;
+#endif
     
     return status;
   }
@@ -112,6 +116,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 
   bool StatisticsReaderHBZ::extactColumnHeaders (std::ifstream &in)
   {
+#ifdef WITH_BOOST
     bool status = true;
     std::string line;
 
@@ -126,6 +131,9 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     }
 
     return status;
+#else
+    return false;
+#endif
   }
   
 }  //  namespace prometheus -- END

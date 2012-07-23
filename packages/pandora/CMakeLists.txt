@@ -101,17 +101,25 @@ if (NOT PANDORA_FOUND OR PANDORA_FORCE_BUILD)
 	)
 
     else (PANDORA_GIT)
+
+      if (Subversion_SVN_EXECUTABLE)
       
-      ExternalProject_Add (pandora
-	PREFIX ${PROJECT_BINARY_DIR}
-	DOWNLOAD_DIR download
-	SOURCE_DIR source
-	SVN_REPOSITORY ${PANDORA_SVN}
-	BUILD_IN_SOURCE 1
-	CONFIGURE_COMMAND ${RAKE_EXECUTABLE} pandora:setup
-	INSTALL_COMMAND ""
-	BUILD_COMMAND ""
-	)
+        ExternalProject_Add (pandora
+          PREFIX ${PROJECT_BINARY_DIR}
+ 	  DOWNLOAD_DIR download
+ 	  SOURCE_DIR source
+ 	  SVN_REPOSITORY ${PANDORA_SVN}
+	  BUILD_IN_SOURCE 1
+	  CONFIGURE_COMMAND ${RAKE_EXECUTABLE} pandora:setup
+	  INSTALL_COMMAND ""
+	  BUILD_COMMAND ""
+        )
+
+      else (Subversion_SVN_EXECUTABLE)
+
+        message (STATUS "Unable to check out pandora working copy - missing Subversion!")
+
+      endif (Subversion_SVN_EXECUTABLE)
       
     endif (PANDORA_GIT)
     
