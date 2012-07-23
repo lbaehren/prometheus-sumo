@@ -25,6 +25,7 @@ if (GEM_EXECUTABLE)
       apache_secure_download
       ar_mailer
       blackwinter-gnuplot
+      blackwinter-ipaddress
       capistrano
       exifr
       fastercsv
@@ -92,6 +93,7 @@ if (GEM_EXECUTABLE)
       add_custom_command (
 	TARGET InstallGems
 	POST_BUILD
+	COMMAND export GEM_HOME=${CMAKE_INSTALL_PREFIX}/lib/ruby/gems/${RUBY_VERSION_SERIES}
 	COMMAND ${GEM_EXECUTABLE} install ${varPackage}
 	WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 	COMMENT "Installing Ruby Gem ${varPackage} ..."

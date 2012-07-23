@@ -32,6 +32,23 @@ if (NOT GEM_FOUND)
     set (GEM_ROOT_DIR ${CMAKE_INSTALL_PREFIX})
   endif (NOT GEM_ROOT_DIR)
   
+  if (NOT RUBY_FOUND)
+    ## Find the package
+    find_package (Ruby)
+    ## Decomposition of Ruby version number
+    if (RUBY_VERSION)
+      ## Convert string to list of numbers
+      string (REGEX REPLACE "\\." ";" RUBY_VERSION_LIST ${RUBY_VERSION})
+      ## Retrieve individual elements in the list
+      list(GET RUBY_VERSION_LIST 0 RUBY_VERSION_MAJOR)
+      list(GET RUBY_VERSION_LIST 1 RUBY_VERSION_MINOR)
+      list(GET RUBY_VERSION_LIST 2 RUBY_VERSION_PATCH)
+      ## Ruby release series
+      set (RUBY_VERSION_SERIES "${RUBY_VERSION_MAJOR}.${RUBY_VERSION_MAJOR}")
+    endif (RUBY_VERSION)
+    
+  endif (NOT RUBY_FOUND)
+  
   ##_____________________________________________________________________________
   ## Check for the executable
   
@@ -73,7 +90,19 @@ if (NOT GEM_FOUND)
     endif (NOT GEM_RESULT_VARIABLE)
 
   endif (GEM_EXECUTABLE)
-  
+
+  ##_____________________________________________________________________________
+  ## Check if installation and module paths are set
+
+  find_path (GEM_PATH_HOME
+    NAMES
+    ${CMAKE_INSTALL_PREFIX}/lib/ruby/gems/${RUBY_VERSION_SERIES}/gems
+    /usr/lib/ruby/gems/${RUBY_VERSION_SERIES}/gems
+    $ENV{GEM_HOME}
+    )
+
+  ## Export path to environment: set( ENV{PATH} /home/martink )
+
   ##_____________________________________________________________________________
   ## Actions taken when all components have been found
   
@@ -81,26 +110,18 @@ if (NOT GEM_FOUND)
     set (GEM_FOUND TRUE)
   else (GEM_EXECUTABLE)
     set (GEM_FOUND FALSE)
-    if (NOT GEM_FIND_QUIETLY)
-      if (NOT GEM_INCLUDES)
-	message (STATUS "Unable to find GEM header files!")
-      endif (NOT GEM_INCLUDES)
-      if (NOT GEM_LIBRARIES)
-	message (STATUS "Unable to find GEM library files!")
-      endif (NOT GEM_LIBRARIES)
-    endif (NOT GEM_FIND_QUIETLY)
   endif (GEM_EXECUTABLE)
   
   if (GEM_FOUND)
     if (NOT GEM_FIND_QUIETLY)
       message (STATUS "Found components for GEM")
-      message (STATUS "GEM_ROOT_DIR  = ${GEM_ROOT_DIR}")
-      message (STATUS "GEM_INCLUDES  = ${GEM_INCLUDES}")
-      message (STATUS "GEM_LIBRARIES = ${GEM_LIBRARIES}")
+      message (STATUS "GEM_ROOT_DIR   = ${GEM_ROOT_DIR}"   )
+      message (STATUS "GEM_EXECUTABLE = ${GEM_EXECUTABLE}" )
+      message (STATUS "GEM_PATH_HOME  = ${GEM_PATH_HOME}"  )
     endif (NOT GEM_FIND_QUIETLY)
   else (GEM_FOUND)
     if (GEM_FIND_REQUIRED)
-      message (FATAL_ERROR "Could not find GEM!")
+      message (FATAL_ERROR "Could not find Gem!")
     endif (GEM_FIND_REQUIRED)
   endif (GEM_FOUND)
   

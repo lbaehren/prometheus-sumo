@@ -147,6 +147,8 @@ if (RUBY_VERSION)
   list(GET RUBY_VERSION_LIST 0 RUBY_VERSION_MAJOR)
   list(GET RUBY_VERSION_LIST 1 RUBY_VERSION_MINOR)
   list(GET RUBY_VERSION_LIST 2 RUBY_VERSION_PATCH)
+  ## Ruby release series
+  set (RUBY_VERSION_SERIES "${RUBY_VERSION_MAJOR}.${RUBY_VERSION_MAJOR}")
 endif (RUBY_VERSION)
 
 ## ==============================================================================
