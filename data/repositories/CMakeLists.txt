@@ -96,6 +96,9 @@ add_custom_target (FetchRepositories ALL
 
 if (GIT_EXECUTABLE)
 
+  ## Collection of scripts & snippets
+  add_git_repository (git://github.com/blackwinter/scratch.git)
+
   ## Convert database files to various formats.
   add_git_repository (${GIT_REPOSITORY_BASE}/athena.git)
 
