@@ -66,18 +66,22 @@
 
   \section boxes_migrations Database migrations
 
-  Database migration for the model (\c 139_create_boxes.rb):
+  Database migration for the model:
 
   \code
 class CreateBoxes < ActiveRecord::Migration
   def self.up
     create_table :boxes do |t|
-      ## References to the user account to which the box is attached
-      t.references :user
+      ## ID of the user account owning the box
+      t.integer    :owner_id
       ## Type of the box (Image, Collection, Presentation, etc.)
-      t.string     :object_type
+      t.string     :type
       ## ID of the object referenced by the box
       t.integer    :object_id
+      ## Serialized set of parameters
+      t.text       :params
+      ## 
+      t.string     :params_hash
       ## Position of the box within the sequence of boxes
       t.integer    :position
       ## Is the box display in an expanded view?
@@ -113,6 +117,10 @@ end
 
   \section boxes_implementation Implementation details
 
+  \subsection boxes_implementation_design Design elements
+
+  
+
   \subsection boxes_implementation_sources Source files
 
   \verbatim
@@ -122,7 +130,9 @@ end
 |-- helpers
 |-- models
 |   |-- box.rb
+|   '-- image_box.rb
 |   '-- collection_box.rb
+|   '-- presentation_box.rb
 '-- views
     |-- account
     |-- administration
@@ -131,10 +141,6 @@ end
     |-- bounce_email
     |-- box
     |-- collection
-    |-- collection_box
-    |   |-- list.html.erb
-    |   |-- new.html.erb
-    |   '-- show.html.erb
     |-- comment
     |-- email
     |-- help
