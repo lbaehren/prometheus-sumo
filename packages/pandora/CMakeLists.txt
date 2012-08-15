@@ -28,14 +28,6 @@ set (PANDORA_SVN            "http://prometheus-srv.uni-koeln.de/svn/pandora/trun
 
 option (PANDORA_FORCE_BUILD    "Force build and installation of package?" NO  )
 option (PANDORA_FROM_REPOS     "Install package from repository?"         YES )
-option (PANDORA_ENABLE_TESTING "Enable testing and experimental builds?"  YES )
-
-## Handle options
-
-if (PANDORA_ENABLE_TESTING)
-  include (CTest)
-  enable_testing()
-endif (PANDORA_ENABLE_TESTING)
 
 ## ==============================================================================
 ##

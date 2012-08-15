@@ -30,9 +30,9 @@ set (NOF_SKIPPED_TESTS      0    )
 ##
 ## ==============================================================================
 
-option (ENABLE_TESTING        "Enable CTest test driver?"                     YES )
-option (CONFIGURE_VERBOSE     "Increase verbosity during configuration?"      NO  )
-option (GIT_REPOSITORIES_RW   "Check out Github repositories for r/w access?" NO  )
+option (ENABLE_TESTING        "Enable CTest test driver?"                     NO )
+option (CONFIGURE_VERBOSE     "Increase verbosity during configuration?"      NO )
+option (GIT_REPOSITORIES_RW   "Check out Github repositories for r/w access?" NO )
 
 option (WITH_CLAMAV       "Enable ClamAV antivirus software tool-kit?"     YES )
 option (WITH_PANDORA_DOCS "Enable documentation of pandora source code?"   NO  )
