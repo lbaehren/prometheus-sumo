@@ -156,6 +156,16 @@ if (GIT_EXECUTABLE)
   ## Ruby client for the Web Application Description Language.
   add_git_repository (${GIT_REPOSITORY_BASE}/wadl.git)
   
+  ##________________________________________________________
+  ## Indexing of the prometheus image archive
+
+  ## A full-featured automatic indexing system.
+  add_git_repository (git://github.com/perseus-a/lingo.git)
+  ## The terminology manager for perseus-a.
+  add_git_repository (git://github.com/perseus-a/medusa.git)
+  ## Automatic indexing of the prometheus image archive.
+  add_git_repository (git://github.com/perseus-a/perseus-a.git)
+  
   ##
   ##  Subversion repositories
   ##
