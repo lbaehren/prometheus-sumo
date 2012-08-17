@@ -28,15 +28,6 @@ set (promhp_GIT            "${GIT_REPOSITORY_BASE}/promhp.git" )
 
 option (promhp_FORCE_BUILD    "Force build and installation of package?" NO  )
 option (promhp_FROM_REPOS     "Install package from repository?"         YES )
-option (promhp_ENABLE_TESTING "Enable testing and experimental builds?"  YES )
-
-##__________________________________________________________
-## Handle option: Enable testing and experimental builds?
-
-if (promhp_ENABLE_TESTING)
-  include (CTest)
-  enable_testing()
-endif (promhp_ENABLE_TESTING)
 
 ##__________________________________________________________
 ## Handle option: Install package from repository?

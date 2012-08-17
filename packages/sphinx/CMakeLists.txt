@@ -28,14 +28,6 @@ set (SPHINX_SVN            "http://sphinxsearch.googlecode.com/svn" )
 
 option (SPHINX_FORCE_BUILD    "Force build and installation of package?" NO )
 option (SPHINX_FROM_REPOS     "Install package from repository?"         NO )
-option (SPHINX_ENABLE_TESTING "Enable testing and experimental builds?"  YES )
-
-## Handle options
-
-if (SPHINX_ENABLE_TESTING)
-  include (CTest)
-  enable_testing()
-endif (SPHINX_ENABLE_TESTING)
 
 ## ==============================================================================
 ##
