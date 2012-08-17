@@ -46,7 +46,7 @@
   for multiple version control options.</dd>
 
     <dt>Ferret</dt>
-      <dd>\ref ferret is a Ruby port of the Java Lucene search engine. In the
+      <dd>\subpage ferret is a Ruby port of the Java Lucene search engine. In the
       same way as Lucene, it is not a standalone application, but a library you
       can use to index documents and search for things in them later.</dd>
 
