@@ -41,19 +41,6 @@
 
   </dl>
 
-  \section refman_software_related Related software projects
-
-  Besides the above mentioned tools and libraries, there are also a number of
-  related projects:
-
-<dl>
-  <dt>Meta-Image</dt>
-    <dd>[Meta-Image](http://www2.leuphana.de/meta-image) fügt bestehende Komponenten zu einer virtuellen Arbeits- und Forschungsumgebung für den Bilddiskurs in der Kunstgeschichte zusammen. Meta-Image verbindet dazu die digitalen Bildbestände des Verbundes kunsthistorischer Bilddatenbanken prometheus und ein auf die Verlinkung und Anreicherung von Bildcorpora spezialisiertes Bild-Beschreibungs-Tool mit dem Ziel einer integrativen Cyberinfrastructure für die kunsthistorische Forschungsarbeit direkt am Bild. Meta-Image reichert die formellen dokumentarisch-archivarischen Informationen und Sacherschließungen des Repositorys um die Ergebnisse der informellen Forschungstätigkeiten der Fachcommunity an, wobei Ursprung und Kontext der Meta-Informationen stets transparent bleiben.</dd>
-
-  <dt>HyperImage</dt>
-    <dd>Mit [HyperImage](http://www.uni-lueneburg.de/hyperimage/hyperimage) können beliebig viele Details innerhalb eines Bildes präzise markiert und beschrieben sowie Annotationen des Corpus untereinander verlinkt und über Indizes erschlossen werden. Zwischenergebnisse wie endgültige Fassungen lassen sich jederzeit als hypermediale online- oder offline-Publikation erstellen. Verschiedene einzeln eingeführte und erprobte Verfahren und Datenrepositorien sind in HyperImage zu einer einzeln oder gemeinschaftlich nutzbaren Forschungs- und Publikationsumgebung zusammengeführt.</dd>
-</dl>
-
   \section refman_software_external External 3rd-party packages
 
   \li [Git](http://www.git-scm.com)

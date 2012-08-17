@@ -55,5 +55,7 @@
 
   \li \subpage software_design -- Design considerations underlying the
   implementation of the actual software.
+
+  \li \subpage software_packages utilized by or related to prometheus.
   
 */
