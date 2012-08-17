@@ -1,6 +1,10 @@
 /*!
   \page software_packages Software Packages
 
+  \tableofcontents
+
+  \section software_packages_related Related projects
+
   <dl>
     <dt>\kleio</dt>
       <dd>\subpage kleio</dd>
@@ -11,6 +15,19 @@
     <dt>HyperImage</dt>
       <dd>Mit [HyperImage](http://www.uni-lueneburg.de/hyperimage/hyperimage) können beliebig viele Details innerhalb eines Bildes präzise markiert und beschrieben sowie Annotationen des Corpus untereinander verlinkt und über Indizes erschlossen werden. Zwischenergebnisse wie endgültige Fassungen lassen sich jederzeit als hypermediale online- oder offline-Publikation erstellen. Verschiedene einzeln eingeführte und erprobte Verfahren und Datenrepositorien sind in HyperImage zu einer einzeln oder gemeinschaftlich nutzbaren Forschungs- und Publikationsumgebung zusammengeführt.</dd>
   </dl>
+
+  \section software_packages_external External 3rd-party packages
+
+  \li [Git](http://www.git-scm.com)
+  \li [Subversion](http://subversion.apache.org)
+  \li [Ruby](http://ruby-lang.org)
+  \li \subpage refman_rails
+  \li \subpage capistrano
+  \li \ref ferret
+  \li \subpage mysql
+  \li \subpage redmine
+  \li \subpage refman_yaml
+
 
 */
 

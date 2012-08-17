@@ -41,16 +41,4 @@
 
   </dl>
 
-  \section refman_software_external External 3rd-party packages
-
-  \li [Git](http://www.git-scm.com)
-  \li [Subversion](http://subversion.apache.org)
-  \li [Ruby](http://ruby-lang.org)
-  \li \ref refman_rails
-  \li \ref capistrano
-  \li \ref ferret
-  \li \ref mysql
-  \li \ref redmine
-  \li \ref refman_yaml
-
 */
