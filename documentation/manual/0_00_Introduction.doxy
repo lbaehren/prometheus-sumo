@@ -48,7 +48,7 @@
   \li The chapter \subpage homepage summarizes the setup for the generation
   of the homepage, into which the actual image archive is embedded.
 
-  \li The chapter \subpage refman_guidelines collects a few guidelines on how
+  \li The chapter \subpage coding_guidelines collects a few guidelines on how
   to structure and document the source code.
 
   \li \subpage faq -- Collection of some more commonly asked question.
