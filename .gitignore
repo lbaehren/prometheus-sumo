@@ -13,10 +13,16 @@ data/repositories/jekyll-pagination
 data/repositories/jekyll-rendering
 data/repositories/jekyll-tagging
 data/repositories/libxml-ext
+data/repositories/lingo
 data/repositories/log2counter
+data/repositories/medusa
+data/repositories/pandora
+data/repositories/perseus-a
 data/repositories/perseus_match
 data/repositories/promhp
 data/repositories/ruby-backports
 data/repositories/ruby-filemagic
 data/repositories/ruby-nuggets
+data/repositories/scratch
 data/repositories/wadl
+
