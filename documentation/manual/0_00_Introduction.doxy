@@ -51,9 +51,11 @@
   \li The chapter \subpage coding_guidelines collects a few guidelines on how
   to structure and document the source code.
 
-  \li \subpage faq -- Collection of some more commonly asked question.
-
   \li \subpage software_design -- Design considerations underlying the
   implementation of the actual software.
+
+  \li Check the \subpage faq for a collection of frequently asked questions (and
+  hopefully answers thereof). For publications check out the \subpage references
+  page, for a general collection of links consult the \subpage bookmarks list.
 
 */

@@ -1,7 +1,11 @@
 
-# FAQ #
+FAQ    {#faq}
+===
 
-## Herunterladen einer Präsentation ##
+\tableofcontents
+
+Herunterladen einer Präsentation
+--------------------------------
 
   \b Question:
 
@@ -25,7 +29,8 @@
   präsentieren, indem Sie in der oberen Menüleiste auf 'Fenster' gehen und den
   'Vollbildmodus' auswählen. 
 
-## Sortierung der Ergebnisliste ##
+Sortierung der Ergebnisliste
+----------------------------
 
   \b Question:
   

@@ -1,5 +1,6 @@
 
-# References #
+References    {#references}
+==========
 
 ## Publications ##
 
