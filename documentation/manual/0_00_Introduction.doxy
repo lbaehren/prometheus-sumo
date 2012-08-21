@@ -28,19 +28,17 @@
  
   \section refman_contents Organization of the contents
 
-  The reminder of this documentation is organized as follows:
-
-  \li \subpage manual_image_archive -- a general introduction to the prometheus
-  digital image archive; this includes an overview of the main features and the
-  history of the project.
-
   \li \subpage infrastructure -- Overview of the various server machines, domains
-  and repositories, which utilized by the prometheus project.
+  and \ref repositories, which utilized by the prometheus project.
 
   \li \subpage software_packages presents a brief rundown of the various
   software packages, which have been developed as part of the project, as well as
   a list of the most important open sources packages utilized.
   
+  \li \subpage manual_image_archive -- a general introduction to the prometheus
+  digital image archive; this includes an overview of the main features and the
+  history of the project.
+
   \li The chapter \subpage pandora focusses on the software package acting
   as the driving force behind the prometheus image archive, as well as the
   underlying \subpage database.

@@ -132,11 +132,3 @@ else (YARD_EXECUTABLE)
   endif (RDOC_EXECUTABLE)
 
 endif (YARD_EXECUTABLE)
-
-## ==============================================================================
-##
-##  Developer's Manual
-##
-## ==============================================================================
-
-add_subdirectory (manual)
