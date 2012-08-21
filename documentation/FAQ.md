@@ -1,13 +1,16 @@
-/*!
-  \page faq FAQ
 
-  \tableofcontents
+# FAQ #
 
-  \section faq_download_presentation Herunterladen einer Präsentation
+## Herunterladen einer Präsentation ##
 
-  Hallo, ich habe ein Problem beim Herunterladen einer Präsentation auf meinen Rechner.
-Die Präsentation ist fertig, ich klicke auf das Zeichen für Herunterladen, das Herunterladen startet und läuft, es kommt aber nicht die Präsentation als Gesamtwerk an, sondern nur in Gestalt der ausgewählten Bilder.
-Was mache ich falsch?
+  \b Question:
+
+  Hallo, ich habe ein Problem beim Herunterladen einer Präsentation auf meinen
+  Rechner.
+  Die Präsentation ist fertig, ich klicke auf das Zeichen für Herunterladen, das
+  Herunterladen startet und läuft, es kommt aber nicht die Präsentation als
+  Gesamtwerk an, sondern nur in Gestalt der ausgewählten Bilder.
+  Was mache ich falsch?
 
   \b Answer: 
 
@@ -22,8 +25,10 @@ Was mache ich falsch?
   präsentieren, indem Sie in der oberen Menüleiste auf 'Fenster' gehen und den
   'Vollbildmodus' auswählen. 
 
-  \section faq_sortierung_ergebnisliste Sortierung der Ergebnisliste
+## Sortierung der Ergebnisliste ##
 
+  \b Question:
+  
   Kann man tatsächlich die Ergebnisse nicht nach Datierung sortieren?? Es
   wäre sehr praktisch, Werke in chronologischer Reihenfolge aufzulisten.
   Wenn ich diese Funktion übersehen haben sollte, würde ich mich über
@@ -44,6 +49,3 @@ Was mache ich falsch?
   technischen Gründen nicht nach einer klaren Chronologie, sondern orientiert
   sich an den unterschiedlichen Eingaben. Wir haben uns daher dagegen
   entscheiden, eine Sortierung nach Datierung einzuführen.
-
-*/
-
