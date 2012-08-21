@@ -1,10 +1,10 @@
-/*!
 
-  \page manual_image_archive The Image Archive
+The Image Archive    {#manual_image_archive}
+=================
 
-  \tableofcontents
+\tableofcontents
 
-  \section refman_image_archive_overview Overview
+\section refman_image_archive_overview Overview
 
   prometheus is an internet-based service ([www.prometheus-bildarchiv.de](http://www.prometheus-bildarchiv.de)) for artistic and cultural research comprising a publicy accessible area as well as an access restricted, fee-based one. The service is presented by the Association of the same name in cooperation with the University of Cologne. prometheus charges users a license fee which is solely used to make the service available.
 
@@ -60,8 +60,12 @@ The major components of the project work was distributed between the universitie
   * Institute for Data Processing of Cultural Studies: Technology of the central server, technical realization of the design and organization of the image archive
   * Pedagogical Department: Development of the educational program, evaluation.
 
+While the project was still ongoing, the association “prometheus – The Distributed Digital Image Archive for Research and Studies e.V” was founded on March 24, 2003, to perpetuate and sustain the project’s achievements.
+
+As of April 1, 2004, this association became the legal successor of the project with the goal to guarantee the financing and technical structure of prometheus, and to continue development of the image archive including the educational programs.
+
+The registered office of prometheus is located at the Institute of Art History at the University of Cologne.
+
   \section image_archive_references References 
 
   \li [heise Software-Verzeichnis: Webdienst: prometheus](http://www.heise.de/software/download/prometheus/55071)
-
-*/
