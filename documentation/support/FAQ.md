@@ -54,3 +54,24 @@ Sortierung der Ergebnisliste
   technischen Gründen nicht nach einer klaren Chronologie, sondern orientiert
   sich an den unterschiedlichen Eingaben. Wir haben uns daher dagegen
   entscheiden, eine Sortierung nach Datierung einzuführen.
+
+Verwendung Bilder auf Webseiten
+-------------------------------
+
+  \b Question:
+
+  Wir führen die Seminare z. B. an Volkshochschulen oder anderen
+  Bildungseinrichtigungen. Nun möchte wir für unsre Homepage einige
+  Abbildungen von Kunstwerken aus ihrer Datenbank einbinden. Unsere Frage:
+  Sind wir, was die Bildrechte angeht, als Ihre Linzensnehmerinnen
+  abgesichert? 
+
+  \b Answer:
+
+  Der Vertrag, den prometheus mit der VG Bild-Kunst geschlossen hat, bietet den
+  Nutzern von prometheus Rechtssicherheit für die Verwendung der in prometheus
+  recherchierbaren Werke im Rahmen von Forschung und Lehre. 
+
+  Diese Verwendung bezieht sich jedoch immer nur auf einen abgeschlossenen
+  Nutzerkreis innerhalb eines abgeschlossenen Zeitraumes. Somit können Sie die
+  Bilder aus prometheus etwa ohne Bedenken innerhalb eines Seminares verwenden. Möchten Sie Bilder jedoch auf Ihrer Homepage veröffentlichen, wird dieser Rahmen gesprengt, da die Abbildungen dann für potenziell jeden zugänglich sind und zudem keine zeitliche Befristung besteht. In diesem Fall müssten Sie also wie bei einer Publikation die entsprechenden Genehmigungen bei den jeweiligen Rechteinhabern einholen.
