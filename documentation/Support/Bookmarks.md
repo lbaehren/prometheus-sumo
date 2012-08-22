@@ -30,3 +30,14 @@ Bookmarks    {#bookmarks}
 \li [Using the integrated DRb Server](http://projects.jkraemer.net/acts_as_ferret/wiki/DrbServer)
 \li [jkraemer.net: tags/ferret](http://www.jkraemer.net/tags/ferret)
 \li [Acts_As_Ferret Tutorial](http://www.railsenvy.com/2007/2/19/acts-as-ferret-tutorial)
+
+\section bookmarks_scripting Scripting languages
+
+\subsection bookmarks_scripting_javascript Javascript
+
+\li [Asset pipeline](http://guides.rubyonrails.org/asset_pipeline.html) -- a framework to concatenate and minify or compress JavaScript and CSS assets
+\li [Unobtrusive JavaScript](http://en.wikipedia.org/wiki/Unobtrusive_JavaScript)
+\li [Creating JavaScript widgets in Rails](http://www.igvita.com/2007/06/05/creating-javascript-widgets-in-rails/)
+\li [JavaScript Testing on Rails](http://www.solitr.com/blog/2012/04/konacha-tutorial-javascript-testing-with-rails)
+
+
