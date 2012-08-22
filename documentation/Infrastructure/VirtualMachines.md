@@ -51,6 +51,14 @@ apt-get install build-essential cmake git-svn subversion doxygen mysql-server ru
 ~~~~
   - MySQL server Root password: mysqlR00t
 
+\subsection vm_linux_ubuntu_1004 Ubuntu 10.04 LTS (Lucid Lynx)
+
+  - Installation base: _ubuntu-10.04.4-desktop-i386.iso_
+
+\subsection vm_linux_ubuntu_1204 Ubuntu 12.04 LTS (Precise Pangolin)
+
+  - Installation base : _ubuntu-12.04-desktop-i386.iso_
+
 \section vm_windows Windows
 
 \subsection vm_windows_xp-ie6 Windows XP (IE6)
@@ -95,6 +103,8 @@ Additionale software packages:
 
 \section vm_references References 
 
+  - [VirtualBox](http://www.virtualbox.org)
+  - [7-Zip](http://www.7-zip.org) is a file archiver with a high compression ratio.
   - [Debian GNU/Linux](http://www.debian.org) - a free operating system (OS) for your computer.
   - [Cygwin](http://cygwin.com) - a collection of tools which provide a Linux look and feel environment for Windows.
   - [MinGW](http://www.mingw.org) -Minimalist GNU for Windows
@@ -102,4 +112,3 @@ Additionale software packages:
   - [Firefox](http://www.mozilla.org/en-US/firefox/new) web browser
   - [Chrome](https://www.google.com/intl/en/chrome/browser) web browser
   - [Opera](http://www.opera.com) web browser
-
