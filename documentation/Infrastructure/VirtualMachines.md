@@ -34,8 +34,10 @@ variants are being kept.
     - Standard system utilities
   - Packages installed after setting up the base system:
 ~~~~
-apt-get install build-essential cmake git-svn
+apt-get install build-essential cmake git-svn subversion doxygen mysql-server
 ~~~~
+  - MySQL server:
+    - Root password: mysqlR00t
 
 \subsection vm_linux_debian7 Debian GNU/Linux 7.x
 
@@ -48,7 +50,7 @@ apt-get install build-essential cmake git-svn
     - Standard system utilities
   - Packages installed after setting up the base system:
 ~~~~
-apt-get install build-essential cmake git-svn
+apt-get install build-essential cmake git-svn subversion doxygen mysql-server
 ~~~~
 
 \section vm_windows Windows
@@ -65,7 +67,6 @@ Web browsers:
 | Chrome  | 4.0.0249.78 (36714) | 21.0.1180.79      |
 | Safari  | 4.0.3 (531.9.1)     | 5.1.7 (7534.57.2) |
 
-
 Additionale software packages:
 
   - Git
@@ -79,21 +80,15 @@ git clone lars@134.95.11.139:/Users/lars/Documents/Work/prometheus prom-docs
 
 \subsection vm_windows_xp-ie7 Windows XP (IE7)
 
-Initial configuration:
+Web browsers:
 
-  - IE      : 6
-  - Firefox : 3.5.3
-  - Opera   : 10.00 (1750)
-  - Chrome  : 3.0.195.33
-  - Safari  : 4.0.3 (531.9.1)
-
-Browser updates:
-
-  - IE      : 6
-  - Firefox : 14.0.1
-  - Opera   : 12.01 (1532)
-  - Chrome  : 21.0.1180.79
-  - Safari  : 5.1.7 (7534.57.2)
+| Browser | Initial version     | Upgraded to       |
+|---------|---------------------|-------------------|
+| IE      | 7                   | 7                 |
+| Firefox | 3.5.3               | 14.0.1            |
+| Opera   | 10.00 (1750)        | 12.01 (1532)      |
+| Chrome  | 3.0.195.33          | 21.0.1180.79      |
+| Safari  | 4.0.3 (531.9.1)     | 5.1.7 (7534.57.2) |
 
 Additionale software packages:
 
