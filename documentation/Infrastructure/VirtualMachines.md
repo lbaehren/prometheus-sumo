@@ -13,12 +13,9 @@ up and are being provided to the user:
 | Operating system | Machine name  | Comments |
 |------------------|---------------|----------|
 | Debian GNU/Linux 6.x | [vm-debian6](http://134.95.11.135/virtualbox/vm-debian6.ova) |  |
-| Debian GNU/Linux 7.x | vm-debian7 |  |
+| Debian GNU/Linux 7.x | [vm-debian7](http://134.95.11.135/virtualbox/vm-debian7.ova) |  |
 | Windows XP (IE6) | [vm-windowsxp-ie6](http://134.95.11.135/virtualbox/vm-windowsxp-ie6.ova) | Installers for InDesign & Illustrator |
 | Windows XP (IE7) | [vm-windowsxp-ie7](http://134.95.11.135/virtualbox/vm-windowsxp-ie7.ova) | Installers for InDesign & Illustrator |
-
-_Comment:_ For completeness the original machines images for the Windows XP 
-variants are being kept.
 
 \section vm_linux Linux
 
@@ -34,24 +31,25 @@ variants are being kept.
     - Standard system utilities
   - Packages installed after setting up the base system:
 ~~~~
-apt-get install build-essential cmake git-svn subversion doxygen mysql-server
+apt-get install build-essential cmake git-svn subversion doxygen mysql-server ruby1.8-dev
 ~~~~
-  - MySQL server:
-    - Root password: mysqlR00t
+  - MySQL server Root password: mysqlR00t
 
 \subsection vm_linux_debian7 Debian GNU/Linux 7.x
 
   - [Debian installation information](http://www.debian.org/devel/debian-installer)
+  - Installation base: _debian-wheezy-DI-b1-i386-netinst.iso_
   - Software selection:
-    - Graphical Desktop environment
+    - Debian desktop environment
     - Web Server
-    - SQL Database
+    - SQL database
     - SSH Server
     - Standard system utilities
   - Packages installed after setting up the base system:
 ~~~~
-apt-get install build-essential cmake git-svn subversion doxygen mysql-server
+apt-get install build-essential cmake git-svn subversion doxygen mysql-server ruby1.8-dev
 ~~~~
+  - MySQL server Root password: mysqlR00t
 
 \section vm_windows Windows
 
@@ -69,14 +67,11 @@ Web browsers:
 
 Additionale software packages:
 
-  - Git
   - Adobe Download Manager
-
-Clone of documents directory:
-
-~~~~
-git clone lars@134.95.11.139:/Users/lars/Documents/Work/prometheus prom-docs
-~~~~
+  - Git
+  - MinGW
+    - MinGW Compier Suite (C, C++)
+    - MSYS Basic System
 
 \subsection vm_windows_xp-ie7 Windows XP (IE7)
 
@@ -92,13 +87,17 @@ Web browsers:
 
 Additionale software packages:
 
-  - Git
   - Adobe Download Manager
+  - Git
+  - MinGW
+    - MinGW Compier Suite (C, C++)
+    - MSYS Basic System
 
 \section vm_references References 
 
   - [Debian GNU/Linux](http://www.debian.org) - a free operating system (OS) for your computer.
   - [Cygwin](http://cygwin.com) - a collection of tools which provide a Linux look and feel environment for Windows.
+  - [MinGW](http://www.mingw.org) -Minimalist GNU for Windows
   - [Git SCM](http://git-scm.com)
   - [Firefox](http://www.mozilla.org/en-US/firefox/new) web browser
   - [Chrome](https://www.google.com/intl/en/chrome/browser) web browser
