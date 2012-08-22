@@ -12,10 +12,10 @@ up and are being provided to the user:
 
 | Operating system | Machine name  | Comments |
 |------------------|---------------|----------|
-| Debian GNU/Linux 6.x | vm-debian6 |  |
+| Debian GNU/Linux 6.x | [vm-debian6](http://134.95.11.135/virtualbox/vm-debian6.ova) |  |
 | Debian GNU/Linux 7.x | vm-debian7 |  |
-| Windows XP (IE6) | vm-windowsxp-ie6 | Installers for InDesign & Illustrator |
-| Windows XP (IE7) | vm-windowsxp-ie7 | Installers for InDesign & Illustrator |
+| Windows XP (IE6) | [vm-windowsxp-ie6](http://134.95.11.135/virtualbox/vm-windowsxp-ie6.ova) | Installers for InDesign & Illustrator |
+| Windows XP (IE7) | [vm-windowsxp-ie7](http://134.95.11.135/virtualbox/vm-windowsxp-ie7.ova) | Installers for InDesign & Illustrator |
 
 _Comment:_ For completeness the original machines images for the Windows XP 
 variants are being kept.
@@ -97,6 +97,8 @@ Additionale software packages:
 
 \section vm_references References 
 
+  - [Debian GNU/Linux](http://www.debian.org) - a free operating system (OS) for your computer.
+  - [Cygwin](http://cygwin.com) - a collection of tools which provide a Linux look and feel environment for Windows.
   - [Git SCM](http://git-scm.com)
   - [Firefox](http://www.mozilla.org/en-US/firefox/new) web browser
   - [Chrome](https://www.google.com/intl/en/chrome/browser) web browser
