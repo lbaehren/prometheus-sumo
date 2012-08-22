@@ -17,6 +17,9 @@ up and are being provided to the user:
 | Windows XP (IE6) | vm-windowsxp-ie6 | Installers for InDesign & Illustrator |
 | Windows XP (IE7) | vm-windowsxp-ie7 | Installers for InDesign & Illustrator |
 
+_Comment:_ For completeness the original machines images for the Windows XP 
+variants are being kept.
+
 \section vm_linux Linux
 
 \subsection vm_linux_debian6 Debian GNU/Linux 6.x
@@ -28,7 +31,11 @@ up and are being provided to the user:
     - Web Server
     - SQL Database
     - SSH Server
-    - Standar system utilities
+    - Standard system utilities
+  - Packages installed after setting up the base system:
+~~~~
+apt-get install build-essential cmake git-svn
+~~~~
 
 \subsection vm_linux_debian7 Debian GNU/Linux 7.x
 
@@ -38,7 +45,11 @@ up and are being provided to the user:
     - Web Server
     - SQL Database
     - SSH Server
-    - Standar system utilities
+    - Standard system utilities
+  - Packages installed after setting up the base system:
+~~~~
+apt-get install build-essential cmake git-svn
+~~~~
 
 \section vm_windows Windows
 

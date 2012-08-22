@@ -33,8 +33,7 @@
 
   \li \subpage software_packages presents a brief rundown of the various
   software packages, which have been developed as part of the project, as well as
-  a list of the most important open sources packages utilized. The \subpage support
-  section lists further information for developers.
+  a list of the most important open sources packages utilized.
   
   \li \subpage manual_image_archive -- a general introduction to the prometheus
   digital image archive; this includes an overview of the main features and the

@@ -1,5 +1,6 @@
 
-# Deploying a new release of pandora
+Deploying a new release of pandora    {#pandora_deployment}
+==================================
 
 ## Procedure
 

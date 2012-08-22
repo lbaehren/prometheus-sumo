@@ -1,10 +1,9 @@
-
 Repositories    {#repositories}
 ============
 
 \tableofcontents
 
-\section repos_software Software
+\section repositories_software Software packages
 
 | Package  | Description |
 |----------|-------------|
@@ -31,7 +30,7 @@ Repositories    {#repositories}
 | [ruby-nuggets](https://github.com/prometheus-ev/ruby-nuggets) | Some extensions to the Ruby programming language |
 | wadl | Ruby client for the Web Application Description Language |
 
-\section repos_documents Documents
+\section repositories_documents Documents
 
 _Nothing available at this moment_
 
