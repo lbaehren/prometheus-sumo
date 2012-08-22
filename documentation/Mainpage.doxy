@@ -28,8 +28,8 @@
  
   \section refman_contents Organization of the contents
 
-  \li \subpage infrastructure -- Overview of the various server machines, domains
-  and \ref repositories, which utilized by the prometheus project.
+  \li \subpage infrastructure -- Overview of the various \ref servers, \ref domains
+  and \ref repositories used by the project. This also includes the \ref homepage and the \ref wiki.
 
   \li \subpage software_packages presents a brief rundown of the various
   software packages, which have been developed as part of the project, as well as
@@ -42,9 +42,6 @@
   \li The chapter \subpage pandora focusses on the software package acting
   as the driving force behind the prometheus image archive, as well as the
   underlying \subpage database.
-
-  \li The chapter \subpage homepage summarizes the setup for the generation
-  of the homepage, into which the actual image archive is embedded.
 
   \li The chapter \subpage coding_guidelines collects a few guidelines on how
   to structure and document the source code.
