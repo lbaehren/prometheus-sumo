@@ -14,6 +14,8 @@ up and are being provided to the user:
 |------------------|---------------|----------|
 | Debian GNU/Linux 6.x | [vm-debian6](http://134.95.11.135/virtualbox/vm-debian6.ova) |  |
 | Debian GNU/Linux 7.x | [vm-debian7](http://134.95.11.135/virtualbox/vm-debian7.ova) |  |
+| Ubuntu 10.04 LTS     | [vm-ubuntu1004.ova](http://134.95.11.135/virtualbox/vm-ubuntu1004.ova) |  |
+| Ubuntu 12.04 LTS     | [vm-ubuntu1204.ova](http://134.95.11.135/virtualbox/vm-ubuntu1204.ova) |  |
 | Windows XP (IE6) | [vm-windowsxp-ie6](http://134.95.11.135/virtualbox/vm-windowsxp-ie6.ova) | Installers for InDesign & Illustrator |
 | Windows XP (IE7) | [vm-windowsxp-ie7](http://134.95.11.135/virtualbox/vm-windowsxp-ie7.ova) | Installers for InDesign & Illustrator |
 
@@ -54,10 +56,20 @@ apt-get install build-essential cmake git-svn subversion doxygen mysql-server ru
 \subsection vm_linux_ubuntu_1004 Ubuntu 10.04 LTS (Lucid Lynx)
 
   - Installation base: _ubuntu-10.04.4-desktop-i386.iso_
+  - Packages installed after setting up the base system:
+~~~~
+apt-get install build-essential cmake git-svn subversion doxygen mysql-server ruby1.8-dev
+~~~~
+  - MySQL server Root password: mysqlR00t
 
 \subsection vm_linux_ubuntu_1204 Ubuntu 12.04 LTS (Precise Pangolin)
 
   - Installation base : _ubuntu-12.04-desktop-i386.iso_
+  - Packages installed after setting up the base system:
+~~~~
+apt-get install build-essential cmake git-svn subversion doxygen mysql-server ruby1.8-dev
+~~~~
+  - MySQL server Root password: mysqlR00t
 
 \section vm_windows Windows
 
