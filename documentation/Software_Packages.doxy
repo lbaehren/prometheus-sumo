@@ -15,10 +15,9 @@
       of the [GNU Affero General Public License](http://www.gnu.org/licenses/#AGPL).</dd>
 
     <dt>prometheus-sumo</dt>
-      <dd>[prometheus-sumo](https://github.com/lbaehren/prometheus-sumo) is a simple
-      (almost) virtual package, to ease the retrieval of the various components in
-      the software stack for “prometheus – The Distributed Digital Image Archive
-      for Research and Studies”.</dd>
+      <dd>\subpage prometheus-sumo is a simple (almost) virtual package, to ease
+      the retrieval of the various components in the software stack for “prometheus
+      – The Distributed Digital Image Archive for Research and Studies”.</dd>
 
   </dl>
 

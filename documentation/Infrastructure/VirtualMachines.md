@@ -19,6 +19,8 @@ up and are being provided to the user:
 | Windows XP (IE6) | [vm-windowsxp-ie6](http://134.95.11.135/virtualbox/vm-windowsxp-ie6.ova) | Installers for InDesign & Illustrator |
 | Windows XP (IE7) | [vm-windowsxp-ie7](http://134.95.11.135/virtualbox/vm-windowsxp-ie7.ova) | Installers for InDesign & Illustrator |
 
+__Note:__ You can [use prometheus-sumo](\ref sumo_functionality_vm) to retrieve all of the virtual machine disk images.
+
 \section vm_linux Linux
 
 \subsection vm_linux_debian6 Debian GNU/Linux 6.x
