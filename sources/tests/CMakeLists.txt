@@ -21,6 +21,9 @@ endforeach (varTest)
 ##
 ## ==============================================================================
 
+##____________________________________________________________________
+##                                                  Build instructions
+
 file (GLOB varTestsRuby Test*.rb)
 
 foreach (varTest ${varTestsRuby})
@@ -58,14 +61,12 @@ if (YAML_FOUND)
     ## linker instructions
     target_link_libraries (${varFilename} ${YAML_LIBRARIES})
 
-    ## Default test setup
-    add_test (${varFilename} ${varFilename})
-    
   endforeach (test_yaml)
   
   ##_____________________________________________________________________________
   ## Additional tests requiring extra parameters
   
+  add_test (tEmitting            tEmitting)
   add_test (tParseFixtures_roles tParseFixtures roles.yml)
   
 endif (YAML_FOUND)
