@@ -1,19 +1,16 @@
 
 ## ==============================================================================
 ##
-##  C++ test programs
+##  Generic C++ tst programs
 ##
 ## ==============================================================================
 
-file (GLOB varTestsCpp Test*.cc)
-
-foreach (varTest ${varTestsCpp})
-  ## remove file extension
-  get_filename_component (varFilename ${varTest} NAME_WE)
-  ## build executable of test program
-  add_executable (${varFilename} ${varTest})
-  target_link_libraries (${varFilename} prometheus)
-endforeach (varTest)
+foreach (test_cpp
+    TestBoxes.cc
+    )
+  get_filename_component (varFilename ${test_cpp} NAME_WE)
+  add_executable (${varFilename} ${test_cpp})
+endforeach (test_cpp)
 
 ## ==============================================================================
 ##
@@ -44,14 +41,11 @@ if (YAML_FOUND)
   ## location of header files
   include_directories (${YAML_INCLUDES})
 
-  ## List of source files
-  set (tests_yaml_sources
-    tEmitting.cc
-    tParseFixtures.cc
-    )
-
-  foreach (test_yaml ${tests_yaml_sources})
-
+  foreach (test_yaml
+      tEmitting.cc
+      TestYamlReading.cc
+      )
+    
     ## Strip extension from filename
     get_filename_component (varFilename ${test_yaml} NAME_WE)
 
@@ -64,9 +58,9 @@ if (YAML_FOUND)
   endforeach (test_yaml)
   
   ##_____________________________________________________________________________
-  ## Additional tests requiring extra parameters
+  ## Testing
   
-  add_test (tEmitting            tEmitting)
-  add_test (tParseFixtures_roles tParseFixtures roles.yml)
+  add_test (tEmitting       tEmitting)
+  add_test (TestYamlReading TestYamlReading)
   
 endif (YAML_FOUND)
