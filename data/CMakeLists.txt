@@ -38,3 +38,5 @@ configure_file (
 ## ==============================================================================
 
 add_subdirectory (repositories)
+add_subdirectory (vm)
+
