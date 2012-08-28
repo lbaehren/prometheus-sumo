@@ -6,41 +6,40 @@
 ## ==============================================================================
 
 if (GIT_EXECUTABLE)
-  
+
   ##__________________________________________________________________
   ## Macro for dealing with Git repositories
-  
+
   macro (add_git_repository _projectRepos)
-    
+
     ## Extract project name
     get_filename_component (_projectName ${_projectRepos} NAME_WE)
 
     if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName})
       ## Update existing clone
       add_custom_command (
-	TARGET FetchRepositories
+        TARGET FetchRepositories
         POST_BUILD
-	COMMAND ${GIT_EXECUTABLE} fetch
-	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName}
-	COMMENT "Updating clone of Git repository ${_projectName} ..."
-	)
+        COMMAND ${GIT_EXECUTABLE} fetch
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName}
+        COMMENT "Updating clone of Git repository ${_projectName} ..."
+      )
     else (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName})
       ## Create new clone
       add_custom_command (
-	TARGET FetchRepositories
+        TARGET FetchRepositories
         POST_BUILD
-	COMMAND ${GIT_EXECUTABLE} clone --bare ${_projectRepos} ${_projectName}
-	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-	COMMENT "Cloning Git repository ${_projectName} ..."
-	)
+        COMMAND ${GIT_EXECUTABLE} clone --bare ${_projectRepos} ${_projectName}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        COMMENT "Cloning Git repository ${_projectName} ..."
+      )
     endif (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName})
 
     set_property (DIRECTORY
       APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES
       ${CMAKE_CURRENT_SOURCE_DIR}/${_projectName}
       )
-    
-    
+
   endmacro (add_git_repository)
   
   ##__________________________________________________________________
