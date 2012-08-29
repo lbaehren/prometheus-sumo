@@ -20,37 +20,161 @@
 
   \section yaml_language Language elements
 
-  YAML offers both an indented and an "in-line" style for denoting associative
-  arrays and lists. Here is a sampler of the components.
+  Explicit data typing is seldom seen in the majority of YAML documents since
+  YAML autodetects simple types. Data types can be divided into three categories:
+  core, defined, and user-defined. Core are ones expected to exist in any parser
+  (e.g. floats, ints, strings, lists, maps, ...). Many more advanced data types,
+  such as binary data, are defined in the YAML specification but not supported
+  in all implementations. Finally YAML defines a way to extend the data type
+  definitions locally to accommodate user defined classes, structures or primitives
+  (e.g. quad precision floats).
 
-  \subsection yaml_language_lists Lists
+  \subsection yaml_language_collections Collections
 
-  Conventional block format uses a hyphen+space to begin a new item in list.
+  YAML’s block collections use indentation for scope and begin each entry on its
+  own line. Block sequences indicate each entry with a dash and space (\a -).
+  Mappings use a colon and space (“: ”) to mark each key: value pair. Comments
+  begin with an octothorpe (also called a “hash”, “sharp”, “pound”, or “number
+  sign” - “#”). 
 
+  \li Sequence of Scalars (ball players)
 \code
- --- # Favorite movies
- - Casablanca
- - North by Northwest
- - The Man Who Wasn't There
+- Mark McGwire
+- Sammy Sosa
+- Ken Griffey
 \endcode
 
-Optional inline format is delimited by comma+space and enclosed in brackets (similar to JSON).[6]
-
+  \li Mapping Scalars to Scalars (player statistics)
 \code
- --- # Shopping list
- [milk, pumpkin pie, eggs, juice]
+hr:  65    # Home runs
+avg: 0.278 # Batting average
+rbi: 147   # Runs Batted In
 \endcode
 
-  \subsection yaml_language_arrays Associative arrays
-
-  Keys are separated from values by a colon+space.
-
+  \li Mapping Scalars to Sequences (ball clubs in each league)
 \code
- --- # Indented Blocks, common in YAML data files, use indentation and new lines to separate the '''key: value''' pairs
-   name: John Smith
-   age: 33
- --- # Inline Blocks, common in YAML data streams, use comma+space to separate the '''key: value''' pairs between braces
- {name: John Smith, age: 33}
+american:
+  - Boston Red Sox
+  - Detroit Tigers
+  - New York Yankees
+national:
+  - New York Mets
+  - Chicago Cubs
+  - Atlanta Braves
+\endcode
+
+  \li Sequence of Mappings (players’ statistics)
+\code
+-
+  name: Mark McGwire
+  hr:   65
+  avg:  0.278
+-
+  name: Sammy Sosa
+  hr:   63
+  avg:  0.288
+\endcode
+
+  \li Sequence of Sequences
+\code
+- [name        , hr, avg  ]
+- [Mark McGwire, 65, 0.278]
+- [Sammy Sosa  , 63, 0.288]
+\endcode
+
+  \li Mapping of Mappings
+\code
+Mark McGwire: {hr: 65, avg: 0.278}
+Sammy Sosa: {
+    hr: 63,
+    avg: 0.288
+  }
+\endcode
+
+  \subsection yaml_language_structures Structures
+
+  YAML uses three dashes (“---”) to separate directives from document content.
+  This also serves to signal the start of a document if no directives are present.
+  Three dots ( “...”) indicate the end of a document without starting a new one,
+  for use in communication channels. 
+
+  \li Two Documents in a Stream (each with a leading comment)
+\code
+# Ranking of 1998 home runs
+---
+- Mark McGwire
+- Sammy Sosa
+- Ken Griffey
+
+# Team ranking
+---
+- Chicago Cubs
+- St Louis Cardinals
+\endcode
+
+  \li Play by Play Feed (from a Game)
+\code
+---
+time: 20:03:20
+player: Sammy Sosa
+action: strike (miss)
+...
+---
+time: 20:03:47
+player: Sammy Sosa
+action: grand slam
+...
+\endcode
+
+  \li Single Document with two Comments
+\code
+---
+hr: # 1998 hr ranking
+  - Mark McGwire
+  - Sammy Sosa
+rbi:
+  # 1998 rbi ranking
+  - Sammy Sosa
+  - Ken Griffey
+\endcode
+
+  \subsection yaml_language_scalars Scalars
+
+  Scalar content can be written in block notation, using a literal style (indicated
+  by “|”) where all line breaks are significant. Alternatively, they can be written
+  with the folded style (denoted by “>”) where each line break is folded to a
+  space unless it ends an empty or a more-indented line.
+
+  \li  In literals, newlines are preserved
+\code
+# ASCII Art
+--- |
+  \//||\/||
+  // ||  ||__
+\endcode
+
+  \li  In the folded scalars, newlines become spaces
+\code
+--- >
+  Mark McGwire's
+  year was crippled
+  by a knee injury.
+\endcode
+
+  \subsection yaml_language_tags Tags
+
+  In YAML, untagged nodes are given a type depending on the application. The
+  examples in this specification generally use the \c seq, \c map and \c str
+  types from the fail safe schema. A few examples also use the \c int, \c float,
+  and \c null types from the JSON schema. The repository includes additional
+  types such as \c binary, \c omap, \c set and others.
+
+  \li Integers
+\code
+canonical: 12345
+decimal: +12345
+octal: 0o14
+hexadecimal: 0xC
 \endcode
 
   \section yaml_parsers Parsers
@@ -367,6 +491,8 @@ One thing to be keep in mind: reading a map by key (as immediately above) requir
 
   \section refman_yaml_references References 
 
+  \li [YAML 1.2 specification](http://yaml.org/spec/1.2/spec.html)
+  \li [YAML 1.1 specification](http://yaml.org/spec/1.1/current.html)
   \li [Wikipedia entry](http://en.wikipedia.org/wiki/YAML)
   \li [Basic methods for parsing a YAML document](http://code.google.com/p/yaml-cpp/wiki/HowToParseADocument)
 
