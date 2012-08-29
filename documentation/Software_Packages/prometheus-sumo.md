@@ -130,3 +130,13 @@ make FetchVirtualMachines
 ~~~~
 
 which will download the imags into ``data/vm``
+
+\subsection sumo_functionality_documentation Documentation
+
+Besides the basic documentation of the source code extended documentation on
+\ref infrastructure, \ref software_packages, etc. can be generated both in HTML
+format (probably what you are reading right now) and as LaTeX/PDF.
+
+~~~~
+make Documentation
+~~~~
