@@ -177,12 +177,29 @@ octal: 0o14
 hexadecimal: 0xC
 \endcode
 
-  \section yaml_parsers Parsers
+  \li Floating Point
+\code
+canonical: 1.23015e+3
+exponential: 12.3015e+02
+fixed: 1230.15
+negative infinity: -.inf
+not a number: .NaN
+\endcode
 
-  \li [LibYAML](http://pyyaml.org/wiki/LibYAML) - a YAML 1.1 parser and emitter written in C
-  \li [yaml-cpp](http://code.google.com/p/yaml-cpp) - a YAML parser and emitter in C++ matching the YAML 1.2 spec. 
-  \li [Mirror of the official yaml-cpp Google code repository](https://github.com/nebirhos/yaml-cpp)
-  \li [YAML component from the BOOST vault serialization library](https://github.com/boost-vault/serialization)
+  \li Miscellaneous
+\code
+null:
+booleans: [ true, false ]
+string: '012345'
+\endcode
+
+  \li Timestamps
+\code
+canonical: 2001-12-15T02:59:43.1Z
+iso8601: 2001-12-14t21:59:43.10-05:00
+spaced: 2001-12-14 21:59:43.10 -5
+date: 2002-12-14
+\endcode
 
   \section yaml_comparison Comparison to other data structure format languages
 
@@ -489,11 +506,19 @@ One thing to be keep in mind: reading a map by key (as immediately above) requir
 
 
 
-  \section refman_yaml_references References 
+  \section refman_yaml_references References & Software packages
 
   \li [YAML 1.2 specification](http://yaml.org/spec/1.2/spec.html)
   \li [YAML 1.1 specification](http://yaml.org/spec/1.1/current.html)
   \li [Wikipedia entry](http://en.wikipedia.org/wiki/YAML)
   \li [Basic methods for parsing a YAML document](http://code.google.com/p/yaml-cpp/wiki/HowToParseADocument)
+
+  Libraries for emitting and parsing YAML are available throughout a wide range
+  of programming languages:
+
+  \li [LibYAML](http://pyyaml.org/wiki/LibYAML) - a YAML 1.1 parser and emitter written in C
+  \li [yaml-cpp](http://code.google.com/p/yaml-cpp) - a YAML parser and emitter in C++ matching the YAML 1.2 spec. 
+  \li [Mirror of the official yaml-cpp Google code repository](https://github.com/nebirhos/yaml-cpp)
+  \li [YAML component from the BOOST vault serialization library](https://github.com/boost-vault/serialization)
 
 */
