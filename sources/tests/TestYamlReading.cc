@@ -15,6 +15,49 @@
 
 // ==============================================================================
 //
+//  Data stuctures
+//
+// ==============================================================================
+
+namespace prometheus {
+  
+  class Movie {
+    std::string itsTitle;
+    unsigned int itsRelease;
+    std::string itsDirector;
+  public:
+    //! Default constructor
+    Movie (){
+      itsTitle    = "";
+      itsRelease  = 0;
+      itsDirector = "";
+    }
+    //! Argumented constructor
+    Movie (std::string const &title,
+	   unsigned int const &release,
+	   std::string const &director) {
+      itsTitle    = title;
+      itsRelease  = release;
+      itsDirector = director;
+    }
+    //! Get the title
+    inline std::string title () const {
+      return itsTitle;
+    }
+    //! Get the release year
+    inline unsigned int release () const {
+      return itsRelease;
+    }
+    //! Get the director
+    inline std::string director () const {
+      return itsDirector;
+    }
+  };
+  
+}
+
+// ==============================================================================
+//
 //  Tests functions
 //
 // ==============================================================================

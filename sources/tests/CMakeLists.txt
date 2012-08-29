@@ -32,6 +32,21 @@ endforeach (varTest)
 
 ## ==============================================================================
 ##
+##  XML test programs
+##
+## ==============================================================================
+
+if (XERCESC_FOUND)
+
+  include_directories (${XERCESC_INCLUDES})
+
+  add_executable (TestXML TestXML.cc)
+  target_link_libraries (TestXML ${XERCESC_LIBRARIES})
+
+endif (XERCESC_FOUND)
+
+## ==============================================================================
+##
 ##  YAML test programs
 ##
 ## ==============================================================================
