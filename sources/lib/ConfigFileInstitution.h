@@ -59,6 +59,7 @@ struct InstitutionList {
 
 /*! Parameters of the 'search' node */
 struct InstitutionSearch {
+  //! Parameters available to search
   std::vector<std::string> searchParameters;
 };
 
@@ -84,13 +85,13 @@ struct InstitutionUser {
  };
 
 
-/*!
-  \brief Parameters of the 'colums_for' node
-*/
+/*! Parameters of the 'colums_for' node */
 struct InstitutionColumns {
-   std::vector <InstitutionList> list;
-   std::vector <InstitutionSearch> search;
-   std::vector <InstitutionUser> user;
+  //! Parameter list
+  std::vector <InstitutionList> list;
+  //! Parameters available for search
+  std::vector <InstitutionSearch> search;
+  std::vector <InstitutionUser> user;
 };
 
 // ==============================================================================

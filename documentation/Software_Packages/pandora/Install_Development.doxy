@@ -15,7 +15,7 @@
   steps along the way. If you are more interesting in learning about
   \ref refman_pandora_testing, please skip to the section below.
 
-  \subsection pandora_configure_scripts Configuration scripts
+  \section pandora_configure_scripts Configuration scripts
 
   Though the later \a setup script will take care of most of the required
   configuration tasks -- most important of all the initial migration of the 
@@ -69,7 +69,7 @@
   containing database dumps; if no dumps can be found on your system, dummy
   entries will be generated.
 
-  \subsection pandora_initialize_install Initialize the installation
+  \section pandora_initialize_install Initialize the installation
 
   In order to initialize your pandora installation, run the following from the
   top-level directory of the \ref refman_rails application
@@ -84,7 +84,7 @@
   rake -T
   \endverbatim
 
-  \subsection pandora_server_startup Starting up the server
+  \section pandora_server_startup Starting up the server
 
   Start up the server
 

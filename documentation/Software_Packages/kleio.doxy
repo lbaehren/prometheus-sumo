@@ -52,29 +52,29 @@
   \verbatim
   kleio [ <input file> | - [ <output file> ] ]
   \endverbatim
-  If you call up \kleio without first defining an <tt><input file></tt> or
-  <tt><output file></tt>, the system will operate in interactive mode, i.e.
+  If you call up \kleio without first defining an `<input file>` or
+  `<output file>`, the system will operate in interactive mode, i.e.
   from the menu-driven interface described in volume B10 of the "Halbgraue Reihe".
   If you activate the program in this mode unintentionally, you can always quit
   the program by pressing the ESCAPE key on your computer keyboard.
 
-  The <tt><input file></tt> and <tt><output file></tt> share the following
+  The `<input file>` and `<output file>` share the following
   characteristics: if the files are stored in the same directory (catalogue, file
   directory, etc.) as the one you are currrently in, every filename component
   should be joined to other filename components by a full stop (period). So for
   example, on a computer running MS-DOS you would write \c file.ext; on a VM/CMS
-  system you would write \c fn.ft.fm -- not <tt>fn fm ft</tt>. Similarly,
+  system you would write \c fn.ft.fm -- not `fn fm ft`. Similarly,
   whenever you refer to another file system (directory, catalogue, file directory
   etc.), you should use standard operating system conventions in order to specify	 
   the location of the files you want to access. Thus on an MS-DOS system, for
-  example, you might enter \c \mydirectory\mysubdirectory\myfile.ext; whereas
-  on a UNI Xsystem you would enter \c /mydirectory/mysubdirectory/myfile.
+  example, you might enter `\mydirectory\mysubdirectory\myfile.ext`; whereas
+  on a UNI Xsystem you would enter `/mydirectory/mysubdirectory/myfile`.
 
-  If no <tt><input file></tt> exists yet, or if the local operating system will
+  If no `<input file>` exists yet, or if the local operating system will
   not allow you to read the input file's contents, will abort instead of
   executing any further commands.
 
-  If the <tt><output file></tt> already exists, \kleio will attempt to overwrite
+  If the `<output file>` already exists, \kleio will attempt to overwrite
   it. If the operating system prevents the program from doing this, or does not
   allow you to create a brand new output file, will abort instead of executing
   any further commands.
@@ -83,7 +83,7 @@
   \verbatim
   kleio <input file>
   \endverbatim
-  will execute all commands contained in the <tt><input file></tt> and send the
+  will execute all commands contained in the `<input file>` and send the
   results to the default output device (almost always the screen). If you use
   this syntax to call up , the program will not make any attempt to wait until
   you are ready before sending each page of output to the screen or other output
@@ -93,15 +93,15 @@
   \verbatim
   kleio <input file> <output file>
   \endverbatim
-  the program will execute the commands in the <tt><input file></tt> and send
-  the results to the <tt><output file></tt>.
+  the program will execute the commands in the `<input file>` and send
+  the results to the `<output file>`.
 
   The following syntax:
   \verbatim
   kleio - <output file>
   \endverbatim
   instructs \kleio to expect commands from the default input device -- usually
-  the keyboard -- and send the processed results to the <tt><output file></tt>.
+  the keyboard -- and send the processed results to the `<output file>`.
 
 Notes:
 

@@ -1,6 +1,10 @@
 
 #include <xercesc/util/PlatformUtils.hpp>
 
+/*!
+  \file TestXML.cc
+*/
+
 using namespace xercesc;
 
 int main(int argc, char* argv[])

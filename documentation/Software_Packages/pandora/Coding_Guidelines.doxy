@@ -19,7 +19,7 @@
   *bold*
   +typewriter+
   \endcode
-  \li use tags (common: \c NOTE, \C TODO, \c FIXME, ...; rails specific: EdgeRails, Rails2.0, ...) 
+  \li use tags (common: `NOTE`, `TODO`, `FIXME`, ...; rails specific: EdgeRails, Rails2.0, ...) 
   \code
   # NOTE: some note...
   
@@ -29,8 +29,8 @@
   \code
   <p>[TODO] project description...</p>
   \endcode
-  \li always use \c \\A and \c \\z, not \c ^ and \c $, as string boundary anchors; use \c \\z, not \c \\Z, to indicate "end of string"
-  \li consider matching arbitrary whitespace (\s), rather than specific whitespace characters
+  \li always use `\\A` and `\\z`, not `^` and `$`, as string boundary anchors; use `\\z`, not `\\Z`, to indicate "end of string"
+  \li consider matching arbitrary whitespace (`\s`), rather than specific whitespace characters
   \li use capturing parentheses only when you intend to capture; always give captured substrings proper names
   \li prevent useless backtracking!
   \li raise/throw exceptions instead of returning special values or setting flags
