@@ -1,0 +1,11 @@
+---
+- 134.95.80.11    # prometheus1.uni-koeln.de
+- 134.95.80.12    # prometheus2.uni-koeln.de
+- 134.95.80.95    # prometheus-db1.uni-koeln.de
+- 134.95.80.96    # prometheus-web1.uni-koeln.de
+- 134.95.80.160   # prometheus-srv1.uni-koeln.de
+- 134.95.80.161   # prometheus-srv2.uni-koeln.de
+- 134.95.80.162   # prometheus-srv3.uni-koeln.de
+- 134.95.80.163   # prometheus-srv4.uni-koeln.de
+- 134.95.167.124  # prometheus.khi.uni-koeln.de
+- 134.95.167.125  # prometheus2.khi.uni-koeln.de

@@ -8,21 +8,97 @@
 
   \b YAML is a human-readable data serialization format that takes concepts from
   programming languages such as C, Perl, and Python, and ideas from XML and the
-  data format of electronic mail (RFC 2822). 
+  data format of electronic mail (RFC 2822).
 
   \b YAML syntax was designed to be easily mapped to data types common to most
   high-level languages: list, associative array, and scalar. Its familiar indented
   outline and lean appearance make it especially suited for tasks where humans are likely to view or edit data structures, such as configuration files, dumping during debugging, and document headers (e.g. the headers found on most e-mails are very close to YAML). Although well-suited for hierarchical data representation, it also has a compact syntax for relational data as well. Its line and whitespace delimiters make it friendly to ad hoc grep/Python/Perl/Ruby operations. A major part of its accessibility comes from eschewing the use of enclosures like quotation marks, brackets, braces, and open/close-tags which can be hard for the human eye to balance in nested hierarchies.
 
-  \test TestYamlReading.cc
+  \test
+  TestYamlReading.cc
+  tEmitting.cc
 
-  \section yaml_cpp Using YAML with C++
+  \section yaml_language Language elements
 
-  \subsection yaml_cpp_libraries Libraries available
+  YAML offers both an indented and an "in-line" style for denoting associative
+  arrays and lists. Here is a sampler of the components.
 
+  \subsection yaml_language_lists Lists
+
+  Conventional block format uses a hyphen+space to begin a new item in list.
+
+\code
+ --- # Favorite movies
+ - Casablanca
+ - North by Northwest
+ - The Man Who Wasn't There
+\endcode
+
+Optional inline format is delimited by comma+space and enclosed in brackets (similar to JSON).[6]
+
+\code
+ --- # Shopping list
+ [milk, pumpkin pie, eggs, juice]
+\endcode
+
+  \subsection yaml_language_arrays Associative arrays
+
+  Keys are separated from values by a colon+space.
+
+\code
+ --- # Indented Blocks, common in YAML data files, use indentation and new lines to separate the '''key: value''' pairs
+   name: John Smith
+   age: 33
+ --- # Inline Blocks, common in YAML data streams, use comma+space to separate the '''key: value''' pairs between braces
+ {name: John Smith, age: 33}
+\endcode
+
+  \section yaml_parsers Parsers
+
+  \li [LibYAML](http://pyyaml.org/wiki/LibYAML) - a YAML 1.1 parser and emitter written in C
   \li [yaml-cpp](http://code.google.com/p/yaml-cpp) - a YAML parser and emitter in C++ matching the YAML 1.2 spec. 
   \li [Mirror of the official yaml-cpp Google code repository](https://github.com/nebirhos/yaml-cpp)
   \li [YAML component from the BOOST vault serialization library](https://github.com/boost-vault/serialization)
+
+  \section yaml_comparison Comparison to other data structure format languages
+
+  While YAML shares similarities with JSON, XML and SDL, it also has characteristics
+  that are unique in comparison to many other similar format languages.
+
+  \subsection yaml_comparison_json JSON
+
+  JSON syntax is a subset of YAML version 1.2, which was promulgated with the
+  express purpose of bringing YAML "into compliance with JSON as an official
+  subset." Though prior versions of YAML were not strictly compatible, the
+  discrepancies were rarely noticeable and most JSON documents can be parsed by
+  some YAML parsers such as Syck. This is because JSON's semantic structure is
+  equivalent to the optional "inline-style" of writing YAML. While extended
+  hierarchies can be written in inline-style like JSON, this is not a recommended
+  YAML style except when it aids clarity.
+
+  YAML has many additional features lacking in JSON, including extensible data
+  types, relational anchors, strings without quotation marks, and mapping types
+  preserving key order.
+
+  \subsection yaml_comparison_xml XML and SDL
+
+  YAML lacks the notion of tag attributes that are found in XML and SDL (Simple
+  Declarative Language). For data structure serialization, tag attributes are,
+  arguably, a feature of questionable utility since the separation of data and
+  meta-data adds complexity when represented by the natural data structures
+  (associative arrays, lists) in common languages. Instead YAML has extensible
+  type declarations (including class types for objects).
+
+  YAML itself does not have XML's language-defined document schema descriptors
+  that allow, for example, a document to self validate. However, there are several
+  externally defined schema descriptor languages for YAML (e.g. Doctrine, Kwalify
+  and Rx) that fulfill that role. Moreover, the semantics provided by YAML's
+  language-defined type-declarations in the YAML document itself frequently relaxes
+  the need for a validator in simple, common situations. Additionally, YAXML,
+  which represents YAML data structures in XML, allows XML schema importers and
+  output mechanisms like XSLT to be applied to YAML.
+
+  \section yaml_cpp Using YAML with C++
 
   \subsection yaml_cpp_emitting Emitting a document
 
@@ -291,6 +367,7 @@ One thing to be keep in mind: reading a map by key (as immediately above) requir
 
   \section refman_yaml_references References 
 
+  \li [Wikipedia entry](http://en.wikipedia.org/wiki/YAML)
   \li [Basic methods for parsing a YAML document](http://code.google.com/p/yaml-cpp/wiki/HowToParseADocument)
 
 */

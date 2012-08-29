@@ -41,6 +41,9 @@ if (YAML_FOUND)
   ## location of header files
   include_directories (${YAML_INCLUDES})
 
+  ##__________________________________________________________________
+  ## Build test programs
+
   foreach (test_yaml
       tEmitting.cc
       TestYamlReading.cc
@@ -59,8 +62,8 @@ if (YAML_FOUND)
   
   ##_____________________________________________________________________________
   ## Testing
-  
-  add_test (tEmitting       tEmitting)
-  add_test (TestYamlReading TestYamlReading)
+
+  add_test (tEmitting tEmitting)
+  add_test (TestYamlReading TestYamlReading ${PROJECT_SOURCE_DIR}/data/tests)
   
 endif (YAML_FOUND)

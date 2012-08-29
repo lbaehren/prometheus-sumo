@@ -3,8 +3,10 @@
 #include <iostream>
 #include <string>
 #include <set>
-
+/* YAML support */
 #include <yaml-cpp/yaml.h>
+/* Project */
+#include <ConfigFileInstitution.h>
 
 // ==============================================================================
 //
@@ -33,7 +35,6 @@ int readTrustedProxies (std::string const &filename)
 {
   std::cout << "\n[YamlReader::readTrustedProxies]\n" << std::endl;
   
-  /* Load configuration file */
   std::ifstream infile (filename.c_str());
   
   if (infile.is_open()) {
@@ -64,126 +65,55 @@ int readTrustedProxies (std::string const &filename)
 }
 
 //_______________________________________________________________________________
-//                                                                 readInsitution
+//                                                              readDatabaseRoles
 
-
-//! \a List node of the Institution configuration file
-struct InstitutionList {
-  //! Name of the institution
-  std::string name;
-  //! Title of the institution
+//! Data structure of configuration node
+struct Role {
+  //! Title for the role
   std::string title;
-  //! City the institution is located in
-  std::string city;
-  //! Country the institution is located in
-  std::string country;
-  //! Type of license
-  int license_type_id;
+  //! ID used internally with the database
+  unsigned int id;
 };
 
-struct InstitutionSearch {
-  //! Name of the institution
-  std::string name;
-  //! Title of the institution
-  std::string title;
-  //! Description for the institution
-  std::string description;
-  //! City the institution is located in
-  std::string city;
-};
-
-struct InstitutionUser {
-  std::string title;
-  std::string description;
-  std::string addressline;
-  std::string postalcode,;
-  std::string city;
-  std::string country;
-  std::string email;
-  std::string homepage;
-  std::string public_info;
- };
-
-// struct InstitutionColumns {
-//   std::string name;
-//   Vec3 position;
-//   std::vector <Power> powers;
-// };
-
-
-//! Operator overloading to store contents of node
-void operator >> (const YAML::Node& node,
-		  InstitutionList& inst)
-{
-  node["name"]    >> inst.name;
-  node["title"]   >> inst.title;
-  node["city"]    >> inst.city;
-  node["country"] >> inst.country;
+/*!
+  \brief Overloading of output operator
+  \param node -- Object container for the node.
+  \param role -- Data structure into which the contents of the node is being stored.
+*/
+void operator >> (const YAML::Node& node, Role& role) {
+  node["title"] >> role.title;
+  node["id"]    >> role.id;
 }
 
 /*!
-  \brief Read attributes associated with an institution.
-  
-  \param filename -- Path to the configuration file.
-
-  \verbatim
-  ---
-:columns_for:
-  :list:
-    - name
-    - title
-    - city
-    - country
-    - licenses.license_type_id
-  :search:
-    - name
-    - title
-    - description
-    - city
-  :user:
-    - title
-    - description
-    - addressline
-    - postalcode
-    - city
-    - country
-    - email
-    - homepage
-    - public_info
-  \endverbatim
+  \brief Read user roles for database
+  \param filename -- Path to the configuration file
 */
-int readInsitution (std::string const &filename)
+int readDatabaseRoles (std::string const &filename)
 {
-  std::cout << "\n[YamlReader::readInsitution]\n" << std::endl;
+  std::cout << "\n[YamlReader::readInstitution]\n" << std::endl;
   
-  /* Load configuration file */
   std::ifstream infile (filename.c_str());
   
   if (infile.is_open()) {
-
+    
     YAML::Node node;
     
     YAML::Parser parser(infile);
     parser.GetNextDocument(node);
     
     std::cout << "--> nof. nodes = " << node.size() << std::endl;
+    std::cout << " ... Is aliased? " << node.IsAliased() << std::endl;
+    std::cout << " ... Tag         " << node.Tag()        << std::endl;
 
-    for (YAML::Iterator it=node.begin();it!=node.end();++it) {
-      InstitutionList inst;
-      *it >> inst;
-      std::cout << "Found Institution list: "<< std::endl;
-      std::cout << "-- Name  = " << inst.name  << std::endl;
-      std::cout << "-- Title = " << inst.title << std::endl;
-      
+    for (YAML::Iterator it=node.begin(); it!=node.end(); ++it) {
+      std::cout << " -- Reading sub-node ..." << std::endl;
     }
     
   } else {
     std::cerr << "--> Failed to open file " << filename << std::endl;
     return 1;
   }
-  
-  /* Close the input stream */
-  infile.close();
 
   return 0;
 }
@@ -199,19 +129,28 @@ int readInsitution (std::string const &filename)
   \brief Test reading in configuration data from \ref refman_yaml files
   \author Lars Baehren
 */
-int main ()
+int main (int argc,
+	  char *argv[])
 {
   int retval = 0;
   std::string filename;
-  std::string pandoraBaseDir = "/Users/lars/CodeDevelopment/Projects/Work/prometheus/pandora/";
+  std::string pathTestData;
+
+  /* Check parameter provided from the command line */
+  if ( argc>1 ) {
+    pathTestData = std::string(argv[1]);
+  } else {
+    std::cerr << "[ERROR] No path to directory with test data!" << std::endl;
+    return 1;
+  }
 
   /* Read the list of trusted proxies */
-  filename = pandoraBaseDir + "config/trusted_proxies.yml";
+  filename = pathTestData + "/trusted_proxies.yml";
   retval += readTrustedProxies (filename);
  
-  /* Read attributes of an institution */
-  filename = pandoraBaseDir + "config/app/institution.yml";
-  retval += readInsitution (filename);
+  /* Read attributes of user role */
+  filename = pathTestData + "/roles.yml";
+  retval += readDatabaseRoles (filename);
 
   return retval;
 }
