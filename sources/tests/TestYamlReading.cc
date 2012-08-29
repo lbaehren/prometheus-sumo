@@ -1,18 +1,115 @@
 
 #include <fstream>
 #include <iostream>
-#include <string>
-#include <set>
 /* YAML support */
 #include <yaml-cpp/yaml.h>
 /* Project */
+#include <Common.h>
 #include <ConfigFileInstitution.h>
 
 // ==============================================================================
 //
-//  Helper functions
+//  Tests functions
 //
 // ==============================================================================
+
+//_______________________________________________________________________________
+//                                                                       readList
+
+/*!
+  \param filename - Path to the configuration file.
+*/
+int readList (std::string const &filename)
+{
+  std::cout << "\n[YamlReader::readList]\n" << std::endl;
+  
+  std::ifstream infile (filename.c_str());
+  
+  if (infile.is_open()) {
+    std::vector<std::string> dataVector;
+    std::set<std::string> dataSet;
+    YAML::Node node;
+    YAML::Parser parser(infile);
+    // Parse data into node
+    parser.GetNextDocument(node);
+    /* Parse the contents of the node */
+    std::cout << "--> Node data" << std::endl;
+    for (YAML::Iterator it=node.begin();it!=node.end();++it) {
+      std::string data;
+      *it >> data;
+      dataVector.push_back(data);
+      dataSet.insert(data);
+      std::cout << "- " << data << std::endl;
+    }
+    /* Display the data read from the file*/
+    std::cout << "--> std::vector<std::string>\n" << dataVector << std::endl;
+    std::cout << "--> std::set<std::string>\n"    << dataSet    << std::endl;
+  } else {
+    std::cerr << "--> Failed to open file " << filename << std::endl;
+    return 1;
+  }
+  
+  /* Close the input stream */
+  infile.close();
+
+  return 0;
+}
+
+//_______________________________________________________________________________
+//                                                           readAssociativeArray
+
+/* Data structure to store data attached to a node */
+struct Movie {
+  std::string title;
+  unsigned int release;
+  std::string director;
+};
+
+/* Operator overloading to store contents of node */
+void operator >> (const YAML::Node& node,
+		  Movie& movie)
+{
+  node["title"]    >> movie.title;
+  node["release"]  >> movie.release;
+  node["director"] >> movie.director;
+}
+
+/*!
+  \brief Read data from asociative array.
+  \param filename - Path to the configuration file.
+  \return Status of the function; returns non-zero value in case an error was
+          encountered.
+*/
+int readAssociativeArray (std::string const &filename)
+{
+  std::cout << "\n[YamlReader::readAssociativeArray]\n" << std::endl;
+  
+  std::ifstream infile (filename.c_str());
+  
+  if (infile.is_open()) {
+    YAML::Node node;
+    YAML::Parser parser(infile);
+    // Parse data into node
+    parser.GetNextDocument(node);
+    /* Parse the contents of the node */
+    for (YAML::Iterator it=node.begin();it!=node.end();++it) {
+      Movie movie;
+      *it >> movie;
+      /* Dispay contents of the node */
+      std::cout << "- " << movie.title << " (" << movie.release << ")"
+		<< "\t- " << movie.director
+		<< std::endl;
+    }
+  } else {
+    std::cerr << "--> Failed to open file " << filename << std::endl;
+    return 1;
+  }
+  
+  /* Close the input stream */
+  infile.close();
+
+  return 0;
+}
 
 //_______________________________________________________________________________
 //                                                             readTrustedProxies
@@ -20,8 +117,7 @@
 /*!
   \brief Read in the list of trusted proxies
 
-  \param pandoraBase -- Base directory of the pandora installation.
-  \param path        -- Relative path to the configuration file.
+  \param filename - Path to the configuration file.
 
   \verbatim
   ---
@@ -143,6 +239,20 @@ int main (int argc,
     std::cerr << "[ERROR] No path to directory with test data!" << std::endl;
     return 1;
   }
+  
+  /*
+   *  Basic parser testing
+   */
+  
+  filename = pathTestData + "/yaml_list.yml";
+  retval +=  readList(filename);
+  
+  filename = pathTestData + "/yaml_associativeArray.yml";
+  retval +=  readAssociativeArray(filename);
+
+  /*
+   *  prometheus/pandora type configuration data
+   */
 
   /* Read the list of trusted proxies */
   filename = pathTestData + "/trusted_proxies.yml";
