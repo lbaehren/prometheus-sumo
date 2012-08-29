@@ -1,7 +1,7 @@
 
 ## ==============================================================================
 ##
-##  General documentation
+##  System inspection and configuration
 ##
 ## ==============================================================================
 
@@ -30,6 +30,12 @@ find_file (DOXYGEN_HTML_STYLESHEET stylesheet.css
   PATH_SUFFIXES documentation
   )
 
+## ==============================================================================
+##
+##  Documentation generation
+##
+## ==============================================================================
+
 if (DOXYGEN_EXECUTABLE)
 
   set (DOCUMENTATION_INPUT "${PROJECT_SOURCE_DIR}/documentation ${PROJECT_SOURCE_DIR}/sources")
@@ -39,6 +45,12 @@ if (DOXYGEN_EXECUTABLE)
   else (DOXYGEN_DOT_FOUND)
     set (HAVE_DOT "NO")
   endif (DOXYGEN_DOT_FOUND)
+
+  if (LATEX_COMPILER)
+    set (DOXYGEN_GENERATE_LATEX "YES")
+  else (LATEX_COMPILER)
+    set (DOXYGEN_GENERATE_LATEX "NO")
+  endif (LATEX_COMPILER)
   
   ## Configuration summary page
   configure_file (
@@ -51,6 +63,9 @@ if (DOXYGEN_EXECUTABLE)
     ${CMAKE_CURRENT_SOURCE_DIR}/doxygen.config.in
     ${CMAKE_CURRENT_BINARY_DIR}/doxygen.config
     )
+
+  ##________________________________________________________
+  ## HTML pages
   
   add_custom_target (Documentation
     COMMAND ${DOXYGEN_EXECUTABLE} doxygen.config
@@ -58,6 +73,19 @@ if (DOXYGEN_EXECUTABLE)
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     COMMENT "Running Doxygen to generate documentation ..."
     )
+
+  ##________________________________________________________
+  ## LaTeX/PDF document
+  
+  if (LATEX_COMPILER)
+    add_custom_command (
+      TARGET Documentation
+      POST_BUILD
+      COMMAND ${CMAKE_MAKE_PROGRAM}
+      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/latex
+      )
+  endif (LATEX_COMPILER)
+
   
   if (ENABLE_TESTING)
     add_test (documentation Documentation)

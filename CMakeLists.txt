@@ -97,10 +97,11 @@ set (CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/config/cmake" CACHE PATH
 ## Standard CMake modules
 
 include(ExternalProject)
-find_package (Git)
-find_package (Doxygen)
-find_package (Ruby)
 find_package (Boost)
+find_package (Doxygen)
+find_package (Git)
+find_package (LATEX)
+find_package (Ruby)
 find_package (Subversion)
 
 ##__________________________________________________________

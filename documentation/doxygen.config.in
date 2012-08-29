@@ -1207,7 +1207,7 @@ SERVER_BASED_SEARCH    = NO
 # If the GENERATE_LATEX tag is set to YES (the default) Doxygen will
 # generate Latex output.
 
-GENERATE_LATEX         = NO
+GENERATE_LATEX         = ${DOXYGEN_GENERATE_LATEX}
 
 # The LATEX_OUTPUT tag is used to specify where the LaTeX docs will be put.
 # If a relative path is entered the value of OUTPUT_DIRECTORY will be
@@ -1221,7 +1221,7 @@ LATEX_OUTPUT           = latex
 # generating bitmaps for formulas in the HTML output, but not in the
 # Makefile that is written to the output directory.
 
-LATEX_CMD_NAME         = latex
+LATEX_CMD_NAME         = ${LATEX_COMPILER}
 
 # The MAKEINDEX_CMD_NAME tag can be used to specify the command name to
 # generate index for LaTeX. If left blank `makeindex' will be used as the

@@ -7,7 +7,7 @@ HAN can be seen as a gateway for the HTTP data flow between the browser und the 
 
 \section han_technical Technical information
 
-The HAN-Server is not a Proxy-Server, so that it doesnt have to be authenticated as a proxy by the browsers. Instead the HAN-Server provides a persistent URL for each e-journal/every online database that you can simply address in your Intranet www-server, for example.
+The HAN-Server is not a Proxy-Server, so that it doesn't have to be authenticated as a proxy by the browsers. Instead the HAN-Server provides a persistent URL for each e-journal/every online database that you can simply address in your Intranet www-server, for example.
 
 Before a user can access a HAN-PURL and thereby the online sites, it is recommendable the users have already been authenticated. For this purpose HAN provides a variety of authentication services:
 
