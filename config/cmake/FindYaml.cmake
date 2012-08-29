@@ -36,7 +36,7 @@ if (NOT YAML_FOUND)
   ## Check for the header files
   
   find_path (YAML_INCLUDES yaml-cpp/yaml.h yaml-cpp/node.h
-    HINTS ${YAML_ROOT_DIR}  ${CMAKE_INSTALL_PREFIX}
+    HINTS ${YAML_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES include
     )
   
@@ -44,7 +44,7 @@ if (NOT YAML_FOUND)
   ## Check for the library
   
   find_library (YAML_LIBRARIES yaml-cpp
-    HINTS ${YAML_ROOT_DIR}  ${CMAKE_INSTALL_PREFIX}
+    HINTS ${YAML_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES lib
     )
   

@@ -130,6 +130,7 @@ endif (GEM_EXECUTABLE)
 add_subdirectory (ferret)
 add_subdirectory (pandora)
 add_subdirectory (promhp)
+add_subdirectory (yaml-cpp)
 
 if (WITH_CLAMAV)
   add_subdirectory (clamav)
@@ -138,3 +139,4 @@ endif (WITH_CLAMAV)
 if (MYSQL_FOUND)
   add_subdirectory (sphinx)
 endif (MYSQL_FOUND)
+

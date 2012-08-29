@@ -59,11 +59,11 @@ if (YAML_FOUND)
     target_link_libraries (${varFilename} ${YAML_LIBRARIES})
 
   endforeach (test_yaml)
-  
+
   ##_____________________________________________________________________________
   ## Testing
 
   add_test (tEmitting tEmitting)
   add_test (TestYamlReading TestYamlReading ${PROJECT_SOURCE_DIR}/data/tests)
-  
+
 endif (YAML_FOUND)
