@@ -7,6 +7,12 @@
 #include <Common.h>
 #include <ConfigFileInstitution.h>
 
+/*!
+  \file TestYamlReading.cc
+  \brief Test reading in configuration data from \ref refman_yaml files
+  \author Lars Baehren
+*/
+
 // ==============================================================================
 //
 //  Tests functions
@@ -17,7 +23,10 @@
 //                                                                       readList
 
 /*!
+  \brief Read data from list.
   \param filename - Path to the configuration file.
+  \return Status of the function; returns non-zero value in case an error was
+          encountered.
 */
 int readList (std::string const &filename)
 {
@@ -58,14 +67,21 @@ int readList (std::string const &filename)
 //_______________________________________________________________________________
 //                                                           readAssociativeArray
 
-/* Data structure to store data attached to a node */
+/*! Data structure to store data attached to a node */
 struct Movie {
+  //! Title of the movie
   std::string title;
+  //! Release year of the movie
   unsigned int release;
+  //! Director of the movie
   std::string director;
 };
 
-/* Operator overloading to store contents of node */
+/*!
+  \brief Overloading of the output operator for a node.
+  \param node -- Object container for the node.
+  \param role -- Data structure into which the node's contents is being stored.
+*/
 void operator >> (const YAML::Node& node,
 		  Movie& movie)
 {
@@ -172,9 +188,9 @@ struct Role {
 };
 
 /*!
-  \brief Overloading of output operator
+  \brief Overloading of the output operator for a node.
   \param node -- Object container for the node.
-  \param role -- Data structure into which the contents of the node is being stored.
+  \param role -- Data structure into which the node's contents is being stored.
 */
 void operator >> (const YAML::Node& node, Role& role) {
   node["title"] >> role.title;
@@ -220,11 +236,7 @@ int readDatabaseRoles (std::string const &filename)
 //
 // ==============================================================================
 
-/*!
-  \file TestYamlReading.cc
-  \brief Test reading in configuration data from \ref refman_yaml files
-  \author Lars Baehren
-*/
+/*! Program main function */
 int main (int argc,
 	  char *argv[])
 {
