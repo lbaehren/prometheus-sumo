@@ -13,8 +13,8 @@
 
   <table class="doxtable" width="80%">
     <tr>
-      <th width="40%">Software development</th>
-      <th width="40%">Infrastructure</th>
+      <td width="40%"><b>Software development</b></td>
+      <td width="40%">\subpage infrastructure</td>
     </tr>
     <tr valign="top">
       <td>
@@ -23,7 +23,6 @@
         \li \subpage software_design
         \li \subpage pandora
         \li \subpage database
-        \li \ref issue_tracker
       </td>
       <td>
         \li \subpage manual_image_archive
@@ -32,11 +31,12 @@
         \li \ref repositories
         \li \ref homepage
         \li \ref wiki
+        \li \ref issue_tracker
       </td>
     </tr>
     <tr>
-      <th width="40%">Support</th>
-      <th width="40%">Social media</th>
+      <td width="40%"><b>Support</b></td>
+      <td width="40%"><b>Social Media</b></td>
     </tr>
     <tr>
       <td>
