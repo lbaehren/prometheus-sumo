@@ -13,11 +13,11 @@
   \author Lars Baehren
 */
 
-// ==============================================================================
+// =============================================================================
 //
 //  Data stuctures
 //
-// ==============================================================================
+// =============================================================================
 
 namespace prometheus {
   
@@ -56,14 +56,14 @@ namespace prometheus {
   
 }
 
-// ==============================================================================
+// =============================================================================
 //
 //  Tests functions
 //
-// ==============================================================================
+// =============================================================================
 
-//_______________________________________________________________________________
-//                                                                       readList
+//______________________________________________________________________________
+//                                                                      readList
 
 /*!
   \brief Read data from list.
@@ -107,8 +107,8 @@ int readList (std::string const &filename)
   return 0;
 }
 
-//_______________________________________________________________________________
-//                                                           readAssociativeArray
+//______________________________________________________________________________
+//                                                          readAssociativeArray
 
 /*! Data structure to store data attached to a node */
 struct Movie {
@@ -150,6 +150,7 @@ int readAssociativeArray (std::string const &filename)
     YAML::Parser parser(infile);
     // Parse data into node
     parser.GetNextDocument(node);
+    std::cout << "--> nof. nodes = " << node.size() << std::endl;
     /* Parse the contents of the node */
     for (YAML::Iterator it=node.begin();it!=node.end();++it) {
       Movie movie;
@@ -170,8 +171,57 @@ int readAssociativeArray (std::string const &filename)
   return 0;
 }
 
-//_______________________________________________________________________________
-//                                                             readTrustedProxies
+//______________________________________________________________________________
+//                                                        readScalarsToSequences
+
+/*! Data structure to store data attached to a node */
+struct Movies {
+  std::vector<std::string> titles;
+};
+
+/*!
+  \brief Read data from mapping of scalars to sequences.
+  \param filename - Path to the configuration file.
+  \return Status of the function; returns non-zero value in case an error was
+          encountered.
+*/
+int readScalarsToSequences (std::string const &filename)
+{
+  std::cout << "\n[YamlReader::readScalarsToSequences]\n" << std::endl;
+  
+  std::ifstream infile (filename.c_str());
+  
+  if (infile.is_open()) {
+    YAML::Node node;
+    YAML::Parser parser(infile);
+    // Parse data into node
+    parser.GetNextDocument(node);
+    std::cout << "--> nof. nodes = " << node.size() << std::endl;
+    /* Parse the contents of the node */
+    for (YAML::Iterator it=node.begin();it!=node.end();++it) {
+      /* Get the key of the node */
+      std::string director;
+      it.first()>> director;
+      std::cout << "  " << director << ":" << std::endl;
+      for (size_t n=0; n<it.second().size(); ++n) {
+        std::string movie;
+        it.second()[n] >> movie;
+        std::cout << "    - " << movie << std::endl;
+      }
+    }
+  } else {
+    std::cerr << "--> Failed to open file " << filename << std::endl;
+    return 1;
+  }
+  
+  /* Close the input stream */
+  infile.close();
+
+  return 0;
+}
+
+//______________________________________________________________________________
+//                                                            readTrustedProxies
 
 /*!
   \brief Read in the list of trusted proxies
@@ -219,8 +269,8 @@ int readTrustedProxies (std::string const &filename)
   return 0;
 }
 
-//_______________________________________________________________________________
-//                                                              readDatabaseRoles
+//______________________________________________________________________________
+//                                                             readDatabaseRoles
 
 //! Data structure of configuration node
 struct Role {
@@ -259,8 +309,15 @@ int readDatabaseRoles (std::string const &filename)
     
     std::cout << "--> nof. nodes = " << node.size() << std::endl;
 
+    std::cout << "---" << std::endl;
     for (YAML::Iterator it=node.begin(); it!=node.end(); ++it) {
-      std::cout << " -- Reading sub-node ..." << std::endl;
+      std::string key;
+      Role role;
+      it.first() >> key;
+      it.second() >> role;
+      std::cout << "" << key << std::endl;
+      std::cout << "  " << role.title << std::endl;
+      std::cout << "  " << role.id    << std::endl;
     }
     
   } else {
@@ -271,11 +328,11 @@ int readDatabaseRoles (std::string const &filename)
   return 0;
 }
 
-// ==============================================================================
+// =============================================================================
 //
 //  Main program function
 //
-// ==============================================================================
+// =============================================================================
 
 /*! Program main function */
 int main (int argc,
@@ -302,6 +359,9 @@ int main (int argc,
   
   filename = pathTestData + "/yaml_AssociativeArray.yml";
   retval +=  readAssociativeArray(filename);
+
+  filename = pathTestData + "/yaml_ScalarsToSequences.yml";
+  retval +=  readScalarsToSequences(filename);
 
   /*
    *  prometheus/pandora type configuration data
