@@ -4,6 +4,10 @@ Bookmarks    {#bookmarks}
 
 \tableofcontents
 
+\section bookmarks_security Security
+
+\li [Heise Security Browsercheck](http://www.heise.de/security/dienste/Java-403125.html)
+
 \section bookmarks_tracking Issue Tracking
 
 \subsection bookmarks_tracking_trac Trac
