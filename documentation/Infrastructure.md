@@ -5,6 +5,7 @@ Infrastructure    {#infrastructure}
 
   - \subpage homepage
   - \subpage wiki
+  - \subpage issue_tracker
   - \subpage repositories for software packages and documents
   - \subpage virtual_machines
   - \subpage pandora_deployment
