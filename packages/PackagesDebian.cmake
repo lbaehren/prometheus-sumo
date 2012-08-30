@@ -25,6 +25,15 @@ if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
   set (NOF_PACKAGES_FOUND 0 )
 
   foreach (varPackage
+      ## Some basic packages which should be installed to begin with
+      build-essential
+      cmake
+      git-svn
+      subversion
+      doxygen
+      libboost-dev
+      texlive-full
+      ## Packages required by prometheus/pandora
       ruby${REQUIRED_VERSION_RUBY}
       ruby${REQUIRED_VERSION_RUBY}-dev
       rubygems
@@ -40,9 +49,6 @@ if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
       apache2
       libapache2-mod-ruby
       libapache2-mod-proxy-html
-      subversion
-      doxygen
-      libboost-dev
       libxml2-dev
       libmagic-dev
       libmagickwand-dev
