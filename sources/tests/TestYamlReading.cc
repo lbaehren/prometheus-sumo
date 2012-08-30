@@ -19,41 +19,109 @@
 //
 // =============================================================================
 
-namespace prometheus {
-  
-  class Movie {
-    std::string itsTitle;
-    unsigned int itsRelease;
-    std::string itsDirector;
-  public:
-    //! Default constructor
-    Movie (){
-      itsTitle    = "";
-      itsRelease  = 0;
-      itsDirector = "";
-    }
-    //! Argumented constructor
-    Movie (std::string const &title,
-	   unsigned int const &release,
-	   std::string const &director) {
-      itsTitle    = title;
-      itsRelease  = release;
-      itsDirector = director;
-    }
-    //! Get the title
-    inline std::string title () const {
-      return itsTitle;
-    }
-    //! Get the release year
-    inline unsigned int release () const {
-      return itsRelease;
-    }
-    //! Get the director
-    inline std::string director () const {
-      return itsDirector;
-    }
-  };
-  
+/*! Data structure to store a node representing a movie */
+struct Movie {
+  //! Title of the movie
+  std::string title;
+  //! Release year of the movie
+  unsigned int release;
+  //! Director of the movie
+  std::string director;
+};
+
+/*! Data structure to store a node representing a database role */
+struct Role {
+  //! Title for the role
+  std::string title;
+  //! ID used internally with the database
+  unsigned int id;
+};
+
+namespace prometheus {   //   namespace prometheus - BEGIN
+
+  namespace test {   //   namespace test - BEGIN
+    
+    class Roles {
+      std::map<unsigned int,std::string> itsRoles;
+    public:
+      // === Construction ========================
+      //! Default constructor
+      Roles () {
+	itsRoles.clear();
+      }
+      //! Argumented constructor
+      Roles (unsigned int const &id,
+	     std::string const &title) {
+	itsRoles[id] = title;
+      }
+      //! Argumented constructor
+      Roles (Role const &role) {
+	setRole(role);
+      }
+      // === Parameter access ====================
+      //! Set a database role
+      void setRole (Role const &role) {
+	itsRoles[role.id] = role.title;
+      }
+      //! Get the number of stored database roles
+      inline size_t size () {
+	return itsRoles.size();
+      }
+      //! Get the stored database roles
+      inline std::map<unsigned int,std::string> roles () {
+	return itsRoles;
+      }
+      //! Get the IDs of the database roles
+      inline std::vector<unsigned int> ids () {
+	std::map<unsigned int,std::string>::iterator it;
+	std::vector<unsigned int> ids;
+	for (it=itsRoles.begin(); it!=itsRoles.end(); ++it) {
+	  ids.push_back(it->first);
+	}
+	return ids;
+      }
+      //! Get the titles of the database roles
+      inline std::vector<std::string> titles () {
+	std::map<unsigned int,std::string>::iterator it;
+	std::vector<std::string> titles;
+	for (it=itsRoles.begin(); it!=itsRoles.end(); ++it) {
+	  titles.push_back(it->second);
+	}
+	return titles;
+      }
+    };
+
+  };   //   namespace test - END
+
+};   //   namespace prometheus - END
+
+// =============================================================================
+//
+//  Operator overloading
+//
+// =============================================================================
+
+/*!
+  \brief Overloading of the output operator for a node representing a movie.
+  \param node  -- Object container for the node.
+  \param movie -- Data structure into which the node's contents is being stored.
+*/
+void operator >> (const YAML::Node& node,
+		  Movie& movie)
+{
+  node["title"]    >> movie.title;
+  node["release"]  >> movie.release;
+  node["director"] >> movie.director;
+}
+
+/*!
+  \brief Overloading of the output operator for a node representing a database role.
+  \param node -- Object container for the node.
+  \param role -- Data structure into which the node's contents is being stored.
+*/
+void operator >> (const YAML::Node& node, Role& role) {
+  node["title"] >> role.title;
+  node["id"]    >> role.id;
 }
 
 // =============================================================================
@@ -109,29 +177,6 @@ int readList (std::string const &filename)
 
 //______________________________________________________________________________
 //                                                          readAssociativeArray
-
-/*! Data structure to store data attached to a node */
-struct Movie {
-  //! Title of the movie
-  std::string title;
-  //! Release year of the movie
-  unsigned int release;
-  //! Director of the movie
-  std::string director;
-};
-
-/*!
-  \brief Overloading of the output operator for a node.
-  \param node  -- Object container for the node.
-  \param movie -- Data structure into which the node's contents is being stored.
-*/
-void operator >> (const YAML::Node& node,
-		  Movie& movie)
-{
-  node["title"]    >> movie.title;
-  node["release"]  >> movie.release;
-  node["director"] >> movie.director;
-}
 
 /*!
   \brief Read data from asociative array.
@@ -267,24 +312,6 @@ int readTrustedProxies (std::string const &filename)
 //______________________________________________________________________________
 //                                                             readDatabaseRoles
 
-//! Data structure of configuration node
-struct Role {
-  //! Title for the role
-  std::string title;
-  //! ID used internally with the database
-  unsigned int id;
-};
-
-/*!
-  \brief Overloading of the output operator for a node.
-  \param node -- Object container for the node.
-  \param role -- Data structure into which the node's contents is being stored.
-*/
-void operator >> (const YAML::Node& node, Role& role) {
-  node["title"] >> role.title;
-  node["id"]    >> role.id;
-}
-
 /*!
   \brief Read user roles for database
   \param filename -- Path to the configuration file
@@ -297,6 +324,7 @@ int readDatabaseRoles (std::string const &filename)
   
   if (infile.is_open()) {
     
+    prometheus::test::Roles roles;
     YAML::Node node;
     
     YAML::Parser parser(infile);
@@ -304,16 +332,18 @@ int readDatabaseRoles (std::string const &filename)
     
     std::cout << "--> nof. nodes = " << node.size() << std::endl;
 
-    std::cout << "---" << std::endl;
     for (YAML::Iterator it=node.begin(); it!=node.end(); ++it) {
       std::string key;
       Role role;
       it.first() >> key;
       it.second() >> role;
-      std::cout << "" << key << std::endl;
-      std::cout << "  " << role.title << std::endl;
-      std::cout << "  " << role.id    << std::endl;
+      /* Store the contents of the node */
+      roles.setRole(role);
     }
+
+    /* Show the database role titles */
+    std::cout << roles.ids()    << std::endl;
+    std::cout << roles.titles() << std::endl;
     
   } else {
     std::cerr << "--> Failed to open file " << filename << std::endl;
