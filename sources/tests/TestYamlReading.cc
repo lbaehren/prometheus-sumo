@@ -122,8 +122,8 @@ struct Movie {
 
 /*!
   \brief Overloading of the output operator for a node.
-  \param node -- Object container for the node.
-  \param role -- Data structure into which the node's contents is being stored.
+  \param node  -- Object container for the node.
+  \param movie -- Data structure into which the node's contents is being stored.
 */
 void operator >> (const YAML::Node& node,
 		  Movie& movie)
@@ -173,11 +173,6 @@ int readAssociativeArray (std::string const &filename)
 
 //______________________________________________________________________________
 //                                                        readScalarsToSequences
-
-/*! Data structure to store data attached to a node */
-struct Movies {
-  std::vector<std::string> titles;
-};
 
 /*!
   \brief Read data from mapping of scalars to sequences.
