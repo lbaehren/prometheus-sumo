@@ -246,7 +246,7 @@ void operator >> (const YAML::Node& node, Role& role) {
 */
 int readDatabaseRoles (std::string const &filename)
 {
-  std::cout << "\n[YamlReader::readInstitution]\n" << std::endl;
+  std::cout << "\n[YamlReader::readDatabaseRoles]\n" << std::endl;
   
   std::ifstream infile (filename.c_str());
   
@@ -258,8 +258,6 @@ int readDatabaseRoles (std::string const &filename)
     parser.GetNextDocument(node);
     
     std::cout << "--> nof. nodes = " << node.size() << std::endl;
-    std::cout << " ... Is aliased? " << node.IsAliased() << std::endl;
-    std::cout << " ... Tag         " << node.Tag()        << std::endl;
 
     for (YAML::Iterator it=node.begin(); it!=node.end(); ++it) {
       std::cout << " -- Reading sub-node ..." << std::endl;
@@ -299,10 +297,10 @@ int main (int argc,
    *  Basic parser testing
    */
   
-  filename = pathTestData + "/yaml_list.yml";
+  filename = pathTestData + "/yaml_List.yml";
   retval +=  readList(filename);
   
-  filename = pathTestData + "/yaml_associativeArray.yml";
+  filename = pathTestData + "/yaml_AssociativeArray.yml";
   retval +=  readAssociativeArray(filename);
 
   /*
