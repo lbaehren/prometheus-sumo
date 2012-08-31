@@ -18,6 +18,7 @@ up and are being provided to the user:
 | Ubuntu 12.04 LTS     | [vm-ubuntu1204.ova](http://134.95.11.135/virtualbox/vm-ubuntu1204.ova) |  |
 | Windows XP (IE6) | [vm-windowsxp-ie6](http://134.95.11.135/virtualbox/vm-windowsxp-ie6.ova) | Installers for InDesign & Illustrator |
 | Windows XP (IE7) | [vm-windowsxp-ie7](http://134.95.11.135/virtualbox/vm-windowsxp-ie7.ova) | Installers for InDesign & Illustrator |
+| Windows XP (IE8) | [vm-windowsxp-ie8](http://134.95.11.135/virtualbox/vm-windowsxp-ie8.ova) | in preparation |
 
 __Note:__ You can [use prometheus-sumo](\ref sumo_functionality_vm) to retrieve all of the virtual machine disk images.
 
@@ -107,13 +108,29 @@ Web browsers:
 | Chrome  | 3.0.195.33          | 21.0.1180.79      |
 | Safari  | 4.0.3 (531.9.1)     | 5.1.7 (7534.57.2) |
 
-Additionale software packages:
+Additional software packages:
 
   - Adobe Download Manager
   - Git
   - MinGW
     - MinGW Compier Suite (C, C++)
     - MSYS Basic System
+
+\subsection vm_windows_xp-ie8 Windows XP (IE8)
+
+Web browsers:
+
+| Browser | Initial version     | Upgraded to       |
+|---------|---------------------|-------------------|
+| IE      | 8                   | 8                 |
+| Firefox | 3.5.30729           | 15.0              |
+| Opera   | 10.00 (1750)        | 12.02 (1578)      |
+| Chrome  | 4.0.249.78 (36714)  | 21.0.1180.89      |
+| Safari  | 4.0.3 (531.9.1)     | 5.1.7 (7534.57.2) |
+
+Additional software packages:
+
+  - Git
 
 \section vm_references References 
 
@@ -122,7 +139,7 @@ Additionale software packages:
   - [Debian GNU/Linux](http://www.debian.org) - a free operating system (OS) for your computer.
   - [Cygwin](http://cygwin.com) - a collection of tools which provide a Linux look and feel environment for Windows.
   - [MinGW](http://www.mingw.org) -Minimalist GNU for Windows
-  - [Git SCM](http://git-scm.com)
+  - [Git SCM](http://git-scm.com) - a free and open source distributed version control system
   - [Firefox](http://www.mozilla.org/en-US/firefox/new) web browser
   - [Chrome](https://www.google.com/intl/en/chrome/browser) web browser
   - [Opera](http://www.opera.com) web browser

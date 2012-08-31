@@ -18,6 +18,7 @@ if (CURL_EXECUTABLE)
     vm-ubuntu1204.ova
     vm-windowsxp-ie6.ova
     vm-windowsxp-ie7.ova
+    vm-windowsxp-ie8.ova
     )
     
     add_custom_command (
