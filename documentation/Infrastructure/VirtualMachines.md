@@ -131,6 +131,7 @@ Web browsers:
 Additional software packages:
 
   - Git
+  - Adobe Download Manager
 
 \section vm_references References 
 
