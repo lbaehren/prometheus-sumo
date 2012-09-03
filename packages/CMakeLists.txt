@@ -130,6 +130,7 @@ endif (GEM_EXECUTABLE)
 add_subdirectory (ferret)
 add_subdirectory (pandora)
 add_subdirectory (promhp)
+add_subdirectory (tinyxml2)
 add_subdirectory (yaml-cpp)
 
 if (WITH_CLAMAV)
