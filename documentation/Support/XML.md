@@ -20,6 +20,21 @@ XML includes facilities for identifying the encoding of the Unicode characters t
 
 \test TestXML.cc
 
+\section xml_programming Programming interfaces
+
+The design goals of XML include, "It shall be easy to write programs which process XML documents." Despite this, the XML specification contains almost no information about how programmers might go about doing such processing. The XML Infoset specification provides a vocabulary to refer to the constructs within an XML document, but also does not provide any guidance on how to access this information. A variety of APIs for accessing XML have been developed and used, and some have been standardized.
+
+Existing APIs for XML processing tend to fall into these categories:
+
+- Stream-oriented APIs accessible from a programming language, for example SAX and StAX.
+- Tree-traversal APIs accessible from a programming language, for example DOM.
+- XML data binding, which provides an automated translation between an XML document and programming-language objects.
+- Declarative transformation languages such as XSLT and XQuery.
+
+Stream-oriented facilities require less memory and, for certain tasks which are based on a linear traversal of an XML document, are faster and simpler than other alternatives. Tree-traversal and data-binding APIs typically require the use of much more memory, but are often found more convenient for use by programmers; some include declarative retrieval of document components via the use of XPath expressions.
+
+XSLT is designed for declarative description of XML document transformations, and has been widely implemented both in server-side packages and Web browsers. XQuery overlaps XSLT in its functionality, but is designed more for searching of large XML databases.
+
 \section xml_references References
 
   - [XML Path Language](http://www.w3.org/TR/xpath) (W3C Recommendation)
