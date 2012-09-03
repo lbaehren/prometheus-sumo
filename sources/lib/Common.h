@@ -23,13 +23,14 @@
 
 /*!
   \file Common.h
-  \ingroup prmetheus
+  \ingroup prometheus
   \author Lars B&auml;hren
 
   \brief Collection of commly used routines and functionality
 */
 
 #include <iostream>
+#include <map>
 #include <set>
 #include <vector>
 
@@ -92,5 +93,31 @@ std::ostream& operator<< (std::ostream &os,
 {
   return show (os, s.begin(), s.end());
 }
+
+//_______________________________________________________________________________
+//                                                                     operator<<
+
+/*!
+  \brief Overloading of output operator to display std::map<T>
+  
+  \param os -- Output stream to which the result will be written to
+  \param m  -- The map to be displayed.
+*/
+/* template <typename K, typename V> */
+/*   std::ostream& operator<< (std::ostream &os, */
+/* 			    const std::map<K,V> &m) */
+/* { */
+/*   typename std::map<K,V>::iterator it; */
+  
+/*   os << "["; */
+  
+/*   for (it=m.begin(); it!=m.end(); ++it) { */
+/*     os << " (" << it->first << "," << it->second << ")"; */
+/*   } */
+  
+/*   os << " ]"; */
+  
+/*   return os; */
+/* } */
 
 #endif

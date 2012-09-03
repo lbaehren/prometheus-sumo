@@ -7,9 +7,11 @@
 
 foreach (test_cpp
     TestBoxes.cc
+    TestCommon.cc
     )
   get_filename_component (varFilename ${test_cpp} NAME_WE)
   add_executable (${varFilename} ${test_cpp})
+  add_test (${varFilename} ${varFilename})
 endforeach (test_cpp)
 
 ## ==============================================================================
