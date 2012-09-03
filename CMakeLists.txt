@@ -241,6 +241,7 @@ message (STATUS " .. Yaml libraries .............. = ${YAML_LIBRARIES}"         
 message (STATUS " Processing tools & libraries:"                                 )
 message (STATUS " .. Magic include directory ..... = ${MAGIC_INCLUDES}"          )
 message (STATUS " .. Magic library ............... = ${MAGIC_LIBRARIES}"         )
-message (STATUS " .. Xercesc include directory ... = ${XERCESC_INCLUDES}"        )
-message (STATUS " .. Xercesc library ............. = ${XERCESC_LIBRARIES}"       )
+message (STATUS " .. TinyXML include directory ... = ${TINYXML_INCLUDES}"        )
+message (STATUS " .. TinyXML library ............. = ${TINYXML_LIBRARIES}"       )
 message (STATUS "------------------------------------------------------------ "  )
+
