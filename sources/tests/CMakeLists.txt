@@ -36,14 +36,18 @@ endforeach (varTest)
 ##
 ## ==============================================================================
 
-if (XERCESC_FOUND)
+if (TINYXML_FOUND)
 
-  include_directories (${XERCESC_INCLUDES})
-
+  ## Header files
+  include_directories (${TINYXML_INCLUDES})
+  ## Compiler instructions
   add_executable (TestXML TestXML.cc)
-  target_link_libraries (TestXML ${XERCESC_LIBRARIES})
+  ## Linker instructions
+  target_link_libraries (TestXML ${TINYXML_LIBRARIES})
+  ## Testing
+  add_test (TestXML TestXML)
 
-endif (XERCESC_FOUND)
+endif (TINYXML_FOUND)
 
 ## ==============================================================================
 ##

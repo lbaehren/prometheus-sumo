@@ -50,9 +50,7 @@ if (NOT TINYXML_FOUND)
     )
 
   if (TINYXML_TINYXML2_LIBRARY)
-    set (TINYXML_LIBRARIES ${TINYXML_TINYXML2_LIBRARY})
-  else (TINYXML_TINYXML2_LIBRARY)
-    message (STATUS "libtinyxml2 not found!")
+    list (APPEND TINYXML_LIBRARIES ${TINYXML_TINYXML2_LIBRARY})
   endif (TINYXML_TINYXML2_LIBRARY)
   
   ##_____________________________________________________________________________
