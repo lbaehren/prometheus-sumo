@@ -1,7 +1,27 @@
 
+## Locate test data
+
+find_file (xml_dump_beeskow beeskow_kunstarchiv.xml
+  HINTS ${PANDORA_DATA_DIR}
+  PATHS ${PROJECT_SOURCE_DIR}
+  PATH_SUFFIXES data data/tests
+  )
+
+find_file (xml_dump_theoleik theoleik.xml
+  HINTS ${PANDORA_DATA_DIR}
+  PATHS ${PROJECT_SOURCE_DIR}
+  PATH_SUFFIXES data data/tests
+  )
+
+find_file (xml_dump_kassel kassel.xml
+  HINTS ${PANDORA_DATA_DIR}
+  PATHS ${PROJECT_SOURCE_DIR}
+  PATH_SUFFIXES data data/tests
+  )
+
 ## ==============================================================================
 ##
-##  Generic C++ tst programs
+##  Generic C++ test programs
 ##
 ## ==============================================================================
 
@@ -38,12 +58,6 @@ endforeach (varTest)
 ##
 ## ==============================================================================
 
-## Locate test data
-find_file (xml_testData beeskow_kunstarchiv.xml
-  PATHS ${PROJECT_SOURCE_DIR}
-  PATH_SUFFIXES data data/tests
-  )
-
 ##__________________________________________________________
 ## Parsing via Boost library
 
@@ -54,8 +68,8 @@ if(Boost_FOUND)
   add_executable(TestXMLBoost TestXMLBoost.cc)
   ## Linker instructions
   target_link_libraries (TestXMLBoost ${Boost_LIBRARIES})
-  ## Testing 
-  add_test (TestXMLBoost TestXMLBoost ${xml_testData})
+  ## Testing
+  add_test (TestXMLBoost TestXMLBoost ${xml_dump_beeskow})
 endif()
 
 ##__________________________________________________________
@@ -70,7 +84,7 @@ if (TINYXML_FOUND)
   ## Linker instructions
   target_link_libraries (TestXML ${TINYXML_LIBRARIES})
 
-  add_test (TestXML TestXML ${xml_testData})
+  add_test (TestXML TestXML ${xml_dump_beeskow})
  
 endif (TINYXML_FOUND)
 
@@ -85,7 +99,7 @@ if (LIBXML2_FOUND)
   ## Linker instructions
   target_link_libraries (TestXMLTree ${LIBXML2_LIBRARIES})
   ## Testing 
-  add_test (TestXMLTree TestXMLTree ${xml_testData})
+  add_test (TestXMLTree TestXMLTree ${xml_dump_beeskow})
 endif (LIBXML2_FOUND)
 
 ## ==============================================================================
