@@ -18,7 +18,7 @@ ML documents consist entirely of characters from the Unicode repertoire. Except 
 
 XML includes facilities for identifying the encoding of the Unicode characters that make up the document, and for expressing characters that, for one reason or another, cannot be used directly.
 
-\test TestXML.cc
+\test TestXML.cc TestXMLTree.c
 
 \section xml_programming Programming interfaces
 
@@ -35,8 +35,23 @@ Stream-oriented facilities require less memory and, for certain tasks which are 
 
 XSLT is designed for declarative description of XML document transformations, and has been widely implemented both in server-side packages and Web browsers. XQuery overlaps XSLT in its functionality, but is designed more for searching of large XML databases.
 
+\subsection xml_programming_libxml libxml
+
+Libxml2 is the XML C parser and toolkit developed for the Gnome project (but usable outside of the Gnome platform), it is free software available under the MIT License. XML itself is a metalanguage to design markup languages, i.e. text language where semantic and structure are added to the content using extra "markup" information enclosed between angle brackets. HTML is the most well-known markup language. Though the library is written in C a variety of language bindings make it available in other environments.
+
+\subsection xml_programming_libxmlpp libxml++
+
+Like the underlying libxml library, libxml++ allows the use of 3 parsers, depending on your needs - the DOM, SAX, and TextReader parsers. The relative advantages and behaviour of these parsers will be explained here.
+
+All of the parsers may parse XML documents directly from disk, a string, or a C++ std::istream. Although the libxml++ API uses only Glib::ustring, and therefore the UTF-8 encoding, libxml++ can parse documents in any encoding, converting to UTF-8 automatically. This conversion will not lose any information because UTF-8 can represent any locale.
+
+Remember that white space is usually significant in XML documents, so the parsers might provide unexpected text nodes that contain only spaces and new lines. The parser does not know whether you care about these text nodes, but your application may choose to ignore them.
+
 \section xml_references References
 
-  - [XML Path Language](http://www.w3.org/TR/xpath) (W3C Recommendation)
+  - [Extensible Markup Language](http://www.w3.org/TR/xml) (XML) -- W3C Recommendation
+  - [XML Path Language](http://www.w3.org/TR/xpath) -- W3C Recommendation
   - [XPath Tutorial](http://www.w3schools.com/xpath/default.asp)
   - [Free C or C++ XML Parser Libraries](http://lars.ruoff.free.fr/xmlcpp)
+  - [libxml++ Tutorial](http://developer.gnome.org/libxml++-tutorial/stable) - An XML Parser for C++
+  - [Parsin XML with Boost](http://akrzemi1.wordpress.com/2011/07/13/parsing-xml-with-boost)

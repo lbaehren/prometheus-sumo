@@ -38,13 +38,30 @@ endforeach (varTest)
 ##
 ## ==============================================================================
 
-if (TINYXML_FOUND)
+## Locate test data
+find_file (xml_testData beeskow_kunstarchiv.xml
+  PATHS ${PROJECT_SOURCE_DIR}
+  PATH_SUFFIXES data data/tests
+  )
 
-  ## Locate test data
-  find_file (xml_testData beeskow_kunstarchiv.xml
-    PATHS ${PROJECT_SOURCE_DIR}
-    PATH_SUFFIXES data data/tests
-    )
+##__________________________________________________________
+## Parsing via Boost library
+
+if(Boost_FOUND)
+  ## Header files
+  include_directories(${Boost_INCLUDE_DIRS})
+  ## Compiler instructions
+  add_executable(TestXMLBoost TestXMLBoost.cc)
+  ## Linker instructions
+  target_link_libraries (TestXMLBoost ${Boost_LIBRARIES})
+  ## Testing 
+  add_test (TestXMLBoost TestXMLBoost ${xml_testData})
+endif()
+
+##__________________________________________________________
+## Parsing via TinyXML library
+
+if (TINYXML_FOUND)
 
   ## Header files
   include_directories (${TINYXML_INCLUDES})
@@ -56,6 +73,20 @@ if (TINYXML_FOUND)
   add_test (TestXML TestXML ${xml_testData})
  
 endif (TINYXML_FOUND)
+
+##__________________________________________________________
+## Parsing via libxml2 library
+
+if (LIBXML2_FOUND)
+  ## Header files
+  include_directories (${LIBXML2_INCLUDE_DIR})
+  ## Compiler instructions
+  add_executable (TestXMLTree TestXMLTree.c)
+  ## Linker instructions
+  target_link_libraries (TestXMLTree ${LIBXML2_LIBRARIES})
+  ## Testing 
+  add_test (TestXMLTree TestXMLTree ${xml_testData})
+endif (LIBXML2_FOUND)
 
 ## ==============================================================================
 ##

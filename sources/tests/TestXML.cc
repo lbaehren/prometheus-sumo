@@ -23,6 +23,8 @@
 
 #include <tinyxml2.h>
 
+using namespace tinyxml2;
+
 /*!
   \file TestXML.cc
   \ingroup prometheus
@@ -65,7 +67,7 @@ int test_char_buffer (std::string const &teststring="<element/>")
   
   std::cout << "--> Input string = " << teststring << std::endl;
   
-  tinyxml2::XMLDocument doc;
+  XMLDocument doc;
   doc.Parse(teststring.c_str());
   status = doc.ErrorID();
   
@@ -84,16 +86,28 @@ int test_parse_document (std::string const &filename)
   std::cout << "\n[TestXML::test_parse_document]\n" << std::endl;
 
   int status = 0;
-  tinyxml2::XMLDocument doc;
-
-  /* Load the XML file */
-  doc.LoadFile(filename.c_str());
+  XMLDocument doc;
+  
+  /* Load the XML file; LoadFile() returns non-zero value if everything is ok. */
+  if (!doc.LoadFile(filename.c_str())) {
+    
+    /* Get root node */
+    XMLElement * elemRoot = doc.RootElement();
+    std::cout << "-- Root element = " << elemRoot->Name() << std::endl;
+    
+  } else {
+    std::cerr << "[ERROR] Failed to load file " << filename << std::endl;
+    status += 1;
+  }
   
   return status;
 }
 
 // === Main function ===========================================================
 
+/*!
+  \brief Test program main function
+*/
 int main(int argc, char* argv[])
 {
   int status = 0;
