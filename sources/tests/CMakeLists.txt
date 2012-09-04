@@ -40,15 +40,21 @@ endforeach (varTest)
 
 if (TINYXML_FOUND)
 
+  ## Locate test data
+  find_file (xml_testData beeskow_kunstarchiv.xml
+    PATHS ${PROJECT_SOURCE_DIR}
+    PATH_SUFFIXES data data/tests
+    )
+
   ## Header files
   include_directories (${TINYXML_INCLUDES})
   ## Compiler instructions
   add_executable (TestXML TestXML.cc)
   ## Linker instructions
   target_link_libraries (TestXML ${TINYXML_LIBRARIES})
-  ## Testing
-  add_test (TestXML TestXML)
 
+  add_test (TestXML TestXML ${xml_testData})
+ 
 endif (TINYXML_FOUND)
 
 ## ==============================================================================

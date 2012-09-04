@@ -44,15 +44,11 @@ if (NOT TINYXML_FOUND)
   ##_____________________________________________________________________________
   ## Check for the library
   
-  find_library (TINYXML_TINYXML2_LIBRARY tinyxml2
-    HINTS ${TINYXML_ROOT_DIR}  ${CMAKE_INSTALL_PREFIX}
+  find_library (TINYXML_LIBRARIES tinyxml2
+    HINTS ${TINYXML_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES lib
     )
 
-  if (TINYXML_TINYXML2_LIBRARY)
-    list (APPEND TINYXML_LIBRARIES ${TINYXML_TINYXML2_LIBRARY})
-  endif (TINYXML_TINYXML2_LIBRARY)
-  
   ##_____________________________________________________________________________
   ## Actions taken when all components have been found
   
