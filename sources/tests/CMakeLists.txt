@@ -66,7 +66,7 @@ if(Boost_FOUND)
   include_directories(${Boost_INCLUDE_DIRS})
   
   foreach (test_xml_boost
-      TestXMLBoost
+      TestSourcesBeeskow
       TestSourcesKassel
       TestSourcesTheolEik
       )
@@ -74,9 +74,10 @@ if(Boost_FOUND)
     target_link_libraries (${test_xml_boost} libprometheus ${Boost_LIBRARIES})
   endforeach (test_xml_boost)
 
-  ## Testing
-  add_test (TestXMLBoost TestXMLBoost ${xml_dump_beeskow})
-
+  if (xml_dump_beeskow)
+    add_test (TestSourcesBeeskow TestSourcesBeeskow ${xml_dump_beeskow})
+  endif (xml_dump_beeskow)
+  
   if (xml_dump_kassel)
     add_test (TestSourcesKassel TestSourcesKassel ${xml_dump_kassel})
   endif (xml_dump_kassel)

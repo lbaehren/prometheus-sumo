@@ -43,21 +43,24 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
         \brief Image attributes
 
         \code
-        <row>
-          <Höhe>97</Höhe>
-          <Material>Öl auf Leinwand</Material>
-          <KünstlerIn>Hegewald, Michael</KünstlerIn>
-          <Gattung>Malerei</Gattung>
-          <Ob_f41>284</Ob_f41>
-          <Datierung>1989</Datierung>
-          <Einheit>cm</Einheit>
-          <Breite>138</Breite>
-          <Titel>Berlin</Titel>
-          <Standort>Kunstarchiv Beeskow</Standort>
-        </row>
+        <?xml version="1.0" encoding="iso-8859-1" ?>
+          <root>
+            <row>
+              <Höhe>97</Höhe>
+              <Material>Öl auf Leinwand</Material>
+              <KünstlerIn>Hegewald, Michael</KünstlerIn>
+              <Gattung>Malerei</Gattung>
+              <Ob_f41>284</Ob_f41>
+              <Datierung>1989</Datierung>
+              <Einheit>cm</Einheit>
+              <Breite>138</Breite>
+              <Titel>Berlin</Titel>
+              <Standort>Kunstarchiv Beeskow</Standort>
+            </row>
       \endcode
       */
       struct Attributes {
+	bool missingAttributes;
         //! Height of the item, "Höhe"
         std::string height;
         //! Material used in the item, "Material"

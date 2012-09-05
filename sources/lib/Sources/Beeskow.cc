@@ -45,7 +45,30 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
         return -1;
       }
       
-      return 0;
+      int status      = 0;
+      bool incomplete = false;
+      
+      BOOST_FOREACH( boost::property_tree::ptree::value_type const& v, pt.get_child("root") ) {
+        if( v.first == "row" ) {
+          Beeskow::Attributes node;
+
+          incomplete = false;
+          node.missingAttributes = false;
+
+	  node.location = v.second.get<std::string>("Standort");
+	  node.title    = v.second.get<std::string>("Titel");
+	  node.date     = v.second.get<std::string>("Datierung");
+	  node.category = v.second.get<std::string>("Gattung");
+	  node.units    = v.second.get<std::string>("Einheit");
+	  node.material = v.second.get<std::string>("Material");
+	  node.object   = v.second.get<unsigned int>("Ob_f41");
+
+          if (incomplete) ++status;
+          items.push_back(node);
+	}
+      }
+
+      return status;
     }
     
   }   //  namespace source -- END
