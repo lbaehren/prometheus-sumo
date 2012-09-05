@@ -18,7 +18,7 @@ ML documents consist entirely of characters from the Unicode repertoire. Except 
 
 XML includes facilities for identifying the encoding of the Unicode characters that make up the document, and for expressing characters that, for one reason or another, cannot be used directly.
 
-\test TestXML.cc TestXMLTree.c
+\test TestXML.cc TestXMLTree.c TestXMLBoost.cc
 
 \section xml_programming Programming interfaces
 
@@ -46,6 +46,23 @@ Like the underlying libxml library, libxml++ allows the use of 3 parsers, depend
 All of the parsers may parse XML documents directly from disk, a string, or a C++ std::istream. Although the libxml++ API uses only Glib::ustring, and therefore the UTF-8 encoding, libxml++ can parse documents in any encoding, converting to UTF-8 automatically. This conversion will not lose any information because UTF-8 can represent any locale.
 
 Remember that white space is usually significant in XML documents, so the parsers might provide unexpected text nodes that contain only spaces and new lines. The parser does not know whether you care about these text nodes, but your application may choose to ignore them.
+
+\subsection xml_programming_boost Boost.PropertyTree
+
+Unfortunately, there is no XML parser in Boost as of the time of this writing. The library therefore contains the fast and tiny [RapidXML](http://rapidxml.sourceforge.net) parser (currently in version 1.13) to provide XML parsing support. RapidXML does not fully support the XML standard; it is not capable of parsing DTDs and therefore cannot do full entity substitution.
+
+By default, the parser will preserve most whitespace, but remove element content that consists only of whitespace. Encoded whitespaces (e.g. &#32;) does not count as whitespace in this regard. You can pass the trim_whitespace flag if you want all leading and trailing whitespace trimmed and all continuous whitespace collapsed into a single space.
+
+Please note that RapidXML does not understand the encoding specification. If you pass it a character buffer, it assumes the data is already correctly encoded; if you pass it a filename, it will read the file using the character conversion of the locale you give it (or the global locale if you give it none). This means that, in order to parse a UTF-8-encoded XML file into a wptree, you have to supply an alternate locale, either directly or by replacing the global one.
+
+XML / property tree conversion schema (`read_xml` and `write_xml`):
+
+  - Each XML element corresponds to a property tree node. The child elements correspond to the children of the node.
+  - The attributes of an XML element are stored in the subkey `<xmlattr>`. There is one child node per attribute in the attribute node. Existence of the `<xmlattr>` node is not guaranteed or necessary when there are no attributes.
+  - XML comments are stored in nodes named `<xmlcomment>`, unless comment ignoring is enabled via the flags.
+  - Text content is stored in one of two ways, depending on the flags. The default way concatenates all text nodes and stores them in a single node called `<xmltext>`. This way, the entire content can be conveniently read, but the relative ordering of text and child elements is lost. The other way stores each text content as a separate node, all called `<xmltext>`.
+
+The XML storage encoding does not round-trip perfectly. A read-write cycle loses trimmed whitespace, low-level formatting information, and the distinction between normal data and CDATA nodes. Comments are only preserved when enabled. A write-read cycle loses trimmed whitespace; that is, if the origin tree has string data that starts or ends with whitespace, that whitespace is lost. 
 
 \section xml_references References
 
