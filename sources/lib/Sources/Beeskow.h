@@ -24,9 +24,9 @@
 #include <SourceDump.h>
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   namespace source {
-    
+
     /*!
       \file Beeskow.h
       \class Beeskow
@@ -40,58 +40,56 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     public:
       
       /*!
-	\brief Image attributes
-	
-	\code
-	<row>
-	  <Höhe>97</Höhe>
-	  <Material>Öl auf Leinwand</Material>
-	  <KünstlerIn>Hegewald, Michael</KünstlerIn>
-	  <Gattung>Malerei</Gattung>
-	  <Ob_f41>284</Ob_f41>
-	  <Datierung>1989</Datierung>
-	  <Einheit>cm</Einheit>
-	  <Breite>138</Breite>
-	  <Titel>Berlin</Titel>
-	  <Standort>Kunstarchiv Beeskow</Standort>
-	</row>
-	\endcode
+        \brief Image attributes
+
+        \code
+        <row>
+          <Höhe>97</Höhe>
+          <Material>Öl auf Leinwand</Material>
+          <KünstlerIn>Hegewald, Michael</KünstlerIn>
+          <Gattung>Malerei</Gattung>
+          <Ob_f41>284</Ob_f41>
+          <Datierung>1989</Datierung>
+          <Einheit>cm</Einheit>
+          <Breite>138</Breite>
+          <Titel>Berlin</Titel>
+          <Standort>Kunstarchiv Beeskow</Standort>
+        </row>
+      \endcode
       */
       struct Attributes {
-	//! Height of the item, "Höhe"
-	std::string height;
-	//! Material used in the item, "Material"
-	std::string material;
-	//! Artist for the item, "KünstlerIn"
-	std::string artist;
-	//! Category for the item, "Gattung"
-	std::string category;
-	//! Object code, "Ob_f41"
-	unsigned int object;
-	//! (Creation) Date for the item, "Datierung"
-	std::string date;
-	//! Units in which the dimensions of the item are given, "Einheit"
-	std::string units;
-	//! Width of the item, "Breite"
-	std::string width;
-	//! Title of the item, "Titel"
-	std::string title;
-	//! Location of the item, "Standort"
-	std::string location;
+        //! Height of the item, "Höhe"
+        std::string height;
+        //! Material used in the item, "Material"
+        std::string material;
+        //! Artist for the item, "KünstlerIn"
+        std::string artist;
+        //! Category for the item, "Gattung"
+        std::string category;
+        //! Object code, "Ob_f41"
+        unsigned int object;
+        //! (Creation) Date for the item, "Datierung"
+        std::string date;
+        //! Units in which the dimensions of the item are given, "Einheit"
+        std::string units;
+        //! Width of the item, "Breite"
+        std::string width;
+        //! Title of the item, "Titel"
+        std::string title;
+        //! Location of the item, "Standort"
+        std::string location;
       };
 
-      
       // === Static methods =====================================================
 
       //! Read data from XML dump of database
       static int readXML (std::istream & infile,
-			  std::vector<Beeskow::Attributes> &items);
+                          std::vector<Beeskow::Attributes> &items);
 
     };
-    
-  
+
   }   //  namespace source -- END
-  
+
 }  //  namespace prometheus -- END
 
 #endif
