@@ -27,6 +27,7 @@
 namespace prometheus {  //  namespace prometheus -- BEGIN
   
   /*!
+    \file StatisticsHBZ.h
     \class StatisticsHBZ
     \ingroup prometheus
     \brief Access statistics provided to the HBZ

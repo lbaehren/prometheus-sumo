@@ -44,15 +44,31 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 
   protected:
     
+    //! Name of the root node in the XML file
     std::string itsRootNode;
+    //! Name of the node containing attributes of an image
     std::string itsImageNode;
     //! List of attributes (and their potential mapping)
     std::map<std::string,std::string> itsAttributes;
     
   public:
+
+    //! Argumented constructor
+    SourceDump (std::string const &rootNode,
+		std::string const &imageNode);
     
     // === Parmater access ======================================================
     
+    //! Get the name of the root node in the XML file
+    inline std::string rootNode () const {
+      return itsRootNode;
+    }
+
+    //! Get the name of the node containing attributes of an image
+    inline std::string imageNode () const {
+      return itsImageNode;
+    }
+
     //! Get map with the mappingof attribute names
     inline std::map<std::string,std::string> attributesMap () const {
       return itsAttributes;

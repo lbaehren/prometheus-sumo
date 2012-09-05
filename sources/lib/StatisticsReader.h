@@ -39,6 +39,7 @@ typedef boost::tokenizer< boost::escaped_list_separator<char> > Tokenizer;
 namespace prometheus {  //  namespace prometheus -- BEGIN
   
   /*!
+    \file StatisticsReader.h
     \class StatisticsReader
     \ingroup prometheus
     \brief Base class for reading statistics files

@@ -27,6 +27,7 @@
 namespace prometheus {  //  namespace prometheus -- BEGIN
   
   /*!
+    \file StatisticsReaderHBZ.h
     \class StatisticsReaderHBZ
     \ingroup prometheus
     \brief Class for reading statistics file for HBZ

@@ -30,6 +30,7 @@
 namespace prometheus {  //  namespace prometheus -- BEGIN
   
   /*!
+    \file Image.h
     \class Image
     \ingroup prometheus
     \brief An image

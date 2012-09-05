@@ -45,22 +45,27 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
         \brief Image attributes
 	
         \code
-        <ROW MODID="0" RECORDID="12640214">
-          <bildreferenz>1000005.jpg</bildreferenz>
-          <abbildungsnachweis>Marguerat, D., Das enfant terrible des Christentums, in: Paulus. Ein unbequemer Apostel. Welt und Umwelt der Bibel 20 (Stuttgart 2001) 4</abbildungsnachweis>
-          <copyright></copyright>
-          <freigabe>Prometheus</freigabe>
-          <standort>Vatikan, Vatikanische Museen</standort>
-          <titel>Gemme: Paulus. Ausschnitt: Paulus</titel>
-          <herkunft>Rom (I), Grabstätte des Asellus</herkunft>
-          <datierung>um 313</datierung>
-          <kuenstlerin></kuenstlerin>
-          <material></material>
-          <gattung></gattung>
-          <schlagwort></schlagwort>
-          <masse></masse>
-          <zusatz></zusatz>
-        </ROW>
+        <?xml version="1.0" encoding="UTF-8"?>
+          <FMPDSORESULT xmlns="http://www.filemaker.com/fmpdsoresult">
+            <ERRORCODE>0</ERRORCODE>
+            <DATABASE>a_04_bildobjekt.fp5</DATABASE>
+            <LAYOUT>prometheus</LAYOUT>
+            <ROW MODID="0" RECORDID="12640214">
+              <bildreferenz>1000005.jpg</bildreferenz>
+              <abbildungsnachweis>Marguerat, D., Das enfant terrible des Christentums, in: Paulus. Ein unbequemer Apostel. Welt und Umwelt der Bibel 20 (Stuttgart 2001) 4</abbildungsnachweis>
+              <copyright></copyright>
+              <freigabe>Prometheus</freigabe>
+              <standort>Vatikan, Vatikanische Museen</standort>
+              <titel>Gemme: Paulus. Ausschnitt: Paulus</titel>
+              <herkunft>Rom (I), Grabstätte des Asellus</herkunft>
+              <datierung>um 313</datierung>
+              <kuenstlerin></kuenstlerin>
+              <material></material>
+              <gattung></gattung>
+              <schlagwort></schlagwort>
+              <masse></masse>
+              <zusatz></zusatz>
+            </ROW>
         \endcode
       */
       struct Attributes {

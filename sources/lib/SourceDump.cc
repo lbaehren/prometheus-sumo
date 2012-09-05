@@ -21,6 +21,30 @@
 #include "SourceDump.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
+  
+  // ============================================================================
+  //
+  //  Construction
+  //
+  // ============================================================================
+  
+  /*!
+    \param rootNode  -- Name of the root node in the XML file.
+    \param imageNode -- Name of the node containing attributes of an image
+  */
+  SourceDump::SourceDump (std::string const &rootNode,
+			  std::string const &imageNode)
+    : itsRootNode (rootNode),
+      itsImageNode (imageNode)
+  {
+    init();
+  }
+  
+  // ============================================================================
+  //
+  //  Private methods
+  //
+  // ============================================================================
 
   void SourceDump::init ()
   {

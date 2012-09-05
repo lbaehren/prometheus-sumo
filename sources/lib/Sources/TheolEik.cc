@@ -21,9 +21,9 @@
 #include "TheolEik.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   namespace source {  //  namespace source -- BEGIN
-    
+
     int TheolEik::readXML (std::istream & infile,
                            std::vector<TheolEik::Attributes> &items)
     {
@@ -39,27 +39,27 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       int status      = 0;
       bool incomplete = false;
       
-      BOOST_FOREACH( boost::property_tree::ptree::value_type const& v, pt.get_child("dataroot") ) {
-        if( v.first == "row" ) {
-        TheolEik::Attributes node;
+      BOOST_FOREACH( boost::property_tree::ptree::value_type const& v, pt.get_child("FMPDSORESULT") ) {
+        if( v.first == "ROW" ) {
+          TheolEik::Attributes node;
 
-        incomplete = false;
-        node.missingAttributes = false;
+          incomplete = false;
+          node.missingAttributes = false;
 
-        node.image    = v.second.get<std::string>("bildreferenz");
-        node.location = v.second.get<std::string>("standort");
-        node.title    = v.second.get<std::string>("titel");
-        node.date     = v.second.get<std::string>("datierung");
-        node.category = v.second.get<std::string>("gattung");
-        node.keyword  = v.second.get<std::string>("schlagwort");
-        node.artist   = v.second.get<std::string>("kuenstlerin");
+          node.image    = v.second.get<std::string>("bildreferenz");
+          node.location = v.second.get<std::string>("standort");
+          node.title    = v.second.get<std::string>("titel");
+          node.date     = v.second.get<std::string>("datierung");
+          node.category = v.second.get<std::string>("gattung");
+          node.keyword  = v.second.get<std::string>("schlagwort");
+          node.artist   = v.second.get<std::string>("kuenstlerin");
 
-	    if (incomplete) ++status;
-	    items.push_back(node);
-	  }
+          if (incomplete) ++status;
+          items.push_back(node);
 	}
-	
-	return status;
+      }
+
+      return status;
     }
     
   };  //  namespace source -- END

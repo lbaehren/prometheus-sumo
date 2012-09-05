@@ -30,6 +30,7 @@
 namespace prometheus {  //  namespace prometheus -- BEGIN
   
   /*!
+    \file Institution.h
     \class Institution
     \ingroup prometheus
     \brief An institutation and its details
