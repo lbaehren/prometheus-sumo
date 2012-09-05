@@ -34,15 +34,15 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 		     attributes) and \c 0 otherwise.
     */
     int Beeskow::readXML (std::istream & infile,
-			  std::vector<Beeskow::Attributes> &items)
+                          std::vector<Beeskow::Attributes> &items)
     {
       boost::property_tree::ptree pt;
       
       try {
-	read_xml(infile, pt);
+        read_xml(infile, pt);
       } catch (std::exception &e) {
-	std::cout << "[Beeskow::readXML] ERROR : " << e.what() << std::endl;
-	return -1;
+        std::cout << "[Beeskow::readXML] ERROR : " << e.what() << std::endl;
+        return -1;
       }
       
       return 0;
