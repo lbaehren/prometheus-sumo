@@ -105,38 +105,6 @@ int read_beeskow_kunstarchiv (std::istream & infile,
   return 0;
 }
 
-//______________________________________________________________________________
-//                                                                 read_theoleik
-
-/*!
-  \brief Read database for Institut für Evangelische Theologie
-
-  \param infile -- Input stream connected to the XML dump for the collection.
-  \retval collection -- Array with the items in the colleciton
- */
-int read_theoleik (std::istream & infile,
-                   std::vector<prometheus::source::TheolEik::Attributes> &collection)
-{
-  ptree pt;
-
-  std::cout << "-- Reading XML input file ..." << std::endl;
-  read_xml(infile, pt);
-
-  std::cout << "-- Parsin XML document ..." << std::endl;
-  BOOST_FOREACH( ptree::value_type const& v, pt.get_child("dataroot") ) {
-    if( v.first == "row" ) {
-      prometheus::source::TheolEik::Attributes node;
-      node.location = v.second.get<std::string>("Standort");
-      node.title    = v.second.get<std::string>("Titel");
-      node.date     = v.second.get<std::string>("Datierung");
-      node.category = v.second.get<std::string>("Gattung");
-      collection.push_back(node);
-    }
-  }
-
-  return 0;
-}
-                              
 // === Main function ===========================================================
 
 /*!

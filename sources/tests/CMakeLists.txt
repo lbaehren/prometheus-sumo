@@ -26,12 +26,11 @@ find_file (xml_dump_kassel kassel.xml
 ## ==============================================================================
 
 foreach (test_cpp
-    TestBoxes.cc
-    TestCommon.cc
-    )
-  get_filename_component (varFilename ${test_cpp} NAME_WE)
-  add_executable (${varFilename} ${test_cpp})
-  add_test (${varFilename} ${varFilename})
+  TestBoxes
+  TestCommon
+  )
+  add_executable (${test_cpp} ${test_cpp}.cc)
+  add_test (${test_cpp} ${test_cpp})
 endforeach (test_cpp)
 
 ## ==============================================================================
@@ -69,6 +68,7 @@ if(Boost_FOUND)
   foreach (test_xml_boost
       TestXMLBoost
       TestSourcesKassel
+      TestSourcesTheolEik
       )
     add_executable (${test_xml_boost} ${test_xml_boost}.cc)
     target_link_libraries (${test_xml_boost} libprometheus ${Boost_LIBRARIES})
@@ -80,6 +80,10 @@ if(Boost_FOUND)
   if (xml_dump_kassel)
     add_test (TestSourcesKassel TestSourcesKassel ${xml_dump_kassel})
   endif (xml_dump_kassel)
+  
+  if (xml_dump_theoleik)
+    add_test (TestSourcesTheolEik TestSourcesTheolEik ${xml_dump_theoleik})
+  endif (xml_dump_theoleik)
   
 endif()
 

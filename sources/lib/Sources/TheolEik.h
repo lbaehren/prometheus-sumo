@@ -38,60 +38,77 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     class TheolEik : public SourceDump {
 
     public:
-      
+
+      // === Public data =======================================================
+
       /*!
-	\brief Image attributes
+        \brief Image attributes
 	
-	\code
-	<ROW MODID="0" RECORDID="12640214">
-	  <bildreferenz>1000005.jpg</bildreferenz>
-	  <abbildungsnachweis>Marguerat, D., Das enfant terrible des Christentums, in: Paulus. Ein unbequemer Apostel. Welt und Umwelt der Bibel 20 (Stuttgart 2001) 4</abbildungsnachweis>
-	  <copyright></copyright>
-	  <freigabe>Prometheus</freigabe>
-	  <standort>Vatikan, Vatikanische Museen</standort>
-	  <titel>Gemme: Paulus. Ausschnitt: Paulus</titel>
-	  <herkunft>Rom (I), Grabstätte des Asellus</herkunft>
-	  <datierung>um 313</datierung>
-	  <kuenstlerin></kuenstlerin>
-	  <material></material>
-	  <gattung></gattung>
-	  <schlagwort></schlagwort>
-	  <masse></masse>
-	  <zusatz></zusatz>
-	</ROW>
-	\endcode
+        \code
+        <ROW MODID="0" RECORDID="12640214">
+          <bildreferenz>1000005.jpg</bildreferenz>
+          <abbildungsnachweis>Marguerat, D., Das enfant terrible des Christentums, in: Paulus. Ein unbequemer Apostel. Welt und Umwelt der Bibel 20 (Stuttgart 2001) 4</abbildungsnachweis>
+          <copyright></copyright>
+          <freigabe>Prometheus</freigabe>
+          <standort>Vatikan, Vatikanische Museen</standort>
+          <titel>Gemme: Paulus. Ausschnitt: Paulus</titel>
+          <herkunft>Rom (I), Grabstätte des Asellus</herkunft>
+          <datierung>um 313</datierung>
+          <kuenstlerin></kuenstlerin>
+          <material></material>
+          <gattung></gattung>
+          <schlagwort></schlagwort>
+          <masse></masse>
+          <zusatz></zusatz>
+        </ROW>
+        \endcode
       */
       struct Attributes {
-	//! bildreferenz
-	std::string image;
-	//! abbildungsnachweis
-	std::string reference;
-	//! copyright
-	std::string copyright;
-	//! freigabe
-	std::string license;
-	//! standort
-	std::string location;
-	//! titel
-	std::string title;
-	//! herkunft
-	std::string origin;
-	//! datierung
-	std::string date;
-	//! kuenstlerin
-	std::string artist;
-	//! material
-	std::string material;
-	//! gattung
-	std::string category;
-	//! schlagwort
-	std::string keyword;
-	//! masse
-	std::string mass;
-	//! zusatz
-	std::string annex;
+        bool missingAttributes;
+        //! bildreferenz
+        std::string image;
+        //! abbildungsnachweis
+        std::string reference;
+        //! copyright
+        std::string copyright;
+        //! freigabe
+        std::string license;
+        //! standort
+        std::string location;
+        //! titel
+        std::string title;
+        //! herkunft
+        std::string origin;
+        //! datierung
+        std::string date;
+        //! kuenstlerin
+        std::string artist;
+        //! material
+        std::string material;
+        //! gattung
+        std::string category;
+        //! schlagwort
+        std::string keyword;
+        //! masse
+        std::string mass;
+        //! zusatz
+        std::string annex;
       };
+
+      // === Static methods ====================================================
       
+    /*!
+      \param infile  -- Input stream connected to the XML dump for the
+                     collection.
+      \retval items  -- Array with the items listed in the database dump.
+      \return status -- Indicator for status of internal operation: returns
+                     \c -1 in case there was an error reading from the input stream,
+                     \c N for the number of incomplete datasets (i.e. missing
+                     attributes) and \c 0 otherwise.
+    */
+    static int readXML (std::istream & infile,
+                        std::vector<TheolEik::Attributes> &items);
+    
     };
     
   };  //  namespace source -- END

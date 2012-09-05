@@ -19,13 +19,13 @@
  ***************************************************************************/
 
 /*!
-  \file TestSourcesKassel.cc
+  \file TestSourcesTheolEik.cc
   \ingroup prometheus
   \ingroup tests
   \author Lars Baehren
  */
 
-#include <Sources/Kassel.h>
+#include <Sources/TheolEik.h>
 
 using boost::property_tree::ptree;
 
@@ -49,24 +49,24 @@ int main(int argc, char* argv[])
 
       std::cout << "-- Opened input file " << filename << std::endl;
 
-      std::vector<prometheus::source::Kassel::Attributes> items;
+      std::vector<prometheus::source::TheolEik::Attributes> items;
       int nofIncompleteItems = 0;
 
       /* Parse the contents of the document */
       try {
-	nofIncompleteItems = prometheus::source::Kassel::readXML (infile, items);
+	nofIncompleteItems = prometheus::source::TheolEik::readXML (infile, items);
       } catch (std::exception &e) {
 	std::cout << "[ERROR] " << e.what() << "\n";
       }
 
       /* Summary of document contents */
       for (unsigned int n=0; n<items.size(); ++n) {
-        std::cout << "[" << n << "]"
-                  << " : " <<items[n].missingAttributes
-                  << " : " <<items[n].image
-                  << " : " << items[n].title
-                  << "\t(" << items[n].date << ")"
-                  << std::endl;
+	std::cout << "[" << n << "]"
+		  << " : " <<items[n].missingAttributes
+		  << " : " <<items[n].image
+		  << " : " << items[n].title
+		  << "\t(" << items[n].date << ")"
+		  << std::endl;
       }
       std::cout << "-- nof. items      = " << items.size()       << std::endl;
       std::cout << "-- nof. incomplete = " << nofIncompleteItems << std::endl;
