@@ -28,6 +28,7 @@ using namespace tinyxml2;
 /*!
   \file TestXML.cc
   \ingroup prometheus
+  \ingroup tests
   \author Lars Baehren
 */
 

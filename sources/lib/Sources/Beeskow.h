@@ -21,6 +21,8 @@
 #ifndef SOURCES_BEESKOW_H
 #define SOURCES_BEESKOW_H
 
+#include <SourceDump.h>
+
 namespace prometheus {  //  namespace prometheus -- BEGIN
   
   namespace source {
@@ -32,8 +34,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       \brief Dump from Beeskow database.
       \author Lars Baehren
     */
-    
-    class Beeskow {
+    class Beeskow : public SourceDump {
       
     public:
       

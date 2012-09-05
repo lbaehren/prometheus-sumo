@@ -18,13 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef SOURCESDUMP_H
-#define SOURCESDUMP_H
+#ifndef SOURCEDUMP_H
+#define SOURCEDUMP_H
+
+#include <map>
+#include <string>
 
 /*!
   \class SourceDump
   \ingroup prometheus
-  \brief Dump from Kassel database.
+  \brief Base class for source dump
   \author Lars Baehren
 */
 
@@ -32,7 +35,8 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   
   class SourceDump {
 
-    
+    //! List of attributes (and their potential mapping)
+    std::map<std::string,std::string> itsAttributes;
 
   };
   

@@ -21,6 +21,8 @@
 #ifndef SOURCES_KASSEL_H
 #define SOURCES_KASSEL_H
 
+#include <SourceDump.h>
+
 namespace prometheus {  //  namespace prometheus -- BEGIN
   
   namespace source {  //  namespace source -- BEGIN
@@ -32,7 +34,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       \brief Dump from Kassel database.
       \author Lars Baehren
     */
-    class Kassel {
+    class Kassel : public SourceDump {
       
     public:
       

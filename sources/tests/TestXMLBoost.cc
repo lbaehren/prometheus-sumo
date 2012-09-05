@@ -21,6 +21,7 @@
 /*!
   \file TestXMLBoost.cc
   \ingroup prometheus
+  \ingroup tests
   \author Lars Baehren
  */
 
@@ -35,7 +36,6 @@
 #include <boost/property_tree/ptree.hpp>
 
 #include <Sources/Beeskow.h>
-#include <Sources/Kassel.h>
 #include <Sources/TheolEik.h>
 
 using boost::property_tree::ptree;
@@ -115,7 +115,7 @@ int read_beeskow_kunstarchiv (std::istream & infile,
   \retval collection -- Array with the items in the colleciton
  */
 int read_theoleik (std::istream & infile,
-                   std::vector<prometheus::ItemTheolEik> &collection)
+                   std::vector<prometheus::source::TheolEik::Attributes> &collection)
 {
   ptree pt;
 
@@ -125,7 +125,7 @@ int read_theoleik (std::istream & infile,
   std::cout << "-- Parsin XML document ..." << std::endl;
   BOOST_FOREACH( ptree::value_type const& v, pt.get_child("dataroot") ) {
     if( v.first == "row" ) {
-      prometheus::ItemTheolEik node;
+      prometheus::source::TheolEik::Attributes node;
       node.location = v.second.get<std::string>("Standort");
       node.title    = v.second.get<std::string>("Titel");
       node.date     = v.second.get<std::string>("Datierung");

@@ -21,11 +21,7 @@
 #ifndef SOURCES_THEOLEIK_H
 #define SOURCES_THEOLEIK_H
 
-/*!
-  \file TheolEik.h
-  \ingroup prometheus
-  \author Lars Baehren
-*/
+#include <SourceDump.h>
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
   
@@ -38,7 +34,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       \brief Dump from TheolEik database.
       \author Lars Baehren
     */
-    class TheolEik {
+    class TheolEik : public SourceDump {
 
     public:
       
