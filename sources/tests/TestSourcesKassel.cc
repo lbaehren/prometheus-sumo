@@ -25,7 +25,6 @@
   \author Lars Baehren
  */
 
-#include <exception>
 #include <Sources/Kassel.h>
 
 using boost::property_tree::ptree;
