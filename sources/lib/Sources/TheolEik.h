@@ -28,61 +28,77 @@
 */
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
+  
+  namespace source {  //  namespace source -- BEGIN
+    
+    /*!
+      \class TheolEik
+      \ingroup prometheus
+      \ingroup source
+      \brief Dump from TheolEik database.
+      \author Lars Baehren
+    */
+    class TheolEik {
 
-/*!
-  \brief Item in the collection theoleik.xml
-  
-  \code
-  <ROW MODID="0" RECORDID="12640214">
-    <bildreferenz>1000005.jpg</bildreferenz>
-    <abbildungsnachweis>Marguerat, D., Das enfant terrible des Christentums, in: Paulus. Ein unbequemer Apostel. Welt und Umwelt der Bibel 20 (Stuttgart 2001) 4</abbildungsnachweis>
-    <copyright></copyright>
-    <freigabe>Prometheus</freigabe>
-    <standort>Vatikan, Vatikanische Museen</standort>
-    <titel>Gemme: Paulus. Ausschnitt: Paulus</titel>
-    <herkunft>Rom (I), Grabstätte des Asellus</herkunft>
-    <datierung>um 313</datierung>
-    <kuenstlerin></kuenstlerin>
-    <material></material>
-    <gattung></gattung>
-    <schlagwort></schlagwort>
-    <masse></masse>
-    <zusatz></zusatz>
-  </ROW>
-  \endcode
-*/
-  struct ItemTheolEik {
-    //! bildreferenz
-    std::string image;
-    //! abbildungsnachweis
-    std::string reference;
-    //! copyright
-    std::string copyright;
-    //! freigabe
-    std::string license;
-    //! standort
-    std::string location;
-    //! titel
-    std::string title;
-    //! herkunft
-    std::string origin;
-    //! datierung
-    std::string date;
-    //! kuenstlerin
-    std::string artist;
-    //! material
-    std::string material;
-    //! gattung
-    std::string category;
-    //! schlagwort
-    std::string keyword;
-    //! masse
-    std::string mass;
-    //! zusatz
-    std::string annex;
-  };
-  
-  
+    public:
+      
+      /*!
+	\brief Image attributes
+	
+	\code
+	<ROW MODID="0" RECORDID="12640214">
+	  <bildreferenz>1000005.jpg</bildreferenz>
+	  <abbildungsnachweis>Marguerat, D., Das enfant terrible des Christentums, in: Paulus. Ein unbequemer Apostel. Welt und Umwelt der Bibel 20 (Stuttgart 2001) 4</abbildungsnachweis>
+	  <copyright></copyright>
+	  <freigabe>Prometheus</freigabe>
+	  <standort>Vatikan, Vatikanische Museen</standort>
+	  <titel>Gemme: Paulus. Ausschnitt: Paulus</titel>
+	  <herkunft>Rom (I), Grabstätte des Asellus</herkunft>
+	  <datierung>um 313</datierung>
+	  <kuenstlerin></kuenstlerin>
+	  <material></material>
+	  <gattung></gattung>
+	  <schlagwort></schlagwort>
+	  <masse></masse>
+	  <zusatz></zusatz>
+	</ROW>
+	\endcode
+      */
+      struct Attributes {
+	//! bildreferenz
+	std::string image;
+	//! abbildungsnachweis
+	std::string reference;
+	//! copyright
+	std::string copyright;
+	//! freigabe
+	std::string license;
+	//! standort
+	std::string location;
+	//! titel
+	std::string title;
+	//! herkunft
+	std::string origin;
+	//! datierung
+	std::string date;
+	//! kuenstlerin
+	std::string artist;
+	//! material
+	std::string material;
+	//! gattung
+	std::string category;
+	//! schlagwort
+	std::string keyword;
+	//! masse
+	std::string mass;
+	//! zusatz
+	std::string annex;
+      };
+      
+    };
+    
+  };  //  namespace source -- END
+
 }  //  namespace prometheus -- END
 
 #endif

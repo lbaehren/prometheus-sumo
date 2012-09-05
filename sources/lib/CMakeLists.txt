@@ -1,7 +1,7 @@
 
 message (STATUS "Processing directory source/lib")
 
-file (GLOB prometheus_sources *.cc Models/*.cc)
+file (GLOB prometheus_sources *.cc Models/*.cc Sources/*.cc)
 
 if (prometheus_sources)
 

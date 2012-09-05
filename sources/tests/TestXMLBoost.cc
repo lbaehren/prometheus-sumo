@@ -28,60 +28,43 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <locale>
 
 #include <boost/foreach.hpp>
 #include <boost/property_tree/xml_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
 
+#include <Sources/Beeskow.h>
 #include <Sources/Kassel.h>
 #include <Sources/TheolEik.h>
 
 using boost::property_tree::ptree;
 
-// === Data structures =========================================================
+// === Functions ===============================================================
+
+//______________________________________________________________________________
+//                                                       test_character_encoding
 
 /*!
-  \brief Item in the collection of the Beeskow Kunstarchiv
-  
-    \code{.xml}
-<row>
-  <Höhe>97</Höhe>
-  <Material>Öl auf Leinwand</Material>
-  <KünstlerIn>Hegewald, Michael</KünstlerIn>
-  <Gattung>Malerei</Gattung>
-  <Ob_f41>284</Ob_f41>
-  <Datierung>1989</Datierung>
-  <Einheit>cm</Einheit>
-  <Breite>138</Breite>
-  <Titel>Berlin</Titel>
-  <Standort>Kunstarchiv Beeskow</Standort>
-</row>
-  \endcode
+  \brief Test working with different character encodings
 */
-struct ItemBeeskow {
-  //! Height of the item, "Höhe"
-  std::string height;
-  //! Material used in the item, "Material"
-  std::string material;
-  //! Artist for the item, "KünstlerIn"
-  std::string artist;
-  //! Category for the item, "Gattung"
-  std::string category;
-  //! Object code, "Ob_f41"
-  unsigned int object;
-  //! (Creation) Date for the item, "Datierung"
-  std::string date;
-  //! Units in which the dimensions of the item are given, "Einheit"
-  std::string units;
-  //! Width of the item, "Breite"
-  std::string width;
-  //! Title of the item, "Titel"
-  std::string title;
-  //! Location of the item, "Standort"
-  std::string location;
-};
+int test_character_encoding ()
+{
+  std::cout << "\n[TestXMLBoost::test_character_encoding]\n" << std::endl;
 
-// === Functions ===============================================================
+  {
+    std::string text = "á";
+    std::cout << "-- Text size = " << text.size() << std::endl;
+    std::cout << "-- Text      = " << text        << std::endl;
+
+    text = "KünstlerIn";
+    std::cout << "-- Text size = " << text.size() << std::endl;
+    std::cout << "-- Text      = " << text        << std::endl;
+
+  }
+  
+  return 0;
+}
 
 //______________________________________________________________________________
 //                                                      read_beeskow_kunstarchiv
@@ -93,8 +76,10 @@ struct ItemBeeskow {
   \retval collection -- Array with the items in the colleciton
  */
 int read_beeskow_kunstarchiv (std::istream & infile,
-                              std::vector<ItemBeeskow> &collection)
+                              std::vector<prometheus::source::Beeskow::Attributes> &collection)
 {
+  std::cout << "\n[TestXMLBoost::read_beeskow_kunstarchiv]\n" << std::endl;
+  
   ptree pt;
 
   std::cout << "-- Reading XML input file ..." << std::endl;
@@ -103,7 +88,7 @@ int read_beeskow_kunstarchiv (std::istream & infile,
   std::cout << "-- Parsin XML document ..." << std::endl;
   BOOST_FOREACH( ptree::value_type const& v, pt.get_child("root") ) {
     if( v.first == "row" ) {
-      ItemBeeskow r;
+      prometheus::source::Beeskow::Attributes r;
       // r.artist   = v.second.get<std::string>("KünstlerIn");
       r.location = v.second.get<std::string>("Standort");
       r.title    = v.second.get<std::string>("Titel");
@@ -111,7 +96,7 @@ int read_beeskow_kunstarchiv (std::istream & infile,
       r.category = v.second.get<std::string>("Gattung");
       r.units    = v.second.get<std::string>("Einheit");
       r.object   = v.second.get<unsigned int>("Ob_f41");
-      r.height   = v.second.get<std::string>("Höhe");
+      // r.height   = v.second.get<std::string>("Höhe");
       r.width    = v.second.get<std::string>("Breite");
       collection.push_back(r);
     }
@@ -162,6 +147,16 @@ int main(int argc, char* argv[])
   int status = 0;
   std::string filename;
 
+  /*
+   *  Test with no further external data required
+   */
+  
+  status += test_character_encoding ();
+
+  /*
+   *  Test using external datasets
+   */
+  
   /* Parse command line parameters */
   if ( argc>1 ) {
     /* Get the name of the testdata ... */
@@ -171,7 +166,7 @@ int main(int argc, char* argv[])
     
     if (infile.is_open()) {
 
-      std::vector<ItemBeeskow> collection;
+      std::vector<prometheus::source::Beeskow::Attributes> collection;
 
       /* Parse the contents of the document */
       read_beeskow_kunstarchiv (infile, collection);
