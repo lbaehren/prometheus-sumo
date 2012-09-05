@@ -18,88 +18,36 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef SOURCES_KASSEL_H
-#define SOURCES_KASSEL_H
-
-#include <SourceDump.h>
+#include "Beeskow.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
   
-  namespace source {  //  namespace source -- BEGIN
+  namespace source {
     
     /*!
-      \file Kassel.h
-      \class Kassel
-      \ingroup prometheus
-      \ingroup source
-      \brief Dump from Kassel database.
-      \author Lars Baehren
+      \param infile  -- Input stream connected to the XML dump for the
+                     collection.
+      \retval items  -- Array with the items listed in the database dump.
+      \return status -- Indicator for status of internal operation: returns
+                     \c -1 in case there was an error reading from the input stream,
+		     \c N for the number of incomplete datasets (i.e. missing
+		     attributes) and \c 0 otherwise.
     */
-    class Kassel : public SourceDump {
+    int Beeskow::readXML (std::istream & infile,
+			  std::vector<Beeskow::Attributes> &items)
+    {
+      boost::property_tree::ptree pt;
       
-    public:
-      
-      /*!
-	\brief Image attributes
-	
-	\code
-	<row>
-	  <bild_nr>G8001</bild_nr>
-	  <datierung>1783-1786</datierung>
-	  <gattung>Gartenarchitektur</gattung>
-	  <inventar_nr>GS 6258</inventar_nr>
-	  <kuenstler>Jussow, Heinrich Christoph (Zeichner)</kuenstler>
-	  <objekt>Tempel</objekt>
-	  <objekt_id>11846</objekt_id>
-	  <titel>Entwurf zu einem Gartentempel, Aufriß</titel>
-	</row>
-	\endcode
-      */
-      struct Attributes {
-	bool missingAttributes;
-	//! bild_nr
-	std::string image;
-	//! titel
-	std::string title;
-	//! datierung
-	std::string date;
-	//! gattung
-	std::string category;
-	//! inventar_nr
-	std::string inventary;
-	//! kuenstler
-	std::string artist;
-	//! objekt
-	std::string object;
-	//! objekt_id
-	std::string objectID;
-      };
-      
-      // === Static methods =====================================================
-
-      //! Read data from XML dump of database
-      static int readXML (std::istream & infile,
-			  std::vector<Kassel::Attributes> &items);
-
-    private:
-      
-      //! Initialize internal attributes
-      void init () {
-
-	itsRootNode  = "dataroot";
-	itsImageNode = "row";
-
-	itsAttributes["date"]     = "datierung";
-	itsAttributes["category"] = "gattung";
-	itsAttributes["artist"]   = "kuenstler";
-	itsAttributes["title"]    = "titel";
+      try {
+	read_xml(infile, pt);
+      } catch (std::exception &e) {
+	std::cout << "[Beeskow::readXML] ERROR : " << e.what() << std::endl;
+	return -1;
       }
       
-    };
-    
+      return 0;
+    }
     
   }   //  namespace source -- END
   
 }  //  namespace prometheus -- END
-
-#endif

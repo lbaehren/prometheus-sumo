@@ -21,6 +21,7 @@
 #ifndef SOURCEDUMP_H
 #define SOURCEDUMP_H
 
+#include <exception>
 #include <map>
 #include <string>
 

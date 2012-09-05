@@ -79,7 +79,14 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 	//! Location of the item, "Standort"
 	std::string location;
       };
+
       
+      // === Static methods =====================================================
+
+      //! Read data from XML dump of database
+      static int readXML (std::istream & infile,
+			  std::vector<Beeskow::Attributes> &items);
+
     };
     
   

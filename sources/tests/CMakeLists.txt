@@ -71,7 +71,7 @@ if(Boost_FOUND)
       TestSourcesKassel
       )
     add_executable (${test_xml_boost} ${test_xml_boost}.cc)
-    target_link_libraries (${test_xml_boost} ${Boost_LIBRARIES})
+    target_link_libraries (${test_xml_boost} libprometheus ${Boost_LIBRARIES})
   endforeach (test_xml_boost)
 
   ## Testing

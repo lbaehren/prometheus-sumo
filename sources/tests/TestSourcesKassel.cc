@@ -25,45 +25,11 @@
   \author Lars Baehren
  */
 
+#include <exception>
 #include <Sources/Kassel.h>
 
 using boost::property_tree::ptree;
 
-//______________________________________________________________________________
-//                                                                 read_theoleik
-
-/*!
-  \brief Read database for Institut für Evangelische Theologie
-
-  \param infile -- Input stream connected to the XML dump for the collection.
-  \retval collection -- Array with the items in the colleciton
- */
-int read_dump (std::istream & infile,
-	       std::vector<prometheus::source::Kassel::Attributes> &collection)
-{
-  ptree pt;
-  
-  std::cout << "-- Reading data from input stream ..." << std::endl;
-  read_xml(infile, pt);
-  
-  std::cout << "-- Parsing XML document ..." << std::endl;
-  BOOST_FOREACH( ptree::value_type const& v, pt.get_child("dataroot") ) {
-    if( v.first == "row" ) {
-      prometheus::source::Kassel::Attributes node;
-      node.image    = v.second.get<std::string>("bild_nr");
-      // node.title    = v.second.get<std::string>("titel");
-      // node.artist   = v.second.get<std::string>("kuenstler");
-      node.date     = v.second.get<std::string>("datierung");
-      // node.object   = v.second.get<std::string>("objekt");
-      // node.objectID = v.second.get<std::string>("objekt_id");
-      // node.category = v.second.get<std::string>("gattung");
-      collection.push_back(node);
-    }
-  }
-
-  return 0;
-}
-                              
 // === Main function ===========================================================
 
 /*!
@@ -71,7 +37,6 @@ int read_dump (std::istream & infile,
 */
 int main(int argc, char* argv[])
 {
-  int status = 0;
   std::string filename;
 
   /* Parse command line parameters */
@@ -85,19 +50,27 @@ int main(int argc, char* argv[])
 
       std::cout << "-- Opened input file " << filename << std::endl;
 
-      std::vector<prometheus::source::Kassel::Attributes> collection;
+      std::vector<prometheus::source::Kassel::Attributes> items;
+      int nofIncompleteItems = 0;
 
       /* Parse the contents of the document */
-      read_dump (infile, collection);
+      try {
+	nofIncompleteItems = prometheus::source::Kassel::readXML (infile, items);
+      } catch (std::exception &e) {
+	std::cout << "[ERROR] " << e.what() << "\n";
+      }
 
       /* Summary of document contents */
-      std::cout << "-- nof. collection items = " << collection.size() << std::endl;
-      for (unsigned int n=0; n<collection.size(); ++n) {
-	std::cout << " --> " << collection[n].image
-		  << " : " << collection[n].title
-		  << "\t(" << collection[n].date << ")"
+      for (unsigned int n=0; n<items.size(); ++n) {
+	std::cout << "[" << n << "]"
+		  << " : " <<items[n].missingAttributes
+		  << " : " <<items[n].image
+		  << " : " << items[n].title
+		  << "\t(" << items[n].date << ")"
 		  << std::endl;
       }
+      std::cout << "-- nof. items      = " << items.size()       << std::endl;
+      std::cout << "-- nof. incomplete = " << nofIncompleteItems << std::endl;
 
     } else {
       std::cerr << "--> Failed to open file " << filename << std::endl;
@@ -105,5 +78,5 @@ int main(int argc, char* argv[])
     }
   }
   
-  return status;
+  return 0;
 }
