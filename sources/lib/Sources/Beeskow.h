@@ -28,6 +28,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   namespace source {
     
     /*!
+      \file Beeskow.h
       \class Beeskow
       \ingroup prometheus
       \ingroup source

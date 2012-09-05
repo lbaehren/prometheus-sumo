@@ -24,7 +24,12 @@
 #include <map>
 #include <string>
 
+#include <boost/foreach.hpp>
+#include <boost/property_tree/xml_parser.hpp>
+#include <boost/property_tree/ptree.hpp>
+
 /*!
+  \file SourceDump.h
   \class SourceDump
   \ingroup prometheus
   \brief Base class for source dump
@@ -35,9 +40,39 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   
   class SourceDump {
 
+  protected:
+    
+    std::string itsRootNode;
+    std::string itsImageNode;
     //! List of attributes (and their potential mapping)
     std::map<std::string,std::string> itsAttributes;
+    
+  public:
+    
+    // === Parmater access ======================================================
+    
+    //! Get map with the mappingof attribute names
+    inline std::map<std::string,std::string> attributesMap () const {
+      return itsAttributes;
+    }
 
+    // === Public methods =======================================================
+    
+    /*!
+      \brief Read in data from XML dump
+      \param filename -- Name of the file with the XML dump of the database.
+      \return status  -- Status of the operation; returns \c false in case an
+              error was encountered.
+    */
+    virtual bool readXML (std::string const &filename) = 0;
+    
+    // === Private methods ======================================================
+    
+  private:
+  
+    //! Initialize internal attributes
+    void init ();
+    
   };
   
 }  //  namespace prometheus -- END

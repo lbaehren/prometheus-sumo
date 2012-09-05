@@ -62,14 +62,25 @@ endforeach (varTest)
 ## Parsing via Boost library
 
 if(Boost_FOUND)
+
   ## Header files
   include_directories(${Boost_INCLUDE_DIRS})
-  ## Compiler instructions
-  add_executable(TestXMLBoost TestXMLBoost.cc)
-  ## Linker instructions
-  target_link_libraries (TestXMLBoost ${Boost_LIBRARIES})
+  
+  foreach (test_xml_boost
+      TestXMLBoost
+      TestSourcesKassel
+      )
+    add_executable (${test_xml_boost} ${test_xml_boost}.cc)
+    target_link_libraries (${test_xml_boost} ${Boost_LIBRARIES})
+  endforeach (test_xml_boost)
+
   ## Testing
   add_test (TestXMLBoost TestXMLBoost ${xml_dump_beeskow})
+
+  if (xml_dump_kassel)
+    add_test (TestSourcesKassel TestSourcesKassel ${xml_dump_kassel})
+  endif (xml_dump_kassel)
+  
 endif()
 
 ##__________________________________________________________

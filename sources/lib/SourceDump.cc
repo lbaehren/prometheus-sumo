@@ -21,6 +21,16 @@
 #include "SourceDump.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
+
+  void SourceDump::init ()
+  {
+    itsAttributes.clear();
+
+    itsAttributes["title"]    = "title";
+    itsAttributes["artist"]   = "artist";
+    itsAttributes["date"]     = "date";
+    itsAttributes["location"] = "location";
+  }
   
   
 }  //  namespace prometheus -- END

@@ -28,6 +28,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   namespace source {  //  namespace source -- BEGIN
     
     /*!
+      \file Kassel.h
       \class Kassel
       \ingroup prometheus
       \ingroup source
@@ -38,10 +39,27 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       
     public:
       
-      //! Image attributes
+      /*!
+	\brief Image attributes
+	
+	\code
+	<row>
+	  <bild_nr>G8001</bild_nr>
+	  <datierung>1783-1786</datierung>
+	  <gattung>Gartenarchitektur</gattung>
+	  <inventar_nr>GS 6258</inventar_nr>
+	  <kuenstler>Jussow, Heinrich Christoph (Zeichner)</kuenstler>
+	  <objekt>Tempel</objekt>
+	  <objekt_id>11846</objekt_id>
+	  <titel>Entwurf zu einem Gartentempel, Aufriß</titel>
+	</row>
+	\endcode
+      */
       struct Attributes {
 	//! bild_nr
 	std::string image;
+	//! titel
+	std::string title;
 	//! datierung
 	std::string date;
 	//! gattung
@@ -54,13 +72,25 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 	std::string object;
 	//! objekt_id
 	std::string objectID;
-	//! titel
-	std::string title;
       };
 
+    private:
+      
+      //! Initialize internal attributes
+      void init () {
+
+	itsRootNode  = "dataroot";
+	itsImageNode = "row";
+
+	itsAttributes["date"]     = "datierung";
+	itsAttributes["category"] = "gattung";
+	itsAttributes["artist"]   = "kuenstler";
+	itsAttributes["title"]    = "titel";
+      }
+      
     };
     
-  
+    
   }   //  namespace source -- END
   
 }  //  namespace prometheus -- END

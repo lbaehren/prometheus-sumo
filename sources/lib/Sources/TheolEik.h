@@ -28,6 +28,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   namespace source {  //  namespace source -- BEGIN
     
     /*!
+      \file TheolEik.h
       \class TheolEik
       \ingroup prometheus
       \ingroup source
