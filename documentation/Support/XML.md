@@ -49,7 +49,7 @@ Remember that white space is usually significant in XML documents, so the parser
 
 \subsection xml_programming_boost Boost.PropertyTree
 
-Unfortunately, there is no XML parser in Boost as of the time of this writing. The library therefore contains the fast and tiny [RapidXML](http://rapidxml.sourceforge.net) parser (currently in version 1.13) to provide XML parsing support. RapidXML does not fully support the XML standard; it is not capable of parsing DTDs and therefore cannot do full entity substitution.
+Unfortunately, there is no XML parser in [Boost](http://www.boost.org) as of the time of this writing. The library therefore contains the fast and tiny [RapidXML](http://rapidxml.sourceforge.net) parser (currently in version 1.13) to provide XML parsing support. RapidXML does not fully support the XML standard; it is not capable of parsing DTDs and therefore cannot do full entity substitution.
 
 By default, the parser will preserve most whitespace, but remove element content that consists only of whitespace. Encoded whitespaces (e.g. &#32;) does not count as whitespace in this regard. You can pass the trim_whitespace flag if you want all leading and trailing whitespace trimmed and all continuous whitespace collapsed into a single space.
 
@@ -71,4 +71,5 @@ The XML storage encoding does not round-trip perfectly. A read-write cycle loses
   - [XPath Tutorial](http://www.w3schools.com/xpath/default.asp)
   - [Free C or C++ XML Parser Libraries](http://lars.ruoff.free.fr/xmlcpp)
   - [libxml++ Tutorial](http://developer.gnome.org/libxml++-tutorial/stable) - An XML Parser for C++
-  - [Parsin XML with Boost](http://akrzemi1.wordpress.com/2011/07/13/parsing-xml-with-boost)
+  - [Parsing XML with Boost](http://akrzemi1.wordpress.com/2011/07/13/parsing-xml-with-boost)
+  - [Boost.PropertyTree](http://www.boost.org/doc/libs/1_50_0/doc/html/property_tree.html)
