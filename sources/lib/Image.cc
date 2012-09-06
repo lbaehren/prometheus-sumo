@@ -28,12 +28,34 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   //
   // ===========================================================================
 
+  //____________________________________________________________________________
+  //                                                                       Image
+
+  /*!
+    \param title  -- Title of the image.
+    \param artist -- Artist for the image.
+  */
   Image::Image (std::string const &title,
                 std::string const &artist)
   {
     init();
-    itsTitle  = title;
-    itsArtist = artist;
+    itsAttributes["title"]  = title;
+    itsAttributes["artist"] = artist;
+  }
+  
+  //____________________________________________________________________________
+  //                                                                       Image
+
+  /*!
+    \param attributes -- Attributes attached to/describing the image.
+  */
+  Image::Image (std::map<std::string,std::string> const &attributes)
+  {
+    itsAttributes.clear();
+
+    if (!attributes.empty()) {
+      itsAttributes = attributes;
+    }
   }
 
   // ===========================================================================
@@ -42,14 +64,81 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   //
   // ===========================================================================
 
-  void Image::init ()
+  //____________________________________________________________________________
+  //                                                               attributeKeys
+
+  std::set<std::string> Image::attributeKeys ()
   {
-    itsTitle    = "";
-    itsArtist   = "";
-    itsDate     = "";
-    itsLocation = "";
-    itsCredits  = "";
-    itsPath     = "";
+    std::map<std::string,std::string>::iterator it;
+    std::set<std::string> keys;
+
+    for (it=itsAttributes.begin();it!=itsAttributes.end(); ++it) {
+      keys.insert(it->first);
+    }
+    return keys;
+  }
+
+  //____________________________________________________________________________
+  //                                                                hasAttribute
+
+  /*!
+    \param key     -- Keyword to be searched for amongst the attributes.
+    \return status -- Returns \c true of the provided \c key can be found amongst
+            the attributes; else \c false is returned.
+   */
+  bool Image::hasAttribute (std::string const &key)
+  {
+    std::map<std::string,std::string>::iterator it = itsAttributes.find(key);
+
+    if (it==itsAttributes.end()) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  //____________________________________________________________________________
+  //                                                                   attribute
+
+  /*!
+    \retval value  -- Value of the attribute indicated by \c key.
+    \param key     -- Keyword to be searched for amongst the attributes.
+    \return status -- Returns \c true of the provided \c key can be found amongst
+            the attributes; else \c false is returned.
+  */
+  bool Image::attribute (std::string &value,
+			 std::string const &key)
+  {
+    std::map<std::string,std::string>::iterator it = itsAttributes.find(key);
+
+    if (it==itsAttributes.end()) {
+      value = "";
+      return false;
+    } else {
+      value = it->second;
+      return true;
+    }
+  }
+
+  //____________________________________________________________________________
+  //                                                                setAttribute
+
+  /*!
+    \param key       -- 
+    \param value     -- 
+    \param overwrite -- 
+    \return status   -- 
+  */
+  bool Image::setAttribute (std::string const &key,
+			    std::string const &value,
+			    bool const &overwrite)
+  {
+    if (hasAttribute(key) && overwrite) {
+      return false;
+    } else {
+      itsAttributes[key] = value;
+    }
+    return true;
   }
 
 }  //  namespace prometheus -- END

@@ -21,11 +21,6 @@
 #ifndef IMAGE_H
 #define IMAGE_H
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <map>
-
 #include "Common.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
@@ -37,29 +32,12 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     \brief An image
     \author Lars Baehren
     \date 2012-09-03
+    \test TestImage.cc
   */
   class Image {
 
+    //! Attributes attached to/describing the image
     std::map<std::string,std::string> itsAttributes;
-
-    // === Private data ========================================================
-
-    //! Title of the image
-    std::string itsTitle;
-    //! Artist for the image
-    std::string itsArtist;
-    //! (Creation) Date of the image
-    std::string itsDate;
-    //! Location of the image
-    std::string itsLocation;
-    //! Category for the image
-    std::string itsCategory;
-    //! Credits for the image
-    std::string itsCredits;
-    //! Path name for the image
-    std::string itsPath;
-
-    // === Private methods =====================================================
 
   public:
 
@@ -69,72 +47,29 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     Image (std::string const &title,
            std::string const &artist);
 
+    //! Argumented constructor
+    Image (std::map<std::string,std::string> const &attributes);
+
     // === Parameter access ====================================================
 
-    //! Get the title of the image
-    inline std::string title () const {
-      return itsTitle;
-      }
-    //! Set the title of the image
-    inline void setTitle (std::string const &title) {
-      itsTitle = title;
-      }
+    //! Get the value of an attribute attached to the image
+    bool attribute (std::string &value,
+		    std::string const &key);
 
-    //! Get the artist for the image
-    inline std::string artist () const {
-      return itsArtist;
-      }
-    //! Set the artist for the image
-    inline void setArtist (std::string const &artist) {
-      itsArtist = artist;
-      }
-
-    //! Get the (creation) date of the image
-    inline std::string date () const {
-      return itsDate;
-      }
-    //! Set the (creation) date of the image
-    inline void setDate (std::string const &date) {
-      itsDate = date;
-      }
-
-    //! Get the location of the image
-    inline std::string location () const {
-      return itsLocation;
-      }
-    //! Set the location of the image
-    inline void setLocation (std::string const &location) {
-      itsLocation = location;
-      }
-
-    //! Get the category for the image
-    inline std::string category () const {
-      return itsCategory;
-    }
-    //! Set the category for the image
-    inline void setCategory (std::string const &category) {
-      itsCategory = category;
-    }
-
-    //! Get the credits for the image
-    inline std::string credits () const {
-      return itsCredits;
-      }
-    //! Set the credits for the image
-    inline void setCredits (std::string const &credits) {
-      itsCredits = credits;
-      }
-
-    //! Get the path name for the image
-    inline std::string path () const {
-      return itsPath;
-      }
-    //! Set the path name for the image
-    inline void setPath (std::string const &path) {
-      itsPath = path;
-      }
+    //! Set the value of an attribute attached to the image
+    bool setAttribute (std::string const &key,
+		       std::string const &value,
+		       bool const &overwrite=true);
 
     // === Public methods ======================================================
+
+    //! Get the attributes attached to/describing the image
+    inline std::map<std::string,std::string> attributes () const {
+      return itsAttributes;
+    }
+
+    //! Get the attribute keywords attached to the image
+    std::set<std::string> attributeKeys ();
 
     //! Is the attribute defined for the image?
     bool hasAttribute (std::string const &key);
@@ -144,8 +79,17 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     // === Private methods =====================================================
     
   private:
-    
-    void init ();
+
+    //! Initialize internal parameters
+    void init ()
+    {
+      itsAttributes["title"]    = "";
+      itsAttributes["artist"]   = "";
+      itsAttributes["location"] = "";
+      itsAttributes["credits"]  = "";
+      itsAttributes["location"] = "";
+      itsAttributes["category"] = "";
+    }
 
   };
   

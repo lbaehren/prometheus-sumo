@@ -169,7 +169,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 	  //   }
 
 	  prometheus::Image image (title,artist);
-	  image.setDate(date);
+	  image.setAttribute("date",date);
 	    
 	    if (incomplete) ++status;
 	    images.push_back(image);

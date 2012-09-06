@@ -34,8 +34,10 @@ find_file (xml_dump_robertinum robertin.xml
 foreach (test_cpp
   TestBoxes
   TestCommon
+  TestImage
   )
   add_executable (${test_cpp} ${test_cpp}.cc)
+  target_link_libraries (${test_cpp} libprometheus)
   add_test (${test_cpp} ${test_cpp})
 endforeach (test_cpp)
 
