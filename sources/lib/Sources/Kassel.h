@@ -56,32 +56,32 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 	\endcode
       */
       struct Attributes {
-	bool missingAttributes;
-	//! bild_nr
-	std::string image;
-	//! titel
-	std::string title;
-	//! datierung
-	std::string date;
-	//! gattung
-	std::string category;
-	//! inventar_nr
-	std::string inventary;
-	//! kuenstler
-	std::string artist;
-	//! objekt
-	std::string object;
-	//! objekt_id
-	std::string objectID;
+        bool missingAttributes;
+        //! bild_nr
+        std::string image;
+        //! titel
+        std::string title;
+        //! datierung
+        std::string date;
+        //! gattung
+        std::string category;
+        //! inventar_nr
+        std::string inventary;
+        //! kuenstler
+        std::string artist;
+        //! objekt
+        std::string object;
+        //! objekt_id
+        std::string objectID;
       };
       
-      // === Construction =======================================================
+      // === Construction ======================================================
       
       //! Argumented constructor
       Kassel (std::string const &rootNode="dataroot",
-	      std::string const &imageNode="row");
+              std::string const &imageNode="row");
 
-      // === Public methods =====================================================
+      // === Public methods ====================================================
 
       //! Read data from XML dump of database
       int readXML (std::istream & infile,
@@ -92,18 +92,17 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
                    std::vector<Image> &images);
 
     private:
-      
+
       //! Initialize internal attributes
       void init () {
-	itsAttributes["title"]    = "titel";
-	itsAttributes["artist"]   = "kuenstler";
-	itsAttributes["date"]     = "datierung";
-	itsAttributes["category"] = "gattung";
+        itsAttributes["title"]    = "titel";
+        itsAttributes["artist"]   = "kuenstler";
+        itsAttributes["date"]     = "datierung";
+        itsAttributes["category"] = "gattung";
       }
-      
+
     };
-    
-    
+
   }   //  namespace source -- END
   
 }  //  namespace prometheus -- END

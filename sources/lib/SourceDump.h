@@ -57,9 +57,9 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 
     //! Argumented constructor
     SourceDump (std::string const &rootNode="root",
-		std::string const &imageNode="row");
+                std::string const &imageNode="row");
     
-    // === Parmater access ======================================================
+    // === Parameter access ====================================================
     
     //! Get the name of the root node in the XML file
     inline std::string rootNode () const {
@@ -76,17 +76,24 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       return itsAttributes;
     }
 
-    // === Public methods =======================================================
+    //! Get the attribute keywords attached to the image
+    std::set<std::string> attributeKeys ();
     
-    /*!
-      \brief Read in data from XML dump
-      \param filename -- Name of the file with the XML dump of the database.
-      \return status  -- Status of the operation; returns \c false in case an
-              error was encountered.
-    */
-    /* virtual bool readXML (std::string const &filename) = 0; */
-    
-    // === Private methods ======================================================
+    // === Public methods ======================================================
+
+    //! Read data from XML dump of database
+    int readXML (std::istream & infile,
+                 std::vector<Image> &images);
+
+    //! Provide a summary of the object's internal parameters and status
+    inline void summary () {
+      summary (std::cout);
+    }
+
+    //! Provide a summary of the object's internal parameters and status
+    void summary (std::ostream &os);
+
+    // === Private methods =====================================================
     
   private:
   

@@ -35,9 +35,13 @@ foreach (test_cpp
   TestBoxes
   TestCommon
   TestImage
+  TestSourceDump
   )
+  ## Compiler instructions
   add_executable (${test_cpp} ${test_cpp}.cc)
+  ## Linker instructions
   target_link_libraries (${test_cpp} libprometheus)
+  ## Testing
   add_test (${test_cpp} ${test_cpp})
 endforeach (test_cpp)
 

@@ -58,10 +58,10 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       boost::property_tree::ptree pt;
       
       try {
-	read_xml(infile, pt);
+        read_xml(infile, pt);
       } catch (std::exception &e) {
-	std::cout << "[Kassel::readXML] ERROR : " << e.what() << std::endl;
-	return -1;
+        std::cout << "[Kassel::readXML] ERROR : " << e.what() << std::endl;
+        return -1;
       }
       
       int status      = 0;
@@ -116,15 +116,15 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     //                                                                    readXML
 
     int Kassel::readXML (std::istream & infile,
-			 std::vector<Image> &images)
+                         std::vector<Image> &images)
     {
       boost::property_tree::ptree pt;
       
       try {
-	read_xml(infile, pt);
+        read_xml(infile, pt);
       } catch (std::exception &e) {
-	std::cout << "[Kassel::readXML] ERROR : " << e.what() << std::endl;
-	return -1;
+        std::cout << "[Kassel::readXML] ERROR : " << e.what() << std::endl;
+        return -1;
       }
       
       int status      = 0;

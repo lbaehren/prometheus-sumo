@@ -51,16 +51,20 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   */
   Image::Image (std::map<std::string,std::string> const &attributes)
   {
-    itsAttributes.clear();
-
-    if (!attributes.empty()) {
-      itsAttributes = attributes;
+    init();
+    
+    std::map<std::string,std::string> buffer = attributes;
+    std::map<std::string,std::string>::iterator it;
+    
+    for (it=buffer.begin(); it!=buffer.end(); ++it) {
+      itsAttributes[it->first] = it->second;
     }
+
   }
 
   // ===========================================================================
   //
-  //  Private methods
+  //  Public methods
   //
   // ===========================================================================
 
@@ -107,7 +111,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
             the attributes; else \c false is returned.
   */
   bool Image::attribute (std::string &value,
-			 std::string const &key)
+                         std::string const &key)
   {
     std::map<std::string,std::string>::iterator it = itsAttributes.find(key);
 
@@ -124,14 +128,17 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   //                                                                setAttribute
 
   /*!
-    \param key       -- 
-    \param value     -- 
-    \param overwrite -- 
-    \return status   -- 
+    \param key       -- Keyword for the attribute.
+    \param value     -- Value of the attribute.
+    \param overwrite -- Overwrite existing entry if it exists?
+    \return status   -- Feedback on whether or not a new value for the attribute
+                     has been set; if the attribute has been set already and
+                     \c overwrite=false, then the provided \c value is not going
+                     to be stored.
   */
   bool Image::setAttribute (std::string const &key,
-			    std::string const &value,
-			    bool const &overwrite)
+                            std::string const &value,
+                            bool const &overwrite)
   {
     if (hasAttribute(key) && overwrite) {
       return false;
@@ -140,6 +147,24 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     }
     return true;
   }
+
+  //____________________________________________________________________________
+  //                                                                     summary
+
+  /*!
+    \param os -- Output stream to which the summary will be written.
+  */
+  void Image::summary (std::ostream &os)
+  {
+    os << "[Image] Summary of internal parameters" << std::endl;
+    os << "-- Attribute keywords = " << attributeKeys() << std::endl;
+    
+    std::map<std::string,std::string>::iterator it;
+    for (it=itsAttributes.begin(); it!=itsAttributes.end(); ++it) {
+      std::cout << "  --> " << it->first << "\t= " << it->second<< std::endl;
+    }
+  }
+
 
 }  //  namespace prometheus -- END
 

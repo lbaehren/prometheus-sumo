@@ -42,6 +42,11 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   public:
 
     // === Construction ========================================================
+    
+    //! Default constructor
+    Image () {
+      init();
+    }
 
     //! Argumented constructor
     Image (std::string const &title,
@@ -58,8 +63,8 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 
     //! Set the value of an attribute attached to the image
     bool setAttribute (std::string const &key,
-		       std::string const &value,
-		       bool const &overwrite=true);
+                       std::string const &value,
+                       bool const &overwrite=true);
 
     // === Public methods ======================================================
 
@@ -74,8 +79,14 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     //! Is the attribute defined for the image?
     bool hasAttribute (std::string const &key);
 
-    // === Static methods ======================================================
-    
+    //! Provide a summary of the object's internal parameters and status
+    inline void summary () {
+      summary (std::cout);
+    }
+
+    //! Provide a summary of the object's internal parameters and status
+    void summary (std::ostream &os);
+
     // === Private methods =====================================================
     
   private:
@@ -83,12 +94,14 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     //! Initialize internal parameters
     void init ()
     {
+      itsAttributes.clear();
       itsAttributes["title"]    = "";
       itsAttributes["artist"]   = "";
       itsAttributes["location"] = "";
       itsAttributes["credits"]  = "";
       itsAttributes["location"] = "";
-      itsAttributes["category"] = "";
+      itsAttributes["category"] = "";      
+      itsAttributes["object"]   = "";
     }
 
   };
