@@ -23,7 +23,26 @@
 namespace prometheus {  //  namespace prometheus -- BEGIN
   
   namespace source {
-    
+
+    // ==========================================================================
+    //
+    //  Construction
+    //
+    // ==========================================================================
+
+    Beeskow::Beeskow (std::string const &rootNode,
+                      std::string const &imageNode)
+      : SourceDump (rootNode,imageNode)
+    {
+      init ();
+    }
+
+    // ==========================================================================
+    //
+    //  Public methods
+    //
+    // ==========================================================================
+
     /*!
       \param infile  -- Input stream connected to the XML dump for the
                      collection.
@@ -69,6 +88,20 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       }
 
       return status;
+    }
+    
+    // ==========================================================================
+    //
+    //  Private methods
+    //
+    // ==========================================================================
+
+    void Beeskow::init ()
+    {
+      itsAttributes["location"] = "Standort";
+      itsAttributes["title"]    = "Titel";
+      itsAttributes["date"]     = "Datierung";
+      itsAttributes["category"] = "Gattung";
     }
     
   }   //  namespace source -- END

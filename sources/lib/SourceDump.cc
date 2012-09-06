@@ -54,6 +54,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     itsAttributes["artist"]   = "artist";
     itsAttributes["date"]     = "date";
     itsAttributes["location"] = "location";
+    itsAttributes["credits"]  = "credits";
   }
   
   

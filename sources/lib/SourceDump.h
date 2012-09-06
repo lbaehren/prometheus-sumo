@@ -54,8 +54,8 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   public:
 
     //! Argumented constructor
-    SourceDump (std::string const &rootNode,
-		std::string const &imageNode);
+    SourceDump (std::string const &rootNode="root",
+		std::string const &imageNode="row");
     
     // === Parmater access ======================================================
     
@@ -82,7 +82,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       \return status  -- Status of the operation; returns \c false in case an
               error was encountered.
     */
-    virtual bool readXML (std::string const &filename) = 0;
+    /* virtual bool readXML (std::string const &filename) = 0; */
     
     // === Private methods ======================================================
     

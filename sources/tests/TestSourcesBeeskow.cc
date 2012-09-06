@@ -49,12 +49,13 @@ int main(int argc, char* argv[])
 
       std::cout << "-- Opened input file " << filename << std::endl;
 
+      prometheus::source::Beeskow dump;
       std::vector<prometheus::source::Beeskow::Attributes> items;
       int nofIncompleteItems = 0;
 
       /* Parse the contents of the document */
       try {
-	nofIncompleteItems = prometheus::source::Beeskow::readXML (infile, items);
+	nofIncompleteItems = dump.readXML (infile, items);
       } catch (std::exception &e) {
 	std::cout << "[ERROR] " << e.what() << "\n";
       }

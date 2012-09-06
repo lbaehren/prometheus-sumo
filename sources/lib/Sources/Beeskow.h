@@ -23,6 +23,8 @@
 
 #include <SourceDump.h>
 
+using prometheus::SourceDump;
+
 namespace prometheus {  //  namespace prometheus -- BEGIN
 
   namespace source {
@@ -38,7 +40,9 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     class Beeskow : public SourceDump {
       
     public:
-      
+
+      // === Public data ========================================================
+
       /*!
         \brief Image attributes
 
@@ -83,11 +87,21 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
         std::string location;
       };
 
-      // === Static methods =====================================================
+      // === Construction =======================================================
+      
+      //! Argumented constructor
+      Beeskow (std::string const &rootNode="root",
+	       std::string const &imageNode="row");
+
+      // === Public methods =====================================================
 
       //! Read data from XML dump of database
-      static int readXML (std::istream & infile,
-                          std::vector<Beeskow::Attributes> &items);
+      int readXML (std::istream & infile,
+                   std::vector<Beeskow::Attributes> &items);
+
+      // === Private methods ====================================================
+
+      void init ();
 
     };
 
