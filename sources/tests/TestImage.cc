@@ -62,6 +62,8 @@ int main ()
   
   try {
     prometheus::Image img (title,artist);
+    //
+    std::cout << "-- Attribute keys = " << img.attributeKeys() << std::endl;
   } catch (std::exception &e) {
     std::cout << "[TestImage] ERROR : " << e.what() << std::endl;
     ++status;
