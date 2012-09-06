@@ -140,7 +140,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
                             std::string const &value,
                             bool const &overwrite)
   {
-    if (hasAttribute(key) && overwrite) {
+    if (hasAttribute(key) && !overwrite) {
       return false;
     } else {
       itsAttributes[key] = value;

@@ -76,6 +76,7 @@ int test_attributes (std::map<std::string,std::string> &attributes)
   
   /* Set additional attributes */
   try {
+    img.setAttribute("object","Recording");
     img.setAttribute("city","Cologne");
     img.setAttribute("country","Germany");
     img.summary();
