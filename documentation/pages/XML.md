@@ -18,7 +18,7 @@ ML documents consist entirely of characters from the Unicode repertoire. Except 
 
 XML includes facilities for identifying the encoding of the Unicode characters that make up the document, and for expressing characters that, for one reason or another, cannot be used directly.
 
-\test TestXML.cc TestXMLTree.c TestXMLBoost.cc
+\test TestXML.cc TestXMLTree.c TestSourcesKassel.cc TestSourcesRobertinum.cc
 
 \section xml_programming Programming interfaces
 
@@ -35,11 +35,15 @@ Stream-oriented facilities require less memory and, for certain tasks which are 
 
 XSLT is designed for declarative description of XML document transformations, and has been widely implemented both in server-side packages and Web browsers. XQuery overlaps XSLT in its functionality, but is designed more for searching of large XML databases.
 
-\subsection xml_programming_libxml libxml
+\subsection xml_programming_nokogiri Nokogiri (Ruby)
+
+Nokogiri is an HTML, XML, SAX, and Reader parser. Among Nokogiri’s many features is the ability to search documents via XPath or CSS3 selectors.
+
+\subsection xml_programming_libxml libxml (C)
 
 Libxml2 is the XML C parser and toolkit developed for the Gnome project (but usable outside of the Gnome platform), it is free software available under the MIT License. XML itself is a metalanguage to design markup languages, i.e. text language where semantic and structure are added to the content using extra "markup" information enclosed between angle brackets. HTML is the most well-known markup language. Though the library is written in C a variety of language bindings make it available in other environments.
 
-\subsection xml_programming_libxmlpp libxml++
+\subsection xml_programming_libxmlpp libxml++ (C++)
 
 Like the underlying libxml library, libxml++ allows the use of 3 parsers, depending on your needs - the DOM, SAX, and TextReader parsers. The relative advantages and behaviour of these parsers will be explained here.
 
@@ -47,7 +51,7 @@ All of the parsers may parse XML documents directly from disk, a string, or a C+
 
 Remember that white space is usually significant in XML documents, so the parsers might provide unexpected text nodes that contain only spaces and new lines. The parser does not know whether you care about these text nodes, but your application may choose to ignore them.
 
-\subsection xml_programming_boost Boost.PropertyTree
+\subsection xml_programming_boost Boost.PropertyTree (C++)
 
 Unfortunately, there is no XML parser in [Boost](http://www.boost.org) as of the time of this writing. The library therefore contains the fast and tiny [RapidXML](http://rapidxml.sourceforge.net) parser (currently in version 1.13) to provide XML parsing support. RapidXML does not fully support the XML standard; it is not capable of parsing DTDs and therefore cannot do full entity substitution.
 
@@ -73,3 +77,4 @@ The XML storage encoding does not round-trip perfectly. A read-write cycle loses
   - [libxml++ Tutorial](http://developer.gnome.org/libxml++-tutorial/stable) - An XML Parser for C++
   - [Parsing XML with Boost](http://akrzemi1.wordpress.com/2011/07/13/parsing-xml-with-boost)
   - [Boost.PropertyTree](http://www.boost.org/doc/libs/1_50_0/doc/html/property_tree.html)
+  - [Nokogiri](http://nokogiri.org) -- a HTML, XML, SAX, & Reader parser with the ability to search documents via XPath or CSS3 selectors
