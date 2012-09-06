@@ -75,20 +75,22 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 	std::string objectID;
       };
       
-      // === Static methods =====================================================
+      // === Construction =======================================================
+      
+      //! Argumented constructor
+      Kassel (std::string const &rootNode="dataroot",
+	      std::string const &imageNode="row");
+
+      // === Public methods =====================================================
 
       //! Read data from XML dump of database
-      static int readXML (std::istream & infile,
-			  std::vector<Kassel::Attributes> &items);
+      int readXML (std::istream & infile,
+                   std::vector<Kassel::Attributes> &items);
 
     private:
       
       //! Initialize internal attributes
       void init () {
-
-	itsRootNode  = "dataroot";
-	itsImageNode = "row";
-
 	itsAttributes["date"]     = "datierung";
 	itsAttributes["category"] = "gattung";
 	itsAttributes["artist"]   = "kuenstler";

@@ -23,7 +23,26 @@
 namespace prometheus {  //  namespace prometheus -- BEGIN
   
   namespace source {  //  namespace source -- BEGIN
-    
+
+    // ==========================================================================
+    //
+    //  Construction
+    //
+    // ==========================================================================
+
+    Kassel::Kassel (std::string const &rootNode,
+                    std::string const &imageNode)
+      : SourceDump (rootNode,imageNode)
+    {
+      init ();
+    }
+
+    // ==========================================================================
+    //
+    //  Public methods
+    //
+    // ==========================================================================
+
     /*!
       \param infile  -- Input stream connected to the XML dump for the
                      collection.
@@ -48,8 +67,8 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       int status      = 0;
       bool incomplete = false;
       
-      BOOST_FOREACH( boost::property_tree::ptree::value_type const& v, pt.get_child("dataroot") ) {
-	if( v.first == "row" ) {
+      BOOST_FOREACH( boost::property_tree::ptree::value_type const& v, pt.get_child(itsRootNode) ) {
+	if( v.first == itsImageNode ) {
 	  Kassel::Attributes node;
 	  
 	  incomplete = false;

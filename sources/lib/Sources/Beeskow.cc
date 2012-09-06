@@ -67,8 +67,8 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       int status      = 0;
       bool incomplete = false;
       
-      BOOST_FOREACH( boost::property_tree::ptree::value_type const& v, pt.get_child("root") ) {
-        if( v.first == "row" ) {
+      BOOST_FOREACH( boost::property_tree::ptree::value_type const& v, pt.get_child(itsRootNode) ) {
+        if( v.first == itsImageNode ) {
           Beeskow::Attributes node;
 
           incomplete = false;

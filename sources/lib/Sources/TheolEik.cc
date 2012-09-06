@@ -24,6 +24,25 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 
   namespace source {  //  namespace source -- BEGIN
 
+    // ==========================================================================
+    //
+    //  Construction
+    //
+    // ==========================================================================
+
+    TheolEik::TheolEik (std::string const &rootNode,
+			std::string const &imageNode)
+      : SourceDump (rootNode,imageNode)
+    {
+      init ();
+    }
+    
+    // ==========================================================================
+    //
+    //  Public methods
+    //
+    // ==========================================================================
+
     int TheolEik::readXML (std::istream & infile,
                            std::vector<TheolEik::Attributes> &items)
     {
@@ -39,8 +58,8 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       int status      = 0;
       bool incomplete = false;
       
-      BOOST_FOREACH( boost::property_tree::ptree::value_type const& v, pt.get_child("FMPDSORESULT") ) {
-        if( v.first == "ROW" ) {
+      BOOST_FOREACH( boost::property_tree::ptree::value_type const& v, pt.get_child(itsRootNode) ) {
+        if( v.first == itsImageNode ) {
           TheolEik::Attributes node;
 
           incomplete = false;
@@ -60,6 +79,19 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       }
 
       return status;
+    }
+
+    // ==========================================================================
+    //
+    //  Private methods
+    //
+    // ==========================================================================
+    
+    void TheolEik::init () {
+      itsAttributes["date"]     = "datierung";
+      itsAttributes["category"] = "gattung";
+      itsAttributes["artist"]   = "kuenstlerin";
+      itsAttributes["title"]    = "titel";
     }
     
   };  //  namespace source -- END

@@ -23,6 +23,8 @@
 
 #include <SourceDump.h>
 
+using prometheus::SourceDump;
+
 namespace prometheus {  //  namespace prometheus -- BEGIN
   
   namespace source {  //  namespace source -- BEGIN
@@ -100,20 +102,31 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
         std::string annex;
       };
 
-      // === Static methods ====================================================
+      // === Construction =======================================================
       
-    /*!
-      \param infile  -- Input stream connected to the XML dump for the
-                     collection.
-      \retval items  -- Array with the items listed in the database dump.
-      \return status -- Indicator for status of internal operation: returns
-                     \c -1 in case there was an error reading from the input stream,
-                     \c N for the number of incomplete datasets (i.e. missing
-                     attributes) and \c 0 otherwise.
-    */
-    static int readXML (std::istream & infile,
-                        std::vector<TheolEik::Attributes> &items);
+      //! Argumented constructor
+      TheolEik (std::string const &rootNode="FMPDSORESULT",
+	        std::string const &imageNode="ROW");
+
+      // === Public methods =====================================================
+
+      /*!
+        \param infile  -- Input stream connected to the XML dump for the
+                       collection.
+        \retval items  -- Array with the items listed in the database dump.
+        \return status -- Indicator for status of internal operation: returns
+                       \c -1 in case there was an error reading from the input stream,
+                       \c N for the number of incomplete datasets (i.e. missing
+                       attributes) and \c 0 otherwise.
+      */
+      int readXML (std::istream & infile,
+                   std::vector<TheolEik::Attributes> &items);
     
+    private:
+      
+      //! Initialize internal attributes
+      void init ();
+      
     };
     
   };  //  namespace source -- END
