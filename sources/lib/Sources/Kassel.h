@@ -87,6 +87,10 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       int readXML (std::istream & infile,
                    std::vector<Kassel::Attributes> &items);
 
+      //! Read data from XML dump of database
+      int readXML (std::istream & infile,
+                   std::vector<Image> &images);
+
     private:
       
       //! Initialize internal attributes

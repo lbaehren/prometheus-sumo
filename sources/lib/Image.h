@@ -24,6 +24,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 
 #include "Common.h"
 
@@ -39,6 +40,8 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   */
   class Image {
 
+    std::map<std::string,std::string> itsAttributes;
+
     // === Private data ========================================================
 
     //! Title of the image
@@ -49,6 +52,8 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     std::string itsDate;
     //! Location of the image
     std::string itsLocation;
+    //! Category for the image
+    std::string itsCategory;
     //! Credits for the image
     std::string itsCredits;
     //! Path name for the image
@@ -102,6 +107,15 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       itsLocation = location;
       }
 
+    //! Get the category for the image
+    inline std::string category () const {
+      return itsCategory;
+    }
+    //! Set the category for the image
+    inline void setCategory (std::string const &category) {
+      itsCategory = category;
+    }
+
     //! Get the credits for the image
     inline std::string credits () const {
       return itsCredits;
@@ -122,6 +136,8 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 
     // === Public methods ======================================================
 
+    //! Is the attribute defined for the image?
+    bool hasAttribute (std::string const &key);
 
     // === Static methods ======================================================
     
