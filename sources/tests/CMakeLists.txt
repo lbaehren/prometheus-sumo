@@ -19,6 +19,12 @@ find_file (xml_dump_kassel kassel.xml
   PATH_SUFFIXES data data/tests
   )
 
+find_file (xml_dump_robertinum robertin.xml
+  HINTS ${PANDORA_DATA_DIR}
+  PATHS ${PROJECT_SOURCE_DIR}
+  PATH_SUFFIXES data data/tests
+  )
+
 ## ==============================================================================
 ##
 ##  Generic C++ test programs
@@ -68,6 +74,7 @@ if(Boost_FOUND)
   foreach (test_xml_boost
       TestSourcesBeeskow
       TestSourcesKassel
+      TestSourcesRobertinum
       TestSourcesTheolEik
       )
     add_executable (${test_xml_boost} ${test_xml_boost}.cc)
@@ -81,6 +88,10 @@ if(Boost_FOUND)
   if (xml_dump_kassel)
     add_test (TestSourcesKassel TestSourcesKassel ${xml_dump_kassel})
   endif (xml_dump_kassel)
+  
+  if (xml_dump_robertinum)
+    add_test (TestSourcesRobertinum TestSourcesRobertinum ${xml_dump_robertinum})
+  endif (xml_dump_robertinum)
   
   if (xml_dump_theoleik)
     add_test (TestSourcesTheolEik TestSourcesTheolEik ${xml_dump_theoleik})

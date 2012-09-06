@@ -62,30 +62,38 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       */
       struct Attributes {
 	bool missingAttributes;
-
-	std::string path;           // "grossbildnummer";
-	std::string artist;         // "werkstatt";
-	std::string title;          // "titel";
-	std::string date;           // "datierung";
+	//! Path to the image, "grossbildnummer"
+	std::string path;
+	//! Artist for the image, "werkstatt";
+	std::string artist;
+	//! Title of the image, "titel"
+	std::string title;
+	//! (Creation) Date of the image, "datierung"
+	std::string date;
 	std::string genre;          // "form";
-	std::string location;       // "standort";
+	//! Location of the image, "standort"
+	std::string location;
 	std::string discoveryplace; // "fundort";
-	std::string credits;        // "bildrecht";
+	//! Image credits,  "bildrecht"
+	std::string credits;
       };
       
-      // === Static methods =====================================================
+      // === Construction =======================================================
+      
+      //! Argumented constructor
+      Robertinum (std::string const &rootNode="database",
+		  std::string const &imageNode="row");
+
+      // === Public methods =====================================================
 
       //! Read data from XML dump of database
-      static int readXML (std::istream & infile,
-			  std::vector<Robertinum::Attributes> &items);
+      int readXML (std::istream & infile,
+                   std::vector<Robertinum::Attributes> &items);
 
     private:
       
       //! Initialize internal attributes
       void init () {
-	itsRootNode  = "database";
-	itsImageNode = "row";
-	
 	itsAttributes["path"]           = "grossbildnummer";
 	itsAttributes["artist"]         = "werkstatt";
 	itsAttributes["title"]          = "titel";

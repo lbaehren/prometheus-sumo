@@ -91,10 +91,10 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       
       //! Initialize internal attributes
       void init () {
+	itsAttributes["title"]    = "titel";
+	itsAttributes["artist"]   = "kuenstler";
 	itsAttributes["date"]     = "datierung";
 	itsAttributes["category"] = "gattung";
-	itsAttributes["artist"]   = "kuenstler";
-	itsAttributes["title"]    = "titel";
       }
       
     };
