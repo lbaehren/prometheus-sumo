@@ -123,6 +123,17 @@ int test_attributes (std::map<std::string,std::string> &attributes)
     ++status;
   }
   
+  std::cout << "[4] Testing Image::hasAttribute(string)" << std::endl;
+  try {
+    std::cout << "-- Object  = " << img.hasAttribute("object")  << std::endl;
+    std::cout << "-- City    = " << img.hasAttribute("city")    << std::endl;
+    std::cout << "-- Country = " << img.hasAttribute("country") << std::endl;
+    std::cout << "-- Gallery = " << img.hasAttribute("gallery") << std::endl;
+  } catch (std::exception &e) {
+    std::cout << "[TestImage] ERROR : " << e.what() << std::endl;
+    ++status;
+  }
+  
   return status;
 }
 
