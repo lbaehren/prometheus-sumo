@@ -74,12 +74,50 @@ int test_attributes (std::map<std::string,std::string> &attributes)
   prometheus::Image img (attributes);
   img.summary();  
   
-  /* Set additional attributes */
+  std::cout << "[1] Testing Image::setAttribute(string,string)" << std::endl;
   try {
     img.setAttribute("object","Recording");
     img.setAttribute("city","Cologne");
     img.setAttribute("country","Germany");
     img.summary();
+  } catch (std::exception &e) {
+    std::cout << "[TestImage] ERROR : " << e.what() << std::endl;
+    ++status;
+  }
+  
+  std::cout << "[2] Testing Image::attribute(string,string)" << std::endl;
+  try {
+    std::string object  = img.attribute("object");
+    std::string city    = img.attribute("city");
+    std::string country = img.attribute("country");
+    std::string gallery = img.attribute("gallery","UNDEFINED");
+    //
+    std::cout << "-- Object  = " << object  << std::endl;
+    std::cout << "-- City    = " << city    << std::endl;
+    std::cout << "-- Country = " << country << std::endl;
+    std::cout << "-- Gallery = " << gallery << std::endl;
+  } catch (std::exception &e) {
+    std::cout << "[TestImage] ERROR : " << e.what() << std::endl;
+    ++status;
+  }
+  
+  std::cout << "[3] Testing Image::attribute(string,string)" << std::endl;
+  try {
+    bool stat;
+    std::string object;
+    std::string city;
+    std::string country;
+    std::string gallery;
+    //
+    stat = img.attribute(object,"object");
+    stat = img.attribute(city,"city");
+    stat = img.attribute(country,"country");
+    stat = img.attribute(gallery,"gallery");
+    //
+    std::cout << "-- Object  = " << object  << std::endl;
+    std::cout << "-- City    = " << city    << std::endl;
+    std::cout << "-- Country = " << country << std::endl;
+    std::cout << "-- Gallery = " << gallery << std::endl;
   } catch (std::exception &e) {
     std::cout << "[TestImage] ERROR : " << e.what() << std::endl;
     ++status;
