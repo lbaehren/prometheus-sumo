@@ -105,10 +105,35 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   //                                                                   attribute
 
   /*!
+    \param key            -- Keyword to be searched for amongst the attributes.
+    \param unsetIndicator -- String to be returned in case the key could not be
+                          found amongst the image attributes; since returning an
+                          empty string as value could be considered a valid
+                          answer, a custom reply can be defined to indicate the
+                          case where the attribute is not set/available.
+    \retval value  -- Value of the attribute indicated by \c key.
+  */
+  std::string Image::attribute (std::string const &key,
+                                std::string const &unsetIndicator)
+  {
+    std::string val;
+    
+    if (attribute(val,key)) {
+      return val;
+    } else {
+      val = unsetIndicator;
+      return val;
+    }
+  }
+    
+  //____________________________________________________________________________
+  //                                                                   attribute
+
+  /*!
     \retval value  -- Value of the attribute indicated by \c key.
     \param key     -- Keyword to be searched for amongst the attributes.
     \return status -- Returns \c true of the provided \c key can be found amongst
-            the attributes; else \c false is returned.
+                   the attributes; else \c false is returned.
   */
   bool Image::attribute (std::string &value,
                          std::string const &key)

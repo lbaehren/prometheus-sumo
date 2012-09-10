@@ -58,8 +58,12 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     // === Parameter access ====================================================
 
     //! Get the value of an attribute attached to the image
+    std::string attribute (std::string const &key,
+                           std::string const &unsetIndicator="");
+
+    //! Get the value of an attribute attached to the image
     bool attribute (std::string &value,
-		    std::string const &key);
+                    std::string const &key);
 
     //! Set the value of an attribute attached to the image
     bool setAttribute (std::string const &key,
