@@ -42,7 +42,7 @@
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
   
-  class SourceDump {
+  class SourceDump : public Image {
 
   protected:
     
@@ -50,14 +50,17 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     std::string itsRootNode;
     //! Name of the node containing attributes of an image
     std::string itsImageNode;
-    //! List of attributes (and their potential mapping)
-    std::map<std::string,std::string> itsAttributes;
     
   public:
 
     //! Argumented constructor
     SourceDump (std::string const &rootNode="root",
                 std::string const &imageNode="row");
+    
+    //! Argumented constructor
+    SourceDump (std::string const &rootNode,
+                std::string const &imageNode,
+		std::map<std::string,std::string> const &attributes);
     
     // === Parameter access ====================================================
     
@@ -93,13 +96,6 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     //! Provide a summary of the object's internal parameters and status
     void summary (std::ostream &os);
 
-    // === Private methods =====================================================
-    
-  private:
-  
-    //! Initialize internal attributes
-    void init ();
-    
   };
   
 }  //  namespace prometheus -- END

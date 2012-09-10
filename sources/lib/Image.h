@@ -36,6 +36,8 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   */
   class Image {
 
+  protected:
+
     //! Attributes attached to/describing the image
     std::map<std::string,std::string> itsAttributes;
 

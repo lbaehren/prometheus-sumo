@@ -34,11 +34,18 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   */
   SourceDump::SourceDump (std::string const &rootNode,
                           std::string const &imageNode)
-    : itsRootNode (rootNode),
+    : Image(),
+      itsRootNode (rootNode),
       itsImageNode (imageNode)
-  {
-    init();
-  }
+  {;}
+
+  SourceDump::SourceDump (std::string const &rootNode,
+			  std::string const &imageNode,
+			  std::map<std::string,std::string> const &attributes)
+    : Image(attributes),
+      itsRootNode (rootNode),
+      itsImageNode (imageNode)
+  {;}
 
   // ===========================================================================
   //
@@ -123,22 +130,4 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     os << "-- Attribute keywords = " << attributeKeys() << std::endl;
   }
 
-  // ===========================================================================
-  //
-  //  Private methods
-  //
-  // ===========================================================================
-
-  void SourceDump::init ()
-  {
-    itsAttributes.clear();
-
-    itsAttributes["title"]    = "title";
-    itsAttributes["artist"]   = "artist";
-    itsAttributes["date"]     = "date";
-    itsAttributes["location"] = "location";
-    itsAttributes["credits"]  = "credits";
-  }
-  
-  
 }  //  namespace prometheus -- END
