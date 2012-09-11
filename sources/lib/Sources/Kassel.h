@@ -24,9 +24,9 @@
 #include <SourceDump.h>
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   namespace source {  //  namespace source -- BEGIN
-    
+
     /*!
       \file Kassel.h
       \class Kassel
@@ -36,12 +36,12 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       \author Lars Baehren
     */
     class Kassel : public SourceDump {
-      
+
     public:
-      
+
       /*!
 	\brief Image attributes
-	
+
 	\code
 	<row>
 	  <bild_nr>G8001</bild_nr>
@@ -74,9 +74,9 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
         //! objekt_id
         std::string objectID;
       };
-      
+
       // === Construction ======================================================
-      
+
       //! Argumented constructor
       Kassel (std::string const &rootNode="dataroot",
               std::string const &imageNode="row");
@@ -100,7 +100,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     };
 
   }   //  namespace source -- END
-  
+
 }  //  namespace prometheus -- END
 
 #endif

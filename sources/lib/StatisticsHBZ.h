@@ -25,7 +25,7 @@
 #include "StatisticsReader.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   /*!
     \file StatisticsHBZ.h
     \class StatisticsHBZ
@@ -141,9 +141,9 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 	       std::string const &signum="",
 	       std::string const &user="",
 	       std::string const &customerID="");
-    
+
   };
-  
+
 }  //  namespace prometheus -- END
 
 #endif

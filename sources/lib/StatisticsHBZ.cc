@@ -21,7 +21,7 @@
 #include "StatisticsHBZ.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   // ============================================================================
   //
   //  Construction
@@ -36,10 +36,10 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     \param customerID -- Customer ID.
   */
   StatisticsHBZ::StatisticsHBZ (std::string const &time,
-				std::string const &consortium,
-				std::string const &signum,
-				std::string const &user,
-				std::string const &customerID)
+                                std::string const &consortium,
+                                std::string const &signum,
+                                std::string const &user,
+                                std::string const &customerID)
   {
     init (time,
 	  consortium,
@@ -53,20 +53,20 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   //  Private methods
   //
   // ============================================================================
-  
+
   void StatisticsHBZ::summary (std::ostream &os)
   {
     os << "-- Time period        = " << itsTime       << std::endl;
     os << "-- Consortium member  = " << itsConsortium << std::endl;
     os << "-- Institution signum = " << itsSignum     << std::endl;
   }
-  
+
   // ============================================================================
   //
   //  Private methods
   //
   // ============================================================================
-  
+
   /*!
     \param time       -- Time period for which the statistics have been generated.
     \param consortium -- Name of the consortium member.
@@ -75,10 +75,10 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     \param customerID -- Customer ID.
   */
   void StatisticsHBZ::init (std::string const &time,
-			    std::string const &consortium,
-			    std::string const &signum,
-			    std::string const &user,
-			    std::string const &customerID)
+                            std::string const &consortium,
+                            std::string const &signum,
+                            std::string const &user,
+                            std::string const &customerID)
   {
     itsTime       = time;
     itsConsortium = consortium;
@@ -86,5 +86,5 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     itsUser       = user;
     itsCustomerID = customerID;
   }
-  
+
 }  //  namespace prometheus -- END

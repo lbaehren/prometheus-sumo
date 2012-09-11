@@ -24,7 +24,7 @@
 #include "Common.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   /*!
     \file Image.h
     \class Image
@@ -44,7 +44,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   public:
 
     // === Construction ========================================================
-    
+
     //! Default constructor
     Image () {
       init();
@@ -94,7 +94,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     void summary (std::ostream &os);
 
     // === Private methods =====================================================
-    
+
   private:
 
     //! Initialize internal parameters
@@ -106,13 +106,12 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       itsAttributes["location"] = "";
       itsAttributes["credits"]  = "";
       itsAttributes["location"] = "";
-      itsAttributes["category"] = "";      
+      itsAttributes["category"] = "";
       itsAttributes["object"]   = "";
     }
 
   };
-  
+
 }  //  namespace prometheus -- END
 
 #endif
-

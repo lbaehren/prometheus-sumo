@@ -28,7 +28,7 @@
 #include "Common.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   /*!
     \file Institution.h
     \class Institution
@@ -111,7 +111,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     inline void setPostalcode (std::string const &postalcode) {
       itsPostalcode = postalcode;
     }
-    
+
     //! Get the city of the institution
     inline std::string city () {
       return itsCity;
@@ -142,7 +142,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     // === Static methods =======================================================
 
   };
-  
+
 }  //  namespace prometheus -- END
 
 #endif

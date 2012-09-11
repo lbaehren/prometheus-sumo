@@ -21,7 +21,7 @@
 #include "Institution.h"
 
 namespace prometheus {
-  
+
   // ============================================================================
   //
   //  Construction
@@ -41,7 +41,7 @@ namespace prometheus {
     itsTitle       = title;
     itsDescription = description;
   }
-  
+
   // ============================================================================
   //
   //  Public methods
@@ -51,8 +51,8 @@ namespace prometheus {
   /*!
     \param addressline -- The address line for the institution.
     \param postalcode  -- The postal code for the institution.
-    \param city        -- 
-    \param country     -- 
+    \param city        -- City the institution is located in.
+    \param country     -- Country the institution is located in.
   */
   void Institution::setAddress (std::string const &addressline,
 				std::string const &postalcode,
@@ -64,5 +64,5 @@ namespace prometheus {
     itsCity        = city;
     itsCountry     = country;
   }
-    
+
 }

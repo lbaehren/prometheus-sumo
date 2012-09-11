@@ -39,7 +39,7 @@
 
 /*!
   \brief Write elements of an array/vector/set to an output stream
-  
+
   \param os    -- Stream to which the output is written.
   \param start -- Iterator pointing to the first element.
   \param end   -- Iterator pointing to the position after the last element.
@@ -50,15 +50,15 @@ std::ostream& show (std::ostream& os,
                     T end)
 {
   T it;
-  
+
   os << "[";
-  
+
   for (it=start; it!=end; ++it) {
     os << " " << *it;
   }
-  
+
   os << " ]";
-  
+
   return os;
 }
 
@@ -67,7 +67,7 @@ std::ostream& show (std::ostream& os,
 
 /*!
   \brief Overloading of output operator to display std::vector<T>
-  
+
   \param os  -- Output stream to which the result will be written to
   \param vec -- The vector to be displayed
 */
@@ -83,7 +83,7 @@ std::ostream& operator<< (std::ostream &os,
 
 /*!
   \brief Overloading of output operator to display std::set<T>
-  
+
   \param os  -- Output stream to which the result will be written to
   \param vec -- The set to be displayed
 */
@@ -99,7 +99,7 @@ std::ostream& operator<< (std::ostream &os,
 
 /*!
   \brief Overloading of output operator to display std::map<T>
-  
+
   \param os -- Output stream to which the result will be written to
   \param m  -- The map to be displayed.
 */
@@ -108,15 +108,15 @@ std::ostream& operator<< (std::ostream &os,
 /* 			    const std::map<K,V> &m) */
 /* { */
 /*   typename std::map<K,V>::iterator it; */
-  
+
 /*   os << "["; */
-  
+
 /*   for (it=m.begin(); it!=m.end(); ++it) { */
 /*     os << " (" << it->first << "," << it->second << ")"; */
 /*   } */
-  
+
 /*   os << " ]"; */
-  
+
 /*   return os; */
 /* } */
 

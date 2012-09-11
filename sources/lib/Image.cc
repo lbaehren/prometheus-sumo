@@ -42,7 +42,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     itsAttributes["title"]  = title;
     itsAttributes["artist"] = artist;
   }
-  
+
   //____________________________________________________________________________
   //                                                                       Image
 
@@ -52,10 +52,10 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   Image::Image (std::map<std::string,std::string> const &attributes)
   {
     init();
-    
+
     std::map<std::string,std::string> buffer = attributes;
     std::map<std::string,std::string>::iterator it;
-    
+
     for (it=buffer.begin(); it!=buffer.end(); ++it) {
       itsAttributes[it->first] = it->second;
     }
@@ -117,7 +117,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
                                 std::string const &unsetIndicator)
   {
     std::string val;
-    
+
     if (attribute(val,key)) {
       return val;
     } else {
@@ -125,7 +125,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       return val;
     }
   }
-    
+
   //____________________________________________________________________________
   //                                                                   attribute
 
@@ -183,7 +183,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   {
     os << "[Image] Summary of internal parameters" << std::endl;
     os << "-- Attribute keywords = " << attributeKeys() << std::endl;
-    
+
     std::map<std::string,std::string>::iterator it;
     for (it=itsAttributes.begin(); it!=itsAttributes.end(); ++it) {
       std::cout << "  --> " << it->first << "\t= " << it->second<< std::endl;
@@ -192,4 +192,3 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 
 
 }  //  namespace prometheus -- END
-
