@@ -21,10 +21,10 @@
   *bold*
   +typewriter+
   \endcode
-  \li use tags (common: `NOTE`, `TODO`, `FIXME`, ...; rails specific: EdgeRails, Rails2.0, ...) 
+  \li use tags (common: `NOTE`, `TODO`, `FIXME`, ...; rails specific: EdgeRails, Rails2.0, ...)
   \code
   # NOTE: some note...
-  
+
   # in {EdgeRails} we have...
   \endcode
   in HTML text:

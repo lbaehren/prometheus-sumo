@@ -30,7 +30,7 @@
   $ ruby setup.rb setup
   $ ruby setup.rb install
   \endverbatim
-  
+
   These simple steps install ferret in the default location of Ruby libraries.
   You can also install files into your favorite directory by supplying setup.rb
   some options. Try;
@@ -106,7 +106,7 @@ index. You must create a FieldInfos object describing the index:
 
   The values that you set FieldInfos to have will be used by default by all
   fields. If you want to change the properties for specific fields, you need to
-  add a FieldInfo to field_infos. 
+  add a FieldInfo to field_infos.
 
   \verbatim
   field_infos.add_field(:title, :store => :yes, :index => :yes, :boost => 10.0)
@@ -222,9 +222,9 @@ ActsAsFerret::define_index( 'some_other_index',
   \endverbatim
 
   Now you can use \c ModelClass.find_by_contents(query) to find instances of your model
-  whose indexed fields match a given query. All query terms are required by default, 
-  but explicit OR queries are possible. This differs from the ferret default, but 
-  imho is the more often needed/expected behaviour (more query terms result in 
+  whose indexed fields match a given query. All query terms are required by default,
+  but explicit OR queries are possible. This differs from the ferret default, but
+  imho is the more often needed/expected behaviour (more query terms result in
   less results).
 
   Please see \c ActsAsFerret::ActMethods\#acts_as_ferret for more information.
@@ -237,7 +237,7 @@ ActsAsFerret::define_index( 'some_other_index',
   \verbatim
   find_id_by_contents
   \endverbatim
- 
+
   So, if we call:
 
   \verbatim
@@ -264,7 +264,7 @@ ActsAsFerret::define_index( 'some_other_index',
     {:model => “Member”, :id => “21”, :score => “0.93211”},
     {:model => “Member”, :id => “27”, :score => “0.32212”}
   ]
-  \endverbatim 
+  \endverbatim
   We get an array of the first 10 results (I’m only showing 3 above) and we get
   the ids and search scores for each of em.
 
@@ -297,7 +297,7 @@ ActsAsFerret::define_index( 'some_other_index',
 
   Change User to your model class here. You can also use sorting here.
 
-  The trick is that \c will_paginate is friendly to model class’s methods like 
+  The trick is that \c will_paginate is friendly to model class’s methods like
   \c find_all_by_xxx; acts_as_ferret’s find_by_contents’s name is a bit wrong
   for it, so we make an alias, and later this method becomes our model’s method,
   when we put acts_as_ferret statement in the model class definition.
@@ -351,28 +351,28 @@ ActsAsFerret::define_index( 'some_other_index',
   \li Analyzer (\c lib/engine/ferret/analyzer.rb)
   \verbatim
   class Engine::Ferret
-  
+
     class Analyzer < Ferret::Analysis::Analyzer
-  
+
       include Ferret::Analysis
-  
+
       def self.normalize!(str)
         str.replace_diacritics!
         str.gsub!(/'/, '’')
       end
-  
+
       def token_stream(field, str)
         self.class.normalize!(str)
-  
+
         ts = StandardTokenizer.new(str)
         ts = LowerCaseFilter.new(ts)
         ts = HyphenFilter.new(ts)
       end
-  
+
     end
-  
+
   end
-  \endverbatim  
+  \endverbatim
 
   \section ferret_references References
 

@@ -81,7 +81,7 @@ You can use any editor you want to write your Capfiles; they are just simple tex
 
 Note: As capistrano is helpful, it will search up your file tree until it finds a capfile, this is intended to insure if you are anywhere within your application, and you try and run cap, it will find the correct ``capfile``; this has been known to catch people out though; your home directory is also searched.
 
-\section capistrano_references References 
+\section capistrano_references References
 
 \li [Capistrano Wiki](http://capify.stikipad.com/wiki)
 \li [Capistrano in Ruby on Rails](http://wiki.rubyonrails.org/rails/pages/Capistrano) (rubyonrails.org)

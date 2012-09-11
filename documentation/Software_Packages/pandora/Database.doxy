@@ -133,7 +133,7 @@
   \endverbatim
 
   we get:
-  
+
   \htmlonly <center> \endhtmlonly
   \latexonly {\small \endlatexonly
   | Field                          | Type         | Null | Key | Default | Extra          |

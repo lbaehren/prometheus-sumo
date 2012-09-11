@@ -65,7 +65,7 @@
   example, on a computer running MS-DOS you would write \c file.ext; on a VM/CMS
   system you would write \c fn.ft.fm -- not `fn fm ft`. Similarly,
   whenever you refer to another file system (directory, catalogue, file directory
-  etc.), you should use standard operating system conventions in order to specify	 
+  etc.), you should use standard operating system conventions in order to specify	
   the location of the files you want to access. Thus on an MS-DOS system, for
   example, you might enter `\mydirectory\mysubdirectory\myfile.ext`; whereas
   on a UNI Xsystem you would enter `/mydirectory/mysubdirectory/myfile`.
@@ -105,7 +105,7 @@
 
 Notes:
 
-1 However, you must take care to ensure that any command files you write are ASCII files, i.e. that your text editor or word processor does not insert any internal printing control codes into the text. \kleio interprets tabs as single spaces. supports most of the best-known word processing programs, including: (a) WordPerfect, Nota Bene, XY Write and Euro Script, any of which you may use as long as you do not attempt to set specific printing attributes. (b) Word: this program automatically places binary data at the beginning and end of every file. Methods of suppressing this feature vary depending on the version of Word and particular preset options you are using. You can distinguish an ASCII file by the fact that it does not contain any incomprehensible characters when you output the file to screen using the type command at the DOS prompt. (c) WordStar: careful! -- this program uses its own internal code for individual characters. Save your file as a Non-Document File; you are unlikely to experience any problems with it unless it contains special foreign characters. If it does, you should convert it into a true ASCII file using WS Convert before attempting to import the file into . 
+1 However, you must take care to ensure that any command files you write are ASCII files, i.e. that your text editor or word processor does not insert any internal printing control codes into the text. \kleio interprets tabs as single spaces. supports most of the best-known word processing programs, including: (a) WordPerfect, Nota Bene, XY Write and Euro Script, any of which you may use as long as you do not attempt to set specific printing attributes. (b) Word: this program automatically places binary data at the beginning and end of every file. Methods of suppressing this feature vary depending on the version of Word and particular preset options you are using. You can distinguish an ASCII file by the fact that it does not contain any incomprehensible characters when you output the file to screen using the type command at the DOS prompt. (c) WordStar: careful! -- this program uses its own internal code for individual characters. Save your file as a Non-Document File; you are unlikely to experience any problems with it unless it contains special foreign characters. If it does, you should convert it into a true ASCII file using WS Convert before attempting to import the file into .
 
   \section kleio_references References
 

@@ -98,7 +98,7 @@ syntax from the command line. At the moment the following options are available
     GIT_REPOSITORIES_RW   "Check out Github repositories for r/w access?" [ NO  ]
     WITH_PANDORA_DOCS     "Enable documentation of pandora source code?"  [ NO  ]
 
-Besides these options probably the most commonly used command line parameter 
+Besides these options probably the most commonly used command line parameter
 passed to CMake in the configuration is the customization of the installation
 prefix:
 
@@ -144,11 +144,11 @@ make Documentation
 \subsection sumo_functionality_external Installation of external packages
 
 As the prometheus digital image archive software depends on a number of external
-\ref software_packages - libraries and tools - a path is required to resolve 
+\ref software_packages - libraries and tools - a path is required to resolve
 the resulting dependencies; some of these can be taken care of by the system's
 package manager (e.g. \c apt-get on [Debian](http://www.debian.org) and
 [Ubuntu](http://www.ubuntu.com) or \c yum on [Fedora](http://www.fedoraproject.org))
--- however depending on the platform the proper list of packages needs to be 
+-- however depending on the platform the proper list of packages needs to be
 provided. In order to simplify this process \ref prometheus-sumo provides build
 targets to handle the resolution of external dependencies.
 

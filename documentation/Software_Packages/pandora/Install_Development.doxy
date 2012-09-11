@@ -18,8 +18,8 @@
   \section pandora_configure_scripts Configuration scripts
 
   Though the later \a setup script will take care of most of the required
-  configuration tasks -- most important of all the initial migration of the 
-  database -- 
+  configuration tasks -- most important of all the initial migration of the
+  database --
 
   \verbatim
   pandora
@@ -46,7 +46,7 @@
       socket:   <%= database_socket %>
       username: <%= database_user %>
       password: <%= database_pass %>
-    
+
     development: &development
       database: <%= database_name %>_development
       <<: *common
@@ -59,7 +59,7 @@
     :dumps: /var/local/prometheus/app/pandora/data
     :paths: /var/local/prometheus/app/pandora/shared/paths_%s.marshal
     :change_pids: /var/local/prometheus/app/pandora/data/change_pids
-    
+
     :kinds:
       - Institutional database
       - Research database

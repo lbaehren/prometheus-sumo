@@ -133,7 +133,7 @@ Additional software packages:
   - Git
   - Adobe Download Manager
 
-\section vm_references References 
+\section vm_references References
 
   - [VirtualBox](http://www.virtualbox.org)
   - [7-Zip](http://www.7-zip.org) is a file archiver with a high compression ratio.

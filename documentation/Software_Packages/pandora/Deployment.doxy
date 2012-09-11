@@ -4,7 +4,7 @@
   \tableofcontents
 
   Deploying a new production version of \ref pandora (The prometheus digital image
-  archive software) requires the completion of a number of steps, some of them 
+  archive software) requires the completion of a number of steps, some of them
   locally through a working copy of the source code, others on the server hosting
   the live versions of the archive software. The steps include
 
@@ -37,7 +37,7 @@
   procedure to tag and release a new version of the software.
 
   \a Note: There is a [helper script](https://gist.github.com/146886) to run
-  specs before each commit and restart staging server afterwards. 
+  specs before each commit and restart staging server afterwards.
 
   \section pandora_release_version Increment version number
 
@@ -45,9 +45,9 @@
   \li \c README
   \verbatim
   = pandora - The prometheus digital image archive software
-  
+
   == VERSION
-  
+
   This documentation refers to pandora version 0.6.8
   \endverbatim
   \li \c lib/pandora/version.rb
@@ -65,12 +65,12 @@ module Pandora
 
   Review changes since last deploy, in order to provide the commit for the
   new release version with a proper commit message.
-  
+
   \li Get the version number of the previous release/deploy - this can be done
   either via
       - the [About pandora](http://prometheus.uni-koeln.de/pandora/about) page or
       - the [Redmine issue tracker](http://prometheus-srv.uni-koeln.de/redmine/projects/pandora/repository/show/tags).
-  
+
   \li Review the log commit messages for the changes since the last release:
   \verbatim
   $ svn log -r <previous release>:HEAD
@@ -97,7 +97,7 @@ module Pandora
 
   \li ... using Subversion:
   \verbatim
-  $ svn copy ^/trunk ^/tags/0.6.5 -m "Tagging the pandora 0.6.5 release"  
+  $ svn copy ^/trunk ^/tags/0.6.5 -m "Tagging the pandora 0.6.5 release"
   \endverbatim
   \li ... using Git:
   \verbatim
@@ -246,10 +246,10 @@ module Pandora
     Part of the deployment process is the generation of the documentation; if this
     step fails, the new version will not be activated. One of the possible causes
     might be that the user trying to deploy the new version does not have sufficient
-    accss permissions to the files and directories which need to be touched in the 
+    accss permissions to the files and directories which need to be touched in the
     process - ideally this aspects should be covered by the Rake and Capistrano
     scripts. In order to investigate (and possibly mitigate) this problem, you
-    will have to log onto the server, in order to have a closer look at the 
+    will have to log onto the server, in order to have a closer look at the
     files and directories in question.
     </dd>
   </dl>

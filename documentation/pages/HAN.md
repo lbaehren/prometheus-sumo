@@ -15,7 +15,7 @@ Before a user can access a HAN-PURL and thereby the online sites, it is recommen
   - NT-registration for a particular domain
   - Registration over a LDAP-Interface (Microsoft ADS, Netscape iPlanet)
   - Microsoft Active Directory
-  - NetMan Registration 
+  - NetMan Registration
   - PICA (CBS und LBS)
   - SISIS
 
@@ -36,7 +36,7 @@ Before a user can access a HAN-PURL and thereby the online sites, it is recommen
   - Windows 2000 (Service Pack 2 or higher)
   - Windows NT 4 Server/Terminal server (Service Pack 6a or higher)
 
-\section han_references References 
+\section han_references References
 
   - [www.hh-han.com](http://www.hh-han.com)
   - [HAN Product Information](http://www.hh-software.com/hh2003/index.cfm/ly/0/0/HAN100/0/50,HAN100/0$.cfm)

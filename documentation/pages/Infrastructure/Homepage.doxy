@@ -10,13 +10,13 @@
   \a static pages.
 
   The [sources of our website](https://github.com/prometheus-ev/promhp) are
-  living in a Git repository, from which they can be cloned directly (see 
+  living in a Git repository, from which they can be cloned directly (see
   section \ref homepage_code below) or through a tool called
   [Jekyll Commander](https://github.com/prometheus-ev/JekyllCommander), which
   also generates previews for the changes.
 
   \section homepage_code Getting the source code
-  
+
   The source code for the homepage is hosted on Github; depending on the access
   permission a working copy can be obtained through one of the following
   methods:
@@ -108,7 +108,7 @@
   \li Configuration files for Jekyll - the tool used to build the static HTML
   pages - can be found in \c _config.
 
-  \li The directory \c series contains data - images and descriptions - for the 
+  \li The directory \c series contains data - images and descriptions - for the
   image series featured on the homepage.
   \verbatim
   .
@@ -136,7 +136,7 @@
 
   \li Check out a working copy of the source files, as described in section
   \ref homepage_code above.
-  
+
   \li Make the changes you would like to make, using your favorite text editor.
 
   \li Preview the result of your changes, following the procedure described in
@@ -156,7 +156,7 @@
   it will take a few seconds before the interface is initialized for usage; the
   for this is, that in the background a working copy of the source code is being
   updated, such that changes can be submitted once they have been carried out.
-  
+
   \image html promhp__Jekyll_Commander.png
   \image latex promhp__Jekyll_Commander.png "Start page of the Jekyll Commander" width=.9\textwidth
 
@@ -192,7 +192,7 @@
   \section homepage_build Building the website
 
   \subsection homepage_build_pre Prerequisites
-  
+
   \li \b Pygments aims to be a generic syntax highlighter for general use in all
   kinds of software such as forum systems, wikis or other applications that need
   to prettify source code. You can check if the command-line tool is available
@@ -212,7 +212,7 @@
   \code
   apt-get install python-pygments
   \endcode
-  
+
   \subsection homepage_build_tasks Rake tasks
 
   Building the website from the sources files is controlled through a number of

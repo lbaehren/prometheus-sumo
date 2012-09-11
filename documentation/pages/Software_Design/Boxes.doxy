@@ -4,7 +4,7 @@
   \tableofcontents
 
   \section boxes_considerations Basic considerations
-  
+
   \li Items from the main desk can be dragged into the sidebar -> this generates
   a box.
   \li The contents of of a box can be expanded onto the main desk.
@@ -27,7 +27,7 @@
   \image html Styleguide_Favourites.png
 
   \section boxes_models Models
-  
+
   \image html Association_Box.png
 
   \subsection boxes_models_box Box
@@ -80,7 +80,7 @@ class CreateBoxes < ActiveRecord::Migration
       t.integer    :object_id
       ## Serialized set of parameters
       t.text       :params
-      ## 
+      ##
       t.string     :params_hash
       ## Position of the box within the sequence of boxes
       t.integer    :position
@@ -119,7 +119,7 @@ end
 
   \subsection boxes_implementation_design Design elements
 
-  
+
 
   \subsection boxes_implementation_sources Source files
 

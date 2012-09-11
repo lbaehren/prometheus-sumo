@@ -95,7 +95,7 @@ The basic (directory-) structure set up by Rails will look something like this:
 
   \subsection refman_rails_website_rake Rake tasks
 
-Along with the directory structure, also an initial setup for Rake will be 
+Along with the directory structure, also an initial setup for Rake will be
 configured; a newly created application will support the following tasks:
 
     rake about              # List versions of all Rails frameworks and the environment

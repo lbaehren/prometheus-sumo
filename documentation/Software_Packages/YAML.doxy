@@ -73,7 +73,7 @@
   own line. Block sequences indicate each entry with a dash and space (\a -).
   Mappings use a colon and space (“: ”) to mark each key: value pair. Comments
   begin with an octothorpe (also called a “hash”, “sharp”, “pound”, or “number
-  sign” - “#”). 
+  sign” - “#”).
 
   \li Sequence of Scalars (ball players)
 \code
@@ -134,7 +134,7 @@ Sammy Sosa: {
   YAML uses three dashes (“---”) to separate directives from document content.
   This also serves to signal the start of a document if no directives are present.
   Three dots ( “...”) indicate the end of a document without starting a new one,
-  for use in communication channels. 
+  for use in communication channels.
 
   \li Two Documents in a Stream (each with a leading comment)
 \code
@@ -249,12 +249,12 @@ date: 2002-12-14
 
   \code
   #include "yaml.h"
-  
+
   int main()
   {
      YAML::Emitter out;
      out << "Hello, World!";
-     
+
      std::cout << "Here's the output YAML:\n" << out.c_str(); // prints "Hello, World!"
      return 0;
   }
@@ -359,17 +359,17 @@ date: 2002-12-14
   \code
   #include <fstream>
   #include "yaml-cpp/yaml.h"
-  
+
   int main()
   {
       std::ifstream fin("test.yaml");
       YAML::Parser parser(fin);
-  
+
       YAML::Node doc;
       while(parser.GetNextDocument(doc)) {
          // ...
       }
-  
+
       return 0;
   }
   \endcode
@@ -432,7 +432,7 @@ Alternatively, we can pick off the values one-by-one, if we know the keys:
   std::cout << "Found entry with name '" << name << "' and age '" << age << "'\n";
   \endcode
 
-One thing to be keep in mind: reading a map by key (as immediately above) requires looping through all entries until we find the right key, which is an O(n) operation. So if you're reading the entire map this way, it'll be O(n^2). For small n, this isn't a big deal, but I wouldn't recommend reading maps with a very large number of entries (>100, say) this way. 
+One thing to be keep in mind: reading a map by key (as immediately above) requires looping through all entries until we find the right key, which is an O(n) operation. So if you're reading the entire map this way, it'll be O(n^2). For small n, this isn't a big deal, but I wouldn't recommend reading maps with a very large number of entries (>100, say) this way.
 
   \subsubsection refman_yaml_cpp_parsing_example A complete example
 
@@ -444,23 +444,23 @@ One thing to be keep in mind: reading a map by key (as immediately above) requir
     #include <fstream>
     #include <string>
     #include <vector>
-    
+
     // our data types
     struct Vec3 {
        float x, y, z;
     };
-    
+
     struct Power {
        std::string name;
        int damage;
     };
-    
+
     struct Monster {
        std::string name;
        Vec3 position;
        std::vector <Power> powers;
     };
-    
+
     // now the extraction operators for these types
     void operator >> (const YAML::Node& node, Vec3& v) {
        node[0] >> v.x;
@@ -483,7 +483,7 @@ One thing to be keep in mind: reading a map by key (as immediately above) requir
           monster.powers.push_back(power);
        }
     }
-    
+
     int main()
     {
        std::ifstream fin("monsters.yaml");
@@ -495,7 +495,7 @@ One thing to be keep in mind: reading a map by key (as immediately above) requir
           doc[i] >> monster;
           std::cout << monster.name << "\n";
        }
-    
+
        return 0;
     }
   \endcode
@@ -517,7 +517,7 @@ One thing to be keep in mind: reading a map by key (as immediately above) requir
   of programming languages:
 
   \li [LibYAML](http://pyyaml.org/wiki/LibYAML) - a YAML 1.1 parser and emitter written in C
-  \li [yaml-cpp](http://code.google.com/p/yaml-cpp) - a YAML parser and emitter in C++ matching the YAML 1.2 spec. 
+  \li [yaml-cpp](http://code.google.com/p/yaml-cpp) - a YAML parser and emitter in C++ matching the YAML 1.2 spec.
   \li [Mirror of the official yaml-cpp Google code repository](https://github.com/nebirhos/yaml-cpp)
   \li [YAML component from the BOOST vault serialization library](https://github.com/boost-vault/serialization)
 

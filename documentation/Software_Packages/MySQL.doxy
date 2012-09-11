@@ -90,7 +90,7 @@ If this is a new install, in order to setup the database you might want to run:
   $ cd /opt/local/mysql-test ; perl mysql-test-run.pl
   \endcode
 
-  \section mysql_references References 
+  \section mysql_references References
 
   \li [Examples of the Effect of Collation](http://dev.mysql.com/doc/refman/5.0/en/charset-collation-effect.html) (mysql.com)
   \li [Wikipedia article](http://en.wikipedia.org/wiki/MySQL)

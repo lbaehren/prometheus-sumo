@@ -21,7 +21,7 @@ way around inside the issue tracker:
 
 \image html Redmine__Navigation.png
 
-\li The _Global navigation_ navigation is available from any page within the issue tracker, hence providing the means to e.g. jump back to the starting page. 
+\li The _Global navigation_ navigation is available from any page within the issue tracker, hence providing the means to e.g. jump back to the starting page.
   - <b>Home</b> provides a shortcut to go back to the start page of the Issue Tracker.
   - <b>My page</b> provides a shortcut to jump to a user-customizable page.
   - The \b Projects page provides an overview of all the projects currently tracked within the local Redmine installation.

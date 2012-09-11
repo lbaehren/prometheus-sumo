@@ -40,7 +40,7 @@ Research](http://www.bmbf.de) (bmb+f) with a total amount of 1.8 Mio. €. The p
 organization “New Media in Education” was associated with the
 [German Institute for Aerospace industry](http://www.dlr.de) (DLR).
 
-During the 3 years of the project’s development and implementation, the project team consisted of 9 project managers, and a total of 50 staff members and assistants from 4 universities and 8 institutes. From the very beginning of the project, the established objective was to encourage close interdisciplinary interaction to enable all staff members to gain an understanding of varied subject areas, and to participate in decision making. 
+During the 3 years of the project’s development and implementation, the project team consisted of 9 project managers, and a total of 50 staff members and assistants from 4 universities and 8 institutes. From the very beginning of the project, the established objective was to encourage close interdisciplinary interaction to enable all staff members to gain an understanding of varied subject areas, and to participate in decision making.
 
 The major components of the project work was distributed between the universities and institutes as follows:
 
@@ -66,6 +66,6 @@ As of April 1, 2004, this association became the legal successor of the project 
 
 The registered office of prometheus is located at the Institute of Art History at the University of Cologne.
 
-  \section image_archive_references References 
+  \section image_archive_references References
 
   \li [heise Software-Verzeichnis: Webdienst: prometheus](http://www.heise.de/software/download/prometheus/55071)

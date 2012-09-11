@@ -197,7 +197,7 @@ There is no per-instance support for plugins, but those dropped to : ``/usr/shar
   class Service::Redmine < Service
     string :address, :project, :api_key
     white_list :address, :project
-  
+
     def receive_push
       http.ssl[:verify] = false
       http.url_prefix = data['address']

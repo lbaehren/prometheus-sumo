@@ -16,24 +16,24 @@ Herunterladen einer Präsentation
   Gesamtwerk an, sondern nur in Gestalt der ausgewählten Bilder.
   Was mache ich falsch?
 
-  \b Answer: 
+  \b Answer:
 
   über den Download-Button (mit dem dicken Pfeil), werden alle Elemente einer
   Präsentation als zip-Datei heruntergeladen. Hierbei wird für jede Folie ein
   Ordner angelegt. Diese Elemente können Sie dann frei nach belieben weiter
-  verwenden und in eine Präsentation einbauen. 
+  verwenden und in eine Präsentation einbauen.
 
   Falls Sie Ihre Präsentation aus prometheus mit der dort gestalteten Formatierung
   exportieren möchten, so können Sie das über den pdf-Button rechts daneben tun.
   Auch eine pdf-Datei kann man, ähnlich wie eine PowerPointPräsentation,
   präsentieren, indem Sie in der oberen Menüleiste auf 'Fenster' gehen und den
-  'Vollbildmodus' auswählen. 
+  'Vollbildmodus' auswählen.
 
 Sortierung der Ergebnisliste
 ----------------------------
 
   \b Question:
-  
+
   Kann man tatsächlich die Ergebnisse nicht nach Datierung sortieren?? Es
   wäre sehr praktisch, Werke in chronologischer Reihenfolge aufzulisten.
   Wenn ich diese Funktion übersehen haben sollte, würde ich mich über
@@ -47,7 +47,7 @@ Sortierung der Ergebnisliste
   an die jeweilige Schreibweise der einzelnen Datenbankgeber gebunden. Gerade
   bei älteren Werken gibt es dabei nicht nur strittige oder unklare
   Zuschreibungen, sondern zudem differiert die Schreibweise vor allem bei der
-  Angabe von Zeiträumen immer wieder. 
+  Angabe von Zeiträumen immer wieder.
 
   Generell werden Datensätze in der Trefferliste bei prometheus bereits in
   gewisser Weise nach der Datierung sortiert, allerdings funktioniert dies aus
@@ -64,13 +64,13 @@ Verwendung Bilder auf Webseiten
   Bildungseinrichtigungen. Nun möchte wir für unsre Homepage einige
   Abbildungen von Kunstwerken aus ihrer Datenbank einbinden. Unsere Frage:
   Sind wir, was die Bildrechte angeht, als Ihre Linzensnehmerinnen
-  abgesichert? 
+  abgesichert?
 
   \b Answer:
 
   Der Vertrag, den prometheus mit der VG Bild-Kunst geschlossen hat, bietet den
   Nutzern von prometheus Rechtssicherheit für die Verwendung der in prometheus
-  recherchierbaren Werke im Rahmen von Forschung und Lehre. 
+  recherchierbaren Werke im Rahmen von Forschung und Lehre.
 
   Diese Verwendung bezieht sich jedoch immer nur auf einen abgeschlossenen
   Nutzerkreis innerhalb eines abgeschlossenen Zeitraumes. Somit können Sie die

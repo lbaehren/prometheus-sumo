@@ -17,7 +17,7 @@
 
   \section refman_pandora_checkout Getting the source code
 
-  The source code of _pandora_ is hosted in a central 
+  The source code of _pandora_ is hosted in a central
   [Subversion](http://subversion.apache.org) repository at
 
   \li http://prometheus-srv.uni-koeln.de/svn/pandora
@@ -61,9 +61,9 @@
   \subsection refman_pandora_checkout_git ... using Git
 
   If at a later point in time you want to be able to create new (release) branches
-  and tags then accordingly, you will have to clone from the top-level of the 
+  and tags then accordingly, you will have to clone from the top-level of the
   Subversion repository, telling [Git](http://git-scm.com) import from a standard
-  directory layout: 
+  directory layout:
 
   \verbatim
   git svn clone -s http://prometheus-srv.uni-koeln.de/svn/pandora pandora
@@ -182,7 +182,7 @@
   \endverbatim
 
   Since essentially the specs are groups into Rake tasks, running them is as
-  simple as e.g. 
+  simple as e.g.
 
   \verbatim
   rake spec:models
@@ -293,29 +293,29 @@
 
   \verbatim
     class Source
-    
+
       class Kassel < XMLSource::Document
-    
+
         def self.persist
           %w[bild_nr inventar_nr]
         end
-    
+
         module Record
-    
+
           def path
             "#{self/'bild_nr'}.jpg"
           end
-    
+
           def d_artist
             self/'kuenstler'
           end
-    
+
           def artists_for_vgbk
             ["#{self/'kuenstler'}".sub(/ \(.*/, '').split(', ').reverse.join(' ')]
           end
   \endverbatim
 
-  \section pandora_references References 
+  \section pandora_references References
 
   \li [Frequently asked questions](http://prometheus-bildarchiv.de/en/faq)
   \li [Help pages](http://prometheus.uni-koeln.de/pandora/en/help)

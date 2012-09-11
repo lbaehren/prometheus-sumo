@@ -66,7 +66,7 @@ XML / property tree conversion schema (`read_xml` and `write_xml`):
   - XML comments are stored in nodes named `<xmlcomment>`, unless comment ignoring is enabled via the flags.
   - Text content is stored in one of two ways, depending on the flags. The default way concatenates all text nodes and stores them in a single node called `<xmltext>`. This way, the entire content can be conveniently read, but the relative ordering of text and child elements is lost. The other way stores each text content as a separate node, all called `<xmltext>`.
 
-The XML storage encoding does not round-trip perfectly. A read-write cycle loses trimmed whitespace, low-level formatting information, and the distinction between normal data and CDATA nodes. Comments are only preserved when enabled. A write-read cycle loses trimmed whitespace; that is, if the origin tree has string data that starts or ends with whitespace, that whitespace is lost. 
+The XML storage encoding does not round-trip perfectly. A read-write cycle loses trimmed whitespace, low-level formatting information, and the distinction between normal data and CDATA nodes. Comments are only preserved when enabled. A write-read cycle loses trimmed whitespace; that is, if the origin tree has string data that starts or ends with whitespace, that whitespace is lost.
 
 \section xml_references References
 
