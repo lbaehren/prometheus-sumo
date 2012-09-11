@@ -21,7 +21,7 @@
 #include "Beeskow.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   namespace source {
 
     // ==========================================================================
@@ -56,17 +56,17 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
                           std::vector<Beeskow::Attributes> &items)
     {
       boost::property_tree::ptree pt;
-      
+
       try {
         read_xml(infile, pt);
       } catch (std::exception &e) {
         std::cout << "[Beeskow::readXML] ERROR : " << e.what() << std::endl;
         return -1;
       }
-      
+
       int status      = 0;
       bool incomplete = false;
-      
+
       BOOST_FOREACH( boost::property_tree::ptree::value_type const& v, pt.get_child(itsRootNode) ) {
         if( v.first == itsImageNode ) {
           Beeskow::Attributes node;
@@ -89,7 +89,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 
       return status;
     }
-    
+
     // ==========================================================================
     //
     //  Private methods
@@ -103,7 +103,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       itsAttributes["date"]     = "Datierung";
       itsAttributes["category"] = "Gattung";
     }
-    
+
   }   //  namespace source -- END
-  
+
 }  //  namespace prometheus -- END

@@ -22,7 +22,7 @@
 #include "PresentationBox.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   /*!
     \param id           -- Identifier for the Box.
     \param presentation -- Presentation for which the box will be created.
@@ -31,5 +31,5 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 				    class Presentation const &presentation)
     : Box(id, presentation)
   {}
-  
+
 }  //  namespace prometheus -- END

@@ -21,31 +21,31 @@
 #include "CollectionBox.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   // ============================================================================
   //
   //  Construction
   //
   // ============================================================================
-  
+
   CollectionBox::CollectionBox (unsigned int const &id,
 				class Collection const &collection)
     : Box (id,
   	   collection)
   {
   }
-  
+
   // ============================================================================
   //
   //  Public methods
   //
   // ============================================================================
-  
+
   void CollectionBox::summary (std::ostream &os)
   {
     os << "[CollectionBox] Summary of internal parameters." << std::endl;
     os << "-- Box ID   = " << itsId     << std::endl;
     os << "-- Owner ID = " << itsOwnerId << std::endl;
   }
-  
+
 }  //  namespace prometheus -- END

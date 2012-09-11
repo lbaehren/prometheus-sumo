@@ -45,7 +45,15 @@
   Find files that have trailing whitespace:
   \code
   find . -type f -exec egrep -l " +$" {} \;
-  \endcode   
+  \endcode
+  Remove trailing whitespaces from files:
+  \code
+  for FILE in $FILES
+  {
+    cat $FILE | sed -e "s/ \{1,\}$//" > output.tmp
+    mv output.tmp $FILE
+  }
+  \endcode
 
   \section refman_guidelines_ruby Ruby & Rails
 

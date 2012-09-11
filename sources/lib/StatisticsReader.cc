@@ -21,7 +21,7 @@
 #include "StatisticsReader.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   // ============================================================================
   //
   //  Construction
@@ -38,7 +38,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 		<< std::endl;
     }
   }
-  
+
   // ============================================================================
   //
   //  Public methods
@@ -51,7 +51,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   //  Private methods
   //
   // ============================================================================
-  
+
   bool StatisticsReader::checkFile ()
   {
     /* Open stream for the input data ... */
@@ -69,6 +69,6 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       return false;
     }
   }
-  
+
 }  //  namespace prometheus -- END
 

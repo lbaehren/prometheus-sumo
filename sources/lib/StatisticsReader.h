@@ -37,7 +37,7 @@ typedef boost::tokenizer< boost::escaped_list_separator<char> > Tokenizer;
 
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   /*!
     \file StatisticsReader.h
     \class StatisticsReader
@@ -54,12 +54,12 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     std::string itsFilename;
 
   public:
-    
+
     //! Argumented constructor
     StatisticsReader (std::string const &filename);
-    
+
     // === Parameter access =====================================================
-    
+
     //! Get the name of the input data file
     inline std::string filename () {
       return itsFilename;
@@ -89,7 +89,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     bool checkFile ();
 
   };
-  
+
 }  //  namespace prometheus -- END
 
 #endif

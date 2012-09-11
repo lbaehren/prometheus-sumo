@@ -37,19 +37,19 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     //! Argumented constructor
     CollectionBox (unsigned int const &id,
      		   class Collection const &collection);
-    
+
     // === Public methods =======================================================
-    
+
     //! Provide a summary of the internal status
     inline void summary () {
       summary (std::cout);
     }
-    
+
     //! Provide a summary of the internal status to output stream \c os
     void summary (std::ostream &os);
-    
+
   };  //  class CollectionBox -- END
-  
+
 }  //  namespace prometheus -- END
 
 #endif

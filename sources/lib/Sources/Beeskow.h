@@ -38,7 +38,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       \author Lars Baehren
     */
     class Beeskow : public SourceDump {
-      
+
     public:
 
       // === Public data ========================================================
@@ -88,7 +88,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       };
 
       // === Construction =======================================================
-      
+
       //! Argumented constructor
       Beeskow (std::string const &rootNode="root",
 	       std::string const &imageNode="row");

@@ -21,13 +21,13 @@
 #include "Box.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   // ============================================================================
   //
   //  Construction
   //
   // ============================================================================
-  
+
   /*!
     \param id         -- Identifier for the box.
     \param ownerId     -- Owner/Account ID.
@@ -44,7 +44,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     itsObjectType = objectType;
     itsObjectId   = objectId;
   }
-  
+
   /*!
     \param id         -- Identifier for the box.
     \param collection -- Collection for which the box is created.
@@ -57,13 +57,13 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     itsObjectType = Box::Collection;
     itsObjectId   = collection.id();
   }
-  
+
   // ============================================================================
   //
   //  Public methods
   //
   // ============================================================================
-  
+
   void Box::show (std::ostream &os)
   {
     os << "This is box no. " << itsId << " for owner no. " << itsOwnerId << std::endl;
@@ -81,7 +81,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   //  Public methods
   //
   // ============================================================================
-  
+
   std::set<std::string> Box::types ()
   {
     std::set<std::string> var;
@@ -95,5 +95,5 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 
     return var;
   }
-  
+
 }  //  namespace prometheus -- END

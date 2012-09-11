@@ -24,7 +24,7 @@
 #include "Account.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   /*!
     \class Collection
     \ingroup prometheus
@@ -72,15 +72,15 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     };
 
   private:
-    
+
     //! Initialize internal parameters
     void init (unsigned int const &id,
 	       std::string const &title,
 	       std::string const &description,
 	       unsigned int const &ownerId);
-    
+
   };  //  class Collection -- END
-  
+
 }  //  namespace prometheus -- END
 
 #endif

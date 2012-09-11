@@ -24,9 +24,9 @@
 #include <SourceDump.h>
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   namespace source {  //  namespace source -- BEGIN
-    
+
     /*!
       \file Robertinum.h
       \class Robertinum
@@ -36,9 +36,9 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       \author Lars Baehren
     */
     class Robertinum : public SourceDump {
-      
+
     public:
-      
+
       /*!
 	\brief Image attributes
 	
@@ -77,9 +77,9 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 	//! Image credits,  "bildrecht"
 	std::string credits;
       };
-      
+
       // === Construction =======================================================
-      
+
       //! Argumented constructor
       Robertinum (std::string const &rootNode="database",
 		  std::string const &imageNode="row");
@@ -91,7 +91,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
                    std::vector<Robertinum::Attributes> &items);
 
     private:
-      
+
       //! Initialize internal attributes
       void init () {
 	itsAttributes["path"]           = "grossbildnummer";
@@ -103,12 +103,12 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 	itsAttributes["discoveryplace"] = "fundort";
 	itsAttributes["credits"]        = "bildrecht";
       }
-      
+
     };
-    
-    
+
+
   }   //  namespace source -- END
-  
+
 }  //  namespace prometheus -- END
 
 #endif

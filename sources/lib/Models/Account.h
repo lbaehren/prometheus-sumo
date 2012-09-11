@@ -25,7 +25,7 @@
 #include <string>
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   /*!
     \class Account
     \ingroup prometheus
@@ -46,7 +46,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     std::string itsLastname;
     //! Title
     std::string itsTitle;
-    
+
   public:
 
     //! Argumented constructor
@@ -60,11 +60,11 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       return itsId;
     }
 
-    //! Get the email address for the account    
+    //! Get the email address for the account
     inline std::string email () const {
       return itsEmail;
     }
-    //! Set the email address for the account    
+    //! Set the email address for the account
     inline void setEmail (std::string const &email) {
       itsEmail = email;
     }
@@ -85,16 +85,16 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     }
 
   private:
-    
+
     void init (unsigned int const &id,
 	       std::string const &email,
 	       std::string const &login="",
 	       std::string const &firstname="",
 	       std::string const &lastname="",
 	       std::string const &title="");
-    
+
   };
-  
+
 }  //  namespace prometheus -- END
 
 #endif

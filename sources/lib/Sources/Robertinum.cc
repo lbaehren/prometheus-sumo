@@ -21,7 +21,7 @@
 #include "Robertinum.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   namespace source {  //  namespace source -- BEGIN
 
     // ==========================================================================
@@ -29,14 +29,14 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     //  Construction
     //
     // ==========================================================================
-    
+
     Robertinum::Robertinum (std::string const &rootNode,
 			    std::string const &imageNode)
       : SourceDump (rootNode,imageNode)
     {
       init ();
     }
-    
+
     // ==========================================================================
     //
     //  Public methods
@@ -56,23 +56,23 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 			     std::vector<Robertinum::Attributes> &items)
     {
       boost::property_tree::ptree pt;
-      
+
       try {
 	read_xml(infile, pt);
       } catch (std::exception &e) {
 	std::cout << "[Robertinum::readXML] ERROR : " << e.what() << std::endl;
 	return -1;
       }
-      
+
       int status      = 0;
       bool incomplete = false;
-      
+
       BOOST_FOREACH( boost::property_tree::ptree::value_type const& v, pt.get_child(itsRootNode) ) {
 	if( v.first == itsImageNode ) {
 	  Robertinum::Attributes node;
-	  
+	
 	  incomplete = false;
-	  
+	
 	  node.missingAttributes = false;
 	  node.path           = v.second.get<std::string>("grossbildnummer");
 	  node.artist         = v.second.get<std::string>("werkstatt");
@@ -87,10 +87,10 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 	  items.push_back(node);
 	}
       }
-      
+
       return status;
     }
-    
+
   }   //  namespace source -- END
-  
+
 }  //  namespace prometheus -- END

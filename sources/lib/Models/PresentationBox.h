@@ -24,7 +24,7 @@
 #include "Box.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   /*!
     \class PresentationBox
     \ingroup prometheus
@@ -32,13 +32,13 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   class PresentationBox : public Box {
 
   public:
-    
+
     //! Create a box for a Presentation
     PresentationBox (unsigned int const &id,
 		     class Presentation const &presentation);
-    
+
   };
-  
+
 }  //  namespace prometheus -- END
 
 #endif

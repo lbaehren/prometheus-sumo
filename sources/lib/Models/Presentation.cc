@@ -21,13 +21,13 @@
 #include "Presentation.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   // ============================================================================
   //
   //  Construction
   //
   // ============================================================================
-  
+
   /*!
     \param id      -- Identifier for the presentation
     \param title   -- Title for the presentation
@@ -42,13 +42,13 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 	  "",
 	  ownerId);
   }
-  
+
   // ============================================================================
   //
   //  Private methods
   //
   // ============================================================================
-  
+
   void Presentation::init (unsigned int const &id,
 			 std::string const &title,
 			 std::string const &description,

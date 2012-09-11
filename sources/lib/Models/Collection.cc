@@ -21,13 +21,13 @@
 #include "Collection.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   // ============================================================================
   //
   //  Construction
   //
   // ============================================================================
-  
+
   /*!
     \param id      -- Identifier for the collection
     \param title   -- Title for the collection
@@ -42,13 +42,13 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 	  "",
 	  ownerId);
   }
-  
+
   // ============================================================================
   //
   //  Private methods
   //
   // ============================================================================
-  
+
   void Collection::init (unsigned int const &id,
 			 std::string const &title,
 			 std::string const &description,

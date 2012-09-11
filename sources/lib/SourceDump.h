@@ -41,29 +41,29 @@
 */
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   class SourceDump : public Image {
 
   protected:
-    
+
     //! Name of the root node in the XML file
     std::string itsRootNode;
     //! Name of the node containing attributes of an image
     std::string itsImageNode;
-    
+
   public:
 
     //! Argumented constructor
     SourceDump (std::string const &rootNode="root",
                 std::string const &imageNode="row");
-    
+
     //! Argumented constructor
     SourceDump (std::string const &rootNode,
                 std::string const &imageNode,
 		std::map<std::string,std::string> const &attributes);
-    
+
     // === Parameter access ====================================================
-    
+
     //! Get the name of the root node in the XML file
     inline std::string rootNode () const {
       return itsRootNode;
@@ -99,7 +99,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     void summary (std::ostream &os);
 
   };
-  
+
 }  //  namespace prometheus -- END
 
 #endif

@@ -21,7 +21,7 @@
 #include "StatisticsReaderHBZ.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   // ============================================================================
   //
   //  Construction
@@ -63,23 +63,23 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     //______________________________________________________
     // Process the rows containing the actual data
 
-#ifdef WITH_BOOST    
+#ifdef WITH_BOOST
     while (getline(in,line)) {
       /* Pass the line to the Tokenizer */
       Tokenizer tok(line);
       /* Retrieve the individual tokens */
       data.assign(tok.begin(),tok.end());
-      
+
       if (data.size() < 3) {
 	continue;
       }
-      
+
       itsEntries.push_back(StatisticsHBZ(data[0],data[1],data[2],data[3]));
     }
 #else
     status = false;
 #endif
-    
+
     return status;
   }
 
@@ -107,7 +107,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     os << "-- Input data file  = " << itsFilename                 << std::endl;
     os << "-- nof data columns = " << itsColumns.size()           << std::endl;
   }
-  
+
   // ============================================================================
   //
   //  Private methods
@@ -135,5 +135,5 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     return false;
 #endif
   }
-  
+
 }  //  namespace prometheus -- END

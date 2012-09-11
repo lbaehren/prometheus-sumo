@@ -21,13 +21,13 @@
 #include "SourceDump.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   // ===========================================================================
   //
   //  Construction
   //
   // ===========================================================================
-  
+
   //____________________________________________________________________________
   //                                                                  SourceDump
 
@@ -48,7 +48,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   /*!
     \param rootNode   -- Name of the root node in the XML file.
     \param imageNode  -- Name of the node containing attributes of an image
-    \param attributes -- Attributes attached to/describing the images in the 
+    \param attributes -- Attributes attached to/describing the images in the
            database dump.
   */
   SourceDump::SourceDump (std::string const &rootNode,
@@ -80,7 +80,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       std::cout << "[SourceDump::readXML] ERROR : " << e.what() << std::endl;
       return -1;
     }
-    
+
     /* Local variables */
     int status = 0;
     std::map<std::string,std::string>::iterator it;
@@ -104,7 +104,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
         }
       }
     }
-    
+
     return status;
   }
 

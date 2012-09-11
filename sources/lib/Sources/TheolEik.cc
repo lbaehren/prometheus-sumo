@@ -36,7 +36,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     {
       init ();
     }
-    
+
     // ==========================================================================
     //
     //  Public methods
@@ -47,17 +47,17 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
                            std::vector<TheolEik::Attributes> &items)
     {
       boost::property_tree::ptree pt;
-      
+
       try {
         read_xml(infile, pt);
       } catch (std::exception &e) {
         std::cout << "[TheolEik::readXML] ERROR : " << e.what() << std::endl;
         return -1;
       }
-      
+
       int status      = 0;
       bool incomplete = false;
-      
+
       BOOST_FOREACH( boost::property_tree::ptree::value_type const& v, pt.get_child(itsRootNode) ) {
         if( v.first == itsImageNode ) {
           TheolEik::Attributes node;
@@ -86,14 +86,14 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     //  Private methods
     //
     // ==========================================================================
-    
+
     void TheolEik::init () {
       itsAttributes["date"]     = "datierung";
       itsAttributes["category"] = "gattung";
       itsAttributes["artist"]   = "kuenstlerin";
       itsAttributes["title"]    = "titel";
     }
-    
+
   };  //  namespace source -- END
 
 }  //  namespace prometheus -- END

@@ -29,7 +29,7 @@
 #include "Presentation.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   /*!
     \class Box
     \ingroup prometheus
@@ -57,22 +57,22 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     };
 
     // === Protected attributes =================================================
-    
+
   protected:
-    
+
     //! Identifier for the box
     unsigned int itsId;
-    //! Owner/Account ID 
+    //! Owner/Account ID
     unsigned int itsOwnerId;
     //! Type of the object the box is connected to
     Box::Type itsObjectType;
     //! ID of the object the box is connected to
     unsigned int itsObjectId;
-    
+
   public:
 
     // === Construction =========================================================
-    
+
     //! Argumented constructor
     Box (unsigned int const &id,
 	 unsigned int const &ownerId,
@@ -88,7 +88,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 	 class Presentation const &presentation);
 
     // === Parameter access =====================================================
-    
+
     //! Get the identifier for the box
     inline unsigned int id () {
       return itsId;
@@ -110,7 +110,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     inline void show () {
       summary (std::cout);
     }
-    
+
     //! Show the contents of the Box, writing the output to stream \c os
     void show (std::ostream &os);
 
@@ -118,7 +118,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     inline void summary () {
       summary (std::cout);
     }
-    
+
     //! Provide a summary of the internal status to output stream \c os
     void summary (std::ostream &os);
 
@@ -128,7 +128,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     static std::set<std::string> types ();
 
   };
-  
+
 }  //  namespace prometheus -- END
 
 #endif

@@ -26,9 +26,9 @@
 using prometheus::SourceDump;
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   namespace source {  //  namespace source -- BEGIN
-    
+
     /*!
       \file TheolEik.h
       \class TheolEik
@@ -103,7 +103,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       };
 
       // === Construction =======================================================
-      
+
       //! Argumented constructor
       TheolEik (std::string const &rootNode="FMPDSORESULT",
 	        std::string const &imageNode="ROW");
@@ -121,14 +121,14 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       */
       int readXML (std::istream & infile,
                    std::vector<TheolEik::Attributes> &items);
-    
+
     private:
-      
+
       //! Initialize internal attributes
       void init ();
-      
+
     };
-    
+
   };  //  namespace source -- END
 
 }  //  namespace prometheus -- END

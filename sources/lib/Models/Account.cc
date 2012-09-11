@@ -21,13 +21,13 @@
 #include "Account.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   // ============================================================================
   //
   //  Construction
   //
   // ============================================================================
-  
+
   /*!
     \param id    -- Identifier for the account.
     \param email -- Email address for the account.
@@ -37,13 +37,13 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   {
     init (id, email);
   }
-  
+
   // ============================================================================
   //
   //  Private methods
   //
   // ============================================================================
-  
+
   /*!
     \param id    -- Identifier for the account.
     \param email -- Email address for the account.
@@ -69,5 +69,5 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     itsLastname  = lastname;
     itsTitle     = title;
   }
-  
+
 }  //  namespace prometheus -- END

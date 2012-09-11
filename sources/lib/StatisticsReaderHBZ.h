@@ -25,7 +25,7 @@
 #include "StatisticsHBZ.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
-  
+
   /*!
     \file StatisticsReaderHBZ.h
     \class StatisticsReaderHBZ
@@ -35,17 +35,17 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     \date 2012-07-12
   */
   class StatisticsReaderHBZ : public StatisticsReader {
-    
+
     std::vector<std::string> itsColumns;
     std::vector<StatisticsHBZ> itsEntries;
-    
+
   public:
-    
+
     //! Argumented constructor
     StatisticsReaderHBZ (std::string const &filename);
-    
+
     // === Parameter access =====================================================
-    
+
 
     // === Public methods =======================================================
 
@@ -80,7 +80,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     bool extactColumnHeaders (std::ifstream &in);
 
   };
-  
+
 }  //  namespace prometheus -- END
 
 #endif
