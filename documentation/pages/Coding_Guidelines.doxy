@@ -4,6 +4,7 @@
   \tableofcontents
 
   - [Linux kernel coding style](http://www.kernel.org/doc/Documentation/CodingStyle)
+  - [Ruby Style Guide](http://www.rubygarden.org/Ruby/page/show/RubyStyleGuide)
 
   \section refman_guidelines_general General
 
@@ -60,10 +61,47 @@
 
   \section refman_guidelines_html HTML
 
+  \li Indent nested block-level elements
+  \verbatim
+  <ul>
+    <li>...</li>
+    <li>...</li>
+  </ul>
+  \endverbatim
+  \li Treat block-level elements as blocks if content exceeds the 80 character line length limit
+  \verbatim
+  <p>
+    ...some long text...
+  </p>
+  \endverbatim
+  not
+  \verbatim
+  <p>...some long text...</p>
+  \endverbatim
 
   \section refman_guidelines_javascript Javascript
 
 
   \section refman_guidelines_css CSS
+
+  \li Be as specific as necessary, be as general as possible; e.g., an ID is already as specific as it gets, hence no need to specify the element to which it applies, too
+  \li Prefer \c - over \c _ as separators in class names and IDs
+  \li Color goes with background-color (and vice versa); use inherit in case you don't want to (or can't) specify an explicit value
+  \li Use \c !important only where absolutely necessary
+  \li Put opening curly on same line as selector(s)
+  \verbatim
+  foo.bar, #baz {
+    quix:             quux;
+  }
+  \endverbatim
+  not
+  \verbatim
+  foo.bar, #baz
+  {
+    quix:             quux;
+  }
+  \endverbatim
+  \li Align attribute values at the same column file-wide, but at least at column 21 (which results from \c background-color, which is typically the longest attribute used)
+  \li Wrap multiple selectors on several lines if they exceed 80 characters in length; align/group logically where appropriate
 
 */
