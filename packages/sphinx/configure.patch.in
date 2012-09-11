@@ -1,11 +1,11 @@
 --- configure.orig	2012-06-05 11:56:03.000000000 +0200
 +++ configure	2012-06-05 11:56:53.000000000 +0200
 @@ -2846,6 +2846,6 @@
- 
- 
+
+
  # hack to locate expat/iconv in /usr/local on BSD systems
 -CPPFLAGS="$CPPFLAGS -I/usr/local/include"
 -LIBS="$LIBS -L/usr/local/lib"
 +CPPFLAGS="$CPPFLAGS -I${CONFIGURE_ICONV_INCLUDES}"
 +LIBS="$LIBS -L${CONFIGURE_ICONV_LIBRARY_PATH}"
- 
+

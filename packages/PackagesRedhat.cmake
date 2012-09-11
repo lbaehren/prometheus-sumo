@@ -11,7 +11,7 @@ find_program (YUM_EXECUTABLE yum
 ## Installation of the individual packages
 
 if (YUM_EXECUTABLE)
-  
+
   foreach (varPackage
       ruby
       rubygems
@@ -30,9 +30,9 @@ if (YUM_EXECUTABLE)
       subversion-tools
       libapache2-svn
       ImageMagick
-      ImageMagick-devel 
+      ImageMagick-devel
       )
-    
+
     ## Installation instructions for the package
 
     add_custom_command (
@@ -44,5 +44,5 @@ if (YUM_EXECUTABLE)
       )
 
   endforeach (varPackage)
-  
+
 endif (YUM_EXECUTABLE)

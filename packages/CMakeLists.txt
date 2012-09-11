@@ -40,9 +40,9 @@ if (UNIX)
     if (REDHAT_FOUND)
      set (CMAKE_OS_NAME "RedHat" CACHE STRING "Operating system name" FORCE)
     endif (REDHAT_FOUND)
-    
+
     ## Extra check for Ubuntu ____________________
-    
+
     if (DEBIAN_FOUND)
 
       ## At its core Ubuntu is a Debian system, with
@@ -67,9 +67,9 @@ if (UNIX)
 	endif (UBUNTU_FOUND)
 
       endif (UBUNTU_EXTRA)
-      
+
     endif (DEBIAN_FOUND)
-    
+
   endif (APPLE)
 
 endif (UNIX)
@@ -89,27 +89,27 @@ add_custom_target (InstallPackages
   )
 
 ##__________________________________________________________
-## Add platform-dependent instructions: only add the 
+## Add platform-dependent instructions: only add the
 ## sub-directory matching the previously determined platform
 
 if (APPLE)
-  
+
     include (${CMAKE_CURRENT_SOURCE_DIR}/PackagesOSX.cmake)
-  
+
 else (APPLE)
-  
+
   if (DEBIAN_FOUND OR UBUNTU_FOUND)
     include (${CMAKE_CURRENT_SOURCE_DIR}/PackagesDebian.cmake)
   endif (DEBIAN_FOUND OR UBUNTU_FOUND)
-  
+
   if (FEDORA_FOUND)
     include (${CMAKE_CURRENT_SOURCE_DIR}/PackagesFedora.cmake)
   endif (FEDORA_FOUND)
-  
+
   if (REDHAT_FOUND)
     include (${CMAKE_CURRENT_SOURCE_DIR}/PackagesRedhat.cmake)
   endif (REDHAT_FOUND)
-  
+
 endif (APPLE)
 
 ##__________________________________________________________
@@ -118,7 +118,7 @@ endif (APPLE)
 if (GEM_EXECUTABLE)
 
   include (${CMAKE_CURRENT_SOURCE_DIR}/RubyGems.cmake)
-  
+
 endif (GEM_EXECUTABLE)
 
 ## ==============================================================================

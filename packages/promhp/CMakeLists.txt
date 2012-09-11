@@ -11,7 +11,7 @@ project (promhp)
 ## Minimum required version of CMake to configure the project
 cmake_minimum_required (VERSION 2.8)
 
-## Enforced CMake policy 
+## Enforced CMake policy
 cmake_policy (VERSION 2.8)
 
 ##  Package information
@@ -44,11 +44,11 @@ if (promhp_FROM_REPOS)
     HINTS ${prometheus-sumo_SOURCE_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES data/repositories
     )
-  
+
   if (PROMHP_REPOS_HEAD)
     get_filename_component (promhp_GIT ${PROMHP_REPOS_HEAD} PATH)
   endif (PROMHP_REPOS_HEAD)
-  
+
 endif (promhp_FROM_REPOS)
 
 ## ==============================================================================
@@ -63,21 +63,21 @@ endif (promhp_FROM_REPOS)
 ## ==============================================================================
 
 if (promhp_FORCE_BUILD)
-  
+
   ## Locate source file to build from
-  
+
   find_file (promhp_SOURCE ${promhp_SOURCE_ARCHIVE}
     PATHS ${PROJECT_SOURCE_DIR}
     )
-  
+
   if (NOT promhp_SOURCE)
     set (promhp_SOURCE ${promhp_URL})
   endif (NOT promhp_SOURCE)
-  
+
   ## Build package from source
-  
+
   if (promhp_FROM_REPOS)
-    
+
     ExternalProject_Add (promhp
       PREFIX ${PROJECT_BINARY_DIR}
       DOWNLOAD_DIR download
@@ -88,9 +88,9 @@ if (promhp_FORCE_BUILD)
       BUILD_COMMAND ${RAKE_EXECUTABLE} build
       INSTALL_COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_BINARY_DIR}/source/_site ${CMAKE_INSTALL_PREFIX}/share/promhp
       )
-  
+
   else (promhp_FROM_REPOS)
-    
+
     ExternalProject_Add (promhp
       PREFIX ${PROJECT_BINARY_DIR}
       DOWNLOAD_DIR download
@@ -101,14 +101,14 @@ if (promhp_FORCE_BUILD)
       BUILD_COMMAND rake_build
       INSTALL_COMMAND ${PORT_INSTALL_COMMAND} make install
       )
-    
+
   endif (promhp_FROM_REPOS)
-  
+
 else (promhp_FORCE_BUILD)
-  
+
   add_custom_target (<package>
     WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
     COMMENT "[<package>] Found system-wide installation; skipping rebuild!"
     )
-  
+
 endif (promhp_FORCE_BUILD)

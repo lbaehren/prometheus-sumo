@@ -14,7 +14,7 @@ find_program (PORT_EXECUTABLE port
 if (PORT_EXECUTABLE)
 
   message (STATUS "Checking MacPorts installation ...")
-  
+
   ## List of packages ______________________________________
 
   foreach (varPackage
@@ -37,7 +37,7 @@ if (PORT_EXECUTABLE)
       )
 
     ## Installation instructions for the package ___________
-    
+
     if (PORT_OUTPUT_VARIABLE)
       message ("   [OK] ${varPackage}")
     else (PORT_OUTPUT_VARIABLE)
@@ -50,7 +50,7 @@ if (PORT_EXECUTABLE)
 	COMMENT "Installing MacPorts package ${varPackage} ..."
 	)
     endif (PORT_OUTPUT_VARIABLE)
-    
+
   endforeach (varPackage)
-  
+
 endif (PORT_EXECUTABLE)

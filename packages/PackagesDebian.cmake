@@ -53,7 +53,7 @@ if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
       libmagic-dev
       libmagickwand-dev
       )
-    
+
     ## Inrement package counter
     math (EXPR NOF_PACKAGES "${NOF_PACKAGES}+1")
 
@@ -67,7 +67,7 @@ if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
       OUTPUT_VARIABLE DPKG_OUTPUT_VARIABLE
       ERROR_VARIABLE DPKG_ERROR_VARIABLE
       )
-    
+
     if (DPKG_OUTPUT_VARIABLE)
       if (CONFIGURE_VERBOSE)
 	message ("   [OK] ${varPackage}")
@@ -83,15 +83,15 @@ if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
 	COMMENT "Installing Debian package ${varPackage} ..."
 	)
     endif (DPKG_OUTPUT_VARIABLE)
-    
+
   endforeach (varPackage)
 
   ## Summary of package check
 
   message (STATUS "Checking Debian packages - found ${NOF_PACKAGES_FOUND} of ${NOF_PACKAGES} packages")
-  
+
   ## Update the Ruby Gems
-  
+
   add_custom_command (
     TARGET InstallPackages
     POST_BUILD
@@ -99,6 +99,6 @@ if (APT_EXECUTABLE AND DPKG_EXECUTABLE)
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     COMMENT "Updating Ruby gems ..."
     )
-  
+
 endif (APT_EXECUTABLE AND DPKG_EXECUTABLE)
 

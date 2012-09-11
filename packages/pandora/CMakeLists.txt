@@ -11,7 +11,7 @@ project (PANDORA)
 ## Minimum required version of CMake to configure the project
 cmake_minimum_required (VERSION 2.8)
 
-## Enforced CMake policy 
+## Enforced CMake policy
 cmake_policy (VERSION 2.8)
 
 ##  Package information
@@ -56,7 +56,7 @@ if (PANDORA_FROM_REPOS)
     HINTS ${prometheus-sumo_SOURCE_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES data/repositories
     )
-  
+
   if (PANDORA_REPOS_HEAD)
     get_filename_component (PANDORA_GIT ${PANDORA_REPOS_HEAD} PATH)
   endif (PANDORA_REPOS_HEAD)
@@ -64,23 +64,23 @@ if (PANDORA_FROM_REPOS)
 endif (PANDORA_FROM_REPOS)
 
 if (NOT PANDORA_FOUND OR PANDORA_FORCE_BUILD)
-  
+
   ## Locate source file to build from
-  
+
   find_file (PANDORA_SOURCE ${PANDORA_SOURCE_ARCHIVE}
     PATHS ${PROJECT_SOURCE_DIR}
     )
-  
+
   if (NOT PANDORA_SOURCE)
     set (PANDORA_SOURCE ${PANDORA_URL})
   endif (NOT PANDORA_SOURCE)
-  
+
   ## Build package from source
-  
+
   if (PANDORA_FROM_REPOS)
-    
+
     if (PANDORA_GIT)
-      
+
       ExternalProject_Add (pandora
 	PREFIX ${PROJECT_BINARY_DIR}
 	DOWNLOAD_DIR download
@@ -95,7 +95,7 @@ if (NOT PANDORA_FOUND OR PANDORA_FORCE_BUILD)
     else (PANDORA_GIT)
 
       if (Subversion_SVN_EXECUTABLE)
-      
+
         ExternalProject_Add (pandora
           PREFIX ${PROJECT_BINARY_DIR}
  	  DOWNLOAD_DIR download
@@ -112,11 +112,11 @@ if (NOT PANDORA_FOUND OR PANDORA_FORCE_BUILD)
         message (STATUS "Unable to check out pandora working copy - missing Subversion!")
 
       endif (Subversion_SVN_EXECUTABLE)
-      
+
     endif (PANDORA_GIT)
-    
+
   else (PANDORA_FROM_REPOS)
-    
+
     ExternalProject_Add (pandora
       PREFIX ${PROJECT_BINARY_DIR}
       DOWNLOAD_DIR download
@@ -127,14 +127,14 @@ if (NOT PANDORA_FOUND OR PANDORA_FORCE_BUILD)
       INSTALL_COMMAND ""
       BUILD_COMMAND ""
       )
-    
+
   endif (PANDORA_FROM_REPOS)
-  
+
 else (NOT PANDORA_FOUND OR PANDORA_FORCE_BUILD)
-  
+
   add_custom_target (pandora
     WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
     COMMENT "[pandora] Found system-wide installation; skipping rebuild!"
     )
-  
+
 endif (NOT PANDORA_FOUND OR PANDORA_FORCE_BUILD)

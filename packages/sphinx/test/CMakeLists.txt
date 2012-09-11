@@ -1,7 +1,7 @@
 
 ## ==============================================================================
 ##
-##  The test below essentially wraps the various steps described in 
+##  The test below essentially wraps the various steps described in
 ##
 ##    https://github.com/zooie/opensearch
 ##

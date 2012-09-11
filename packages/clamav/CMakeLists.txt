@@ -44,14 +44,14 @@ if (CLAMAV_FROM_REPOS)
 endif (CLAMAV_FROM_REPOS)
 
 if (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
-  
+
   ##________________________________________________________
   ## Locate source file to build from
-  
+
   find_file (CLAMAV_SOURCE ${CLAMAV_SOURCE_ARCHIVE}
     PATHS ${CMAKE_CURRENT_SOURCE_DIR}
     )
-  
+
   if (NOT CLAMAV_SOURCE)
     set (CLAMAV_SOURCE ${CLAMAV_URL})
   endif (NOT CLAMAV_SOURCE)
@@ -71,9 +71,9 @@ if (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
 
   ##________________________________________________________
   ## Build package from source
-  
+
   if (CLAMAV_FROM_REPOS)
-    
+
     ExternalProject_Add (clamav
       PREFIX ${CMAKE_CURRENT_BINARY_DIR}
       DOWNLOAD_DIR download
@@ -84,9 +84,9 @@ if (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
       CONFIGURE_COMMAND ${CMAKE_CURRENT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --disable-clamav
       INSTALL_COMMAND ${PORT_INSTALL_COMMAND} make install
       )
-  
+
   else (CLAMAV_FROM_REPOS)
-    
+
     ExternalProject_Add (clamav
       PREFIX ${CMAKE_CURRENT_BINARY_DIR}
       DOWNLOAD_DIR download
@@ -97,12 +97,12 @@ if (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
       CONFIGURE_COMMAND ${CMAKE_CURRENT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --disable-clamav
       INSTALL_COMMAND ${PORT_INSTALL_COMMAND} make install
       )
-    
+
   endif (CLAMAV_FROM_REPOS)
 
   ##________________________________________________________
   ## Patch LLVM sub-module
-  
+
   ExternalProject_Add_Step (clamav create_llvm_projects
     COMMAND ${CMAKE_COMMAND} -E make_directory libclamav/c++/llvm/projects
     COMMENT "Creating LLVM projects sub-directory"
@@ -113,7 +113,7 @@ if (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
 
   ##________________________________________________________
   ## Set up database
-  
+
   ExternalProject_Add_Step (clamav create_share_clamav
     COMMAND ${CMAKE_COMMAND} -E make_directory share/clamav
     COMMENT "Updating databases with virus signatures"
@@ -130,12 +130,12 @@ if (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
     )
 
 else (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
-  
+
   add_custom_target (clamav
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     COMMENT "[clamav] Found system-wide installation; skipping rebuild!"
     )
-  
+
 endif (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
 
 ## ==============================================================================

@@ -15,7 +15,7 @@ set (UNICODE_REQUIRED_VERSION "0.1.1"    )
 if (GEM_EXECUTABLE)
 
   message (STATUS "Checking Ruby Gems")
-  
+
   ## Initialize counter
   set (NOF_GEMS       0 )
   set (NOF_GEMS_FOUND 0 )
@@ -80,7 +80,7 @@ if (GEM_EXECUTABLE)
       ERROR_VARIABLE GEM_ERROR_VARIABLE
       OUTPUT_STRIP_TRAILING_WHITESPACE
       )
-    
+
     if (GEM_OUTPUT_VARIABLE)
       if (CONFIGURE_VERBOSE)
 	message ("   [OK] ${varPackage}")
@@ -99,18 +99,18 @@ if (GEM_EXECUTABLE)
 	COMMENT "Installing Ruby Gem ${varPackage} ..."
 	)
     endif (GEM_OUTPUT_VARIABLE)
-    
+
   endforeach (varPackage)
 
   ##________________________________________________________
   ## Gems for which a specific version is required
   ## (see 'pandora/config/environment.rb')
-  ## 
+  ##
   ## 'ferret'      => '= 0.11.8.1',
   ## 'libxml-ruby' => '>= 1.1.3',
   ## 'unicode'     => '>= 0.1.1'
-  
-  
+
+
   execute_process (
     COMMAND ${GEM_EXECUTABLE} list -i ferret -v ${FERRET_REQUIRED_VERSION}
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
@@ -133,5 +133,5 @@ if (GEM_EXECUTABLE)
   ## Summary of Gem check
 
   message (STATUS "Checking Ruby Gems - found ${NOF_GEMS_FOUND} of ${NOF_GEMS} packages")
-    
+
 endif (GEM_EXECUTABLE)
