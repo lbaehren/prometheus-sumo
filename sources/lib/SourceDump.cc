@@ -28,6 +28,9 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   //
   // ===========================================================================
   
+  //____________________________________________________________________________
+  //                                                                  SourceDump
+
   /*!
     \param rootNode  -- Name of the root node in the XML file.
     \param imageNode -- Name of the node containing attributes of an image
@@ -39,6 +42,15 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       itsImageNode (imageNode)
   {;}
 
+  //____________________________________________________________________________
+  //                                                                  SourceDump
+
+  /*!
+    \param rootNode   -- Name of the root node in the XML file.
+    \param imageNode  -- Name of the node containing attributes of an image
+    \param attributes -- Attributes attached to/describing the images in the 
+           database dump.
+  */
   SourceDump::SourceDump (std::string const &rootNode,
 			  std::string const &imageNode,
 			  std::map<std::string,std::string> const &attributes)
@@ -46,26 +58,6 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       itsRootNode (rootNode),
       itsImageNode (imageNode)
   {;}
-
-  // ===========================================================================
-  //
-  //  Parameter access
-  //
-  // ===========================================================================
-
-  //____________________________________________________________________________
-  //                                                               attributeKeys
-
-  std::set<std::string> SourceDump::attributeKeys ()
-  {
-    std::map<std::string,std::string>::iterator it;
-    std::set<std::string> keys;
-
-    for (it=itsAttributes.begin();it!=itsAttributes.end(); ++it) {
-      keys.insert(it->first);
-    }
-    return keys;
-  }
 
   // ===========================================================================
   //

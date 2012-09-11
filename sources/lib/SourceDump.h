@@ -69,19 +69,21 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       return itsRootNode;
     }
 
+    //! Set the name of the root node in the XML file
+    inline void setRootNode (std::string const &rootNode) {
+      itsRootNode = rootNode;
+    }
+
     //! Get the name of the node containing attributes of an image
     inline std::string imageNode () const {
       return itsImageNode;
     }
 
-    //! Get map with the mappingof attribute names
-    inline std::map<std::string,std::string> attributesMap () const {
-      return itsAttributes;
+    //! Set the name of the node containing attributes of an image
+    inline void setImageNode (std::string const &imageNode) {
+      itsImageNode = imageNode;
     }
 
-    //! Get the attribute keywords attached to the image
-    std::set<std::string> attributeKeys ();
-    
     // === Public methods ======================================================
 
     //! Read data from XML dump of database
