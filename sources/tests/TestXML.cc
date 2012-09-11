@@ -47,7 +47,7 @@ int test_load_file (std::string const &filename="resources/dream.xml")
 
   tinyxml2::XMLDocument doc;
   doc.LoadFile(filename.c_str());
-  
+
   return doc.ErrorID();
 }
 
@@ -65,13 +65,13 @@ int test_char_buffer (std::string const &teststring="<element/>")
   std::cout << "\n[TestXML::test_char_buffer]\n" << std::endl;
 
   int status = 0;
-  
+
   std::cout << "--> Input string = " << teststring << std::endl;
-  
+
   XMLDocument doc;
   doc.Parse(teststring.c_str());
   status = doc.ErrorID();
-  
+
   return status;
 }
 
@@ -88,19 +88,19 @@ int test_parse_document (std::string const &filename)
 
   int status = 0;
   XMLDocument doc;
-  
+
   /* Load the XML file; LoadFile() returns non-zero value if everything is ok. */
   if (!doc.LoadFile(filename.c_str())) {
-    
+
     /* Get root node */
     XMLElement * elemRoot = doc.RootElement();
     std::cout << "-- Root element = " << elemRoot->Name() << std::endl;
-    
+
   } else {
     std::cerr << "[ERROR] Failed to load file " << filename << std::endl;
     status += 1;
   }
-  
+
   return status;
 }
 
@@ -113,7 +113,7 @@ int main(int argc, char* argv[])
 {
   int status = 0;
   std::string filename;
-  
+
   /*
    *  Test without the need of external data
    */
@@ -127,6 +127,6 @@ int main(int argc, char* argv[])
     status += test_load_file(filename);
     status += test_parse_document (filename);
   }
-  
+
   return status;
 }

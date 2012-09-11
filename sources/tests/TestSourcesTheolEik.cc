@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
     filename = std::string(argv[1]);
     /* ... and run the actual tests. */
     std::ifstream infile (filename.c_str());
-    
+
     if (infile.is_open()) {
 
       std::cout << "-- Opened input file " << filename << std::endl;
@@ -77,6 +77,6 @@ int main(int argc, char* argv[])
       return 1;
     }
   }
-  
+
   return 0;
 }

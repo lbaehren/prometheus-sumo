@@ -21,7 +21,7 @@ void hello_world ()
 
   YAML::Emitter out;
   out << "Hello, World!";
-  
+
   std::cout << "Here's the output YAML:\n" << out.c_str() << std::endl;
 }
 
@@ -34,7 +34,7 @@ void emit_list ()
   std::cout << "\n[tEmitting::emit_list]\n" << std::endl;
 
   YAML::Emitter out;
-  
+
   /* Assemble the sequence */
   out << YAML::BeginSeq;
   out << "eggs";
@@ -79,6 +79,6 @@ int main()
   hello_world();
   emit_list();
   emit_map();
-  
+
   return 0;
 }

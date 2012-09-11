@@ -76,7 +76,7 @@ if(Boost_FOUND)
 
   ## Header files
   include_directories(${Boost_INCLUDE_DIRS})
-  
+
   foreach (test_xml_boost
       TestSourcesBeeskow
       TestSourcesKassel
@@ -90,19 +90,19 @@ if(Boost_FOUND)
   if (xml_dump_beeskow)
     add_test (TestSourcesBeeskow TestSourcesBeeskow ${xml_dump_beeskow})
   endif (xml_dump_beeskow)
-  
+
   if (xml_dump_kassel)
     add_test (TestSourcesKassel TestSourcesKassel ${xml_dump_kassel})
   endif (xml_dump_kassel)
-  
+
   if (xml_dump_robertinum)
     add_test (TestSourcesRobertinum TestSourcesRobertinum ${xml_dump_robertinum})
   endif (xml_dump_robertinum)
-  
+
   if (xml_dump_theoleik)
     add_test (TestSourcesTheolEik TestSourcesTheolEik ${xml_dump_theoleik})
   endif (xml_dump_theoleik)
-  
+
 endif()
 
 ##__________________________________________________________
@@ -118,7 +118,7 @@ if (TINYXML_FOUND)
   target_link_libraries (TestXML ${TINYXML_LIBRARIES})
 
   add_test (TestXML TestXML ${xml_dump_beeskow})
- 
+
 endif (TINYXML_FOUND)
 
 ##__________________________________________________________
@@ -131,7 +131,7 @@ if (LIBXML2_FOUND)
   add_executable (TestXMLTree TestXMLTree.c)
   ## Linker instructions
   target_link_libraries (TestXMLTree ${LIBXML2_LIBRARIES})
-  ## Testing 
+  ## Testing
   add_test (TestXMLTree TestXMLTree ${xml_dump_beeskow})
 endif (LIBXML2_FOUND)
 
@@ -153,7 +153,7 @@ if (YAML_FOUND)
       tEmitting.cc
       TestYamlReading.cc
       )
-    
+
     ## Strip extension from filename
     get_filename_component (varFilename ${test_yaml} NAME_WE)
 

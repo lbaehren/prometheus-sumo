@@ -4,7 +4,7 @@
   \brief Navigates the tree of a \ref xml document to print element names
   \author Dodji Seketeli
   \copyright see Copyright for the status of this software.
-  
+
   \b Purpose: Parse a file to a tree, use \c xmlDocGetRootElement() to get the
   root element, then walk the document and print all the element name in document
   order.
@@ -39,12 +39,12 @@ print_element_names(xmlNode * a_node)
   xmlNode *currentNode = NULL;
 
   nofNodes++;
-  
+
   for (currentNode = a_node; currentNode; currentNode = currentNode->next) {
     if (currentNode->type == XML_ELEMENT_NODE) {
       printf("node type: Element, name: %s\n", currentNode->name);
     }
-    
+
     print_element_names(currentNode->children);
   }
 }

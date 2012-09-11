@@ -59,7 +59,7 @@ struct Role {
 namespace prometheus {   //   namespace prometheus - BEGIN
 
   namespace test {   //   namespace test - BEGIN
-    
+
     class Roles {
       std::map<unsigned int,std::string> itsRoles;
     public:
@@ -161,9 +161,9 @@ void operator >> (const YAML::Node& node, Role& role) {
 int readList (std::string const &filename)
 {
   std::cout << "\n[YamlReader::readList]\n" << std::endl;
-  
+
   std::ifstream infile (filename.c_str());
-  
+
   if (infile.is_open()) {
     std::vector<std::string> dataVector;
     std::set<std::string> dataSet;
@@ -187,7 +187,7 @@ int readList (std::string const &filename)
     std::cerr << "--> Failed to open file " << filename << std::endl;
     return 1;
   }
-  
+
   /* Close the input stream */
   infile.close();
 
@@ -206,9 +206,9 @@ int readList (std::string const &filename)
 int readAssociativeArray (std::string const &filename)
 {
   std::cout << "\n[YamlReader::readAssociativeArray]\n" << std::endl;
-  
+
   std::ifstream infile (filename.c_str());
-  
+
   if (infile.is_open()) {
     YAML::Node node;
     YAML::Parser parser(infile);
@@ -228,7 +228,7 @@ int readAssociativeArray (std::string const &filename)
     std::cerr << "--> Failed to open file " << filename << std::endl;
     return 1;
   }
-  
+
   /* Close the input stream */
   infile.close();
 
@@ -247,9 +247,9 @@ int readAssociativeArray (std::string const &filename)
 int readScalarsToSequences (std::string const &filename)
 {
   std::cout << "\n[YamlReader::readScalarsToSequences]\n" << std::endl;
-  
+
   std::ifstream infile (filename.c_str());
-  
+
   if (infile.is_open()) {
     YAML::Node node;
     YAML::Parser parser(infile);
@@ -272,7 +272,7 @@ int readScalarsToSequences (std::string const &filename)
     std::cerr << "--> Failed to open file " << filename << std::endl;
     return 1;
   }
-  
+
   /* Close the input stream */
   infile.close();
 
@@ -298,30 +298,30 @@ int readScalarsToSequences (std::string const &filename)
 int readTrustedProxies (std::string const &filename)
 {
   std::cout << "\n[YamlReader::readTrustedProxies]\n" << std::endl;
-  
+
   std::ifstream infile (filename.c_str());
-  
+
   if (infile.is_open()) {
-    
+
     YAML::Parser parser(infile);
-    
+
     /* Parse the contents of the file */
     YAML::Node node;
     parser.GetNextDocument(node);
-    
+
     std::cout << "--> nof. nodes = " << node.size() << std::endl;
-    
+
     for (YAML::Iterator it=node.begin();it!=node.end();++it) {
       std::string scalar;
       *it >> scalar;
       std::cout << "Found scalar: " << scalar << std::endl;
     }
-    
+
   } else {
     std::cerr << "--> Failed to open file " << filename << std::endl;
     return 1;
   }
-  
+
   /* Close the input stream */
   infile.close();
 
@@ -338,17 +338,17 @@ int readTrustedProxies (std::string const &filename)
 int readDatabaseRoles (std::string const &filename)
 {
   std::cout << "\n[YamlReader::readDatabaseRoles]\n" << std::endl;
-  
+
   std::ifstream infile (filename.c_str());
-  
+
   if (infile.is_open()) {
-    
+
     prometheus::test::Roles roles;
     YAML::Node node;
-    
+
     YAML::Parser parser(infile);
     parser.GetNextDocument(node);
-    
+
     std::cout << "--> nof. nodes = " << node.size() << std::endl;
 
     for (YAML::Iterator it=node.begin(); it!=node.end(); ++it) {
@@ -363,7 +363,7 @@ int readDatabaseRoles (std::string const &filename)
     /* Show the database role titles */
     std::cout << roles.ids()    << std::endl;
     std::cout << roles.titles() << std::endl;
-    
+
   } else {
     std::cerr << "--> Failed to open file " << filename << std::endl;
     return 1;
@@ -393,14 +393,14 @@ int main (int argc,
     std::cerr << "[ERROR] No path to directory with test data!" << std::endl;
     return 1;
   }
-  
+
   /*
    *  Basic parser testing
    */
-  
+
   filename = pathTestData + "/yaml_List.yml";
   retval +=  readList(filename);
-  
+
   filename = pathTestData + "/yaml_AssociativeArray.yml";
   retval +=  readAssociativeArray(filename);
 
@@ -414,7 +414,7 @@ int main (int argc,
   /* Read the list of trusted proxies */
   filename = pathTestData + "/trusted_proxies.yml";
   retval += readTrustedProxies (filename);
- 
+
   /* Read attributes of user role */
   filename = pathTestData + "/roles.yml";
   retval += readDatabaseRoles (filename);

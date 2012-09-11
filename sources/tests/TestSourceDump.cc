@@ -32,7 +32,7 @@ int test_construction ()
   std::cout << "[TestSourceDump::test_construction]" << std::endl;
 
   int status = 0;
-  
+
   try {
     prometheus::SourceDump dump;
     dump.summary();
@@ -40,7 +40,7 @@ int test_construction ()
     std::cout << "[TestImage] ERROR : " << e.what() << std::endl;
     ++status;
   }
-  
+
   return status;
 }
 
@@ -49,8 +49,8 @@ int test_construction ()
 int main ()
 {
   int status = 0;
-  
+
   status += test_construction ();
-  
+
   return status;
 }

@@ -50,7 +50,7 @@ int test_construction (std::map<std::string,std::string> const &attributes)
     ++status;
   }
 
-  std::cout << "[2] Testing Image(std::map<string,string>) ..." << std::endl;  
+  std::cout << "[2] Testing Image(std::map<string,string>) ..." << std::endl;
   try {
     prometheus::Image img (attributes);
     img.summary();
@@ -58,7 +58,7 @@ int test_construction (std::map<std::string,std::string> const &attributes)
     std::cout << "[TestImage] ERROR : " << e.what() << std::endl;
     ++status;
   }
-  
+
   return status;
 }
 
@@ -72,8 +72,8 @@ int test_attributes (std::map<std::string,std::string> &attributes)
   int status = 0;
 
   prometheus::Image img (attributes);
-  img.summary();  
-  
+  img.summary();
+
   std::cout << "[1] Testing Image::setAttribute(string,string)" << std::endl;
   try {
     img.setAttribute("object","Recording");
@@ -84,7 +84,7 @@ int test_attributes (std::map<std::string,std::string> &attributes)
     std::cout << "[TestImage] ERROR : " << e.what() << std::endl;
     ++status;
   }
-  
+
   std::cout << "[2] Testing Image::attribute(string,string)" << std::endl;
   try {
     std::string object  = img.attribute("object");
@@ -100,7 +100,7 @@ int test_attributes (std::map<std::string,std::string> &attributes)
     std::cout << "[TestImage] ERROR : " << e.what() << std::endl;
     ++status;
   }
-  
+
   std::cout << "[3] Testing Image::attribute(string,string)" << std::endl;
   try {
     bool stat;
@@ -122,7 +122,7 @@ int test_attributes (std::map<std::string,std::string> &attributes)
     std::cout << "[TestImage] ERROR : " << e.what() << std::endl;
     ++status;
   }
-  
+
   std::cout << "[4] Testing Image::hasAttribute(string)" << std::endl;
   try {
     std::cout << "-- Object  = " << img.hasAttribute("object")  << std::endl;
@@ -133,7 +133,7 @@ int test_attributes (std::map<std::string,std::string> &attributes)
     std::cout << "[TestImage] ERROR : " << e.what() << std::endl;
     ++status;
   }
-  
+
   return status;
 }
 
@@ -143,7 +143,7 @@ int test_attributes (std::map<std::string,std::string> &attributes)
 int main ()
 {
   int status = 0;
-  
+
   std::map<std::string,std::string> attributes;
   attributes["title"]    = "D'oh!";
   attributes["artist"]   = "Homer Simpson";

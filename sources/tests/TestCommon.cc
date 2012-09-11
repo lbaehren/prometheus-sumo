@@ -13,7 +13,7 @@ int main ()
     std::vector<short> vec_short (nelem);
     std::vector<float> vec_float (nelem);
     std::vector<double> vec_double (nelem);
-    
+
     std::cout << "-- vector<bool>   = " << vec_bool   << std::endl;
     std::cout << "-- vector<int>    = " << vec_int    << std::endl;
     std::cout << "-- vector<long>   = " << vec_long   << std::endl;
@@ -21,7 +21,7 @@ int main ()
     std::cout << "-- vector<float>  = " << vec_float  << std::endl;
     std::cout << "-- vector<double> = " << vec_double << std::endl;
   }
-  
+
   std::cout << "\n[2] Testing operator<<(std::set<T>)\n" << std::endl;
   {
     bool array_bool[] = {true,false,true,false,true};
@@ -44,7 +44,7 @@ int main ()
     //
     std::string array_string[] = {"a","b","c","d","e"};
     std::set<std::string> set_string (&array_string[0], &array_string[5]);
-    
+
     std::cout << "-- set<bool>   = " << set_bool   << std::endl;
     std::cout << "-- set<int>    = " << set_int    << std::endl;
     std::cout << "-- set<long>   = " << set_long   << std::endl;
@@ -62,6 +62,6 @@ int main ()
 
   //   std::cout << "-- map<int,string> = " << mapIntString << std::endl;
   // }
-  
+
   return 0;
 }

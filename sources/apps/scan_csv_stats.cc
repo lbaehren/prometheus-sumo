@@ -33,12 +33,12 @@ int main(int argc, char *argv[])
   using namespace std;
   using namespace boost;
   using namespace prometheus;
-  
+
   std::string filename = "data.csv";
 
   //________________________________________________________
   // Process parameters from the command line
-  
+
   if (argc < 2) {
     std::cerr << "ERROR - missing name of input file!" << std::endl;
   } else {
@@ -61,5 +61,5 @@ int main(int argc, char *argv[])
     std::cout << "-- Data columns      = " << reader.columns()      << std::endl;
     std::cout << "-- Institutions      = " << reader.institutions() << std::endl;
   }
-  
+
 }
