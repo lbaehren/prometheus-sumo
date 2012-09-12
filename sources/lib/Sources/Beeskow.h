@@ -41,71 +41,25 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 
     public:
 
-      // === Public data ========================================================
-
-      /*!
-        \brief Image attributes
-
-        \code
-        <?xml version="1.0" encoding="iso-8859-1" ?>
-          <root>
-            <row>
-              <Höhe>97</Höhe>
-              <Material>Öl auf Leinwand</Material>
-              <KünstlerIn>Hegewald, Michael</KünstlerIn>
-              <Gattung>Malerei</Gattung>
-              <Ob_f41>284</Ob_f41>
-              <Datierung>1989</Datierung>
-              <Einheit>cm</Einheit>
-              <Breite>138</Breite>
-              <Titel>Berlin</Titel>
-              <Standort>Kunstarchiv Beeskow</Standort>
-            </row>
-      \endcode
-      */
-      struct Attributes {
-	bool missingAttributes;
-        //! Height of the item, "Höhe"
-        std::string height;
-        //! Material used in the item, "Material"
-        std::string material;
-        //! Artist for the item, "KünstlerIn"
-        std::string artist;
-        //! Category for the item, "Gattung"
-        std::string category;
-        //! Object code, "Ob_f41"
-        unsigned int object;
-        //! (Creation) Date for the item, "Datierung"
-        std::string date;
-        //! Units in which the dimensions of the item are given, "Einheit"
-        std::string units;
-        //! Width of the item, "Breite"
-        std::string width;
-        //! Title of the item, "Titel"
-        std::string title;
-        //! Location of the item, "Standort"
-        std::string location;
-      };
-
       // === Construction =======================================================
 
       //! Argumented constructor
       Beeskow (std::string const &rootNode="root",
 	       std::string const &imageNode="row");
 
-      // === Public methods =====================================================
-
-      //! Read data from XML dump of database
-      int readXML (std::istream & infile,
-                   std::vector<Beeskow::Attributes> &items);
-
       // === Private methods ====================================================
 
-      void init ();
+      void init ()
+      {
+        itsAttributes["location"] = "Standort";
+        itsAttributes["title"]    = "Titel";
+        itsAttributes["date"]     = "Datierung";
+        itsAttributes["category"] = "Gattung";
+      }
 
-    };
+    };  //  class Beeskow -- END
 
-  }   //  namespace source -- END
+  }  //  namespace source -- END
 
 }  //  namespace prometheus -- END
 

@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
       std::cout << "-- Opened input file " << filename << std::endl;
 
       prometheus::source::Beeskow dump;
-      std::vector<prometheus::source::Beeskow::Attributes> items;
+      std::vector<prometheus::Image> items;
       int nofIncompleteItems = 0;
 
       /* Parse the contents of the document */
@@ -63,9 +63,8 @@ int main(int argc, char* argv[])
       /* Summary of document contents */
       for (unsigned int n=0; n<items.size(); ++n) {
         std::cout << "[" << n << "]"
-                  << " : " <<items[n].missingAttributes
-                  << " : " << items[n].title
-                  << "\t(" << items[n].date << ")"
+                  << " : " << items[n].attribute("title")
+                  << "\t(" << items[n].attribute("date") << ")"
                   << std::endl;
       }
       std::cout << "-- nof. items      = " << items.size()       << std::endl;

@@ -1,4 +1,6 @@
 
+message (STATUS "Processing directory source/tests")
+
 ## Locate test data
 
 find_file (xml_dump_beeskow beeskow_kunstarchiv.xml
@@ -35,7 +37,6 @@ foreach (test_cpp
   TestBoxes
   TestCommon
   TestImage
-  TestSourceDump
   )
   ## Compiler instructions
   add_executable (${test_cpp} ${test_cpp}.cc)
@@ -76,15 +77,20 @@ if(Boost_FOUND)
 
   ## Header files
   include_directories(${Boost_INCLUDE_DIRS})
-
+  
   foreach (test_xml_boost
-      TestSourcesBeeskow
-      TestSourcesKassel
-      TestSourcesRobertinum
-      TestSourcesTheolEik
+      TestSourceDump.cc
+      TestSourcesBeeskow.cc
+      TestSourcesKassel.cc
+      TestSourcesRobertinum.cc
+      TestSourcesTheolEik.cc
       )
-    add_executable (${test_xml_boost} ${test_xml_boost}.cc)
-    target_link_libraries (${test_xml_boost} libprometheus ${Boost_LIBRARIES})
+    ## remove file extension
+    get_filename_component (varFilename ${test_xml_boost} NAME_WE)
+    ## compiler instructions
+    add_executable (${varFilename} ${test_xml_boost})
+    ## linker instructions
+    target_link_libraries (${varFilename} libprometheus ${Boost_LIBRARIES})
   endforeach (test_xml_boost)
 
   if (xml_dump_beeskow)
@@ -172,3 +178,5 @@ if (YAML_FOUND)
   add_test (TestYamlReading TestYamlReading ${PROJECT_SOURCE_DIR}/data/tests)
 
 endif (YAML_FOUND)
+
+message (STATUS "Processing directory source/tests - done")

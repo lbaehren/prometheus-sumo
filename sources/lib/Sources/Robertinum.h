@@ -61,8 +61,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
         itsAttributes["credits"]        = "bildrecht";
       }
 
-    };
-
+    };  //  class Robertinum -- END
 
   }   //  namespace source -- END
 
