@@ -87,8 +87,8 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     // === Public methods ======================================================
 
     //! Read data from XML dump of database
-    int readXML (std::istream & infile,
-                 std::vector<Image> &images);
+    virtual int readXML (std::istream & infile,
+                         std::vector<Image> &images);
 
     //! Provide a summary of the object's internal parameters and status
     inline void summary () {

@@ -31,64 +31,10 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     // ==========================================================================
 
     Robertinum::Robertinum (std::string const &rootNode,
-			    std::string const &imageNode)
+                            std::string const &imageNode)
       : SourceDump (rootNode,imageNode)
     {
       init ();
-    }
-
-    // ==========================================================================
-    //
-    //  Public methods
-    //
-    // ==========================================================================
-
-    /*!
-      \param infile  -- Input stream connected to the XML dump for the
-                     collection.
-      \retval items  -- Array with the items listed in the database dump.
-      \return status -- Indicator for status of internal operation: returns
-                     \c -1 in case there was an error reading from the input stream,
-		     \c N for the number of incomplete datasets (i.e. missing
-		     attributes) and \c 0 otherwise.
-    */
-    int Robertinum::readXML (std::istream & infile,
-			     std::vector<Robertinum::Attributes> &items)
-    {
-      boost::property_tree::ptree pt;
-
-      try {
-	read_xml(infile, pt);
-      } catch (std::exception &e) {
-	std::cout << "[Robertinum::readXML] ERROR : " << e.what() << std::endl;
-	return -1;
-      }
-
-      int status      = 0;
-      bool incomplete = false;
-
-      BOOST_FOREACH( boost::property_tree::ptree::value_type const& v, pt.get_child(itsRootNode) ) {
-	if( v.first == itsImageNode ) {
-	  Robertinum::Attributes node;
-	
-	  incomplete = false;
-	
-	  node.missingAttributes = false;
-	  node.path           = v.second.get<std::string>("grossbildnummer");
-	  node.artist         = v.second.get<std::string>("werkstatt");
-	  node.title          = v.second.get<std::string>("titel");
-	  node.date           = v.second.get<std::string>("datierung");
-	  node.genre          = v.second.get<std::string>("form");
-	  node.location       = v.second.get<std::string>("standort");
-	  node.discoveryplace = v.second.get<std::string>("fundort");
-	  node.credits        = v.second.get<std::string>("bildrecht");
-
-	  if (incomplete) ++status;
-	  items.push_back(node);
-	}
-      }
-
-      return status;
     }
 
   }   //  namespace source -- END

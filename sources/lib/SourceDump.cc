@@ -102,6 +102,8 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
           /* Store attribute value */
           image.setAttribute(it->first,buffer);
         }
+        /* Add image to the list returned */
+        images.push_back(image);
       }
     }
 
