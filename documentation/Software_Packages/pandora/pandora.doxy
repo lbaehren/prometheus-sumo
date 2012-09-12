@@ -19,13 +19,13 @@
   \section refman_pandora_checkout Getting the source code
 
   The source code of _pandora_ is hosted in a central
-  [Subversion](http://subversion.apache.org) repository at
+  \ref subversion repository at
 
   \li http://prometheus-srv.uni-koeln.de/svn/pandora
 
   \subsection refman_pandora_checkout_svn ... using Subversion
 
-  Checking out a full working copy from the Subversion repository
+  Checking out a full working copy from the \ref subversion repository
 
   \verbatim
   svn co http://prometheus-srv.uni-koeln.de/svn/pandora pandora
