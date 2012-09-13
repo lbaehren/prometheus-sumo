@@ -9,6 +9,7 @@ Infrastructure    {#infrastructure}
   - \subpage repositories for software packages and documents
   - \subpage virtual_machines
   - \subpage pandora_deployment
+  - \subpage pwsafe
 
 \section network_configuration Network configuration
 
