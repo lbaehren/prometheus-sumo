@@ -52,7 +52,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
         itsAttributes["artist"]   = "kuenstler";
         itsAttributes["title"]    = "titel";
         itsAttributes["keyword"]  = "object";
-        itsAttributes["location"] = "Staatliches Museen Kassel (Graphische Sammlung)";
+        itsAttributes["location"] = "Staatliche Museen Kassel (Graphische Sammlung)";
         itsAttributes["genre"]    = "gattung";
         itsAttributes["date"]     = "datierung";
       }
