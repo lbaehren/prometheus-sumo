@@ -87,3 +87,49 @@ work itself too.
 Note that 'post-commit' must be executable by the user(s) who will
 invoke it (typically the user httpd runs as), and that user must
 have filesystem-level permission to access the repository.
+
+The following post-commit hook is configured for checking code
+into the \ref pandora source code repository:
+\code
+#! /bin/bash
+
+REPOS="$1"
+REV="$2"
+
+BASE="/var/local/prometheus"
+
+SVN_SYNC="/usr/bin/svnsync"
+COMMIT_EMAIL="$BASE/bin/commit-email.pl"
+REDMINE_RUNNER="$BASE/srv/redmine/script/runner"
+
+if [ -x "$COMMIT_EMAIL" ]; then
+  TO=(pandora-devel@uni-koeln.de)
+  FROM="pandora-svn-NOREPLY"
+  PREFIX="[pandora-svn]"
+  URL="http://prometheus-srv.uni-koeln.de/redmine/projects/pandora/repository/revisions/"
+
+  $COMMIT_EMAIL "$REPOS" "$REV" -s "$PREFIX" --from "$FROM" -r "$TO" -u "$URL" "${TO[@]}"
+fi
+
+if [ -x "$SVN_SYNC" ]; then
+  SYNC_USER="<user>"
+  SYNC_PASS="<pass>"
+
+  SYNC_DEST=(
+    http://prometheus-app.uni-koeln.de/svn/pandora
+    http://prometheus-test.uni-koeln.de/svn/pandora
+  )
+
+  for dest in "${SYNC_DEST[@]}"; do
+    $SVN_SYNC sync "$dest" --username "$SYNC_USER" --password "$SYNC_PASS" --no-auth-cache &
+  done
+fi
+
+if [ -x "$REDMINE_RUNNER" ]; then
+  PATH=/usr/local/bin:/usr/bin:/bin $REDMINE_RUNNER -e production 'Project.find_by_name("pandora").r
+epository.fetch_changesets' &
+fi
+\endcode
+
+For details on how to set up the synchronization between the master repository and
+repository mirros see section \ref svn_sync.

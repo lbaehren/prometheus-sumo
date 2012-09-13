@@ -27,7 +27,6 @@
       <td>
         \li \subpage manual_image_archive
         \li \ref servers
-        \li \ref domains
         \li \ref repositories
         \li \ref homepage
         \li \ref wiki

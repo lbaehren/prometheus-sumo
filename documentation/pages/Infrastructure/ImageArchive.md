@@ -68,4 +68,6 @@ The registered office of prometheus is located at the Institute of Art History a
 
   \section image_archive_references References
 
+  \li \subpage faq
+  \li \subpage publications
   \li [heise Software-Verzeichnis: Webdienst: prometheus](http://www.heise.de/software/download/prometheus/55071)

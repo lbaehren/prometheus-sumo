@@ -1,8 +1,6 @@
 
-References    {#references}
-==========
-
-## Publications ##
+Publications    {#publications}
+============
 
 ### Scientific articles ###
 
@@ -19,17 +17,3 @@ _Kooperation von der Datenhaltung im AFS bis zur private Cloud – prometheus Bi
 
 ### Theses ###
 
-
-## Literature ##
-
-- Lisa Spiro (2012) [Getting Started in Digital Humanities](http://journalofdigitalhumanities.org/1-1/introduction/getting-started-in-digital-humanities-by-lisa-spiro)
-
-## Software Development ##
-
-### Blogs ###
-
-  \li [MySQL Performance Blog](http://www.mysqlperformanceblog.com). Percona's MySQL & InnoDB performance and scalability blog
-
-### Organizations ###
-
-  \li The [Dublin Core Metadata Initiative](http://dublincore.org) (DCMI) is an open organization, incorporated in Singapore as a public, not-for-profit Company limited by Guarantee (registration number 200823602C), supporting innovation in metadata design and best practices across a broad range of purposes and business models.

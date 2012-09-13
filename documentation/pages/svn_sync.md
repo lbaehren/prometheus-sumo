@@ -26,7 +26,8 @@ Set up Apache to make the repository available over the net.
 </Location>
 \endverbatim
 
-Then create the htpasswd file to allow the svnsync user access to the repository:
+Then create the [htpasswd](http://httpd.apache.org/docs/2.2/programs/htpasswd.html)
+file to allow the svnsync user access to the repository:
 \verbatim
 htpasswd -c /srv/svn/dav_svn.passwd svnsync
 \endverbatim
@@ -56,6 +57,8 @@ Make sure both of these scripts are executable.
 chmod 755 /srv/svn/repos/myproject/hooks/start-commit
 chmod 755 /srv/svn/repos/myproject/hooks/pre-revprop-change
 \endverbatim
+
+For more information on the configuration of hooks, see section \ref svn_hooks.
 
 \section subversion_svnsync_master On the Master
 
