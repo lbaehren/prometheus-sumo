@@ -49,10 +49,12 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 
       //! Initialize internal attributes
       void init () {
-        itsAttributes["title"]    = "titel";
         itsAttributes["artist"]   = "kuenstler";
+        itsAttributes["title"]    = "titel";
+        itsAttributes["keyword"]  = "object";
+        itsAttributes["location"] = "Staatliches Museen Kassel (Graphische Sammlung)";
+        itsAttributes["genre"]    = "gattung";
         itsAttributes["date"]     = "datierung";
-        itsAttributes["category"] = "gattung";
       }
 
     };   //   class Kassel -- END
