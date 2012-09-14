@@ -9,7 +9,7 @@
 set (CLAMAV_VERSION        "0.97.4" )
 set (CLAMAV_SOURCE_ARCHIVE "clamav-${CLAMAV_VERSION}.tar.gz" )
 set (CLAMAV_URL            "http://downloads.sourceforge.net/project/clamav/clamav/${CLAMAV_VERSION}/${CLAMAV_SOURCE_ARCHIVE}" )
-set (CLAMAV_GIT            "git://git.clamav.net/git/clamav-devel" )
+set (CLAMAV_GIT            "https://github.com/vrtadmin/clamav-devel" )
 
 ## ==============================================================================
 ##
