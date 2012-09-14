@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include <fstream>
-#include <iostream>
 /* YAML support */
 #include <yaml-cpp/yaml.h>
 /* Project */
