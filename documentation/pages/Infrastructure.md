@@ -23,18 +23,18 @@ Infrastructure    {#infrastructure}
 
 \section servers Servers
 
-| Name                         | IP address   | Hosted service     |
-|------------------------------|--------------|--------------------|
-| www.prometheus-bildarchiv.de | 134.95.19.39 | [Image archive](http://www.prometheus-bildarchiv.de) |
-| prometheus1.uni-koeln.de     | 134.95.80.11 | Production system  |
-| prometheus2.uni-koeln.de     | 134.95.80.12 | Development system |
-| prometheus-test.uni-koeln.de | 134.95.80.13 |                    |
-| prometheus-db1               | 134.95.80.95 | Database server    |
-| prometheus-web1              | 134.95.80.96 | Web server         |
-| prometheus-srv1.uni-koeln.de | 134.95.80.160 | [Trac](http://prometheus-srv.uni-koeln.de/trac/pandora) |
+| Name                         | IP address    | Hosted service              |
+|------------------------------|---------------|-----------------------------|
+| www.prometheus-bildarchiv.de | 134.95.19.39  | [Image archive](http://www.prometheus-bildarchiv.de) |
+| prometheus1.uni-koeln.de     | 134.95.80.11  | Production system           |
+| prometheus2.uni-koeln.de     | 134.95.80.12  | Development system          |
+| prometheus-test.uni-koeln.de | 134.95.80.13  |                             |
+| prometheus-db1               | 134.95.80.95  | Database server             |
+| prometheus-web1              | 134.95.80.96  | Web server                  |
+| prometheus-srv1.uni-koeln.de | 134.95.80.160 | SVN server, Trac            |
 | prometheus-srv2.uni-koeln.de | 134.95.80.161 | prometheus-app.uni-koeln.de |
-| prometheus-srv3.uni-koeln.de | 134.95.80.162 | Jekyll Commander  |
-| prometheus-srv4.uni-koeln.de | 134.95.80.164 |  |
+| prometheus-srv3.uni-koeln.de | 134.95.80.162 | Jekyll Commander            |
+| prometheus-srv4.uni-koeln.de | 134.95.80.164 |                             |
 
 http://prometheus-test.uni-koeln.de/pandora-devel
 
