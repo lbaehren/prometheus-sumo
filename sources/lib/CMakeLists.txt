@@ -1,7 +1,7 @@
 
 message (STATUS "Processing directory source/lib")
 
-set (prometheus_sources
+add_library (libprometheus
   Account.cc
   Institution.cc
   Presentation.cc
@@ -16,9 +16,7 @@ set (prometheus_sources
   Sources/Robertinum.cc
   Sources/Beeskow.cc
   Sources/Kassel.cc
-)
-
-add_library (libprometheus ${prometheus_sources})
+  )
 
 set_target_properties(libprometheus
                       PROPERTIES
@@ -26,4 +24,3 @@ set_target_properties(libprometheus
                       )
 
 message (STATUS "Processing directory source/lib - done")
-
