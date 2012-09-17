@@ -22,8 +22,6 @@
 #define SOURCEDUMP_H
 
 #include <exception>
-#include <iostream>
-#include <map>
 #include <string>
 
 #include <boost/foreach.hpp>

@@ -34,7 +34,6 @@ find_file (xml_dump_robertinum robertin.xml
 ## ==============================================================================
 
 foreach (test_cpp
-  TestBoxes
   TestCommon
   TestImage
   )
@@ -77,7 +76,7 @@ if(Boost_FOUND)
 
   ## Header files
   include_directories(${Boost_INCLUDE_DIRS})
-  
+
   foreach (test_xml_boost
       TestSourceDump.cc
       TestSourcesBeeskow.cc
