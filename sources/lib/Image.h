@@ -101,13 +101,17 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     void init ()
     {
       itsAttributes.clear();
-      itsAttributes["title"]    = "";
-      itsAttributes["artist"]   = "";
-      itsAttributes["location"] = "";
-      itsAttributes["credits"]  = "";
-      itsAttributes["location"] = "";
-      itsAttributes["category"] = "";
-      itsAttributes["object"]   = "";
+      itsAttributes["title"]       = "";
+      itsAttributes["artist"]      = "";
+      itsAttributes["location"]    = "";
+      itsAttributes["credits"]     = "";
+      itsAttributes["location"]    = "";
+      itsAttributes["category"]    = "";
+      itsAttributes["object"]      = "";
+      itsAttributes["genre"]       = "";
+      itsAttributes["comment"]     = "";
+      itsAttributes["annotation"]  = "";
+      itsAttributes["size"]        = "";
     }
 
   };
