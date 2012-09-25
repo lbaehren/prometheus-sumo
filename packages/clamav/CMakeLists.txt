@@ -80,7 +80,6 @@ if (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
       SOURCE_DIR source
       GIT_REPOSITORY ${CLAMAV_GIT}
       BUILD_IN_SOURCE 1
-      PATCH_COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_BINARY_DIR}/freshclam.conf ${CMAKE_CURRENT_BINARY_DIR}/source/etc
       CONFIGURE_COMMAND ${CMAKE_CURRENT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --disable-clamav
       INSTALL_COMMAND ${PORT_INSTALL_COMMAND} make install
       )
@@ -93,12 +92,33 @@ if (NOT CLAMAV_FOUND OR CLAMAV_FORCE_BUILD)
       SOURCE_DIR source
       URL ${CLAMAV_SOURCE}
       BUILD_IN_SOURCE 1
-      PATCH_COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_BINARY_DIR}/freshclam.conf ${CMAKE_CURRENT_BINARY_DIR}/source/etc
       CONFIGURE_COMMAND ${CMAKE_CURRENT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --disable-clamav
       INSTALL_COMMAND ${PORT_INSTALL_COMMAND} make install
       )
 
   endif (CLAMAV_FROM_REPOS)
+
+  ##________________________________________________________
+  ## Replace configuration file(s) with customized version
+
+  ExternalProject_Add_Step (clamav replace_freshclam_conf
+    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_BINARY_DIR}/freshclam.conf ${CMAKE_CURRENT_BINARY_DIR}/source/etc
+    COMMENT "Replace freshclam.conf with customized version ..."
+    DEPENDEES patch
+    DEPENDERS configure
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/source
+    )
+
+  ##________________________________________________________
+  ## Install custom configuration file(s)
+
+  ExternalProject_Add_Step (clamav install_freshclam_conf
+    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_BINARY_DIR}/freshclam.conf ${CMAKE_INSTALL_PREFIX}/etc
+    COMMENT "Replace freshclam.conf with customized version ..."
+    DEPENDEES build
+    DEPENDERS install
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    )
 
   ##________________________________________________________
   ## Patch LLVM sub-module
