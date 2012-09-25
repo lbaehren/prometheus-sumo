@@ -1,6 +1,8 @@
 
 message (STATUS "Processing directory source/lib")
 
+file (GLOB libprometheus_sources Sources/*)
+
 add_library (libprometheus
   Account.cc
   Institution.cc
@@ -11,11 +13,7 @@ add_library (libprometheus
   StatisticsHBZ.cc
   StatisticsReader.cc
   StatisticsReaderHBZ.cc
-  ## Sources
-  Sources/TheolEik.cc
-  Sources/Robertinum.cc
-  Sources/Beeskow.cc
-  Sources/Kassel.cc
+  ${libprometheus_sources}
   )
 
 set_target_properties(libprometheus
