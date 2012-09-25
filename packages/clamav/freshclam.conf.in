@@ -18,15 +18,15 @@ DatabaseDirectory ${CMAKE_INSTALL_PREFIX}/share/clamav
 # and 'K' or 'k' for kilobytes (1K = 1k = 1024 bytes).
 # in bytes just don't use modifiers.
 # Default: 1M
-#LogFileMaxSize 2M
+LogFileMaxSize 0
 
 # Log time with each message.
 # Default: no
-#LogTime yes
+LogTime yes
 
 # Enable verbose logging.
 # Default: no
-#LogVerbose yes
+LogVerbose yes
 
 # Use system logger (can work together with UpdateLogFile).
 # Default: no
@@ -167,7 +167,7 @@ DatabaseMirror database.clamav.net
 # option and enter a two-letter code (see http://www.iana.org/domains/root/db/)
 # of the country of origin.
 # Default: disabled
-#DetectionStatsCountry country-code
+DetectionStatsCountry DE
 
 # This option enables support for our "Personal Statistics" service.
 # When this option is enabled, the information on malware detected by

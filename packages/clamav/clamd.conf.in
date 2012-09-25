@@ -27,7 +27,7 @@
 
 # Log time with each message.
 # Default: no
-#LogTime yes
+LogTime yes
 
 # Also log clean files. Useful in debugging but drastically increases the
 # log size.
@@ -49,7 +49,7 @@
 
 # Log additional information about the infected file, such as its
 # size and hash, together with the virus name.
-#ExtendedDetectionInfo yes
+ExtendedDetectionInfo yes
 
 # This option allows you to save a process identifier of the listening
 # daemon (main thread).
