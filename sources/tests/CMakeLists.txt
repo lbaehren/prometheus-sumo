@@ -34,7 +34,7 @@ find_file (xml_dump_robertinum robertin.xml
 ## ==============================================================================
 
 foreach (test_cpp
-  TestCommon
+  testCommon
   TestImage
   )
   ## Compiler instructions
@@ -119,11 +119,11 @@ if (TINYXML_FOUND)
   ## Header files
   include_directories (${TINYXML_INCLUDES})
   ## Compiler instructions
-  add_executable (TestXML TestXML.cc)
+  add_executable (testXML testXML.cc)
   ## Linker instructions
-  target_link_libraries (TestXML ${TINYXML_LIBRARIES})
+  target_link_libraries (testXML ${TINYXML_LIBRARIES})
 
-  add_test (TestXML TestXML ${xml_dump_beeskow})
+  add_test (testXML testXML ${xml_dump_beeskow})
 
 endif (TINYXML_FOUND)
 
@@ -134,11 +134,11 @@ if (LIBXML2_FOUND)
   ## Header files
   include_directories (${LIBXML2_INCLUDE_DIR})
   ## Compiler instructions
-  add_executable (TestXMLTree TestXMLTree.c)
+  add_executable (testXMLTree testXMLTree.c)
   ## Linker instructions
-  target_link_libraries (TestXMLTree ${LIBXML2_LIBRARIES})
+  target_link_libraries (testXMLTree ${LIBXML2_LIBRARIES})
   ## Testing
-  add_test (TestXMLTree TestXMLTree ${xml_dump_beeskow})
+  add_test (testXMLTree testXMLTree ${xml_dump_beeskow})
 endif (LIBXML2_FOUND)
 
 ## ==============================================================================
