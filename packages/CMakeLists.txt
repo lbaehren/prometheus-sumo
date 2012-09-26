@@ -133,6 +133,7 @@ add_subdirectory (promhp)
 add_subdirectory (tinyxml2)
 add_subdirectory (yaml-cpp)
 add_subdirectory (yaz)
+add_subdirectory (yazpp)
 
 if (WITH_CLAMAV)
   add_subdirectory (clamav)
@@ -142,3 +143,10 @@ if (MYSQL_FOUND)
   add_subdirectory (sphinx)
 endif (MYSQL_FOUND)
 
+## ==============================================================================
+##
+##  Package dependencies
+##
+## ==============================================================================
+
+add_dependencies(yazpp yaz)

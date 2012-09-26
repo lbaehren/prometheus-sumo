@@ -34,8 +34,9 @@ option (ENABLE_TESTING        "Enable CTest test driver?"                     NO
 option (CONFIGURE_VERBOSE     "Increase verbosity during configuration?"      NO )
 option (GIT_REPOSITORIES_RW   "Check out Github repositories for r/w access?" NO )
 
-option (WITH_CLAMAV       "Enable ClamAV antivirus software tool-kit?"     YES )
-option (WITH_PANDORA_DOCS "Enable documentation of pandora source code?"   NO  )
+option (WITH_CLAMAV       "Enable ClamAV antivirus software tool-kit?"      YES )
+option (WITH_PANDORA_DOCS "Enable documentation of pandora source code?"    NO  )
+option (WITH_LATEX_DOC    "Enable generation of LaTeX output from Doxygen?" NO  )
 
 ##__________________________________________________________
 ## Handle option: Enable CTest test driver?
@@ -79,6 +80,7 @@ if (NOT CONFIGURE_VERBOSE)
   set (YAML_FIND_QUIETLY     YES )
   set (YARD_FIND_QUIETLY     YES )
   set (YAZ_FIND_QUIETLY      YES )
+  set (YAZPP_FIND_QUIETLY    YES )
 endif (NOT CONFIGURE_VERBOSE)
 
 ## ==============================================================================
@@ -121,6 +123,8 @@ find_package (MySQL)
 find_package (Xercesc)
 find_package (Yaml)
 find_package (Yard)
+find_package (YAZ)
+find_package (YAZPP)
 
 ## Extract Doxygen version number - this is not done by the standard module
 if (DOXYGEN_EXECUTABLE)
@@ -232,20 +236,15 @@ message (STATUS " .. Include directory ........... = ${RUBY_INCLUDE_DIRS}"      
 message (STATUS " .. Gem executable .............. = ${GEM_EXECUTABLE} (${GEM_VERSION})" )
 message (STATUS " .. Rake executable ............. = ${RAKE_EXECUTABLE} (${RAKE_VERSION})" )
 message (STATUS " .. Rails executable ............ = ${RAILS_EXECUTABLE} (${RAILS_VERSION})" )
-message (STATUS " Documentation tools:"                                          )
-message (STATUS " .. Doxygen executable .......... = ${DOXYGEN_EXECUTABLE} (${DOXYGEN_VERSION})" )
-message (STATUS " .. Doxygen images directory .... = ${DOXYGEN_IMAGE_PATH}")
 message (STATUS " .. RDoc executable ............. = ${RDOC_EXECUTABLE} (${RDOC_VERSION})"            )
 message (STATUS " .. YARD executable ............. = ${YARD_EXECUTABLE} (${YARD_VERSION})" )
-message (STATUS " Database:"                                                     )
-message (STATUS " .. MySQL include directory ..... = ${MYSQL_INCLUDES}"          )
-message (STATUS " .. MySQL client libraries ...... = ${MYSQL_LIBRARIES}"         )
-message (STATUS " .. Yaml include directory ...... = ${YAML_INCLUDES}"           )
-message (STATUS " .. Yaml libraries .............. = ${YAML_LIBRARIES}"          )
 message (STATUS " Processing tools & libraries:"                                 )
-message (STATUS " .. Magic include directory ..... = ${MAGIC_INCLUDES}"          )
-message (STATUS " .. Magic library ............... = ${MAGIC_LIBRARIES}"         )
-message (STATUS " .. TinyXML include directory ... = ${TINYXML_INCLUDES}"        )
-message (STATUS " .. TinyXML library ............. = ${TINYXML_LIBRARIES}"       )
+message (STATUS " .. Doxygen ..................... = ${DOXYGEN_FOUND}"           )
+message (STATUS " .. Magic ....................... = ${MAGIC_FOUND}"             )
+message (STATUS " .. MySQL ....................... = ${MYSQL_FOUND}"             )
+message (STATUS " .. TinyXML ..................... = ${TINYXML_FOUND}"           )
+message (STATUS " .. Yaml ........................ = ${YAML_FOUND}"              )
+message (STATUS " .. YAZ ......................... = ${YAZ_FOUND}"               )
+message (STATUS " .. YAZ++ ....................... = ${YAZPP_FOUND}"             )
 message (STATUS "------------------------------------------------------------ "  )
 

@@ -18,82 +18,81 @@
 # |   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.                 |
 # +-----------------------------------------------------------------------------+
 
-# - Check for the presence of <PACKAGE>
+# - Check for the presence of YAZPP
 #
-# The following variables are set when <PACKAGE> is found:
-#  <PACKAGE>_FOUND      = Set to true, if all components of <PACKAGE>
-#                         have been found.
-#  <PACKAGE>_INCLUDES   = Include path for the header files of <PACKAGE>
-#  <PACKAGE>_LIBRARIES  = Link these to use <PACKAGE>
-#  <PACKAGE>_LFLAGS     = Linker flags (optional)
+# The following variables are set when YAZPP is found:
+#  YAZPP_FOUND      = Set to true, if all components of YAZPP have been found.
+#  YAZPP_INCLUDES   = Include path for the header files of YAZPP
+#  YAZPP_LIBRARIES  = Link these to use YAZPP
+#  YAZPP_LFLAGS     = Linker flags (optional)
 
-if (NOT <PACKAGE>_FOUND)
+if (NOT YAZPP_FOUND)
     
-  if (NOT <PACKAGE>_ROOT_DIR)
-    set (<PACKAGE>_ROOT_DIR ${CMAKE_INSTALL_PREFIX})
-  endif (NOT <PACKAGE>_ROOT_DIR)
+  if (NOT YAZPP_ROOT_DIR)
+    set (YAZPP_ROOT_DIR ${CMAKE_INSTALL_PREFIX})
+  endif (NOT YAZPP_ROOT_DIR)
   
   ##_____________________________________________________________________________
   ## Check for the header files
   
-  find_path (<PACKAGE>_INCLUDES <header file(s)>
-    HINTS ${<PACKAGE>_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
+  find_path (YAZPP_INCLUDES yazpp/zoom.h yazpp/z-server.h
+    HINTS ${YAZPP_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES include
     )
   
   ##_____________________________________________________________________________
   ## Check for the library
   
-  find_library (<PACKAGE>_LIBRARIES <package name>
-    HINTS ${<PACKAGE>_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
+  find_library (YAZPP_LIBRARIES yazpp
+    HINTS ${YAZPP_ROOT_DIR}  ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES lib
     )
   
   ##_____________________________________________________________________________
   ## Check for the executable
   
-  find_program (<PACKAGE>_EXECUTABLE <package name>
-    HINTS ${<PACKAGE>_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
+  find_program (YAZPP_CONFIG_EXECUTABLE yazpp-config
+    HINTS ${YAZPP_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES bin
     )
   
   ##_____________________________________________________________________________
   ## Actions taken when all components have been found
   
-  if (<PACKAGE>_INCLUDES AND <PACKAGE>_LIBRARIES)
-    set (<PACKAGE>_FOUND TRUE)
-  else (<PACKAGE>_INCLUDES AND <PACKAGE>_LIBRARIES)
-    set (<PACKAGE>_FOUND FALSE)
-    if (NOT <PACKAGE>_FIND_QUIETLY)
-      if (NOT <PACKAGE>_INCLUDES)
-	message (STATUS "Unable to find <PACKAGE> header files!")
-      endif (NOT <PACKAGE>_INCLUDES)
-      if (NOT <PACKAGE>_LIBRARIES)
-	message (STATUS "Unable to find <PACKAGE> library files!")
-      endif (NOT <PACKAGE>_LIBRARIES)
-    endif (NOT <PACKAGE>_FIND_QUIETLY)
-  endif (<PACKAGE>_INCLUDES AND <PACKAGE>_LIBRARIES)
+  if (YAZPP_INCLUDES AND YAZPP_LIBRARIES)
+    set (YAZPP_FOUND TRUE)
+  else (YAZPP_INCLUDES AND YAZPP_LIBRARIES)
+    set (YAZPP_FOUND FALSE)
+    if (NOT YAZPP_FIND_QUIETLY)
+      if (NOT YAZPP_INCLUDES)
+	message (STATUS "Unable to find YAZPP header files!")
+      endif (NOT YAZPP_INCLUDES)
+      if (NOT YAZPP_LIBRARIES)
+	message (STATUS "Unable to find YAZPP library files!")
+      endif (NOT YAZPP_LIBRARIES)
+    endif (NOT YAZPP_FIND_QUIETLY)
+  endif (YAZPP_INCLUDES AND YAZPP_LIBRARIES)
   
-  if (<PACKAGE>_FOUND)
-    if (NOT <PACKAGE>_FIND_QUIETLY)
-      message (STATUS "Found components for <PACKAGE>")
-      message (STATUS "<PACKAGE>_ROOT_DIR  = ${<PACKAGE>_ROOT_DIR}")
-      message (STATUS "<PACKAGE>_INCLUDES  = ${<PACKAGE>_INCLUDES}")
-      message (STATUS "<PACKAGE>_LIBRARIES = ${<PACKAGE>_LIBRARIES}")
-    endif (NOT <PACKAGE>_FIND_QUIETLY)
-  else (<PACKAGE>_FOUND)
-    if (<PACKAGE>_FIND_REQUIRED)
-      message (FATAL_ERROR "Could not find <PACKAGE>!")
-    endif (<PACKAGE>_FIND_REQUIRED)
-  endif (<PACKAGE>_FOUND)
+  if (YAZPP_FOUND)
+    if (NOT YAZPP_FIND_QUIETLY)
+      message (STATUS "Found components for YAZPP")
+      message (STATUS "YAZPP_ROOT_DIR  = ${YAZPP_ROOT_DIR}")
+      message (STATUS "YAZPP_INCLUDES  = ${YAZPP_INCLUDES}")
+      message (STATUS "YAZPP_LIBRARIES = ${YAZPP_LIBRARIES}")
+    endif (NOT YAZPP_FIND_QUIETLY)
+  else (YAZPP_FOUND)
+    if (YAZPP_FIND_REQUIRED)
+      message (FATAL_ERROR "Could not find YAZPP!")
+    endif (YAZPP_FIND_REQUIRED)
+  endif (YAZPP_FOUND)
   
   ##_____________________________________________________________________________
   ## Mark advanced variables
   
   mark_as_advanced (
-    <PACKAGE>_ROOT_DIR
-    <PACKAGE>_INCLUDES
-    <PACKAGE>_LIBRARIES
+    YAZPP_ROOT_DIR
+    YAZPP_INCLUDES
+    YAZPP_LIBRARIES
     )
   
-endif (NOT <PACKAGE>_FOUND)
+endif (NOT YAZPP_FOUND)

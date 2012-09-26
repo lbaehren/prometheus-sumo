@@ -3,7 +3,9 @@ YAZ    {#yaz}
 
 \tableofcontents
 
-\section yaz_yaz YAZ
+ - [User's Guide and Reference](http://www.indexdata.com/yaz/doc)
+
+\section yaz_toolkit YAZ programmers’ toolkit
 
 [YAZ](http://www.indexdata.com/yaz) is a programmers’ toolkit supporting the
 development of Z39.50/SRW/SRU clients and servers. Z39.50-2003 (version 3) as
@@ -35,6 +37,47 @@ More Z39.50 Clients and Servers in use around the world are based on YAZ than an
 
 Statistics from Index Data’s Z39.50 Target Directory page compiled in the Fall of 2004 indicate that at least 35% of all Z39.50 server installations worldwide were built with YAZ. We estimate that the true figure is probably closer to 50%, but an exact percentage is not known. Use statistics gathered in mid 2004 from the Z39.50 gateway to the Library of Congress Catalog indicate that a minimum of 65%, and possibly quite a bit more, of the clients accessing the LC catalog are based on the YAZ toolkit.
 
-\section yaz_yazpp YAZ++
+\subsection yaz_yazpp YAZ++
 
-YAZ++ is an application programming interface (API) to YAZ which supports the development of Z39.50/SRW/SRU client and server applications using C++. Like YAZ, it supports Z39.50-2003 (version 3) as well as SRW/SRU version 1.1 in both the client and server roles. YAZ++ includes an implementation of the ZOOM C++ binding and a generic client/server API based on the Observer/Observable design pattern.
+[YAZ++](http://www.indexdata.com/yazpp) is an application programming interface (API) to YAZ which supports the development of Z39.50/SRW/SRU client and server applications using C++. Like YAZ, it supports Z39.50-2003 (version 3) as well as SRW/SRU version 1.1 in both the client and server roles. YAZ++ includes an implementation of the ZOOM C++ binding and a generic client/server API based on the Observer/Observable design pattern.
+
+\subsection yaz_php PHP/YAZ
+
+PHP/YAZ is an extension to the popular web server language PHP that implements Z39.50 origin (client) functionality as well as the SRW/SRU protocols.
+
+The following Z39.50 services are supported by this extension: init, search, present, scan and sort. The extension can handle GRS-1, MARC, SUTRS and XML. The module also allows you to convert MARC in ISO2709 to MARCXML on the client side.
+
+The PHP/YAZ extension is part of PHP 4.0.1 and later but has now been moved to PECL. As a PECL module, PHP/YAZ is now independent of PHP versions. It works with both PHP 4 and PHP 5.
+
+\section yaz_zoom ZOOM
+
+[ZOOM](http://zoom.z3950.org) is the emerging standard API for information
+retrieval programming using the Z39.50 protocol.
+[ZOOM's Abstract API](http://zoom.z3950.org/api/zoom-current.html) specifies
+semantics for classes representing key IR concepts such as connections, queries,
+result sets and records; and there are various bindings specifying how those
+concepts should be represented in various programming languages.
+
+The YAZ++ library includes an implementation of the C++ binding for ZOOM, enabling
+quick, easy development of client applications.
+
+For example, here is a tiny Z39.50 client that fetches and displays the MARC
+record for Farlow & Brett Surman's The Complete Dinosaur from the Library of
+Congress's Z39.50 server:
+
+\code
+  #include <iostream>
+  #include <yazpp/zoom.h>
+
+  using namespace ZOOM;
+
+  int main(int argc, char **argv)
+  {
+      connection conn("z3950.loc.gov", 7090);
+      conn.option("databaseName", "Voyager");
+      conn.option("preferredRecordSyntax", "USMARC");
+      resultSet rs(conn, prefixQuery("@attr 1=7 0253333490"));
+      const record *rec = rs.getRecord(0);
+      cout << rec->render() << endl;
+  }
+\endcode

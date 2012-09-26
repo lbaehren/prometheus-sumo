@@ -46,11 +46,15 @@ if (DOXYGEN_EXECUTABLE)
     set (HAVE_DOT "NO")
   endif (DOXYGEN_DOT_FOUND)
 
-  if (LATEX_COMPILER)
-    set (DOXYGEN_GENERATE_LATEX "YES")
-  else (LATEX_COMPILER)
-    set (DOXYGEN_GENERATE_LATEX "NO")
-  endif (LATEX_COMPILER)
+  if (WITH_LATEX_DOC)
+    if (LATEX_COMPILER)
+      set (DOXYGEN_GENERATE_LATEX "YES")
+    else (LATEX_COMPILER)
+      set (DOXYGEN_GENERATE_LATEX "NO")
+    endif (LATEX_COMPILER)
+  else (WITH_LATEX_DOC)
+      set (DOXYGEN_GENERATE_LATEX "NO")
+  endif (WITH_LATEX_DOC)
 
   ## Configuration summary page
   configure_file (
