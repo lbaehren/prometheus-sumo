@@ -38,7 +38,7 @@ find_file (DOXYGEN_HTML_STYLESHEET stylesheet.css
 
 if (DOXYGEN_EXECUTABLE)
 
-  set (DOCUMENTATION_INPUT "${PROJECT_SOURCE_DIR}/documentation ${PROJECT_SOURCE_DIR}/sources")
+  set (DOCUMENTATION_INPUT "${PROJECT_SOURCE_DIR}/documentation ${PROJECT_SOURCE_DIR}/sources ${CMAKE_INSTALL_PREFIX}/include")
 
   if (DOXYGEN_DOT_FOUND)
     set (HAVE_DOT "YES")
