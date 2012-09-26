@@ -1,3 +1,8 @@
+/*!
+  \file testCommon.cc
+  \brief Test common methods
+  \author Lars Baehren
+*/
 
 #include <Common.h>
 

@@ -1,6 +1,6 @@
 /*!
-  \file TestXMLTree.c
-
+  \file testXMLTree.c
+  \ingroup prometheus
   \brief Navigates the tree of a \ref xml document to print element names
   \author Dodji Seketeli
   \copyright see Copyright for the status of this software.

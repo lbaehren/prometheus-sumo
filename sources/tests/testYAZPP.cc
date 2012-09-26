@@ -1,6 +1,7 @@
 
 /*!
   \file testYAZPP.cc
+  \brief Test using functionality of the YAZ toolkit
   \ingroup prometheus
   \author Lars Baehren
 */
