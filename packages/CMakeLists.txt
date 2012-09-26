@@ -132,6 +132,7 @@ add_subdirectory (pandora)
 add_subdirectory (promhp)
 add_subdirectory (tinyxml2)
 add_subdirectory (yaml-cpp)
+add_subdirectory (yaz)
 
 if (WITH_CLAMAV)
   add_subdirectory (clamav)
