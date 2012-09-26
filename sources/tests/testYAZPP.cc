@@ -1,5 +1,11 @@
+
+/*!
+  \file testYAZPP.cc
+  \ingroup prometheus
+  \author Lars Baehren
+*/
+
 #include <iostream>
-#include<string>
 #include <yazpp/zoom.h>
 
 using namespace ZOOM;

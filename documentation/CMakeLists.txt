@@ -81,16 +81,17 @@ if (DOXYGEN_EXECUTABLE)
   ##________________________________________________________
   ## LaTeX/PDF document
 
-  if (LATEX_COMPILER)
-    add_custom_command (
-      TARGET Documentation
-      POST_BUILD
-      COMMAND ${CMAKE_MAKE_PROGRAM}
-      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/latex
-      )
-  endif (LATEX_COMPILER)
-
-
+  if (WITH_LATEX_DOC)
+    if (LATEX_COMPILER)
+      add_custom_command (
+	TARGET Documentation
+	POST_BUILD
+	COMMAND ${CMAKE_MAKE_PROGRAM}
+	WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/latex
+	)
+    endif (LATEX_COMPILER)
+  endif (WITH_LATEX_DOC)
+  
   if (ENABLE_TESTING)
     add_test (documentation Documentation)
   endif (ENABLE_TESTING)

@@ -5,6 +5,8 @@ YAZ    {#yaz}
 
  - [User's Guide and Reference](http://www.indexdata.com/yaz/doc)
 
+\test testYAZPP.cc
+
 \section yaz_toolkit YAZ programmers’ toolkit
 
 [YAZ](http://www.indexdata.com/yaz) is a programmers’ toolkit supporting the

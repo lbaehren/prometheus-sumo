@@ -186,12 +186,13 @@ endif (YAML_FOUND)
 
 if (YAZPP_FOUND)
 
+  ## Header files
   include_directories (${YAZPP_INCLUDES})
-
+  ## Compiler instructions
   add_executable (testYAZPP testYAZPP.cc)
+  ## Linker instructions
   target_link_libraries (testYAZPP ${YAZPP_LIBRARIES})
 
 endif (YAZPP_FOUND)
-
 
 message (STATUS "Processing directory source/tests - done")
