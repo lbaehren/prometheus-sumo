@@ -35,3 +35,11 @@ source code can be obtained via
 \code
 git clone git://github.com/prometheus-ev/promdilps.git promdilps
 \endcode
+
+promDILPS ist ein Service von uns, der Institutionen und Projekten, die eine Datenbank aufbauen möchten, aber selbst nicht die Möglichkeit haben selbst einen Server zu pflegen, die Möglichkeit bietet, auf unserem Server eine auf der Software DILPS basierte Datenbank aufzubauen. Bei diesen Kooperationen schließen wir einen Vertrag mit dem jeweiligen Partner ab, mit dem Ziel die Datenbank, die auf dem Server aufgebaut wird, in unser Bildarchiv einzubinden und so allen unseren Nutzern zur Verfügung zu stellen.
+
+Eine Einbindung in den Bilderpool von prometheus erfolgt ab einer Größe von 1000 Datensätzen.
+
+Diesen Service können wir leider nicht für den privaten Gebrauch anbieten. Allerdings steht es Ihnen frei, die Software DILPS (welche eine kostenfreie open source Software ist) für Ihre Zwecke auf Ihrem eigenen Rechner zu installieren und zu nutzen. Allerdings ist die Installation etwas kompliziert und es gibt keinen Support.
+
+DILPS ist eine recht simple, flache Datenbank, die nicht die Möglichkeit bietet Datensätze objektorientiert (d.h. mehrere Bilder zu einem Objekt unter einem Datensatz) abzulegen.
