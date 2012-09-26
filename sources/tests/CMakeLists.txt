@@ -178,4 +178,20 @@ if (YAML_FOUND)
 
 endif (YAML_FOUND)
 
+## ==============================================================================
+##
+##  YAZ/YAZ++ test programs
+##
+## ==============================================================================
+
+if (YAZPP_FOUND)
+
+  include_directories (${YAZPP_INCLUDES})
+
+  add_executable (testYAZPP testYAZPP.cc)
+  target_link_libraries (testYAZPP ${YAZPP_LIBRARIES})
+
+endif (YAZPP_FOUND)
+
+
 message (STATUS "Processing directory source/tests - done")
