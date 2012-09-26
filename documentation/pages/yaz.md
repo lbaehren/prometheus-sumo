@@ -3,8 +3,6 @@ YAZ    {#yaz}
 
 \tableofcontents
 
- - [User's Guide and Reference](http://www.indexdata.com/yaz/doc)
-
 \test testYAZPP.cc
 
 \section yaz_toolkit YAZ programmers’ toolkit
@@ -54,7 +52,7 @@ The PHP/YAZ extension is part of PHP 4.0.1 and later but has now been moved to P
 \section yaz_zoom ZOOM
 
 [ZOOM](http://zoom.z3950.org) is the emerging standard API for information
-retrieval programming using the Z39.50 protocol.
+retrieval programming using the [Z39.50 protocol](http://en.wikipedia.org/wiki/Z39.50).
 [ZOOM's Abstract API](http://zoom.z3950.org/api/zoom-current.html) specifies
 semantics for classes representing key IR concepts such as connections, queries,
 result sets and records; and there are various bindings specifying how those
@@ -75,11 +73,22 @@ Congress's Z39.50 server:
 
   int main(int argc, char **argv)
   {
+      /* Configuration of server connection */
       connection conn("z3950.loc.gov", 7090);
       conn.option("databaseName", "Voyager");
       conn.option("preferredRecordSyntax", "USMARC");
+
+      /* Retrieve data from server ... */
       resultSet rs(conn, prefixQuery("@attr 1=7 0253333490"));
-      const record *rec = rs.getRecord(0);
+
+      /* ... and display them */
+      record rec (rs, 0);
       cout << rec->render() << endl;
   }
 \endcode
+
+\section yaz_references References 
+
+ - [YAZ toolkit](http://www.indexdata.com/yaz)
+ - [User's Guide and Reference](http://www.indexdata.com/yaz/doc)
+ - [The Z39.50 Object-Orientation Model](http://zoom.z3950.org/api/zoom-current.html)

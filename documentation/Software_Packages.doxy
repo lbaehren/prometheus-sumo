@@ -76,7 +76,15 @@
       that takes concepts from programming languages such as C, Perl, and Python,
       and ideas from XML and the data format of electronic mail (RFC 2822).</dd>
 
+    <dt>XML</dt>
+      <dd>\subpage xml (Extensible Markup Language) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable. It is defined in the XML 1.0 Specification produced by the W3C, and several other related specifications, all gratis open standards.</dd>
+
+    <dt>YAZ</dt>
+      <dd>\subpage yaz is a programmers’ toolkit supporting the
+development of Z39.50/SRW/SRU clients and servers. Z39.50-2003 (version 3) as
+well as SRW/SRU version 1.1 are supported in both the client and server roles.
+The SOLR webservice is supported in the client role through the ZOOM API.</dd>
+
   </dl>
 
 */
-

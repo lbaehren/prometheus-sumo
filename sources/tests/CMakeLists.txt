@@ -192,6 +192,8 @@ if (YAZPP_FOUND)
   add_executable (testYAZPP testYAZPP.cc)
   ## Linker instructions
   target_link_libraries (testYAZPP ${YAZPP_LIBRARIES})
+  ## Testing
+  add_test (testYAZPP testYAZPP)
 
 endif (YAZPP_FOUND)
 

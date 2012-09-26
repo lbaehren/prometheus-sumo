@@ -5,13 +5,13 @@ Importing a new (external) database    {#database_import}
 \tableofcontents
 
 The import of a new database is channeled through the generation and subsequent
-reading of an XML schema; the latter is either provided directly by the
+reading of an \ref xml schema; the latter is either provided directly by the
 maintainer(s) of the external database, or generated from e.g. a SQL dump of the
 original database.
 
 Models or new sources can be found in
 
-~~~~
+\verbatim
   pandora
   `-- app/models
           |-- source
@@ -21,7 +21,7 @@ Models or new sources can be found in
           |   |..
           |-- source.rb
           `-- xml_source.rb
-~~~~
+\endverbatim
 
 In order ingest a new database, the following building blocks/information are
 required:
