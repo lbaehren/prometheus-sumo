@@ -78,6 +78,7 @@ if (NOT CONFIGURE_VERBOSE)
   set (XERCESC_FIND_QUIETLY  YES )
   set (YAML_FIND_QUIETLY     YES )
   set (YARD_FIND_QUIETLY     YES )
+  set (YAZ_FIND_QUIETLY      YES )
 endif (NOT CONFIGURE_VERBOSE)
 
 ## ==============================================================================
