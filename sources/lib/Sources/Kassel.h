@@ -33,6 +33,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       \ingroup prometheus
       \ingroup source
       \brief Dump from Kassel database.
+      \test TestSourcesKassel.cc
       \author Lars Baehren
     */
     class Kassel : public SourceDump {

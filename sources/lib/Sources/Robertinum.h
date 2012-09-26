@@ -33,6 +33,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       \ingroup prometheus
       \ingroup source
       \brief Dump from Robertinum database.
+      \test TestSourcesRobertinum.cc
       \author Lars Baehren
     */
     class Robertinum : public SourceDump {

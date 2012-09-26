@@ -35,6 +35,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       \ingroup prometheus
       \ingroup source
       \brief Dump from Beeskow database.
+      \test TestSourcesBeeskow.cc
       \author Lars Baehren
     */
     class Beeskow : public SourceDump {

@@ -83,6 +83,7 @@ if(Boost_FOUND)
       TestSourcesKassel.cc
       TestSourcesRobertinum.cc
       TestSourcesTheolEik.cc
+      testSourcesPPO.cc
       )
     ## remove file extension
     get_filename_component (varFilename ${test_xml_boost} NAME_WE)

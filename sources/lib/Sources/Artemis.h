@@ -33,6 +33,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       \ingroup prometheus
       \ingroup source
       \brief Dump from Artemis database.
+      \test TestSourcesArtemis.cc
       \author Lars Baehren
 
       Structure of the database dump:

@@ -18,45 +18,56 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef SOURCES_THEOLEIK_H
-#define SOURCES_THEOLEIK_H
+#ifndef SOURCES_PPO_H
+#define SOURCES_PPO_H
 
 #include <SourceDump.h>
-
-using prometheus::SourceDump;
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
 
   namespace source {  //  namespace source -- BEGIN
 
     /*!
-      \file TheolEik.h
-      \class TheolEik
+      \file PPO.h
+      \class PPO
       \ingroup prometheus
       \ingroup source
-      \brief Dump from TheolEik database.
-      \test TestSourcesTheolEik.cc
+      \brief Dump from Pictura Paedagogica Online (PPO) database.
+      \test testSourcesPPO.cc
       \author Lars Baehren
     */
-    class TheolEik : public SourceDump {
+    class PPO : public SourceDump {
 
     public:
 
-      // === Construction =======================================================
+      // === Construction ======================================================
 
       //! Argumented constructor
-      TheolEik (std::string const &rootNode="FMPDSORESULT",
-	        std::string const &imageNode="ROW");
+      PPO (std::string const &rootNode="ppo",
+           std::string const &imageNode="row");
+
+      // === Public methods ====================================================
+
+      //! Extract source IDs from input file
+      std::vector<std::string> sourceIDs (std::string const &filename,
+                                          std::string const &match);
 
     private:
 
       //! Initialize internal attributes
-      void init ();
+      void init () {
+        itsAttributes["artist"]   = "kuenstler";
+        itsAttributes["title"]    = "titel";
+        itsAttributes["keyword"]  = "epochensw";
+        itsAttributes["location"] = "Pictura Paedagogica Online";
+        itsAttributes["genre"]    = "gattung";
+        itsAttributes["date"]     = "datierung";
+      }
 
-    };  //  class TheolEik -- END
+    };   //   class PPO -- END
 
-  };  //  namespace source -- END
+  }   //   namespace source -- END
 
-}  //  namespace prometheus -- END
+}   //   namespace prometheus -- END
 
 #endif
