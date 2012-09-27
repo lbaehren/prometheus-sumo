@@ -27,15 +27,29 @@ application development languages. We provide
 out Knowledge Integration's open source offering, JZKit.) In addition to these
 wrappers, a number of the language bindings of the ZOOM API are based on YAZ.
 
-Libraries and vendors can freely download YAZ and its associated toolkits to build their own Z39.50 applications. Alternatively, they can use the consultancy and support services of Index Data to take advantage of our decade of experience building and supporting Z39.50 toolkits and applications.
+Libraries and vendors can freely download YAZ and its associated toolkits to
+build their own Z39.50 applications. Alternatively, they can use the consultancy
+and support services of Index Data to take advantage of our decade of experience
+building and supporting Z39.50 toolkits and applications.
 
-YAZ has been considered the leading toolkit for building Z39.50 clients and servers since its first release in 1995. During a decade and a half of active service, the YAZ toolkit has been battle-hardened in every conceivable type of employment, and grown in its support for even the more esoteric aspects of the Z39.50, SUR/SRW, and lately SOLR protocols.
+YAZ has been considered the leading toolkit for building Z39.50 clients and
+servers since its first release in 1995. During a decade and a half of active
+service, the YAZ toolkit has been battle-hardened in every conceivable type of
+employment, and grown in its support for even the more esoteric aspects of the
+Z39.50, SUR/SRW, and lately SOLR protocols.
 
 Who Uses YAZ?
 
-More Z39.50 Clients and Servers in use around the world are based on YAZ than any other toolkit.
+More Z39.50 Clients and Servers in use around the world are based on YAZ than
+any other toolkit.
 
-Statistics from Index Data’s Z39.50 Target Directory page compiled in the Fall of 2004 indicate that at least 35% of all Z39.50 server installations worldwide were built with YAZ. We estimate that the true figure is probably closer to 50%, but an exact percentage is not known. Use statistics gathered in mid 2004 from the Z39.50 gateway to the Library of Congress Catalog indicate that a minimum of 65%, and possibly quite a bit more, of the clients accessing the LC catalog are based on the YAZ toolkit.
+Statistics from Index Data’s Z39.50 Target Directory page compiled in the Fall
+of 2004 indicate that at least 35% of all Z39.50 server installations worldwide
+were built with YAZ. We estimate that the true figure is probably closer to 50%,
+but an exact percentage is not known. Use statistics gathered in mid 2004 from
+the Z39.50 gateway to the Library of Congress Catalog indicate that a minimum of
+65%, and possibly quite a bit more, of the clients accessing the LC catalog are
+based on the YAZ toolkit.
 
 \subsection yaz_yazpp YAZ++
 
@@ -66,29 +80,30 @@ record for Farlow & Brett Surman's The Complete Dinosaur from the Library of
 Congress's Z39.50 server:
 
 \code
-  #include <iostream>
-  #include <yazpp/zoom.h>
+#include <iostream>
+#include <yazpp/zoom.h>
 
-  using namespace ZOOM;
+using namespace ZOOM;
 
-  int main(int argc, char **argv)
-  {
-      /* Configuration of server connection */
-      connection conn("z3950.loc.gov", 7090);
-      conn.option("databaseName", "Voyager");
-      conn.option("preferredRecordSyntax", "USMARC");
+int main(int argc, char **argv)
+{
+    /* Configuration of server connection */
+    connection conn("z3950.loc.gov", 7090);
+    conn.option("databaseName", "Voyager");
+    conn.option("preferredRecordSyntax", "USMARC");
 
-      /* Retrieve data from server ... */
-      resultSet rs(conn, prefixQuery("@attr 1=7 0253333490"));
+    /* Retrieve data from server ... */
+    resultSet rs(conn, prefixQuery("@attr 1=7 0253333490"));
 
-      /* ... and display them */
-      record rec (rs, 0);
-      cout << rec->render() << endl;
-  }
+    /* ... and display them */
+    record rec (rs, 0);
+    cout << rec->render() << endl;
+}
 \endcode
 
 \section yaz_references References 
 
  - [YAZ toolkit](http://www.indexdata.com/yaz)
  - [User's Guide and Reference](http://www.indexdata.com/yaz/doc)
+ - [YAZ++ User's Guide and Reference](http://www.indexdata.com/yazpp/doc/index.html)
  - [The Z39.50 Object-Orientation Model](http://zoom.z3950.org/api/zoom-current.html)
