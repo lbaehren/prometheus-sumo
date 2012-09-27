@@ -126,8 +126,7 @@ if [ -x "$SVN_SYNC" ]; then
 fi
 
 if [ -x "$REDMINE_RUNNER" ]; then
-  PATH=/usr/local/bin:/usr/bin:/bin $REDMINE_RUNNER -e production 'Project.find_by_name("pandora").r
-epository.fetch_changesets' &
+  PATH=/usr/local/bin:/usr/bin:/bin $REDMINE_RUNNER -e production 'Project.find_by_name("pandora").repository.fetch_changesets' &
 fi
 \endcode
 
