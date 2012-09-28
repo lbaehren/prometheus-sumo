@@ -7,6 +7,8 @@ Update of database dumps    {#database_dumps}
 
 \section database_dumps_procedure Update procedure
 
+[Pictura Paedagogica Online](http://opac.bbf.dipf.de/virtuellesbildarchiv)
+
 Files with a list of source IDs can be found in the `id_files` directory: the
 records files
 

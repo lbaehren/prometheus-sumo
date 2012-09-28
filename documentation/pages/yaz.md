@@ -63,7 +63,7 @@ The following Z39.50 services are supported by this extension: init, search, pre
 
 The PHP/YAZ extension is part of PHP 4.0.1 and later but has now been moved to PECL. As a PECL module, PHP/YAZ is now independent of PHP versions. It works with both PHP 4 and PHP 5.
 
-\section yaz_zoom ZOOM
+\subsection yaz_zoom ZOOM
 
 [ZOOM](http://zoom.z3950.org) is the emerging standard API for information
 retrieval programming using the [Z39.50 protocol](http://en.wikipedia.org/wiki/Z39.50).
@@ -101,6 +101,114 @@ int main(int argc, char **argv)
 }
 \endcode
 
+\subsection yaz_pqf Prefix Query Format
+
+Since RPN or reverse polish notation is really just a fancy way of describing a suffix notation format (operator follows operands), it would seem that the confusion is total when we now introduce a prefix notation for RPN. The reason is one of simple laziness - it's somewhat simpler to interpret a prefix format, and this utility was designed for maximum simplicity, to provide a baseline representation for use in simple test applications and scripting environments (like Tcl). The demonstration client included with YAZ uses the PQF.
+
+The PQF is defined by the pquery module in the YAZ library. There are two sets of function that have similar behavior. First set operates on a PQF parser handle, second set doesn't. First set set of functions are more flexible than the second set. Second set is obsolete and is only provided to ensure backwards compatibility. 
+
+\section yaz_toolkit_intro YAZ toolkit
+
+One of the things Index Data is known for is the YAZ toolkit - an open source
+programmers’ toolkit supporting the development of Z39.50/SRW/SRU clients and
+servers. The first release was in 1995 and I've been using it for my own
+metasearch engine ZACK Gateway since 1998, long before I joined Index Data.
+
+Z39.50 is a client-server protocol for searching and retrieving information from
+remote computer databases. It is a mature low level protocol like HTTP and FTP.
+You don't implement Z39.50 yourself, you use the YAZ utilities and the libraries
+and frameworks for in other languages (C++, PHP, Perl, etc.).
+
+There are many people who thinks that Z39.50 is a dead standard, and hard to
+understand. That is not true. Z39.50 is still growing in use, stable and very
+fast. It is the only widely available protocol for metasearch.
+
+Using Z39.50 is not harder than using FTP. I think that the overhead for learning Z39.50 is less than a half day for an experienced programmer. Every problem which you have later is not related to the Z39.50 protocol itself, it is related to underlying system behind the Z39.50 server. Keep in mind that Z39.50 is an API to access (bibliographic) databases. It does not define how the data is structured and indexed in the database.
+
+\subsection yaz_toolkit_search Simple search
+
+Let's start with a simple question: does the Library of Congress have the book "library mashups"? (I strongly recommend you buy this book - I wrote chapter 19):
+
+\verbatim
+$ zoomsh "connect z3950.loc.gov:7090/voyager" 'search "library mashups"' quit
+
+z3950.loc.gov:7090/voyager: 2 hits
+\endverbatim
+
+That's all! Only one line on the command line. A SRU or SOAP request would not
+be shorter. 
+
+The default exchange format for bibliographic records in Z39.50 is MARC21. This
+is maybe not what you want to parse yourself.
+
+Ok, now let's download the record in \ref xml format:
+
+\code
+$ zoomsh "connect z3950.loc.gov:7090/voyager" 'search "library mashups"' "show 0 1 xml" "quit"
+\endcode
+
+The resulting output will look something like this:
+
+\verbatim
+z3950.loc.gov:7090/voyager: 2 hits
+0 database=VOYAGER syntax=USmarc schema=unknown
+<record xmlns="http://www.loc.gov/MARC21/slim">
+ <leader>02438cam a22003018a 4500</leader>
+ <controlfield tag="001">15804854</controlfield>
+ <controlfield tag="005">20090710141909.0</controlfield>
+ <controlfield tag="008">090706s2009 nju b 001 0 eng </controlfield>
+ <datafield tag="906" ind1=" " ind2=" ">
+ <subfield code="a">7</subfield>
+ <subfield code="b">cbc</subfield>
+ <subfield code="c">orignew</subfield>
+ <subfield code="d">1</subfield>
+ <subfield code="e">ecip</subfield>
+ <subfield code="f">20</subfield>
+ <subfield code="g">y-gencatlg</subfield>
+ </datafield>
+
+[large XML output...]
+</record>
+\endverbatim
+
+You can parse the \ref xml output with your favorite tools, usually an XSLT style sheet.
+
+\subsection yaz_toolkit_metasearch Simple metasearch
+
+It as well is possible to run a simple metasearch on the command line. You want
+to know which library has the book with the ISBN 0-13-949876-1 (UNIX network
+programming / W. Richard Stevens)? You can run the zoomsh in a shell loop.
+
+Put the list of databases (zURL's) line by line in the text file zurl.txt:
+
+\verbatim
+z3950.loc.gov:7090/voyager
+melvyl.cdlib.org:210/CDL90
+library.ox.ac.uk:210/ADVANCE
+z3950.library.wisc.edu:210/madison
+\endverbatim
+
+and run a little loop in a shell script:
+
+\code
+$ for zurl in `cat zurl.txt`
+do
+ zoomsh "connect $zurl" \
+ "search @attr 1=7 0-13-949876-1" "quit"
+done
+\endcode
+
+The resulting output will look something like this:
+
+\verbatim
+z3950.loc.gov:7090/voyager: 0 hits
+melvyl.cdlib.org:210/CDL90: 1 hits
+library.ox.ac.uk:210/ADVANCE: 1 hits
+z3950.library.wisc.edu:210/madison: 0 hits
+\endverbatim
+
+Of course it takes time to run one search request after another. How about a parallel search? Modern xargs(1) commands on BSD based Operating Systems (MacOS, FreeBSD) and the GNU xargs supports to run several processes at a time.
+
 \section yaz_references References 
 
  - [YAZ toolkit](http://www.indexdata.com/yaz)
@@ -108,3 +216,4 @@ int main(int argc, char **argv)
  - [YAZ++ User's Guide and Reference](http://www.indexdata.com/yazpp/doc/index.html)
  - [The Z39.50 Object-Orientation Model](http://zoom.z3950.org/api/zoom-current.html)
  - [Bib-1 Diagnostics Defined within the Z39.50-1995 Standard](http://www.loc.gov/z3950/agency/defns/bib1diag.html)
+ - [Standards at the Library of Congress](http://www.loc.gov/standards)
