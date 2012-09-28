@@ -19,36 +19,40 @@ using namespace ZOOM;
 
 /*!
   \brief Show results from Z39.50 database search
-  \param rs    -- Result set to display.
-  \param index -- Index of the entry within the result set to display (if the set
-                  is not empty).
+  \param rs  -- Result set to display.
+  \param num -- Number of result sets to display.
  */
 int show_results (resultSet &rs,
-		  size_t const &index=0)
+		  size_t const &num=5)
 {
-  if (rs.size()) {
-    try {
-      record rec (rs, index);
-      std::cout << rec.render() << std::endl;
-    } catch (systemException &e) {
-      std::cerr << "System error " << e.errcode() << " (" << e.errmsg() << ")"
-		<< std::endl;
-      return 1;
-    } catch (bib1Exception &e) {
-      std::cerr << "BIB-1 error " << e.errcode() << " (" << e.errmsg() << "): " << e.addinfo()
-		<< std::endl;
-      return 2;
-    } catch (queryException &e) {
-      std::cerr << "Query error " << e.errcode() << " (" << e.errmsg() << "): " << e.addinfo()
-		<< std::endl;
-      return 3;
-    } catch (exception &e) {
-      std::cerr << "Error " << e.errcode() << " (" << e.errmsg() << ")"
-		<< std::endl;
-      return 4;
+  size_t nofResults = rs.size();
+  
+  if (nofResults) {
+    std::cout << "--> nof. result sets = " << nofResults << std::endl;
+    for (size_t n=0; n<num; ++n) {
+      try {
+	record rec (rs, num);
+	std::cout << rec.render() << std::endl;
+      } catch (systemException &e) {
+	std::cerr << "System error " << e.errcode() << " (" << e.errmsg() << ")"
+		  << std::endl;
+	return 1;
+      } catch (bib1Exception &e) {
+	std::cerr << "BIB-1 error " << e.errcode() << " (" << e.errmsg() << "): " << e.addinfo()
+		  << std::endl;
+	return 2;
+      } catch (queryException &e) {
+	std::cerr << "Query error " << e.errcode() << " (" << e.errmsg() << "): " << e.addinfo()
+		  << std::endl;
+	return 3;
+      } catch (exception &e) {
+	std::cerr << "Error " << e.errcode() << " (" << e.errmsg() << ")"
+		  << std::endl;
+	return 4;
+      }
     }
   } else {
-    std::cout << "--> No records to show." << std::endl;
+    std::cout << "--> No results to display - empty set!" << std::endl;
   }
   
   return 0;
@@ -127,7 +131,6 @@ int test_NLA (std::string const &server="catalogue.nla.gov.au",
   try {
     /* Retrieve data from server */
     resultSet rs (conn, prefixQuery("@attr 1=4 Frankenstein"));
-    std::cout << "--> nof. result sets = " << rs.size() << std::endl;
     /* Display results */
     show_results (rs);
   } catch (systemException &e) {
