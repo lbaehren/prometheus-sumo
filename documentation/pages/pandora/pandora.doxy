@@ -16,6 +16,7 @@
   \li \subpage pandora_deployment
   \li \subpage coding_guidelines
   \li \subpage database_import
+  \li \subpage database_dumps
   \li \subpage database_suppliers
 
   \section refman_pandora_checkout Getting the source code
