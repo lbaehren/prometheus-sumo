@@ -9,8 +9,7 @@
 
   Related pages:
 
-  \li \subpage pandora_install_devel
-  \li \subpage pandora_install_production
+  \li \subpage pandora_install
   \li \subpage database
   \li \ref database_import
   \li \subpage pandora_deployment
@@ -18,6 +17,9 @@
   \li \subpage database_import
   \li \subpage database_dumps
   \li \subpage database_suppliers
+
+  \li [Frequently asked questions](http://prometheus-bildarchiv.de/en/faq)
+  \li [Help pages](http://prometheus.uni-koeln.de/pandora/en/help)
 
   \section refman_pandora_checkout Getting the source code
 
@@ -239,9 +241,78 @@
   rake db:test:setup  # fängt quasi bei "Null" wieder an
   \endverbatim
 
-  \section pandora_references References
+  \section pandora_shutdown Shutdown procedure
 
-  \li [Frequently asked questions](http://prometheus-bildarchiv.de/en/faq)
-  \li [Help pages](http://prometheus.uni-koeln.de/pandora/en/help)
+  \li At prom1: Disable the usage of the application
+  \code
+  production deploy web:disable
+  \endcode
+
+  \li Enable SSI for message in `index.de.html`: Change from
+  \code
+---
+layout: default
+changefreq: daily
+priority: 1.0
+---
+<!--NOPANDORA#include virtual="<%=r "inc/nopandora.html.#{page.lang}" %>" -->
+\endcode
+  to
+  \code
+---
+layout: default
+changefreq: daily
+priority: 1.0
+---
+#include virtual="<%=r "inc/nopandora.html.#{page.lang}" %>"
+  \endcode
+
+  \li Deactivate cronjobs, not to be active during shutdown period (or before the system
+  is back up completely)
+
+  \li Stop the application
+  \code
+  production deploy:stop
+  \endcode
+
+  \li Shut down the individual server machines:
+  \code
+  shutdown -h now
+  \endcode
+
+  \section pandora_startup Startup procedure
+
+  \li Check status of the Mongrel cluster
+  \code
+  pandora_cluster ps
+  \endcode
+  If the cluster is not up and running, use:
+  \code
+  pandora_cluster start
+  \endcode
+
+  \li Check NFS imports
+  \code
+  nfsimports
+  \endcode
+
+  \li Change the maintenance message from
+  \code
+  ---
+  layout: default
+  changefreq: daily
+  priority: 1.0
+  ---
+  #include virtual="<%=r "inc/nopandora.html.#{page.lang}" %>"
+  \endcode
+  back to
+   \code
+  ---
+  layout: default
+  changefreq: daily
+  priority: 1.0
+  ---
+  <!--NOPANDORA#include virtual="<%=r "inc/nopandora.html.#{page.lang}" %>" -->
+\endcode
 
 */
