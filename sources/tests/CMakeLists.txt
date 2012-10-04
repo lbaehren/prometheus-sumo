@@ -35,7 +35,7 @@ find_file (xml_dump_robertinum robertin.xml
 
 foreach (test_cpp
   testCommon
-  TestImage
+  testImage
   )
   ## Compiler instructions
   add_executable (${test_cpp} ${test_cpp}.cc)
@@ -78,11 +78,11 @@ if(Boost_FOUND)
   include_directories(${Boost_INCLUDE_DIRS})
 
   foreach (test_xml_boost
-      TestSourceDump.cc
-      TestSourcesBeeskow.cc
-      TestSourcesKassel.cc
-      TestSourcesRobertinum.cc
-      TestSourcesTheolEik.cc
+      testSourceDump.cc
+      testSourcesBeeskow.cc
+      testSourcesKassel.cc
+      testSourcesRobertinum.cc
+      testSourcesTheolEik.cc
       testSourcesPPO.cc
       )
     ## remove file extension
@@ -157,7 +157,7 @@ if (YAML_FOUND)
 
   foreach (test_yaml
       tEmitting.cc
-      TestYamlReading.cc
+      testYamlReading.cc
       )
 
     ## Strip extension from filename
