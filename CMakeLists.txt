@@ -128,7 +128,7 @@ find_package (YAZPP)
 
 ## Extract Doxygen version number - this is not done by the standard module
 if (DOXYGEN_EXECUTABLE)
-  
+
   execute_process(
     COMMAND ${DOXYGEN_EXECUTABLE} --version
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
@@ -137,7 +137,7 @@ if (DOXYGEN_EXECUTABLE)
     ERROR_VARIABLE DOXYGEN_ERROR_VARIABLE
     OUTPUT_STRIP_TRAILING_WHITESPACE
     )
-  
+
   if (DOXYGEN_VERSION)
     ## Convert string to list of numbers
     string (REGEX REPLACE "\\." ";" DOXYGEN_VERSION_LIST ${DOXYGEN_VERSION})
@@ -145,8 +145,8 @@ if (DOXYGEN_EXECUTABLE)
     list(GET DOXYGEN_VERSION_LIST 0 DOXYGEN_VERSION_MAJOR)
     list(GET DOXYGEN_VERSION_LIST 1 DOXYGEN_VERSION_MINOR)
     list(GET DOXYGEN_VERSION_LIST 2 DOXYGEN_VERSION_PATCH)
-  endif (DOXYGEN_VERSION)  
-  
+  endif (DOXYGEN_VERSION)
+
 endif (DOXYGEN_EXECUTABLE)
 
 ## Decomposition of Ruby version number - this is not done by the standard module
@@ -239,6 +239,7 @@ message (STATUS " .. Rails executable ............ = ${RAILS_EXECUTABLE} (${RAIL
 message (STATUS " .. RDoc executable ............. = ${RDOC_EXECUTABLE} (${RDOC_VERSION})"            )
 message (STATUS " .. YARD executable ............. = ${YARD_EXECUTABLE} (${YARD_VERSION})" )
 message (STATUS " Processing tools & libraries:"                                 )
+message (STATUS " .. Boost ..,,................... = ${Boost_FOUND}"             )
 message (STATUS " .. Doxygen ..................... = ${DOXYGEN_FOUND}"           )
 message (STATUS " .. Magic ....................... = ${MAGIC_FOUND}"             )
 message (STATUS " .. MySQL ....................... = ${MYSQL_FOUND}"             )

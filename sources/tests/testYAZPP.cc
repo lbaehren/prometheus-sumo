@@ -44,25 +44,31 @@ int show_results (resultSet &rs,
   size_t nofResults = rs.size();
 
   if (nofResults) {
-    std::cout << "--> nof. result sets = " << nofResults << std::endl;
     for (size_t n=0; n<num; ++n) {
+      /* Record result counter */
+      std::cout << "--> Result record [" << n << "/" << nofResults <<  "]" << std::endl;
+      /* Render the contents of the record */
       try {
-	record rec (rs, num);
+	record rec (rs, n);
 	std::cout << rec.render() << std::endl;
       } catch (systemException &e) {
-	std::cerr << "System error " << e.errcode() << " (" << e.errmsg() << ")"
+	std::cerr << "[show_results] System error " << e.errcode()
+		  << " (" << e.errmsg() << ")"
 		  << std::endl;
 	return 1;
       } catch (bib1Exception &e) {
-	std::cerr << "BIB-1 error " << e.errcode() << " (" << e.errmsg() << "): " << e.addinfo()
+	std::cerr << "[show_results] BIB-1 error " << e.errcode()
+		  << " (" << e.errmsg() << "): " << e.addinfo()
 		  << std::endl;
 	return 2;
       } catch (queryException &e) {
-	std::cerr << "Query error " << e.errcode() << " (" << e.errmsg() << "): " << e.addinfo()
+	std::cerr << "[show_results] Query error " << e.errcode()
+		  << " (" << e.errmsg() << "): " << e.addinfo()
 		  << std::endl;
 	return 3;
       } catch (exception &e) {
-	std::cerr << "Error " << e.errcode() << " (" << e.errmsg() << ")"
+	std::cerr << "[show_results] Error " << e.errcode()
+		  << " (" << e.errmsg() << ")"
 		  << std::endl;
 	return 4;
       }
@@ -97,19 +103,23 @@ int get_results (connection &conn,
     /* ... and display the results */
     show_results (rs, num);
   } catch (systemException &e) {
-    std::cerr << "System error " << e.errcode() << " (" << e.errmsg() << ")"
+    std::cerr << "[get_results] System error " << e.errcode()
+	      << " (" << e.errmsg() << ")"
 	      << std::endl;
     ++status;
   } catch (bib1Exception &e) {
-    std::cerr << "BIB-1 error " << e.errcode() << " (" << e.errmsg() << "): " << e.addinfo()
+    std::cerr << "[get_results] BIB-1 error " << e.errcode()
+	      << " (" << e.errmsg() << "): " << e.addinfo()
 	      << std::endl;
     ++status;
   } catch (queryException &e) {
-    std::cerr << "Query error " << e.errcode() << " (" << e.errmsg() << "): " << e.addinfo()
+    std::cerr << "[get_results] Query error " << e.errcode()
+	      << " (" << e.errmsg() << "): " << e.addinfo()
 	      << std::endl;
     ++status;
   } catch (exception &e) {
-    std::cerr << "Error " << e.errcode() << " (" << e.errmsg() << ")"
+    std::cerr << "[get_results] Error " << e.errcode()
+	      << " (" << e.errmsg() << ")"
 	      << std::endl;
     ++status;
   }
@@ -271,9 +281,8 @@ int test_PPO (std::string const &server="193.175.194.50",
 
   /* Configuration of server connection */
   connection conn(server.c_str(), port);
-  conn.option ("base",           "bil");
-  conn.option ("format",         "mab");
-  conn.option("preferredRecordSyntax", "BIS");
+  conn.option ("databaseName",   "bil");
+  conn.option ("preferredRecordSyntax", "mab");
 
   /* Define query to post */
   prefixQuery pq ("@attr 1=12 b0009539berl");
@@ -295,11 +304,11 @@ int main (int argc, char **argv)
   int status = 0;
 
   /* Test retrieving record from Astrophysics Data System (ADS) database */
-  // status += test_ADS ();
+  status += test_ADS ();
   /* Test retrieving record from Library of Congress database */
-  // status += test_LoC ();
+  status += test_LoC ();
   /* Test retrieving record from National Library of Australia database */
-  // status += test_NLA ();
+  status += test_NLA ();
   /* Test retrieving record from berliner allegroCatalog (baC) database */
   status += test_baC ();
   /* Test retrieving record from Pictura Paedagogica Online database */
