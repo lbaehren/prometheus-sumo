@@ -101,7 +101,17 @@ int main(int argc, char **argv)
 }
 \endcode
 
-\subsection yaz_pqf Prefix Query Format
+\subsection yaz_usemarcon USEMARCON
+
+[USEMARCON](http://www.nationallibrary.fi/libraries/format/usemarcon.html) is a rule-based MARC record manipulation program and library. It is free, open source, written in C++. USEMARCON can be used interactively with USEMARCON GUI, in batch processing using the command line version and it's also possible to integrate the library with other software (this has been done e.g. with YAZ Proxy»).
+
+USEMARCON is a software application that allows users to convert bibliographic records from one MAchine-Readable Cataloguing (MARC) format to another. Approximately fifty variant MARC formats are currently in use throughout the world. The differences between the MARC formats present a barrier to the easy exchange of records. This is a fundamental problem for libraries, and necessitates the costly re-cataloguing of material for which records are already available, but in a MARC format other than their own.
+
+In 1995, a project funded by the European Union was set up to address this issue. The project was successfully completed in 1997 with the development of the USEMARCON (User Controlled Generic MARC Converter) software.
+
+USEMARCON facilitates the conversion of catalogue records from one MARC format to another e.g. from UKMARC to UNIMARC. The software was designed as a toolbox-style application, allowing users with detailed knowledge of the source and target MARC formats to develop rules governing the behaviour of the conversion. Rules files may be supplemented by additional tables for more accurate conversion of MARC-specific character sets or coded information. The tables and rules files are simple ASCII text files and can be created using any standard text editor such as MS Windows Notepad.
+
+\section yaz_pqf Prefix Query Format
 
 Since RPN or reverse polish notation is really just a fancy way of describing a suffix notation format (operator follows operands), it would seem that the confusion is total when we now introduce a prefix notation for RPN. The reason is one of simple laziness - it's somewhat simpler to interpret a prefix format, and this utility was designed for maximum simplicity, to provide a baseline representation for use in simple test applications and scripting environments (like Tcl). The demonstration client included with YAZ uses the PQF.
 
@@ -136,7 +146,7 @@ z3950.loc.gov:7090/voyager: 2 hits
 \endverbatim
 
 That's all! Only one line on the command line. A SRU or SOAP request would not
-be shorter. 
+be shorter.
 
 The default exchange format for bibliographic records in Z39.50 is MARC21. This
 is maybe not what you want to parse yourself.
@@ -209,7 +219,7 @@ z3950.library.wisc.edu:210/madison: 0 hits
 
 Of course it takes time to run one search request after another. How about a parallel search? Modern xargs(1) commands on BSD based Operating Systems (MacOS, FreeBSD) and the GNU xargs supports to run several processes at a time.
 
-\section yaz_references References 
+\section yaz_references References
 
  - [YAZ toolkit](http://www.indexdata.com/yaz)
  - [User's Guide and Reference](http://www.indexdata.com/yaz/doc)
@@ -217,3 +227,5 @@ Of course it takes time to run one search request after another. How about a par
  - [The Z39.50 Object-Orientation Model](http://zoom.z3950.org/api/zoom-current.html)
  - [Bib-1 Diagnostics Defined within the Z39.50-1995 Standard](http://www.loc.gov/z3950/agency/defns/bib1diag.html)
  - [Standards at the Library of Congress](http://www.loc.gov/standards)
+ - [Pictura Paedagogica Online - The Concept and its Realisation](http://bbf.dipf.de/virtuellesbildarchiv/projektbeschreibung_e.html)
+ - [MARC 21 Format for Bibliographic Data Field List](http://www.loc.gov/marc/bibliographic/ecbdlist.html)
