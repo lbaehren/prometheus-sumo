@@ -45,6 +45,7 @@ if (NOT YAZPP_FOUND)
   
   set (YAZPP_LIBRARIES "")
 
+  ## libyazpp
   find_library (YAZPP_YAZPP_LIBRARY yazpp
     HINTS ${YAZPP_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES lib
@@ -53,6 +54,7 @@ if (NOT YAZPP_FOUND)
     list (APPEND YAZPP_LIBRARIES ${YAZPP_YAZPP_LIBRARY})
   endif (YAZPP_YAZPP_LIBRARY)
   
+  ## libzoompp
   find_library (YAZPP_ZOOMPP_LIBRARY zoompp
     HINTS ${YAZPP_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES lib
@@ -61,6 +63,17 @@ if (NOT YAZPP_FOUND)
     list (APPEND YAZPP_LIBRARIES ${YAZPP_ZOOMPP_LIBRARY})
   endif (YAZPP_ZOOMPP_LIBRARY)
   
+  ## libyaz
+  find_library (YAZPP_YAZ_LIBRARY yaz
+    HINTS ${YAZPP_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
+    PATH_SUFFIXES lib
+    )
+  if (YAZPP_YAZ_LIBRARY)
+    list (APPEND YAZPP_LIBRARIES ${YAZPP_YAZ_LIBRARY})
+  endif (YAZPP_YAZ_LIBRARY)
+
+
+
   ##_____________________________________________________________________________
   ## Check for the executable
   

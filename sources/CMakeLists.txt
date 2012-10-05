@@ -10,9 +10,20 @@ include_directories (
 if (Boost_FOUND)
   ## Boost header files
   include_directories(${Boost_INCLUDE_DIRS})
-  ## Compiler flags
+  ## Compiler flag(s)
   add_definitions(-DWITH_BOOST)
+  ## Linker instructions
+  list (APPEND libprometheus_link_libraries ${Boost_LIBRARIES})
 endif (Boost_FOUND)
+
+if (YAZPP_FOUND)
+  ## YAZ++ header files
+  include_directories (${YAZPP_INCLUDES})
+  ## Compiler flag(s)
+  add_definitions(-DWITH_YAZPP)
+  ## Linker instructions
+  list (APPEND libprometheus_link_libraries ${YAZPP_LIBRARIES})
+endif (YAZPP_FOUND)
 
 ## ==============================================================================
 ##

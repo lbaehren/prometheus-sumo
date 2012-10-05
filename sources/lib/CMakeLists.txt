@@ -1,24 +1,19 @@
 
 message (STATUS "Processing directory source/lib")
 
-file (GLOB libprometheus_sources Sources/*)
+file (GLOB libprometheus_sources *.cc Sources/*)
 
-add_library (libprometheus
-  Account.cc
-  Institution.cc
-  Presentation.cc
-  Collection.cc
-  SourceDump.cc
-  Image.cc
-  StatisticsHBZ.cc
-  StatisticsReader.cc
-  StatisticsReaderHBZ.cc
-  ${libprometheus_sources}
-  )
+if (libprometheus_sources)
 
-set_target_properties(libprometheus
-                      PROPERTIES
-                      OUTPUT_NAME prometheus
-                      )
+  add_library (libprometheus ${libprometheus_sources})
+  
+  target_link_libraries (libprometheus ${libprometheus_link_libraries})
+  
+  set_target_properties(libprometheus
+    PROPERTIES
+    OUTPUT_NAME prometheus
+    )
 
+endif (libprometheus_sources)
+  
 message (STATUS "Processing directory source/lib - done")

@@ -187,15 +187,24 @@ endif (YAML_FOUND)
 
 if (YAZPP_FOUND)
 
-  ## Header files
-  include_directories (${YAZPP_INCLUDES})
+  ## Test data
+  find_file (testYAZPP_data ppo.dump-mab
+    PATHS ${PROJECT_SOURCE_DIR}
+    PATH_SUFFIXES data data/tests
+    )
+
   ## Compiler instructions
   add_executable (testYAZPP testYAZPP.cc)
   ## Linker instructions
-  target_link_libraries (testYAZPP ${YAZPP_LIBRARIES})
+  target_link_libraries (testYAZPP libprometheus)
+  
   ## Testing
-  add_test (testYAZPP testYAZPP)
-
+  if (testYAZPP_data)
+    add_test (testYAZPP_convert testYAZPP ${testYAZPP_data})
+  else (testYAZPP_data)
+    add_test (testYAZPP testYAZPP)
+  endif (testYAZPP_data)
+  
 endif (YAZPP_FOUND)
 
 message (STATUS "Processing directory source/tests - done")

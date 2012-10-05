@@ -4,23 +4,19 @@
   \brief Test using functionality of the \ref yaz toolkit
   \ingroup prometheus
   \author Lars Baehren
+  \date 2012/09/26
 
-  [Standard Option Values](http://zoom.z3950.org/api/zoom-current.html#3.9)
+  Original script based on which this code was developed:
+  \li \c update_ppo.sh -- Bash script wrapper around yaz-client tool
+  \li \c ppo2xml.pl -- Perl script to convert retrieved database records
 
-  \li Values for \c preferredRecordSyntax
-  | Value   | Description |
-  |---------|-------------|
-  | USMARC  | USMARC records (OID 1.2.840.10003.5.10) |
-  | SUTRS   | SUTRS records (OID 1.2.840.10003.5.101) |
-  | XML     | XMLK records, corresponding to the MIME-type text/xml (OID 1.2.840.10003.5.109.10) |
-  | SGML    | SGML records (OID 1.2.840.10003.5.109.9) |
-  | GRS-1   | GRS-1 records (OID 1.2.840.10003.5.105) |
-  | OPAC    | OPAC records (OID 1.2.840.10003.5.102) |
-  | EXPLAIN | Explain records (OID 1.2.840.10003.5.100) |
 */
 
-#include <iostream>
-#include <yazpp/zoom.h>
+#include <Common.h>
+
+#include <fstream>
+#include <yaz/record_conv.h>
+#include <boost/regex.hpp>
 
 using namespace ZOOM;
 
@@ -31,16 +27,58 @@ using namespace ZOOM;
 // ==============================================================================
 
 //_______________________________________________________________________________
+//                                                                convert_results
+
+/*!
+  \brief Convert dump of the records retrieved from the database.
+  \param filename -- Name of the file containing a dump of the records retrieved
+                     from the database.
+  \return status  -- Status of the function; returns non-zero value in case and
+                     error was encountered.
+*/
+int convert_results (std::string const &filename)
+{
+  std::cout << "\n[testYAZPP::convert_results]\n" << std::endl;
+
+  int status = 0;
+  int line   = 0;
+  std::string buffer;
+  std::ifstream infile (filename.c_str());
+
+  /* Regular expression to look out for */
+  boost::regex expression ( "[bil]Record type: MAB" ) ;
+
+  if ( infile.is_open() ) {
+    std::cout << "--> Start reading data from file " << filename << std::endl;
+    while (infile.good()) {
+      ++line;
+      /* Read line from file into buffer */
+      std::getline (infile, buffer);
+      /* ... and display it */
+      std::cout << line << " : " << buffer << std::endl;
+    }
+  } else {
+    std::cerr << "[testYAZPP::convert_results] Failed to open file"
+	      << filename 
+	      << std::endl;
+    ++status;
+  }
+
+  return status;
+}
+
+//_______________________________________________________________________________
 //                                                                   show_results
 
 /*!
   \brief Show results from Z39.50 database search
   \param rs  -- Result set to display.
   \param num -- Number of result sets to display.
- */
+*/
 int show_results (resultSet &rs,
 		  size_t const &num=5)
 {
+  int status        = 0;
   size_t nofResults = rs.size();
 
   if (nofResults) {
@@ -49,6 +87,7 @@ int show_results (resultSet &rs,
       std::cout << "--> Result record [" << n << "/" << nofResults <<  "]" << std::endl;
       /* Render the contents of the record */
       try {
+	rs.option ("elementSetName", "F");
 	record rec (rs, n);
 	std::cout << rec.render() << std::endl;
       } catch (systemException &e) {
@@ -77,7 +116,7 @@ int show_results (resultSet &rs,
     std::cout << "--> No results to display - empty set!" << std::endl;
   }
 
-  return 0;
+  return status;
 }
 
 //_______________________________________________________________________________
@@ -89,7 +128,7 @@ int show_results (resultSet &rs,
   \param pg   -- object representing a query to be submitted to the Z39.50 server
                  configured via the \c conn object.
   \param num  -- Number of result sets to display.
- */
+*/
 int get_results (connection &conn,
 		 prefixQuery &pq,
 		 size_t const &num=5)
@@ -136,8 +175,7 @@ int get_results (connection &conn,
   \param port    -- Port number via which to establish the connection.
   \return status -- Status of the function; returns non-zero value in case and
                     error was encountered.
- */
-
+*/
 int test_ADS (std::string const &server="z3950.adsabs.harvard.edu",
 	      int const &port=210)
 {
@@ -166,7 +204,7 @@ int test_ADS (std::string const &server="z3950.adsabs.harvard.edu",
   \param port    -- Port number via which to establish the connection.
   \return status -- Status of the function; returns non-zero value in case and
                     error was encountered.
- */
+*/
 int test_LoC (std::string const &server="z3950.loc.gov",
 	      int const &port=7090)
 {
@@ -196,7 +234,7 @@ int test_LoC (std::string const &server="z3950.loc.gov",
   \param port    -- Port number via which to establish the connection.
   \return status -- Status of the function; returns non-zero value in case and
                     error was encountered.
- */
+*/
 int test_NLA (std::string const &server="catalogue.nla.gov.au",
 	      int const &port=7090)
 {
@@ -226,7 +264,7 @@ int test_NLA (std::string const &server="catalogue.nla.gov.au",
   \param port    -- Port number via which to establish the connection.
   \return status -- Status of the function; returns non-zero value in case and
                     error was encountered.
- */
+*/
 int test_baC (std::string const &server="ubsun02.biblio.etc.tu-bs.de",
 	      int const &port=2020)
 {
@@ -267,11 +305,7 @@ int test_baC (std::string const &server="ubsun02.biblio.etc.tu-bs.de",
   \verbatim
   echo -e "base bil\nf @attr 1=12 b0025835berl\nformat mab\nshow" | yaz-client 193.175.194.50:2020
   \endverbatim
-  Result from online search:
-  \verbatim
-  http://bbf.dipf.de/cgi-opac/bil.pl?t_direct=x&f_IDN=b0009539berl&transit=f_art%3Dhoening%252C%2Bjohann%2Blorenz%2BAND%2BHoening%252C%2BJohann%2BLorenz%26getback%3Dexpmask%26t_kombi%3DSuche%2Bstarten
-  \endverbatim
- */
+*/
 int test_PPO (std::string const &server="193.175.194.50",
 	      int const &port=2020)
 {
@@ -304,15 +338,19 @@ int main (int argc, char **argv)
   int status = 0;
 
   /* Test retrieving record from Astrophysics Data System (ADS) database */
-  status += test_ADS ();
+  // status += test_ADS ();
   /* Test retrieving record from Library of Congress database */
-  status += test_LoC ();
+  // status += test_LoC ();
   /* Test retrieving record from National Library of Australia database */
-  status += test_NLA ();
+  // status += test_NLA ();
   /* Test retrieving record from berliner allegroCatalog (baC) database */
-  status += test_baC ();
+  // status += test_baC ();
   /* Test retrieving record from Pictura Paedagogica Online database */
-  status += test_PPO ();
+  // status += test_PPO ();
+
+  if (argc >1) {
+    status += convert_results (argv[1]);
+  }
 
   return status;
 }

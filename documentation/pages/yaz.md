@@ -10,9 +10,9 @@ YAZ    {#yaz}
 [YAZ](http://www.indexdata.com/yaz) is a programmers’ toolkit supporting the
 development of Z39.50/SRW/SRU clients and servers. Z39.50-2003 (version 3) as
 well as SRW/SRU version 1.1 are supported in both the client and server roles.
-The SOLR webservice is supported in the client role through the ZOOM API.
+The SOLR webservice is supported in the client role through the \ref zoom API.
 
-The current version of YAZ includes support for the industry standard ZOOM API
+The current version of YAZ includes support for the industry standard \ref zoom API
 for Z39.50. This API vastly simplifies the process of writing new clients using
 YAZ, and it reduces your dependency on any single toolkit.
 
@@ -25,7 +25,7 @@ application development languages. We provide
  - NET::Z3950 for client applications in Perl.
 (If you are looking for a Z39.50 toolkit in Java, we recommend that you check
 out Knowledge Integration's open source offering, JZKit.) In addition to these
-wrappers, a number of the language bindings of the ZOOM API are based on YAZ.
+wrappers, a number of the language bindings of the \ref zoom API are based on YAZ.
 
 Libraries and vendors can freely download YAZ and its associated toolkits to
 build their own Z39.50 applications. Alternatively, they can use the consultancy
@@ -53,7 +53,7 @@ based on the YAZ toolkit.
 
 \subsection yaz_yazpp YAZ++
 
-[YAZ++](http://www.indexdata.com/yazpp) is an application programming interface (API) to YAZ which supports the development of Z39.50/SRW/SRU client and server applications using C++. Like YAZ, it supports Z39.50-2003 (version 3) as well as SRW/SRU version 1.1 in both the client and server roles. YAZ++ includes an implementation of the ZOOM C++ binding and a generic client/server API based on the Observer/Observable design pattern.
+[YAZ++](http://www.indexdata.com/yazpp) is an application programming interface (API) to YAZ which supports the development of Z39.50/SRW/SRU client and server applications using C++. Like YAZ, it supports Z39.50-2003 (version 3) as well as SRW/SRU version 1.1 in both the client and server roles. YAZ++ includes an implementation of the \ref zoom C++ binding and a generic client/server API based on the Observer/Observable design pattern.
 
 \subsection yaz_php PHP/YAZ
 
@@ -62,44 +62,6 @@ PHP/YAZ is an extension to the popular web server language PHP that implements Z
 The following Z39.50 services are supported by this extension: init, search, present, scan and sort. The extension can handle GRS-1, MARC, SUTRS and XML. The module also allows you to convert MARC in ISO2709 to MARCXML on the client side.
 
 The PHP/YAZ extension is part of PHP 4.0.1 and later but has now been moved to PECL. As a PECL module, PHP/YAZ is now independent of PHP versions. It works with both PHP 4 and PHP 5.
-
-\subsection yaz_zoom ZOOM
-
-[ZOOM](http://zoom.z3950.org) is the emerging standard API for information
-retrieval programming using the [Z39.50 protocol](http://en.wikipedia.org/wiki/Z39.50).
-[ZOOM's Abstract API](http://zoom.z3950.org/api/zoom-current.html) specifies
-semantics for classes representing key IR concepts such as connections, queries,
-result sets and records; and there are various bindings specifying how those
-concepts should be represented in various programming languages.
-
-The YAZ++ library includes an implementation of the C++ binding for ZOOM, enabling
-quick, easy development of client applications.
-
-For example, here is a tiny Z39.50 client that fetches and displays the MARC
-record for Farlow & Brett Surman's The Complete Dinosaur from the Library of
-Congress's Z39.50 server:
-
-\code
-#include <iostream>
-#include <yazpp/zoom.h>
-
-using namespace ZOOM;
-
-int main(int argc, char **argv)
-{
-    /* Configuration of server connection */
-    connection conn("z3950.loc.gov", 7090);
-    conn.option("databaseName", "Voyager");
-    conn.option("preferredRecordSyntax", "USMARC");
-
-    /* Retrieve data from server ... */
-    resultSet rs(conn, prefixQuery("@attr 1=7 0253333490"));
-
-    /* ... and display them */
-    record rec (rs, 0);
-    cout << rec->render() << endl;
-}
-\endcode
 
 \subsection yaz_usemarcon USEMARCON
 
