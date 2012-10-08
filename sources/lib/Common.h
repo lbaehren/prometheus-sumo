@@ -125,37 +125,4 @@ std::ostream& operator<< (std::ostream &os,
 /*   return os; */
 /* } */
 
-//_______________________________________________________________________________
-//                                                                     operator<<
-
-#ifdef WITH_YAZPP
-/*!
-  \brief Overloading of output operator to display std::set<T>
-
-  \param os  -- Output stream to which the result will be written to
-  \param vec -- The set to be displayed
-*/
-std::ostream& operator<< (std::ostream &os,
-                          ZOOM::record &rec)
-{
-  try {
-    os << rec.render();
-  } catch (ZOOM::systemException &e) {
-    os << "System error " << e.errcode() << " (" << e.errmsg() << ")"
-       << std::endl;
-  } catch (ZOOM::bib1Exception &e) {
-    os << "BIB-1 error " << e.errcode() << " (" << e.errmsg() << "): " << e.addinfo()
-       << std::endl;
-  } catch (ZOOM::queryException &e) {
-    os << "Query error " << e.errcode() << " (" << e.errmsg() << "): " << e.addinfo()
-       << std::endl;
-  } catch (ZOOM::exception &e) {
-    os << "Error " << e.errcode() << " (" << e.errmsg() << ")"
-       << std::endl;
-  }
-
-  return os;
-}
-#endif
-
 #endif
