@@ -27,22 +27,22 @@
 #  YAZPP_LFLAGS     = Linker flags (optional)
 
 if (NOT YAZPP_FOUND)
-    
+
   if (NOT YAZPP_ROOT_DIR)
     set (YAZPP_ROOT_DIR ${CMAKE_INSTALL_PREFIX})
   endif (NOT YAZPP_ROOT_DIR)
-  
+
   ##_____________________________________________________________________________
   ## Check for the header files
-  
+
   find_path (YAZPP_INCLUDES yazpp/zoom.h yazpp/z-server.h
     HINTS ${YAZPP_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES include
     )
-  
+
   ##_____________________________________________________________________________
   ## Check for the library
-  
+
   set (YAZPP_LIBRARIES "")
 
   ## libyazpp
@@ -53,7 +53,7 @@ if (NOT YAZPP_FOUND)
   if (YAZPP_YAZPP_LIBRARY)
     list (APPEND YAZPP_LIBRARIES ${YAZPP_YAZPP_LIBRARY})
   endif (YAZPP_YAZPP_LIBRARY)
-  
+
   ## libzoompp
   find_library (YAZPP_ZOOMPP_LIBRARY zoompp
     HINTS ${YAZPP_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
@@ -62,29 +62,20 @@ if (NOT YAZPP_FOUND)
   if (YAZPP_ZOOMPP_LIBRARY)
     list (APPEND YAZPP_LIBRARIES ${YAZPP_ZOOMPP_LIBRARY})
   endif (YAZPP_ZOOMPP_LIBRARY)
-  
-  ## libyaz
-  find_library (YAZPP_YAZ_LIBRARY yaz
-    HINTS ${YAZPP_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
-    PATH_SUFFIXES lib
-    )
-  if (YAZPP_YAZ_LIBRARY)
-    list (APPEND YAZPP_LIBRARIES ${YAZPP_YAZ_LIBRARY})
-  endif (YAZPP_YAZ_LIBRARY)
 
-
+  ## YAZ C libraries
 
   ##_____________________________________________________________________________
   ## Check for the executable
-  
+
   find_program (YAZPP_CONFIG_EXECUTABLE yazpp-config
     HINTS ${YAZPP_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES bin
     )
-  
+
   ##_____________________________________________________________________________
   ## Actions taken when all components have been found
-  
+
   if (YAZPP_INCLUDES AND YAZPP_LIBRARIES)
     set (YAZPP_FOUND TRUE)
   else (YAZPP_INCLUDES AND YAZPP_LIBRARIES)
@@ -98,7 +89,7 @@ if (NOT YAZPP_FOUND)
       endif (NOT YAZPP_LIBRARIES)
     endif (NOT YAZPP_FIND_QUIETLY)
   endif (YAZPP_INCLUDES AND YAZPP_LIBRARIES)
-  
+
   if (YAZPP_FOUND)
     if (NOT YAZPP_FIND_QUIETLY)
       message (STATUS "Found components for YAZPP")
@@ -111,14 +102,14 @@ if (NOT YAZPP_FOUND)
       message (FATAL_ERROR "Could not find YAZPP!")
     endif (YAZPP_FIND_REQUIRED)
   endif (YAZPP_FOUND)
-  
+
   ##_____________________________________________________________________________
   ## Mark advanced variables
-  
+
   mark_as_advanced (
     YAZPP_ROOT_DIR
     YAZPP_INCLUDES
     YAZPP_LIBRARIES
     )
-  
+
 endif (NOT YAZPP_FOUND)
