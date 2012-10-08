@@ -191,3 +191,5 @@ Of course it takes time to run one search request after another. How about a par
  - [Standards at the Library of Congress](http://www.loc.gov/standards)
  - [Pictura Paedagogica Online - The Concept and its Realisation](http://bbf.dipf.de/virtuellesbildarchiv/projektbeschreibung_e.html)
  - [MARC 21 Format for Bibliographic Data Field List](http://www.loc.gov/marc/bibliographic/ecbdlist.html)
+ - [Retrieve bibliographic data via Z39.50 with PHPYAZ](http://blog.peschla.net/2011/12/bibliographic-data-via-z3950-and-phpyaz)
+ - [Registry of Z39.50 Object Identifiers](http://www.loc.gov/z3950/agency/defns/oids.html)
