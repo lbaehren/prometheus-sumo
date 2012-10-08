@@ -59,7 +59,7 @@ int convert_results (std::string const &filename)
     }
   } else {
     std::cerr << "[testYAZPP::convert_results] Failed to open file"
-	      << filename 
+	      << filename
 	      << std::endl;
     ++status;
   }
@@ -87,9 +87,10 @@ int show_results (resultSet &rs,
       std::cout << "--> Result record [" << n << "/" << nofResults <<  "]" << std::endl;
       /* Render the contents of the record */
       try {
-	rs.option ("elementSetName", "F");
-	record rec (rs, n);
-	std::cout << rec.render() << std::endl;
+        rs.option ("elementSetName", "F");
+        record rec (rs, n);
+        std::cout << rec.render() << std::endl;
+//        std::cout << rec.rawdata() << std::endl;
       } catch (systemException &e) {
 	std::cerr << "[show_results] System error " << e.errcode()
 		  << " (" << e.errmsg() << ")"
@@ -134,7 +135,7 @@ int get_results (connection &conn,
 		 size_t const &num=5)
 {
   int status = 0;
-  
+
   /* Define result set used as container to receive the data */
   try {
     /* Sent query to the database server ... */
@@ -162,7 +163,7 @@ int get_results (connection &conn,
 	      << std::endl;
     ++status;
   }
-  
+
   return status;
 }
 
@@ -189,7 +190,7 @@ int test_ADS (std::string const &server="z3950.adsabs.harvard.edu",
 
   /* Define query to post */
   prefixQuery pq ("@attr 1=1003 Baehren");
-  
+
   status += get_results (conn, pq);
 
   return status;
@@ -219,7 +220,7 @@ int test_LoC (std::string const &server="z3950.loc.gov",
 
   /* Define query to post */
   prefixQuery pq ("@attr 1=4 Frankenstein");
-  
+
   status += get_results (conn, pq);
 
   return status;
@@ -249,7 +250,7 @@ int test_NLA (std::string const &server="catalogue.nla.gov.au",
 
   /* Define query to post */
   prefixQuery pq ("@attr 1=4 Frankenstein");
-  
+
   status += get_results (conn, pq);
 
   return status;
@@ -281,7 +282,7 @@ int test_baC (std::string const &server="ubsun02.biblio.etc.tu-bs.de",
 
   /* Define query to post */
   prefixQuery pq ("@attr 1=4 Frankenstein");
-  
+
   status += get_results (conn, pq);
 
   return status;
@@ -320,7 +321,7 @@ int test_PPO (std::string const &server="193.175.194.50",
 
   /* Define query to post */
   prefixQuery pq ("@attr 1=12 b0009539berl");
-  
+
   status += get_results (conn, pq);
 
   return status;
@@ -342,11 +343,11 @@ int main (int argc, char **argv)
   /* Test retrieving record from Library of Congress database */
   // status += test_LoC ();
   /* Test retrieving record from National Library of Australia database */
-  // status += test_NLA ();
+  status += test_NLA ();
   /* Test retrieving record from berliner allegroCatalog (baC) database */
   // status += test_baC ();
   /* Test retrieving record from Pictura Paedagogica Online database */
-  // status += test_PPO ();
+  status += test_PPO ();
 
   if (argc >1) {
     status += convert_results (argv[1]);
