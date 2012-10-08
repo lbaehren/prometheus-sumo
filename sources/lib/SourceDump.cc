@@ -71,6 +71,7 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
   int SourceDump::readXML (std::istream & infile,
                            std::vector<Image> &images)
   {
+#ifdef WITH_BOOST
     boost::property_tree::ptree pt;
 
     /* Try reading data from input stream */
@@ -108,6 +109,9 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     }
 
     return status;
+#else
+    return -1;
+#endif
   }
 
   //____________________________________________________________________________

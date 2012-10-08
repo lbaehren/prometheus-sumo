@@ -18,78 +18,51 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef SOURCEDUMP_H
-#define SOURCEDUMP_H
+#ifndef SOURCEIDLIST_H
+#define SOURCEIDLIST_H
 
-#include <exception>
-#include <fstream>
-#include <string>
-
-#ifdef WITH_BOOST
-#include <boost/foreach.hpp>
-#include <boost/property_tree/xml_parser.hpp>
-#include <boost/property_tree/ptree.hpp>
-#endif
-
-#include "Image.h"
-
-/*!
-  \file SourceDump.h
-  \class SourceDump
-  \ingroup prometheus
-  \brief Base class for source dump
-  \author Lars Baehren
-*/
+#include "Common.h"
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
 
-  class SourceDump : public Image {
+  /*!
+    \file SourceIdList.h
+    \class SourceIdList
+    \ingroup prometheus
+    \brief A list of source IDs, e.g. used for database query
+    \author Lars Baehren
+    \date 2012-09-26
+    \test TestSourceIdList.cc
+  */
+  class SourceIdList {
 
-  protected:
-
-    //! Name of the root node in the XML file
-    std::string itsRootNode;
-    //! Name of the node containing attributes of an image
-    std::string itsImageNode;
+    //! List of source IDs
+    std::vector<std::string> itsItems;
 
   public:
 
-    //! Argumented constructor
-    SourceDump (std::string const &rootNode="root",
-                std::string const &imageNode="row");
+    // === Construction ========================================================
+
+    //! Default constructor
+    SourceIdList () {
+      itsItems.clear();
+    }
 
     //! Argumented constructor
-    SourceDump (std::string const &rootNode,
-                std::string const &imageNode,
-		std::map<std::string,std::string> const &attributes);
+    SourceIdList (std::string const &infile);
+
+    //! Argumented constructor
+    SourceIdList (std::vector<std::string> const &items);
 
     // === Parameter access ====================================================
 
-    //! Get the name of the root node in the XML file
-    inline std::string rootNode () const {
-      return itsRootNode;
-    }
-
-    //! Set the name of the root node in the XML file
-    inline void setRootNode (std::string const &rootNode) {
-      itsRootNode = rootNode;
-    }
-
-    //! Get the name of the node containing attributes of an image
-    inline std::string imageNode () const {
-      return itsImageNode;
-    }
-
-    //! Set the name of the node containing attributes of an image
-    inline void setImageNode (std::string const &imageNode) {
-      itsImageNode = imageNode;
+    //! Get the list of source IDs
+    inline std::vector<std::string> items () const
+    {
+      return itsItems;
     }
 
     // === Public methods ======================================================
-
-    //! Read data from XML dump of database
-    virtual int readXML (std::istream & infile,
-                         std::vector<Image> &images);
 
     //! Provide a summary of the object's internal parameters and status
     inline void summary () {
