@@ -41,6 +41,8 @@ using boost::property_tree::ptree;
 /*!
   \brief Test reading image IDs from file.
   \param filename -- Name of the file containing the list of image IDs.
+  \return status  -- Status of the function; returns non-zero value in case and
+                     error was encountered.
 */
 int test_read_ids_from_file (std::string const &filename,
                              int const &nofEntries=5)
@@ -70,6 +72,8 @@ int test_read_ids_from_file (std::string const &filename,
 /*!
   \brief Test reading in data from XML database dump
   \param filename -- Name of the file with the XML data.
+  \return status  -- Status of the function; returns non-zero value in case and
+                     error was encountered.
 */
 int test_read_xml_dump (std::string const &filename)
 {
@@ -112,6 +116,59 @@ int test_read_xml_dump (std::string const &filename)
   return status;
 }
 
+//_______________________________________________________________________________
+//                                                            test_query_database
+
+/*!
+  \brief Test querying the PPO database
+  \return status -- Status of the function; returns non-zero value in case and
+                    error was encountered.
+*/
+int test_query_database (std::string const &filename="")
+{
+  std::cout << "\n[testSourcesPPO::test_query_database]\n" << std::endl;
+
+  int status = 0;
+  std::vector<std::string> ids (1, "b0009539berl");
+
+  /*
+   *  Test 1 : Query database server on a list of image IDs
+   */
+  std::cout << "[1] Query database server on a list of image IDs ...\n" << std::endl;
+  try {
+    std::vector<std::string> records = prometheus::source::PPO::queryDatabase(ids);
+
+    std::cout << "-- Image ID     = " << ids[0]         << std::endl;
+    std::cout << "-- nof. resords = " << records.size() << std::endl;
+    if (!records.empty()) {
+      std::cout << "-- Record entry = " << records[0]     << std::endl;
+    }
+  } catch (std::exception &e) {
+    std::cout << "[testSourcesPPO] ERROR : " << e.what() << std::endl;
+    ++status;
+  }
+
+  /*
+   *  Test 2
+   */
+  std::cout << "[2] Query database server on file with image IDs ...\n" << std::endl;
+  if (filename!= "") {
+    try {
+      std::vector<std::string> records = prometheus::source::PPO::queryDatabase (filename,
+                                                                                 "berl");
+
+      for (int n=0; n<records.size(); ++n) {
+        std::cout << "-- Record [" << n << "] = " << records[n] << std::endl;
+      }
+    } catch (std::exception &e) {
+      std::cout << "[testSourcesPPO] ERROR : " << e.what() << std::endl;
+      ++status;
+    }
+  }
+
+  return status;
+}
+
 // ==============================================================================
 //
 //  Program main function
@@ -128,19 +185,19 @@ int main(int argc, char* argv[])
   std::string filename;
 
   /* Parse command line parameters */
-  if ( argc>2 ) {
+  if ( argc>1 ) {
+    option = std::string(argv[1]);
 
-    // Command line option switch
-    option   = std::string(argv[1]);
-    // Name of input file
-    filename = std::string(argv[2]);
+    if (argc>2) {
+     filename = std::string(argv[2]);
+    }
 
     if (option == "-xml") {
-      // Test reading in data from XML database dump
-//      status += test_read_xml_dump (filename);
+      // status  += test_read_xml_dump (filename);
     } else if (option == "-idppo") {
-      // Test reading image IDs from file
       status += test_read_ids_from_file (filename);
+    } else if (option == "-db") {
+      status += test_query_database (filename);
     } else {
       std::cout << "Undefined command line option." << std::endl;
     }

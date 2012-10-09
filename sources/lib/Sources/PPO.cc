@@ -49,6 +49,9 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     //
     // ==========================================================================
 
+    //___________________________________________________________________________
+    //                                                                  sourceIDs
+
     /*!
       \param filename -- Name of the file containing the source IDs.
       \param match    -- Matching pattern to distinguish source IDs from possible
@@ -77,6 +80,100 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 
       return items;
     }
+
+    //___________________________________________________________________________
+    //                                                              queryDatabase
+
+#ifdef WITH_YAZPP
+    /*!
+      \param ids      -- Array with the image IDs to query the database for.
+      \param server   -- Name of the Z39.50 server.
+      \param port     -- Port number via which to establish the connection.
+      \param database -- Name of the database.
+      \param syntax   -- Preferred record syntax.
+      \return records -- Array with the raw-data (in string format) for the
+                         database records.
+    */
+    std::vector<std::string> PPO::queryDatabase (std::vector<std::string> const &ids,
+                                                 std::string const &server,
+                                                 int const &port,
+                                                 std::string const &database,
+                                                 std::string const &syntax)
+    {
+      std::vector<std::string> records;
+
+      /* Configuration of server connection */
+      ZOOM::connection conn(server.c_str(), port);
+      conn.option ("databaseName",   database.c_str());
+      conn.option ("preferredRecordSyntax", syntax.c_str());
+
+      for (int n=0; n<ids.size(); ++n) {
+        std::string queryString = "@attr 1=12 " + ids[n];
+        /* Define query prefix */
+        ZOOM::prefixQuery pq (queryString.c_str());
+
+        /* Get the results from the database server */
+        try {
+          ZOOM::resultSet rs (conn, pq);
+            if ( rs.size()>0 ) {
+              ZOOM::record rec (rs, 0);
+              records.push_back(rec.rawdata());
+            }
+        } catch (ZOOM::systemException &e) {
+          std::cerr << "[PPO::queryDatabase] System error " << e.errcode()
+                    << " (" << e.errmsg() << ")"
+                    << std::endl;
+	} catch (ZOOM::bib1Exception &e) {
+	  std::cerr << "[PPO::queryDatabase] BIB-1 error " << e.errcode()
+		    << " (" << e.errmsg() << "): " << e.addinfo()
+		    << std::endl;
+	} catch (ZOOM::queryException &e) {
+	  std::cerr << "[PPO::queryDatabase] Query error " << e.errcode()
+		    << " (" << e.errmsg() << "): " << e.addinfo()
+		    << std::endl;
+	} catch (ZOOM::exception &e) {
+	  std::cerr << "[PPO::queryDatabase] Error " << e.errcode()
+		    << " (" << e.errmsg() << ")"
+		    << std::endl;
+	}
+    }
+
+      return records;
+    }
+
+    /*!
+      \param filename -- Name of the file containing the source IDs.
+      \param match    -- Matching pattern to distinguish source IDs from possible
+                         other contents found within the input file.
+      \param server   -- Name of the Z39.50 server.
+      \param port     -- Port number via which to establish the connection.
+      \param database -- Name of the database.
+      \param syntax   -- Preferred record syntax.
+      \return records -- Array with the raw-data (in string format) for the
+                         database records.
+    */
+    std::vector<std::string> PPO::queryDatabase (std::string const &filename,
+                                                 std::string const &match,
+                                                 std::string const &server,
+                                                 int const &port,
+                                                 std::string const &database,
+                                                 std::string const &syntax)
+    {
+      std::vector<std::string> records;
+      std::vector<std::string> ids = sourceIDs (filename, match);
+
+      if (!ids.empty()) {
+        records = queryDatabase (ids,
+                                 server,
+                                 port,
+                                 database,
+                                 syntax);
+      }
+
+      return records;
+    }
+
+#endif
 
   }   //  namespace source -- END
 

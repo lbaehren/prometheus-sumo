@@ -1,3 +1,22 @@
+/***************************************************************************
+ *   Copyright (C) 2012                                                    *
+ *   Lars B"ahren (lbaehren@gmail.com)                                     *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
 
 /*!
   \file testYAZPP.cc
@@ -9,22 +28,47 @@
   Original script based on which this code was developed:
   \li \c update_ppo.sh -- Bash script wrapper around yaz-client tool
   \li \c ppo2xml.pl -- Perl script to convert retrieved database records
-
 */
 
 #include <Common.h>
 
 #include <fstream>
 #include <yaz/record_conv.h>
+#include <boost/algorithm/string/regex.hpp>
 #include <boost/regex.hpp>
 
 using namespace ZOOM;
 
 // ==============================================================================
 //
-//  Helper functinos
+//  Helper functions
 //
 // ==============================================================================
+
+//_______________________________________________________________________________
+//                                                                convert_rawdata
+
+/*!
+  \brief Convert record rawdata to formatted output
+
+  \li [Unicode Character 'SYMBOL FOR RECORD SEPARATOR'](http://www.fileformat.info/info/unicode/char/241e/index.htm)
+ */
+int convert_rawdata (std::string const &rawdata)
+{
+  int status = 0;
+  std::vector <std::string> fields;
+
+  std::cout << "--> Splitting record into single lines ..." << std::endl;
+  boost::split_regex( fields, rawdata, boost::regex( "\u241E" ) );
+
+  std::cout << "--> nof. lines = " << fields.size() << std::endl;
+
+  for (size_t n=0; n<fields.size(); ++n) {
+    std::cout << fields[n] << std::endl;
+  }
+
+  return status;
+}
 
 //_______________________________________________________________________________
 //                                                                convert_results
@@ -76,7 +120,8 @@ int convert_results (std::string const &filename)
   \param num -- Number of result sets to display.
 */
 int show_results (resultSet &rs,
-		  size_t const &num=5)
+		  size_t const &num=5,
+		  bool const &rawdata=false)
 {
   int status        = 0;
   size_t nofResults = rs.size();
@@ -89,7 +134,11 @@ int show_results (resultSet &rs,
       try {
 	rs.option ("elementSetName", "F");
 	record rec (rs, n);
-	std::cout << rec.render() << std::endl;
+	if (rawdata) {
+	  convert_rawdata (rec.rawdata());
+	} else {
+	  std::cout << rec.render() << std::endl;
+	}
       } catch (systemException &e) {
 	std::cerr << "[show_results] System error " << e.errcode()
 		  << " (" << e.errmsg() << ")"
@@ -131,16 +180,17 @@ int show_results (resultSet &rs,
 */
 int get_results (connection &conn,
 		 prefixQuery &pq,
-		 size_t const &num=5)
+		 size_t const &num=5,
+		 bool const &rawdata=false)
 {
   int status = 0;
-  
+
   /* Define result set used as container to receive the data */
   try {
     /* Sent query to the database server ... */
     resultSet rs (conn, pq);
     /* ... and display the results */
-    show_results (rs, num);
+    show_results (rs, num, rawdata);
   } catch (systemException &e) {
     std::cerr << "[get_results] System error " << e.errcode()
 	      << " (" << e.errmsg() << ")"
@@ -162,7 +212,7 @@ int get_results (connection &conn,
 	      << std::endl;
     ++status;
   }
-  
+
   return status;
 }
 
@@ -189,7 +239,7 @@ int test_ADS (std::string const &server="z3950.adsabs.harvard.edu",
 
   /* Define query to post */
   prefixQuery pq ("@attr 1=1003 Baehren");
-  
+
   status += get_results (conn, pq);
 
   return status;
@@ -219,7 +269,7 @@ int test_LoC (std::string const &server="z3950.loc.gov",
 
   /* Define query to post */
   prefixQuery pq ("@attr 1=4 Frankenstein");
-  
+
   status += get_results (conn, pq);
 
   return status;
@@ -249,7 +299,7 @@ int test_NLA (std::string const &server="catalogue.nla.gov.au",
 
   /* Define query to post */
   prefixQuery pq ("@attr 1=4 Frankenstein");
-  
+
   status += get_results (conn, pq);
 
   return status;
@@ -281,7 +331,7 @@ int test_baC (std::string const &server="ubsun02.biblio.etc.tu-bs.de",
 
   /* Define query to post */
   prefixQuery pq ("@attr 1=4 Frankenstein");
-  
+
   status += get_results (conn, pq);
 
   return status;
@@ -320,8 +370,8 @@ int test_PPO (std::string const &server="193.175.194.50",
 
   /* Define query to post */
   prefixQuery pq ("@attr 1=12 b0009539berl");
-  
-  status += get_results (conn, pq);
+  /* Post the query */
+  status += get_results (conn, pq, 5, true);
 
   return status;
 }
@@ -338,15 +388,15 @@ int main (int argc, char **argv)
   int status = 0;
 
   /* Test retrieving record from Astrophysics Data System (ADS) database */
-  // status += test_ADS ();
+  status += test_ADS ();
   /* Test retrieving record from Library of Congress database */
-  // status += test_LoC ();
+  status += test_LoC ();
   /* Test retrieving record from National Library of Australia database */
-  // status += test_NLA ();
+  status += test_NLA ();
   /* Test retrieving record from berliner allegroCatalog (baC) database */
-  // status += test_baC ();
+  status += test_baC ();
   /* Test retrieving record from Pictura Paedagogica Online database */
-  // status += test_PPO ();
+  status += test_PPO ();
 
   if (argc >1) {
     status += convert_results (argv[1]);
