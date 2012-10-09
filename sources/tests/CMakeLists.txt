@@ -27,6 +27,18 @@ find_file (xml_dump_robertinum robertin.xml
   PATH_SUFFIXES data data/tests
   )
 
+find_file (xml_dump_ppo ppo.xml
+  HINTS ${PANDORA_DATA_DIR}
+  PATHS ${PROJECT_SOURCE_DIR}
+  PATH_SUFFIXES data data/tests
+  )
+
+find_file (id_ppo idppo20120925.txt
+  HINTS ${PANDORA_DATA_DIR}
+  PATHS ${PROJECT_SOURCE_DIR}
+  PATH_SUFFIXES data data/tests
+)
+
 ## ==============================================================================
 ##
 ##  Generic C++ test programs
@@ -94,20 +106,33 @@ if(Boost_FOUND)
   endforeach (test_xml_boost)
 
   if (xml_dump_beeskow)
-    add_test (TestSourcesBeeskow TestSourcesBeeskow ${xml_dump_beeskow})
+    add_test (testSourcesBeeskow testSourcesBeeskow ${xml_dump_beeskow})
   endif (xml_dump_beeskow)
 
   if (xml_dump_kassel)
-    add_test (TestSourcesKassel TestSourcesKassel ${xml_dump_kassel})
+    add_test (testSourcesKassel testSourcesKassel ${xml_dump_kassel})
   endif (xml_dump_kassel)
 
   if (xml_dump_robertinum)
-    add_test (TestSourcesRobertinum TestSourcesRobertinum ${xml_dump_robertinum})
+    add_test (testSourcesRobertinum testSourcesRobertinum ${xml_dump_robertinum})
   endif (xml_dump_robertinum)
 
   if (xml_dump_theoleik)
-    add_test (TestSourcesTheolEik TestSourcesTheolEik ${xml_dump_theoleik})
+    add_test (testSourcesTheolEik testSourcesTheolEik ${xml_dump_theoleik})
   endif (xml_dump_theoleik)
+
+  add_test (testSourcesPPO_db testSourcesPPO -db)
+
+  if (xml_dump_ppo)
+    add_test (testSourcesPPO_xml testSourcesPPO -xml ${xml_dump_ppo})
+  endif (xml_dump_ppo)
+
+  if (id_ppo)
+    add_test (testSourcesPPO_idppo testSourcesPPO -idppo ${id_ppo})
+    add_test (testSourcesPPO_db testSourcesPPO -db ${id_ppo})
+  else (id_ppo)
+    add_test (testSourcesPPO_db testSourcesPPO -db)
+  endif (id_ppo)
 
 endif()
 
@@ -197,14 +222,14 @@ if (YAZPP_FOUND)
   add_executable (testYAZPP testYAZPP.cc)
   ## Linker instructions
   target_link_libraries (testYAZPP libprometheus)
-  
+
   ## Testing
   if (testYAZPP_data)
     add_test (testYAZPP_convert testYAZPP ${testYAZPP_data})
   else (testYAZPP_data)
     add_test (testYAZPP testYAZPP)
   endif (testYAZPP_data)
-  
+
 endif (YAZPP_FOUND)
 
 message (STATUS "Processing directory source/tests - done")

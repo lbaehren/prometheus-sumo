@@ -48,9 +48,28 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 
       // === Public methods ====================================================
 
+      // === Static methods ====================================================
+
       //! Extract source IDs from input file
-      std::vector<std::string> sourceIDs (std::string const &filename,
-                                          std::string const &match);
+      static std::vector<std::string> sourceIDs (std::string const &filename,
+                                                 std::string const &match);
+
+#ifdef WITH_YAZPP
+      //! Query the PPO database for a set of image IDs
+      static std::vector<std::string> queryDatabase (std::vector<std::string> const &ids,
+                                                     std::string const &server="193.175.194.50",
+                                                     int const &port=2020,
+                                                     std::string const &database="bil",
+                                                     std::string const &syntax="mab");
+
+      //! Query the PPO database for a set of image IDs
+      static std::vector<std::string> queryDatabase (std::string const &filename,
+                                                     std::string const &match,
+                                                     std::string const &server="193.175.194.50",
+                                                     int const &port=2020,
+                                                     std::string const &database="bil",
+                                                     std::string const &syntax="mab");
+#endif
 
     private:
 
