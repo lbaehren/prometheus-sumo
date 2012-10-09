@@ -50,10 +50,6 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 
       // === Static methods ====================================================
 
-      //! Extract source IDs from input file
-      static std::vector<std::string> sourceIDs (std::string const &filename,
-                                                 std::string const &match);
-
 #ifdef WITH_YAZPP
       //! Query the PPO database for a set of image IDs
       static std::vector<std::string> queryDatabase (std::vector<std::string> const &ids,

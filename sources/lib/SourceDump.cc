@@ -128,4 +128,41 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     os << "-- Attribute keywords = " << attributeKeys() << std::endl;
   }
 
+  // ===========================================================================
+  //
+  //  Static methods
+  //
+  // ===========================================================================
+
+  //___________________________________________________________________________
+  //                                                                  sourceIDs
+  
+  /*!
+    \param filename -- Name of the file containing the source IDs.
+    \param match    -- Matching pattern to distinguish source IDs from possible
+                       other contents found within the input file.
+    \return items   -- Array with the source IDs.
+  */
+  std::vector<std::string> SourceDump::sourceIDs (std::string const &filename,
+						  std::string const &match)
+  {
+    std::vector<std::string> items;
+    std::string buffer;
+    std::ifstream infile (filename.c_str());
+    boost::regex ex (match);
+    
+    if ( infile.is_open() ) {
+      while (infile.good()) {
+	// Read line from file into buffer ...
+	std::getline (infile, buffer);
+	// ... and check it against the matching pattern
+	if (boost::regex_search(buffer, ex)) {
+	  items.push_back(buffer);
+	}
+      }
+    }
+    
+    return items;
+  }
+  
 }  //  namespace prometheus -- END
