@@ -42,11 +42,24 @@ using boost::property_tree::ptree;
   \brief Test reading image IDs from file.
   \param filename -- Name of the file containing the list of image IDs.
 */
-int test_read_ids_from_file (std::string const &filename)
+int test_read_ids_from_file (std::string const &filename,
+                             int const &nofEntries=5)
 {
   std::cout << "\n[testSourcesPPO::test_read_ids_from_file]\n" << std::endl;
 
   int status = 0;
+  std::string match = "berl";
+  std::vector<std::string> ids;
+
+  ids = prometheus::source::PPO::sourceIDs (filename, match);
+
+  std::cout << "--> nof. IDs = " << ids.size() << std::endl;
+
+  if (ids.size() > 0) {
+    for (int n=0; n<nofEntries; ++n) {
+      std::cout << "--> " << ids[n] << std::endl;
+    }
+  }
 
   return status;
 }
@@ -124,7 +137,7 @@ int main(int argc, char* argv[])
 
     if (option == "-xml") {
       // Test reading in data from XML database dump
-      status += test_read_xml_dump (filename);
+//      status += test_read_xml_dump (filename);
     } else if (option == "-idppo") {
       // Test reading image IDs from file
       status += test_read_ids_from_file (filename);

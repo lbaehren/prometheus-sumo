@@ -61,13 +61,14 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       std::vector<std::string> items;
       std::string buffer;
       std::ifstream infile (filename.c_str());
+      boost::regex ex (match);
 
       if ( infile.is_open() ) {
         while (infile.good()) {
-          /* Read line from file into buffer */
+          // Read line from file into buffer ...
           std::getline (infile, buffer);
-          /* Check contents of line against matching pattern */
-          if ( buffer.find(match) )
+          // ... and check it against the matching pattern
+          if (boost::regex_search(buffer, ex))
           {
             items.push_back(buffer);
           }
