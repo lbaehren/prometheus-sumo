@@ -27,6 +27,12 @@ find_file (xml_dump_robertinum robertin.xml
   PATH_SUFFIXES data data/tests
   )
 
+find_file (xml_dump_ppo ppo.xml
+  HINTS ${PANDORA_DATA_DIR}
+  PATHS ${PROJECT_SOURCE_DIR}
+  PATH_SUFFIXES data data/tests
+  )
+
 find_file (id_ppo idppo20120925.txt
   HINTS ${PANDORA_DATA_DIR}
   PATHS ${PROJECT_SOURCE_DIR}
@@ -115,9 +121,9 @@ if(Boost_FOUND)
     add_test (testSourcesTheolEik testSourcesTheolEik ${xml_dump_theoleik})
   endif (xml_dump_theoleik)
 
-  if (id_ppo)
-    add_test (testSourcesPPO testSourcesPPO)
-  endif (id_ppo)
+  if (xml_dump_ppo)
+    add_test (testSourcesPPO testSourcesPPO ${xml_dump_ppo})
+  endif (xml_dump_ppo)
 
 endif()
 
