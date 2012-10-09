@@ -162,7 +162,9 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       std::vector<std::string> records;
       std::vector<std::string> ids = sourceIDs (filename, match);
 
-      if (!ids.empty()) {
+      if (ids.empty()) {
+        std::cerr << "[PPO::queryDatabase] Empty list of source IDs!" << std::endl;
+      } else {
         records = queryDatabase (ids,
                                  server,
                                  port,
