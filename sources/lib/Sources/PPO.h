@@ -48,9 +48,11 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 
       // === Public methods ====================================================
 
+      // === Static methods ====================================================
+
       //! Extract source IDs from input file
-      std::vector<std::string> sourceIDs (std::string const &filename,
-                                          std::string const &match);
+      static std::vector<std::string> sourceIDs (std::string const &filename,
+						 std::string const &match);
 
     private:
 

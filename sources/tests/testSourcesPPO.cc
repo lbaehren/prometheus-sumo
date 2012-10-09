@@ -29,53 +29,94 @@
 
 using boost::property_tree::ptree;
 
-// === Main function ===========================================================
+// ==============================================================================
+//
+//  Test routines
+//
+// ==============================================================================
+
+//_______________________________________________________________________________
+//                                                        test_read_ids_from_file
+
+/*!
+  \brief Test reading image IDs from file.
+  \param filename -- Name of the file containing the list of image IDs.
+*/
+int test_read_ids_from_file (std::string const &filename)
+{
+  int status = 0;
+
+  return status;
+}
+
+//_______________________________________________________________________________
+//                                                             test_read_xml_dump
+
+/*!
+  \brief Test reading in data from XML database dump
+  \param filename -- Name of the file with the XML data.
+*/
+int test_read_xml_dump (std::string const &filename)
+{
+  int status = 0;
+  std::ifstream infile (filename.c_str());
+
+  if (infile.is_open()) {
+
+    std::cout << "-- Opened input file " << filename << std::endl;
+
+    prometheus::source::PPO dump;
+    std::vector<prometheus::Image> items;
+    int nofIncompleteItems = 0;
+
+    /* Parse the contents of the document */
+    try {
+      nofIncompleteItems = dump.readXML (infile, items);
+    } catch (std::exception &e) {
+      std::cout << "[ERROR] " << e.what() << "\n";
+    }
+
+    /* Summary of document contents */
+    for (unsigned int n=0; n<items.size(); ++n) {
+      std::cout << "[" << n << "]"
+		<< " : " <<items[n].attribute("image")
+		<< " : " << items[n].attribute("title")
+		<< "\t(" << items[n].attribute("date") << ")"
+		<< std::endl;
+    }
+    std::cout << "-- nof. items      = " << items.size()       << std::endl;
+    std::cout << "-- nof. incomplete = " << nofIncompleteItems << std::endl;
+
+  } else {
+    std::cerr << "--> Failed to open file " << filename << std::endl;
+    return 1;
+  }
+
+  return status;
+}
+
+// ==============================================================================
+//
+//  Program main function
+//
+// ==============================================================================
 
 /*!
   \brief Test program main function
 */
 int main(int argc, char* argv[])
 {
+  int status = 0;
   std::string filename;
 
   /* Parse command line parameters */
   if ( argc>1 ) {
-    /* Get the name of the testdata ... */
+
     filename = std::string(argv[1]);
-    /* ... and run the actual tests. */
-    std::ifstream infile (filename.c_str());
 
-    if (infile.is_open()) {
-
-      std::cout << "-- Opened input file " << filename << std::endl;
-
-      prometheus::source::PPO dump;
-      std::vector<prometheus::Image> items;
-      int nofIncompleteItems = 0;
-
-      /* Parse the contents of the document */
-      try {
-	nofIncompleteItems = dump.readXML (infile, items);
-      } catch (std::exception &e) {
-	std::cout << "[ERROR] " << e.what() << "\n";
-      }
-
-      /* Summary of document contents */
-      for (unsigned int n=0; n<items.size(); ++n) {
-        std::cout << "[" << n << "]"
-                  << " : " <<items[n].attribute("image")
-                  << " : " << items[n].attribute("title")
-                  << "\t(" << items[n].attribute("date") << ")"
-                  << std::endl;
-      }
-      std::cout << "-- nof. items      = " << items.size()       << std::endl;
-      std::cout << "-- nof. incomplete = " << nofIncompleteItems << std::endl;
-
-    } else {
-      std::cerr << "--> Failed to open file " << filename << std::endl;
-      return 1;
-    }
+    /* Test reading in data from XML database dump */
+    status += test_read_xml_dump (filename);
   }
 
-  return 0;
+  return status;
 }

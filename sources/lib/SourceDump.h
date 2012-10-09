@@ -23,7 +23,6 @@
 
 #include <exception>
 #include <fstream>
-#include <string>
 
 #ifdef WITH_BOOST
 #include <boost/foreach.hpp>

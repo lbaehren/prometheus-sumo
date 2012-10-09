@@ -43,6 +43,12 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     //
     // ==========================================================================
 
+    // ==========================================================================
+    //
+    //  Static methods
+    //
+    // ==========================================================================
+
     /*!
       \param filename -- Name of the file containing the source IDs.
       \param match    -- Matching pattern to distinguish source IDs from possible
