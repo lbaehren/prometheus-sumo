@@ -122,8 +122,12 @@ if(Boost_FOUND)
   endif (xml_dump_theoleik)
 
   if (xml_dump_ppo)
-    add_test (testSourcesPPO testSourcesPPO ${xml_dump_ppo})
+    add_test (testSourcesPPO_xml testSourcesPPO -xml ${xml_dump_ppo})
   endif (xml_dump_ppo)
+
+  if (id_ppo)
+    add_test (testSourcesPPO_idppo testSourcesPPO -idppo ${id_ppo})
+  endif (id_ppo)
 
 endif()
 

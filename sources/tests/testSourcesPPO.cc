@@ -44,6 +44,8 @@ using boost::property_tree::ptree;
 */
 int test_read_ids_from_file (std::string const &filename)
 {
+  std::cout << "\n[testSourcesPPO::test_read_ids_from_file]\n" << std::endl;
+
   int status = 0;
 
   return status;
@@ -58,6 +60,8 @@ int test_read_ids_from_file (std::string const &filename)
 */
 int test_read_xml_dump (std::string const &filename)
 {
+  std::cout << "\n[testSourcesPPO::test_read_xml_dump]\n" << std::endl;
+
   int status = 0;
   std::ifstream infile (filename.c_str());
 
@@ -107,15 +111,30 @@ int test_read_xml_dump (std::string const &filename)
 int main(int argc, char* argv[])
 {
   int status = 0;
+  std::string option;
   std::string filename;
 
   /* Parse command line parameters */
-  if ( argc>1 ) {
+  if ( argc>2 ) {
 
-    filename = std::string(argv[1]);
+    // Command line option switch
+    option   = std::string(argv[1]);
+    // Name of input file
+    filename = std::string(argv[2]);
 
-    /* Test reading in data from XML database dump */
-    status += test_read_xml_dump (filename);
+    if (option == "-xml") {
+      // Test reading in data from XML database dump
+      status += test_read_xml_dump (filename);
+    } else if (option == "-idppo") {
+      // Test reading image IDs from file
+      status += test_read_ids_from_file (filename);
+    } else {
+      std::cout << "Undefined command line option." << std::endl;
+    }
+
+  } else {
+    std::cerr << "No command line parameters provided. Usage: testSourcesPPO <switch> <value>"
+              << std::endl;
   }
 
   return status;
