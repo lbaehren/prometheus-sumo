@@ -16,40 +16,42 @@
     <tr>
       <td width="25%"><b>Software development</b></td>
       <td>
-        \ref repositories |
+        \subpage repositories |
         \subpage coding_guidelines |
         \subpage software_design
       </td>
     </tr>
 
-    <tr>
+    <tr valign="center">
       <td width="25%"><b>Software packages</b></td>
       <td>
-        \ref pandora |
-        \ref prometheus-sumo
+        \subpage pandora |
+        \subpage prometheus-sumo |
+        \subpage third_party
       </td>
     </tr>
 
-    <tr>
-      <td width="25%"><b>\subpage infrastructure</b></td>
+    <tr valign="center">
+      <td width="25%"><b>Infrastructure</b></td>
       <td>
         \subpage manual_image_archive |
-        \ref servers |
-        \ref homepage
+        \subpage homepage |
+        \subpage servers |
+        \subpage virtual_machines
       </td>
     </tr>
 
-    <tr>
+    <tr valign="center">
       <td width="25%"><b>Support</b></td>
       <td>
-        \ref wiki |
-        \ref issue_tracker |
+        \subpage wiki |
+        \subpage issue_tracker |
         \subpage faq |
         \subpage bookmarks
       </td>
     </tr>
 
-    <tr>
+    <tr valign="center">
       <td width="25%"><b>Web pages</b></td>
       <td>
         [Image archive](http://www.prometheus-bildarchiv.de) |
@@ -71,11 +73,12 @@
     </tr>
 
     <tr>
-      <td width="25%"><b>\subpage related_projects</b></td>
+      <td width="25%"><b>Related projects</b></td>
       <td>
         \ref related_projects_kleio |
         \ref related_projects_metaimage |
-        \ref related_projects_hyperimage
+        \ref related_projects_hyperimage |
+	\subpage related_projects "»"
       </td>
     </tr>
 

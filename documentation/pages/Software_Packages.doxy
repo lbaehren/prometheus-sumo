@@ -1,50 +1,62 @@
 /*!
-  \page software_packages Software Packages
+  \page third_party Third-party Tools
 
   \tableofcontents
 
-  \section software_packages_prom prometheus Digital Image Archive software
+  As much as we enjoy creating our own code to work behind the scenes (and
+  sometimes on the front end) of the prometheus image archive, there is a limit
+  to what we are able to do ourselves. The Open Source community provides a
+  vibrant ecosystem with a large number of great projects we are able to rely on.
 
   <dl>
 
-    <dt>pandora</dt>
-      <dd>\ref pandora (The prometheus digital image archive software) is the
-      successor to \kleio as the driving force behind the prometheus image
-      archive. It's being developed since late fall of 2006, on top of the
-      \ref refman_rails framework. pandora is Free Software, released under the terms
-      of the [GNU Affero General Public License](http://www.gnu.org/licenses/#AGPL).</dd>
+    <dt>Capistrano</dt>
+      <dd>\subpage capistrano is an open source tool for running scripts on multiple servers; its main use is deploying web applications. It automates the process of making a new version of an application available on one or more web servers, including supporting tasks such as changing databases.</dd>
 
-    <dt>prometheus-sumo</dt>
-      <dd>\subpage prometheus-sumo is a simple (almost) virtual package, to ease
-      the retrieval of the various components in the software stack for “prometheus
-      – The Distributed Digital Image Archive for Research and Studies”.</dd>
+    <dt>Ferret</dt>
+      <dd>\subpage ferret is a Ruby port of the Java Lucene search engine. In the same way as Lucene, it is not a standalone application, but a library you can use to index documents and search for things in them later.</dd>
+
+    <dt>MySQL</dt>
+      <dd>\subpage mysql is the world's most popular open source database software, with over
+  100 million copies of its software downloaded or distributed throughout it's history. With its superior speed, reliability, and ease of use, MySQL has become the preferred choice for Web, Web 2.0, SaaS, ISV, Telecom companies and forward-thinking corporate IT Managers because it eliminates the major problems associated with downtime, maintenance and administration for modern, online applications.<br>MySQL is a key part of LAMP (Linux, Apache, MySQL, PHP / Perl / Python), the fast-growing open source enterprise software stack. More and more companies are using LAMP as an alternative to expensive proprietary software stacks because of its lower cost and freedom from platform lock-in.</dd>
+
+    <dt>pwsafe</dt>
+      <dd>\subpage pwsafe is a unix commandline program that manages encrypted password databases.</dd>
+
+    <dt>XML</dt>
+      <dd>\subpage xml (Extensible Markup Language) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable. It is defined in the XML 1.0 Specification produced by the W3C, and several other related specifications, all gratis open standards.</dd>
+
+    <dt>YAML</dt>
+      <dd>\subpage refman_yaml is a human-readable data serialization format
+      that takes concepts from programming languages such as C, Perl, and Python,
+      and ideas from XML and the data format of electronic mail (RFC 2822).</dd>
+
+    <dt>YAZ</dt>
+      <dd>\subpage yaz is a programmers’ toolkit supporting the development of Z39.50/SRW/SRU clients and servers. Z39.50-2003 (version 3) as well as SRW/SRU version 1.1 are supported in both the client and server roles. The SOLR webservice is supported in the client role through the ZOOM API.</dd>
+
+    <dt>ZOOM</dt>
+      <dd>\subpage zoom is the emerging standard API for information retrieval programming using the Z39.50 protocol. ZOOM's Abstract API specifies semantics for classes representing key IR concepts such as connections, queries, result sets and records; and there are various bindings specifying how those concepts should be represented in various programming languages.</dd>
 
   </dl>
 
-  For a more complete list of packages (and locations where their source code
-  can be obtained) consult the \ref repositories page.
-
-  \section software_packages_external External 3rd-party packages
+  \section third_party_languages Programming languages
 
   <dl>
+
+    <dt>Ruby</dt>
+      <dd>[Ruby](http://ruby-lang.org) is a dynamic, reflective, general-purpose object-oriented programming language that combines syntax inspired by Perl with Smalltalk-like features. Ruby originated in Japan during the mid-1990s and was first developed and designed by Yukihiro “Matz” Matsumoto. It was influenced primarily by Perl, Smalltalk, Eiffel, and Lisp.<br>Ruby supports multiple programming paradigms, including functional, object oriented, imperative and reflective. It also has a dynamic type system and automatic memory management; it is therefore similar in varying respects to Smalltalk, Python, Perl, Lisp, Dylan, Pike, and CLU. </dd>
+
+  </dl>
+
+  \section third_party_tools Development tools
+
+  <dl>
+
     <dt>Git</dt>
       <dd>[Git](http://www.git-scm.com) is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.<br>Git is easy to learn and has a tiny footprint with lightning fast performance. It outclasses SCM tools like Subversion, CVS, Perforce, and ClearCase with features like cheap local branching, convenient staging areas, and multiple workflows. </dd>
 
     <dt>Subversion</dt>
       <dd>\subpage subversion is a free/open source version control system (VCS). That is, Subversion manages files and directories, and the changes made to them, over time. This allows you to recover older versions of your data or examine the history of how your data changed. In this regard, many people think of a version control system as a sort of “time machine.”<br>Subversion can operate across networks, which allows it to be used by people on different computers. At some level, the ability for various people to modify and manage the same set of data from their respective locations fosters collaboration. Progress can occur more quickly without a single conduit through which all modifications must occur. And because the work is versioned, you need not fear that quality is the trade-off for losing that conduit—if some incorrect change is made to the data, just undo that change.</dd>
-
-    <dt>Ruby</dt>
-      <dd>[Ruby](http://ruby-lang.org) is a dynamic, reflective, general-purpose object-oriented programming language that combines syntax inspired by Perl with Smalltalk-like features. Ruby originated in Japan during the mid-1990s and was first developed and designed by Yukihiro “Matz” Matsumoto. It was influenced primarily by Perl, Smalltalk, Eiffel, and Lisp.<br>Ruby supports multiple programming paradigms, including functional, object oriented, imperative and reflective. It also has a dynamic type system and automatic memory management; it is therefore similar in varying respects to Smalltalk, Python, Perl, Lisp, Dylan, Pike, and CLU. </dd>
-
-    <dt>Ruby on Rails</dt>
-      <dd>\subpage refman_rails, often shortened to Rails or RoR, is a web application development framework written in the Ruby language. It is designed to make programming web applications easier by making assumptions about what every developer needs to get started. It allows you to write less code while accomplishing more than many other languages and frameworks. Experienced Rails developers also report that it makes web application development more fun.</dd>
-
-    <dt>Capistrano</dt>
-      <dd>\subpage capistrano is an open source tool for running scripts on multiple servers; its main use is deploying web applications. It automates the process of making a new version of an application available on one or more web servers, including supporting tasks such as changing databases.</dd>
-
-    <dt>MySQL</dt>
-      <dd>\subpage mysql is the world's most popular open source database software, with over
-  100 million copies of its software downloaded or distributed throughout it's history. With its superior speed, reliability, and ease of use, MySQL has become the preferred choice for Web, Web 2.0, SaaS, ISV, Telecom companies and forward-thinking corporate IT Managers because it eliminates the major problems associated with downtime, maintenance and administration for modern, online applications.<br>MySQL is a key part of LAMP (Linux, Apache, MySQL, PHP / Perl / Python), the fast-growing open source enterprise software stack. More and more companies are using LAMP as an alternative to expensive proprietary software stacks because of its lower cost and freedom from platform lock-in.</dd>
 
     <dt>Redmine</dt>
       <dd>\subpage redmine is a free and open source, web-based project management and
@@ -53,24 +65,17 @@
   Redmine provides integrated project management features, issue tracking, and
   for multiple version control options.</dd>
 
-    <dt>Ferret</dt>
-      <dd>\subpage ferret is a Ruby port of the Java Lucene search engine. In the
-      same way as Lucene, it is not a standalone application, but a library you
-      can use to index documents and search for things in them later.</dd>
+  </dl>
 
-    <dt>YAML</dt>
-      <dd>\subpage refman_yaml is a human-readable data serialization format
-      that takes concepts from programming languages such as C, Perl, and Python,
-      and ideas from XML and the data format of electronic mail (RFC 2822).</dd>
+  \section third_party_web Web Applications
 
-    <dt>XML</dt>
-      <dd>\subpage xml (Extensible Markup Language) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable. It is defined in the XML 1.0 Specification produced by the W3C, and several other related specifications, all gratis open standards.</dd>
+  <dl>
 
-    <dt>YAZ</dt>
-      <dd>\subpage yaz is a programmers’ toolkit supporting the
-development of Z39.50/SRW/SRU clients and servers. Z39.50-2003 (version 3) as
-well as SRW/SRU version 1.1 are supported in both the client and server roles.
-The SOLR webservice is supported in the client role through the ZOOM API.</dd>
+    <dt>Mongrel</dt>
+      <dd>[Mongrel](https://github.com/evan/mongrel) is an open source software HTTP library and web server. It is used to run Ruby web applications and presents a standard HTTP interface. This makes layering other servers in front of it possible using a web proxy, a load balancer, or a combination of both.</dd>
+
+    <dt>Ruby on Rails</dt>
+      <dd>\subpage refman_rails, often shortened to Rails or RoR, is a web application development framework written in the Ruby language. It is designed to make programming web applications easier by making assumptions about what every developer needs to get started. It allows you to write less code while accomplishing more than many other languages and frameworks. Experienced Rails developers also report that it makes web application development more fun.</dd>
 
   </dl>
 
