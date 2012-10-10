@@ -1,15 +1,7 @@
-Infrastructure    {#infrastructure}
-==============
+Servers    {#servers}
+=======
 
 \tableofcontents
-
-  - \subpage homepage
-  - \subpage wiki
-  - \subpage issue_tracker
-  - \subpage repositories for software packages and documents
-  - \subpage virtual_machines
-  - \subpage pandora_deployment
-  - \subpage pwsafe
 
 \section network_configuration Network configuration
 
@@ -21,7 +13,7 @@ Infrastructure    {#infrastructure}
 | Nameserver       | 134.95.127.1, 134.95.129.23, 134.95.19.48, 134.95.167.20 |
 
 
-\section servers Servers
+\section server_machines Server names and hosted services
 
 | Name                         | IP address    | Hosted service              |
 |------------------------------|---------------|-----------------------------|

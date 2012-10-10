@@ -3,6 +3,10 @@
 
   \tableofcontents
 
+  \section kleio_about About
+
+  The pioneering software system \kleio, developed by Dr Manfred Thaller of the Max-Planck-Institut at Goettingen, has revolutionised historical computing in the German-speaking world. Starting with the principle of "source-oriented data processing", \kleio provides historians with a range of sophisticated, discipline-specific tools which enable them to preserve the integrity of their source material while handling that material in a wide variety of ways. To this end, \kleio offers powerful text handling facilities, routines for dealing with varieties of historical dating systems and interlocking currency systems, hierarchical and non-hierarchical relationships, record-matching algorithms, fuzzy and context-sensitive data handling, mapping, image retrieval and information exchange routines. The approach has been accurately defined as that of the "historical workstation".
+
   \section kleio_intro Introduction
 
   \subsection kleio_intro_purpose Purpose of this part of the documentation
