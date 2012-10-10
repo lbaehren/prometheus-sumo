@@ -11,46 +11,74 @@
 
   \section main_resources Available resources
 
-  <table class="doxtable" width="80%">
+  <table class="doxtable">
+
     <tr>
-      <td width="40%"><b>Software development</b></td>
-      <td width="40%">\subpage infrastructure</td>
-    </tr>
-    <tr valign="top">
+      <td width="25%"><b>Software development</b></td>
       <td>
-        \li \subpage software_packages
-        \li \subpage coding_guidelines
-        \li \subpage software_design
-        \li \subpage pandora
-        \li \subpage database
-      </td>
-      <td>
-        \li \subpage manual_image_archive
-        \li \ref servers
-        \li \ref repositories
-        \li \ref homepage
-        \li \ref wiki
-        \li \ref issue_tracker
+        \ref repositories |
+        \subpage coding_guidelines |
+        \subpage software_design
       </td>
     </tr>
+
     <tr>
-      <td width="40%"><b>Support</b></td>
-      <td width="40%"><b>Social Media</b></td>
-    </tr>
-    <tr>
+      <td width="25%"><b>Software packages</b></td>
       <td>
-        \li \subpage faq
-        \li \subpage bookmarks
-      </td>
-      <td valign=top>
-        \li [Facebook](http://facebook.com/prometheus.bildarchiv)
-        \li [Flickr](http://www.flickr.com/photos/prometheus_ev)
-        \li [Google+](https://plus.google.com/u/0/103268334729481987839)
-        \li [Github](https://github.com/prometheus-ev)
-        \li [Twitter](http://twitter.com/prometheus_eV)
-        \li [Vimeo](http://vimeo.com/prometheusbildarchiv)
+        \ref pandora |
+        \ref prometheus-sumo
       </td>
     </tr>
+
+    <tr>
+      <td width="25%"><b>\subpage infrastructure</b></td>
+      <td>
+        \subpage manual_image_archive |
+        \ref servers |
+        \ref homepage
+      </td>
+    </tr>
+
+    <tr>
+      <td width="25%"><b>Support</b></td>
+      <td>
+        \ref wiki |
+        \ref issue_tracker |
+        \subpage faq |
+        \subpage bookmarks
+      </td>
+    </tr>
+
+    <tr>
+      <td width="25%"><b>Web pages</b></td>
+      <td>
+        [Image archive](http://www.prometheus-bildarchiv.de) |
+        [Wiki](http://prometheus-bildarchiv.de/wiki) |
+        [Issue tracker](http://prometheus-app.uni-koeln.de/redmine)
+      </td>
+    </tr>
+
+    <tr>
+      <td width="25%"><b>Social Media</b></td>
+      <td>
+        [Facebook](http://facebook.com/prometheus.bildarchiv) |
+        [Flickr](http://www.flickr.com/photos/prometheus_ev) |
+        [Google+](https://plus.google.com/u/0/103268334729481987839) |
+        [Github](https://github.com/prometheus-ev) |
+        [Twitter](http://twitter.com/prometheus_eV) |
+        [Vimeo](http://vimeo.com/prometheusbildarchiv)
+      </td>
+    </tr>
+
+    <tr>
+      <td width="25%"><b>\subpage related_projects</b></td>
+      <td>
+        \ref related_projects_kleio |
+        \ref related_projects_metaimage |
+        \ref related_projects_hyperimage
+      </td>
+    </tr>
+
   </table>
 
 */

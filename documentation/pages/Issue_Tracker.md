@@ -1,6 +1,6 @@
 
-Redmine Issue Tracker    {#issue_tracker}
-=====================
+Issue Tracker    {#issue_tracker}
+=============
 
 \tableofcontents
 
