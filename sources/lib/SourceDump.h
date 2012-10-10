@@ -99,6 +99,12 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     //! Provide a summary of the object's internal parameters and status
     void summary (std::ostream &os);
 
+    // === Static methods =======================================================
+    
+    //! Extract source IDs from input file
+    static std::vector<std::string> sourceIDs (std::string const &filename,
+					       std::string const &match);
+    
   };
 
 }  //  namespace prometheus -- END

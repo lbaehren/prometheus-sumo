@@ -40,7 +40,7 @@ http://prometheus-test.uni-koeln.de/pandora-devel
 
 \subsection servers_srv1 prometheus-srv1
 
-NFS mounts: 
+NFS mounts:
 
 \verbatim
 prometheus1.uni-koeln.de:/var/local/prometheus/app/pandora/shared/index/production /var/local/prometheus/app/perseus-a/pandora_index/production nfs rsize=8192,ro,bg 0 0
@@ -65,6 +65,8 @@ prometheus-srv3.uni-koeln.de:/var/local/prometheus/web/log /var/local/prometheus
  - [Ruby Standard Library Documentation](http://prometheus-srv3.uni-koeln.de/ruby-doc/core)
 
 \section virtual_hosts Virtual Hosts
+
+Support for VM-Environment: vmqware@uni-koeln.de
 
 \verbatim
     prometheus.khi.uni-koeln.de

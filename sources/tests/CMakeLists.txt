@@ -1,7 +1,11 @@
 
 message (STATUS "Processing directory source/tests")
 
-## Locate test data
+## ==============================================================================
+##
+##  Locate test data
+##
+## ==============================================================================
 
 find_file (xml_dump_beeskow beeskow_kunstarchiv.xml
   HINTS ${PANDORA_DATA_DIR}

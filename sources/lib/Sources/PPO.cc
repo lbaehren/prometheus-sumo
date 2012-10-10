@@ -50,38 +50,6 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     // ==========================================================================
 
     //___________________________________________________________________________
-    //                                                                  sourceIDs
-
-    /*!
-      \param filename -- Name of the file containing the source IDs.
-      \param match    -- Matching pattern to distinguish source IDs from possible
-                         other contents found within the input file.
-      \return items   -- Array with the source IDs.
-    */
-    std::vector<std::string> PPO::sourceIDs (std::string const &filename,
-                                             std::string const &match)
-    {
-      std::vector<std::string> items;
-      std::string buffer;
-      std::ifstream infile (filename.c_str());
-      boost::regex ex (match);
-
-      if ( infile.is_open() ) {
-        while (infile.good()) {
-          // Read line from file into buffer ...
-          std::getline (infile, buffer);
-          // ... and check it against the matching pattern
-          if (boost::regex_search(buffer, ex))
-          {
-            items.push_back(buffer);
-          }
-        }
-      }
-
-      return items;
-    }
-
-    //___________________________________________________________________________
     //                                                              queryDatabase
 
 #ifdef WITH_YAZPP
@@ -162,7 +130,9 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
       std::vector<std::string> records;
       std::vector<std::string> ids = sourceIDs (filename, match);
 
-      if (!ids.empty()) {
+      if (ids.empty()) {
+        std::cerr << "[PPO::queryDatabase] Empty list of source IDs!" << std::endl;
+      } else {
         records = queryDatabase (ids,
                                  server,
                                  port,

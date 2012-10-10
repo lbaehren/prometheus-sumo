@@ -126,15 +126,19 @@ int test_read_xml_dump (std::string const &filename)
 */
 int test_query_database (std::string const &filename="")
 {
-  std::cout << "\n[testSourcesPPO::test_query_database]\n" << std::endl;
+  std::cout << "\n[testSourcesPPO::test_query_database]" << std::endl;
+
+#ifdef WITH_YAZPP
 
   int status = 0;
   std::vector<std::string> ids (1, "b0009539berl");
+  std::string match = "berl";
 
   /*
    *  Test 1 : Query database server on a list of image IDs
    */
-  std::cout << "[1] Query database server on a list of image IDs ...\n" << std::endl;
+  std::cout << "\n[1] Query database server on a list of image IDs ..." << std::endl;
+
   try {
     std::vector<std::string> records = prometheus::source::PPO::queryDatabase(ids);
 
@@ -151,12 +155,13 @@ int test_query_database (std::string const &filename="")
   /*
    *  Test 2
    */
-  std::cout << "[2] Query database server on file with image IDs ...\n" << std::endl;
   if (filename!= "") {
+    std::cout << "\n[2] Query database server on file with image IDs ..." << std::endl;
     try {
       std::vector<std::string> records = prometheus::source::PPO::queryDatabase (filename,
-                                                                                 "berl");
+                                                                                 match);
 
+      std::cout << "--> nof. records = " << records.size() << std::endl;
       for (int n=0; n<records.size(); ++n) {
         std::cout << "-- Record [" << n << "] = " << records[n] << std::endl;
       }
@@ -165,6 +170,7 @@ int test_query_database (std::string const &filename="")
       ++status;
     }
   }
+#endif
 
   return status;
 }

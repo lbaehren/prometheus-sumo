@@ -59,13 +59,13 @@ based on the YAZ toolkit.
 
 PHP/YAZ is an extension to the popular web server language PHP that implements Z39.50 origin (client) functionality as well as the SRW/SRU protocols.
 
-The following Z39.50 services are supported by this extension: init, search, present, scan and sort. The extension can handle GRS-1, MARC, SUTRS and XML. The module also allows you to convert MARC in ISO2709 to MARCXML on the client side.
+The following Z39.50 services are supported by this extension: init, search, present, scan and sort. The extension can handle GRS-1, MARC, SUTRS and XML. The module also allows you to convert \ref marc in ISO2709 to MARCXML on the client side.
 
 The PHP/YAZ extension is part of PHP 4.0.1 and later but has now been moved to PECL. As a PECL module, PHP/YAZ is now independent of PHP versions. It works with both PHP 4 and PHP 5.
 
 \subsection yaz_usemarcon USEMARCON
 
-[USEMARCON](http://www.nationallibrary.fi/libraries/format/usemarcon.html) is a rule-based MARC record manipulation program and library. It is free, open source, written in C++. USEMARCON can be used interactively with USEMARCON GUI, in batch processing using the command line version and it's also possible to integrate the library with other software (this has been done e.g. with YAZ Proxy»).
+[USEMARCON](http://www.nationallibrary.fi/libraries/format/usemarcon.html) is a rule-based \ref marc record manipulation program and library. It is free, open source, written in C++. USEMARCON can be used interactively with USEMARCON GUI, in batch processing using the command line version and it's also possible to integrate the library with other software (this has been done e.g. with YAZ Proxy»).
 
 USEMARCON is a software application that allows users to convert bibliographic records from one MAchine-Readable Cataloguing (MARC) format to another. Approximately fifty variant MARC formats are currently in use throughout the world. The differences between the MARC formats present a barrier to the easy exchange of records. This is a fundamental problem for libraries, and necessitates the costly re-cataloguing of material for which records are already available, but in a MARC format other than their own.
 
@@ -190,6 +190,5 @@ Of course it takes time to run one search request after another. How about a par
  - [Bib-1 Diagnostics Defined within the Z39.50-1995 Standard](http://www.loc.gov/z3950/agency/defns/bib1diag.html)
  - [Standards at the Library of Congress](http://www.loc.gov/standards)
  - [Pictura Paedagogica Online - The Concept and its Realisation](http://bbf.dipf.de/virtuellesbildarchiv/projektbeschreibung_e.html)
- - [MARC 21 Format for Bibliographic Data Field List](http://www.loc.gov/marc/bibliographic/ecbdlist.html)
  - [Retrieve bibliographic data via Z39.50 with PHPYAZ](http://blog.peschla.net/2011/12/bibliographic-data-via-z3950-and-phpyaz)
- - [Registry of Z39.50 Object Identifiers](http://www.loc.gov/z3950/agency/defns/oids.html)
+
