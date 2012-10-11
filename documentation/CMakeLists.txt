@@ -91,7 +91,7 @@ if (DOXYGEN_EXECUTABLE)
 	)
     endif (LATEX_COMPILER)
   endif (WITH_LATEX_DOC)
-  
+
   if (ENABLE_TESTING)
     add_test (documentation Documentation)
   endif (ENABLE_TESTING)

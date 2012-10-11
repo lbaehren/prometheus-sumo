@@ -64,7 +64,7 @@ exit 0
 
 The post-commit hook is invoked after a commit.  Subversion runs
 this hook by invoking a program (script, executable, binary, etc.)
-named 'post-commit' (for which the file `post-commit.tmpl` is a template) with the 
+named 'post-commit' (for which the file `post-commit.tmpl` is a template) with the
 following ordered arguments:
 
 \code
