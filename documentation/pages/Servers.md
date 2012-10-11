@@ -15,9 +15,9 @@ Servers    {#servers}
 
 \section server_machines Server names and hosted services
 
-| Name                         | IP address    | Hosted service              |
-|------------------------------|---------------|-----------------------------|
-| www.prometheus-bildarchiv.de | 134.95.19.39  | [Image archive](http://www.prometheus-bildarchiv.de) |
+| Name                         | IP address    | Hosted service                       |
+|------------------------------|---------------|--------------------------------------|
+| www.prometheus-bildarchiv.de | 134.95.19.39  | \ref manual_image_archive            |
 | prometheus1.uni-koeln.de     | 134.95.80.11  | Production system                    |
 | prometheus2.uni-koeln.de     | 134.95.80.12  | Development system                   |
 | prometheus-test.uni-koeln.de | 134.95.80.13  |                                      |
@@ -50,6 +50,8 @@ prometheus-srv3.uni-koeln.de:/var/local/prometheus/web/log /var/local/prometheus
 \endverbatim
 
 \subsection servers_srv3 prometheus-srv3
+
+Online documentation for various software projects:
 
  - [Capistrano](http://prometheus-srv3.uni-koeln.de/ruby-doc/capistrano)
  - [Ferret Search Library Documentation](http://prometheus-srv3.uni-koeln.de/ruby-doc/ferret)

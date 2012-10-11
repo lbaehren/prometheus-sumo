@@ -3,6 +3,14 @@ Handy one-liners for SED    {#sed}
 
 \tableofcontents
 
+The **sed** utility reads the specified files, or the standard input if no files are
+specified, modifying the input as specified by a list of commands.  The input is then
+written to the standard output.
+
+A single command may be specified as the first argument to sed.  Multiple commands
+may be specified by using the -e or -f options.  All commands are applied to the
+input in the order they are specified regardless of their origin.
+
 \section sed_file_spacing File spacing
 
 \li double space a file
