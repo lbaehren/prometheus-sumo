@@ -19,11 +19,11 @@ them and thereafter committing back the changes -- there also exists a web-based
 tool to aid iterating through a number of changes, allowing to preview them
 before publishing the modifications made.
 
-\section homepage_infrastructure Infrastructure 
+\section homepage_infrastructure Infrastructure
 
 \subsection homepage_infrastructure_srv3 prometheus-srv3
 
-\c prometheus-srv3.uni-koeln.de 
+\c prometheus-srv3.uni-koeln.de
 
 \verbatim
 /var/local/prometheus                        ...  Root of prometheus installation
@@ -138,4 +138,3 @@ image series featured on the homepage.
     |-- 2011
     `-- 2012
 \endverbatim
-

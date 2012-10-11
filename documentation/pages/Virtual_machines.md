@@ -78,7 +78,7 @@ apt-get install build-essential cmake git-svn subversion doxygen mysql-server ru
 
 \subsection vm_windows_xp-ie6 Windows XP (IE6)
 
-Web browsers:
+\ref browser "Web browsers":
 
 | Browser | Initial version     | Upgraded to       |
 |---------|---------------------|-------------------|
@@ -91,14 +91,14 @@ Web browsers:
 Additionale software packages:
 
   - Adobe Download Manager
-  - Git
+  - [Git](http://www.git-scm.com)
   - MinGW
     - MinGW Compier Suite (C, C++)
     - MSYS Basic System
 
 \subsection vm_windows_xp-ie7 Windows XP (IE7)
 
-Web browsers:
+\ref browser "Web browsers":
 
 | Browser | Initial version     | Upgraded to       |
 |---------|---------------------|-------------------|
@@ -118,7 +118,7 @@ Additional software packages:
 
 \subsection vm_windows_xp-ie8 Windows XP (IE8)
 
-Web browsers:
+\ref browser "Web browsers":
 
 | Browser | Initial version     | Upgraded to       |
 |---------|---------------------|-------------------|

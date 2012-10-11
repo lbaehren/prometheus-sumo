@@ -113,18 +113,23 @@ find_package (Subversion)
 ##__________________________________________________________
 ## Custom inspection
 
-find_package (RDoc)
-find_package (Rails)
-find_package (Rake)
-find_package (Gem)
-find_package (Iconv)
-find_package (MagicLib)
-find_package (MySQL)
-find_package (Xercesc)
-find_package (Yaml)
-find_package (Yard)
-find_package (YAZ)
-find_package (YAZPP)
+foreach (custom_cmake_module
+  Gem
+  Iconv
+  MagicLib
+  MySQL
+  RDoc
+  Rails
+  Rake
+  Xercesc
+  Yaml
+  Yard
+  YAZ
+  YAZPP
+  )
+  ## load the module
+  find_package (${custom_cmake_module})
+endforeach (custom_cmake_module)
 
 ## Extract Doxygen version number - this is not done by the standard module
 if (DOXYGEN_EXECUTABLE)
