@@ -46,4 +46,16 @@ Bookmarks    {#bookmarks}
 \li [Creating JavaScript widgets in Rails](http://www.igvita.com/2007/06/05/creating-javascript-widgets-in-rails/)
 \li [JavaScript Testing on Rails](http://www.solitr.com/blog/2012/04/konacha-tutorial-javascript-testing-with-rails)
 
+\section bookmarks_platforms Platforms
 
+\subsection bookmarks_platforms_mac Mac
+
+\li [Apple Developer Connection](http://developer.apple.com) -- Xcode can be downloaded free of charge
+\li [MacPorts Project](http://www.macports.org) -- an open-source community initiative to design an easy-to-use system for compiling, installing, and upgrading either command-line, X11 or Aqua based open-source software on the Mac OS X operating system.
+\li [Building Ruby, Rails, Subversion, Mongrel, and MySQL on Mac OS X](http://hivelogic.com/narrative/articles/ruby-rails-mongrel-mysql-osx)
+\li [SCPlugin](http://scplugin.tigris.org) -- allows access to \ref subversion commands from the Finder
+\li [Ruby on Rails development done the Mac way](http://locomotive.raaum.org)
+\li [Macintosh, Apache, Mysql und PHP](http://www.mamp.info)
+\li [TextMate](http://www.macromates.com) -- reactivate "30 Day Trial" by \code rm ~/Library/Preferences/com.macromates.textmate.plist \endcode
+\li [Sequel Pro](http://code.google.com/p/sequel-pro) -- Nice MySQL-GUI for Leopard
+\li [Caffeine](http://www.lightheadsw.com/caffeine) -- a tiny program that puts an icon in the right side of your menu bar. Click it to prevent your Mac from automatically going to sleep, dimming the screen or starting screen savers. Click it again to go back. Hold down the Command key while clicking to show the menu.
