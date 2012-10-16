@@ -26,60 +26,64 @@
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
 
-  /*!
-    \file StatisticsReaderHBZ.h
-    \class StatisticsReaderHBZ
-    \ingroup prometheus
-    \brief Class for reading statistics file for HBZ
-    \author Lars Baehren
-    \date 2012-07-12
-  */
-  class StatisticsReaderHBZ : public StatisticsReader {
+  namespace statistics {  //  namespace statistics -- BEGIN
 
-    std::vector<std::string> itsColumns;
-    std::vector<StatisticsHBZ> itsEntries;
+    /*!
+      \file StatisticsReaderHBZ.h
+      \class StatisticsReaderHBZ
+      \ingroup prometheus
+      \ingroup statistics
+      \brief Class for reading statistics file for HBZ
+      \author Lars Baehren
+      \date 2012-07-12
+    */
+    class StatisticsReaderHBZ : public StatisticsReader {
 
-  public:
+      std::vector<std::string> itsColumns;
+      std::vector<StatisticsHBZ> itsEntries;
 
-    //! Argumented constructor
-    StatisticsReaderHBZ (std::string const &filename);
+    public:
 
-    // === Parameter access =====================================================
+      //! Argumented constructor
+      StatisticsReaderHBZ (std::string const &filename);
 
+      // === Parameter access =====================================================
 
-    // === Public methods =======================================================
+      // === Public methods =======================================================
 
-    //! Read and process the input data file
-    bool processFile ();
+      //! Read and process the input data file
+      bool processFile ();
 
-    //! Get the number of entries in the statistics data file
-    inline unsigned int nofEntries () {
-      return itsEntries.size();
-    }
+      //! Get the number of entries in the statistics data file
+      inline unsigned int nofEntries () {
+        return itsEntries.size();
+      }
 
-    //! Columns names
-    inline std::vector<std::string> columns () {
-      return itsColumns;
-    }
+      //! Columns names
+      inline std::vector<std::string> columns () {
+        return itsColumns;
+      }
 
-    //! Number of data columns
-    inline unsigned int nofColumns () {
-      return itsColumns.size();
-    }
+      //! Number of data columns
+      inline unsigned int nofColumns () {
+        return itsColumns.size();
+      }
 
-    //! Get the names of the institutions
-    std::set<std::string> institutions ();
+      //! Get the names of the institutions
+      std::set<std::string> institutions ();
 
-    //! Provide a summary of the object's internal parameters and status
-    void summary (std::ostream &os);
+      //! Provide a summary of the object's internal parameters and status
+      void summary (std::ostream &os);
 
-  private:
+    private:
 
-    // === Private methods ======================================================
+      // === Private methods ======================================================
 
-    bool extactColumnHeaders (std::ifstream &in);
+      bool extactColumnHeaders (std::ifstream &in);
 
-  };
+    };
+
+  }  //  namespace statistics -- END
 
 }  //  namespace prometheus -- END
 
