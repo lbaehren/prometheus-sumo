@@ -3,48 +3,6 @@ message (STATUS "Processing directory source/tests")
 
 ## ==============================================================================
 ##
-##  Locate test data
-##
-## ==============================================================================
-
-find_file (xml_dump_beeskow beeskow_kunstarchiv.xml
-  HINTS ${PANDORA_DATA_DIR}
-  PATHS ${PROJECT_SOURCE_DIR}
-  PATH_SUFFIXES data data/tests
-  )
-
-find_file (xml_dump_theoleik theoleik.xml
-  HINTS ${PANDORA_DATA_DIR}
-  PATHS ${PROJECT_SOURCE_DIR}
-  PATH_SUFFIXES data data/tests
-  )
-
-find_file (xml_dump_kassel kassel.xml
-  HINTS ${PANDORA_DATA_DIR}
-  PATHS ${PROJECT_SOURCE_DIR}
-  PATH_SUFFIXES data data/tests
-  )
-
-find_file (xml_dump_robertinum robertin.xml
-  HINTS ${PANDORA_DATA_DIR}
-  PATHS ${PROJECT_SOURCE_DIR}
-  PATH_SUFFIXES data data/tests
-  )
-
-find_file (xml_dump_ppo ppo.xml
-  HINTS ${PANDORA_DATA_DIR}
-  PATHS ${PROJECT_SOURCE_DIR}
-  PATH_SUFFIXES data data/tests
-  )
-
-find_file (id_ppo idppo.txt
-  HINTS ${PANDORA_DATA_DIR}
-  PATHS ${PROJECT_SOURCE_DIR}
-  PATH_SUFFIXES data data/tests
-)
-
-## ==============================================================================
-##
 ##  Generic C++ test programs
 ##
 ## ==============================================================================

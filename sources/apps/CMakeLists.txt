@@ -8,4 +8,4 @@ if (Boost_FOUND)
   ## Linker instructions
   target_link_libraries (scan_csv_stats libprometheus)
 
-endif ()
+endif (Boost_FOUND)

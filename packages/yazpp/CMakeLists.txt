@@ -55,21 +55,21 @@ if (YAZPP_FROM_REPOS)
 endif (YAZPP_FROM_REPOS)
 
 if (NOT YAZPP_FOUND OR YAZPP_FORCE_BUILD)
-  
+
   ## Locate source file to build from
-  
+
   find_file (YAZPP_SOURCE ${YAZPP_SOURCE_ARCHIVE}
     PATHS ${PROJECT_SOURCE_DIR}
     )
-  
+
   if (NOT YAZPP_SOURCE)
     set (YAZPP_SOURCE ${YAZPP_URL})
   endif (NOT YAZPP_SOURCE)
-  
+
   ## Build package from source
-  
+
   if (YAZPP_FROM_REPOS)
-    
+
     ExternalProject_Add (yazpp
       PREFIX ${PROJECT_BINARY_DIR}
       DOWNLOAD_DIR download
@@ -79,9 +79,9 @@ if (NOT YAZPP_FOUND OR YAZPP_FORCE_BUILD)
       CONFIGURE_COMMAND ${PROJECT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --with-yaz=${CMAKE_INSTALL_PREFIX}/bin
       INSTALL_COMMAND ${PORT_INSTALL_COMMAND} make install
       )
-  
+
   else (YAZPP_FROM_REPOS)
-    
+
     ExternalProject_Add (yazpp
       PREFIX ${PROJECT_BINARY_DIR}
       DOWNLOAD_DIR download
@@ -91,14 +91,14 @@ if (NOT YAZPP_FOUND OR YAZPP_FORCE_BUILD)
       CONFIGURE_COMMAND ${PROJECT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --with-yaz=${CMAKE_INSTALL_PREFIX}/bin
       INSTALL_COMMAND ${PORT_INSTALL_COMMAND} make install
       )
-    
+
   endif (YAZPP_FROM_REPOS)
-  
+
 else (NOT YAZPP_FOUND OR YAZPP_FORCE_BUILD)
-  
+
   add_custom_target (yazpp
     WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
     COMMENT "[yazpp] Found system-wide installation; skipping rebuild!"
     )
-  
+
 endif (NOT YAZPP_FOUND OR YAZPP_FORCE_BUILD)
