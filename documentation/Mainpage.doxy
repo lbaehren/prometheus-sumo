@@ -61,7 +61,9 @@
     </tr>
 
     <tr>
-      <td width="25%"><b>Social Media</b></td>
+      <td width="25%">
+        <b>Social Media</b> \subpage social_media "»"
+      </td>
       <td>
         [Facebook](http://facebook.com/prometheus.bildarchiv) |
         [Flickr](http://www.flickr.com/photos/prometheus_ev) |
@@ -74,8 +76,7 @@
 
     <tr>
       <td width="25%">
-        <b>Related projects</b>
-	\subpage related_projects "»"
+        <b>Related projects</b> \subpage related_projects "»"
       </td>
       <td>
         \ref related_projects_kleio |
