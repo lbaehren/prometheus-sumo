@@ -6,6 +6,7 @@ Coding guidelines    {#coding_guidelines}
 \li [Linux kernel coding style](http://www.kernel.org/doc/Documentation/CodingStyle)
 \li [Ruby Style Guide](http://www.rubygarden.org/Ruby/page/show/RubyStyleGuide)
 \li [GNU Coding Standards](http://www.gnu.org/prep/standards/standards.html)
+\li [Google C++ Style Guide](http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml)
 
 \section guidelines_general General
 
