@@ -34,16 +34,28 @@
 
 #include <Statistics/ApacheCombinedLog.h>
 
+// ==============================================================================
+//
+//  Helper functions
+//
+// ==============================================================================
+
 //_______________________________________________________________________________
 //                                                                 parse_examples
 
 /*!
   \brief Parse the text in the \c examples for a regular expression
-  \param examples   -- Array with example text strings to be inspected.
-  \param expression -- Array with regular expressions used for matching operation.
+  \param examples       -- Array with example text strings to be inspected.
+  \param expression     -- Array with regular expressions used for matching
+                           operation.
+  \param matchNotSearch -- Require the regular expression to match, instead of
+                           searching the example input for a pattern.
+  \return status -- Status of the function; returns non-zero value in case an
+                    error was encountered.
 */
 int parse_examples (std::vector<std::string> const &examples,
-                    std::vector<std::string> const &expression)
+                    std::vector<std::string> const &expression,
+		    bool const &matchNotSearch=false)
 {
   /* Check input data */
   if (examples.empty() || expression.empty()) {
@@ -57,6 +69,15 @@ int parse_examples (std::vector<std::string> const &examples,
   int status        = 0;
   int numExample    = 0;
   int numExpression = 0;
+  boost::cmatch what;
+  bool result;
+  int nofResults;
+  int startWhat;
+  std::string operation = "search";
+
+  if (matchNotSearch) {
+    operation = "match";
+  }
 
   /* Go through the combination of text examples and matching expressions */
   try {
@@ -64,12 +85,30 @@ int parse_examples (std::vector<std::string> const &examples,
       std::cout << "-- string = \"" << examples[numExample] << "\"" << std::endl;
       for (numExpression=0; numExpression<expression.size(); ++numExpression) {
         boost::regex e (expression[numExpression]);
-	std::cout << "--> regex = \"" << expression[numExpression] << "\"";
-        if (regex_match(examples[numExample], e)) {
-	  std::cout << "  =>  OK" << std::endl;
-        } else {
-	  std::cout << "  =>  Not found!" << std::endl;
-        }
+	/* Perform matching/search */
+	if (matchNotSearch) {
+	  result  = regex_match(examples[numExample], e);
+	} else {
+	  result     = regex_search(examples[numExample].c_str(), what, e);
+	  nofResults = what.size();
+	}
+	/* Feedback */
+	std::cout << "--> " << operation << " regex : \""
+		  << expression[numExpression] << "\"\t=>  ";
+	if (result) {
+	  if (matchNotSearch) {
+	    std::cout << "OK" << std::endl;
+	  } else {
+	    if (nofResults>1) {startWhat=1;} else {startWhat=0;}
+	    std::cout << "(" << nofResults << ")";
+	    for (int n=startWhat; n<nofResults; ++n) {
+	      std::cout << " " << what[n];
+	    }
+	    std::cout << std::endl;
+	  }
+	} else {
+	  std::cout << "Not found!" << std::endl;
+	}
       }
     }
   } catch (std::exception &e) {
@@ -80,11 +119,19 @@ int parse_examples (std::vector<std::string> const &examples,
   return status;
 }
 
+// ==============================================================================
+//
+//  Test functions
+//
+// ==============================================================================
+
 //_______________________________________________________________________________
 //                                                               test_boost_regex
 
 /*!
   \brief Test working with the boost::regex library
+  \return status -- Status of the function; returns non-zero value in case an
+                    error was encountered.
 */
 int test_boost_regex ()
 {
@@ -93,11 +140,6 @@ int test_boost_regex ()
   int status = 0;
   std::vector<std::string> examples;
   std::vector<std::string> expressions;
-  boost::cmatch what;
-
-  /* Strings to be used as test input */
-  std::string stringLatex  = "The following word will be set in \textbf{bold}.";
-  std::string stringApache = "127.0.0.1 - - [15/Oct/2012:13:58:21 +0200] \"GET /phpmyadmin/index.php HTTP/1.1\" 200 3051";
 
   // ---[Parse credit card number]------------------------------------
 
@@ -112,9 +154,10 @@ int test_boost_regex ()
     /* Parser expression */
     expressions.clear();
     expressions.push_back ("([[:digit:]]{4}[- ]){3}[[:digit:]]{4}");
+    expressions.push_back ("([[:digit:]]{4}[- ]){4}[[:digit:]]{4}");
     expressions.push_back ("([[:digit:]]{4}[- ]){3}[[:digit:]]{5}");
     /* Parse the examples*/
-    status += parse_examples (examples, expressions);
+    status += parse_examples (examples, expressions, true);
   } catch (std::exception &e) {
     std::cerr << "" << e.what() << std::endl;
     ++status;
@@ -126,16 +169,17 @@ int test_boost_regex ()
   try {
     /* Text examples to parse */
     examples.clear();
-    examples.push_back("@abc def--");
     examples.push_back("aa");
     examples.push_back("ab");
-    examples.push_back("ba");
-    examples.push_back("aa aab aabbaa aabbaaa");
-    examples.push_back("aa aab aabb aaab aaabb");
+    examples.push_back("bb");
+    examples.push_back("aa bb");
+    examples.push_back("aa ab ba bb");
+    examples.push_back("mxaaabfc");
     /* Parser expression */
     expressions.clear();
     expressions.push_back ("a+|b+");
-    expressions.push_back ("b+|a+");
+    expressions.push_back ("(a|b)+");
+    expressions.push_back ("(a){3}");
     /* Parse the examples*/
     status += parse_examples (examples, expressions);
   } catch (std::exception &e) {
@@ -167,9 +211,11 @@ int test_boost_regex ()
     /* Text examples to parse */
     examples.clear();
     examples.push_back("ftp://downloads.foo.com/apps/linux/patch.gz");
+    examples.push_back ("127.0.0.1 - - [15/Oct/2012:13:58:21 +0200] \"GET /phpmyadmin/index.php HTTP/1.1\" 200 3051");
     /* Parser expression */
     expressions.clear();
-    expressions.push_back ("(ftp|http|https):\\/\\/([[:word:]]+\\.)*([[:word:]]*)\\/([[[:word:]][[:digit:]]]+\\/{0,1})+");
+    expressions.push_back("^([^[:space:]]+) ([^[:space:]]+) ([^[:space:]]+)");
+    expressions.push_back("^([^[:space:]]+) ([^[:space:]]+) ([^[:space:]]+) \\[([^:]+):([[:digit:]]+:[[:digit:]]+:[[:digit:]]+) ([^\\]]+)\\] \"([^[:space:]]+) (.+?) ([^[:space:]]+)\" ([^[:space:]]+) ([^[:space:]]+)");
     /* Parse the examples*/
     status += parse_examples (examples, expressions);
   } catch (std::exception &e) {
@@ -185,7 +231,9 @@ int test_boost_regex ()
 
 /*!
   \brief Test processing log file entry using boost::regex library
- */
+  \return status -- Status of the function; returns non-zero value in case an
+                    error was encountered.
+*/
 int test_boost_regex (std::string const &logline)
 {
   std::cout << "\n[testApacheLogs::test_boost_regex]\n" << std::endl;
@@ -209,7 +257,9 @@ int test_boost_regex (std::string const &logline)
 
 /*!
   \brief Test processing log file entry using boost::spirit library
- */
+  \return status -- Status of the function; returns non-zero value in case an
+                    error was encountered.
+*/
 int test_boost_spirit (std::string const &logline)
 {
   int status = 0;

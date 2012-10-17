@@ -223,7 +223,7 @@ int get_results (connection &conn,
   \brief Test retrieving record from [Astrophysics Data System](http://adsabs.harvard.edu/abs_doc/ads_server.html) (ADS) database.
   \param server  -- Name of the Z39.50 server.
   \param port    -- Port number via which to establish the connection.
-  \return status -- Status of the function; returns non-zero value in case and
+  \return status -- Status of the function; returns non-zero value in case an
                     error was encountered.
 */
 int test_ADS (std::string const &server="z3950.adsabs.harvard.edu",
