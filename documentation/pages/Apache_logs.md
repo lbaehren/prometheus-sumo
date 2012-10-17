@@ -5,33 +5,97 @@ Apache Log Files    {#apache_logs}
 
 Web server access logs are an excellent source of information about what your site's visitors are up to. The information on separate visitors is all mixed together, though, and for all but the smallest sites the raw access logs are too large to read directly. What you need is log analysis software to make the information in the log more easily accessible.
 
-\section apache_logs_structure Log File Structure
+\section apache_logs_access Access Log
 
-Most web servers store their access log in what is called the "common log
-format." Each time a user requests a file from the server, a line containing
-the following fields is added to the end of the log file:
+The server access log records all requests processed by the server. The location and content of the access log are controlled by the CustomLog directive. The LogFormat directive can be used to simplify the selection of the contents of the logs. This section describes how to configure the server to record information in the access log.
 
-\li **host** -- This is either the IP address (like `207.71.222.231`) or the corresponding hostname (like pm9-31.sba1.avtel.net) of the remote user requesting the page. For performance reasons, many web servers are configured not to do hostname lookups on the remote host. This means that all you end up with in the log file is a bunch of IP addresses. A bit later in this chapter, you'll develop a Perl script that you can use to convert those IP addresses into hostnames.
+Of course, storing the information in the access log is only the start of log management. The next step is to analyze this information to produce useful statistics. Log analysis in general is beyond the scope of this document, and not really part of the job of the web server itself. For more information about this topic, and for applications which perform log analysis, check the Open Directory or Yahoo.
 
-\li **identd result** -- This is a field for logging the response returned by the remote user's identd server. Almost no one actually uses this; in every web log I've ever seen, this field is always just a dash (`-`). 
+Various versions of Apache httpd have used other modules and directives to control access logging, including mod_log_referer, mod_log_agent, and the TransferLog directive. The CustomLog directive now subsumes the functionality of all the older directives.
 
-\li **authuser** -- If you are using basic 'ecHTTP authentication (which we'll be talking about in Chapter 19) to restrict access to some of your web documents, this is where the username of the authenticated user for this transaction will be recorded. Otherwise, it will be just a dash (`-`).
+The format of the access log is highly configurable. The format is specified using a format string that looks much like a C-style printf(1) format string. Some examples are presented in the next sections. For a complete list of the possible contents of the format string, see the mod_log_config documentation.
 
-\li **date and time** -- Next comes a date and time string inside square brackets, like: `[06/Jul/1999:00:09:12 -0700]`. That's the day of the month, the abbreviated month name, and the four-digit year, all separated by slashes. Next come the time (expressed in 24-hour format, so 11:30 P.M. would be 23:30:00) and a time-zone offset (in this example, `-0700`, because the web server this log was from was using Pacific Daylight Time, which is seven hours behind Universal Time/Greenwich Mean Time).
+\subsection apache_logs_access_common Common Log Format
 
-\li **request** -- This is the actual request sent by the remote user, enclosed in double quotes. Normally it will look something like: `"GET / HTTP/1.0"`. The GET part means it is a GET request (as opposed to a POST or a HEAD request). The next part is the path of the URL requested; in this case, the default page in the server's top-level directory, as indicated by a single slash (/). The last part of the request is the protocol being used, at the time of this writing typically HTTP/1.0 or HTTP/1.1.
+A typical configuration for the access log might look as follows.
 
-\li **status code** -- This is the status code returned by the server; by definition this will be a three-digit number. A status code of 200 means everything was handled okay, 304 means the document has not changed since the client last requested it, 404 means the document could not be found, and 500 indicates that there was some sort of server-side error. (More detail on the various status codes can be found in RFC 1945, which describes the HTTP/1.0 protocol. See http://www.w3.org/Protocols/rfc1945/rfc1945.)
+    LogFormat "%h %l %u %t \"%r\" %>s %b" common
+    CustomLog logs/access_log common 
 
-\li **bytes sent** -- The amount of data returned by the server, not counting the header line.
+This defines the nickname common and associates it with a particular log format string. The format string consists of percent directives, each of which tell the server to log a particular piece of information. Literal characters may also be placed in the format string and will be copied directly into the log output. The quote character (") must be escaped by placing a back-slash before it to prevent it from being interpreted as the end of the format string. The format string may also contain the special control characters "\n" for new-line and "\t" for tab.
 
-An extended version of this log format, often referred to as the "combined" format, includes two additional fields at the end:
+The CustomLog directive sets up a new log file using the defined nickname. The filename for the access log is relative to the [ServerRoot](http://httpd.apache.org/docs/1.3/mod/core.html#serverroot) unless it begins with a slash.
 
-\li **referer** -- The referring page, if any, as reported by the remote user's browser. Note that referer is consistently misspelled (with a single "r" in the middle) in the HTTP specification, and in the name of the corresponding environment variable.
+The above configuration will write log entries in a format known as the Common Log Format (CLF). This standard format can be produced by many different web servers and read by many log analysis programs. The log file entries produced in CLF will look something like this:
 
-\li **user agent** -- The user agent reported by the remote user's browser. Typically, this is a string describing the type and version of browser software being used.
+\code
+127.0.0.1 - frank [10/Oct/2000:13:55:36 -0700] "GET /apache_pb.gif HTTP/1.0" 200 2326 
+\endcode
 
-Assuming you have control over your web server's configuration, or can get your ISP to modify it for you, the combined format's extra fields can provide some very interesting information about the users visiting your site. The log analysis script described in this chapter will work with either format, however.
+Each part of this log entry is described below.
+
+\li **IP address of the client (remote host)**
+  \code 127.0.0.1 (%h) \endcode
+  This is the IP address of the client (remote host) which made the request to the server. If HostnameLookups is set to On, then the server will try to determine the hostname and log it in place of the IP address. However, this configuration is not recommended since it can significantly slow the server. Instead, it is best to use a log post-processor such as logresolve to determine the hostnames. The IP address reported here is not necessarily the address of the machine at which the user is sitting. If a proxy server exists between the user and the server, this address will be the address of the proxy, rather than the originating machine.
+
+\li **RFC 1413 identity of the client**
+  \code - (%l) \endcode
+  The "hyphen" in the output indicates that the requested piece of information is not available. In this case, the information that is not available is the RFC 1413 identity of the client determined by identd on the clients machine. This information is highly unreliable and should almost never be used except on tightly controlled internal networks. Apache httpd will not even attempt to determine this information unless IdentityCheck is set to On.
+
+\li **userid of the person requesting the document**
+  \code frank (%u) \endcode
+  This is the userid of the person requesting the document as determined by HTTP authentication. The same value is typically provided to CGI scripts in the REMOTE_USER environment variable. If the status code for the request (see below) is 401, then this value should not be trusted because the user is not yet authenticated. If the document is not password protected, this entry will be "-" just like the previous one.
+
+\li **Time that the server finished processing the request**
+  \code [10/Oct/2000:13:55:36 -0700] (%t) \endcode
+  The time that the server finished processing the request. The format is:
+  \code
+    [day/month/year:hour:minute:second zone]
+    day = 2*digit
+    month = 3*letter
+    year = 4*digit
+    hour = 2*digit
+    minute = 2*digit
+    second = 2*digit
+    zone = (`+' | `-') 4*digit 
+  \endcode
+  It is possible to have the time displayed in another format by specifying %{format}t in the log format string, where format is as in strftime(3) from the C standard library. 
+
+\li **Request line from the client**
+  \code "GET /apache_pb.gif HTTP/1.0" (\"%r\") \endcode
+    The request line from the client is given in double quotes. The request line contains a great deal of useful information. First, the method used by the client is GET. Second, the client requested the resource /apache_pb.gif, and third, the client used the protocol HTTP/1.0. It is also possible to log one or more parts of the request line independently. For example, the format string "%m %U%q %H" will log the method, path, query-string, and protocol, resulting in exactly the same output as "%r".
+
+\li **Status code sent by the server**
+  \code 200 (%>s) \endcode
+  This is the status code that the server sends back to the client. This information is very valuable, because it reveals whether the request resulted in a successful response (codes beginning in 2), a redirection (codes beginning in 3), an error caused by the client (codes beginning in 4), or an error in the server (codes beginning in 5). The full list of possible status codes can be found in the HTTP specification (RFC2616 section 10).
+
+\li **Size of the object returned to the client**
+  \code 2326 (%b) \endcode
+  The last entry indicates the size of the object returned to the client, not including the response headers. If no content was returned to the client, this value will be "-". To log "0" for no content, use %B instead.
+
+\subsection apache_logs_access_combined Combined Log Format
+
+Another commonly used format string is called the Combined Log Format. It can be used as follows.
+
+\code
+LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\"" combined
+CustomLog log/acces_log combined 
+\endcode
+
+This format is exactly the same as the Common Log Format, with the addition of two more fields. Each of the additional fields uses the percent-directive %{header}i, where header can be any HTTP request header. The access log under this format will look like:
+
+\code
+127.0.0.1 - frank [10/Oct/2000:13:55:36 -0700] "GET /apache_pb.gif HTTP/1.0" 200 2326 "http://www.example.com/start.html" "Mozilla/4.08 [en] (Win98; I ;Nav)"
+\endcode
+
+The additional fields are:
+
+ \li **HTTP request header**
+  \code "http://www.example.com/start.html" (\"%{Referer}i\") \endcode
+  The "Referer" (sic) HTTP request header. This gives the site that the client reports having been referred from. (This should be the page that links to or includes /apache_pb.gif).
+\li **User-Agent HTTP request header**
+  \code "Mozilla/4.08 [en] (Win98; I ;Nav)" (\"%{User-agent}i\") \endcode
+  The User-Agent HTTP request header. This is the identifying information that the client browser reports about itself. 
 
 \section apache_logs_processing Processing log files
 
@@ -101,6 +165,7 @@ int process_ftp(const char* response, std::string* msg)
 
 \section apache_logs_references References
 
+\li [Apache log files](http://httpd.apache.org/docs/1.3/logs.html) (apache.org)
 \li [Analyzing Apache Log Files](http://www.the-art-of-web.com/system/logs)
 \li [Parsing web access logs](http://oreilly.com/catalog/perlwsmng/chapter/ch08.html) -- John Callender (2001) Perl for Web Site Management.
 \li [Exploring the Apache access_log](http://www.intuitive.com/wicked/84-exploring-apache-access_log-shell-script.shtml)
