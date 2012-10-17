@@ -41,6 +41,7 @@ namespace prometheus { // namespace prometheus -- BEGIN
       \date 2012-10-17
 
       \test testApacheLogs.cc
+
      */
     class ApacheLogfileEntry {
 
@@ -73,6 +74,14 @@ namespace prometheus { // namespace prometheus -- BEGIN
 
     public:
 
+      //! Log format of the entry
+      enum Format {
+	//! Common Log Format
+	Common,
+	//! Combined Log Format
+	Combined
+      }
+
       // === Parameter access ===================================================
 
       //! IP address of the client (remote host) which made the request.
@@ -91,8 +100,23 @@ namespace prometheus { // namespace prometheus -- BEGIN
       }
 
       //! Date the server finished handling the request
-      inline std::string data () {
+      inline std::string date () {
         return itsDate;
+      }
+
+      //! Time of day the server finished handling the request
+      inline std::string time () {
+	return itsTime;
+      }
+
+      //! Timezone/Offset w.r.t. UTC
+      inline std::string timezone () {
+	return itsTimezone;
+      }
+
+      //! Request line from the client in double quotes.
+      inline std::string requestMethod () {
+	return itsRequestMethod;
       }
 
       // === Public methods =====================================================
