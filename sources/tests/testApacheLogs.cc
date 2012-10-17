@@ -32,7 +32,8 @@
   \li [Introduction to boost::spirit](http://www.boost.org/doc/libs/1_34_0/libs/spirit/doc/introduction.html)
 */
 
-#include <Statistics/ApacheCombinedLog.h>
+#include <fstream>
+#include <Statistics/ApacheLogfileParser.h>
 
 // ==============================================================================
 //

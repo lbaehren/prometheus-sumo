@@ -18,38 +18,44 @@
  * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.                *
  ***************************************************************************/
 
-#ifndef APACHE_COMBINED_LOG_H
-#define APACHE_COMBINED_LOG_H
+#ifndef APACHE_LOGFILE_ENTRY_H
+#define APACHE_LOGFILE_ENTRY_H
 
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <string>
-#include <algorithm>
-#include <iterator>
-#include <set>
-#include <map>
+#include <Common.h>
 
 #ifdef WITH_BOOST
 #include <boost/regex.hpp>
-#include <boost/tokenizer.hpp>
-typedef boost::tokenizer< boost::escaped_list_separator<char> > Tokenizer;
 #endif
 
 namespace prometheus { // namespace prometheus -- BEGIN
 
   namespace statistics { // namespace statistics -- BEGIN
 
-    //! Fields the line of an Apache common log file
-    struct ApacheCombinedLogLine {
+    /*!
+      \file ApacheLogfileEntry.h
+      \class ApacheLogfileEntry
+      \ingroup prometheus
+      \ingroup statistics
+      \brief Entry line in Apache log file
+      \author Lars Baehren
+      \date 2012-10-17
+
+      \test testApacheLogs.cc
+     */
+    class ApacheLogfileEntry {
+
       //! IP address of the client (remote host) which made the request.
       std::string itsRemoteHost;
       //! RFC 1413 identity of the client.
       std::string itsUserIdent;
       //! userid of the person requesting the document.
       std::string itsUserAuth;
-      //! Time that the server finished processing the request.
-      std::string itsTimestamp;
+      //! Date the server finished handling the request
+      std::string itsDate;
+      //! Time of day the server finished handling the request
+      std::string itsTime;
+      //! Timezone/Offset w.r.t. UTC
+      std::string itsTimezone;
       //! Request line from the client in double quotes.
       std::string itsRequestMethod;
       //! URL requested.
@@ -64,57 +70,43 @@ namespace prometheus { // namespace prometheus -- BEGIN
       std::string itsReferer;
       //! Browser identification string.
       std::string itsUserAgent;
-    };
-
-    /*!
-      \file ApacheCombinedLog.h
-      \class ApacheCombinedLog
-      \ingroup prometheus
-      \ingroup statistics
-      \brief Handling of Apache combined logs
-      \author Lars Baehren
-      \date 2012-10-16
-
-      \test testApacheLogs.cc
-     */
-    class ApacheCombinedLog {
-
-      //! Name of the input data file
-      std::string itsFilename;
 
     public:
 
-    //! Argumented constructor
-    ApacheCombinedLog (std::string const &filename);
+      // === Parameter access ===================================================
 
-    // === Parameter access ===================================================
+      //! IP address of the client (remote host) which made the request.
+      inline std::string remoteHost () {
+        return itsRemoteHost;
+      }
 
-    //! Get the name of the input data file.
-    inline std::string filename () {
-      return itsFilename;
-    }
+      //! RFC 1413 identity of the client.
+      inline std::string userIdent () {
+        return itsUserIdent;
+      }
 
-    //! Set the name of the input data file.
-    inline void setFilename (std::string const &filename) {
-      itsFilename = filename;
-    }
+      //! userid of the person requesting the document.
+      inline std::string userAuth () {
+        return itsUserAuth;
+      }
 
-    // === Public methods =====================================================
+      //! Date the server finished handling the request
+      inline std::string data () {
+        return itsDate;
+      }
 
-    //! Read and process the input data file.
-    bool processFile ();
+      // === Public methods =====================================================
 
-    //! Processes a line of a log file.
-    static bool processLine (std::vector<std::string> matches,
-                             std::string const &line);
+      //! Processes a line of a log file.
+      bool processLine (std::string const &line);
 
-    //! Provide a summary of the object's internal parameters and status
-    inline void summary () {
-      summary (std::cout);
-    }
+      //! Provide a summary of the object's internal parameters and status
+      inline void summary () {
+        summary (std::cout);
+      }
 
-    //! Provide a summary of the object's internal parameters and status
-    void summary (std::ostream &os);
+      //! Provide a summary of the object's internal parameters and status
+      void summary (std::ostream &os);
 
     };
 

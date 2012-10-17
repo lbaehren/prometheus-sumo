@@ -68,7 +68,8 @@ function processLine($line) {
 
 \subsection apache_logs_processing_cpp ... using C++
 
-\li prometheus::statistics::ApacheCombinedLog
+\li prometheus::statistics::ApacheLogfileEntry
+\li prometheus::statistics::ApacheLogfileParser
 \li \ref testApacheLogs.cc
 
 
