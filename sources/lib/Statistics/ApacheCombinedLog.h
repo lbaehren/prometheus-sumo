@@ -31,6 +31,7 @@
 #include <map>
 
 #ifdef WITH_BOOST
+#include <boost/regex.hpp>
 #include <boost/tokenizer.hpp>
 typedef boost::tokenizer< boost::escaped_list_separator<char> > Tokenizer;
 #endif
@@ -73,6 +74,8 @@ namespace prometheus { // namespace prometheus -- BEGIN
       \brief Handling of Apache combined logs
       \author Lars Baehren
       \date 2012-10-16
+
+      \test testApacheLogs.cc
      */
     class ApacheCombinedLog {
 
