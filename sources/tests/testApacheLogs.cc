@@ -40,22 +40,36 @@
 /*!
   \brief Parse the text in the \c examples for a regular expression
   \param examples   -- Array with example text strings to be inspected.
-  \param expression -- Regular expression used for matching operation.
-  \todo Allow for multiple expressions
+  \param expression -- Array with regular expressions used for matching operation.
 */
 int parse_examples (std::vector<std::string> const &examples,
-                    std::string const &expression)
+                    std::vector<std::string> const &expression)
 {
-  int status = 0;
-  boost::regex e (expression);
+  /* Check input data */
+  if (examples.empty() || expression.empty()) {
+    std::cerr << "[testApacheLogs::parse_examples] ERROR"
+              << " Empty text examples or regex expressions"
+              << std::endl;
+    return -1;
+  }
 
+  /* Local variables */
+  int status        = 0;
+  int numExample    = 0;
+  int numExpression = 0;
+
+  /* Go through the combination of text examples and matching expressions */
   try {
-    /* Parse text examples */
-    for (int n=0; n<examples.size(); ++n) {
-      if (regex_match(examples[n], e)) {
-        std::cout << "--> Match ok. [" << examples[n] << "]" << std::endl;
-      } else {
-        std::cout << "--> Match not found! [" << examples[n] << "]" << std::endl;
+    for (numExample=0; numExample<examples.size(); ++numExample) {
+      std::cout << "-- string = \"" << examples[numExample] << "\"" << std::endl;
+      for (numExpression=0; numExpression<expression.size(); ++numExpression) {
+        boost::regex e (expression[numExpression]);
+	std::cout << "--> regex = \"" << expression[numExpression] << "\"";
+        if (regex_match(examples[numExample], e)) {
+	  std::cout << "  =>  OK" << std::endl;
+        } else {
+	  std::cout << "  =>  Not found!" << std::endl;
+        }
       }
     }
   } catch (std::exception &e) {
@@ -78,6 +92,7 @@ int test_boost_regex ()
 
   int status = 0;
   std::vector<std::string> examples;
+  std::vector<std::string> expressions;
   boost::cmatch what;
 
   /* Strings to be used as test input */
@@ -95,9 +110,11 @@ int test_boost_regex ()
     examples.push_back("1234-2345-3456-45678");
     examples.push_back("1234-2345-3456-4567-5678");
     /* Parser expression */
-    std::string expression ("([[:digit:]]{4}[- ]){3}[[:digit:]]{4}");
+    expressions.clear();
+    expressions.push_back ("([[:digit:]]{4}[- ]){3}[[:digit:]]{4}");
+    expressions.push_back ("([[:digit:]]{4}[- ]){3}[[:digit:]]{5}");
     /* Parse the examples*/
-    status += parse_examples (examples, expression);
+    status += parse_examples (examples, expressions);
   } catch (std::exception &e) {
     std::cerr << "" << e.what() << std::endl;
     ++status;
@@ -111,12 +128,16 @@ int test_boost_regex ()
     examples.clear();
     examples.push_back("@abc def--");
     examples.push_back("aa");
+    examples.push_back("ab");
+    examples.push_back("ba");
     examples.push_back("aa aab aabbaa aabbaaa");
     examples.push_back("aa aab aabb aaab aaabb");
     /* Parser expression */
-    std::string expression ("a+|b+");
+    expressions.clear();
+    expressions.push_back ("a+|b+");
+    expressions.push_back ("b+|a+");
     /* Parse the examples*/
-    status += parse_examples (examples, expression);
+    status += parse_examples (examples, expressions);
   } catch (std::exception &e) {
     std::cerr << "" << e.what() << std::endl;
     ++status;
@@ -130,14 +151,14 @@ int test_boost_regex ()
     examples.clear();
     examples.push_back("Use <a href=\"http:/www.google.com\">Google</a> for search.");
     /* Parser expression */
-    std::string expression ("<a\\s+href=\"([\\-:\\w\\d\\.\\/]+)\">");
+    expressions.clear();
+    expressions.push_back ("<a\\s+href=\"([\\-:\\w\\d\\.\\/]+)\">");
     /* Parse the examples*/
-    status += parse_examples (examples, expression);
+    status += parse_examples (examples, expressions);
   } catch (std::exception &e) {
     std::cerr << "" << e.what() << std::endl;
     ++status;
   }
-
 
   // ---[Parse Apache log file entry line]----------------------------
 
@@ -147,9 +168,10 @@ int test_boost_regex ()
     examples.clear();
     examples.push_back("ftp://downloads.foo.com/apps/linux/patch.gz");
     /* Parser expression */
-    std::string expression ("(ftp|http|https):\\/\\/([[:word:]]+\\.)*([[:word:]]*)\\/([[[:word:]][[:digit:]]]+\\/{0,1})+");
+    expressions.clear();
+    expressions.push_back ("(ftp|http|https):\\/\\/([[:word:]]+\\.)*([[:word:]]*)\\/([[[:word:]][[:digit:]]]+\\/{0,1})+");
     /* Parse the examples*/
-    status += parse_examples (examples, expression);
+    status += parse_examples (examples, expressions);
   } catch (std::exception &e) {
     std::cerr << "" << e.what() << std::endl;
     ++status;

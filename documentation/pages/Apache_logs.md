@@ -69,6 +69,8 @@ function processLine($line) {
 \subsection apache_logs_processing_cpp ... using C++
 
 \li prometheus::statistics::ApacheCombinedLog
+\li \ref testApacheLogs.cc
+
 
   \code
 regex expression("^([0-9]+)(\\-| |$)(.*)$");
