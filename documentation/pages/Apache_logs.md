@@ -70,6 +70,32 @@ function processLine($line) {
 
 \li prometheus::statistics::ApacheCombinedLog
 
+  \code
+regex expression("^([0-9]+)(\\-| |$)(.*)$");
+
+// process_ftp:
+// on success returns the ftp response code, and fills
+// msg with the ftp response message.
+int process_ftp(const char* response, std::string* msg)
+{
+   cmatch what;
+   if(regex_match(response, what, expression))
+   {
+      // what[0] contains the whole string
+      // what[1] contains the response code
+      // what[2] contains the separator character
+      // what[3] contains the text message.
+      if(msg)
+         msg->assign(what[3].first, what[3].second);
+      return ::atoi(what[1].first);
+   }
+   // failure did not match
+   if(msg)
+      msg->erase();
+   return -1;
+}
+\endcode
+
 \section apache_logs_references References
 
 \li [Analyzing Apache Log Files](http://www.the-art-of-web.com/system/logs)

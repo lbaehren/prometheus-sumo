@@ -8,6 +8,13 @@ Bookmarks    {#bookmarks}
 
 \li [Heise Security Browsercheck](http://www.heise.de/security/dienste/Java-403125.html)
 
+\section bookmarks_development Development tools
+
+\subsection bookmarks_development_vcs Version Control Systems
+
+\li [The Git Revolution Is Here](http://www.drdobbs.com/tools/the-git-revolution-is-here/240009161) (Andrew Binstock, Oct 12012)
+\li [Migrating from Subversion to Git and the Lessons Learned](http://www.drdobbs.com/architecture-and-design/migrating-from-subversion-to-git-and-the/240009175) (Jonathon Creenaune, Oct 2012)
+
 \section bookmarks_tracking Issue Tracking
 
 \subsection bookmarks_tracking_trac Trac
@@ -38,6 +45,18 @@ Bookmarks    {#bookmarks}
 \li [Acts_As_Ferret Tutorial](http://www.railsenvy.com/2007/2/19/acts-as-ferret-tutorial)
 
 \section bookmarks_scripting Scripting languages
+
+\subsection bookmarks_scripting_css CSS
+
+\li [OOCSS + Sass = The best way to CSS](http://ianstormtaylor.com/oocss-plus-sass-is-the-best-way-to-css) (Ian Storm Taylor, Oct 2012)
+\li [CSS Patterns, Evolved](http://carrotblog.com/css-patterns-evolved) (Jeff Escalante, Feb 2012)
+
+\subsection bookmarks_scripting_dart Dart
+
+\li [Dart programming language](http://www.dartlang.org)
+\li [Dart Editor](http://www.dartlang.org/docs/editor/getting-started)
+\li [Paket Manager](http://pub.dartlang.org)
+\li [The Dart HTML5 Library](http://api.dartlang.org/docs/continuous/dart_html.html)
 
 \subsection bookmarks_scripting_javascript Javascript
 
