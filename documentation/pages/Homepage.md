@@ -12,16 +12,20 @@ deliver the contents of the website to a minimum, all the pages are served as
 hosted inside a Git repository, from which they can be obtained for editing
 and rendering the resulting pages.
 
-\subpage homepage_editing and \subpage homepage_build can be done at least in two
+Editing the source files and building the homepage can be done at least in two
 ways, depending on the user's proviciency with SCM tools (such as \ref Git);
 aside the more developers-type approach -- i.e. checking out the sources, editing
 them and thereafter committing back the changes -- there also exists a web-based
 tool to aid iterating through a number of changes, allowing to preview them
 before publishing the modifications made.
 
+\li \subpage homepage_editing
+\li \subpage homepage_build
+\li \subpage JekyllCommander
+
 \section homepage_repositories Repositories
 
-\subsection homepage_repositories_srv3 prometheus-srv3
+\subsection homepage_repositories_srv3 ... on prometheus-srv3
 
 The repository from which both the \c staging and \c live version of the
 homepage are being build is hosted on \c prometheus-srv3.uni-koeln.de -- it
@@ -31,17 +35,19 @@ from within a web browser.
 \verbatim
 /var/local/prometheus                        ...  Root of prometheus installation
            |-- bin
-           |   |-- promhp.post-commit        ... 
-           |   `-- promhp.post-receive       ... 
+           |   |-- promhp.post-commit        ... Script run post commit
+           |   `-- promhp.post-receive       ... Script run post receive
            `-- srv
                `-- promhp
                    |-- live                  ...  Live version of the website
                    |-- promhp.git            ...  Git repository
+                   |   `-- hooks
+                   |       `-- post-receive  ...  Hook script for the "post-receive" event
                    |-- promhp.git.old
                    `-- staging               ...  Staging version of website
 \endverbatim
 
-\subsection homepage_repositories_github Github
+\subsection homepage_repositories_github ... on Github
 
 A second repository for the sources of the homepage is
 [hosted on Github](https://github.com/prometheus-ev/promhp); depending on the
@@ -178,4 +184,77 @@ image series featured on the homepage.
     |-- 2010
     |-- 2011
     `-- 2012
+\endverbatim
+
+\section homepage_build Building the Homepage
+
+\subsection homepage_build_pre Prerequisites
+
+\b Pygments aims to be a generic syntax highlighter for general use in all
+kinds of software such as forum systems, wikis or other applications that need
+to prettify source code. You can check if the command-line tool is available
+via
+\verbatim
+which pygmentize
+\endverbatim
+If the result turns out to be empty, there are at least two routes to install
+the tool:
+\li Using Ruby Gems, where [pygmentize](https://github.com/djanowski/pygmentize)
+provides a standalone Pygments for Ruby
+\code
+gem install pygmentize
+\endcode
+\li Using the system's package manager (e.g. \c apt-get on
+[Debian GNU/Linux](http://www.debian.org))
+\code
+apt-get install python-pygments
+\endcode
+
+\subsection homepage_build_tasks Rake tasks
+
+Building the website from the sources files is controlled through a number of
+Rake tasks; in order to get a list of the available tasks run
+\code
+rake -T
+\endcode
+Available tasks are:
+| Task                | Description |
+|---------------------|-------------|
+| rake build          | Build the site |
+| rake clean          | Remove current site |
+| rake live           | Run following tasks in live environment |
+| rake series_preview | Build preview for start page with NUM's (yyyy/ww) image series |
+| rake setup          | Set up build environment |
+| rake staging        | Run following tasks in staging environment |
+| rake tag            | Tag release |
+
+To build the website from the sources, run
+\verbatim
+rake setup
+rake build
+\endverbatim
+Unless defined otherwise, the generated site will be placed into the \c _site
+directory
+\verbatim
+.
+`-- _site/
+    |-- about
+    |-- blog
+    |-- databases
+    |-- files
+    |-- images
+    |-- inc
+    |-- javascripts
+    |-- license
+    |-- page2
+    |-- page3
+    |-- page4
+    |-- page5
+    |-- page6
+    |-- projects
+    |-- prometheus
+    |-- series
+    |-- stylesheets
+    |-- tag
+    `-- tools
 \endverbatim

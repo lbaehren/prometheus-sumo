@@ -30,14 +30,16 @@ In our case this (or rather pushing a tag) triggers the system to generate the
 webside and move it into the document root of our webserver. There are our
 scripts in the "example" folder for a better understanding.
 
-\section JekyllCommander_requirements Installation requirements
+\section JekyllCommander_install Installation & Configuration
+
+\subsection JekyllCommander_install_requirements Installation requirements
 
 * [grit](https://github.com/mojombo/grit) - object oriented read/write access to Git repositories via Ruby.
 * [jekyll](http://jekyllrb.com) - a simple, blog aware, static site generator.
 * [jekyll_commander](https://github.com/prometheus-ev/JekyllCommander) - a Sinatra based web interface, to maintain a Jekyll website, including git version control
 * logger - a simple logging utility.
 
-\section JekyllCommander_code Organization of the source code
+\subsection JekyllCommander_install_code Organization of the source code
 
 After checking out a working copy of the source code, you will presented with
 the following directory structure:
@@ -70,11 +72,11 @@ the following directory structure:
  `-- views
 \endverbatim
 
-\section JekyllCommander_install Installation
+\subsection JekyllCommander_install_install Installation
 
 Will hopefully be written in the near future...
 
-\section JekyllCommander_configure Configuration
+\subsection JekyllCommander_install_configure Configuration
 
 In order to configure your installation you will have to create a `config.yamle`
 file in the root directory of your installation; an example file
@@ -91,4 +93,24 @@ your own settings.
 
     :users:
       jd: { :name: John Doe, :email: jdoe@example.net }
+\endverbatim
+
+\section JekyllCommander_app Web application
+
+\verbatim
+/var/local/prometheus
+└── app
+    └── promhp
+        ├── examples
+        ├── lib
+        ├── public
+        │   ├── css
+        │   ├── images
+        │   ├── js
+        │   └── markitup
+        ├── tmp
+        │   ├── promhp-<user 1>
+        │   ├── promhp-<user 2>
+        │   └── promhp-<user N>
+        └── views
 \endverbatim
