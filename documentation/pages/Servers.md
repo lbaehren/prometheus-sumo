@@ -20,15 +20,13 @@ Servers    {#servers}
 | www.prometheus-bildarchiv.de | 134.95.19.39  | \ref manual_image_archive            |
 | prometheus1.uni-koeln.de     | 134.95.80.11  | Production system                    |
 | prometheus2.uni-koeln.de     | 134.95.80.12  | Development system                   |
-| prometheus-test.uni-koeln.de | 134.95.80.13  |                                      |
+| prometheus-test.uni-koeln.de | 134.95.80.13  | [pandora-devel](http://prometheus-test.uni-koeln.de/pandora-devel) |
 | prometheus-db1               | 134.95.80.95  | Database server                      |
 | prometheus-web1              | 134.95.80.96  | Web server                           |
 | prometheus-srv1.uni-koeln.de | 134.95.80.160 | SVN server, Trac, \ref issue_tracker |
 | prometheus-srv2.uni-koeln.de | 134.95.80.161 | prometheus-app.uni-koeln.de          |
-| prometheus-srv3.uni-koeln.de | 134.95.80.162 | Jekyll Commander, Documentation      |
+| prometheus-srv3.uni-koeln.de | 134.95.80.162 | \ref homepage, \ref JekyllCommander, Documentation |
 | prometheus-srv4.uni-koeln.de | 134.95.80.164 |                                      |
-
-http://prometheus-test.uni-koeln.de/pandora-devel
 
 \subsection servers_srv1 prometheus-srv1
 
@@ -50,6 +48,11 @@ prometheus-srv3.uni-koeln.de:/var/local/prometheus/web/log /var/local/prometheus
 \endverbatim
 
 \subsection servers_srv3 prometheus-srv3
+
+Web-Applications:
+
+ - \ref homepage
+ - \ref JekyllCommander
 
 Online documentation for various software projects:
 
