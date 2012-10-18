@@ -35,62 +35,65 @@
 typedef boost::tokenizer< boost::escaped_list_separator<char> > Tokenizer;
 #endif
 
-
 namespace prometheus {  //  namespace prometheus -- BEGIN
 
-  /*!
-    \file StatisticsReader.h
-    \class StatisticsReader
-    \ingroup prometheus
-    \brief Base class for reading statistics files
-    \author Lars Baehren
-    \date 2012-07-12
-  */
-  class StatisticsReader {
+  namespace statistics {  //  namespace statistics -- BEGIN
 
-  protected:
+    /*!
+      \file StatisticsReader.h
+      \class StatisticsReader
+      \ingroup prometheus
+      \ingroup statistics
+      \brief Base class for reading statistics files
+      \author Lars Baehren
+      \date 2012-07-12
+    */
+    class StatisticsReader {
 
-    //! Name of the input data file
-    std::string itsFilename;
+    protected:
 
-  public:
+      //! Name of the input data file
+      std::string itsFilename;
 
-    //! Argumented constructor
-    StatisticsReader (std::string const &filename);
+    public:
 
-    // === Parameter access =====================================================
+      //! Argumented constructor
+      StatisticsReader (std::string const &filename);
 
-    //! Get the name of the input data file
-    inline std::string filename () {
-      return itsFilename;
-    }
-    //! Set the name of the input data file
-    inline void setFilename (std::string const &filename) {
-      itsFilename = filename;
-    }
+      // === Parameter access ===================================================
 
-    // === Public methods =======================================================
+      //! Get the name of the input data file
+      inline std::string filename () {
+        return itsFilename;
+      }
+      //! Set the name of the input data file
+      inline void setFilename (std::string const &filename) {
+        itsFilename = filename;
+      }
 
-    //! Read and process the input data file
-    virtual bool processFile () = 0;
+      // === Public methods =====================================================
 
-    //! Provide a summary of the object's internal parameters and status
-    inline void summary () {
-      summary (std::cout);
-    }
+      //! Read and process the input data file
+      virtual bool processFile () = 0;
 
-    //! Provide a summary of the object's internal parameters and status
-    void summary (std::ostream &os);
+      //! Provide a summary of the object's internal parameters and status
+      inline void summary () {
+        summary (std::cout);
+      }
 
-  private:
+      //! Provide a summary of the object's internal parameters and status
+      void summary (std::ostream &os);
 
-    // === Private methods ======================================================
+    private:
 
-    bool checkFile ();
+      // === Private methods ====================================================
 
-  };
+      bool checkFile ();
+
+    };
+
+  }  //  namespace statistics -- END
 
 }  //  namespace prometheus -- END
 
 #endif
-

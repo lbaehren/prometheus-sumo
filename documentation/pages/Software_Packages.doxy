@@ -23,6 +23,9 @@
     <dt>pwsafe</dt>
       <dd>\subpage pwsafe is a unix commandline program that manages encrypted password databases.</dd>
 
+    <dt>sed</dt>
+      <dd>The \subpage sed "sed" utility reads the specified files, or the standard input if no files are specified, modifying the input as specified by a list of commands.  The input is then written to the standard output.</dd>
+
     <dt>XML</dt>
       <dd>\subpage xml (Extensible Markup Language) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable. It is defined in the XML 1.0 Specification produced by the W3C, and several other related specifications, all gratis open standards.</dd>
 

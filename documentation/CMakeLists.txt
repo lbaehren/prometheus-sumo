@@ -17,7 +17,6 @@ find_path (DOXYGEN_EXAMPLE_PATH monster.yaml
 find_path (DOXYGEN_IMAGE_PATH
   NAMES
   Association_Presentation.png
-  Database_dump.png
   Wiki__Login.png
   PATHS ${PROJECT_SOURCE_DIR}
   PATH_SUFFIXES documentation documentation/images images

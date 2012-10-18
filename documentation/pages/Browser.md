@@ -15,11 +15,13 @@ pages, which implements current and anticipated web standards.
 
 <table>
   <tr>
-    <td>Linux</td>
+    <td>
+      [Linux](http://download-origin.cdn.mozilla.net/pub/mozilla.org/firefox/releases)
+    </td>
     <td>
       [14.0.1](http://download-origin.cdn.mozilla.net/pub/mozilla.org/firefox/releases/14.0.1/linux-i686/en-US/firefox-14.0.1.tar.bz2) |
       [15.0](http://download-origin.cdn.mozilla.net/pub/mozilla.org/firefox/releases/15.0/linux-i686/en-US/firefox-15.0.tar.bz2) |
-      [16.0](http://download-origin.cdn.mozilla.net/pub/mozilla.org/firefox/releases/16.0/linux-i686/en-US/firefox-16.0.tar.bz2)
+      [16.0.1](http://download-origin.cdn.mozilla.net/pub/mozilla.org/firefox/releases/16.0.1/linux-i686/en-US/firefox-16.0.1.tar.bz2)
     </td>
   </tr>
   <tr>
@@ -27,7 +29,7 @@ pages, which implements current and anticipated web standards.
     <td>
       [14.0.1](http://download-origin.cdn.mozilla.net/pub/mozilla.org/firefox/releases/14.0.1/mac/en-US/Firefox%2014.0.1.dmg) |
       [15.0](http://download-origin.cdn.mozilla.net/pub/mozilla.org/firefox/releases/15.0/mac/en-US/Firefox%2015.0.dmg) |
-      [16.0](http://download-origin.cdn.mozilla.net/pub/mozilla.org/firefox/releases/16.0/mac/en-US/Firefox%2016.0.dmg)
+      [16.0.1](http://download-origin.cdn.mozilla.net/pub/mozilla.org/firefox/releases/16.0.1/mac/en-US/Firefox%2016.0.1.dmg)
     </td>
   </tr>
   <tr>
@@ -35,7 +37,7 @@ pages, which implements current and anticipated web standards.
     <td>
       [14.0.1](http://download-origin.cdn.mozilla.net/pub/mozilla.org/firefox/releases/14.0.1/win32/en-US/Firefox%20Setup%2014.0.1.exe) |
       [15.0](http://download-origin.cdn.mozilla.net/pub/mozilla.org/firefox/releases/15.0/win32/en-US/Firefox%20Setup%2015.0.exe) |
-      [16.0](http://download-origin.cdn.mozilla.net/pub/mozilla.org/firefox/releases/16.0/win32/en-US/Firefox%20Setup%2016.0.exe)
+      [16.0.1](http://download-origin.cdn.mozilla.net/pub/mozilla.org/firefox/releases/16.0.1/win32/en-US/Firefox%20Setup%2016.0.1.exe)
     </td>
   </tr>
 </table>

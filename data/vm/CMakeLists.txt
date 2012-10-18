@@ -6,7 +6,7 @@ find_program (CURL_EXECUTABLE curl
 if (CURL_EXECUTABLE)
 
   ## Custom target
-  add_custom_target (FetchVirtualMachines ALL)
+  add_custom_target (FetchVirtualMachines)
 
   ## Base URL for the download location of the VirtualMachine images
   set (VM_DOWNLOAD_BASE "http://134.95.11.135/virtualbox")
@@ -20,7 +20,7 @@ if (CURL_EXECUTABLE)
     vm-windowsxp-ie7.ova
     vm-windowsxp-ie8.ova
     )
-    
+
     add_custom_command (
       TARGET FetchVirtualMachines
       POST_BUILD
@@ -28,7 +28,7 @@ if (CURL_EXECUTABLE)
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
       COMMENT "Downloading VirtualMachine image ${VM_IMAGE} ..."
     )
-    
+
     set_property (DIRECTORY
       APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES
       ${CMAKE_CURRENT_SOURCE_DIR}/${VM_IMAGE}

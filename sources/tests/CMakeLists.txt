@@ -3,48 +3,6 @@ message (STATUS "Processing directory source/tests")
 
 ## ==============================================================================
 ##
-##  Locate test data
-##
-## ==============================================================================
-
-find_file (xml_dump_beeskow beeskow_kunstarchiv.xml
-  HINTS ${PANDORA_DATA_DIR}
-  PATHS ${PROJECT_SOURCE_DIR}
-  PATH_SUFFIXES data data/tests
-  )
-
-find_file (xml_dump_theoleik theoleik.xml
-  HINTS ${PANDORA_DATA_DIR}
-  PATHS ${PROJECT_SOURCE_DIR}
-  PATH_SUFFIXES data data/tests
-  )
-
-find_file (xml_dump_kassel kassel.xml
-  HINTS ${PANDORA_DATA_DIR}
-  PATHS ${PROJECT_SOURCE_DIR}
-  PATH_SUFFIXES data data/tests
-  )
-
-find_file (xml_dump_robertinum robertin.xml
-  HINTS ${PANDORA_DATA_DIR}
-  PATHS ${PROJECT_SOURCE_DIR}
-  PATH_SUFFIXES data data/tests
-  )
-
-find_file (xml_dump_ppo ppo.xml
-  HINTS ${PANDORA_DATA_DIR}
-  PATHS ${PROJECT_SOURCE_DIR}
-  PATH_SUFFIXES data data/tests
-  )
-
-find_file (id_ppo idppo.txt
-  HINTS ${PANDORA_DATA_DIR}
-  PATHS ${PROJECT_SOURCE_DIR}
-  PATH_SUFFIXES data data/tests
-)
-
-## ==============================================================================
-##
 ##  Generic C++ test programs
 ##
 ## ==============================================================================
@@ -93,21 +51,22 @@ if(Boost_FOUND)
   ## Header files
   include_directories(${Boost_INCLUDE_DIRS})
 
-  foreach (test_xml_boost
+  foreach (test_with_boost
       testSourceDump.cc
       testSourcesBeeskow.cc
       testSourcesKassel.cc
       testSourcesRobertinum.cc
       testSourcesTheolEik.cc
       testSourcesPPO.cc
+      testApacheLogs.cc
       )
     ## remove file extension
-    get_filename_component (varFilename ${test_xml_boost} NAME_WE)
+    get_filename_component (varFilename ${test_with_boost} NAME_WE)
     ## compiler instructions
-    add_executable (${varFilename} ${test_xml_boost})
+    add_executable (${varFilename} ${test_with_boost})
     ## linker instructions
     target_link_libraries (${varFilename} libprometheus ${Boost_LIBRARIES})
-  endforeach (test_xml_boost)
+  endforeach (test_with_boost)
 
   if (xml_dump_beeskow)
     add_test (testSourcesBeeskow testSourcesBeeskow ${xml_dump_beeskow})
@@ -137,6 +96,10 @@ if(Boost_FOUND)
   else (id_ppo)
     add_test (testSourcesPPO_db testSourcesPPO -db)
   endif (id_ppo)
+
+  if (apache_access_log)
+    add_test (testApacheLogs testApacheLogs ${apache_access_log})
+  endif (apache_access_log)
 
 endif()
 

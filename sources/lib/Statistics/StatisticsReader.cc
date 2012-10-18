@@ -22,53 +22,55 @@
 
 namespace prometheus {  //  namespace prometheus -- BEGIN
 
-  // ============================================================================
-  //
-  //  Construction
-  //
-  // ============================================================================
+  namespace statistics {  //  namespace statistics -- BEGIN
 
-  StatisticsReader::StatisticsReader (std::string const &filename)
-  {
-    itsFilename = filename;
+    // ==========================================================================
+    //
+    //  Construction
+    //
+    // ==========================================================================
 
-    if (!checkFile()) {
-      std::cerr << "Failed to open file " << filename
-		<< " for read access!"
-		<< std::endl;
-    }
-  }
+    StatisticsReader::StatisticsReader (std::string const &filename)
+    {
+      itsFilename = filename;
 
-  // ============================================================================
-  //
-  //  Public methods
-  //
-  // ============================================================================
-
-
-  // ============================================================================
-  //
-  //  Private methods
-  //
-  // ============================================================================
-
-  bool StatisticsReader::checkFile ()
-  {
-    /* Open stream for the input data ... */
-    std::ifstream in (itsFilename.c_str());
-    /* ... and check if the stream is ok */
-    if (in.is_open()) {
-      if (in.good()) {
-	in.close();
-	return true;
-      } else {
-	in.close();
-	return false;
+      if (!checkFile()) {
+        std::cerr << "Failed to open file " << filename
+                  << " for read access!"
+                  << std::endl;
       }
-    } else {
-      return false;
     }
-  }
+
+    // ==========================================================================
+    //
+    //  Public methods
+    //
+    // ==========================================================================
+
+    // ==========================================================================
+    //
+    //  Private methods
+    //
+    // ==========================================================================
+
+    bool StatisticsReader::checkFile ()
+    {
+      /* Open stream for the input data ... */
+      std::ifstream in (itsFilename.c_str());
+      /* ... and check if the stream is ok */
+      if (in.is_open()) {
+        if (in.good()) {
+          in.close();
+          return true;
+        } else {
+          in.close();
+          return false;
+        }
+      } else {
+        return false;
+      }
+    }
+
+  }  //  namespace statistics -- END
 
 }  //  namespace prometheus -- END
-

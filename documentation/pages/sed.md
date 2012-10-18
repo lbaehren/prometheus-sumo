@@ -1,9 +1,21 @@
-Handy one-liners for SED    {#sed}
-========================
+sed - stream editor    {#sed}
+===================
 
 \tableofcontents
 
-\section sed_file_spacing File spacing
+\section sed_about About
+
+The **sed** utility reads the specified files, or the standard input if no files are
+specified, modifying the input as specified by a list of commands.  The input is then
+written to the standard output.
+
+A single command may be specified as the first argument to sed.  Multiple commands
+may be specified by using the `-e` or `-f` options.  All commands are applied to the
+input in the order they are specified regardless of their origin.
+
+\section sed_one_liners Handy one-liners
+
+\subsection sed_file_spacing File spacing
 
 \li double space a file
 \code
@@ -26,7 +38,7 @@ should contain no more than one blank line between lines of text.
  sed 'n;d'
 \endcode
 
-\section sed_numbering Numbering
+\subsection sed_numbering Numbering
 
 \li number each line of a file (simple left alignment). Using a tab (see note on `\t` at end of file) instead of space will preserve margins.
 \verbatim
@@ -48,7 +60,7 @@ should contain no more than one blank line between lines of text.
  sed -n '$='
 \endcode
 
-\section sed_text Text conversion and substitution
+\subsection sed_text Text conversion and substitution
 
 \li IN UNIX ENVIRONMENT: convert DOS newlines (CR/LF) to Unix format
 \code
