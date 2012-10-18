@@ -19,23 +19,29 @@ them and thereafter committing back the changes -- there also exists a web-based
 tool to aid iterating through a number of changes, allowing to preview them
 before publishing the modifications made.
 
-\section homepage_infrastructure Infrastructure
+\section homepage_repositories Repositories
 
-\subsection homepage_infrastructure_srv3 prometheus-srv3
+\subsection homepage_repositories_srv3 prometheus-srv3
 
-\c prometheus-srv3.uni-koeln.de
+The repository from which both the \c staging and \c live version of the
+homepage are being build is hosted on \c prometheus-srv3.uni-koeln.de -- it
+is there where also the \ref JekyllCommander, which allows editing of the pages
+from within a web browser.
 
 \verbatim
 /var/local/prometheus                        ...  Root of prometheus installation
+           |-- bin
+           |   |-- promhp.post-commit        ... 
+           |   `-- promhp.post-receive       ... 
            `-- srv
                `-- promhp
-                   |-- live
+                   |-- live                  ...  Live version of the website
                    |-- promhp.git            ...  Git repository
                    |-- promhp.git.old
                    `-- staging               ...  Staging version of website
 \endverbatim
 
-\subsection homepage_infrastructure_github Github
+\subsection homepage_repositories_github Github
 
 A second repository for the sources of the homepage is
 [hosted on Github](https://github.com/prometheus-ev/promhp); depending on the
@@ -50,6 +56,41 @@ git clone git@github.com:prometheus-ev/promhp.git promhp
 \verbatim
 git clone git://github.com/prometheus-ev/promhp.git promhp
 \endverbatim
+
+\subsection homepage_update Updating procedure
+
+\li Commit the changes to the repository; this can either be done directly or through the \subpage JekyllCommander.
+
+\li The "post-receive" script `promhp.git/hooks/post-receive` is run after receive-pack has accepted a pack and the repository has been updated.
+\code
+PROM_ROOT=/var/local/prometheus
+
+##
+## [1] Create a temporary file or directory, safely, and print its name.
+##
+tmp="`mktemp`"
+cat - > "$tmp"
+
+##
+## [2] Send emails listing new revisions to the repository introduced by the change being reported
+##
+. $PROM_ROOT/bin/git-post-receive-email < "$tmp"
+
+##
+## [3] Push updated version of web pages to directory from where the website is hosted
+##
+. $PROM_ROOT/bin/promhp.post-receive < "$tmp"
+
+##
+## [4] Clean up: remove the temporary directory
+##
+rm -f "$tmp"
+
+##
+## [5] Adjust access permissions on the directories
+##
+chmod -Rf g+w $PROM_ROOT/srv/promhp/{promhp.git,staging,live}
+\endcode
 
 \section homepage_code Organization of the source code
 

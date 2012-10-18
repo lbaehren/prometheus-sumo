@@ -16,6 +16,9 @@
     <dt>Ferret</dt>
       <dd>\subpage ferret is a Ruby port of the Java Lucene search engine. In the same way as Lucene, it is not a standalone application, but a library you can use to index documents and search for things in them later.</dd>
 
+    <dt>Jekyll</dt>
+      <dd>[Jekyll](http://jekyllrb.com) is a simple, blog aware, static site generator. It takes a template directory (representing the raw form of a website), runs it through Textile or Markdown and Liquid converters, and spits out a complete, static website suitable for serving with Apache or your favorite web server. This is also the engine behind GitHub Pages, which you can use to host your project’s page or blog right here from GitHub.</dd>
+
     <dt>MySQL</dt>
       <dd>\subpage mysql is the world's most popular open source database software, with over
   100 million copies of its software downloaded or distributed throughout it's history. With its superior speed, reliability, and ease of use, MySQL has become the preferred choice for Web, Web 2.0, SaaS, ISV, Telecom companies and forward-thinking corporate IT Managers because it eliminates the major problems associated with downtime, maintenance and administration for modern, online applications.<br>MySQL is a key part of LAMP (Linux, Apache, MySQL, PHP / Perl / Python), the fast-growing open source enterprise software stack. More and more companies are using LAMP as an alternative to expensive proprietary software stacks because of its lower cost and freedom from platform lock-in.</dd>
