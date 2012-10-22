@@ -8,28 +8,24 @@ Testing    {#pandora_testing}
 
 Tests are defined in the ``spec`` sub-directory:
 
-\verbatim
-pandora
-`-- spec/
-    |-- controllers
-    |-- fixtures
-    |-- helpers
-    |-- lib
-    |-- models
-    |-- shared
-    |   `-- matchers
-    `-- views
-\endverbatim
+    pandora
+    `-- spec/
+        |-- controllers
+        |-- fixtures
+        |-- helpers
+        |-- lib
+        |-- models
+        |-- shared
+        |   `-- matchers
+        `-- views
 
 \section pandora_testing_run Running the tests
 
-  In order to get a list of all available tests, use the command
+In order to get a list of all available tests, use the command
 
-  \verbatim
-  rake -T spec
-  \endverbatim
+    rake -T spec
 
-  The resulting list should contain entries like this:
+The resulting list should contain entries like this:
 
   \verbatim
   rake spec                         Run all specs in spec directory (excluding plugin specs)
@@ -50,26 +46,20 @@ pandora
   rake spec:views                   Run the code examples in spec/views
   \endverbatim
 
-  Since essentially the specs are groups into Rake tasks, running them is as
-  simple as e.g.
+Since essentially the specs are groups into Rake tasks, running them is as
+simple as e.g.
 
-  \verbatim
-  rake spec:models
-  \endverbatim
+    rake spec:models
 
-  If however you want a bit more control over the test carried out, you e.g. can
-  utilize the ``SPEC`` option to pass along an individual file with test instructions:
+If however you want a bit more control over the test carried out, you e.g. can
+utilize the ``SPEC`` option to pass along an individual file with test instructions:
 
-  \verbatim
-  rake spec SPEC=spec/models/image_spec.rb
-  \endverbatim
+    rake spec SPEC=spec/models/image_spec.rb
 
-  Using ``SPEC_OPTS`` it is possible to pass along options e.g. to influence the
-  formatting of the output.
+Using ``SPEC_OPTS`` it is possible to pass along options e.g. to influence the
+formatting of the output.
 
-  \verbatim
-  rake spec SPEC=spec/controllers/institution_controller_spec.rb SPEC_OPTS="--format nested --color"
-  \endverbatim
+    rake spec SPEC=spec/controllers/institution_controller_spec.rb SPEC_OPTS="--format nested --color"
 
   which will result in something like this (color missing here though):
 
