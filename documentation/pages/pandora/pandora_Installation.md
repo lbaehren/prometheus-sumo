@@ -9,8 +9,8 @@ Installation instructions    {#pandora_install}
 The installation and configuration of a new \ref pandora system -- whether it is
 for development or as a production environment -- entails a number of steps:
 
-\li Install required system packages
-\li Install Ruby gems
+\li \ref pandora_install_common_packages
+\li \ref pandora_install_common_gems
 \li \ref pandora_checkout "Check out working copy of the source code"
 \li Start up pandora
 
@@ -19,7 +19,77 @@ steps along the way.
 
 \subsection pandora_install_common_packages Installation of system packages
 
+Notes:
+
+\li Update RubyGems: 
+\verbatim
+sudo gem update --system
+\endverbatim
+On Debian:
+\verbatim
+sudo env REALLY_GEM_UPDATE_SYSTEM=1 gem update --system
+\endverbatim
+
+\li Enable Apache modules using the \c a2enmod command - in order to actually activate them, the web server needs to be restarted. 
+\verbatim
+sudo a2enmod rewrite
+sudo a2enmod proxy_balancer
+sudo a2enmod proxy_http
+sudo invoke-rc.d apache2 restart
+\endverbatim
+
 \subsection pandora_install_common_gems Installation of Ruby Gems
+
+* [rake](http://docs.rubyrake.org)
+* [libxml-ruby](http://libxml.rubyforge.org)
+* [hpricot](http://github.com/why/hpricot)
+* [json](http://github.com/flori/json)
+* [mysql](http://www.tmtm.org/en/mysql/ruby) (see note below)
+* [mongrel](http://mongrel.rubyforge.org)
+* [mongrel_cluster](http://mongrel.rubyforge.org/docs/mongrel_cluster.html)
+* [piston](http://piston.rubyforge.org)
+* [capistrano](http://www.capify.org)
+* [ruby-debug](http://www.datanoise.com/ruby-debug)
+* [pdf-reader](http://github.com/yob/pdf-reader) (for Prawn)
+* [apache_secure_download](http://prometheus.rubyforge.org/apache_secure_download)
+* [apache_image_resizer](http://prometheus.rubyforge.org/apache_image_resizer)
+* [ruby-nuggets](http://prometheus.rubyforge.org/ruby-nuggets)
+* [libxml-ext](http://github.com/blackwinter/libxml-ext)
+* [rmagick](http://rmagick.rubyforge.org) (see notes below)
+* [gruff](http://gruff.rubyforge.org)
+* [blackwinter-gnuplot](http://github.com/blackwinter/ruby_gnuplot)
+* [fastercsv](http://fastercsv.rubyforge.org)
+* [highline](http://highline.rubyforge.org)
+* [ruby-backports](http://rubyforge.org/projects/prometheus)
+* [ferret](http://ferret.davebalmain.com/trac) (`= 0.11.8.1`)
+* [unicode](http://www.yoshidam.net/Ruby.html#unicode) (`>= 0.1.1`)
+* [mime-types](http://mime-types.rubyforge.org)
+* [ruby-filemagic](http://grub.ath.cx/filemagic)
+* [mail](http://github.com/mikel/mail)
+* [ar_mailer](http://seattlerb.rubyforge.org/ar_mailer) (see notes below for patch)
+* [lockfile](http://codeforpeople.com/lib/ruby/lockfile)
+* [oauth](http://oauth.rubyforge.org)
+* [ruby-hmac](http://ruby-hmac.rubyforge.org) (ruby <= 1.8.5)
+* [pbkdf2](https://github.com/emerose/pbkdf2-ruby)
+* [wadl](https://github.com/blackwinter/wadl)
+
+Notes:
+
+\li If MySQL development files are not found automatically, specify them as command
+line parameters: 
+\verbatim
+sudo gem install mysql -- --with-mysql-include=/usr/include/mysql --with-mysql-lib=/usr/lib64/mysql
+\endverbatim
+
+\li On RHEL5 (ImageMagick < 6.3): 
+\verbatim
+sudo gem install rmagick -v 1.15.13 -- --enable-allow-example-errors
+\endverbatim
+and remove 
+\code
+<include file="type-windows.xml" />
+\endcode
+from `/usr/lib{,64}/ImageMagick-6.2.8/config/type.xml)`. 
 
 \subsection pandora_install_common_checkout Checkout out the source code
 
