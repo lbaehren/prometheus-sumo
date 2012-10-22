@@ -8,16 +8,14 @@ Testing    {#pandora_testing}
 
 Tests are defined in the ``spec`` sub-directory:
 
-    pandora
-    `-- spec/
-        |-- controllers
-        |-- fixtures
-        |-- helpers
-        |-- lib
-        |-- models
-        |-- shared
-        |   `-- matchers
-        `-- views
+    pandora/spec/
+    ├── controllers
+    ├── fixtures
+    ├── helpers
+    ├── lib
+    ├── models
+    ├── shared
+    └── views
 
 \section pandora_testing_run Running the tests
 
