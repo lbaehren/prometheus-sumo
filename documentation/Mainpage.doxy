@@ -17,8 +17,8 @@
       <td width="25%"><b>Software development</b></td>
       <td>
         \subpage repositories |
-        \subpage coding_guidelines |
-        \subpage software_design
+        \subpage issue_tracker |
+        \subpage coding_guidelines
       </td>
     </tr>
 
@@ -45,7 +45,6 @@
       <td width="25%"><b>Support</b></td>
       <td>
         \subpage wiki |
-        \subpage issue_tracker |
         \subpage faq |
         \subpage bookmarks
       </td>
