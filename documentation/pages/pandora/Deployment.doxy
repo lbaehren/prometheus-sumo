@@ -18,7 +18,7 @@
 
   \li Update your working copy to ensure that all the changes to be included
   in the new release version have been merged properly:
-  \verbatim	
+  \verbatim
   svn up
   \endverbatim
 

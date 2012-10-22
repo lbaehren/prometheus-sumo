@@ -9,6 +9,7 @@
 
   Related pages:
 
+  \li \subpage pandora_checkout
   \li \subpage pandora_install
   \li \subpage database
   \li \ref database_import
@@ -20,97 +21,6 @@
 
   \li [Frequently asked questions](http://prometheus-bildarchiv.de/en/faq)
   \li [Help pages](http://prometheus.uni-koeln.de/pandora/en/help)
-
-  \section refman_pandora_checkout Getting the source code
-
-  The source code of _pandora_ is hosted in a central
-  \ref subversion repository at
-
-  \li http://prometheus-srv.uni-koeln.de/svn/pandora
-
-  \subsection refman_pandora_checkout_svn ... using Subversion
-
-  Checking out a full working copy from the \ref subversion repository
-
-  \verbatim
-  svn co http://prometheus-srv.uni-koeln.de/svn/pandora pandora
-  \endverbatim
-
-  will create a directory structure like this:
-
-  \verbatim
-  pandora
-  |
-  |-- branches
-  |   |-- 0.1-stable
-  |   |-- 0.2-stable
-  |   |-- 0.3-stable
-  |   |-- 0.4-stable
-  |   |-- 0.5-stable
-  |   |-- 0.6-stable
-  |   `-- restructuring_models_search_and_everything
-  |-- tags
-  |   |-- 0.1.0
-  |   |-- 0.1.1
-  |   |-- 0.1.2
-  |   |-- ...
-  |   `-- 0.6.5
-  `-- trunk
-      |-- app
-      |-- config
-      |-- db
-      |-- doc
-      |-- index
-      |-- ...
-  \endverbatim
-
-  \subsection refman_pandora_checkout_git ... using Git
-
-  If at a later point in time you want to be able to create new (release) branches
-  and tags then accordingly, you will have to clone from the top-level of the
-  Subversion repository, telling [Git](http://git-scm.com) import from a standard
-  directory layout:
-
-  \verbatim
-  git svn clone -s http://prometheus-srv.uni-koeln.de/svn/pandora pandora
-  \endverbatim
-
-  The resulting directory structure will look something like this:
-
-  \verbatim
-    pandora/.git
-    |-- hooks
-    |-- info
-    |-- logs
-    |   `-- refs
-    |       |-- heads
-    |       `-- remotes
-    |           `-- tags
-    |-- objects
-    |-- refs
-    |   |-- heads
-    |   |-- remotes
-    |   |   `-- tags
-    |   `-- tags
-    `-- svn
-        `-- refs
-            `-- remotes
-                |-- 0.1-stable
-                |-- 0.2-stable
-                |-- 0.3-stable
-                |-- 0.4-stable
-                |-- 0.5-stable
-                |-- 0.6-stable
-                |-- git-svn
-                |-- restructuring_models_search_and_everything
-                |-- tags
-                |   |-- 0.1.0
-                |   |-- 0.1.1
-                |   |-- 0.1.2
-                |   |...
-                |   `-- 0.6.5
-                `-- trunk
-  \endverbatim
 
   \subsection pandora_checkout_structure Organization of the source code
 
