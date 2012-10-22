@@ -46,7 +46,7 @@ can be found:
     |-- documentation           ...  Extended documentation
     |   |-- examples            ...  Code examples to be included into the documentation
     |   |-- images              ...  Images to be included into the documentation
-    |   `-- manual              ...  Reference Manual
+    |   `-- pages               ...  Source pages from which the documentation is generated
     |-- packages                ...  Wrappers for installation of the various packages
     `-- sources                 ...  Source files
 
