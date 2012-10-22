@@ -78,3 +78,4 @@ The XML storage encoding does not round-trip perfectly. A read-write cycle loses
   - [Parsing XML with Boost](http://akrzemi1.wordpress.com/2011/07/13/parsing-xml-with-boost)
   - [Boost.PropertyTree](http://www.boost.org/doc/libs/1_50_0/doc/html/property_tree.html)
   - [Nokogiri](http://nokogiri.org) -- a HTML, XML, SAX, & Reader parser with the ability to search documents via XPath or CSS3 selectors
+  - [Parse XML using Ruby](http://developer.yahoo.com/ruby/ruby-xml.html)
