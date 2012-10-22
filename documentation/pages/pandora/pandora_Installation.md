@@ -4,7 +4,7 @@ Installation instructions    {#pandora_install}
 
 \tableofcontents
 
-\section pandora_install_intro Introduction
+\section pandora_install_common Common installation steps
 
 The installation and configuration of a new \ref pandora system -- whether it is
 for development or as a production environment -- entails a number of steps:
@@ -17,9 +17,13 @@ for development or as a production environment -- entails a number of steps:
 The sections below explain in further detail what needs do be done at each of the
 steps along the way.
 
-\section pandora_install_common Common installation steps
+\subsection pandora_install_common_packages Installation of system packages
 
-\section pandora_install_devel Installation of a development system
+\subsection pandora_install_common_gems Installation of Ruby Gems
+
+\subsection pandora_install_common_checkout Checkout out the source code
+
+
 
 \subsection pandora_configure_scripts Configuration scripts
 
@@ -74,6 +78,8 @@ pandora
   The first entry in the file (``:dumps:``) describes the path to the directory
   containing database dumps; if no dumps can be found on your system, dummy
   entries will be generated.
+
+\section pandora_install_devel Installation of a development system
 
 \subsection pandora_initialize_install Initialize the installation
 
