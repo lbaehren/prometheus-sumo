@@ -141,14 +141,12 @@ endif (LIBXML2_FOUND)
 
 if (YAML_FOUND)
 
-  ## location of header files
-  include_directories (${YAML_INCLUDES})
-
   ##__________________________________________________________________
   ## Build test programs
 
   foreach (test_yaml
       tEmitting.cc
+      testYamlConfigFiles.cc
       testYamlReading.cc
       )
 
@@ -159,11 +157,11 @@ if (YAML_FOUND)
     add_executable (${varFilename} ${varFilename}.cc)
 
     ## linker instructions
-    target_link_libraries (${varFilename} ${YAML_LIBRARIES})
+    target_link_libraries (${varFilename} libprometheus)
 
   endforeach (test_yaml)
 
-  ##_____________________________________________________________________________
+  ##__________________________________________________________________
   ## Testing
 
   add_test (tEmitting tEmitting)
