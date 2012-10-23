@@ -18,7 +18,7 @@
   url: https://rubygems.org/gems/blackwinter-gnuplot
   description: Utility library to aid in interacting with Gnuplot.
   version:
--name: blackwinter-ipaddress
+- name: blackwinter-ipaddress
   url: https://rubygems.org/gems/blackwinter-ipaddress
   description: A library designed to make manipulation of IPv4 and IPv6 addresses both powerful and simple.
   version: '= 0.8.0'
