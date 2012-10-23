@@ -87,16 +87,16 @@
   description:
   version:
 - name: mail
-  url:
-  description:
+  url: https://rubygems.org/gems/mail
+  description: A really Ruby Mail handler.
   version:
 - name: mime-types
   url:
   description:
   version:
 - name: mongrel
-  url:
-  description:
+  url: https://rubygems.org/gems/mongrel
+  description: A small fast HTTP library and server that runs Rails, Camping, Nitro and Iowa apps.
   version:
 - name: mongrel_cluster
   url:
@@ -107,11 +107,11 @@
   description:
   version:
 - name: oauth
-  url:
-  description:
+  url: https://rubygems.org/gems/oauth
+  description: OAuth Core Ruby implementation.
   version:
 - name: pbkdf2
-  url:
+  url: https://rubygems.org/gems/pbkdf2
   description:
   version:
 - name: pdf-reader
@@ -119,16 +119,16 @@
   description:
   version:
 - name: piston
-  url:
+  url: https://rubygems.org/gems/piston
   description:
   version:
 - name: rake
   url: http://docs.rubyrake.org
-  description:
+  description: A Make-like program implemented in Ruby. Tasks and dependencies arespecified in standard Ruby syntax.
   version:
 - name: redcarpet
-  url:
-  description:
+  url: https://rubygems.org/gems/redcarpet
+  description: A fast, safe and extensible Markdown to (X)HTML parser.
   version:
 - name: ruby-backports
   url:
@@ -151,8 +151,8 @@
   description: Some extensions to the Ruby programming language
   version: '>= 0.8.9'
 - name: unicode
-  url:
-  description:
+  url: https://rubygems.org/gems/unicode
+  description: Unicode normalization library.
   version: '>= 0.1.1'
 - name: wadl
   url: https://github.com/prometheus-ev/wadl
