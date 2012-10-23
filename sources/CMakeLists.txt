@@ -16,6 +16,15 @@ if (Boost_FOUND)
   list (APPEND libprometheus_link_libraries ${Boost_LIBRARIES})
 endif (Boost_FOUND)
 
+if (YAML_FOUND)
+  ## Compiler flag(s)
+  add_definitions(-DWITH_YAML)
+  ## YAZ++ header files
+  include_directories (${YAML_INCLUDES})
+  ## Linker instructions
+  list (APPEND libprometheus_link_libraries ${YAML_LIBRARIES})
+endif (YAML_FOUND)
+
 if (YAZPP_FOUND)
   ## Compiler flag(s)
   add_definitions(-DWITH_YAZPP)

@@ -1,0 +1,164 @@
+##
+## List of required Ruby gems.
+##
+---
+- name: apache_image_resizer
+  url: https://github.com/prometheus-ev/apache_image_resizer
+  description: Apache module providing image resizing functionality.
+  version: '>= 0.0.7'
+- name: apache_secure_download
+  url: https://github.com/prometheus-ev/apache_secure_download
+  description: Apache module providing secure downloading functionality.
+  version: '>= 0.2.1'
+- name: ar_mailer
+  url: https://rubygems.org/gems/ar_mailer
+  description: A two-phase delivery agent for ActionMailer.
+  version:
+- name: blackwinter-gnuplot
+  url: https://rubygems.org/gems/blackwinter-gnuplot
+  description: Utility library to aid in interacting with Gnuplot.
+  version:
+- name: blackwinter-ipaddress
+  url: https://rubygems.org/gems/blackwinter-ipaddress
+  description: A library designed to make manipulation of IPv4 and IPv6 addresses both powerful and simple.
+  version: '= 0.8.0'
+- name: capistrano
+  url: https://rubygems.org/gems/capistrano
+  description: A utility and framework for executing commands in parallel on multiple remote machines, via SSH.
+  version:
+- name: exifr
+  url: https://rubygems.org/gems/exifr
+  description: EXIF Reader is a module to read EXIF from JPEG images.
+  version:
+- name: fastercsv
+  url: https://rubygems.org/gems/fastercsv
+  description: Intended as a complete replacement to the CSV standard library.
+  version:
+- name: ferret
+  url: https://rubygems.org/gems/ferret
+  description: A super fast, highly configurable search library.
+  version: '= 0.11.8.1'
+- name: gruff
+  url:
+  description:
+  version:
+- name: highline
+  url: http://highline.rubyforge.org
+  description:
+  version:
+- name: hpricot
+  url: http://github.com/why/hpricot
+  description:
+  version:
+- name: ipaddress
+  url:
+  description:
+  version:
+- name: jekyll
+  url:
+  description:
+  version:
+- name: jekyll-localization
+  url: https://github.com/prometheus-ev/jekyll-localization
+  description: Jekyll plugin that adds localization features to the rendering engine.
+  version:
+- name: jekyll-pagination
+  url: https://github.com/prometheus-ev/jekyll-pagination
+  description:
+  version:
+- name: jekyll-tagging
+  url: https://github.com/prometheus-ev/jekyll-tagging
+  description:
+  version:
+- name: json
+  url: http://github.com/flori/json
+  description:
+  version:
+- name: libxml-ext
+  url: https://github.com/prometheus-ev/libxml-ext
+  description:
+  version:
+- name: libxml-ruby
+  url:
+  description:
+  version: '>= 1.1.3'
+- name: lockfile
+  url:
+  description:
+  version:
+- name: mail
+  url: https://rubygems.org/gems/mail
+  description: A really Ruby Mail handler.
+  version:
+- name: mime-types
+  url:
+  description:
+  version:
+- name: mongrel
+  url: https://rubygems.org/gems/mongrel
+  description: A small fast HTTP library and server that runs Rails, Camping, Nitro and Iowa apps.
+  version:
+- name: mongrel_cluster
+  url:
+  description:
+  version:
+- name: mysql
+  url: http://www.tmtm.org/en/mysql/ruby
+  description:
+  version:
+- name: oauth
+  url: https://rubygems.org/gems/oauth
+  description: OAuth Core Ruby implementation.
+  version:
+- name: pbkdf2
+  url: https://rubygems.org/gems/pbkdf2
+  description:
+  version:
+- name: pdf-reader
+  url:
+  description:
+  version:
+- name: piston
+  url: https://rubygems.org/gems/piston
+  description:
+  version:
+- name: rake
+  url: http://docs.rubyrake.org
+  description: A Make-like program implemented in Ruby. Tasks and dependencies arespecified in standard Ruby syntax.
+  version:
+- name: redcarpet
+  url: https://rubygems.org/gems/redcarpet
+  description: A fast, safe and extensible Markdown to (X)HTML parser.
+  version:
+- name: ruby-backports
+  url:
+  description:
+  version:
+- name: ruby-debug
+  url:
+  description:
+  version:
+- name: ruby-filemagic
+  url: https://github.com/prometheus-ev/ruby-filemagic
+  description: Ruby bindings to the magic(4) library, revised.
+  version:
+- name: ruby-hmac
+  url:
+  description:
+  version:
+- name: ruby-nuggets
+  url: https://github.com/prometheus-ev/ruby-nuggets
+  description: Some extensions to the Ruby programming language
+  version: '>= 0.8.9'
+- name: unicode
+  url: https://rubygems.org/gems/unicode
+  description: Unicode normalization library.
+  version: '>= 0.1.1'
+- name: wadl
+  url: https://github.com/prometheus-ev/wadl
+  description: Ruby client for the Web Application Description Language.
+  version:
+- name: yard
+  url:
+  description:
+  version:

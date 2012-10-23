@@ -115,7 +115,15 @@ documentation system. If the latter is available on your system, just type
 
     make Documentation
 
-from within the build directory.
+from within the build directory. The generated pages/documents will can be found within
+
+    .
+    `-- release
+        `-- share
+            `-- doc
+                `-- prometheus
+                    |-- html
+                    `-- xml
 
 
 ## Testing ##

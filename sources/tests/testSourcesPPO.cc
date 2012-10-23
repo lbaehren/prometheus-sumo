@@ -127,10 +127,10 @@ int test_read_xml_dump (std::string const &filename)
 int test_query_database (std::string const &filename="")
 {
   std::cout << "\n[testSourcesPPO::test_query_database]" << std::endl;
+  int status = 0;
 
 #ifdef WITH_YAZPP
 
-  int status = 0;
   std::vector<std::string> ids (1, "b0009539berl");
   std::string match = "berl";
 
