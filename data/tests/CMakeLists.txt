@@ -46,6 +46,12 @@ find_file (ruby_gems_yml
   PATH_SUFFIXES config
   )
 
+find_file (config_roles_yml
+  NAMES roles.yml
+  PATHS ${PROJECT_SOURCE_DIR}
+  PATH_SUFFIXES config
+  )
+
 ## === Log files ================================================================
 
 find_file (apache_access_log apache_access.log

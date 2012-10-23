@@ -81,7 +81,7 @@ int test_read_config (std::string const &filename)
 
   int status = 0;
   prometheus::config::RubyGems gems;
-  
+
   try {
     gems.readConfig(filename);
     gems.summary();
@@ -107,6 +107,6 @@ int main (int argc, char **argv)
   } else {
     status += test_constructors ();
   }
-  
+
   return status;
 }

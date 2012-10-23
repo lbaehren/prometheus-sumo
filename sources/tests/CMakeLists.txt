@@ -146,7 +146,8 @@ if (YAML_FOUND)
 
   foreach (test_yaml
       tEmitting.cc
-      testRubyGems.cc
+      testConfigRubyGems.cc
+      testConfigUserRoles.cc
       testYamlReading.cc
       )
 
@@ -168,10 +169,16 @@ if (YAML_FOUND)
   add_test (TestYamlReading TestYamlReading ${PROJECT_SOURCE_DIR}/data/tests)
 
   if (ruby_gems_yml)
-    add_test (testRubyGems testRubyGems ${ruby_gems_yml})
+    add_test (testConfigRubyGems testConfigRubyGems ${ruby_gems_yml})
   else (ruby_gems_yml)
-    add_test (testRubyGems testRubyGems)
+    add_test (testConfigRubyGems testConfigRubyGems)
   endif (ruby_gems_yml)
+
+  if (config_roles_yml)
+    add_test (testConfigUserRoles testConfigUserRoles ${config_roles_yml})
+  else (config_roles_yml)
+    add_test (testConfigUserRoles testConfigUserRoles)
+  endif (config_roles_yml)
 
 endif (YAML_FOUND)
 
