@@ -80,7 +80,7 @@ namespace prometheus { // namespace prometheus -- BEGIN
 	Common,
 	//! Combined Log Format
 	Combined
-      }
+      };
 
       // === Parameter access ===================================================
 
