@@ -53,13 +53,13 @@ for all the extra branches and tags -- simply run
 which will result in a considerably simpler directory structure on your disk:
 
 \verbatim
-  pandora
-  |-- app
-  |-- config
-  |-- db
-  |-- doc
-  |-- index
-  |-- ...
+    pandora
+    |-- app
+    |-- config
+    |-- db
+    |-- doc
+    |-- index
+    |-- ...
 \endverbatim
 
 \section pandora_checkout_git ... using Git
@@ -76,37 +76,34 @@ git svn clone -s http://prometheus-srv.uni-koeln.de/svn/pandora pandora
 The resulting directory structure will look something like this:
 
 \verbatim
-    pandora/.git
-    |-- hooks
-    |-- info
-    |-- logs
-    |   `-- refs
-    |       |-- heads
-    |       `-- remotes
-    |           `-- tags
-    |-- objects
-    |-- refs
-    |   |-- heads
-    |   |-- remotes
-    |   |   `-- tags
-    |   `-- tags
-    `-- svn
-        `-- refs
-            `-- remotes
-                |-- 0.1-stable
-                |-- 0.2-stable
-                |-- 0.3-stable
-                |-- 0.4-stable
-                |-- 0.5-stable
-                |-- 0.6-stable
-                |-- git-svn
-                |-- restructuring_models_search_and_everything
-                |-- tags
-                |   |-- 0.1.0
-                |   |-- 0.1.1
-                |   |-- 0.1.2
-                |   |...
-                |   `-- 0.6.5
-                `-- trunk
+ pandora
+ └── .git
+     ├── hooks
+     ├── info
+     ├── logs
+     │   └── refs
+     │       ├── heads
+     │       └── remotes
+     │           └── tags
+     ├── objects
+     ├── refs
+     │   ├── heads
+     │   ├── remotes
+     │   │   └── tags
+     │   └── tags
+     └── svn
+        └── refs
+            └── remotes
+                ├── 0.1-stable
+                │   │   
+                ├── 0.7-stable
+                ├── git-svn
+                ├── restructuring_models_search_and_everything
+                ├── tags
+                │   ├── 0.1.0
+                │   ├── 0.1.1
+                │   │   
+                │   └── 0.7.0
+                └── trunk
 \endverbatim
 
