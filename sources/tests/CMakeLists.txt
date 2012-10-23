@@ -146,7 +146,7 @@ if (YAML_FOUND)
 
   foreach (test_yaml
       tEmitting.cc
-      testYamlConfigFiles.cc
+      testRubyGems.cc
       testYamlReading.cc
       )
 
@@ -166,6 +166,12 @@ if (YAML_FOUND)
 
   add_test (tEmitting tEmitting)
   add_test (TestYamlReading TestYamlReading ${PROJECT_SOURCE_DIR}/data/tests)
+
+  if (ruby_gems_yml)
+    add_test (testRubyGems testRubyGems ${ruby_gems_yml})
+  else (ruby_gems_yml)
+    add_test (testRubyGems testRubyGems)
+  endif (ruby_gems_yml)
 
 endif (YAML_FOUND)
 

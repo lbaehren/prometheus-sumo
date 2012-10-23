@@ -38,6 +38,14 @@ find_file (id_ppo idppo.txt
   PATH_SUFFIXES data data/tests
 )
 
+## Configuration files ==========================================================
+
+find_file (ruby_gems_yml
+  NAMES ruby_gems.yml
+  PATHS ${PROJECT_SOURCE_DIR}
+  PATH_SUFFIXES config
+  )
+
 ## === Log files ================================================================
 
 find_file (apache_access_log apache_access.log
