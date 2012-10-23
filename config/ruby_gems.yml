@@ -1,0 +1,164 @@
+##
+## List of required Ruby gems.
+##
+---
+- name: apache_image_resizer
+  url:
+  description:
+  version: '>= 0.0.7'
+- name: apache_secure_download
+  url:
+  description:
+  version: '>= 0.2.1'
+- name: ar_mailer
+  url:
+  description:
+  version:
+- name: blackwinter-gnuplot
+  url:
+  description:
+  version:
+-name: blackwinter-ipaddress
+  url:
+  description:
+  version: '= 0.8.0'
+- name: capistrano
+  url:
+  description:
+  version:
+- name: exifr
+  url:
+  description:
+  version:
+- name: fastercsv
+  url:
+  description:
+  version:
+- name: ferret
+  url:
+  description:
+  version: '= 0.11.8.1'
+- name: gruff
+  url:
+  description:
+  version:
+- name: highline
+  url: http://highline.rubyforge.org
+  description:
+  version:
+- name: hpricot
+  url: http://github.com/why/hpricot
+  description:
+  version:
+- name: ipaddress
+  url:
+  description:
+  version:
+- name: jekyll
+  url:
+  description:
+  version:
+- name: jekyll-localization
+  url:
+  description:
+  version:
+- name: jekyll-pagination
+  url:
+  description:
+  version:
+- name: jekyll-tagging
+  url:
+  description:
+  version:
+- name: json
+  url: http://github.com/flori/json
+  description:
+  version:
+- name: libxml-ext
+  url:
+  description:
+  version:
+- name: libxml-ruby
+  url:
+  description:
+  version: '>= 1.1.3'
+- name: lockfile
+  url:
+  description:
+  version:
+- name: mail
+  url:
+  description:
+  version:
+- name: mime-types
+  url:
+  description:
+  version:
+- name: mongrel
+  url:
+  description:
+  version:
+- name: mongrel_cluster
+  url:
+  description:
+  version:
+- name: mysql
+  url: http://www.tmtm.org/en/mysql/ruby
+  description:
+  version:
+- name: oauth
+  url:
+  description:
+  version:
+- name: pbkdf2
+  url:
+  description:
+  version:
+- name: pdf-reader
+  url:
+  description:
+  version:
+- name: piston
+  url:
+  description:
+  version:
+- name: rake
+  url: http://docs.rubyrake.org
+  description:
+  version:
+- name: redcarpet
+  url:
+  description:
+  version:
+- name: ruby-backports
+  url:
+  description:
+  version:
+- name: ruby-debug
+  url:
+  description:
+  version:
+- name: ruby-filemagic
+  url:
+  description:
+  version:
+- name: ruby-hmac
+  url:
+  description:
+  version:
+- name: ruby-nuggets
+  url:
+  description:
+  version: '>= 0.8.9'
+- name: unicode
+  url:
+  description:
+  version: '>= 0.1.1'
+- name: wadl
+  url:
+  description:
+  version:
+- name: yard
+  url:
+  description:
+  version:
