@@ -39,7 +39,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       \ingroup prometheus
       \ingroup config
       \brief Configuration settings for required Ruby gems
-      \test testRubyGems.cc
+      \test testConfigRubyGems.cc
 
       \author Lars Baehren
       \date 2012-10-22

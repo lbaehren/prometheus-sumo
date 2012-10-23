@@ -21,7 +21,7 @@
 #include <Config/RubyGems.h>
 
 /*!
-  \file testRubyGems.cc
+  \file testConfigRubyGems.cc
   \ingroup prometheus
   \ingroup tests
   \brief A collection of tests for the prometheus::config::RubyGems class
