@@ -21,10 +21,10 @@ For further information visit one of the following websites:
 
 External dependencies are kept to a minimum for this package:
 
-| Package | Version   | Website              |
-|---------|-----------|----------------------|
-| Git     | >= 1.7    | http://git-scm.com   |
-| CMake   | >= 2.8.3  | http://www.cmake.org |
+| Package | Version   | Website              | Description/Comments        |
+|---------|-----------|----------------------|-----------------------------|
+| Git     | >= 1.7    | http://git-scm.com   | Version control system      |
+| CMake   | >= 2.8.3  | http://www.cmake.org | Cross-platform build system |
 
 Further dependencies, as required when developing the prometheus software
 packages, are handled as part of this tool.
@@ -46,14 +46,14 @@ can be found:
     |-- documentation           ...  Extended documentation
     |   |-- examples            ...  Code examples to be included into the documentation
     |   |-- images              ...  Images to be included into the documentation
-    |   `-- manual              ...  Reference Manual
+    |   `-- pages               ...  Source pages from which the documentation is generated
     |-- packages                ...  Wrappers for installation of the various packages
     `-- sources                 ...  Source files
 
 
-## Configuration and build
+## Configuration and build ##
 
-### Getting the source code
+### Getting the source code ###
 
 The source for _prometheus-sumo_ is hosted on Github at;
 [go there](https://github.com/lbaehren/prometheus-sumo) to read about the various
@@ -64,7 +64,7 @@ need a read-only copy, simply run
 
 in order to to clone into a local working copy.
 
-### Build directory
+### Build directory ###
 
 The _prometheus-sumo_ uses the [CMake](http://www.cmake.org) Cross-Platform
 Makefile Generator for configuration and control of the build.
@@ -79,7 +79,13 @@ a separate *build* directory from within to continue:
     cd build
     cmake ..
 
-### Configuration options
+Once the configuration run has completed you can obtain a list of available build
+targets by typing
+
+   make help
+
+
+### Configuration options ###
 
 The behaviour and processing can - to a certain degree - be controlled when
 running _CMake_ to configure the project; the list below
@@ -95,14 +101,24 @@ syntax from the command line. At the moment the following options are available
     GIT_REPOSITORIES_RW   "Check out Github repositories for r/w access?" [ NO  ]
     WITH_PANDORA_DOCS     "Enable documentation of pandora source code?"  [ NO  ]
 
-Besides these options probably the most commonly used command line parameter 
+Besides these options probably the most commonly used command line parameter
 passed to CMake in the configuration is the customization of the installation
 prefix:
 
     -DCMAKE_INSTALL_PREFIX=<prefix>
 
 
-## Testing 
+## Documentation ##
+
+An extended set of documentation pages can be generated using the [Doxygen](http://www.doxygen.org)
+documentation system. If the latter is available on your system, just type
+
+    make Documentation
+
+from within the build directory.
+
+
+## Testing ##
 
 A [public dashboard](http://my.cdash.org/index.php?project=prometheus-sumo) for _prometheus-sumo_
 is hosted on my.cdash.org. [CDash](http://www.cdash.org) is an open-source web-based server
