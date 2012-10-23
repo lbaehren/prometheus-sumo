@@ -29,6 +29,14 @@ find_file (DOXYGEN_HTML_STYLESHEET stylesheet.css
   PATH_SUFFIXES documentation
   )
 
+## Specific files to be included
+
+find_file (CONFIG_RUBY_GEMS_YML
+  NAMES ruby_gems.yml
+  PATHS ${PROJECT_SOURCE_DIR}
+  PATH_SUFFIXES config
+  )
+
 ## ==============================================================================
 ##
 ##  Documentation generation
