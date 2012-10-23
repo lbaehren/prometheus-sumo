@@ -3,40 +3,40 @@
 ##
 ---
 - name: apache_image_resizer
-  url:
-  description:
+  url: https://github.com/prometheus-ev/apache_image_resizer
+  description: Apache module providing image resizing functionality.
   version: '>= 0.0.7'
 - name: apache_secure_download
-  url:
-  description:
+  url: https://github.com/prometheus-ev/apache_secure_download
+  description: Apache module providing secure downloading functionality.
   version: '>= 0.2.1'
 - name: ar_mailer
-  url:
-  description:
+  url: https://rubygems.org/gems/ar_mailer
+  description: A two-phase delivery agent for ActionMailer.
   version:
 - name: blackwinter-gnuplot
-  url:
-  description:
+  url: https://rubygems.org/gems/blackwinter-gnuplot
+  description: Utility library to aid in interacting with Gnuplot.
   version:
 -name: blackwinter-ipaddress
-  url:
-  description:
+  url: https://rubygems.org/gems/blackwinter-ipaddress
+  description: A library designed to make manipulation of IPv4 and IPv6 addresses both powerful and simple.
   version: '= 0.8.0'
 - name: capistrano
-  url:
-  description:
+  url: https://rubygems.org/gems/capistrano
+  description: A utility and framework for executing commands in parallel on multiple remote machines, via SSH.
   version:
 - name: exifr
-  url:
-  description:
+  url: https://rubygems.org/gems/exifr
+  description: EXIF Reader is a module to read EXIF from JPEG images.
   version:
 - name: fastercsv
-  url:
-  description:
+  url: https://rubygems.org/gems/fastercsv
+  description: Intended as a complete replacement to the CSV standard library.
   version:
 - name: ferret
-  url:
-  description:
+  url: https://rubygems.org/gems/ferret
+  description: A super fast, highly configurable search library.
   version: '= 0.11.8.1'
 - name: gruff
   url:
@@ -59,15 +59,15 @@
   description:
   version:
 - name: jekyll-localization
-  url:
-  description:
+  url: https://github.com/prometheus-ev/jekyll-localization
+  description: Jekyll plugin that adds localization features to the rendering engine.
   version:
 - name: jekyll-pagination
-  url:
+  url: https://github.com/prometheus-ev/jekyll-pagination
   description:
   version:
 - name: jekyll-tagging
-  url:
+  url: https://github.com/prometheus-ev/jekyll-tagging
   description:
   version:
 - name: json
@@ -75,7 +75,7 @@
   description:
   version:
 - name: libxml-ext
-  url:
+  url: https://github.com/prometheus-ev/libxml-ext
   description:
   version:
 - name: libxml-ruby
@@ -139,24 +139,24 @@
   description:
   version:
 - name: ruby-filemagic
-  url:
-  description:
+  url: https://github.com/prometheus-ev/ruby-filemagic
+  description: Ruby bindings to the magic(4) library, revised.
   version:
 - name: ruby-hmac
   url:
   description:
   version:
 - name: ruby-nuggets
-  url:
-  description:
+  url: https://github.com/prometheus-ev/ruby-nuggets
+  description: Some extensions to the Ruby programming language
   version: '>= 0.8.9'
 - name: unicode
   url:
   description:
   version: '>= 0.1.1'
 - name: wadl
-  url:
-  description:
+  url: https://github.com/prometheus-ev/wadl
+  description: Ruby client for the Web Application Description Language.
   version:
 - name: yard
   url:
