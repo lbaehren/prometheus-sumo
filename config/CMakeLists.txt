@@ -2,8 +2,8 @@
 ##  Configuration files
 ##
 
-find_file (ruby_gems_yml
-  NAMES ruby_gems.yml
+find_file (config_gems_yml
+  NAMES gems.yml
   PATHS ${PROJECT_SOURCE_DIR}
   PATH_SUFFIXES config
   )
