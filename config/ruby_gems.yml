@@ -39,24 +39,24 @@
   description: A super fast, highly configurable search library.
   version: '= 0.11.8.1'
 - name: gruff
-  url:
-  description:
+  url: https://rubygems.org/gems/gruff
+  description: Beautiful graphs for one or multiple datasets.
   version:
 - name: highline
   url: http://highline.rubyforge.org
-  description:
+  description: A high-level IO library that provides validation, type conversion, and more for command-line interfaces.
   version:
 - name: hpricot
   url: http://github.com/why/hpricot
-  description:
+  description: A swift, liberal HTML parser with a fantastic library.
   version:
 - name: ipaddress
-  url:
-  description:
+  url: https://rubygems.org/gems/ipaddress
+  description: A library designed to make manipulation \ of IPv4 and IPv6 addresses both powerful and simple.
   version:
 - name: jekyll
-  url:
-  description:
+  url: https://github.com/mojombo/jekyll
+  description: A simple, blog aware, static site generator.
   version:
 - name: jekyll-localization
   url: https://github.com/prometheus-ev/jekyll-localization
@@ -64,47 +64,47 @@
   version:
 - name: jekyll-pagination
   url: https://github.com/prometheus-ev/jekyll-pagination
-  description:
+  description: Jekyll plugin to extend the pagination generator.
   version:
 - name: jekyll-tagging
   url: https://github.com/prometheus-ev/jekyll-tagging
-  description:
+  description: Jekyll plugin to automatically generate a tag cloud and tag pages.
   version:
 - name: json
-  url: http://github.com/flori/json
-  description:
+  url: http://flori.github.com/json
+  description: JSON implementation for Ruby.
   version:
 - name: libxml-ext
   url: https://github.com/prometheus-ev/libxml-ext
-  description:
+  description: LibXML Ruby extensions.
   version:
 - name: libxml-ruby
-  url:
-  description:
+  url: http://xml4r.github.com/libxml-ruby
+  description: Ruby language bindings for the GNOME Libxml2 XML toolkit.
   version: '>= 1.1.3'
 - name: lockfile
-  url:
-  description:
+  url: https://github.com/ahoward/lockfile
+  description: A Ruby library for creating NFS safe lockfiles.
   version:
 - name: mail
   url: https://rubygems.org/gems/mail
   description: A really Ruby Mail handler.
   version:
 - name: mime-types
-  url:
-  description:
+  url: https://rubygems.org/gems/mime-types
+  description: Identification of a file's likely MIME content type.
   version:
 - name: mongrel
   url: https://rubygems.org/gems/mongrel
   description: A small fast HTTP library and server that runs Rails, Camping, Nitro and Iowa apps.
   version:
 - name: mongrel_cluster
-  url:
-  description:
+  url: https://rubygems.org/gems/mongrel_cluster
+  description: Mongrel plugin that provides commands and Capistrano tasks for managing multiple Mongrel processes.
   version:
 - name: mysql
   url: http://www.tmtm.org/en/mysql/ruby
-  description:
+  description: MySQL API module for Ruby.
   version:
 - name: oauth
   url: https://rubygems.org/gems/oauth
@@ -112,15 +112,15 @@
   version:
 - name: pbkdf2
   url: https://rubygems.org/gems/pbkdf2
-  description:
+  description: Password Based Key Derivation Function 2 (PBKDF2) for Ruby.
   version:
 - name: pdf-reader
-  url:
-  description:
+  url: https://rubygems.org/gems/pdf-reader
+  description: A PDF parser conforming as much as possible to the PDF specification from Adobe.
   version:
 - name: piston
-  url: https://rubygems.org/gems/piston
-  description:
+  url: http://piston.rubyforge.org
+  description: Piston makes it easy to merge vendor branches into your own repository.
   version:
 - name: rake
   url: http://docs.rubyrake.org
@@ -131,20 +131,20 @@
   description: A fast, safe and extensible Markdown to (X)HTML parser.
   version:
 - name: ruby-backports
-  url:
-  description:
+  url: https://github.com/blackwinter/ruby-backports
+  description: Backports of newer Ruby features to older versions.
   version:
 - name: ruby-debug
-  url:
-  description:
+  url: https://github.com/ruby-debug
+  description: A generic command line interface for ruby-debug.
   version:
 - name: ruby-filemagic
   url: https://github.com/prometheus-ev/ruby-filemagic
   description: Ruby bindings to the magic(4) library, revised.
   version:
 - name: ruby-hmac
-  url:
-  description:
+  url: http://ruby-hmac.rubyforge.org
+  description: Common interface to HMAC functionality.
   version:
 - name: ruby-nuggets
   url: https://github.com/prometheus-ev/ruby-nuggets
@@ -159,6 +159,6 @@
   description: Ruby client for the Web Application Description Language.
   version:
 - name: yard
-  url:
-  description:
+  url: http://yardoc.org
+  description: A documentation generation tool for the Ruby programming language.
   version:
