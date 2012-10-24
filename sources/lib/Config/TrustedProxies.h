@@ -44,19 +44,19 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       \author Lars Baehren
       \date 2012-10-23
 
-      This class provides an adapater to read configuration data on the trusted
+      This class provides an adapter to read configuration data on the trusted
       proxies:
       \include trusted_proxies.yml
     */
     class TrustedProxies : public ConfigFileBase {
 
-      //! Store the data from an individual node
-      bool storeNode (YAML::Iterator const &it);
-
     private:
 
       //! List of trusted proxies
       std::vector<std::string> itsProxies;
+
+      //! Store the data from an individual node
+      bool storeNode (YAML::Iterator const &it);
 
     public:
 

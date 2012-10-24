@@ -44,7 +44,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       \author Lars Baehren
       \date 2012-10-22
 
-      This class provides an adapater to read configuration data on the user
+      This class provides an adapter to read configuration data on the user
       roles within the web application:
       \include roles.yml
     */
@@ -62,13 +62,13 @@ namespace prometheus {   // namespace prometheus -- BEGIN
 	unsigned int id;
       };
 
-      //! Store the data from an individual node
-      bool storeNode (YAML::Iterator const &it);
-
     private:
 
       //! List of gems for which parameters are kept
       std::vector<RoleParameters> itsRolesList;
+
+      //! Store the data from an individual node
+      bool storeNode (YAML::Iterator const &it);
 
     public:
 

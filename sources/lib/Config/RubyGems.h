@@ -43,6 +43,10 @@ namespace prometheus {   // namespace prometheus -- BEGIN
 
       \author Lars Baehren
       \date 2012-10-22
+
+      This class provides an adapter to read configuration data on list of 
+      required Ruby gems, most of which are used for the \ref pandora web
+      application and \ref homepage.
     */
     class RubyGems : public ConfigFileBase {
 
@@ -60,13 +64,13 @@ namespace prometheus {   // namespace prometheus -- BEGIN
 	std::string version;
       };
 
-      //! Store the data from an individual node
-      bool storeNode (YAML::Iterator const &it);
-
     private:
 
       //! List of gems for which parameters are kept
       std::vector<GemParameters> itsGemList;
+
+      //! Store the data from an individual node
+      bool storeNode (YAML::Iterator const &it);
 
     public:
 
