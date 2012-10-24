@@ -15,20 +15,23 @@ Servers    {#servers}
 
 \section server_machines Server names and hosted services
 
-| Name                         | IP address    | Hosted service                       |
-|------------------------------|---------------|--------------------------------------|
-| www.prometheus-bildarchiv.de | 134.95.19.39  | \ref manual_image_archive            |
-| prometheus1.uni-koeln.de     | 134.95.80.11  | Production system                    |
-| prometheus2.uni-koeln.de     | 134.95.80.12  | Development system                   |
-| prometheus-test.uni-koeln.de | 134.95.80.13  | [pandora-devel](http://prometheus-test.uni-koeln.de/pandora-devel) |
-| prometheus-db1               | 134.95.80.95  | Database server                      |
-| prometheus-web1              | 134.95.80.96  | Web server                           |
-| prometheus-srv1.uni-koeln.de | 134.95.80.160 | SVN server, Trac, \ref issue_tracker |
-| prometheus-srv2.uni-koeln.de | 134.95.80.161 | prometheus-app.uni-koeln.de          |
-| prometheus-srv3.uni-koeln.de | 134.95.80.162 | \ref homepage, \ref JekyllCommander, Documentation |
-| prometheus-srv4.uni-koeln.de | 134.95.80.164 |                                      |
+| IP address      | Hostname                     | Hosted service                       |
+|-----------------|------------------------------|--------------------------------------|
+| 134.95.19.39    | www.prometheus-bildarchiv.de | \ref manual_image_archive            |
+| 134.95.80.11    | prometheus1.uni-koeln.de     | Production system                    |
+| 134.95.80.12    | prometheus2.uni-koeln.de     | Development system                   |
+| 134.95.80.13    | prometheus-test.uni-koeln.de | [pandora-devel](http://prometheus-test.uni-koeln.de/pandora-devel) |
+| 134.95.80.95    | prometheus-db1.uni-koeln.de  | Database server                      |
+| 134.95.80.96    | prometheus-web1.uni-koeln.de | Web server                           |
+| 134.95.80.160   | \ref servers_srv1 | SVN server, Trac, \ref issue_tracker |
+| 134.95.80.161   | \ref servers_srv2 | prometheus-app.uni-koeln.de          |
+| 134.95.80.162   | \ref servers_srv3 | \ref homepage, \ref JekyllCommander, Documentation |
+| 134.95.80.163   | \ref servers_srv4 |  |
+| 134.95.167.124  | prometheus.khi.uni-koeln.de  |  |
+| 134.95.167.125  | prometheus2.khi.uni-koeln.de |  |
 
-\subsection servers_srv1 prometheus-srv1
+
+\subsection servers_srv1 prometheus-srv1.uni-koeln.de
 
 NFS mounts:
 
@@ -38,7 +41,7 @@ prometheus2.uni-koeln.de:/var/local/prometheus/app/pandora/trunk/index/developme
 prometheus-web1.uni-koeln.de:/var/local/prometheus/data/images /var/local/prometheus/data/images nfs rsize=8192,ro,bg 0 0
 \endverbatim
 
-\subsection servers_srv2 prometheus-srv2
+\subsection servers_srv2 prometheus-srv2.uni-koeln.de
 
 NFS mounts:
 
@@ -47,7 +50,7 @@ prometheus-web1.uni-koeln.de:/var/local/prometheus/web/log /var/local/prometheus
 prometheus-srv3.uni-koeln.de:/var/local/prometheus/web/log /var/local/prometheus/web/log-prometheus-web nfs rsize=8192,ro,bg 0 0
 \endverbatim
 
-\subsection servers_srv3 prometheus-srv3
+\subsection servers_srv3 prometheus-srv3.uni-koeln.de
 
 Web-Applications:
 
@@ -60,6 +63,8 @@ Online documentation for various software projects:
  - [Ferret Search Library Documentation](http://prometheus-srv3.uni-koeln.de/ruby-doc/ferret)
  - [Ruby Core](http://prometheus-srv3.uni-koeln.de/ruby-doc/core)
  - [Ruby Standard Library Documentation](http://prometheus-srv3.uni-koeln.de/ruby-doc/core)
+
+\subsection servers_srv4 prometheus-srv4.uni-koeln.de
 
 \section virtual_hosts Virtual Hosts
 
