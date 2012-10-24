@@ -18,11 +18,11 @@ Servers    {#servers}
 | IP address      | Hostname                     | Hosted service                       |
 |-----------------|------------------------------|--------------------------------------|
 | 134.95.19.39    | www.prometheus-bildarchiv.de | \ref manual_image_archive            |
-| 134.95.80.11    | prometheus1.uni-koeln.de     | Production system                    |
-| 134.95.80.12    | prometheus2.uni-koeln.de     | Development system                   |
+| 134.95.80.11    | \ref servers_prom1 | Production system                    |
+| 134.95.80.12    | \ref servers_prom2 | Development system                   |
 | 134.95.80.13    | prometheus-test.uni-koeln.de | [pandora-devel](http://prometheus-test.uni-koeln.de/pandora-devel) |
-| 134.95.80.95    | prometheus-db1.uni-koeln.de  | Database server                      |
-| 134.95.80.96    | prometheus-web1.uni-koeln.de | Web server                           |
+| 134.95.80.95    | \ref servers_db1  | Database server                      |
+| 134.95.80.96    | \ref servers_web1 | Web server                           |
 | 134.95.80.160   | \ref servers_srv1 | SVN server, Trac, \ref issue_tracker |
 | 134.95.80.161   | \ref servers_srv2 | prometheus-app.uni-koeln.de          |
 | 134.95.80.162   | \ref servers_srv3 | \ref homepage, \ref JekyllCommander, Documentation |
@@ -31,7 +31,23 @@ Servers    {#servers}
 | 134.95.167.125  | prometheus2.khi.uni-koeln.de |  |
 
 
+\subsection servers_prom1 prometheus1.uni-koeln.de
+
+* Hosting the production system of the \ref pandora application
+
+\subsection servers_prom2 prometheus2.uni-koeln.de
+
+\subsection servers_db1 prometheus-db1.uni-koeln.de
+
+\subsection servers_web1 prometheus-web1.uni-koeln.de
+
 \subsection servers_srv1 prometheus-srv1.uni-koeln.de
+
+Hosted services:
+
+* \ref subversion server
+* Trac
+* \ref issue_tracker "Redmine issue tracker"
 
 NFS mounts:
 
