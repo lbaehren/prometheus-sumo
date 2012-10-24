@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef CONFIG_USER_ROLES_H
-#define CONFIG_USER_ROLES_H
+#ifndef CONFIG_TRUSTED_PROXIES_H
+#define CONFIG_TRUSTED_PROXIES_H
 
 #include "ConfigFileBase.h"
 
@@ -34,72 +34,59 @@ namespace prometheus {   // namespace prometheus -- BEGIN
   namespace config {   // namespace config -- BEGIN
 
     /*!
-      \file UserRoles.h
-      \class UserRoles
+      \file TrustedProxies.h
+      \class TrustedProxies
       \ingroup prometheus
       \ingroup config
       \brief Configuration settings user roles inside the application
-      \test testConfigUserRoles.cc
+      \test testConfigTrustedProxies.cc
 
       \author Lars Baehren
-      \date 2012-10-22
+      \date 2012-10-23
 
-      This class provides an adapater to read configuration data on the user
-      roles within the web application:
-      \include roles.yml
+      This class provides an adapater to read configuration data on the trusted
+      proxies:
+      \include trusted_proxies.yml
     */
-    class UserRoles : public ConfigFileBase {
-
-    protected:
-
-      //! Parameters for a user role
-      struct RoleParameters {
-	//! Keyword used for referencing
-	std::string key;
-	//! Title for the role
-	std::string title;
-	//! ID used internally with the database
-	unsigned int id;
-      };
+    class TrustedProxies : public ConfigFileBase {
 
       //! Store the data from an individual node
       bool storeNode (YAML::Iterator const &it);
 
     private:
 
-      //! List of gems for which parameters are kept
-      std::vector<RoleParameters> itsRolesList;
+      //! List of trusted proxies
+      std::vector<std::string> itsProxies;
 
     public:
 
       // === Construction =======================================================
 
       //! Default constructor
-      UserRoles ();
+      TrustedProxies ();
 
       //! Argumented constructor
-      UserRoles (std::string const &filename);
+      TrustedProxies (std::string const &filename);
 
       // === Parameter access ===================================================
 
       //! Get the number of gems for which parameters are kept
-      inline size_t nofRoles () {
-	return itsRolesList.size();
+      inline size_t nofProxies () {
+        return itsProxies.size();
       }
-      
-      //! Get a list of the role keys
-      std::set<std::string> keys ();
 
-      //! Get a list of the role titles
-      std::set<std::string> titles ();
+      //! Get the list of trusted proxies
+      inline std::vector<std::string> proxies () {
+       return itsProxies;
+      }
 
       // === Public functions ===================================================
 
       //! Provide a summary of the object's internal parameters and status
       inline void summary () {
-	summary (std::cout);
+        summary (std::cout);
       }
-      
+
       //! Provide a summary of the object's internal parameters and status
       void summary (std::ostream &os);
 
