@@ -37,7 +37,7 @@ can be found:
 
     .
     |-- CMakeLists.txt          ...  Top-level CMake script for the project
-    |-- README                  ...  This README file
+    |-- README.md               ...  Top-level README file
     |-- config
     |   |-- cmake               ...  Collection of CMake scripts and modules
     |   `-- rake                ...  Collection of Rake scripts and modules

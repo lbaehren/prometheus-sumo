@@ -30,23 +30,25 @@ packages, are handled as part of this tool.
 Once cloning into a working copy has completed, the following directory structure
 can be found:
 
-~~~~
-  .
-  |- CMakeLists.txt          ...  Top-level CMake script for the project
-  |- README.md               ...  README file
-  |- config
-  |   |- cmake               ...  Collection of CMake scripts and modules
-  |   `- rake                ...  Collection of Rake scripts and modules
-  |- data
-  |   |- repositories        ...  Working copies of the various code repositories
-  |   `- vm                  ...  Virtual machine images
-  |- documentation           ...  Extended documentation
-  |   |- examples            ...  Code examples to be included into the documentation
-  |   |- images              ...  Images to be included into the documentation
-  |   `- manual              ...  Reference Manual
-  |- packages                ...  Wrappers for installation of the various packages
-  `- sources                 ...  Source files
-~~~~
+    .
+    ├── CMakeLists.txt          ...  Top-level CMake script for the project
+    ├── README.md               ...  Top-level README file
+    ├── config
+    |   ├── cmake               ...  Collection of CMake scripts and modules
+    │   └── rake                ...  Collection of Rake scripts and modules
+    ├── data
+    │   └── repositories        ...  Working copies of the various code repositories
+    ├── documentation           ...  Extended documentation
+    |   ├── examples            ...  Code examples to be included into the documentation
+    |   ├── images              ...  Images to be included into the documentation
+    │   └── pages               ...  Source pages from which the documentation is generated
+    ├── packages                ...  Wrappers for installation of the various packages
+    └── sources                 ...  Source files
+
+Not included in this picture yet is the `release` directory (containing the standard set of
+sub-directories, such as `include`, `lib`, etc.), which is set as the default installation
+location.
+
 
 \section sumo_build Configuration and build
 
@@ -102,9 +104,8 @@ Besides these options probably the most commonly used command line parameter
 passed to CMake in the configuration is the customization of the installation
 prefix:
 
-~~~~
--DCMAKE_INSTALL_PREFIX=<prefix>
-~~~~
+    -DCMAKE_INSTALL_PREFIX=<prefix>
+
 
 \section sumo_functionality Functionality
 
@@ -133,18 +134,25 @@ which will download the imags into ``data/vm``
 
 \subsection sumo_functionality_documentation Documentation
 
-Besides the basic documentation of the source code extended documentation on
-\ref infrastructure, \ref software_packages, etc. can be generated both in HTML
-format (probably what you are reading right now) and as LaTeX/PDF.
+An extended set of documentation pages can be generated using the [Doxygen](http://www.doxygen.org)
+documentation system. If the latter is available on your system, just type
 
-~~~~
-make Documentation
-~~~~
+    make Documentation
+
+from within the build directory. The generated pages/documents will can be found within
+
+    .
+    └── release
+        └── share
+            └── doc
+                └── prometheus
+                    ├── html
+                    └── xml
 
 \subsection sumo_functionality_external Installation of external packages
 
-As the prometheus digital image archive software depends on a number of external
-\ref software_packages - libraries and tools - a path is required to resolve
+As the prometheus digital image archive software depends on a number of
+\ref third_party - libraries and tools - a path is required to resolve
 the resulting dependencies; some of these can be taken care of by the system's
 package manager (e.g. \c apt-get on [Debian](http://www.debian.org) and
 [Ubuntu](http://www.ubuntu.com) or \c yum on [Fedora](http://www.fedoraproject.org))
