@@ -44,7 +44,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       \author Lars Baehren
       \date 2012-10-22
 
-      This class provides an adapter to read configuration data on list of 
+      This class provides an adapter to read configuration data on list of
       required Ruby gems, most of which are used for the \ref pandora web
       application and \ref homepage.
     */
@@ -54,14 +54,14 @@ namespace prometheus {   // namespace prometheus -- BEGIN
 
       //! Parameters for the 'gem' node of the configuration file
       struct GemParameters {
-	//! Name of the gem
-	std::string name;
-	//! URL for gem's project page
-	std::string url;
-	//! Description of the gem
-	std::string description;
-	//! Version specification
-	std::string version;
+        //! Name of the gem
+        std::string name;
+        //! URL for gem's project page
+        std::string url;
+        //! Description of the gem
+        std::string description;
+        //! Version specification
+        std::string version;
       };
 
     private:
@@ -86,19 +86,25 @@ namespace prometheus {   // namespace prometheus -- BEGIN
 
       //! Get the number of gems for which parameters are kept
       inline size_t nofGems () {
-	return itsGemList.size();
+        return itsGemList.size();
       }
-      
+
       //! Get the name of the gems
       std::set<std::string> names ();
+
+      //! Get version information for the gems
+      std::map<std::string,std::string> versions ();
+
+      //! Get URL for gem's project page
+      std::map<std::string,std::string> urls ();
 
       // === Public functions ===================================================
 
       //! Provide a summary of the object's internal parameters and status
       inline void summary () {
-	summary (std::cout);
+        summary (std::cout);
       }
-      
+
       //! Provide a summary of the object's internal parameters and status
       void summary (std::ostream &os);
 

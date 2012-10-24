@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <iomanip>
 #include <Config/RubyGems.h>
 
 /*!
@@ -82,9 +83,52 @@ int test_read_config (std::string const &filename)
   int status = 0;
   prometheus::config::RubyGems gems;
 
+  std::cout << "[1] Testing RubyGems::readConfig(std::string) ..." << std::endl;
   try {
     gems.readConfig(filename);
     gems.summary();
+  } catch (std::exception &e) {
+    std::cout << "ERROR : " << e.what() << std::endl;
+    ++status;
+  }
+
+  std::cout << "[2] Testing RubyGems::names() ..." << std::endl;
+  try {
+    // Get the names of the gems ...
+    std::set<std::string> names = gems.names();
+    // ... and print them
+    std::cout << "--> nof. gems = " << names.size() << std::endl;
+    std::cout << "--> Gem names = " << names        << std::endl;
+  } catch (std::exception &e) {
+    std::cout << "ERROR : " << e.what() << std::endl;
+    ++status;
+  }
+
+  std::cout << "[3] Testing RubyGems::versions() ..." << std::endl;
+  try {
+    std::map<std::string,std::string>::iterator it;
+    // Get the names of the gems ...
+    std::map<std::string,std::string> versions = gems.versions();
+    // ... and print them
+    std::cout << "--> nof. gems = " << versions.size() << std::endl;
+    for (it=versions.begin();it!=versions.end();++it) {
+      std::cout << std::setw(25) << it->first << "  :  " << it->second << std::endl;
+    }
+  } catch (std::exception &e) {
+    std::cout << "ERROR : " << e.what() << std::endl;
+    ++status;
+  }
+
+  std::cout << "[4] Testing RubyGems::urls() ..." << std::endl;
+  try {
+    std::map<std::string,std::string>::iterator it;
+    // Get the names of the gems ...
+    std::map<std::string,std::string> urls = gems.urls();
+    // ... and print them
+    std::cout << "--> nof. gems = " << urls.size() << std::endl;
+    for (it=urls.begin();it!=urls.end();++it) {
+      std::cout << std::setw(25) << it->first << "  :  " << it->second << std::endl;
+    }
   } catch (std::exception &e) {
     std::cout << "ERROR : " << e.what() << std::endl;
     ++status;

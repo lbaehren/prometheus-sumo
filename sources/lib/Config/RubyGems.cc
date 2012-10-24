@@ -52,16 +52,16 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       GemParameters buffer;
 
       try {
-	/* Extract parameters from node ... */
-	(*it)["name"]         >> buffer.name;
-	(*it)["url"]          >> buffer.url;
-	(*it)["description"]  >> buffer.description;
-	(*it)["version"]      >> buffer.version;
-	/* .. and store them internally */
-	itsGemList.push_back(buffer);
+        /* Extract parameters from node ... */
+        (*it)["name"]         >> buffer.name;
+        (*it)["url"]          >> buffer.url;
+        (*it)["description"]  >> buffer.description;
+        (*it)["version"]      >> buffer.version;
+        /* .. and store them internally */
+        itsGemList.push_back(buffer);
       } catch (std::exception &e) {
-	std::cout << "[RubyGems::storeNode] ERROR : " << e.what() << std::endl;
-	status = false;
+        std::cout << "[RubyGems::storeNode] ERROR : " << e.what() << std::endl;
+        status = false;
       }
 
       return status;
@@ -75,12 +75,44 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       std::set<std::string> gemNames;
 
       if (!itsGemList.empty()) {
-	for (size_t n=0; n<itsGemList.size(); ++n) {
-	  gemNames.insert(itsGemList[n].name);
-	}
+        for (size_t n=0; n<itsGemList.size(); ++n) {
+          gemNames.insert(itsGemList[n].name);
+        }
       }
 
       return gemNames;
+    }
+
+    //___________________________________________________________________________
+    //                                                                   versions
+
+    std::map<std::string,std::string> RubyGems::versions ()
+    {
+      std::map<std::string,std::string> gemVersions;
+
+      if (!itsGemList.empty()) {
+        for (size_t n=0; n<itsGemList.size(); ++n) {
+          gemVersions[itsGemList[n].name] = itsGemList[n].version;
+        }
+      }
+
+      return gemVersions;
+    }
+
+    //___________________________________________________________________________
+    //                                                                       urls
+
+    std::map<std::string,std::string> RubyGems::urls ()
+    {
+      std::map<std::string,std::string> gemURL;
+
+      if (!itsGemList.empty()) {
+        for (size_t n=0; n<itsGemList.size(); ++n) {
+          gemURL[itsGemList[n].name] = itsGemList[n].url;
+        }
+      }
+
+      return gemURL;
     }
 
     // ==========================================================================
