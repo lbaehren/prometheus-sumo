@@ -50,6 +50,10 @@ can be found:
     |-- packages                ...  Wrappers for installation of the various packages
     `-- sources                 ...  Source files
 
+Not included in this picture yet is the `release` directory (containing the standard set of
+sub-directories, such as `include`, `lib`, etc.), which is set as the default installation
+location.
+
 
 ## Configuration and build ##
 
