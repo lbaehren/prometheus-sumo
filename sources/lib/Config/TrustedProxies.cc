@@ -83,7 +83,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     {
       os << "[TrustedProxies] Summary of internal parameters" << std::endl;
       os << "-- Configuration file = " << itsConfigFile       << std::endl;
-      os << "-- nof. proxies       = " << itsProxies.size() << std::endl;
+      os << "-- nof. proxies       = " << itsProxies.size()   << std::endl;
     }
 
   }   // namespace config -- BEGIN

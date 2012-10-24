@@ -147,6 +147,7 @@ if (YAML_FOUND)
   foreach (test_yaml
       tEmitting.cc
       testConfigRubyGems.cc
+      testConfigTrustedProxies.cc
       testConfigUserRoles.cc
       testYamlReading.cc
       )
@@ -179,6 +180,12 @@ if (YAML_FOUND)
   else (config_roles_yml)
     add_test (testConfigUserRoles testConfigUserRoles)
   endif (config_roles_yml)
+
+  if (config_trusted_proxies_yml)
+    add_test (testConfigTrustedProxies testConfigTrustedProxies ${config_trusted_proxies_yml})
+  else (config_trusted_proxies_yml)
+    add_test (testConfigTrustedProxies testConfigTrustedProxies)
+  endif (config_trusted_proxies_yml)
 
 endif (YAML_FOUND)
 

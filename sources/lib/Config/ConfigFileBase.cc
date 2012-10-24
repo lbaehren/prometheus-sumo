@@ -63,6 +63,8 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       std::ifstream infile (filename.c_str());
 
       if (infile.is_open()) {
+	/* Book-keeping: store the filename */
+	itsConfigFile = filename;
         /* Set up the parser */
         YAML::Node node;
         YAML::Parser parser (infile);
