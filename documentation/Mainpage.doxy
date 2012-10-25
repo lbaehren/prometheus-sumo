@@ -59,6 +59,14 @@
       </td>
     </tr>
 
+    <tr valign="center">
+      <td width="25%"><b>Monitoring</b></td>
+      <td>
+        [icinga-web](https://nagios.rrz.uni-koeln.de/icinga-web) |
+        [VMware vSphere](https://vmfront.ef.uni-koeln.de)
+      </td>
+    </tr>
+
     <tr>
       <td width="25%">
         <b>Social Media</b> \subpage social_media "»"
