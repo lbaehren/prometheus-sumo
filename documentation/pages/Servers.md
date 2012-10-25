@@ -15,9 +15,9 @@ Servers    {#servers}
 
 \section server_machines Server names and hosted services
 
-| IP address      | Hostname                     | Hosted service                       |
-|-----------------|------------------------------|--------------------------------------|
-| 134.95.19.39    | www.prometheus-bildarchiv.de | \ref manual_image_archive            |
+| IP address      | Hostname                     | Hosted service             |
+|-----------------|------------------------------|----------------------------|
+| 134.95.19.39    | www.prometheus-bildarchiv.de | \ref image_archive         |
 | 134.95.80.11    | \ref servers_prom1 | Production system                    |
 | 134.95.80.12    | \ref servers_prom2 | Development system                   |
 | 134.95.80.13    | prometheus-test.uni-koeln.de | [pandora-devel](http://prometheus-test.uni-koeln.de/pandora-devel) |

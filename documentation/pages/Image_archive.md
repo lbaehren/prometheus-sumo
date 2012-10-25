@@ -1,18 +1,18 @@
 
-The Image Archive    {#manual_image_archive}
+The Image Archive    {#image_archive}
 =================
 
 \tableofcontents
 
-\section refman_image_archive_overview Overview
+\section image_archive_overview Overview
 
-  prometheus is an internet-based service ([www.prometheus-bildarchiv.de](http://www.prometheus-bildarchiv.de)) for artistic and cultural research comprising a publicy accessible area as well as an access restricted, fee-based one. The service is presented by the Association of the same name in cooperation with the University of Cologne. prometheus charges users a license fee which is solely used to make the service available.
+prometheus is an internet-based service ([www.prometheus-bildarchiv.de](http://www.prometheus-bildarchiv.de)) for artistic and cultural research comprising a publicy accessible area as well as an access restricted, fee-based one. The service is presented by the Association of the same name in cooperation with the University of Cologne. prometheus charges users a license fee which is solely used to make the service available.
 
-  The prometheus image archive is a data broker which brings together heterogeneous and distributed image and media databases from a variety of sources. These databases are made available at no cost by public as well as private institutions for non-commercial research and teaching purposes.
+The prometheus image archive is a data broker which brings together heterogeneous and distributed image and media databases from a variety of sources. These databases are made available at no cost by public as well as private institutions for non-commercial research and teaching purposes.
 
-  User license fees are for administration costs incurred by the University of Cologne in running and expanding the service, and are not based on copyright fees associated with the images and media files themselves.
+User license fees are for administration costs incurred by the University of Cologne in running and expanding the service, and are not based on copyright fees associated with the images and media files themselves.
 
-  \section refman_prom_tags Tags
+\section refman_prom_tags Tags
 
 <dl>
   <dt>Searching – Search in multiple image databases within one surface.</dt>
@@ -66,8 +66,12 @@ As of April 1, 2004, this association became the legal successor of the project 
 
 The registered office of prometheus is located at the Institute of Art History at the University of Cologne.
 
-  \section image_archive_references References
+\section image_archive_databases Databases
 
-  \li \subpage faq
-  \li \subpage publications
-  \li [heise Software-Verzeichnis: Webdienst: prometheus](http://www.heise.de/software/download/prometheus/55071)
+* \subpage db_arachne
+
+\section image_archive_references References
+
+\li \subpage faq
+\li \subpage publications
+\li [heise Software-Verzeichnis: Webdienst: prometheus](http://www.heise.de/software/download/prometheus/55071)

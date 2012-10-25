@@ -20,7 +20,7 @@ The format of the access log is highly configurable. The format is specified usi
 A typical configuration for the access log might look as follows.
 
     LogFormat "%h %l %u %t \"%r\" %>s %b" common
-    CustomLog logs/access_log common 
+    CustomLog logs/access_log common
 
 This defines the nickname common and associates it with a particular log format string. The format string consists of percent directives, each of which tell the server to log a particular piece of information. Literal characters may also be placed in the format string and will be copied directly into the log output. The quote character (") must be escaped by placing a back-slash before it to prevent it from being interpreted as the end of the format string. The format string may also contain the special control characters "\n" for new-line and "\t" for tab.
 
@@ -29,7 +29,7 @@ The CustomLog directive sets up a new log file using the defined nickname. The f
 The above configuration will write log entries in a format known as the Common Log Format (CLF). This standard format can be produced by many different web servers and read by many log analysis programs. The log file entries produced in CLF will look something like this:
 
 \code
-127.0.0.1 - frank [10/Oct/2000:13:55:36 -0700] "GET /apache_pb.gif HTTP/1.0" 200 2326 
+127.0.0.1 - frank [10/Oct/2000:13:55:36 -0700] "GET /apache_pb.gif HTTP/1.0" 200 2326
 \endcode
 
 Each part of this log entry is described below.
@@ -57,7 +57,7 @@ Each part of this log entry is described below.
     hour = 2*digit
     minute = 2*digit
     second = 2*digit
-    zone = (`+' | `-') 4*digit 
+    zone = (`+' | `-') 4*digit
   \endcode
   It is possible to have the time displayed in another format by specifying %{format}t in the log format string, where format is as in strftime(3) from the C standard library. 
 
@@ -79,7 +79,7 @@ Another commonly used format string is called the Combined Log Format. It can be
 
 \code
 LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\"" combined
-CustomLog log/acces_log combined 
+CustomLog log/acces_log combined
 \endcode
 
 This format is exactly the same as the Common Log Format, with the addition of two more fields. Each of the additional fields uses the percent-directive %{header}i, where header can be any HTTP request header. The access log under this format will look like:
@@ -104,10 +104,10 @@ The additional fields are:
 \code
 function processLine($line) {
     $matches = array();
- 
+
     // process the string. This regular expression was adapted from http://oreilly.com/catalog/perlwsmng/chapter/ch08.html
     preg_match('/^(\S+) (\S+) (\S+) \[([^:]+):(\d+:\d+:\d+) ([^\]]+)\] "(\S+) (.+?) (\S+)" (\S+) (\S+) "([^"]+)" "([^"]+)"$/', $line, $matches);
- 
+
     if (isset($matches[0])) {
         return array('fullString' => $matches[0],
                      'remoteHost' => $matches[1],

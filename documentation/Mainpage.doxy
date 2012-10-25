@@ -34,7 +34,7 @@
     <tr valign="center">
       <td width="25%"><b>Infrastructure</b></td>
       <td>
-        \subpage manual_image_archive |
+        \subpage image_archive |
         \subpage homepage |
         \subpage servers |
         \subpage virtual_machines
