@@ -38,7 +38,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       \class TrustedProxies
       \ingroup prometheus
       \ingroup config
-      \brief Configuration settings user roles inside the application
+      \brief Configuration settings for trusted proxies
       \test testConfigTrustedProxies.cc
 
       \author Lars Baehren

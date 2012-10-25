@@ -38,7 +38,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       \class UserRoles
       \ingroup prometheus
       \ingroup config
-      \brief Configuration settings user roles inside the application
+      \brief Configuration settings for user roles inside the application
       \test testConfigUserRoles.cc
 
       \author Lars Baehren
@@ -50,7 +50,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     */
     class UserRoles : public ConfigFileBase {
 
-    protected:
+    private:
 
       //! Parameters for a user role
       struct RoleParameters {
@@ -61,8 +61,6 @@ namespace prometheus {   // namespace prometheus -- BEGIN
 	//! ID used internally with the database
 	unsigned int id;
       };
-
-    private:
 
       //! List of gems for which parameters are kept
       std::vector<RoleParameters> itsRolesList;

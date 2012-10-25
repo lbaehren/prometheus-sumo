@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef CONFIG_RUBY_GEMS_H
-#define CONFIG_RUBY_GEMS_H
+#ifndef CONFIG_GEMS_H
+#define CONFIG_GEMS_H
 
 #include "ConfigFileBase.h"
 
@@ -34,12 +34,12 @@ namespace prometheus {   // namespace prometheus -- BEGIN
   namespace config {   // namespace config -- BEGIN
 
     /*!
-      \file RubyGems.h
-      \class RubyGems
+      \file Gems.h
+      \class Gems
       \ingroup prometheus
       \ingroup config
       \brief Configuration settings for required Ruby gems
-      \test testConfigRubyGems.cc
+      \test testConfigGems.cc
 
       \author Lars Baehren
       \date 2012-10-22
@@ -48,9 +48,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       required Ruby gems, most of which are used for the \ref pandora web
       application and \ref homepage.
     */
-    class RubyGems : public ConfigFileBase {
-
-    protected:
+    class Gems : public ConfigFileBase {
 
       //! Parameters for the 'gem' node of the configuration file
       struct GemParameters {
@@ -64,8 +62,6 @@ namespace prometheus {   // namespace prometheus -- BEGIN
         std::string version;
       };
 
-    private:
-
       //! List of gems for which parameters are kept
       std::vector<GemParameters> itsGemList;
 
@@ -77,10 +73,10 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       // === Construction =======================================================
 
       //! Default constructor
-      RubyGems ();
+      Gems ();
 
       //! Argumented constructor
-      RubyGems (std::string const &filename);
+      Gems (std::string const &filename);
 
       // === Parameter access ===================================================
 

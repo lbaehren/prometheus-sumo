@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "RubyGems.h"
+#include "Gems.h"
 
 namespace prometheus {   // namespace prometheus -- BEGIN
 
@@ -30,12 +30,12 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     //
     // ==========================================================================
 
-    RubyGems::RubyGems ()
+    Gems::Gems ()
       : ConfigFileBase ()
     {
     }
 
-    RubyGems::RubyGems (std::string const &filename)
+    Gems::Gems (std::string const &filename)
       : ConfigFileBase (filename)
     {
     }
@@ -46,7 +46,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     //
     // ==========================================================================
 
-    bool RubyGems::storeNode (YAML::Iterator const &it)
+    bool Gems::storeNode (YAML::Iterator const &it)
     {
       bool status = true;
       GemParameters buffer;
@@ -60,7 +60,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
         /* .. and store them internally */
         itsGemList.push_back(buffer);
       } catch (std::exception &e) {
-        std::cout << "[RubyGems::storeNode] ERROR : " << e.what() << std::endl;
+        std::cout << "[Gems::storeNode] ERROR : " << e.what() << std::endl;
         status = false;
       }
 
@@ -70,7 +70,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     //___________________________________________________________________________
     //                                                                      names
 
-    std::set<std::string> RubyGems::names ()
+    std::set<std::string> Gems::names ()
     {
       std::set<std::string> gemNames;
 
@@ -86,7 +86,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     //___________________________________________________________________________
     //                                                                   versions
 
-    std::map<std::string,std::string> RubyGems::versions ()
+    std::map<std::string,std::string> Gems::versions ()
     {
       std::map<std::string,std::string> gemVersions;
 
@@ -102,7 +102,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     //___________________________________________________________________________
     //                                                                       urls
 
-    std::map<std::string,std::string> RubyGems::urls ()
+    std::map<std::string,std::string> Gems::urls ()
     {
       std::map<std::string,std::string> gemURL;
 
@@ -127,9 +127,9 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     /*!
       \param os -- Output stream to which the summary will be written.
     */
-    void RubyGems::summary (std::ostream &os)
+    void Gems::summary (std::ostream &os)
     {
-      os << "[RubyGems] Summary of internal parameters"     << std::endl;
+      os << "[Gems] Summary of internal parameters"     << std::endl;
       os << "-- Configuration file = " << itsConfigFile     << std::endl;
       os << "-- nof. gem settings  = " << itsGemList.size() << std::endl;
       os << "-- Gem names          = " << names()           << std::endl;

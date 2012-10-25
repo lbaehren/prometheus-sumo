@@ -19,13 +19,13 @@
  ***************************************************************************/
 
 #include <iomanip>
-#include <Config/RubyGems.h>
+#include <Config/Gems.h>
 
 /*!
-  \file testConfigRubyGems.cc
+  \file testConfigGems.cc
   \ingroup prometheus
   \ingroup tests
-  \brief A collection of tests for the prometheus::config::RubyGems class
+  \brief A collection of tests for the prometheus::config::Gems class
   \author Lars Baehren
 */
 
@@ -41,13 +41,13 @@
 */
 int test_constructors (std::string const &filename="ruby_gems.yml")
 {
-  std::cout << "\n[testRubyGems::test_constructors]\n" << std::endl;
+  std::cout << "\n[testGems::test_constructors]\n" << std::endl;
 
   int status = 0;
 
-  std::cout << "[1] Testing RubyGems() ..." << std::endl;
+  std::cout << "[1] Testing Gems() ..." << std::endl;
   try {
-    prometheus::config::RubyGems gems;
+    prometheus::config::Gems gems;
     //
     std::cout << "--> Config file = " << gems.configFile() << std::endl;
     std::cout << "--> nof. gems   = " << gems.nofGems()    << std::endl;
@@ -56,9 +56,9 @@ int test_constructors (std::string const &filename="ruby_gems.yml")
     ++status;
   }
 
-  std::cout << "[2] Testing RubyGems(std::string) ..." << std::endl;
+  std::cout << "[2] Testing Gems(std::string) ..." << std::endl;
   try {
-    prometheus::config::RubyGems gems (filename);
+    prometheus::config::Gems gems (filename);
     //
     std::cout << "--> Config file = " << gems.configFile() << std::endl;
     std::cout << "--> nof. gems   = " << gems.nofGems()    << std::endl;
@@ -78,12 +78,12 @@ int test_constructors (std::string const &filename="ruby_gems.yml")
 */
 int test_read_config (std::string const &filename)
 {
-  std::cout << "\n[testRubyGems::test_read_config]\n" << std::endl;
+  std::cout << "\n[testGems::test_read_config]\n" << std::endl;
 
   int status = 0;
-  prometheus::config::RubyGems gems;
+  prometheus::config::Gems gems;
 
-  std::cout << "[1] Testing RubyGems::readConfig(std::string) ..." << std::endl;
+  std::cout << "[1] Testing Gems::readConfig(std::string) ..." << std::endl;
   try {
     gems.readConfig(filename);
     gems.summary();
@@ -92,7 +92,7 @@ int test_read_config (std::string const &filename)
     ++status;
   }
 
-  std::cout << "[2] Testing RubyGems::names() ..." << std::endl;
+  std::cout << "[2] Testing Gems::names() ..." << std::endl;
   try {
     // Get the names of the gems ...
     std::set<std::string> names = gems.names();
@@ -104,7 +104,7 @@ int test_read_config (std::string const &filename)
     ++status;
   }
 
-  std::cout << "[3] Testing RubyGems::versions() ..." << std::endl;
+  std::cout << "[3] Testing Gems::versions() ..." << std::endl;
   try {
     std::map<std::string,std::string>::iterator it;
     // Get the names of the gems ...
@@ -119,7 +119,7 @@ int test_read_config (std::string const &filename)
     ++status;
   }
 
-  std::cout << "[4] Testing RubyGems::urls() ..." << std::endl;
+  std::cout << "[4] Testing Gems::urls() ..." << std::endl;
   try {
     std::map<std::string,std::string>::iterator it;
     // Get the names of the gems ...
