@@ -16,12 +16,18 @@
     <dt>Ferret</dt>
       <dd>\subpage ferret is a Ruby port of the Java Lucene search engine. In the same way as Lucene, it is not a standalone application, but a library you can use to index documents and search for things in them later.</dd>
 
+    <dt>Icinga</dt>
+      <dd>\subpage icinga is an enterprise grade open source monitoring system which keeps watch over networks and any conceivable network resource, notifies the user of errors and recoveries and generates performance data for reporting. Scalable and extensible, Icinga can monitor complex, large environments across dispersed locations.</dd>
+
     <dt>Jekyll</dt>
       <dd>[Jekyll](http://jekyllrb.com) is a simple, blog aware, static site generator. It takes a template directory (representing the raw form of a website), runs it through Textile or Markdown and Liquid converters, and spits out a complete, static website suitable for serving with Apache or your favorite web server. This is also the engine behind GitHub Pages, which you can use to host your project’s page or blog right here from GitHub.</dd>
 
     <dt>MySQL</dt>
       <dd>\subpage mysql is the world's most popular open source database software, with over
   100 million copies of its software downloaded or distributed throughout it's history. With its superior speed, reliability, and ease of use, MySQL has become the preferred choice for Web, Web 2.0, SaaS, ISV, Telecom companies and forward-thinking corporate IT Managers because it eliminates the major problems associated with downtime, maintenance and administration for modern, online applications.<br>MySQL is a key part of LAMP (Linux, Apache, MySQL, PHP / Perl / Python), the fast-growing open source enterprise software stack. More and more companies are using LAMP as an alternative to expensive proprietary software stacks because of its lower cost and freedom from platform lock-in.</dd>
+
+    <dt>Nagios</dt>
+      <dd>\subpage nagios is an open source computer system monitor, network monitoring and infrastructure monitoring software application. Nagios offers monitoring and alerting for servers, switches, applications, and services. It watches hosts and services. It alerts users when things go wrong and alerts them again when those wrong things get better/resolved.</dd>
 
     <dt>pwsafe</dt>
       <dd>\subpage pwsafe is a unix commandline program that manages encrypted password databases.</dd>
