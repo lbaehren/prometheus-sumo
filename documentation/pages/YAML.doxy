@@ -14,9 +14,9 @@
   high-level languages: list, associative array, and scalar. Its familiar indented
   outline and lean appearance make it especially suited for tasks where humans are likely to view or edit data structures, such as configuration files, dumping during debugging, and document headers (e.g. the headers found on most e-mails are very close to YAML). Although well-suited for hierarchical data representation, it also has a compact syntax for relational data as well. Its line and whitespace delimiters make it friendly to ad hoc grep/Python/Perl/Ruby operations. A major part of its accessibility comes from eschewing the use of enclosures like quotation marks, brackets, braces, and open/close-tags which can be hard for the human eye to balance in nested hierarchies.
 
-  \test
-  TestYamlReading.cc
-  tEmitting.cc
+  \test prometheus::config::ConfigFileBase
+  \test TestYamlReading.cc
+  \test tEmitting.cc
 
   \section yaml_comparison Comparison to other data structure format languages
 
@@ -500,7 +500,28 @@ One thing to be keep in mind: reading a map by key (as immediately above) requir
     }
   \endcode
 
+  \subsubsection yaml_cpp_parsing_map Iterate through a map
 
+  Here is some additional help for iterating through the data structure: for a
+  data structure such as
+
+  \code
+  characterType :
+   type1 :
+    attribute1 : something
+    attribute2 : something
+   type2 :
+    attribute1 : something
+    attribute2 : something
+  \endcode
+  the following code construct may be valid:
+  \code
+  YAML::Node characterType = node["characterType"];
+  for(YAML::const_iterator it=characterType.begin();it != characterType.end();++it) {
+     std::string key = it->first.as<std::string>();       // <- key
+     cTypeList.push_back(it->second.as<CharacterType>()); // <- value
+  }
+  \endcode
 
   \section refman_yaml_ruby Using YAML with Ruby
 
@@ -520,5 +541,6 @@ One thing to be keep in mind: reading a map by key (as immediately above) requir
   \li [yaml-cpp](http://code.google.com/p/yaml-cpp) - a YAML parser and emitter in C++ matching the YAML 1.2 spec.
   \li [Mirror of the official yaml-cpp Google code repository](https://github.com/nebirhos/yaml-cpp)
   \li [YAML component from the BOOST vault serialization library](https://github.com/boost-vault/serialization)
+  \li [Iterate through a map with undefined values](http://stackoverflow.com/questions/12374691/yaml-cpp-easiest-way-to-iterate-through-a-map-with-undefined-values)
 
 */
