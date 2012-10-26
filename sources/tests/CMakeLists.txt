@@ -146,10 +146,6 @@ if (YAML_FOUND)
 
   foreach (test_yaml
       tEmitting.cc
-      testConfigGems.cc
-      testConfigInstitution.cc
-      testConfigTrustedProxies.cc
-      testConfigUserRoles.cc
       testYamlReading.cc
       )
 
@@ -169,30 +165,6 @@ if (YAML_FOUND)
 
   add_test (tEmitting tEmitting)
   add_test (TestYamlReading TestYamlReading ${PROJECT_SOURCE_DIR}/data/tests)
-
-  if (config_gems_yml)
-    add_test (testConfigGems testConfigGems ${config_gems_yml})
-  else (config_gems_yml)
-    add_test (testConfigGems testConfigGems)
-  endif (config_gems_yml)
-
-  if (config_institution_yml)
-    add_test (testConfigInstitution testConfigInstitution ${config_institution_yml})
-  else (config_institution_yml)
-    add_test (testConfigInstitution testConfigInstitution)
-  endif (config_institution_yml)
-
-  if (config_roles_yml)
-    add_test (testConfigUserRoles testConfigUserRoles ${config_roles_yml})
-  else (config_roles_yml)
-    add_test (testConfigUserRoles testConfigUserRoles)
-  endif (config_roles_yml)
-
-  if (config_trusted_proxies_yml)
-    add_test (testConfigTrustedProxies testConfigTrustedProxies ${config_trusted_proxies_yml})
-  else (config_trusted_proxies_yml)
-    add_test (testConfigTrustedProxies testConfigTrustedProxies)
-  endif (config_trusted_proxies_yml)
 
 endif (YAML_FOUND)
 
@@ -225,3 +197,7 @@ if (YAZPP_FOUND)
 endif (YAZPP_FOUND)
 
 message (STATUS "Processing directory source/tests - done")
+
+## === Project sub-directories ==================================================
+
+add_subdirectory (Config)

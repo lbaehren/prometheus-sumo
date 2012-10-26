@@ -1,0 +1,43 @@
+---
+:columns_for:
+  :list:
+    - login
+    - email
+    - institution.name
+    - created_at
+    - updated_at
+  :search:
+    - login
+    - email
+    - firstname
+    - lastname
+    - institution
+    - roles
+    - notes
+  :display_exclude:
+    - crypted_password
+    - salt
+    - sha1_salt
+    - remember_token
+    - remember_token_expires_at
+    - status
+    - mode
+  :user:
+    - login
+    - email
+    - firstname
+    - lastname
+    - title
+    - addressline
+    - postalcode
+    - city
+    - country
+    - password
+    - password_confirmation
+    - newsletter
+    - about
+  :useradmin:  # additional to :user
+    - local_identifier
+    - institution
+    - expires_in
+    - notes

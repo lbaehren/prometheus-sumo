@@ -2,26 +2,21 @@
 ##  Configuration files
 ##
 
-find_file (config_gems_yml
-  NAMES gems.yml
-  PATHS ${PROJECT_SOURCE_DIR}
-  PATH_SUFFIXES config
-  )
+file (GLOB config_yaml *.yml)
 
-find_file (config_institution_yml
-  NAMES institution.yml
-  PATHS ${PROJECT_SOURCE_DIR}
-  PATH_SUFFIXES config
-)
+foreach (_file ${config_yaml})
 
-find_file (config_roles_yml
-  NAMES roles.yml
-  PATHS ${PROJECT_SOURCE_DIR}
-  PATH_SUFFIXES config
-  )
+  ## Disect the filename ...
+  get_filename_component (_path      ${_file} PATH)
+  get_filename_component (_name      ${_file} NAME)
+  get_filename_component (_filename  ${_file} NAME_WE)
+  ## ... to define cache variable
+  set (_fileVar "config_${_filename}_yml")
+  ## Store path to configuration file in cache variable
+  find_file (${_fileVar}
+    NAMES ${_name}
+    PATHS ${PROJECT_SOURCE_DIR}
+    PATH_SUFFIXES config
+    )
 
-find_file (config_trusted_proxies_yml
-  NAMES trusted_proxies.yml
-  PATHS ${PROJECT_SOURCE_DIR}
-  PATH_SUFFIXES config
-  )
+endforeach (_file)
