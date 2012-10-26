@@ -284,11 +284,11 @@ out << YAML::EndSeq;
 
 produces
 
-\verbatim
+~~~~
 - eggs
 - bread
 - milk
-\endverbatim
+~~~~
 
 A simple map:
 
@@ -304,10 +304,10 @@ out << YAML::EndMap;
 
 produces
 
-\verbatim
+~~~~
 name: Ryan Braun
 position: LF
-\endverbatim
+~~~~
 
 These elements can, of course, be nested:
 
@@ -321,26 +321,26 @@ out << YAML::Value << YAML::BeginSeq << "Sasha" << "Malia" << YAML::EndSeq;
 out << YAML::EndMap;
 \endcode
 
-  produces
+produces
 
-  \verbatim
-  name: Barack Obama
-  children:
-    - Sasha
-    - Malia
-  \endverbatim
+~~~~
+name: Barack Obama
+children:
+  - Sasha
+  - Malia
+~~~~
 
-  \subsection yaml_cpp_parsing Parsing a document
+\subsection yaml_cpp_parsing Parsing a document
 
-  Here's a complete example of how to parse a complex YAML file (``monsters.yaml``):
+Here's a complete example of how to parse a complex YAML file (``monsters.yaml``):
 
-  \include monsters.yaml
+\include monsters.yaml
 
-  \subsubsection yaml_cpp_parsing_basic Basic parsing
+\subsubsection yaml_cpp_parsing_basic Basic parsing
 
-  The parser accepts streams, not file names, so you need to first load the file.
-  Since a YAML file can contain many documents, you can grab them one-by-one. A
-  simple way to parse a YAML file might be:
+The parser accepts streams, not file names, so you need to first load the file.
+Since a YAML file can contain many documents, you can grab them one-by-one. A
+simple way to parse a YAML file might be:
 
   \code
   #include <fstream>
@@ -360,16 +360,16 @@ out << YAML::EndMap;
   }
   \endcode
 
-  \subsubsection yaml_cpp_reading Reading From the Document
+\subsubsection yaml_cpp_reading Reading From the Document
 
 Suppose we have a document consisting only of a scalar. We can read that scalar like this:
 
-  \code
-    YAML::Node doc;    // let's say we've already parsed this document
-    std::string scalar;
-    doc >> scalar;
-    std::cout << "That scalar was: " << scalar << std::endl;
-  \endcode
+\code
+  YAML::Node doc;    // let's say we've already parsed this document
+  std::string scalar;
+  doc >> scalar;
+  std::cout << "That scalar was: " << scalar << std::endl;
+\endcode
 
 How about sequences? Let's say our document now consists only of a sequences of scalars. We can use an iterator:
 
@@ -384,39 +384,39 @@ How about sequences? Let's say our document now consists only of a sequences of 
 
 ... or we can just loop through:
 
-  \code
-    YAML::Node doc;    // already parsed
-    for(unsigned i=0;i<doc.size();i++) {
-        std::string scalar;
-        doc[i] >> scalar;
-        std::cout << "Found scalar: " << scalar << std::endl;
-    }
-  \endcode
+\code
+  YAML::Node doc;    // already parsed
+  for(unsigned i=0;i<doc.size();i++) {
+      std::string scalar;
+      doc[i] >> scalar;
+      std::cout << "Found scalar: " << scalar << std::endl;
+  }
+\endcode
 
 And finally maps. For now, let's say our document is a map with all keys/values being scalars. Again, we can iterate:
 
-  \code
-  YAML::Node doc;    // already parsed
-  for(YAML::Iterator it=doc.begin();it!=doc.end();++it) {
-      std::string key, value;
-      it.first() >> key;
-      it.second() >> value;
-      std::cout << "Key: " << key << ", value: " << value << std::endl;
-  }
-  \endcode
+\code
+YAML::Node doc;    // already parsed
+for(YAML::Iterator it=doc.begin();it!=doc.end();++it) {
+    std::string key, value;
+    it.first() >> key;
+    it.second() >> value;
+    std::cout << "Key: " << key << ", value: " << value << std::endl;
+}
+\endcode
 
 Note that dereferencing a map iterator is undefined; instead, use the first and second methods to get the key and value nodes, respectively.
 
 Alternatively, we can pick off the values one-by-one, if we know the keys:
 
-  \code
-  YAML::Node doc;    // already parsed
-  std::string name;
-  doc["name"] >> name;
-  int age;
-  doc["age"] >> age;
-  std::cout << "Found entry with name '" << name << "' and age '" << age << "'\n";
-  \endcode
+\code
+YAML::Node doc;    // already parsed
+std::string name;
+doc["name"] >> name;
+int age;
+doc["age"] >> age;
+std::cout << "Found entry with name '" << name << "' and age '" << age << "'\n";
+\endcode
 
 One thing to be keep in mind: reading a map by key (as immediately above) requires looping through all entries until we find the right key, which is an O(n) operation. So if you're reading the entire map this way, it'll be O(n^2). For small n, this isn't a big deal, but I wouldn't recommend reading maps with a very large number of entries (>100, say) this way.
 
@@ -431,7 +431,7 @@ The following code will parse the example file ``monsters.yaml`` listed above:
 Here is some additional help for iterating through the data structure: for a
 data structure such as
 
-\code
+~~~~
 characterType :
  type1 :
   attribute1 : something
@@ -439,7 +439,7 @@ characterType :
  type2 :
   attribute1 : something
   attribute2 : something
-\endcode
+~~~~
 
 the following code construct may be valid:
 
@@ -453,7 +453,23 @@ for(YAML::const_iterator it=characterType.begin();it != characterType.end();++it
 
 \section yaml_ruby Using YAML with Ruby
 
+ A simple round-trip (load and dump) of an object.
 
+\code
+require "yaml"
+
+test_obj = ["dogs", "cats", "badgers"]
+
+yaml_obj = YAML::dump( test_obj )
+                    # -> ---
+                         - dogs
+                         - cats
+                         - badgers
+ruby_obj = YAML::load( yaml_obj )
+                    # => ["dogs", "cats", "badgers"]
+ruby_obj == test_obj
+                    # => true
+\endcode
 
 \section yaml_references References & Software packages
 
@@ -470,3 +486,4 @@ of programming languages:
 * [Mirror of the official yaml-cpp Google code repository](https://github.com/nebirhos/yaml-cpp)
 * [YAML component from the BOOST vault serialization library](https://github.com/boost-vault/serialization)
 * [Iterate through a map with undefined values](http://stackoverflow.com/questions/12374691/yaml-cpp-easiest-way-to-iterate-through-a-map-with-undefined-values)
+* [Yaml Cookbook for Ruby](http://www.yaml.org/YAML_for_ruby.html)

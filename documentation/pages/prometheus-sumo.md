@@ -3,9 +3,6 @@ prometheus-sumo    {#prometheus-sumo}
 
 \tableofcontents
 
-
-\section sumo_about About
-
 [prometheus-sumo](https://github.com/lbaehren/prometheus-sumo) is a simple
 (almost) virtual package, to ease the retrieval of the various components in
 the software stack for "prometheus - The Distributed Digital Image Archive for
@@ -16,10 +13,13 @@ Research and Studies".
 
 External dependencies are kept to a minimum for this package:
 
-| Package | Version   | Website              |
-|---------|-----------|----------------------|
-| Git     | >= 1.7    | http://git-scm.com   |
-| CMake   | >= 2.8.3  | http://www.cmake.org |
+| Package                           | Version   | Relevance | Notes     |
+|-----------------------------------|-----------|-----------|-----------|
+| [Git](http://git-scm.com)         | >= 1.7    | mandatory |           |
+| [CMake](http://www.cmake.org)     | >= 2.8.3  | mandatory |           |
+| [Doxygen](http://www.doxygen.org) | >  1.7    | optional  | Documentation generation  |
+| [yaml-cpp](http://code.google.com/p/yaml-cpp) |    | optional | \ref yaml parsing |
+| [Boost](http://www.boost.org)     | >  1.40   | optional  | \ref xml  and logfile parsing |
 
 Further dependencies, as required when developing the prometheus software
 packages, are handled as part of this tool.
@@ -59,9 +59,7 @@ The source for _prometheus-sumo_ is hosted on Github at;
 options to retrieve a working copy of the code. In the simplest case, were you
 need a read-only copy, simply run
 
-~~~~
-git clone git://github.com/lbaehren/prometheus-sumo.git
-~~~~
+    git clone git://github.com/lbaehren/prometheus-sumo.git
 
 in order to to clone into a local working copy.
 
@@ -76,11 +74,9 @@ above. In order to now configure and build the project "out of source" - hence
 keeping your options open to cleanly remove intermediate/temporary files - create
 a separate *build* directory from within to continue:
 
-~~~~
-mkdir build
-cd build
-cmake ..
-~~~~
+    mkdir build
+    cd build
+    cmake ..
 
 \subsection sumo_build_options Configuration options
 
@@ -88,9 +84,7 @@ The behaviour and processing can - to a certain degree - be controlled when
 running _CMake_ to configure the project; the list below
 shows the available options which can be passed along through the
 
-~~~~
--D<Option>=<Value>
-~~~~
+    -D<Option>=<Value>
 
 syntax from the command line. At the moment the following options are available
 (default values in parenthesis):
@@ -109,29 +103,6 @@ prefix:
 
 \section sumo_functionality Functionality
 
-\subsection sumo_functionality_repositories Fetching repository working copies
-
-As the various components and sub-packages for the prometheus image archive software
-are spread across a number of code repositories \ref prometheus-sumo provides a
-mechanism to easily obtain a working copy for all of them:
-
-~~~~
-make FetchRepositories
-~~~~
-
-\subsection sumo_functionality_vm Fetching virtual machine images
-
-Part of the \ref infrastructure to aid in the testing across multiple platforms
-is a set of \ref virtual_machines which can be loaded as appliances directly into
-[VirtualBox](https://www.virtualbox.org); in order to retrieve the most recent
-disk images use the command
-
-~~~~
-make FetchVirtualMachines
-~~~~
-
-which will download the imags into ``data/vm``
-
 \subsection sumo_functionality_documentation Documentation
 
 An extended set of documentation pages can be generated using the [Doxygen](http://www.doxygen.org)
@@ -149,7 +120,20 @@ from within the build directory. The generated pages/documents will can be found
                     ├── html
                     └── xml
 
-\subsection sumo_functionality_external Installation of external packages
+\subsection sumo_functionality_library C++ library
+
+In order to establish an infrastructure able to life outside the framework of the
+\ref pandora web application, some common basic functionality is impemented in
+the form of a C++ library.
+
+    sources/lib/
+    ├── Config           ...  Interface to configuration files
+    ├── Sources
+    └── Statistics       ...  Generation and analysis of statistical information
+
+\subsection sumo_functionality_external Dealing with external resources
+
+\subsubsection sumo_functionality_external_packages Installation of external packages
 
 As the prometheus digital image archive software depends on a number of
 \ref third_party - libraries and tools - a path is required to resolve
@@ -170,3 +154,21 @@ make InstallPackages
 make InstallGems
 ~~~~
 
+\subsubsection sumo_functionality_repositories Repository working copies
+
+As the various components and sub-packages for the prometheus image archive software
+are spread across a number of code repositories \ref prometheus-sumo provides a
+mechanism to easily obtain a working copy for all of them:
+
+    make FetchRepositories
+
+\subsubsection sumo_functionality_vm Virtual machine images
+
+Part of the \ref infrastructure to aid in the testing across multiple platforms
+is a set of \ref virtual_machines which can be loaded as appliances directly into
+[VirtualBox](https://www.virtualbox.org); in order to retrieve the most recent
+disk images use the command
+
+    make FetchVirtualMachines
+
+which will download the imags into ``data/vm``

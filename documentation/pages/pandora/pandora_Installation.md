@@ -43,9 +43,9 @@ sudo invoke-rc.d apache2 restart
 
 \subsection pandora_install_gems Installation of Ruby Gems
 
-A list of the required Ruby gems is maintained in `./config/ruby_gems.yml`:
+A list of the required Ruby gems is maintained in `./config/gems.yml`:
 
-\include ruby_gems.yml
+\include gems.yml
 
 Notes:
 
