@@ -138,8 +138,8 @@ the form of a C++ library.
 As the prometheus digital image archive software depends on a number of
 \ref third_party - libraries and tools - a path is required to resolve
 the resulting dependencies; some of these can be taken care of by the system's
-package manager (e.g. \c apt-get on [Debian](http://www.debian.org) and
-[Ubuntu](http://www.ubuntu.com) or \c yum on [Fedora](http://www.fedoraproject.org))
+package manager (e.g. `apt-get` on [Debian](http://www.debian.org) and
+[Ubuntu](http://www.ubuntu.com) or `yum` on [Fedora](http://www.fedoraproject.org))
 -- however depending on the platform the proper list of packages needs to be
 provided. In order to simplify this process \ref prometheus-sumo provides build
 targets to handle the resolution of external dependencies.
