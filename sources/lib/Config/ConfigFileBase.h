@@ -37,12 +37,12 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       \class ConfigFileBase
       \ingroup prometheus
       \ingroup config
-      \brief Base class for dealing with (\ref refman_yaml) cnofiguration files
+      \brief Base class for dealing with (\ref yaml) cnofiguration files
       \author Lars Baehren
       \date 2012-10-22
 
       This class defines the basic interface for accessing configuration settings
-      stored in (primarily) a \ref refman_yaml data file. The main functions offered are:
+      stored in (primarily) a \ref yaml data file. The main functions offered are:
 
       \li ConfigFileBase::readConfig - This handles the basic I/O on the input
       data file, such as opening an input file-stream and initializing the parser.

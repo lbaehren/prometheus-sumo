@@ -27,7 +27,7 @@
 
 /*!
   \file TestYamlReading.cc
-  \brief Test reading in configuration data from \ref refman_yaml files
+  \brief Test reading in configuration data from \ref yaml files
   \author Lars Baehren
 */
 

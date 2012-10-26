@@ -39,7 +39,7 @@
       <dd>\subpage xml (Extensible Markup Language) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable. It is defined in the XML 1.0 Specification produced by the W3C, and several other related specifications, all gratis open standards.</dd>
 
     <dt>YAML</dt>
-      <dd>\subpage refman_yaml is a human-readable data serialization format
+      <dd>\subpage yaml is a human-readable data serialization format
       that takes concepts from programming languages such as C, Perl, and Python,
       and ideas from XML and the data format of electronic mail (RFC 2822).</dd>
 
