@@ -8,6 +8,12 @@ find_file (config_gems_yml
   PATH_SUFFIXES config
   )
 
+find_file (config_institution_yml
+  NAMES institution.yml
+  PATHS ${PROJECT_SOURCE_DIR}
+  PATH_SUFFIXES config
+)
+
 find_file (config_roles_yml
   NAMES roles.yml
   PATHS ${PROJECT_SOURCE_DIR}
@@ -19,4 +25,3 @@ find_file (config_trusted_proxies_yml
   PATHS ${PROJECT_SOURCE_DIR}
   PATH_SUFFIXES config
   )
-

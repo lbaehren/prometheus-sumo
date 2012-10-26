@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef CONFIG_USER_ROLES_H
-#define CONFIG_USER_ROLES_H
+#ifndef CONFIG_INSTITUTION_H
+#define CONFIG_INSTITUTION_H
 
 #include "ConfigFileBase.h"
 
@@ -28,36 +28,24 @@ namespace prometheus {   // namespace prometheus -- BEGIN
   namespace config {   // namespace config -- BEGIN
 
     /*!
-      \file UserRoles.h
-      \class UserRoles
+      \file Institution.h
+      \class Institution
       \ingroup prometheus
       \ingroup config
-      \brief Configuration settings for user roles inside the application
-      \test testConfigUserRoles.cc
-
+      \brief Configuration settings for an institution
+      \test testConfigInstitution.cc
       \author Lars Baehren
-      \date 2012-10-22
+      \date 2012-10-25
 
-      This class provides an adapter to read configuration data on the user
-      roles within the web application:
-      \include roles.yml
+      This class provides an adapter to read configuration data for an institution
+      inside the \ref pandora web application.
+      \include institution.yml
+
     */
-    class UserRoles : public ConfigFileBase {
+    class Institution : public ConfigFileBase {
 
-    private:
-
-      //! Parameters for a user role
-      struct RoleParameters {
-	//! Keyword used for referencing
-	std::string key;
-	//! Title for the role
-	std::string title;
-	//! ID used internally with the database
-	unsigned int id;
-      };
-
-      //! List of gems for which parameters are kept
-      std::vector<RoleParameters> itsRolesList;
+      //! Parameters available for list display, search and user
+      std::map<std::string, std::vector<std::string> > itsColumns;
 
       //! Store the data from an individual node
       bool storeNode (YAML::Iterator const &it);
@@ -67,31 +55,28 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       // === Construction =======================================================
 
       //! Default constructor
-      UserRoles ();
+      Institution ();
 
       //! Argumented constructor
-      UserRoles (std::string const &filename);
+      Institution (std::string const &filename);
 
       // === Parameter access ===================================================
 
-      //! Get the number of gems for which parameters are kept
-      inline size_t nofRoles () {
-	return itsRolesList.size();
+      //! Get the number of parameter columns
+      inline size_t nofColumns () {
+        return itsColumns.size();
       }
-      
-      //! Get a list of the role keys
-      std::set<std::string> keys ();
 
-      //! Get a list of the role titles
-      std::set<std::string> titles ();
+      //! Get the names of the paramer columns
+      std::set<std::string> columnNames ();
 
       // === Public functions ===================================================
 
       //! Provide a summary of the object's internal parameters and status
       inline void summary () {
-	summary (std::cout);
+        summary (std::cout);
       }
-      
+
       //! Provide a summary of the object's internal parameters and status
       void summary (std::ostream &os);
 

@@ -23,12 +23,6 @@
 
 #include "ConfigFileBase.h"
 
-// ==============================================================================
-//
-//  Class definition
-//
-// ==============================================================================
-
 namespace prometheus {   // namespace prometheus -- BEGIN
 
   namespace config {   // namespace config -- BEGIN

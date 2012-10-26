@@ -1,0 +1,23 @@
+---
+:columns_for:
+  :list:
+    - name
+    - title
+    - city
+    - country
+    - licenses.license_type_id
+  :search:
+    - name
+    - title
+    - description
+    - city
+  :user:
+    - title
+    - description
+    - addressline
+    - postalcode
+    - city
+    - country
+    - email
+    - homepage
+    - public_info

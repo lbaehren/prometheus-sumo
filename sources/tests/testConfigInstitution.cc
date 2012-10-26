@@ -19,13 +19,13 @@
  ***************************************************************************/
 
 #include <iomanip>
-#include <Config/Gems.h>
+#include <Config/Institution.h>
 
 /*!
-  \file testConfigGems.cc
+  \file testConfigInstitution.cc
   \ingroup prometheus
   \ingroup tests
-  \brief A collection of tests for the prometheus::config::Gems class
+  \brief A collection of tests for the prometheus::config::Institution class
   \author Lars Baehren
 */
 
@@ -39,29 +39,23 @@
   \param filename -- Name of the configuration file.
   \return status  -- Returns non-zero value in case an error was encountered.
 */
-int test_constructors (std::string const &filename="ruby_gems.yml")
+int test_constructors (std::string const &filename="institution.yml")
 {
-  std::cout << "\n[testGems::test_constructors]\n" << std::endl;
+  std::cout << "\n[testInstitution::test_constructors]\n" << std::endl;
 
   int status = 0;
 
-  std::cout << "[1] Testing Gems() ..." << std::endl;
+  std::cout << "[1] Testing Institution() ..." << std::endl;
   try {
-    prometheus::config::Gems gems;
-    //
-    std::cout << "--> Config file = " << gems.configFile() << std::endl;
-    std::cout << "--> nof. gems   = " << gems.nofGems()    << std::endl;
+    prometheus::config::Institution inst;
   } catch (std::exception &e) {
     std::cout << "ERROR : " << e.what() << std::endl;
     ++status;
   }
 
-  std::cout << "[2] Testing Gems(std::string) ..." << std::endl;
+  std::cout << "[2] Testing Institution(std::string) ..." << std::endl;
   try {
-    prometheus::config::Gems gems (filename);
-    //
-    std::cout << "--> Config file = " << gems.configFile() << std::endl;
-    std::cout << "--> nof. gems   = " << gems.nofGems()    << std::endl;
+    prometheus::config::Institution inst (filename);
   } catch (std::exception &e) {
     std::cout << "ERROR : " << e.what() << std::endl;
     ++status;
@@ -78,57 +72,15 @@ int test_constructors (std::string const &filename="ruby_gems.yml")
 */
 int test_read_config (std::string const &filename)
 {
-  std::cout << "\n[testGems::test_read_config]\n" << std::endl;
+  std::cout << "\n[testInstitution::test_read_config]\n" << std::endl;
 
   int status = 0;
-  prometheus::config::Gems gems;
+  prometheus::config::Institution gems;
 
-  std::cout << "[1] Testing Gems::readConfig(std::string) ..." << std::endl;
+  std::cout << "[1] Testing Institution::readConfig(std::string) ..." << std::endl;
   try {
     gems.readConfig(filename);
     gems.summary();
-  } catch (std::exception &e) {
-    std::cout << "ERROR : " << e.what() << std::endl;
-    ++status;
-  }
-
-  std::cout << "[2] Testing Gems::names() ..." << std::endl;
-  try {
-    // Get the names of the gems ...
-    std::set<std::string> names = gems.names();
-    // ... and print them
-    std::cout << "--> nof. gems = " << names.size() << std::endl;
-    std::cout << "--> Gem names = " << names        << std::endl;
-  } catch (std::exception &e) {
-    std::cout << "ERROR : " << e.what() << std::endl;
-    ++status;
-  }
-
-  std::cout << "[3] Testing Gems::versions() ..." << std::endl;
-  try {
-    std::map<std::string,std::string>::iterator it;
-    // Get the names of the gems ...
-    std::map<std::string,std::string> versions = gems.versions();
-    // ... and print them
-    std::cout << "--> nof. gems = " << versions.size() << std::endl;
-    for (it=versions.begin();it!=versions.end();++it) {
-      std::cout << std::setw(25) << it->first << "  :  " << it->second << std::endl;
-    }
-  } catch (std::exception &e) {
-    std::cout << "ERROR : " << e.what() << std::endl;
-    ++status;
-  }
-
-  std::cout << "[4] Testing Gems::urls() ..." << std::endl;
-  try {
-    std::map<std::string,std::string>::iterator it;
-    // Get the names of the gems ...
-    std::map<std::string,std::string> urls = gems.urls();
-    // ... and print them
-    std::cout << "--> nof. gems = " << urls.size() << std::endl;
-    for (it=urls.begin();it!=urls.end();++it) {
-      std::cout << std::setw(25) << it->first << "  :  " << it->second << std::endl;
-    }
   } catch (std::exception &e) {
     std::cout << "ERROR : " << e.what() << std::endl;
     ++status;
@@ -142,8 +94,7 @@ int test_read_config (std::string const &filename)
 //! Program main function
 int main (int argc, char **argv)
 {
-  int status       = 0;
-  bool haveDataset = false;
+  int status      = 0;
 
   if (argc >1) {
     status += test_constructors (argv[1]);

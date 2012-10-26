@@ -27,33 +27,7 @@
   \brief Data structures and and operator overloading
   \author Lars Baehren
 
-  File location: $PANDORA_ROOT_DIR/config/apps/institution.yml
-
-  \verbatim
-  ---
-:columns_for:
-  :list:
-    - name
-    - title
-    - city
-    - country
-    - licenses.license_type_id
-  :search:
-    - name
-    - title
-    - description
-    - city
-  :user:
-    - title
-    - description
-    - addressline
-    - postalcode
-    - city
-    - country
-    - email
-    - homepage
-    - public_info
-  \endverbatim
+  \include institution.yml
 */
 
 // ==============================================================================
