@@ -75,12 +75,35 @@ int test_read_config (std::string const &filename)
   std::cout << "\n[testInstitution::test_read_config]\n" << std::endl;
 
   int status = 0;
-  prometheus::config::Institution gems;
+  prometheus::config::Institution inst;
+  std::set<std::string> columnNames;
 
   std::cout << "[1] Testing Institution::readConfig(std::string) ..." << std::endl;
   try {
-    gems.readConfig(filename);
-    gems.summary();
+    inst.readConfig(filename);
+    inst.summary();
+  } catch (std::exception &e) {
+    std::cout << "ERROR : " << e.what() << std::endl;
+    ++status;
+  }
+
+  std::cout << "[2] Testing Institution::columnNames() ..." << std::endl;
+  try {
+    columnNames = inst.columnNames();
+    std::cout << "--> Column names = " << columnNames << std::endl;
+  } catch (std::exception &e) {
+    std::cout << "ERROR : " << e.what() << std::endl;
+    ++status;
+  }
+
+  std::cout << "[3] Testing Institution::columnNamesFor(std::string) ..." << std::endl;
+  try {
+    std::set<std::string>::iterator it;
+
+    for (it=columnNames.begin(); it!=columnNames.end(); ++it) {
+      std::cout << "--> " << (*it) << std::endl;
+      std::cout << "\t" << inst.columnNamesFor( (*it) ) << std::endl;
+    }
   } catch (std::exception &e) {
     std::cout << "ERROR : " << e.what() << std::endl;
     ++status;

@@ -70,6 +70,9 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       //! Get the names of the paramer columns
       std::set<std::string> columnNames ();
 
+      //! Get the column names for a given \c name
+      std::vector<std::string> columnNamesFor (std::string const &name);
+
       // === Public functions ===================================================
 
       //! Provide a summary of the object's internal parameters and status

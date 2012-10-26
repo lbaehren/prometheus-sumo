@@ -61,6 +61,23 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       return names;
     }
 
+    //___________________________________________________________________________
+    //                                                             columnNamesFor
+
+    std::vector<std::string> Institution::columnNamesFor (std::string const &name)
+    {
+      std::vector<std::string> names;
+      std::map<std::string, std::vector<std::string> >::iterator it;
+
+      it = itsColumns.find(name);
+
+      if (it!=itsColumns.end()) {
+	names = it->second;
+      }
+
+      return names;
+    }
+
     // ==========================================================================
     //
     //  Public functions
