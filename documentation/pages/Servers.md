@@ -73,7 +73,7 @@ Web-Applications:
  - \ref homepage
  - \ref JekyllCommander
 
-Online documentation for various software projects:
+Online documentation for various software projects (`/var/local/prometheus/web/www/ruby-doc`):
 
  - [Capistrano](http://prometheus-srv3.uni-koeln.de/ruby-doc/capistrano)
  - [Ferret Search Library Documentation](http://prometheus-srv3.uni-koeln.de/ruby-doc/ferret)
