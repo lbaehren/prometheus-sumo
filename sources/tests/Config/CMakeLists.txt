@@ -3,9 +3,6 @@
 
 macro (run_test_config _testName _testData)
 
-  message (STATUS "Configuring test ${_testName} ...")
-  message (STATUS "--> Test file = ${_testData}")
-
   add_test (${_testName} ${_testName} ${_testData})
 
 endmacro(run_test_config)
