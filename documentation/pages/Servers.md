@@ -23,7 +23,7 @@ Servers    {#servers}
 | 134.95.80.13    | prometheus-test.uni-koeln.de | [pandora-devel](http://prometheus-test.uni-koeln.de/pandora-devel) |
 | 134.95.80.95    | \ref servers_db1  | Database server                      |
 | 134.95.80.96    | \ref servers_web1 | Web server                           |
-| 134.95.80.160   | \ref servers_srv1 | SVN server, Trac, \ref issue_tracker |
+| 134.95.80.160   | \ref servers_srv1 | \ref subversion server, Trac, \ref redmine \ref issue_tracker |
 | 134.95.80.161   | \ref servers_srv2 | prometheus-app.uni-koeln.de          |
 | 134.95.80.162   | \ref servers_srv3 | \ref homepage, \ref JekyllCommander, Documentation |
 | 134.95.80.163   | \ref servers_srv4 |  |
@@ -35,7 +35,20 @@ Servers    {#servers}
 
 * Hosting the production system of the \ref pandora application
 
+\subsubsection servers_prom1_nfs NFS mounts
+
+\verbatim
+prometheus-web1.uni-koeln.de:/var/local/prometheus/data/images /var/local/prometheus/data/images nfs rsize=8192,ro,bg 0 0
+ \endverbatim
+
 \subsection servers_prom2 prometheus2.uni-koeln.de
+
+\subsubsection servers_prom2_nfs NFS mounts
+
+\verbatim
+prometheus1.uni-koeln.de:/var/local/prometheus/app/pandora/data /var/local/prometheus/app/pandora/data nfs rsize=8192,ro,bg 0 0
+prometheus-web1.uni-koeln.de:/var/local/prometheus/data/images /var/local/prometheus/data/images-ro nfs rsize=8192,ro,bg 0 0
+\endverbatim
 
 \subsection servers_db1 prometheus-db1.uni-koeln.de
 
@@ -43,13 +56,54 @@ Servers    {#servers}
 
 \subsection servers_srv1 prometheus-srv1.uni-koeln.de
 
-Hosted services:
+\subsubsection servers_srv1_data Hosted data
 
-* \ref subversion server
-* Trac
-* \ref issue_tracker "Redmine issue tracker"
+* prometheus access statistics
+* Images for the \ref pandora application
+* Database backups
+* \ref virtual_machines
 
-NFS mounts:
+~~~~
+/var/local/prometheus
+├── app
+│   └── promstats             ...  prometheus access statistics
+├── data
+│   └── images                ...  Images for the pandora application
+├── db
+│   └── backup                ...  Database backups
+│       ├── mysql
+│       └── postgresql
+└── tmp
+│   └── redesign2009          ...  Graphics assets for Redesign 2009
+└── web
+    └── www
+        └── virtualbox        ...  VirtualBox VM images
+~~~~
+
+\subsubsection servers_srv1_services Hosted services
+
+* \ref redmine issue tracker
+* \ref pandora \ref subversion repository
+* Trac issue tracker
+
+~~~~
+/var/local/prometheus
+├── srv
+│   ├── git
+│   ├── redmine               ...  Redmine issue tracker
+│   ├── svn                   ...  Subversion repositories
+│   │   ├── athena
+│   │   ├── lingo
+│   │   ├── medusa
+│   │   ├── pandora           ...  pandora Subversion repository
+│   │   └── scratch
+│   └── trac                  ...  Trac issue tracker
+└── web
+    └── www
+        └── redmine -> /var/local/prometheus/srv/redmine/public
+~~~~
+
+\subsubsection servers_srv1_nfs NFS mounts
 
 \verbatim
 prometheus1.uni-koeln.de:/var/local/prometheus/app/pandora/shared/index/production /var/local/prometheus/app/perseus-a/pandora_index/production nfs rsize=8192,ro,bg 0 0
@@ -71,14 +125,26 @@ prometheus-srv3.uni-koeln.de:/var/local/prometheus/web/log /var/local/prometheus
 Web-Applications:
 
  - \ref homepage
+ - \ref wiki
  - \ref JekyllCommander
 
-Online documentation for various software projects (`/var/local/prometheus/web/www/ruby-doc`):
+\subsubsection servers_srv3_doc Hosted documentation
 
  - [Capistrano](http://prometheus-srv3.uni-koeln.de/ruby-doc/capistrano)
  - [Ferret Search Library Documentation](http://prometheus-srv3.uni-koeln.de/ruby-doc/ferret)
  - [Ruby Core](http://prometheus-srv3.uni-koeln.de/ruby-doc/core)
  - [Ruby Standard Library Documentation](http://prometheus-srv3.uni-koeln.de/ruby-doc/core)
+
+~~~~
+/var/local/prometheus/web
+└── www
+    └── ruby-doc
+        ├── capistrano        ...  Capistrano utility and framework
+        ├── core              ...  Ruby Core
+        ├── ferret            ...  Ferret Search Library Documentation
+        ├── globalize
+        └── stdlib            ...  Ruby Standard Library Documentation
+~~~~
 
 \subsection servers_srv4 prometheus-srv4.uni-koeln.de
 
@@ -129,17 +195,3 @@ Support for VM-Environment: vmqware@uni-koeln.de
 \endverbatim
 
 \image html VMware_vSphere.png
-
-\section nfs_mounts NFS mounts
-
- - prometheus1
- \verbatim
-prometheus-web1.uni-koeln.de:/var/local/prometheus/data/images /var/local/prometheus/data/images nfs rsize=8192,ro,bg 0 0
- \endverbatim
-
- - prometheus2
- \verbatim
-prometheus1.uni-koeln.de:/var/local/prometheus/app/pandora/data /var/local/prometheus/app/pandora/data nfs rsize=8192,ro,bg 0 0
-prometheus-web1.uni-koeln.de:/var/local/prometheus/data/images /var/local/prometheus/data/images-ro nfs rsize=8192,ro,bg 0 0
- \endverbatim
-

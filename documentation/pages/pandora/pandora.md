@@ -30,5 +30,6 @@ Software, released under the terms of the [GNU Affero General Public License](ht
 
 \subsection pandora_pages_online ... online
 
+\li [The prometheus image archive API](http://prometheus.uni-koeln.de/pandora/en/api)
 \li [Frequently asked questions](http://prometheus-bildarchiv.de/en/faq)
 \li [Help pages](http://prometheus.uni-koeln.de/pandora/en/help)
