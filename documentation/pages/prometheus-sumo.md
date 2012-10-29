@@ -128,7 +128,7 @@ the form of a C++ library.
 
     sources/lib/
     ├── Config           ...  Interface to configuration files
-    ├── Sources
+    ├── Sources          ...  Interface to source models and their parameters
     └── Statistics       ...  Generation and analysis of statistical information
 
 \subsection sumo_functionality_external Dealing with external resources
