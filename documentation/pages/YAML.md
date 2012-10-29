@@ -487,3 +487,4 @@ of programming languages:
 * [YAML component from the BOOST vault serialization library](https://github.com/boost-vault/serialization)
 * [Iterate through a map with undefined values](http://stackoverflow.com/questions/12374691/yaml-cpp-easiest-way-to-iterate-through-a-map-with-undefined-values)
 * [Yaml Cookbook for Ruby](http://www.yaml.org/YAML_for_ruby.html)
+* [YAML support within the LLVM infrastructure](http://llvm.org/docs/doxygen/html/namespacellvm_1_1yaml.html)
