@@ -1,9 +1,15 @@
 
 ## === Macro definitions ========================================================
 
-macro (run_test_config _testName _testData)
+macro (run_test_config _testName )
 
-  add_test (${_testName} ${_testName} ${_testData})
+  message (STATUS "macro(run_test_config) : ARGC  = ${ARGC}")
+
+  if (${ARGC} GREATER 1)
+    add_test (${_testName} ${_testName} ${ARGV1})
+  else (${ARGC} GREATER 1)
+    add_test (${_testName} ${_testName})
+  endif (${ARGC} GREATER 1)
 
 endmacro(run_test_config)
 
@@ -31,3 +37,4 @@ run_test_config (testConfigInstitution    ${config_institution_yml}     )
 run_test_config (testConfigGems           ${config_gems_yml}            )
 run_test_config (testConfigUserRoles      ${config_roles_yml}           )
 run_test_config (testConfigTrustedProxies ${config_trusted_proxies_yml} )
+run_test_config (testConfigColumnsFor )
