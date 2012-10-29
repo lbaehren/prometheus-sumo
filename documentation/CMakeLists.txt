@@ -7,7 +7,7 @@
 
 ## Path to directory with examples files
 
-find_path (DOXYGEN_EXAMPLE_PATH monster.yaml
+find_path (DOXYGEN_EXAMPLE_PATH monsters.yaml
   PATHS ${PROJECT_SOURCE_DIR}
   PATH_SUFFIXES documentation documentation/examples
   )
