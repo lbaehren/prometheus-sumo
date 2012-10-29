@@ -21,7 +21,7 @@
 #ifndef CONFIG_INSTITUTION_H
 #define CONFIG_INSTITUTION_H
 
-#include "ConfigFileBase.h"
+#include "ColumnsFor.h"
 
 namespace prometheus {   // namespace prometheus -- BEGIN
 
@@ -42,13 +42,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       \include institution.yml
 
     */
-    class Institution : public ConfigFileBase {
-
-      //! Parameters available for list display, search and user
-      std::map<std::string, std::vector<std::string> > itsColumns;
-
-      //! Store the data from an individual node
-      bool storeNode (YAML::Iterator const &it);
+    class Institution : public ColumnsFor {
 
     public:
 

@@ -31,12 +31,12 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     // ==========================================================================
 
     Account::Account ()
-      : ConfigFileBase()
+      : ColumnsFor()
     {
     }
 
     Account::Account (std::string const &filename)
-      : ConfigFileBase(filename)
+      : ColumnsFor(filename)
     {
     }
 
@@ -96,44 +96,6 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       os << "-- Configuration file = " << itsConfigFile     << std::endl;
       os << "-- nof. columns       = " << itsColumns.size() << std::endl;
       os << "-- Column names       = " << columnNames()     << std::endl;
-    }
-
-    // ==========================================================================
-    //
-    //  Private methods
-    //
-    // ==========================================================================
-
-    bool Account::storeNode (YAML::Iterator const &it)
-    {
-      bool status = true;
-      std::string sequenceName;
-      std::vector<std::string> sequenceValues;
-      std::string buffer;
-      
-      try {
-	/* Acces the node holding the actual configuration data... */
-	const YAML::Node & node = it.second();
-	/* ... and iterate through the node attached to it */
-	for (YAML::Iterator iter=node.begin();iter!=node.end();++iter) {
-	  /* Store the name of the sequence ... */
-	  iter.first() >> sequenceName;
-	  /* ... and parse the parameter values in the list */
-	  for (unsigned int n=0; n<iter.second().size(); ++n) {
-	    iter.second()[n] >> buffer;
-	    sequenceValues.push_back(buffer);
-	  }
-	  // Store the extracted data
-	  itsColumns[sequenceName] = sequenceValues;
-	  sequenceValues.clear();
-	}
-	
-      } catch (std::exception &e) {
-        std::cout << "[Gems::storeNode] ERROR : " << e.what() << std::endl;
-        status = false;
-      }
-
-      return status;
     }
 
   }   // namespace config -- BEGIN

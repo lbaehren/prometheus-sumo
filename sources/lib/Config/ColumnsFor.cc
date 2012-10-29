@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "Institution.h"
+#include "ColumnsFor.h"
 
 namespace prometheus {   // namespace prometheus -- BEGIN
 
@@ -30,13 +30,13 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     //
     // ==========================================================================
 
-    Institution::Institution ()
-      : ColumnsFor()
+    ColumnsFor::ColumnsFor ()
+      : ConfigFileBase()
     {
     }
 
-    Institution::Institution (std::string const &filename)
-      : ColumnsFor(filename)
+    ColumnsFor::ColumnsFor (std::string const &filename)
+      : ConfigFileBase(filename)
     {
     }
 
@@ -49,7 +49,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     //___________________________________________________________________________
     //                                                                columnNames
 
-    std::set<std::string> Institution::columnNames ()
+    std::set<std::string> ColumnsFor::columnNames ()
     {
       std::set<std::string> names;
       std::map<std::string, std::vector<std::string> >::iterator it;
@@ -64,7 +64,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     //___________________________________________________________________________
     //                                                             columnNamesFor
 
-    std::vector<std::string> Institution::columnNamesFor (std::string const &name)
+    std::vector<std::string> ColumnsFor::columnNamesFor (std::string const &name)
     {
       std::vector<std::string> names;
       std::map<std::string, std::vector<std::string> >::iterator it;
@@ -90,12 +90,49 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     /*!
       \param os -- Output stream to which the summary will be written.
     */
-    void Institution::summary (std::ostream &os)
+    void ColumnsFor::summary (std::ostream &os)
     {
-      os << "[Institution] Summary of internal parameters"  << std::endl;
+      os << "[ColumnsFor] Summary of internal parameters"  << std::endl;
       os << "-- Configuration file = " << itsConfigFile     << std::endl;
       os << "-- nof. columns       = " << itsColumns.size() << std::endl;
       os << "-- Column names       = " << columnNames()     << std::endl;
+    }
+
+    // ==========================================================================
+    //
+    //  Private methods
+    //
+    // ==========================================================================
+
+    bool ColumnsFor::storeNode (YAML::Iterator const &it)
+    {
+      bool status = true;
+      std::string sequenceName;
+      std::vector<std::string> sequenceValues;
+      std::string buffer;
+
+      try {
+        /* Acces the node holding the actual configuration data... */
+        const YAML::Node & node = it.second();
+        /* ... and iterate through the node attached to it */
+        for (YAML::Iterator iter=node.begin();iter!=node.end();++iter) {
+          /* Store the name of the sequence ... */
+          iter.first() >> sequenceName;
+          /* ... and parse the parameter values in the list */
+          for (unsigned int n=0; n<iter.second().size(); ++n) {
+            iter.second()[n] >> buffer;
+            sequenceValues.push_back(buffer);
+          }
+          // Store the extracted data
+          itsColumns[sequenceName] = sequenceValues;
+          sequenceValues.clear();
+        }
+      } catch (std::exception &e) {
+        std::cout << "[Gems::storeNode] ERROR : " << e.what() << std::endl;
+        status = false;
+      }
+
+      return status;
     }
 
   }   // namespace config -- BEGIN

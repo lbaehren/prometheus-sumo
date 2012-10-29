@@ -18,41 +18,43 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef CONFIG_ACCOUNT_H
-#define CONFIG_ACCOUNT_H
+#ifndef CONFIG_COLUMNS_FOR_H
+#define CONFIG_COLUMNS_FOR_H
 
-#include "ColumnsFor.h"
+#include "ConfigFileBase.h"
 
 namespace prometheus {   // namespace prometheus -- BEGIN
 
   namespace config {   // namespace config -- BEGIN
 
     /*!
-      \file Account.h
-      \class Account
+      \file ColumnsFor.h
+      \class ColumnsFor
       \ingroup prometheus
       \ingroup config
-      \brief Configuration settings for an account
-      \test testConfigAccount.cc
+      \brief Configuration settings for columns for a given model
       \author Lars Baehren
       \date 2012-10-25
-
-      This class provides an adapter to read configuration data for an account
-      inside the \ref pandora web application.
-      \include account.yml
-
     */
-    class Account : public ColumnsFor {
+    class ColumnsFor : public ConfigFileBase {
+
+    protected:
+
+      //! Parameters available for list display, search and user
+      std::map<std::string, std::vector<std::string> > itsColumns;
+
+      //! Store the data from an individual node
+      bool storeNode (YAML::Iterator const &it);
 
     public:
 
       // === Construction =======================================================
 
       //! Default constructor
-      Account ();
+      ColumnsFor ();
 
       //! Argumented constructor
-      Account (std::string const &filename);
+      ColumnsFor (std::string const &filename);
 
       // === Parameter access ===================================================
 
