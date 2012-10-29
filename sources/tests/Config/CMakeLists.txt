@@ -17,10 +17,10 @@ add_custom_target (testConfig)
 
 file (GLOB test_lib_config *.cc)
 
-foreach (test_yaml ${test_lib_config})
+foreach (_test ${test_lib_config})
 
   ## Strip extension from filename
-  get_filename_component (varFilename ${test_yaml} NAME_WE)
+  get_filename_component (varFilename ${_test} NAME_WE)
 
   ## compiler instructions
   add_executable (${varFilename} ${varFilename}.cc)
@@ -31,7 +31,7 @@ foreach (test_yaml ${test_lib_config})
   ## Top-level target
   add_dependencies (testConfig ${varFilename})
 
-endforeach (test_yaml)
+endforeach (_test)
 
 ## === Execution of the tests ===================================================
 

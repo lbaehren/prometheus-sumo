@@ -52,12 +52,6 @@ if(Boost_FOUND)
   include_directories(${Boost_INCLUDE_DIRS})
 
   foreach (test_with_boost
-      testSourceDump.cc
-      testSourcesBeeskow.cc
-      testSourcesKassel.cc
-      testSourcesRobertinum.cc
-      testSourcesTheolEik.cc
-      testSourcesPPO.cc
       testApacheLogs.cc
       )
     ## remove file extension
@@ -67,35 +61,6 @@ if(Boost_FOUND)
     ## linker instructions
     target_link_libraries (${varFilename} libprometheus ${Boost_LIBRARIES})
   endforeach (test_with_boost)
-
-  if (xml_dump_beeskow)
-    add_test (testSourcesBeeskow testSourcesBeeskow ${xml_dump_beeskow})
-  endif (xml_dump_beeskow)
-
-  if (xml_dump_kassel)
-    add_test (testSourcesKassel testSourcesKassel ${xml_dump_kassel})
-  endif (xml_dump_kassel)
-
-  if (xml_dump_robertinum)
-    add_test (testSourcesRobertinum testSourcesRobertinum ${xml_dump_robertinum})
-  endif (xml_dump_robertinum)
-
-  if (xml_dump_theoleik)
-    add_test (testSourcesTheolEik testSourcesTheolEik ${xml_dump_theoleik})
-  endif (xml_dump_theoleik)
-
-  add_test (testSourcesPPO_db testSourcesPPO -db)
-
-  if (xml_dump_ppo)
-    add_test (testSourcesPPO_xml testSourcesPPO -xml ${xml_dump_ppo})
-  endif (xml_dump_ppo)
-
-  if (id_ppo)
-    add_test (testSourcesPPO_idppo testSourcesPPO -idppo ${id_ppo})
-    add_test (testSourcesPPO_db testSourcesPPO -db ${id_ppo})
-  else (id_ppo)
-    add_test (testSourcesPPO_db testSourcesPPO -db)
-  endif (id_ppo)
 
   if (apache_access_log)
     add_test (testApacheLogs testApacheLogs ${apache_access_log})
@@ -201,3 +166,4 @@ message (STATUS "Processing directory source/tests - done")
 ## === Project sub-directories ==================================================
 
 add_subdirectory (Config)
+add_subdirectory (Sources)
