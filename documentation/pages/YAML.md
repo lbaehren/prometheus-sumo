@@ -471,12 +471,18 @@ ruby_obj == test_obj
                     # => true
 \endcode
 
-\section yaml_references References & Software packages
+\section yaml_references References
+
+\subsection yaml_references_doc Documentation
 
 * [YAML 1.2 specification](http://yaml.org/spec/1.2/spec.html)
 * [YAML 1.1 specification](http://yaml.org/spec/1.1/current.html)
 * [Wikipedia entry](http://en.wikipedia.org/wiki/YAML)
 * [Basic methods for parsing a YAML document](http://code.google.com/p/yaml-cpp/wiki/HowToParseADocument)
+* [Yaml Cookbook for Ruby](http://www.yaml.org/YAML_for_ruby.html)
+* [Iterate through a map with undefined values](http://stackoverflow.com/questions/12374691/yaml-cpp-easiest-way-to-iterate-through-a-map-with-undefined-values)
+
+\subsection yaml_references_software Software packages
 
 Libraries for emitting and parsing YAML are available throughout a wide range
 of programming languages:
@@ -485,6 +491,4 @@ of programming languages:
 * [yaml-cpp](http://code.google.com/p/yaml-cpp) - a YAML parser and emitter in C++ matching the YAML 1.2 spec.
 * [Mirror of the official yaml-cpp Google code repository](https://github.com/nebirhos/yaml-cpp)
 * [YAML component from the BOOST vault serialization library](https://github.com/boost-vault/serialization)
-* [Iterate through a map with undefined values](http://stackoverflow.com/questions/12374691/yaml-cpp-easiest-way-to-iterate-through-a-map-with-undefined-values)
-* [Yaml Cookbook for Ruby](http://www.yaml.org/YAML_for_ruby.html)
 * [YAML support within the LLVM infrastructure](http://llvm.org/docs/doxygen/html/namespacellvm_1_1yaml.html)
