@@ -38,6 +38,7 @@ int test_direct_read (std::string const &filename)
   int status      = 0;
   size_t nofNodes = 0;
   std::map<std::string,std::vector<std::string> > configNodes;
+  std::map<std::string,std::vector<std::string> >::iterator configIter;
 
   // Open the input file
   std::ifstream infile (filename.c_str());
@@ -52,37 +53,34 @@ int test_direct_read (std::string const &filename)
     parser.GetNextDocument(node);
     // Node characteristics
     nofNodes = node.size();
-    std::cout << "-- Node type = " << node.Type() << std::endl;
-    std::cout << "-- Node size = " << nofNodes    << std::endl;
-    std::cout << "-- Node tag  = " << node.Tag()  << std::endl;
 
     for (YAML::Iterator it=node.begin();it!=node.end();++it) {
 
       it.first() >> buffer;
-      std::cout << "--> [" << it.second().Type() << "] " << buffer
-		<< " (" << it.second().size() << ")"
-		<< std::endl;
 
       if (it.second().Type() == YAML::NodeType::Scalar) {
-	bufferSeq.resize(1);
-	it.second() >> bufferSeq[0];
-	// Store contents of node
-	configNodes[buffer] = bufferSeq;
+        bufferSeq.resize(1);
+        it.second() >> bufferSeq[0];
+        // Store contents of node
+        configNodes[buffer] = bufferSeq;
       } else if (it.second().Type() == YAML::NodeType::Sequence) {
-	bufferSeq.resize(it.second().size());
-	for (unsigned int n=0; n<it.second().size(); ++n) {
-	  it.second()[n] >> bufferSeq[n];;
-	}
-	// Store contents of node
-	configNodes[buffer] = bufferSeq;
+        bufferSeq.resize(it.second().size());
+        for (unsigned int n=0; n<it.second().size(); ++n) {
+          it.second()[n] >> bufferSeq[n];;
+        }
+        // Store contents of node
+        configNodes[buffer] = bufferSeq;
       }
     }
   } else {
     std::cerr << "Failed to open file " << filename << std::endl;
   }
 
-  std::cout << "-- Finished parsing input file." << std::endl;
-  std::cout << "--> " << configNodes.size() << "/" << nofNodes << " configuration nodes stored." << std::endl;
+  std::cout << "-- Finished parsing input file - " << nofNodes << " nodes found." << std::endl;
+
+  for (configIter=configNodes.begin();configIter!=configNodes.end(); ++configIter) {
+    std::cout << "-->  " << configIter->first << std::endl;
+  }
 
   return 0;
 }
@@ -173,7 +171,7 @@ int test_read_config (std::string const &filename)
 //! Program main function
 int main (int argc, char **argv)
 {
-  int status      = 0;
+  int status = 0;
 
   if (argc >1) {
     status += test_direct_read (argv[1]);
