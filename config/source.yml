@@ -1,0 +1,38 @@
+---
+:sources: <%= File.join(RAILS_ROOT, 'app', 'models', 'source') %>
+
+:dumps: /var/local/prometheus/app/pandora/data
+:paths: /var/local/prometheus/app/pandora/shared/paths_%s.marshal
+:change_pids: /var/local/prometheus/app/pandora/data/change_pids
+:artigo_tags: /var/local/prometheus/app/pandora/data/artigo_tags/%s.xml
+
+:kinds:
+  - Institutional database
+  - Research database
+  - Museum database
+
+:columns_for:
+  :list:
+    - name
+    - title
+    - kind
+    - institution.city
+    - institution.country
+    - record_count
+  :search:
+    - name
+    - title
+    - description
+    - keywords
+    - kind
+    - city
+    - institution
+  :display_exclude:
+    - home_url_identifier
+  :dbadmin:
+    - description
+    - description_de
+    - url
+    - email
+    - technical_info
+    - technical_info_de
