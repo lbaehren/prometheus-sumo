@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "Institution.h"
+#include "Source.h"
 
 namespace prometheus {   // namespace prometheus -- BEGIN
 
@@ -30,12 +30,12 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     //
     // ==========================================================================
 
-    Institution::Institution ()
+    Source::Source ()
       : ColumnsFor()
     {
     }
 
-    Institution::Institution (std::string const &filename)
+    Source::Source (std::string const &filename)
       : ColumnsFor(filename)
     {
     }
@@ -52,9 +52,9 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     /*!
       \param os -- Output stream to which the summary will be written.
     */
-    void Institution::summary (std::ostream &os)
+    void Source::summary (std::ostream &os)
     {
-      os << "[Institution] Summary of internal parameters"  << std::endl;
+      os << "[Source] Summary of internal parameters"  << std::endl;
       os << "-- Configuration file = " << itsConfigFile     << std::endl;
       os << "-- nof. columns       = " << itsColumns.size() << std::endl;
       os << "-- Column names       = " << columnNames()     << std::endl;

@@ -3,8 +3,6 @@
 
 macro (run_test_config _testName )
 
-  message (STATUS "macro(run_test_config) : ARGC  = ${ARGC}")
-
   if (${ARGC} GREATER 1)
     add_test (${_testName} ${_testName} ${ARGV1})
   else (${ARGC} GREATER 1)
@@ -14,6 +12,8 @@ macro (run_test_config _testName )
 endmacro(run_test_config)
 
 ## === Build instructions for the test programs =================================
+
+add_custom_target (testConfig)
 
 file (GLOB test_lib_config *.cc)
 
@@ -28,6 +28,9 @@ foreach (test_yaml ${test_lib_config})
   ## linker instructions
   target_link_libraries (${varFilename} libprometheus)
 
+  ## Top-level target
+  add_dependencies (testConfig ${varFilename})
+
 endforeach (test_yaml)
 
 ## === Execution of the tests ===================================================
@@ -37,4 +40,5 @@ run_test_config (testConfigInstitution    ${config_institution_yml}     )
 run_test_config (testConfigGems           ${config_gems_yml}            )
 run_test_config (testConfigUserRoles      ${config_roles_yml}           )
 run_test_config (testConfigTrustedProxies ${config_trusted_proxies_yml} )
-run_test_config (testConfigColumnsFor )
+run_test_config (testConfigColumnsFor     ${config_source_yml}          )
+run_test_config (testConfigSource         ${config_source_yml}          )

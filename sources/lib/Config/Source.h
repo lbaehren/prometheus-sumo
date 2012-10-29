@@ -18,48 +18,66 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "Institution.h"
+#ifndef CONFIG_SOURCE_H
+#define CONFIG_SOURCE_H
+
+#include "ColumnsFor.h"
 
 namespace prometheus {   // namespace prometheus -- BEGIN
 
   namespace config {   // namespace config -- BEGIN
 
-    // ==========================================================================
-    //
-    //  Construction
-    //
-    // ==========================================================================
-
-    Institution::Institution ()
-      : ColumnsFor()
-    {
-    }
-
-    Institution::Institution (std::string const &filename)
-      : ColumnsFor(filename)
-    {
-    }
-
-    // ==========================================================================
-    //
-    //  Public functions
-    //
-    // ==========================================================================
-
-    //___________________________________________________________________________
-    //                                                                    summary
-
     /*!
-      \param os -- Output stream to which the summary will be written.
+      \file Source.h
+      \class Source
+      \ingroup prometheus
+      \ingroup config
+      \brief Configuration settings for an source
+      \test testConfigSource.cc
+      \author Lars Baehren
+      \date 2012-10-29
+
+      This class provides an adapter to read configuration data for a source
+      inside the \ref pandora web application.
+      \include source.yml
+
     */
-    void Institution::summary (std::ostream &os)
-    {
-      os << "[Institution] Summary of internal parameters"  << std::endl;
-      os << "-- Configuration file = " << itsConfigFile     << std::endl;
-      os << "-- nof. columns       = " << itsColumns.size() << std::endl;
-      os << "-- Column names       = " << columnNames()     << std::endl;
-    }
+    class Source : public ColumnsFor {
+
+      //! Kinds of databases
+      std::set<std::string> itsKinds;
+
+    public:
+
+      // === Construction =======================================================
+
+      //! Default constructor
+      Source ();
+
+      //! Argumented constructor
+      Source (std::string const &filename);
+
+      // === Parameter access ===================================================
+
+      //! Get the kinds of databases
+      inline std::set<std::string> kinds () {
+	return itsKinds;
+      }
+
+      // === Public functions ===================================================
+
+      //! Provide a summary of the object's internal parameters and status
+      inline void summary () {
+        summary (std::cout);
+      }
+
+      //! Provide a summary of the object's internal parameters and status
+      void summary (std::ostream &os);
+
+    };
 
   }   // namespace config -- BEGIN
 
 }   // namespace prometheus -- END
+
+#endif

@@ -42,44 +42,6 @@ namespace prometheus {   // namespace prometheus -- BEGIN
 
     // ==========================================================================
     //
-    //  Parameter access
-    //
-    // ==========================================================================
-
-    //___________________________________________________________________________
-    //                                                                columnNames
-
-    std::set<std::string> Account::columnNames ()
-    {
-      std::set<std::string> names;
-      std::map<std::string, std::vector<std::string> >::iterator it;
-
-      for (it=itsColumns.begin(); it!=itsColumns.end(); ++it) {
-	names.insert(it->first);
-      }
-
-      return names;
-    }
-
-    //___________________________________________________________________________
-    //                                                             columnNamesFor
-
-    std::vector<std::string> Account::columnNamesFor (std::string const &name)
-    {
-      std::vector<std::string> names;
-      std::map<std::string, std::vector<std::string> >::iterator it;
-
-      it = itsColumns.find(name);
-
-      if (it!=itsColumns.end()) {
-	names = it->second;
-      }
-
-      return names;
-    }
-
-    // ==========================================================================
-    //
     //  Public functions
     //
     // ==========================================================================
