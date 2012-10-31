@@ -52,6 +52,30 @@ prometheus-web1.uni-koeln.de:/var/local/prometheus/data/images /var/local/promet
 
 \subsection servers_db1 prometheus-db1.uni-koeln.de
 
+\subsubsection servers_db1_data Hosted data
+
+~~~~
+/var/local/prometheus
+ └── etc
+     └── web
+         ├── common
+         │   ├── htpasswd
+         │   ├── htpasswd-svn
+         │   ├── httpd.conf
+         │   ├── images.conf
+         │   ├── modules.conf
+         │   ├── prometheus.conf
+         │   └── svn.conf
+	 ├── prometheus-test.www
+         │   ├── httpd.conf
+         │   ├── modules.conf
+         │   └── prometheus.conf
+	 └── prometheus.www
+             ├── httpd.conf
+             ├── modules.conf
+             └── prometheus.conf
+~~~~
+
 \subsection servers_web1 prometheus-web1.uni-koeln.de
 
 \subsection servers_srv1 prometheus-srv1.uni-koeln.de
@@ -65,19 +89,19 @@ prometheus-web1.uni-koeln.de:/var/local/prometheus/data/images /var/local/promet
 
 ~~~~
 /var/local/prometheus
-├── app
-│   └── promstats             ...  prometheus access statistics
-├── data
-│   └── images                ...  Images for the pandora application
-├── db
-│   └── backup                ...  Database backups
-│       ├── mysql
-│       └── postgresql
-└── tmp
-│   └── redesign2009          ...  Graphics assets for Redesign 2009
-└── web
-    └── www
-        └── virtualbox        ...  VirtualBox VM images
+ ├── app
+ │   └── promstats             ...  prometheus access statistics
+ ├── data
+ │   └── images                ...  Images for the pandora application
+ ├── db
+ │   └── backup                ...  Database backups
+ │       ├── mysql
+ │       └── postgresql
+ ├── tmp
+ │   └── redesign2009          ...  Graphics assets for Redesign 2009
+ └── web
+     └── www
+	 └── virtualbox        ...  VirtualBox VM images
 ~~~~
 
 \subsubsection servers_srv1_services Hosted services
@@ -88,19 +112,19 @@ prometheus-web1.uni-koeln.de:/var/local/prometheus/data/images /var/local/promet
 
 ~~~~
 /var/local/prometheus
-├── srv
-│   ├── git
-│   ├── redmine               ...  Redmine issue tracker
-│   ├── svn                   ...  Subversion repositories
-│   │   ├── athena
-│   │   ├── lingo
-│   │   ├── medusa
-│   │   ├── pandora           ...  pandora Subversion repository
-│   │   └── scratch
-│   └── trac                  ...  Trac issue tracker
-└── web
-    └── www
-        └── redmine -> /var/local/prometheus/srv/redmine/public
+ ├── srv
+ │   ├── git
+ │   ├── redmine               ...  Redmine issue tracker
+ │   ├── svn                   ...  Subversion repositories
+ │   │   ├── athena
+ │   │   ├── lingo
+ │   │   ├── medusa
+ │   │   ├── pandora           ...  pandora Subversion repository
+ │   │   └── scratch
+ │   └── trac                  ...  Trac issue tracker
+ └── web
+     └── www
+	 └── redmine -> /var/local/prometheus/srv/redmine/public
 ~~~~
 
 \subsubsection servers_srv1_nfs NFS mounts
