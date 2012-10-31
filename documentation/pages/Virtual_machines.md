@@ -145,6 +145,31 @@ Additional software packages:
   - Git
   - Adobe Download Manager
 
+\section vm_setup Setup procedure
+
+On Linux systems running Ubuntu (and some degree as well Debian) the basic
+configuration can be handled by running the following set of instructions:
+
+\include vm_base_install.sh
+
+The resulting directory structure after the last step will look like this:
+
+~~~~
+$HOME
+ └── CodeDevelopment
+     ├── Data
+     ├── Documentation
+     ├── Testing
+     └── Projects
+	 ├── OpenSource
+	 ├── Private
+	 └── Work
+	     └── prometheus
+		 ├── pandora
+		 ├── promhp
+		 └── prometheus-sumo
+~~~~
+
 \section vm_references References
 
   - [VirtualBox](http://www.virtualbox.org)
