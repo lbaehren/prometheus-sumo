@@ -82,7 +82,6 @@ set (CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/config/cmake" CACHE PATH
 
 include(ExternalProject)
 find_package (Boost COMPONENTS program_options regex)
-find_package (LATEX)
 
 ##__________________________________________________________
 ## Custom inspection
@@ -93,6 +92,7 @@ foreach (_cmakeModule
   Gem
   Git
   Iconv
+  LATEX
   LibXml2
   MagicLib
   MySQL
@@ -235,10 +235,6 @@ message (STATUS " .. RDoc executable ............. = ${RDOC_EXECUTABLE} (${RDOC_
 message (STATUS " .. YARD executable ............. = ${YARD_EXECUTABLE} (${YARD_VERSION})" )
 message (STATUS " Processing tools & libraries:"                                 )
 message (STATUS " .. Boost ....................... = ${Boost_FOUND}"             )
-if (NOT Boost_FOUND)
-  message (STATUS " .. > program_options ........... = ${Boost_PROGRAM_OPTIONS_FOUND}" )
-  message (STATUS " .. > regex ..................... = ${Boost_REGEX_FOUND}"           )
-endif (NOT Boost_FOUND)
 message (STATUS " .. Doxygen ..................... = ${DOXYGEN_FOUND}"           )
 message (STATUS " .. Magic ....................... = ${MAGIC_FOUND}"             )
 message (STATUS " .. MySQL ....................... = ${MYSQL_FOUND}"             )
