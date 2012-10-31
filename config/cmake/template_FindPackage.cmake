@@ -28,38 +28,38 @@
 #  <PACKAGE>_LFLAGS     = Linker flags (optional)
 
 if (NOT <PACKAGE>_FOUND)
-    
+
   if (NOT <PACKAGE>_ROOT_DIR)
     set (<PACKAGE>_ROOT_DIR ${CMAKE_INSTALL_PREFIX})
   endif (NOT <PACKAGE>_ROOT_DIR)
-  
+
   ##_____________________________________________________________________________
   ## Check for the header files
-  
+
   find_path (<PACKAGE>_INCLUDES <header file(s)>
     HINTS ${<PACKAGE>_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES include
     )
-  
+
   ##_____________________________________________________________________________
   ## Check for the library
-  
+
   find_library (<PACKAGE>_LIBRARIES <package name>
     HINTS ${<PACKAGE>_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES lib
     )
-  
+
   ##_____________________________________________________________________________
   ## Check for the executable
-  
+
   find_program (<PACKAGE>_EXECUTABLE <package name>
     HINTS ${<PACKAGE>_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES bin
     )
-  
+
   ##_____________________________________________________________________________
   ## Actions taken when all components have been found
-  
+
   if (<PACKAGE>_INCLUDES AND <PACKAGE>_LIBRARIES)
     set (<PACKAGE>_FOUND TRUE)
   else (<PACKAGE>_INCLUDES AND <PACKAGE>_LIBRARIES)
@@ -73,7 +73,7 @@ if (NOT <PACKAGE>_FOUND)
       endif (NOT <PACKAGE>_LIBRARIES)
     endif (NOT <PACKAGE>_FIND_QUIETLY)
   endif (<PACKAGE>_INCLUDES AND <PACKAGE>_LIBRARIES)
-  
+
   if (<PACKAGE>_FOUND)
     if (NOT <PACKAGE>_FIND_QUIETLY)
       message (STATUS "Found components for <PACKAGE>")
@@ -86,14 +86,14 @@ if (NOT <PACKAGE>_FOUND)
       message (FATAL_ERROR "Could not find <PACKAGE>!")
     endif (<PACKAGE>_FIND_REQUIRED)
   endif (<PACKAGE>_FOUND)
-  
+
   ##_____________________________________________________________________________
   ## Mark advanced variables
-  
+
   mark_as_advanced (
     <PACKAGE>_ROOT_DIR
     <PACKAGE>_INCLUDES
     <PACKAGE>_LIBRARIES
     )
-  
+
 endif (NOT <PACKAGE>_FOUND)
