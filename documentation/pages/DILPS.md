@@ -1,11 +1,11 @@
-DILPS (Distributed Image Library Processing System)    {#dilps}
-===================================================
+DILPS    {#dilps}
+=================
 
 \tableofcontents
 
 \section dilps_about About
 
-DILPS ist ein Bilddatenbanksystem zur Verwaltung und Recherche digitaler Bilder. Es ist eine gemeinsame Entwicklung des Kunstgeschichtlichen Instituts der Universität Frankfurt, der Hochschule für Gestaltung und Kunst, Zürich (HGKZ) und der Staatlichen Hochschule für Gestaltung Karlsruhe.
+DILPS (Distributed Image Library Processing System) ist ein Bilddatenbanksystem zur Verwaltung und Recherche digitaler Bilder. Es ist eine gemeinsame Entwicklung des Kunstgeschichtlichen Instituts der Universität Frankfurt, der Hochschule für Gestaltung und Kunst, Zürich (HGKZ) und der Staatlichen Hochschule für Gestaltung Karlsruhe.
 
 Auf den Einsatz kommerzieller Software wurde vollständig verzichtet, um zu gewährleisten, dass das System ohne Lizenzkosten weitergegeben werden kann. Der Zugriff auf DILPS erfolgt ausschließlich über eine Web-Oberfläche mit üblichen Webbrowsern (Internet-Explorer, Netscape Navigator, Mozilla, Opera, Konquerer, …). Die Daten werden in relationalen Tabellen in MySQL gespeichert und via XML in andere Systeme exportiert. Um zu gewährleisten, dass die Daten auch auf andere Systeme migriert werden können, wird eine Exportfunktion angeboten, die die Erstellung von DVDs mit Bildern und Metadaten ermöglicht. Großer Wert wird bei der Entwicklung auf die Einbindung verschiedener Archive gelegt, um die Erweiterbarkeit und Zusammenfassbarkeit von lokalen und externen Archiven zu gewährleisten.
 

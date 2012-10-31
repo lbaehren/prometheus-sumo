@@ -26,7 +26,7 @@ Servers    {#servers}
 | 134.95.80.160   | \ref servers_srv1 | \ref subversion server, Trac, \ref redmine \ref issue_tracker |
 | 134.95.80.161   | \ref servers_srv2 | prometheus-app.uni-koeln.de          |
 | 134.95.80.162   | \ref servers_srv3 | \ref homepage, \ref JekyllCommander, Documentation |
-| 134.95.80.163   | \ref servers_srv4 |  |
+| 134.95.80.163   | \ref servers_srv4 | \ref dilps databases |
 | 134.95.167.124  | prometheus.khi.uni-koeln.de  |  |
 | 134.95.167.125  | prometheus2.khi.uni-koeln.de |  |
 
@@ -147,6 +147,33 @@ Web-Applications:
 ~~~~
 
 \subsection servers_srv4 prometheus-srv4.uni-koeln.de
+
+ - \ref dilps databases
+
+~~~~
+/var/local/prometheus
+└── web
+    └── www
+        └── dilps                  ...  Root directory of promDILPS installation
+            ├── _base
+            │   ├── admin
+            │   ├── cache
+            │   ├── export
+            │   ├── images
+            │   ├── include
+            │   ├── skin
+            │   ├── upload
+            │   └── viewer
+            ├── bern_iaw
+            │   ├── admin
+            │   ├── cache
+            │   ├── export
+            │   ├── images
+            │   ├── include
+            │   ├── skin
+            │   ├── upload
+            │   └── viewer
+~~~~
 
 \section virtual_hosts Virtual Hosts
 

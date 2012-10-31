@@ -76,6 +76,15 @@ apt-get install build-essential cmake git-svn subversion doxygen mysql-server ru
 ~~~~
   - MySQL server Root password: mysqlR00t
 
+\subsubsection vm_linux_ubuntu_1210 Ubuntu 12.10 (Quantal Quetzal)
+
+  - Installation base : _ubuntu-12.10-desktop-i386.iso_
+  - Packages installed after setting up the base system:
+~~~~
+apt-get install build-essential cmake git-svn subversion doxygen mysql-server ruby1.8-dev
+~~~~
+  - MySQL server Root password: mysqlR00t
+
 \subsection vm_windows Windows
 
 \subsubsection vm_windows_xp-ie6 Windows XP (IE6)
@@ -155,6 +164,7 @@ VBoxManage startvm <uuid>|<name> [--type gui|sdl|headless]
 \section vm_references References
 
   - [VirtualBox](http://www.virtualbox.org)
+  - [Ubuntu releases](http://releases.ubuntu.com)
   - [7-Zip](http://www.7-zip.org) is a file archiver with a high compression ratio.
   - [Debian GNU/Linux](http://www.debian.org) - a free operating system (OS) for your computer.
   - [Cygwin](http://cygwin.com) - a collection of tools which provide a Linux look and feel environment for Windows.
