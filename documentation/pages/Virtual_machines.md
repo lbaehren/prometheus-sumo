@@ -20,13 +20,14 @@ up and are being provided to the user:
 | Windows XP (IE7) | [vm-windowsxp-ie7](http://134.95.11.135/virtualbox/vm-windowsxp-ie7.ova) | Installers for InDesign & Illustrator |
 | Windows XP (IE8) | [vm-windowsxp-ie8](http://134.95.11.135/virtualbox/vm-windowsxp-ie8.ova) | in preparation |
 
-__Note:__ You can [use prometheus-sumo](\ref sumo_functionality_vm) to retrieve all of the virtual machine disk images.
+__Notes:__
 
-\section vm_images Available virtual machine images
+* You can [use prometheus-sumo](\ref sumo_functionality_vm) to retrieve all of the virtual machine disk images.
+* \subpage vboxmanage is the command-line interface to VirtualBox
 
-\subsection vm_linux Linux
+\section vm_linux Linux
 
-\subsubsection vm_linux_debian6 Debian GNU/Linux 6.x
+\subsection vm_linux_debian6 Debian GNU/Linux 6.x
 
   - [Debian “squeeze” Installation Information](http://www.debian.org/releases/squeeze/debian-installer)
   - Installation base: _debian-6.0.5-i386-netinst.iso_
@@ -42,7 +43,7 @@ apt-get install build-essential cmake git-svn subversion doxygen mysql-server ru
 ~~~~
   - MySQL server Root password: mysqlR00t
 
-\subsubsection vm_linux_debian7 Debian GNU/Linux 7.x
+\subsection vm_linux_debian7 Debian GNU/Linux 7.x
 
   - [Debian installation information](http://www.debian.org/devel/debian-installer)
   - Installation base: _debian-wheezy-DI-b1-i386-netinst.iso_
@@ -58,7 +59,7 @@ apt-get install build-essential cmake git-svn subversion doxygen mysql-server ru
 ~~~~
   - MySQL server Root password: mysqlR00t
 
-\subsubsection vm_linux_ubuntu_1004 Ubuntu 10.04 LTS (Lucid Lynx)
+\subsection vm_linux_ubuntu_1004 Ubuntu 10.04 LTS (Lucid Lynx)
 
   - Installation base: _ubuntu-10.04.4-desktop-i386.iso_
   - Packages installed after setting up the base system:
@@ -67,7 +68,7 @@ apt-get install build-essential cmake git-svn subversion doxygen mysql-server ru
 ~~~~
   - MySQL server Root password: mysqlR00t
 
-\subsubsection vm_linux_ubuntu_1204 Ubuntu 12.04 LTS (Precise Pangolin)
+\subsection vm_linux_ubuntu_1204 Ubuntu 12.04 LTS (Precise Pangolin)
 
   - Installation base : _ubuntu-12.04-desktop-i386.iso_
   - Packages installed after setting up the base system:
@@ -76,18 +77,18 @@ apt-get install build-essential cmake git-svn subversion doxygen mysql-server ru
 ~~~~
   - MySQL server Root password: mysqlR00t
 
-\subsubsection vm_linux_ubuntu_1210 Ubuntu 12.10 (Quantal Quetzal)
+\subsection vm_linux_ubuntu_1210 Ubuntu 12.10 (Quantal Quetzal)
 
   - Installation base : _ubuntu-12.10-desktop-i386.iso_
   - Packages installed after setting up the base system:
 ~~~~
-apt-get install build-essential cmake git-svn subversion doxygen mysql-server ruby1.8-dev
+apt-get install build-essential cmake git-svn subversion doxygen mysql-server ruby1.8-dev libboost-dev
 ~~~~
   - MySQL server Root password: mysqlR00t
 
-\subsection vm_windows Windows
+\section vm_windows Windows
 
-\subsubsection vm_windows_xp-ie6 Windows XP (IE6)
+\subsection vm_windows_xp-ie6 Windows XP (IE6)
 
 \ref browser "Web browsers":
 
@@ -107,7 +108,7 @@ Additionale software packages:
     - MinGW Compier Suite (C, C++)
     - MSYS Basic System
 
-\subsubsection vm_windows_xp-ie7 Windows XP (IE7)
+\subsection vm_windows_xp-ie7 Windows XP (IE7)
 
 \ref browser "Web browsers":
 
@@ -127,7 +128,7 @@ Additional software packages:
     - MinGW Compier Suite (C, C++)
     - MSYS Basic System
 
-\subsubsection vm_windows_xp-ie8 Windows XP (IE8)
+\subsection vm_windows_xp-ie8 Windows XP (IE8)
 
 \ref browser "Web browsers":
 
@@ -143,23 +144,6 @@ Additional software packages:
 
   - Git
   - Adobe Download Manager
-
-\section vm_manage Scripting VirtualBox with VBoxManage
-
-* List the available VMs:
-~~~~
-VBoxManage list vms
-~~~~
-
-* Import VM image
-~~~~
-VBoxManage import <ovf/ova> [--dry-run|-n]
-~~~~
-
-* Start a VM
-~~~~
-VBoxManage startvm <uuid>|<name> [--type gui|sdl|headless]
-~~~~
 
 \section vm_references References
 
