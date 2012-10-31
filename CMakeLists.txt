@@ -59,28 +59,8 @@ endif (GIT_REPOSITORIES_RW)
 ## Handle option: Increase verbosity during configuration?
 
 if (NOT CONFIGURE_VERBOSE)
-  set (BOOST_FIND_QUIETLY    YES )
-  set (CLAMAV_FIND_QUIETLY   YES )
-  set (DOXYGEN_FIND_QUIETLY  YES )
-  set (GEM_FIND_QUIETLY      YES )
-  set (GIT_FIND_QUIETLY      YES )
-  set (ICONV_FIND_QUIETLY    YES )
-  set (LATEX_FIND_QUIETLY    YES )
-  set (MAGIC_FIND_QUIETLY    YES )
-  set (MYSQL_FIND_QUIETLY    YES )
-  set (PANDORA_FIND_QUIETLY  YES )
-  set (RAILS_FIND_QUIETLY    YES )
-  set (RAKE_FIND_QUIETLY     YES )
-  set (RDOC_FIND_QUIETLY     YES )
-  set (RUBY_FIND_QUIETLY     YES )
-  set (RUBYGEMS_FIND_QUIETLY YES )
-  set (_RUBY_DEBUG_OUTPUT    NO  )
-  set (TINYXML_FIND_QUIETLY  YES )
-  set (XERCESC_FIND_QUIETLY  YES )
-  set (YAML_FIND_QUIETLY     YES )
-  set (YARD_FIND_QUIETLY     YES )
-  set (YAZ_FIND_QUIETLY      YES )
-  set (YAZPP_FIND_QUIETLY    YES )
+  set (MAGIC_FIND_QUIETLY     YES )
+  set (RUBYGEMS_FIND_QUIETLY  YES )
 endif (NOT CONFIGURE_VERBOSE)
 
 ## ==============================================================================
@@ -102,34 +82,43 @@ set (CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/config/cmake" CACHE PATH
 
 include(ExternalProject)
 find_package (Boost COMPONENTS program_options regex)
-find_package (Doxygen)
-find_package (Git)
 find_package (LATEX)
-find_package (LibXml2)
-find_package (Ruby)
-find_package (TinyXML)
-find_package (Subversion)
 
 ##__________________________________________________________
 ## Custom inspection
 
-foreach (custom_cmake_module
+foreach (_cmakeModule
+  ClamAV
+  Doxygen
   Gem
+  Git
   Iconv
+  LibXml2
   MagicLib
   MySQL
   RDoc
   Rails
   Rake
+  Ruby
+  Subversion
+  TinyXML
+  VirtualBox
   Xercesc
   Yaml
   Yard
   YAZ
   YAZPP
   )
+  ## Verbosity of module
+  if (NOT CONFIGURE_VERBOSE)
+    ## Convert module name to upper-case
+    string (TOUPPER ${_cmakeModule} _varModule)
+    ##
+    set (${_varModule}_FIND_QUIETLY YES )
+  endif (NOT CONFIGURE_VERBOSE)
   ## load the module
-  find_package (${custom_cmake_module})
-endforeach (custom_cmake_module)
+  find_package (${_cmakeModule})
+endforeach (_cmakeModule)
 
 ## Extract Doxygen version number - this is not done by the standard module
 if (DOXYGEN_EXECUTABLE)
@@ -245,11 +234,12 @@ message (STATUS " .. Rails executable ............ = ${RAILS_EXECUTABLE} (${RAIL
 message (STATUS " .. RDoc executable ............. = ${RDOC_EXECUTABLE} (${RDOC_VERSION})"            )
 message (STATUS " .. YARD executable ............. = ${YARD_EXECUTABLE} (${YARD_VERSION})" )
 message (STATUS " Processing tools & libraries:"                                 )
-message (STATUS " .. Boost ..,,................... = ${Boost_FOUND}"             )
+message (STATUS " .. Boost ....................... = ${Boost_FOUND}"             )
 message (STATUS " .. Doxygen ..................... = ${DOXYGEN_FOUND}"           )
 message (STATUS " .. Magic ....................... = ${MAGIC_FOUND}"             )
 message (STATUS " .. MySQL ....................... = ${MYSQL_FOUND}"             )
 message (STATUS " .. TinyXML ..................... = ${TINYXML_FOUND}"           )
+message (STATUS " .. VirtualBox .................. = ${VIRTUALBOX_FOUND}"        )
 message (STATUS " .. Yaml ........................ = ${YAML_FOUND}"              )
 message (STATUS " .. YAZ ......................... = ${YAZ_FOUND}"               )
 message (STATUS " .. YAZ++ ....................... = ${YAZPP_FOUND}"             )

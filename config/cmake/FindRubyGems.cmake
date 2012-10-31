@@ -26,11 +26,11 @@
 #                            found.
 
 if (NOT RUBYGEMS_FOUND)
-    
+
   if (NOT RUBYGEMS_ROOT_DIR)
     set (RUBYGEMS_ROOT_DIR ${CMAKE_INSTALL_PREFIX})
   endif (NOT RUBYGEMS_ROOT_DIR)
-  
+
   ##_____________________________________________________________________________
   ## Required: find Ruby Gem first
 
@@ -39,10 +39,10 @@ if (NOT RUBYGEMS_FOUND)
   endif (NOT GEM_EXECUTABLE)
 
   set (RUBYGEMS_FOUND ${GEM_FOUND})
-  
+
   ##_____________________________________________________________________________
   ## Set up the list of Gems to search for
-  
+
   set (RUBYGEMS_GEMS
       apache_image_resizer
       apache_secure_download
@@ -59,7 +59,7 @@ if (NOT RUBYGEMS_FOUND)
       jekyll-pagination
       jekyll-tagging
       json
-      libxml-ext 
+      libxml-ext
       libxml-ruby
       lockfile
       mail
@@ -78,13 +78,13 @@ if (NOT RUBYGEMS_FOUND)
       ruby-hmac
       ruby-nuggets
       unicode
-      wadl 
+      wadl
       yard
     )
-  
+
   ##_____________________________________________________________________________
   ## Check for the executable
-  
+
   if (GEM_EXECUTABLE)
 
     ## Get the list of install Ruby gems
@@ -98,7 +98,7 @@ if (NOT RUBYGEMS_FOUND)
 
     ## If not empty, process the output of the previous query
     if (GEM_LIST_OUTPUT)
-      
+
       ## Go through the list of expected Gems and check if they are installed
       foreach (VAR_GEM ${RUBYGEMS_GEMS})
 
@@ -108,8 +108,8 @@ if (NOT RUBYGEMS_FOUND)
 	string (REGEX MATCH
 	  ${VAR_GEM} ${VAR_GEM}_FOUND ${GEM_LIST_OUTPUT}
 	  )
-	
-	if (${VAR_GEM}_FOUND)
+
+    if (${VAR_GEM}_FOUND)
 	  set (RUBYGEM_${VAR_GEM_UPPER}_FOUND TRUE)
 	else (${VAR_GEM}_FOUND)
 	  set (RUBYGEM_${VAR_GEM_UPPER}_FOUND FALSE)
@@ -120,14 +120,14 @@ if (NOT RUBYGEMS_FOUND)
 	endif (NOT RUBYGEMS_FIND_QUIETLY)
 
       endforeach (VAR_GEM)
-      
+
     endif (GEM_LIST_OUTPUT)
-    
+
   endif (GEM_EXECUTABLE)
-  
+
   ##_____________________________________________________________________________
   ## Actions taken when all components have been found
-  
+
   if (RUBYGEMS_FOUND)
     if (NOT RUBYGEMS_FIND_QUIETLY)
       message (STATUS "Found components for RUBYGEMS")

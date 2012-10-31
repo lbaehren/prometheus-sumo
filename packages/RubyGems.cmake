@@ -83,7 +83,7 @@ if (GEM_EXECUTABLE)
 
     if (GEM_OUTPUT_VARIABLE)
       if (CONFIGURE_VERBOSE)
-	message ("   [OK] ${varPackage}")
+        message ("   [OK] ${varPackage}")
       endif (CONFIGURE_VERBOSE)
       math (EXPR NOF_GEMS_FOUND "${NOF_GEMS_FOUND}+1")
     else (GEM_OUTPUT_VARIABLE)
@@ -91,13 +91,13 @@ if (GEM_EXECUTABLE)
       message ("   [--] ${varPackage}")
       ## Installation instructions
       add_custom_command (
-	TARGET InstallGems
-	POST_BUILD
-	COMMAND export GEM_HOME=${CMAKE_INSTALL_PREFIX}/lib/ruby/gems/${RUBY_VERSION_SERIES}
-	COMMAND ${GEM_EXECUTABLE} install ${varPackage}
-	WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-	COMMENT "Installing Ruby Gem ${varPackage} ..."
-	)
+        TARGET InstallGems
+        POST_BUILD
+        COMMAND export GEM_HOME=${CMAKE_INSTALL_PREFIX}/lib/ruby/gems/${RUBY_VERSION_SERIES}
+        COMMAND ${GEM_EXECUTABLE} install ${varPackage}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+        COMMENT "Installing Ruby Gem ${varPackage} ..."
+      )
     endif (GEM_OUTPUT_VARIABLE)
 
   endforeach (varPackage)
