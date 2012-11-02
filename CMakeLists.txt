@@ -65,6 +65,25 @@ endif (NOT CONFIGURE_VERBOSE)
 
 ## ==============================================================================
 ##
+##  Installation location
+##
+## ==============================================================================
+
+## For a production and development system on one of the server machines the
+## installation is done into "/var/local/prometheus". If however development
+## (or even just test installation) is carried out on a different system with
+## the user/developer not having write permissions to "/var/local" we need to
+## move to the installation root to a different point.
+
+if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+
+  set (CMAKE_INSTALL_PREFIX
+    "${PROJECT_SOURCE_DIR}/release" CACHE PATH "prometheus install prefix" FORCE
+    )
+endif (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+
+## ==============================================================================
+##
 ##  System inspection
 ##
 ## ==============================================================================
@@ -110,6 +129,7 @@ foreach (_cmakeModule
   YAZPP
   ZLIB
   )
+  message (STATUS "Loading module ${_cmakeModule} ...")
   ## Verbosity of module
   if (NOT CONFIGURE_VERBOSE)
     ## Convert module name to upper-case
@@ -156,25 +176,6 @@ if (RUBY_VERSION)
   ## Ruby release series
   set (RUBY_VERSION_SERIES "${RUBY_VERSION_MAJOR}.${RUBY_VERSION_MAJOR}")
 endif (RUBY_VERSION)
-
-## ==============================================================================
-##
-##  Installation location
-##
-## ==============================================================================
-
-## For a production and development system on one of the server machines the
-## installation is done into "/var/local/prometheus". If however development
-## (or even just test installation) is carried out on a different system with
-## the user/developer not having write permissions to "/var/local" we need to
-## move to the installation root to a different point.
-
-if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-
-  set (CMAKE_INSTALL_PREFIX
-    "${PROJECT_SOURCE_DIR}/release" CACHE PATH "prometheus install prefix" FORCE
-    )
-endif (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 
 ## ==============================================================================
 ##
