@@ -27,18 +27,72 @@
 
 #include <Common.h>
 
-int main ()
-{
-  size_t nelem (5);
+// ==============================================================================
+//
+//  Test functions
+//
+// ==============================================================================
 
-  std::cout << "\n[1] Testing operator<<(std::vector<T>)\n" << std::endl;
-  {
-    std::vector<bool> vec_bool (nelem);
-    std::vector<int> vec_int (nelem);
-    std::vector<long> vec_long (nelem);
-    std::vector<short> vec_short (nelem);
-    std::vector<float> vec_float (nelem);
-    std::vector<double> vec_double (nelem);
+//_______________________________________________________________________________
+//                                                           test_system_commands
+
+/*!
+  \brief Test execution of system commands
+  \return status -- Return status of the function; returns non-zero value in case
+                    an error is caught.
+*/
+int test_system_commands ()
+{
+  std::cout << "\n[testCommon::test_system_commands]\n" << std::endl;
+
+  int status = 0;
+  std::vector<std::string> commands;
+
+  commands.push_back("date");
+  commands.push_back("ls");
+  commands.push_back("pwd");
+
+  std::cout << "-- Checking if processor is available... ";
+
+  if (system(NULL)) {
+    std::cout << "OK" << std::endl;
+  } else {
+    std::cout << "FAIL" << std::endl;
+    exit (EXIT_FAILURE);
+  }
+
+  for (size_t n=0; n<commands.size(); ++n) {
+    std::cout << "\n[" << n+1 << "] Executing command " << commands[n] << " ..." << std::endl;
+    status = system (commands[n].c_str());
+    std::cout << "--> Return value = " << status << std::endl;
+  }
+
+  return 0;
+}
+
+//_______________________________________________________________________________
+//                                                      test_operator_overloading
+
+/*!
+  \brief Test overloading of operators
+  \param nelem   -- Number of elememts for a `std::vector<T>` or `std::set<T>`
+  \return status -- Return status of the function; returns non-zero value in case
+                    an error is caught.
+*/
+int test_operator_overloading (size_t const &nelem=5)
+{
+  std::cout << "\n[testCommon::test_operator_overloading]\n" << std::endl;
+
+  int status = 0;
+
+  std::cout << "\n[1] Testing operator<<(std::vector<T>)" << std::endl;
+  try {
+    std::vector<bool> vec_bool (nelem,true);
+    std::vector<int> vec_int (nelem,0);
+    std::vector<long> vec_long (nelem,1);
+    std::vector<short> vec_short (nelem,2);
+    std::vector<float> vec_float (nelem,3.5);
+    std::vector<double> vec_double (nelem,4.5);
 
     std::cout << "-- vector<bool>   = " << vec_bool   << std::endl;
     std::cout << "-- vector<int>    = " << vec_int    << std::endl;
@@ -46,10 +100,13 @@ int main ()
     std::cout << "-- vector<short>  = " << vec_short  << std::endl;
     std::cout << "-- vector<float>  = " << vec_float  << std::endl;
     std::cout << "-- vector<double> = " << vec_double << std::endl;
+  } catch (std::exception &e) {
+    std::cerr << "ERROR : " << e.what() << std::endl;
+    ++status;
   }
 
-  std::cout << "\n[2] Testing operator<<(std::set<T>)\n" << std::endl;
-  {
+  std::cout << "\n[2] Testing operator<<(std::set<T>)" << std::endl;
+  try {
     bool array_bool[] = {true,false,true,false,true};
     std::set<bool> set_bool (&array_bool[0], &array_bool[5]);
     //
@@ -78,6 +135,9 @@ int main ()
     std::cout << "-- set<float>  = " << set_float  << std::endl;
     std::cout << "-- set<double> = " << set_double << std::endl;
     std::cout << "-- set<string> = " << set_string << std::endl;
+  } catch (std::exception &e) {
+    std::cerr << "ERROR : " << e.what() << std::endl;
+    ++status;
   }
 
   // std::cout << "\n[3] Testing operator<<(std::map<T,S>)\n" << std::endl;
@@ -89,5 +149,21 @@ int main ()
   //   std::cout << "-- map<int,string> = " << mapIntString << std::endl;
   // }
 
-  return 0;
+  return status;
+}
+
+// ==============================================================================
+//
+//  Program main function
+//
+// ==============================================================================
+
+int main ()
+{
+  int status = 0;
+
+  status += test_system_commands ();
+  status += test_operator_overloading ();
+
+  return status;
 }

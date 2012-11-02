@@ -32,6 +32,11 @@
 //______________________________________________________________________________
 //                                                             test_construction
 
+/*!
+  \brief Test constructor for a new object
+  \return status -- Return status of the function; returns non-zero value in case
+                    an error is caught.
+*/
 int test_construction (std::map<std::string,std::string> const &attributes)
 {
   std::cout << "\n[TestImage::test_construction]\n" << std::endl;
@@ -46,7 +51,7 @@ int test_construction (std::map<std::string,std::string> const &attributes)
     prometheus::Image img (title,artist);
     img.summary();
   } catch (std::exception &e) {
-    std::cout << "[TestImage] ERROR : " << e.what() << std::endl;
+    std::cerr << "[TestImage] ERROR : " << e.what() << std::endl;
     ++status;
   }
 
@@ -55,7 +60,7 @@ int test_construction (std::map<std::string,std::string> const &attributes)
     prometheus::Image img (attributes);
     img.summary();
   } catch (std::exception &e) {
-    std::cout << "[TestImage] ERROR : " << e.what() << std::endl;
+    std::cerr << "[TestImage] ERROR : " << e.what() << std::endl;
     ++status;
   }
 
@@ -65,6 +70,11 @@ int test_construction (std::map<std::string,std::string> const &attributes)
 //______________________________________________________________________________
 //                                                               test_attributes
 
+/*!
+  \brief Test access to and manipulation of image attributes
+  \return status -- Return status of the function; returns non-zero value in case
+                    an error is caught.
+*/
 int test_attributes (std::map<std::string,std::string> &attributes)
 {
   std::cout << "\n[TestImage::test_attributes]\n" << std::endl;
@@ -81,7 +91,7 @@ int test_attributes (std::map<std::string,std::string> &attributes)
     img.setAttribute("country","Germany");
     img.summary();
   } catch (std::exception &e) {
-    std::cout << "[TestImage] ERROR : " << e.what() << std::endl;
+    std::cerr << "[TestImage] ERROR : " << e.what() << std::endl;
     ++status;
   }
 
@@ -97,7 +107,7 @@ int test_attributes (std::map<std::string,std::string> &attributes)
     std::cout << "-- Country = " << country << std::endl;
     std::cout << "-- Gallery = " << gallery << std::endl;
   } catch (std::exception &e) {
-    std::cout << "[TestImage] ERROR : " << e.what() << std::endl;
+    std::cerr << "[TestImage] ERROR : " << e.what() << std::endl;
     ++status;
   }
 
@@ -119,7 +129,7 @@ int test_attributes (std::map<std::string,std::string> &attributes)
     std::cout << "-- Country = " << country << std::endl;
     std::cout << "-- Gallery = " << gallery << std::endl;
   } catch (std::exception &e) {
-    std::cout << "[TestImage] ERROR : " << e.what() << std::endl;
+    std::cerr << "[TestImage] ERROR : " << e.what() << std::endl;
     ++status;
   }
 
