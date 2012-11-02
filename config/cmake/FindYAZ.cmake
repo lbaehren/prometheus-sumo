@@ -35,7 +35,8 @@ if (NOT YAZ_FOUND)
   ##_____________________________________________________________________________
   ## Check for the header files
   
-  find_path (YAZ_INCLUDES yaz/yconfig.h yaz/backend.h
+  find_path (YAZ_INCLUDES
+    NAMES yaz/yconfig.h yaz/backend.h
     HINTS ${YAZ_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES include
     )
@@ -81,6 +82,17 @@ if (NOT YAZ_FOUND)
     HINTS ${YAZ_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES bin
     )
+
+  if (YAZ_CONFIG_EXECUTABLE)
+    execute_process (
+      COMMAND ${YAZ_CONFIG_EXECUTABLE} --version
+      WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+      RESULT_VARIABLE YAZ_RESULT_VARIABLE
+      OUTPUT_VARIABLE YAZ_VERSION
+      ERROR_VARIABLE YAZ_ERROR_VARIABLE
+      OUTPUT_STRIP_TRAILING_WHITESPACE
+      )
+  endif (YAZ_CONFIG_EXECUTABLE)
   
   ##_____________________________________________________________________________
   ## Actions taken when all components have been found

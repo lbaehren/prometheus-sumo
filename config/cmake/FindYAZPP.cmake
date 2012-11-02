@@ -35,7 +35,8 @@ if (NOT YAZPP_FOUND)
   ##_____________________________________________________________________________
   ## Check for the header files
 
-  find_path (YAZPP_INCLUDES yazpp/zoom.h yazpp/z-server.h
+  find_path (YAZPP_INCLUDES
+    NAMES yazpp/z-assoc.h yazpp/z-query.h yazpp/socket-observer.h
     HINTS ${YAZPP_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES include
     )
@@ -63,8 +64,6 @@ if (NOT YAZPP_FOUND)
     list (APPEND YAZPP_LIBRARIES ${YAZPP_ZOOMPP_LIBRARY})
   endif (YAZPP_ZOOMPP_LIBRARY)
 
-  ## YAZ C libraries
-
   ##_____________________________________________________________________________
   ## Check for the executable
 
@@ -72,6 +71,17 @@ if (NOT YAZPP_FOUND)
     HINTS ${YAZPP_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES bin
     )
+
+  if (YAZPP_CONFIG_EXECUTABLE)
+    execute_process (
+      COMMAND ${YAZPP_CONFIG_EXECUTABLE} --version
+      WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+      RESULT_VARIABLE YAZPP_RESULT_VARIABLE
+      OUTPUT_VARIABLE YAZPP_VERSION
+      ERROR_VARIABLE YAZPP_ERROR_VARIABLE
+      OUTPUT_STRIP_TRAILING_WHITESPACE
+      )
+  endif (YAZPP_CONFIG_EXECUTABLE)
 
   ##_____________________________________________________________________________
   ## Actions taken when all components have been found
