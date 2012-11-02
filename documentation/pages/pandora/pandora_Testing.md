@@ -6,13 +6,20 @@ Testing    {#pandora_testing}
 
 \section pandora_testing_intro Introduction
 
-Testing support was woven into the \ref refman_rails "Rails" fabric from the beginning. It wasn’t an “oh! let’s bolt on support for running tests because they’re new and cool” epiphany. Just about every Rails application interacts heavily with a database – and, as a result, your tests will need a database to interact with as well. To write efficient tests, you’ll need to understand how to set up this database and populate it with sample data.
+Testing support was woven into the \ref refman_rails "Rails" fabric from the
+beginning. It wasn’t an “oh! let’s bolt on support for running tests because
+they're new and cool” epiphany. Just about every Rails application interacts
+heavily with a database - and, as a result, your tests will need a database to
+interact with as well. To write efficient tests, you’ll need to understand how
+to set up this database and populate it with sample data.
 
-\subsection pandora_testing_env The Three Environments
+\subsection pandora_testing_env Environments
 
-Every Rails application you build has 3 sides: a side for production, a side for development, and a side for testing.
+Every Rails application you build has 3 sides: a side for production, a side for
+development, and a side for testing.
 
-One place you’ll find this distinction is in the `config/database.yml` file. This YAML configuration file has 3 different sections defining 3 unique database setups:
+One place you’ll find this distinction is in the `config/database.yml` file. This
+\ref yaml configuration file has 3 different sections defining 3 unique database setups:
 
 * production
 * development
@@ -20,9 +27,113 @@ One place you’ll find this distinction is in the `config/database.yml` file. T
 
 This allows you to set up and interact with test data without any danger of your tests altering data from your production environment.
 
-For example, suppose you need to test your new delete_this_user_and_every_everything_associated_with_it function. Wouldn’t you want to run this in an environment where it makes no difference if you destroy data or not?
+For example, suppose you need to test your new `delete_this_user_and_every_everything_associated_with_it` function. Wouldn’t you want to run this in an environment where it makes no difference if you destroy data or not?
 
-When you do end up destroying your testing database (and it will happen, trust me), you can rebuild it from scratch according to the specs defined in the development database. You can do this by running rake db:test:prepare.
+When you do end up destroying your testing database (and it will happen, trust
+me), you can rebuild it from scratch according to the specs defined in the
+development database. You can do this by running
+
+~~~~
+rake db:test:prepare
+~~~~
+
+\subsection pandora_testing_frameworks Framworks
+
+* MiniTest
+* TestUnit
+* Rspec
+
+Comparison of the output/source code of two functionally equivalent unit tests, one written using RSpec and the other using Test::Unit
+
+* Code under test
+~~~~
+class DeadError < StandardError; end
+
+class Dog
+  def bark
+    raise DeadError.new "Can't bark when dead" if @dead
+    "woof"
+  end
+
+  def die
+    @dead = true
+  end
+end
+~~~~
+* Test::Unit
+~~~~
+ require 'test/unit'
+  require 'dog'
+
+  class DogTest < Test::Unit::TestCase
+    def setup
+      @dog = Dog.new
+    end
+
+    def test_barks
+      assert_equal "woof", @dog.bark    
+    end
+
+    def test_doesnt_bark_when_dead
+      @dog.die
+      assert_raises DeadError do
+        @dog.bark
+      end
+    end
+  end
+~~~~
+* RSpec
+~~~~
+require 'rspec'
+require 'dog'
+
+describe Dog do
+  before(:all) do
+    @dog = Dog.new
+  end
+
+  context "when alive" do
+    it "barks" do
+      @dog.bark.should == "woof"
+    end
+  end
+
+  context "when dead" do
+    before do
+      @dog.die
+    end
+
+    it "raises an error when asked to bark" do
+      lambda { @dog.bark }.should raise_error(DeadError)
+    end
+  end
+end
+~~~~
+* Test::Unit output
+~~~~
+Ξ code/examples → ruby dog_test.rb --verbose
+Loaded suite dog_test
+Started
+test_barks(DogTest): .
+test_doesnt_bark_when_dead(DogTest): .
+
+Finished in 0.004937 seconds.
+~~~~
+* RSpec output (documentation formatter)
+~~~~
+Ξ code/examples → rspec -fd dog_spec.rb 
+
+Dog
+  when alive
+    barks
+  when dead
+    raises an error when asked to bark
+
+Finished in 0.00224 seconds
+2 examples, 0 failures
+
+2 tests, 2 assertions, 0 failures, 0 errors
+~~~~
 
 \section pandora_testing_specification Test specifications
 
@@ -102,3 +213,6 @@ formatting of the output.
 \section pandora_testing_references References
 
 * [A Guide to Testing Rails Applications](http://guides.rubyonrails.org/testing.html)
+* [How to Run a Single Rails Unit Test](http://flavio.castelli.name/2010/05/28/rails_execute_single_test)
+* [Testing in Rails](http://www.nullislove.com/2007/11/10/testing-in-rails-introduction) -- Series of posts about how to get started writing tests for Ruby on Rails
+* [RSpec vs Test::Unit in Rails](http://programmers.stackexchange.com/questions/27328/rspec-vs-testunit-in-rails)

@@ -160,14 +160,15 @@ Web-Applications:
  - [Ruby Standard Library Documentation](http://prometheus-srv3.uni-koeln.de/ruby-doc/core)
 
 ~~~~
-/var/local/prometheus/web
-└── www
-    └── ruby-doc
-        ├── capistrano        ...  Capistrano utility and framework
-        ├── core              ...  Ruby Core
-        ├── ferret            ...  Ferret Search Library Documentation
-        ├── globalize
-        └── stdlib            ...  Ruby Standard Library Documentation
+/var/local/prometheus
+ └── web
+     └── www
+         └── ruby-doc
+             ├── capistrano        ...  Capistrano utility and framework
+             ├── core              ...  Ruby Core
+             ├── ferret            ...  Ferret Search Library Documentation
+             ├── globalize
+             └── stdlib            ...  Ruby Standard Library Documentation
 ~~~~
 
 \subsection servers_srv4 prometheus-srv4.uni-koeln.de
@@ -176,27 +177,27 @@ Web-Applications:
 
 ~~~~
 /var/local/prometheus
-└── web
-    └── www
-        └── dilps                  ...  Root directory of promDILPS installation
-            ├── _base
-            │   ├── admin
-            │   ├── cache
-            │   ├── export
-            │   ├── images
-            │   ├── include
-            │   ├── skin
-            │   ├── upload
-            │   └── viewer
-            ├── bern_iaw
-            │   ├── admin
-            │   ├── cache
-            │   ├── export
-            │   ├── images
-            │   ├── include
-            │   ├── skin
-            │   ├── upload
-            │   └── viewer
+ └── web
+     └── www
+         └── dilps                  ...  Root directory of promDILPS installation
+             ├── _base
+             │   ├── admin
+             │   ├── cache
+             │   ├── export
+             │   ├── images
+             │   ├── include
+             │   ├── skin
+             │   ├── upload
+             │   └── viewer
+             ├── bern_iaw
+             │   ├── admin
+             │   ├── cache
+             │   ├── export
+             │   ├── images
+             │   ├── include
+             │   ├── skin
+             │   ├── upload
+             │   └── viewer
 ~~~~
 
 \section virtual_hosts Virtual Hosts
