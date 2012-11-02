@@ -1,4 +1,13 @@
 ##
+##  Pre-processing of configuration files
+##
+
+configure_file (
+  ${CMAKE_CURRENT_SOURCE_DIR}/packages_debian.yml.in
+  ${CMAKE_CURRENT_SOURCE_DIR}/packages_debian.yml
+)
+
+##
 ##  Configuration files
 ##
 

@@ -26,11 +26,11 @@
   url:
   description:
   version:
-- name: ruby1.8
+- name: ruby${REQUIRED_VERSION_RUBY}
   url:
   description:
   version:
-- name: ruby1.8-dev
+- name: ruby${REQUIRED_VERSION_RUBY}-dev
   url:
   description:
   version:
@@ -46,19 +46,19 @@
   url:
   description:
   version:
-- name: libmysql-ruby1.8
+- name: libmysql-ruby${REQUIRED_VERSION_RUBY}
   url:
   description:
   version:
-- name: libtermios-ruby1.8
+- name: libtermios-ruby${REQUIRED_VERSION_RUBY}
   url:
   description:
   version:
-- name: librmagick-ruby1.8
+- name: librmagick-ruby${REQUIRED_VERSION_RUBY}
   url:
   description:
   version:
-- name: libruby1.8
+- name: libruby${REQUIRED_VERSION_RUBY}
   url:
   description:
   version:
