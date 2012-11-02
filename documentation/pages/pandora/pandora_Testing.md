@@ -4,18 +4,39 @@ Testing    {#pandora_testing}
 
 \tableofcontents
 
+\section pandora_testing_intro Introduction
+
+Testing support was woven into the \ref refman_rails "Rails" fabric from the beginning. It wasn’t an “oh! let’s bolt on support for running tests because they’re new and cool” epiphany. Just about every Rails application interacts heavily with a database – and, as a result, your tests will need a database to interact with as well. To write efficient tests, you’ll need to understand how to set up this database and populate it with sample data.
+
+\subsection pandora_testing_env The Three Environments
+
+Every Rails application you build has 3 sides: a side for production, a side for development, and a side for testing.
+
+One place you’ll find this distinction is in the `config/database.yml` file. This YAML configuration file has 3 different sections defining 3 unique database setups:
+
+* production
+* development
+* test
+
+This allows you to set up and interact with test data without any danger of your tests altering data from your production environment.
+
+For example, suppose you need to test your new delete_this_user_and_every_everything_associated_with_it function. Wouldn’t you want to run this in an environment where it makes no difference if you destroy data or not?
+
+When you do end up destroying your testing database (and it will happen, trust me), you can rebuild it from scratch according to the specs defined in the development database. You can do this by running rake db:test:prepare.
+
 \section pandora_testing_specification Test specifications
 
 Tests are defined in the ``spec`` sub-directory:
 
-    pandora/spec/
-    ├── controllers
-    ├── fixtures
-    ├── helpers
-    ├── lib
-    ├── models
-    ├── shared
-    └── views
+    ./pandora
+      └── spec
+          ├── controllers
+          ├── fixtures
+          ├── helpers
+          ├── lib
+          ├── models
+          ├── shared
+          └── views
 
 \section pandora_testing_run Running the tests
 
@@ -77,3 +98,7 @@ formatting of the output.
           should show the current user's institution
           should show the given institution
   \endverbatim
+
+\section pandora_testing_references References
+
+* [A Guide to Testing Rails Applications](http://guides.rubyonrails.org/testing.html)
