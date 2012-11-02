@@ -118,6 +118,7 @@ foreach (_cmakeModule
   RDoc
   Rails
   Rake
+  Rant
   Ruby
   Subversion
   TinyXML
@@ -230,11 +231,12 @@ message (STATUS " .. Required version ............ = ${REQUIRED_VERSION_RUBY}"  
 message (STATUS " .. Ruby executable ............. = ${RUBY_EXECUTABLE} (${RUBY_VERSION})" )
 message (STATUS " .. Path to Ruby library ........ = ${RUBY_LIBRARY}"            )
 message (STATUS " .. Include directory ........... = ${RUBY_INCLUDE_DIRS}"       )
-message (STATUS " .. Gem executable .............. = ${GEM_EXECUTABLE} (${GEM_VERSION})" )
-message (STATUS " .. Rake executable ............. = ${RAKE_EXECUTABLE} (${RAKE_VERSION})" )
-message (STATUS " .. Rails executable ............ = ${RAILS_EXECUTABLE} (${RAILS_VERSION})" )
-message (STATUS " .. RDoc executable ............. = ${RDOC_EXECUTABLE} (${RDOC_VERSION})"            )
-message (STATUS " .. YARD executable ............. = ${YARD_EXECUTABLE} (${YARD_VERSION})" )
+message (STATUS " .. Gem executable .............. = ${GEM_FOUND} (${GEM_VERSION})" )
+message (STATUS " .. Rails executable ............ = ${RAILS_FOUND} (${RAILS_VERSION})" )
+message (STATUS " .. Rake executable ............. = ${RAKE_FOUND} (${RAKE_VERSION})" )
+message (STATUS " .. Rant executable ............. = ${RANT_FOUND} (${RANT_VERSION})" )
+message (STATUS " .. RDoc ........................ = ${RDOC_FOUND} (${RDOC_VERSION})"            )
+message (STATUS " .. YARD executable ............. = ${YARD_FOUND} (${YARD_VERSION})" )
 message (STATUS " Processing tools & libraries:"                                 )
 message (STATUS " .. Boost ....................... = ${Boost_FOUND}"             )
 message (STATUS " .. Doxygen ..................... = ${DOXYGEN_FOUND}"           )
