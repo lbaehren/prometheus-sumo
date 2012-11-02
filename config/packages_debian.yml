@@ -1,0 +1,100 @@
+##
+## List of required Debian packages
+##
+---
+- name: build-essential
+  url:
+  description:
+  version:
+- name: cmake
+  url:
+  description:
+  version:
+- name: git-svn
+  url:
+  description:
+  version:
+- name: subversion
+  url:
+  description:
+  version:
+- name: doxygen
+  url:
+  description:
+  version:
+- name: libboost-dev
+  url:
+  description:
+  version:
+- name: ruby${REQUIRED_VERSION_RUBY}
+  url:
+  description:
+  version:
+- name: ruby${REQUIRED_VERSION_RUBY}-dev
+  url:
+  description:
+  version:
+- name: rubygems
+  url:
+  description:
+  version:
+- name: ri
+  url:
+  description:
+  version:
+- name: rake
+  url:
+  description:
+  version:
+- name: libmysql-ruby${REQUIRED_VERSION_RUBY}
+  url:
+  description:
+  version:
+- name: libtermios-ruby${REQUIRED_VERSION_RUBY}
+  url:
+  description:
+  version:
+- name: librmagick-ruby${REQUIRED_VERSION_RUBY}
+  url:
+  description:
+  version:
+- name: libruby${REQUIRED_VERSION_RUBY}
+  url:
+  description:
+  version:
+- name: mysql-server
+  url:
+  description:
+  version:
+- name: mysql-client
+  url:
+  description:
+  version:
+- name: libmysqlclient-dev
+  url:
+  description:
+  version:
+- name: apache2
+  url:
+  description:
+  version:
+- name: libapache2-mod-ruby
+  url:
+  description:
+  version:
+- name: libapache2-mod-proxy-html
+  url:
+  description:
+  version:
+- name: libxml2-dev
+  url:
+  description:
+  version:
+- name: libmagic-dev
+  url:
+  description:
+  version:
+- name: libmagickwand-dev
+  url:
+  description:
+  version:
