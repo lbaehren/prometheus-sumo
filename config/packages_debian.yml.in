@@ -98,3 +98,7 @@
   url:
   description:
   version:
+- name: zlib1g-dev
+  url:
+  description:
+  version:
