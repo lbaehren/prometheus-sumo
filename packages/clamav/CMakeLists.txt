@@ -27,7 +27,10 @@ option (CLAMAV_FROM_REPOS     "Install package from repository?"         YES )
 ## ==============================================================================
 
 find_package (ClamAV)
-find_package (ZLIB)
+
+if (NOT ZLIB_FOUND)
+  find_package (ZLIB)
+endif (NOT ZLIB_FOUND)
 
 if (NOT ZLIB_FOUND)
   message (WARNING "Unable to build ClamAV - missing ZLIB.")

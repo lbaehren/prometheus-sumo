@@ -108,6 +108,7 @@ foreach (_cmakeModule
   Yard
   YAZ
   YAZPP
+  ZLIB
   )
   ## Verbosity of module
   if (NOT CONFIGURE_VERBOSE)
