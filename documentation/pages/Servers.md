@@ -15,6 +15,8 @@ Servers    {#servers}
 
 \section server_machines Server names and hosted services
 
+* \subpage servers_remote_access
+
 | IP address      | Hostname                     | Hosted service             |
 |-----------------|------------------------------|----------------------------|
 | 134.95.19.39    | www.prometheus-bildarchiv.de | \ref image_archive         |
