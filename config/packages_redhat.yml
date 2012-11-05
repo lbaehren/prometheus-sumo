@@ -30,6 +30,10 @@
   url:
   description:
   version:
+- name: git-svn
+  url:
+  description: Git tools for importing Subversion repositories
+  version:
 - name: doxygen
   url: https://apps.fedoraproject.org/packages/doxygen
   description: A documentation system for C/C++
