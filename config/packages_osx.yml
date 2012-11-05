@@ -1,0 +1,24 @@
+##
+## List of required MacPorts packages
+##
+---
+- name: doxygen
+  url:
+  description:
+  version:
+- name: mod_ruby
+  url:
+  description:
+  version:
+- name: mysql5-devel
+  url:
+  description:
+  version:
+- name: rb-rubygems
+  url:
+  description:
+  version:
+- name: ruby
+  url:
+  description:
+  version:
