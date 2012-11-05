@@ -3,12 +3,16 @@
 ##
 ---
 - name: ruby
-  url:
-  description:
+  url: https://apps.fedoraproject.org/packages/ruby
+  description: An interpreter of object-oriented scripting language
   version:
 - name: rubygems
-  url:
-  description:
+  url: https://apps.fedoraproject.org/packages/rubygems
+  description: The Ruby standard for packaging ruby libraries
+  version:
+- name: rubygem-rails
+  url: https://apps.fedoraproject.org/packages/rubygem-rails
+  description: Web-application framework
   version:
 - name: rdoc
   url:
@@ -25,6 +29,10 @@
 - name: eruby
   url:
   description:
+  version:
+- name: doxygen
+  url: https://apps.fedoraproject.org/packages/doxygen
+  description: A documentation system for C/C++
   version:
 - name: libxml2-devel
   url:
@@ -63,10 +71,10 @@
   description:
   version:
 - name: ImageMagick
-  url:
-  description:
+  url: https://apps.fedoraproject.org/packages/ImageMagick
+  description: An X application for displaying and manipulating images
   version:
 - name: ImageMagick-devel
-  url:
-  description:
+  url: https://apps.fedoraproject.org/packages/ImageMagick-devel
+  description: Library links and header files for ImageMagick app development
   version:
