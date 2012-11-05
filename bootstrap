@@ -113,11 +113,6 @@ check_cmake_version ()
     cmakeVersion=$((100*$cmakeVersionMajor))$cmakeVersion
   } fi;
 
-  ## Provide intermediate feedback
-
-  echo "--> Required CMake version  = $cmakeVersionRequired"
-  echo "--> Installed CMake version = $cmakeVersion"
-
   ## Check installed version of CMake against the required version
 
   if test $cmakeVersion -lt $cmakeVersionRequired ; then {
