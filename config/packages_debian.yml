@@ -1,54 +1,56 @@
 ##
 ## List of required Debian packages
 ##
+## (When making changes, always use the file `packages_debian.yml.in`)
+##
 ---
 - name: build-essential
   url:
-  description:
+  description: Informational list of build-essential packages
   version:
 - name: cmake
   url:
-  description:
+  description: a cross-platform, open-source make system
   version:
 - name: git-svn
   url:
-  description:
+  description: fast, scalable, distributed revision control system (svn interoperability)
   version:
 - name: subversion
   url:
-  description:
+  description: Advanced version control system
   version:
 - name: doxygen
   url:
-  description:
+  description: Documentation system for C, C++, Java, Python and other languages
   version:
 - name: libboost-dev
   url:
-  description:
+  description: Boost C++ Libraries development files
   version:
 - name: ruby1.8
   url:
-  description:
+  description: Interpreter of object-oriented scripting language Ruby 1.8
   version:
 - name: ruby1.8-dev
   url:
-  description:
+  description: Header files for compiling extension modules for the Ruby 1.8
   version:
 - name: rubygems
   url:
-  description:
+  description: package management framework for Ruby libraries/applications
   version:
 - name: ri
   url:
-  description:
+  description: Ruby Interactive reference
   version:
 - name: rake
   url:
-  description:
+  description: a ruby build program
   version:
 - name: libmysql-ruby1.8
   url:
-  description:
+  description: MySQL module for Ruby 1.8
   version:
 - name: libtermios-ruby1.8
   url:
@@ -60,15 +62,15 @@
   version:
 - name: libruby1.8
   url:
-  description:
+  description: Libraries necessary to run Ruby 1.8
   version:
 - name: mysql-server
   url:
-  description:
+  description: MySQL database server
   version:
 - name: mysql-client
   url:
-  description:
+  description: MySQL database client
   version:
 - name: libmysqlclient-dev
   url:
@@ -92,13 +94,13 @@
   version:
 - name: libmagic-dev
   url:
-  description:
+  description: File type determination library using "magic" numbers
   version:
 - name: libmagickwand-dev
   url:
-  description:
+  description: image manipulation library - development files
   version:
 - name: zlib1g-dev
   url:
-  description:
+  description: compression library - development
   version:

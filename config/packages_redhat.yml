@@ -14,21 +14,21 @@
   url: https://apps.fedoraproject.org/packages/rubygem-rails
   description: Web-application framework
   version:
-- name: rdoc
+- name: rubygem-rdoc
   url:
-  description:
+  description: RDoc produces HTML and command-line documentation for Ruby projects
   version:
 - name: ri
   url:
   description:
   version:
-- name: irb
+- name: ruby-irb
   url:
-  description:
+  description: The Interactive Ruby
   version:
 - name: eruby
   url:
-  description:
+  description: An interpreter of embedded Ruby language 
   version:
 - name: git-svn
   url:
@@ -64,15 +64,15 @@
   version:
 - name: subversion
   url:
-  description:
+  description: A Modern Concurrent Version Control System
   version:
 - name: subversion-tools
   url:
-  description:
+  description: Supplementary tools for Subversion
   version:
-- name: libapache2-svn
+- name: mod_dav_svn
   url:
-  description:
+  description: Apache httpd module for Subversion server
   version:
 - name: ImageMagick
   url: https://apps.fedoraproject.org/packages/ImageMagick
