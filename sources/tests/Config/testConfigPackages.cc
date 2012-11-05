@@ -19,13 +19,13 @@
  ***************************************************************************/
 
 #include <iomanip>
-#include <Config/Gems.h>
+#include <Config/Packages.h>
 
 /*!
-  \file testConfigGems.cc
+  \file testConfigPackages.cc
   \ingroup prometheus
   \ingroup tests
-  \brief A collection of tests for the prometheus::config::Gems class
+  \brief A collection of tests for the prometheus::config::Packages class
   \author Lars Baehren
 */
 
@@ -41,27 +41,27 @@
 */
 int test_constructors (std::string const &filename="ruby_gems.yml")
 {
-  std::cout << "\n[testGems::test_constructors]\n" << std::endl;
+  std::cout << "\n[testPackages::test_constructors]\n" << std::endl;
 
   int status = 0;
 
-  std::cout << "[1] Testing Gems() ..." << std::endl;
+  std::cout << "[1] Testing Packages() ..." << std::endl;
   try {
-    prometheus::config::Gems gems;
+    prometheus::config::Packages packages;
     //
-    std::cout << "--> Config file = " << gems.configFile() << std::endl;
-    std::cout << "--> nof. gems   = " << gems.nofGems()    << std::endl;
+    std::cout << "--> Config file = " << packages.configFile() << std::endl;
+    std::cout << "--> nof. packages   = " << packages.nofPackages()    << std::endl;
   } catch (std::exception &e) {
     std::cout << "ERROR : " << e.what() << std::endl;
     ++status;
   }
 
-  std::cout << "[2] Testing Gems(std::string) ..." << std::endl;
+  std::cout << "[2] Testing Packages(std::string) ..." << std::endl;
   try {
-    prometheus::config::Gems gems (filename);
+    prometheus::config::Packages packages (filename);
     //
-    std::cout << "--> Config file = " << gems.configFile() << std::endl;
-    std::cout << "--> nof. gems   = " << gems.nofGems()    << std::endl;
+    std::cout << "--> Config file = " << packages.configFile() << std::endl;
+    std::cout << "--> nof. packages   = " << packages.nofPackages()    << std::endl;
   } catch (std::exception &e) {
     std::cout << "ERROR : " << e.what() << std::endl;
     ++status;
@@ -74,43 +74,43 @@ int test_constructors (std::string const &filename="ruby_gems.yml")
 //                                                              test_constructors
 
 /*!
-  \brief Test reading list of Ruby gems from configuration file
+  \brief Test reading list of Ruby packages from configuration file
 */
 int test_read_config (std::string const &filename)
 {
-  std::cout << "\n[testGems::test_read_config]\n" << std::endl;
+  std::cout << "\n[testPackages::test_read_config]\n" << std::endl;
 
   int status = 0;
-  prometheus::config::Gems gems;
+  prometheus::config::Packages packages;
 
-  std::cout << "[1] Testing Gems::readConfig(std::string) ..." << std::endl;
+  std::cout << "[1] Testing Packages::readConfig(std::string) ..." << std::endl;
   try {
-    gems.readConfig(filename);
-    gems.summary();
+    packages.readConfig(filename);
+    packages.summary();
   } catch (std::exception &e) {
     std::cout << "ERROR : " << e.what() << std::endl;
     ++status;
   }
 
-  std::cout << "[2] Testing Gems::names() ..." << std::endl;
+  std::cout << "[2] Testing Packages::names() ..." << std::endl;
   try {
-    // Get the names of the gems ...
-    std::set<std::string> names = gems.names();
+    // Get the names of the packages ...
+    std::set<std::string> names = packages.names();
     // ... and print them
-    std::cout << "--> nof. gems = " << names.size() << std::endl;
-    std::cout << "--> Gem names = " << names        << std::endl;
+    std::cout << "--> nof. packages = " << names.size() << std::endl;
+    std::cout << "--> Package names = " << names        << std::endl;
   } catch (std::exception &e) {
     std::cout << "ERROR : " << e.what() << std::endl;
     ++status;
   }
 
-  std::cout << "[3] Testing Gems::versions() ..." << std::endl;
+  std::cout << "[3] Testing Packages::versions() ..." << std::endl;
   try {
     std::map<std::string,std::string>::iterator it;
-    // Get the names of the gems ...
-    std::map<std::string,std::string> versions = gems.versions();
+    // Get the names of the packages ...
+    std::map<std::string,std::string> versions = packages.versions();
     // ... and print them
-    std::cout << "--> nof. gems = " << versions.size() << std::endl;
+    std::cout << "--> nof. packages = " << versions.size() << std::endl;
     for (it=versions.begin();it!=versions.end();++it) {
       std::cout << std::setw(25) << it->first << "  :  " << it->second << std::endl;
     }
@@ -119,13 +119,13 @@ int test_read_config (std::string const &filename)
     ++status;
   }
 
-  std::cout << "[4] Testing Gems::urls() ..." << std::endl;
+  std::cout << "[4] Testing Packages::urls() ..." << std::endl;
   try {
     std::map<std::string,std::string>::iterator it;
-    // Get the names of the gems ...
-    std::map<std::string,std::string> urls = gems.urls();
+    // Get the names of the packages ...
+    std::map<std::string,std::string> urls = packages.urls();
     // ... and print them
-    std::cout << "--> nof. gems = " << urls.size() << std::endl;
+    std::cout << "--> nof. packages = " << urls.size() << std::endl;
     for (it=urls.begin();it!=urls.end();++it) {
       std::cout << std::setw(25) << it->first << "  :  " << it->second << std::endl;
     }

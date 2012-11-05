@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "Gems.h"
+#include "Packages.h"
 
 namespace prometheus {   // namespace prometheus -- BEGIN
 
@@ -30,12 +30,12 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     //
     // ==========================================================================
 
-    Gems::Gems ()
+    Packages::Packages ()
       : ConfigFileBase ()
     {
     }
 
-    Gems::Gems (std::string const &filename)
+    Packages::Packages (std::string const &filename)
       : ConfigFileBase (filename)
     {
     }
@@ -46,10 +46,10 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     //
     // ==========================================================================
 
-    bool Gems::storeNode (YAML::Iterator const &it)
+    bool Packages::storeNode (YAML::Iterator const &it)
     {
       bool status = true;
-      GemParameters buffer;
+      PackageParameters buffer;
 
       try {
         /* Extract parameters from node ... */
@@ -58,9 +58,9 @@ namespace prometheus {   // namespace prometheus -- BEGIN
         (*it)["description"]  >> buffer.description;
         (*it)["version"]      >> buffer.version;
         /* .. and store them internally */
-        itsGemList.push_back(buffer);
+        itsPackageList.push_back(buffer);
       } catch (std::exception &e) {
-        std::cout << "[Gems::storeNode] ERROR : " << e.what() << std::endl;
+        std::cout << "[Packages::storeNode] ERROR : " << e.what() << std::endl;
         status = false;
       }
 
@@ -70,49 +70,49 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     //___________________________________________________________________________
     //                                                                      names
 
-    std::set<std::string> Gems::names ()
+    std::set<std::string> Packages::names ()
     {
-      std::set<std::string> gemNames;
+      std::set<std::string> packageNames;
 
-      if (!itsGemList.empty()) {
-        for (size_t n=0; n<itsGemList.size(); ++n) {
-          gemNames.insert(itsGemList[n].name);
+      if (!itsPackageList.empty()) {
+        for (size_t n=0; n<itsPackageList.size(); ++n) {
+          packageNames.insert(itsPackageList[n].name);
         }
       }
 
-      return gemNames;
+      return packageNames;
     }
 
     //___________________________________________________________________________
     //                                                                   versions
 
-    std::map<std::string,std::string> Gems::versions ()
+    std::map<std::string,std::string> Packages::versions ()
     {
-      std::map<std::string,std::string> gemVersions;
+      std::map<std::string,std::string> packageVersions;
 
-      if (!itsGemList.empty()) {
-        for (size_t n=0; n<itsGemList.size(); ++n) {
-          gemVersions[itsGemList[n].name] = itsGemList[n].version;
+      if (!itsPackageList.empty()) {
+        for (size_t n=0; n<itsPackageList.size(); ++n) {
+          packageVersions[itsPackageList[n].name] = itsPackageList[n].version;
         }
       }
 
-      return gemVersions;
+      return packageVersions;
     }
 
     //___________________________________________________________________________
     //                                                                       urls
 
-    std::map<std::string,std::string> Gems::urls ()
+    std::map<std::string,std::string> Packages::urls ()
     {
-      std::map<std::string,std::string> gemURL;
+      std::map<std::string,std::string> packageURL;
 
-      if (!itsGemList.empty()) {
-        for (size_t n=0; n<itsGemList.size(); ++n) {
-          gemURL[itsGemList[n].name] = itsGemList[n].url;
+      if (!itsPackageList.empty()) {
+        for (size_t n=0; n<itsPackageList.size(); ++n) {
+          packageURL[itsPackageList[n].name] = itsPackageList[n].url;
         }
       }
 
-      return gemURL;
+      return packageURL;
     }
 
     // ==========================================================================
@@ -127,14 +127,13 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     /*!
       \param os -- Output stream to which the summary will be written.
     */
-    void Gems::summary (std::ostream &os)
+    void Packages::summary (std::ostream &os)
     {
-      os << "[Gems] Summary of internal parameters"     << std::endl;
-      os << "-- Configuration file = " << itsConfigFile     << std::endl;
-      os << "-- nof. gem settings  = " << itsGemList.size() << std::endl;
-      os << "-- Gem names          = " << names()           << std::endl;
+      os << "[Packages] Summary of internal parameters"         << std::endl;
+      os << "-- Configuration file = " << itsConfigFile         << std::endl;
+      os << "-- nof. packages      = " << itsPackageList.size() << std::endl;
+      os << "-- Package names      = " << names()               << std::endl;
     }
-
 
   }   // namespace config -- BEGIN
 

@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef CONFIG_GEMS_H
-#define CONFIG_GEMS_H
+#ifndef CONFIG_PACKAGES_H
+#define CONFIG_PACKAGES_H
 
 #include "ConfigFileBase.h"
 
@@ -28,24 +28,24 @@ namespace prometheus {   // namespace prometheus -- BEGIN
   namespace config {   // namespace config -- BEGIN
 
     /*!
-      \file Gems.h
-      \class Gems
+      \file Packages.h
+      \class Packages
       \ingroup prometheus
       \ingroup config
-      \brief Configuration settings for required Ruby gems
-      \test testConfigGems.cc
+      \brief Configuration settings for required software packages
+      \test testConfigPackages.cc
 
       \author Lars Baehren
       \date 2012-10-22
 
       This class provides an adapter to read configuration data on list of
-      required Ruby gems, most of which are used for the \ref pandora web
-      application and \ref homepage.
+      required software packages (`.deb`, `.rpm`, MacPorts, Ruby gems), most of
+      which are used for the \ref pandora web application and \ref homepage.
     */
-    class Gems : public ConfigFileBase {
+    class Packages : public ConfigFileBase {
 
-      //! Parameters for the 'gem' node of the configuration file
-      struct GemParameters {
+      //! Parameters for the package node of the configuration file
+      struct PackageParameters {
         //! Name of the gem
         std::string name;
         //! URL for gem's project page
@@ -56,8 +56,8 @@ namespace prometheus {   // namespace prometheus -- BEGIN
         std::string version;
       };
 
-      //! List of gems for which parameters are kept
-      std::vector<GemParameters> itsGemList;
+      //! List of packages for which parameters are kept
+      std::vector<PackageParameters> itsPackageList;
 
       //! Store the data from an individual node
       bool storeNode (YAML::Iterator const &it);
@@ -67,22 +67,22 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       // === Construction =======================================================
 
       //! Default constructor
-      Gems ();
+      Packages ();
 
       //! Argumented constructor
-      Gems (std::string const &filename);
+      Packages (std::string const &filename);
 
       // === Parameter access ===================================================
 
-      //! Get the number of gems for which parameters are kept
-      inline size_t nofGems () {
-        return itsGemList.size();
+      //! Get the number of packages for which parameters are kept
+      inline size_t nofPackages () {
+        return itsPackageList.size();
       }
 
-      //! Get the name of the gems
+      //! Get the name of the packages
       std::set<std::string> names ();
 
-      //! Get version information for the gems
+      //! Get version information for the packages
       std::map<std::string,std::string> versions ();
 
       //! Get URL for gem's project page
