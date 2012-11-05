@@ -102,13 +102,9 @@ else (APPLE)
     include (${CMAKE_CURRENT_SOURCE_DIR}/PackagesDebian.cmake)
   endif (DEBIAN_FOUND OR UBUNTU_FOUND)
 
-  if (FEDORA_FOUND)
-    include (${CMAKE_CURRENT_SOURCE_DIR}/PackagesFedora.cmake)
-  endif (FEDORA_FOUND)
-
-  if (REDHAT_FOUND)
+  if (REDHAT_FOUND OR FEDORA_FOUND)
     include (${CMAKE_CURRENT_SOURCE_DIR}/PackagesRedhat.cmake)
-  endif (REDHAT_FOUND)
+  endif (REDHAT_FOUND OR FEDORA_FOUND)
 
 endif (APPLE)
 
