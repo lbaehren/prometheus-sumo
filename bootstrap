@@ -10,7 +10,7 @@
 ## Environment variables
 
 cmakeSourceDir=`pwd`
-cmakeVersion=2.8.10
+cmakeSourceVersion=2.8.10
 cmakeSourceArchive=cmake-$cmakeVersion.tar.gz
 cmakeSourceUrl=http://www.cmake.org/files/v2.8/${cmakeSourceArchive}
 cmakeBinaryDir=$cmakeSourceDir/build
@@ -95,16 +95,24 @@ build_cmake ()
 
   ## === Configure the source package
 
-  cd cmake-$cmakeVersion
+  if test -d cmake-$cmakeSourceVersion ; then
 
-  print_message "Configuring the source package ..."
-  ./configure --prefix=$cmakeInstallPrefix
+    cd cmake-$cmakeSourceVersion
 
-  print_message "Building package ..."
-  make
+    print_message "Configuring the source package ..."
+    ./configure --prefix=$cmakeInstallPrefix
+
+    print_message "Building package ..."
+    make
   
-  print_message "Installing package ..."
-  make install
+    print_message "Installing package ..."
+    make install
+
+  else
+
+    echo "ERROR - Missing expended sourc archive!"
+
+  fi
 }
 
 ##____________________________________________________________________
