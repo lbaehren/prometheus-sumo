@@ -9,6 +9,35 @@ prometheus-srv3.uni-koeln.de    {#servers_srv3}
  - \ref wiki
  - \ref JekyllCommander
 
+\section servers_srv3_data Hosted data
+
+~~~~
+/var/local/prometheus
+ ├── app
+ │   ├── promhp
+ │   └── vimtips
+ ├── bin
+ │   └── kleio
+ ├── etc
+ │   ├── nagios
+ │   ├── tsm
+ │   └── web
+ ├── lost+found
+ ├── srv
+ │   └── promhp
+ ├── tmp
+ ├── usr
+ │   ├── bin
+ │   ├── lib
+ │   └── share
+ └── web
+     ├── etc -> ../etc/web
+     ├── log
+     ├── lost+found
+     └── www
+         └── virtualbox            ...  Virtual box appliances
+~~~~
+
 \section servers_srv3_doc Hosted documentation
 
  - [Capistrano](http://prometheus-srv3.uni-koeln.de/ruby-doc/capistrano)
