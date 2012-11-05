@@ -60,5 +60,37 @@ prometheus-web1.uni-koeln.de:/var/local/prometheus/data/images /var/local/promet
 
 \section servers_srv1_cron Cronjobs
 
-* `/etc/cron.daily/gem_outdated`
-
+~~~~
+/etc
+ ├── cron.d
+ │   ├── apticron
+ │   ├── atsar
+ │   ├── php5
+ │   ├── prometheus
+ │   └── sysstat
+ ├── cron.daily
+ │   ├── 00logwatch
+ │   ├── apache2
+ │   ├── apt
+ │   ├── apticron
+ │   ├── aptitude
+ │   ├── bsdmainutils
+ │   ├── dpkg
+ │   ├── gem_outdated -> /var/local/prometheus/bin/gem_outdated
+ │   ├── logrotate
+ │   ├── man-db
+ │   ├── mlocate
+ │   ├── ntp
+ │   ├── passwd
+ │   ├── samba
+ │   ├── standard
+ │   └── sysstat
+ ├── cron.hourly
+ ├── cron.monthly
+ ├── crontab
+ └── cron.weekly
+     ├── apt-xapian-index
+     ├── man-db
+     ├── mysql_backup -> /var/local/prometheus/bin/mysql_backup
+     └── pg_backup -> /var/local/prometheus/bin/pg_backup
+~~~~
