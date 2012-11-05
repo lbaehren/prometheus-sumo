@@ -84,6 +84,22 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     }
 
     //___________________________________________________________________________
+    //                                                               descriptions
+
+    std::map<std::string,std::string> Packages::descriptions ()
+    {
+      std::map<std::string,std::string> packageDescriptions;
+
+      if (!itsPackageList.empty()) {
+        for (size_t n=0; n<itsPackageList.size(); ++n) {
+          packageDescriptions[itsPackageList[n].name] = itsPackageList[n].description;
+        }
+      }
+
+      return packageDescriptions;
+    }
+
+    //___________________________________________________________________________
     //                                                                   versions
 
     std::map<std::string,std::string> Packages::versions ()

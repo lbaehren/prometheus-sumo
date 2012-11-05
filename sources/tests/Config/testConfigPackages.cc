@@ -119,7 +119,22 @@ int test_read_config (std::string const &filename)
     ++status;
   }
 
-  std::cout << "[4] Testing Packages::urls() ..." << std::endl;
+  std::cout << "[4] Testing Packages::descriptions() ..." << std::endl;
+  try {
+    std::map<std::string,std::string>::iterator it;
+    // Get the names of the packages ...
+    std::map<std::string,std::string> descriptions = packages.descriptions();
+    // ... and print them
+    std::cout << "--> nof. packages = " << descriptions.size() << std::endl;
+    for (it=descriptions.begin();it!=descriptions.end();++it) {
+      std::cout << std::setw(25) << it->first << "  :  " << it->second << std::endl;
+    }
+  } catch (std::exception &e) {
+    std::cout << "ERROR : " << e.what() << std::endl;
+    ++status;
+  }
+
+  std::cout << "[5] Testing Packages::urls() ..." << std::endl;
   try {
     std::map<std::string,std::string>::iterator it;
     // Get the names of the packages ...

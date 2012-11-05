@@ -46,11 +46,11 @@ namespace prometheus {   // namespace prometheus -- BEGIN
 
       //! Parameters for the package node of the configuration file
       struct PackageParameters {
-        //! Name of the gem
+        //! Name of the package
         std::string name;
-        //! URL for gem's project page
+        //! URL for package's project page
         std::string url;
-        //! Description of the gem
+        //! Description of the package
         std::string description;
         //! Version specification
         std::string version;
@@ -85,8 +85,11 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       //! Get version information for the packages
       std::map<std::string,std::string> versions ();
 
-      //! Get URL for gem's project page
+      //! Get URL for package's project page
       std::map<std::string,std::string> urls ();
+
+      //! Get description of the packages
+      std::map<std::string,std::string> descriptions ();
 
       // === Public functions ===================================================
 
