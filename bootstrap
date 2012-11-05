@@ -11,7 +11,7 @@
 
 cmakeSourceDir=`pwd`
 cmakeSourceVersion=2.8.10
-cmakeSourceArchive=cmake-$cmakeVersion.tar.gz
+cmakeSourceArchive=cmake-$cmakeSourceVersion.tar.gz
 cmakeSourceUrl=http://www.cmake.org/files/v2.8/${cmakeSourceArchive}
 cmakeBinaryDir=$cmakeSourceDir/build
 cmakeInstallPrefix=$cmakeSourceDir/release
@@ -30,23 +30,6 @@ cmakeVersionRequiredPatch=3
 cmakeVersionRequired=$((100*$cmakeVersionRequiredPatch))
 cmakeVersionRequired=$((100*$cmakeVersionRequiredMinor))$cmakeVersionRequired
 cmakeVersionRequired=$((100*$cmakeVersionRequiredMajor))$cmakeVersionRequired
-
-##__________________________________________________________
-## Configuration summary
-
-echo ""
-echo "======================================================================"
-echo ""
-echo " [prometheus-sumo] Start boostrap process for software stack ..."
-echo ""
-echo "======================================================================"
-echo ""
-echo " -- CMake source directory  = $cmakeSourceDir"
-echo " -- CMake binary diectory   = $cmakeBinaryDir"
-echo " -- CMake install prefix    = $cmakeInstallPrefix"
-echo " -- CMake installed version = $cmakeVersion"
-echo " -- CMake source archive    = $cmakeSourceArchive"
-echo " -- CMake download URL      = $cmakeSourceUrl"
 
 ## ==============================================================================
 ##
@@ -95,24 +78,17 @@ build_cmake ()
 
   ## === Configure the source package
 
-  if test -d cmake-$cmakeSourceVersion ; then
+  cd "cmake-$cmakeSourceVersion"
 
-    cd cmake-$cmakeSourceVersion
+  print_message "Configuring the source package ..."
+  ./configure --prefix=$cmakeInstallPrefix
 
-    print_message "Configuring the source package ..."
-    ./configure --prefix=$cmakeInstallPrefix
+  print_message "Building package ..."
+  make
 
-    print_message "Building package ..."
-    make
-  
-    print_message "Installing package ..."
-    make install
+  print_message "Installing package ..."
+  make install
 
-  else
-
-    echo "ERROR - Missing expended sourc archive!"
-
-  fi
 }
 
 ##____________________________________________________________________
@@ -136,6 +112,11 @@ check_cmake_version ()
     cmakeVersion=$((100*$cmakeVersionMinor))$cmakeVersion
     cmakeVersion=$((100*$cmakeVersionMajor))$cmakeVersion
   } fi;
+
+  ## Provide intermediate feedback
+
+  echo "--> Required CMake version  = $cmakeVersionRequired"
+  echo "--> Installed CMake version = $cmakeVersion"
 
   ## Check installed version of CMake against the required version
 
