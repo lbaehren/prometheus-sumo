@@ -12,37 +12,39 @@ find_program (YUM_EXECUTABLE yum
 
 if (YUM_EXECUTABLE)
 
-  foreach (varPackage
-      ruby
-      rubygems
-      rdoc
-      ri
-      irb
-      eruby
-      libxml2-devel
-      mysql-server
-      mysql-client
-      mysql-devel
-      apache2
-      #  (mod_ruby???)
-      postfix
-      subversion
-      subversion-tools
-      libapache2-svn
-      ImageMagick
-      ImageMagick-devel
+  if (config_packages_redhat_yml)
+
+    message (STATUS "Checking Redhat packages")
+
+    ## Initialize counters
+    set (NOF_PACKAGES       0 )
+    set (NOF_PACKAGES_FOUND 0 )
+
+    ## Read configuration file with the list of required gems
+    file (STRINGS ${config_packages_redhat_yml} _configPackages
+      REGEX "name:"
       )
 
-    ## Installation instructions for the package
+    foreach (varPackage ${config_packages_redhat_yml})
 
-    add_custom_command (
-      TARGET InstallPackages
-      POST_BUILD
-      COMMAND ${YUM_EXECUTABLE} install ${varPackage}
-      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-      COMMENT "Installing Redhat package ${varPackage} ..."
-      )
+      ## Extract the name of the gems from the line in the configuration file
+      string (REGEX REPLACE "- name: " "" varPackage ${varPackage})
 
-  endforeach (varPackage)
+      ## Installation instructions for the package
+      add_custom_command (
+	TARGET InstallPackages
+	POST_BUILD
+	COMMAND ${YUM_EXECUTABLE} install ${varPackage}
+	WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+	COMMENT "Installing Redhat package ${varPackage} ..."
+	)
+      
+    endforeach (varPackage)
+
+    else (config_packages_redhat_yml)
+
+      message (STATUS "Missing packages_redhat.yml configuration file!")
+    
+    endif (config_packages_redhat_yml)
 
 endif (YUM_EXECUTABLE)

@@ -1,0 +1,72 @@
+##
+## List of required MacPorts packages
+##
+---
+- name: ruby
+  url:
+  description:
+  version:
+- name: rubygems
+  url:
+  description:
+  version:
+- name: rdoc
+  url:
+  description:
+  version:
+- name: ri
+  url:
+  description:
+  version:
+- name: irb
+  url:
+  description:
+  version:
+- name: eruby
+  url:
+  description:
+  version:
+- name: libxml2-devel
+  url:
+  description:
+  version:
+- name: mysql-server
+  url:
+  description:
+  version:
+- name: mysql-client
+  url:
+  description:
+  version:
+- name: mysql-devel
+  url:
+  description:
+  version:
+- name: apache2
+  url:
+  description:
+  version:
+- name: postfix
+  url:
+  description:
+  version:
+- name: subversion
+  url:
+  description:
+  version:
+- name: subversion-tools
+  url:
+  description:
+  version:
+- name: libapache2-svn
+  url:
+  description:
+  version:
+- name: ImageMagick
+  url:
+  description:
+  version:
+- name: ImageMagick-devel
+  url:
+  description:
+  version:
