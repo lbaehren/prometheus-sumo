@@ -10,7 +10,8 @@
 ## Environment variables
 
 cmakeSourceDir=`pwd`
-cmakeSourceArchive=cmake-2.8.10.tar.gz
+cmakeVersion=2.8.10
+cmakeSourceArchive=cmake-$cmakeVersion.tar.gz
 cmakeSourceUrl=http://www.cmake.org/files/v2.8/${cmakeSourceArchive}
 cmakeBinaryDir=$cmakeSourceDir/build
 cmakeInstallPrefix=$cmakeSourceDir/release
@@ -69,31 +70,41 @@ print_message ()
 build_cmake ()
 {
   cd $cmakeSourceDir
+
+  ## Check for the build directory...
+  if test ! -d $cmakeBinaryDir ; then
+    echo "[build_cmake] Creating build directory"
+    mkdir $cmakeBinaryDir
+  fi
+  ## ... and change into it
+  cd $cmakeBinaryDir
+
+  ## === Fetch the source package ===
+
+  print_message "Fetching source package ..."
+
+  wget -c $cmakeSourceUrl
+
+  ## === Extract the source archive ===
+
+  print_message "Unpacking source archive  ..."
+
+  tar -xzf $cmakeSourceArchive
+
+  echo "[DIR] `pwd`"
+
+  ## === Configure the source package
+
+  cd cmake-$cmakeVersion
+
+  print_message "Configuring the source package ..."
+  ./configure --prefix=$cmakeInstallPrefix
+
+  print_message "Building package ..."
+  make
   
-  if test -f $cmakeSourceArchive ; then {
-
-    cd $cmakeBinaryDir
-
-    print_message "Fetching source package ..."
-
-    wget -c ${cmakeSourceUrl}
-
-    print_message "Unpacking source archive  ..."
-
-    tar -xzf $cmakeSourceArchive
-
-    tmpBuildDir=`ls $cmakeBinaryDir | grep cmake`
-      
-    if test -d $tmpBuildDir ; then {
-      echo "[CMake] Configuring source distribution ..."
-      ./configure --prefix=$cmakeInstallPrefix
-      echo "[CMake] Building package ..."
-      make
-      echo "[CMake] Installing package ..."
-      make install
-    } fi;
-
-  } fi;
+  print_message "Installing package ..."
+  make install
 }
 
 ##____________________________________________________________________
