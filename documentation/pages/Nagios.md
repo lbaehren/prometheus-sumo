@@ -96,7 +96,7 @@ State: CRITICAL
 
 Date/Time: Wed Oct 24 05:55:00 CEST 2012
 
-Additional Info: 
+Additional Info:
 
 DSMC CRITICAL - /var/lib/mysql (dsmcad.default) older than 72h
 /var/local/prometheus (dsmcad.default) older than 72h
