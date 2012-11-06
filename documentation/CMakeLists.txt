@@ -56,6 +56,15 @@ if (DOXYGEN_EXECUTABLE)
       set (DOXYGEN_GENERATE_LATEX "NO")
   endif (WITH_LATEX_DOC)
 
+  ## Create Doxygen output directory
+
+  if (NOT EXISTS ${DOXYGEN_OUTPUT_DIRECTORY})
+    execute_process (
+      COMMAND ${CMAKE_COMMAND} -E make_directory ${DOXYGEN_OUTPUT_DIRECTORY}
+      WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX}
+      )
+  endif (NOT EXISTS ${DOXYGEN_OUTPUT_DIRECTORY})
+
   ## Configuration summary page
   configure_file (
     ${CMAKE_CURRENT_SOURCE_DIR}/ConfigurationSummary.doxy.in
