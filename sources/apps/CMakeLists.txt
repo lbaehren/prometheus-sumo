@@ -1,11 +1,12 @@
 
-## Parse CSV file with Boost Tokenizer
+##____________________________________________________________________
+##                                                      scan_csv_stats
 
-if (Boost_FOUND)
+add_executable(scan_csv_stats scan_csv_stats.cc)
+target_link_libraries (scan_csv_stats libprometheus)
 
-  ## Compiler instructions
-  add_executable(scan_csv_stats scan_csv_stats.cc)
-  ## Linker instructions
-  target_link_libraries (scan_csv_stats libprometheus)
+##____________________________________________________________________
+##                                                    install_packages
 
-endif (Boost_FOUND)
+add_executable (install_packages install_packages.cc)
+target_link_libraries (install_packages libprometheus)
