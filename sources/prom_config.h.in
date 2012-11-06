@@ -54,6 +54,8 @@
 //
 // ==============================================================================
 
+//! The full version of CMake in major.minor.patch[.tweak[-id]] format.
+#define CMAKE_VERSION "${CMAKE_VERSION}"
 //! Name of system CMake is compiling for
 #define CMAKE_SYSTEM  "${CMAKE_SYSTEM}"
 //! Name of the operating system
