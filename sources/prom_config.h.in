@@ -74,9 +74,16 @@
 //! Build with YAZ++ library support
 #cmakedefine WITH_YAZPP
 
+//! YAZ+ header files
 #ifdef WITH_YAZPP
 #include <yaz/options.h>
 #include <yazpp/zoom.h>
+#endif
+
+//! Boost header files
+#ifdef WITH_BOOST
+#include <boost/program_options.hpp>
+#include <boost/regex.hpp>
 #endif
 
 #endif
