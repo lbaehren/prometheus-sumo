@@ -32,8 +32,6 @@ prometheus-srv3.uni-koeln.de    {#servers_srv3}
  │   └── share
  └── web
      ├── etc -> ../etc/web
-     ├── log
-     ├── lost+found
      └── www
          └── virtualbox            ...  Virtual box appliances
 ~~~~
