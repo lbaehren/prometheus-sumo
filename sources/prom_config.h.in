@@ -18,6 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+/*!
+  \file prom_config.h
+  \ingroup prometheus
+  \brief Configured header file
+*/
+
 #ifndef PROM_CONFIG_H
 #define PROM_CONFIG_H
 
@@ -30,10 +36,13 @@
 //! Project name
 #define PROJECT_NAME "${PROJECT_NAME}"
 
-//! The full version of the ${PROJECT_NAME} in major.minor.patch format.
+//! The full version of ${PROJECT_NAME} in major.minor.patch format.
 #define PROJECT_VERSION       "${PROJECT_VERSION}"
+//! ${PROJECT_NAME} major version
 #define PROJECT_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}"
+//! ${PROJECT_NAME} minor version
 #define PROJECT_VERSION_MINOR "${PROJECT_VERSION_MINOR}"
+//! ${PROJECT_NAME} patch version
 #define PROJECT_VERSION_PATCH "${PROJECT_VERSION_PATCH}"
 
 //! Installation location
@@ -45,7 +54,9 @@
 //
 // ==============================================================================
 
+//! Name of system CMake is compiling for
 #define CMAKE_SYSTEM  "${CMAKE_SYSTEM}"
+//! Name of the operating system
 #define CMAKE_OS_NAME "${CMAKE_OS_NAME}"
 
 // ==============================================================================
