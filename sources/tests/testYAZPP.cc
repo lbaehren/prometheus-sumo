@@ -34,7 +34,6 @@
 
 #include <fstream>
 #include <yaz/record_conv.h>
-#include <boost/algorithm/string/regex.hpp>
 
 using namespace ZOOM;
 

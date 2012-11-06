@@ -82,6 +82,7 @@
 
 //! Boost header files
 #ifdef WITH_BOOST
+#include <boost/algorithm/string/regex.hpp>
 #include <boost/program_options.hpp>
 #include <boost/regex.hpp>
 #endif
