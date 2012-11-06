@@ -30,6 +30,8 @@
 #include <set>
 #include <map>
 
+#include <Common.h>
+
 #ifdef WITH_BOOST
 #include <boost/tokenizer.hpp>
 typedef boost::tokenizer< boost::escaped_list_separator<char> > Tokenizer;

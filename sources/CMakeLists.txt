@@ -3,13 +3,14 @@
 
 include_directories (
   ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_BINARY_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR}/lib
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/libcsv_parser++/include
   )
 
 if (Boost_FOUND)
   ## Compiler flag(s)
-  add_definitions(-DWITH_BOOST)
+  set (WITH_BOOST TRUE)
   ## Boost header files
   include_directories(${Boost_INCLUDE_DIRS})
   ## Linker instructions
@@ -18,7 +19,7 @@ endif (Boost_FOUND)
 
 if (YAML_FOUND)
   ## Compiler flag(s)
-  add_definitions(-DWITH_YAML)
+  set (WITH_YAML TRUE)
   ## YAZ++ header files
   include_directories (${YAML_INCLUDES})
   ## Linker instructions
@@ -27,18 +28,23 @@ endif (YAML_FOUND)
 
 if (YAZPP_FOUND)
   ## Compiler flag(s)
-  add_definitions(-DWITH_YAZPP)
+  set (WITH_YAZPP TRUE)
   ## YAZ++ header files
   include_directories (${YAZPP_INCLUDES})
   ## Linker instructions
   list (APPEND libprometheus_link_libraries ${YAZPP_LIBRARIES})
 endif (YAZPP_FOUND)
 
-## ==============================================================================
-##
-##  Sub-directories
-##
-## ==============================================================================
+##_______________________________________________________________________________
+## Generate configured header file
+
+configure_file (
+  ${CMAKE_CURRENT_SOURCE_DIR}/prom_config.h.in
+  ${CMAKE_CURRENT_BINARY_DIR}/prom_config.h
+  )
+
+##_______________________________________________________________________________
+## Sub-directories
 
 add_subdirectory (lib)
 add_subdirectory (apps)

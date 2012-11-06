@@ -34,10 +34,7 @@
 #include <set>
 #include <vector>
 
-#ifdef WITH_YAZPP
-#include <yaz/options.h>
-#include <yazpp/zoom.h>
-#endif
+#include <prom_config.h>
 
 //_______________________________________________________________________________
 //                                                                           show

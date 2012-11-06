@@ -14,10 +14,10 @@ cmake_minimum_required (VERSION 2.8.3)
 cmake_policy (VERSION 2.8.3)
 
 ## Project release version (major.minor.patch)
-set (${CMAKE_PROJECT_NAME}_VERSION_MAJOR 0 )
-set (${CMAKE_PROJECT_NAME}_VERSION_MINOR 1 )
-set (${CMAKE_PROJECT_NAME}_VERSION_PATCH 0 )
-set (${CMAKE_PROJECT_NAME}_VERSION "${${CMAKE_PROJECT_NAME}_VERSION_MAJOR}.${${CMAKE_PROJECT_NAME}_VERSION_MINOR}.${${CMAKE_PROJECT_NAME}_VERSION_PATCH}")
+set (PROJECT_VERSION_MAJOR 0 )
+set (PROJECT_VERSION_MINOR 1 )
+set (PROJECT_VERSION_PATCH 0 )
+set (PROJECT_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
 
 ## Commonly used variables
 
@@ -218,8 +218,8 @@ message (STATUS " .. Operating system name ....... = ${CMAKE_OS_NAME}"          
 message (STATUS " .. C++ compiler ................ = ${CMAKE_CXX_COMPILER}"      )
 message (STATUS " .. C compiler .................. = ${CMAKE_C_COMPILER}"        )
 message (STATUS " .. size(void*) ................. = ${CMAKE_SIZEOF_VOID_P}"     )
-message (STATUS " Project configuration:"                                       )
-message (STATUS " .. Version number .............. = ${${CMAKE_PROJECT_NAME}_VERSION}")
+message (STATUS " Project configuration:"                                        )
+message (STATUS " .. Version number .............. = ${PROJECT_VERSION}"         )
 message (STATUS " .. Installation prefix ......... = ${CMAKE_INSTALL_PREFIX}"    )
 message (STATUS " .. Git repository base URL ..... = ${GIT_REPOSITORY_BASE}"     )
 message (STATUS " .. Clone Github repositories r/w = ${GIT_REPOSITORIES_RW}"     )
