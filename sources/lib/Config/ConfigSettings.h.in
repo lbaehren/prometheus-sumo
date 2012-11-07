@@ -90,4 +90,18 @@
 #include <boost/regex.hpp>
 #endif
 
+// ==============================================================================
+//
+//  Function prototypes
+//
+// ==============================================================================
+
+namespace prometheus {   //   namespace prometheus -- BEGIN
+
+  //! Summary of configuration settings
+  void configuration_settings (std::ostream &os);
+
+}   //   namespace prometheus -- END
+
+
 #endif

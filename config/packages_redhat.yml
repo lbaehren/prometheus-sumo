@@ -2,6 +2,18 @@
 ## List of required MacPorts packages
 ##
 ---
+- name: gcc
+  url:
+  description: Various compilers (C, C++, Objective-C, Java, ...)
+  version:
+- name: gcc-c++
+  url:
+  description: C++ support for GCC
+  version:
+- name: boost-devel
+  url:
+  description: The Boost C++ headers and shared development libraries
+  version:
 - name: ruby
   url: https://apps.fedoraproject.org/packages/ruby
   description: An interpreter of object-oriented scripting language
