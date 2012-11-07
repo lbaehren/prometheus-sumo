@@ -74,8 +74,9 @@
 //! Build with YAZ++ library support
 #cmakedefine WITH_YAZPP
 
-//! YAZ+ header files
+//! YAZ++ header files
 #ifdef WITH_YAZPP
+#define YAZPP_LIBRARY_VERSION "${YAZPP_VERSION}"
 #include <yaz/options.h>
 #include <yazpp/zoom.h>
 #endif
