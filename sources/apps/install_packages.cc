@@ -133,7 +133,7 @@ int main (int argc, char *argv[])
     std::cout << "\n" << desc << std::endl;
     return 0;
   } else if (vm.count("config")) {
-    prometheus::configuration_settings (std::cout);
+    prometheus::configuration_summary (std::cout);
   } else if (vm.count("gems")) {
     filename = vm["gems"].as<std::string>();
     status += install_ruby_gems(filename);

@@ -26,7 +26,7 @@ namespace prometheus {   //   namespace prometheus -- BEGIN
     \brief Summary of configuration settings
     \param os -- Output stream to which the summary will be written.
   */
-  void configuration_settings (std::ostream &os)
+  void configuration_summary (std::ostream &os)
   {
     os << "-- Project name    = " << PROJECT_NAME         << std::endl;
     os << "-- Project version = " << PROJECT_VERSION      << std::endl;

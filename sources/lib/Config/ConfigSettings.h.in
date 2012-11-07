@@ -99,7 +99,7 @@
 namespace prometheus {   //   namespace prometheus -- BEGIN
 
   //! Summary of configuration settings
-  void configuration_settings (std::ostream &os);
+  void configuration_summary (std::ostream &os);
 
 }   //   namespace prometheus -- END
 

@@ -148,15 +148,14 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       int status = 0;
 
       if (!itsPackageList.empty()) {
-
-	std::set<std::string> packages = names();
-	std::set<std::string>::iterator it;
-
-	for (it=packages.begin(); it!=packages.end(); ++it) {
-	  std::string command = installCommand + " " + (*it);
+        for (size_t n=0; n<itsPackageList.size(); ++n) {
+	  std::string command = installCommand + " " + itsPackageList[n].name;
 	  status = system (command.c_str());
-	}
-
+        }
+      } else {
+	std::cerr << "[Packages::install_packages]"
+		  << " Empty package list - nothing to install!"
+		  << std::endl;
       }
 
       return status;
