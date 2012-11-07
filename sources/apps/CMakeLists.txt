@@ -10,3 +10,13 @@ target_link_libraries (scan_csv_stats libprometheus)
 
 add_executable (install_packages install_packages.cc)
 target_link_libraries (install_packages libprometheus)
+
+add_test (install_packages install_packages)
+add_test (install_packages_config install_packages --config)
+
+if (APPLE)
+  add_test (install_packages_osx    install_packages --osx)
+else (APPLE)
+  add_test (install_packages_debian install_packages --debian)
+  add_test (install_packages_redhat install_packages --redhat)
+endif (APPLE)

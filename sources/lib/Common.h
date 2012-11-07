@@ -36,6 +36,12 @@
 
 #include <prom_config.h>
 
+// ==============================================================================
+//
+//  Operator overloading
+//
+// ==============================================================================
+
 //_______________________________________________________________________________
 //                                                                           show
 
@@ -121,5 +127,20 @@ std::ostream& operator<< (std::ostream &os,
 
 /*   return os; */
 /* } */
+
+// ==============================================================================
+//
+//  Configuration settings
+//
+// ==============================================================================
+
+void configuration_settings (std::ostream &os)
+{
+  os << "-- Project name    = " << PROJECT_NAME         << std::endl;
+  os << "-- Project version = " << PROJECT_VERSION      << std::endl;
+  os << "-- Install prefix  = " << CMAKE_INSTALL_PREFIX << std::endl;
+  os << "-- CMake version   = " << CMAKE_VERSION        << std::endl;
+  os << "-- System name     = " << CMAKE_SYSTEM         << std::endl;
+}
 
 #endif

@@ -32,17 +32,6 @@ namespace bpo = boost::program_options;
   \date 2012-11-05
 */
 
-int print_information ()
-{
-  std::cout << "-- Project name    = " << PROJECT_NAME         << std::endl;
-  std::cout << "-- Project version = " << PROJECT_VERSION      << std::endl;
-  std::cout << "-- Install prefix  = " << CMAKE_INSTALL_PREFIX << std::endl;
-  std::cout << "-- CMake version   = " << CMAKE_VERSION        << std::endl;
-  std::cout << "-- System name     = " << CMAKE_SYSTEM         << std::endl;
-
-  return 0;
-}
-
 //! Install Debian packages
 int install_packages_debian ()
 {
@@ -69,14 +58,15 @@ int main (int argc, char *argv[])
   // Description of command line options
 
   bpo::options_description desc ("[install_packages] Available command line options");
-  
+
   desc.add_options ()
     ("help,H",    "Show help messages")
-    ("all,A",     "Print all available information")
+    ("config,C",  "Print summary of configuration settings")
     ("debian",    "Install Debian packages")
+    ("osx",       "Install MacPorts packages for OS X")
     ("redhat",    "Install Redhat packages")
     ;
-  
+
   bpo::variables_map vm;
   bpo::store (bpo::parse_command_line(argc,argv,desc), vm);
 
@@ -87,8 +77,14 @@ int main (int argc, char *argv[])
   if (vm.count("help") || argc == 1) {
     std::cout << "\n" << desc << std::endl;
     return 0;
-  } else if (vm.count("all")) {
-    status += print_information();
+  } else if (vm.count("config")) {
+    configuration_settings (std::cout);
+  } else if (vm.count("debian")) {
+    status += install_packages_debian();
+  } else if (vm.count("osx")) {
+    status += install_packages_osx();
+  } else if (vm.count("redhat")) {
+    status += install_packages_redhat();
   }
 
   return status;
