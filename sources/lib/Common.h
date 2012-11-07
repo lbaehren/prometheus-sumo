@@ -105,12 +105,6 @@ std::ostream& operator<< (std::ostream &os,
 //_______________________________________________________________________________
 //                                                                     operator<<
 
-/*!
-  \brief Overloading of output operator to display std::map<T>
-
-  \param os -- Output stream to which the result will be written to
-  \param m  -- The map to be displayed.
-*/
 /* template <typename K, typename V> */
 /*   std::ostream& operator<< (std::ostream &os, */
 /* 			    const std::map<K,V> &m) */
@@ -134,6 +128,10 @@ std::ostream& operator<< (std::ostream &os,
 //
 // ==============================================================================
 
+/*!
+  \brief Summary of configuration settings
+  \param os -- Output stream to which the summary will be written.
+*/
 void configuration_settings (std::ostream &os)
 {
   os << "-- Project name    = " << PROJECT_NAME         << std::endl;
