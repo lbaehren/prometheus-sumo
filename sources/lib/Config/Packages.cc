@@ -140,10 +140,12 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     /*!
       \param installCommand -- Command to be invoked for the installation of the
                                packages.
+      \param verbose -- Be verbose during the installation procedure?
       \return status -- Status of the operation; returns non-zero value in case
                         an error was encoutered.
     */
-    int Packages::install_packages (std::string const &installCommand)
+    int Packages::install_packages (std::string const &installCommand,
+                                    bool const &verbose)
     {
       int status = 0;
 
@@ -154,6 +156,14 @@ namespace prometheus {   // namespace prometheus -- BEGIN
 	  if (itsPackageList[n].version != "~") {
 	    command += " " + itsPackageList[n].version;
 	  }
+	  /* Feedback */
+	  if (verbose) {
+	    std::cout << "--> Installing package "
+		      << itsPackageList[n].name
+		      << " ..."
+		      << std::endl;
+	  }
+	  /* System call */
 	  status = system (command.c_str());
         }
       } else {

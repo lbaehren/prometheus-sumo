@@ -94,7 +94,8 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       // === Public functions ===================================================
 
       //! Install the packages
-      int install_packages (std::string const &installCommand);
+      int install_packages (std::string const &installCommand,
+                            bool const &verbose=false);
 
       //! Provide a summary of the object's internal parameters and status
       inline void summary () {
