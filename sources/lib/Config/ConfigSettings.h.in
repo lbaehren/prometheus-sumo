@@ -65,29 +65,54 @@
 
 // ==============================================================================
 //
-//  External libraries
+//  External libraries & tools
 //
 // ==============================================================================
 
-//! Build with Boost library support
+//! Build with Boost library support?
 #cmakedefine WITH_BOOST
-//! Build with YAML-C++ library support
+//! Build with YAML-C++ library support?
 #cmakedefine WITH_YAML
-//! Build with YAZ++ library support
+//! Build with YAZ++ library support?
 #cmakedefine WITH_YAZPP
 
-//! YAZ++ header files
 #ifdef WITH_YAZPP
+//! YAZ++ library version
 #define YAZPP_LIBRARY_VERSION "${YAZPP_VERSION}"
+//! YAZ++ header files
 #include <yaz/options.h>
 #include <yazpp/zoom.h>
 #endif
 
-//! Boost header files
 #ifdef WITH_BOOST
 #include <boost/algorithm/string/regex.hpp>
 #include <boost/program_options.hpp>
 #include <boost/regex.hpp>
+#endif
+
+//! Is the Gem executable available?
+#cmakedefine GEM_FOUND
+#ifdef GEM_FOUND
+//! Full path to the Gem executable
+#define GEM_EXECUTABLE "${GEM_EXECUTABLE}"
+//! Gem version
+#define GEM_VERSION "${GEM_VERSION}"
+#endif
+
+//! Is the Rails application executable available?
+#cmakedefine RAILS_FOUND
+#ifdef RAILS_FOUND
+//! Rails version
+#define RAILS_VERSION "${RAILS_VERSION}"
+#endif
+
+//! Is the Rake executable available?
+#cmakedefine RAKE_FOUND
+#ifdef RAKE_FOUND
+//! Full path to the Rake executable
+#define RAKE_EXECUTABLE "${RAKE_EXECUTABLE}"
+//! Rake version
+#define RAKE_VERSION "${RAKE_VERSION}"
 #endif
 
 // ==============================================================================
