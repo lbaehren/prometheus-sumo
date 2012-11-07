@@ -150,6 +150,10 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       if (!itsPackageList.empty()) {
         for (size_t n=0; n<itsPackageList.size(); ++n) {
 	  std::string command = installCommand + " " + itsPackageList[n].name;
+	  /* Check if a specific version is defined */
+	  if (itsPackageList[n].version != "~") {
+	    command += " " + itsPackageList[n].version;
+	  }
 	  status = system (command.c_str());
         }
       } else {
