@@ -24,7 +24,7 @@
   url:
   description: Documentation system for C, C++, Java, Python and other languages
   version:
-- name: libboost-dev
+- name: libboost-all-dev
   url:
   description: Boost C++ Libraries development files
   version:
