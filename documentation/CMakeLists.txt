@@ -37,7 +37,7 @@ find_file (DOXYGEN_HTML_STYLESHEET stylesheet.css
 
 if (DOXYGEN_EXECUTABLE)
 
-  set (DOXYGEN_INPUT "${PROJECT_SOURCE_DIR}/documentation ${PROJECT_SOURCE_DIR}/sources ${PROJECT_BINARY_DIR}/sources")
+  set (DOXYGEN_INPUT "${PROJECT_SOURCE_DIR}/documentation ${PROJECT_SOURCE_DIR}/sources ${PROJECT_BINARY_DIR}/sources ${CMAKE_INSTALL_PREFIX}/include")
   set (DOXYGEN_OUTPUT_DIRECTORY "${CMAKE_INSTALL_PREFIX}/share/doc/prometheus")
 
   if (DOXYGEN_DOT_FOUND)
