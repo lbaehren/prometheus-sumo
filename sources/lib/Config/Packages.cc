@@ -137,6 +137,29 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     //
     // ==========================================================================
 
+    /*!
+      \param installCommand -- Command to be invoked for the installation of the
+                               packages.
+    */
+    int Packages::install_packages (std::string const &installCommand)
+    {
+      int status = 0;
+
+      if (!itsPackageList.empty()) {
+
+	std::set<std::string> packages = names();
+	std::set<std::string>::iterator it;
+
+	for (it=packages.begin(); it!=packages.end(); ++it) {
+	  std::string command = installCommand + (*it);
+	  status = system (command.c_str());
+	}
+
+      }
+
+      return status;
+    }
+
     //___________________________________________________________________________
     //                                                                    summary
 

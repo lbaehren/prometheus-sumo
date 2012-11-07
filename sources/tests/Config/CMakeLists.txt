@@ -43,5 +43,6 @@ run_test_config (testConfigTrustedProxies ${config_trusted_proxies_yml} )
 run_test_config (testConfigColumnsFor     ${config_source_yml}          )
 run_test_config (testConfigSource         ${config_source_yml}          )
 
-add_test (testConfigPackagesDebian testConfigPackages ${config_packages_debian_yml})
-add_test (testConfigPackagesRedhat testConfigPackages ${config_packages_redhat_yml})
+add_test (testConfigPackagesDebian testConfigPackages ${config_packages_debian_yml} )
+add_test (testConfigPackagesOSX    testConfigPackages ${config_packages_osx_yml}    )
+add_test (testConfigPackagesRedhat testConfigPackages ${config_packages_redhat_yml} )

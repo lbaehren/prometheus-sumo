@@ -32,27 +32,81 @@ namespace bpo = boost::program_options;
   \date 2012-11-05
 */
 
-//! Install Debian packages
-int install_packages_debian ()
+//_______________________________________________________________________________
+//                                                              install_ruby_gems
+
+/*!
+  \brief Install Ruby gems
+  \param filename -- Name of the configuration file.
+  \return status  -- Returns non-zero value in case an error was encountered.
+*/
+int install_ruby_gems (std::string const &filename)
 {
+  prometheus::config::Packages packages;
+  packages.readConfig(filename);
+
+  return packages.install_packages("sudo gem install");
 }
 
-//! Install OS X packages through MacPorts
-int install_packages_osx ()
+//_______________________________________________________________________________
+//                                                        install_packages_debian
+
+/*!
+  \brief Install Debian packages
+  \param filename -- Name of the configuration file.
+  \return status  -- Returns non-zero value in case an error was encountered.
+*/
+int install_packages_debian (std::string const &filename)
 {
+  prometheus::config::Packages packages;
+  packages.readConfig(filename);
+
+  return packages.install_packages("sudo apt-get install");
 }
 
-//! Install Redhat packages
-int install_packages_redhat ()
+//_______________________________________________________________________________
+//                                                           install_packages_osx
+
+/*!
+  \brief Install OS X packages through MacPorts
+  \param filename -- Name of the configuration file.
+  \return status  -- Returns non-zero value in case an error was encountered.
+*/
+int install_packages_osx (std::string const &filename)
 {
+  prometheus::config::Packages packages;
+  packages.readConfig(filename);
+
+  return packages.install_packages("sudo port install");
 }
 
-// === Program main function ====================================================
+//_______________________________________________________________________________
+//                                                        install_packages_redhat
+
+/*!
+  \brief Install Redhat packages
+  \param filename -- Name of the configuration file.
+  \return status  -- Returns non-zero value in case an error was encountered.
+*/
+int install_packages_redhat (std::string const &filename)
+{
+  prometheus::config::Packages packages;
+  packages.readConfig(filename);
+
+  return packages.install_packages("sudo yum install");
+}
+
+// ==============================================================================
+//
+//  Program main function
+//
+// ==============================================================================
 
 //! Program main function
 int main (int argc, char *argv[])
 {
   int status = 0;
+  std::string filename;
 
   //________________________________________________________
   // Description of command line options
@@ -62,9 +116,10 @@ int main (int argc, char *argv[])
   desc.add_options ()
     ("help,H",    "Show help messages")
     ("config,C",  "Print summary of configuration settings")
-    ("debian",    "Install Debian packages")
-    ("osx",       "Install MacPorts packages for OS X")
-    ("redhat",    "Install Redhat packages")
+    ("gems",     bpo::value<std::string>(), "Install Ruby gems")
+    ("debian",   bpo::value<std::string>(), "Install Debian packages")
+    ("osx",      bpo::value<std::string>(), "Install MacPorts packages for OS X")
+    ("redhat",   bpo::value<std::string>(), "Install Redhat packages")
     ;
 
   bpo::variables_map vm;
@@ -79,12 +134,18 @@ int main (int argc, char *argv[])
     return 0;
   } else if (vm.count("config")) {
     prometheus::configuration_settings (std::cout);
+  } else if (vm.count("gems")) {
+    filename = vm["gems"].as<std::string>();
+    status += install_ruby_gems(filename);
   } else if (vm.count("debian")) {
-    status += install_packages_debian();
+    filename = vm["debian"].as<std::string>();
+    status += install_packages_debian(filename);
   } else if (vm.count("osx")) {
-    status += install_packages_osx();
+    filename = vm["osx"].as<std::string>();
+    status += install_packages_osx(filename);
   } else if (vm.count("redhat")) {
-    status += install_packages_redhat();
+    filename = vm["redhat"].as<std::string>();
+    status += install_packages_redhat(filename);
   }
 
   return status;
