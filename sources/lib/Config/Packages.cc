@@ -140,6 +140,8 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     /*!
       \param installCommand -- Command to be invoked for the installation of the
                                packages.
+      \return status -- Status of the operation; returns non-zero value in case
+                        an error was encoutered.
     */
     int Packages::install_packages (std::string const &installCommand)
     {
@@ -151,7 +153,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
 	std::set<std::string>::iterator it;
 
 	for (it=packages.begin(); it!=packages.end(); ++it) {
-	  std::string command = installCommand + (*it);
+	  std::string command = installCommand + " " + (*it);
 	  status = system (command.c_str());
 	}
 
