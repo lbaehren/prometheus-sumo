@@ -18,7 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "Common.h"
+/*!
+  \file ConfigSettings.cc
+  \ingroup prometheus
+  \ingroup config
+  \brief Access to common configuration settings
+  \author Lars Baehren
+  \date 2012-11-07
+*/
+
+#include <Common.h>
 
 namespace prometheus {   //   namespace prometheus -- BEGIN
 

@@ -3,8 +3,8 @@
 
 include_directories (
   ${CMAKE_CURRENT_SOURCE_DIR}
-  ${CMAKE_CURRENT_BINARY_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR}/lib
+  ${CMAKE_CURRENT_BINARY_DIR}/lib
   ${CMAKE_CURRENT_SOURCE_DIR}/lib/libcsv_parser++/include
   )
 
@@ -34,14 +34,6 @@ if (YAZPP_FOUND)
   ## Linker instructions
   list (APPEND libprometheus_link_libraries ${YAZPP_LIBRARIES})
 endif (YAZPP_FOUND)
-
-##_______________________________________________________________________________
-## Generate configured header file
-
-configure_file (
-  ${CMAKE_CURRENT_SOURCE_DIR}/prom_config.h.in
-  ${CMAKE_CURRENT_BINARY_DIR}/prom_config.h
-  )
 
 ##_______________________________________________________________________________
 ## Sub-directories

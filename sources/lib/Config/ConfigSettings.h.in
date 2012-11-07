@@ -19,13 +19,15 @@
  ***************************************************************************/
 
 /*!
-  \file prom_config.h
+  \file ConfigSettings.h
   \ingroup prometheus
-  \brief Configured header file
+  \ingroup config
+  \brief Common configuration settings
+  \author Lars Baehren
 */
 
-#ifndef PROM_CONFIG_H
-#define PROM_CONFIG_H
+#ifndef CONFIG_SETTINGS_H
+#define CONFIG_SETTINGS_H
 
 // ==============================================================================
 //

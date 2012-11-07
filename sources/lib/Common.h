@@ -34,7 +34,7 @@
 #include <set>
 #include <vector>
 
-#include <prom_config.h>
+#include <Config/ConfigSettings.h>
 
 // ==============================================================================
 //
