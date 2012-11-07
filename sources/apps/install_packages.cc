@@ -45,7 +45,11 @@ int install_ruby_gems (std::string const &filename)
   prometheus::config::Packages packages;
   packages.readConfig(filename);
 
+#ifdef GEM_FOUND
   return packages.install_packages("sudo gem install");
+#else
+  return 0;
+#endif
 }
 
 //_______________________________________________________________________________

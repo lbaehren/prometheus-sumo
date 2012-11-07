@@ -79,7 +79,6 @@
 #ifdef WITH_YAZPP
 //! YAZ++ library version
 #define YAZPP_LIBRARY_VERSION "${YAZPP_VERSION}"
-//! YAZ++ header files
 #include <yaz/options.h>
 #include <yazpp/zoom.h>
 #endif
