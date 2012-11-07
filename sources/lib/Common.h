@@ -122,23 +122,4 @@ std::ostream& operator<< (std::ostream &os,
 /*   return os; */
 /* } */
 
-// ==============================================================================
-//
-//  Configuration settings
-//
-// ==============================================================================
-
-/*!
-  \brief Summary of configuration settings
-  \param os -- Output stream to which the summary will be written.
-*/
-void configuration_settings (std::ostream &os)
-{
-  os << "-- Project name    = " << PROJECT_NAME         << std::endl;
-  os << "-- Project version = " << PROJECT_VERSION      << std::endl;
-  os << "-- Install prefix  = " << CMAKE_INSTALL_PREFIX << std::endl;
-  os << "-- CMake version   = " << CMAKE_VERSION        << std::endl;
-  os << "-- System name     = " << CMAKE_SYSTEM         << std::endl;
-}
-
 #endif
