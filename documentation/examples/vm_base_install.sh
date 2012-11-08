@@ -16,18 +16,9 @@ sudo apt-get install mysql-server
 ## Prepare directory structure for code development
 
 cd
-mkdir CodeDevelopment
+mkdir Development
 
-cd CodeDevelopment
-mkdir Data Documentation Testing Projects
-
-cd Projects
-mkdir OpenSource Private Work
-
-cd Work
-mkdir prometheus
-
-cd prometheus
+cd Development
 git clone git://github.com/lbaehren/prometheus-sumo.git prometheus-sumo
 git clone git://github.com/prometheus-ev/promhp.git promhp
 git svn clone -s http://prometheus-srv.uni-koeln.de/svn/pandora pandora

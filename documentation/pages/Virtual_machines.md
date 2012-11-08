@@ -156,18 +156,10 @@ The resulting directory structure after the last step will look like this:
 
 ~~~~
 $HOME
- └── CodeDevelopment
-     ├── Data
-     ├── Documentation
-     ├── Testing
-     └── Projects
-	 ├── OpenSource
-	 ├── Private
-	 └── Work
-	     └── prometheus
-		 ├── pandora
-		 ├── promhp
-		 └── prometheus-sumo
+ └── Development
+     ├── pandora
+     ├── promhp
+     └── prometheus-sumo
 ~~~~
 
 \section vm_references References
