@@ -27,22 +27,22 @@
 #  CLAMAV_LFLAGS     = Linker flags (optional)
 
 if (NOT CLAMAV_FOUND)
-    
+
   if (NOT CLAMAV_ROOT_DIR)
     set (CLAMAV_ROOT_DIR ${CMAKE_INSTALL_PREFIX})
   endif (NOT CLAMAV_ROOT_DIR)
-  
+
   ##_____________________________________________________________________________
   ## Check for the header files
-  
+
   find_path (CLAMAV_INCLUDES clamav.h
     HINTS ${CLAMAV_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES include include/clamav
     )
-  
+
   ##_____________________________________________________________________________
   ## Check for the library
-  
+
   find_library (CLAMAV_CLAMAV_LIBRARY clamav
     HINTS ${CLAMAV_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES lib lib/x86_64
@@ -50,7 +50,7 @@ if (NOT CLAMAV_FOUND)
   if (CLAMAV_CLAMAV_LIBRARY)
     list (APPEND CLAMAV_LIBRARIES ${CLAMAV_CLAMAV_LIBRARY})
   endif (CLAMAV_CLAMAV_LIBRARY)
-  
+
   find_library (CLAMAV_CLAMUNRAR_IFACE_LIBRARY clamunrar_iface
     HINTS ${CLAMAV_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES lib lib/x86_64
@@ -58,7 +58,7 @@ if (NOT CLAMAV_FOUND)
   if (CLAMAV_CLAMUNRAR_IFACE_LIBRARY)
     list (APPEND CLAMAV_LIBRARIES ${CLAMAV_CLAMUNRAR_IFACE_LIBRARY})
   endif (CLAMAV_CLAMUNRAR_IFACE_LIBRARY)
-  
+
   find_library (CLAMAV_CLAMUNRAR_LIBRARY clamunrar
     HINTS ${CLAMAV_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES lib lib/x86_64
@@ -66,15 +66,15 @@ if (NOT CLAMAV_FOUND)
   if (CLAMAV_CLAMUNRAR_LIBRARY)
     list (APPEND CLAMAV_LIBRARIES ${CLAMAV_CLAMUNRAR_LIBRARY})
   endif (CLAMAV_CLAMUNRAR_LIBRARY)
-  
+
   ##_____________________________________________________________________________
   ## Check for the executables
-  
+
   find_program (CLAMAV_CONFIG_EXECUTABLE clamav-config
     HINTS ${CLAMAV_ROOT_DIR}  ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES bin
     )
-  
+
   foreach (clamavProgram
       clambc
       clamconf
@@ -84,44 +84,44 @@ if (NOT CLAMAV_FOUND)
       freshclam
       sigtool
       )
-    
+
     ## Conversion to upper case
     string (TOUPPER ${clamavProgram} clamavVar)
-    
+
     ## Search for executable
     find_program (CLAMAV_${clamavVar}_EXECUTABLE ${clamavProgram}
       HINTS ${CLAMAV_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
       PATH_SUFFIXES bin
       )
-    
+
   endforeach (clamavProgram)
 
   ##_____________________________________________________________________________
   ## Check for the virus signature collections
-  
+
   find_file (CLAMAV_BYTECODE_CVD bytecode.cvd
     HINTS ${CLAMAV_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES etc etc/clamav share share/clamav
     )
-  
+
   find_file (CLAMAV_DAILY_CVD daily.cvd
     HINTS ${CLAMAV_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES etc etc/clamav share share/clamav
     )
-  
+
   find_file (CLAMAV_MAIN_CVD main.cvd
     HINTS ${CLAMAV_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES etc etc/clamav share share/clamav
     )
-  
+
   find_file (CLAMAV_MIRRORS_DAT mirrors.dat
     HINTS ${CLAMAV_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES etc etc/clamav share share/clamav
     )
-  
+
   ##_____________________________________________________________________________
   ## Actions taken when all components have been found
-  
+
   if (CLAMAV_INCLUDES AND CLAMAV_LIBRARIES)
     set (CLAMAV_FOUND TRUE)
   else (CLAMAV_INCLUDES AND CLAMAV_LIBRARIES)
@@ -135,7 +135,7 @@ if (NOT CLAMAV_FOUND)
       endif (NOT CLAMAV_LIBRARIES)
     endif (NOT CLAMAV_FIND_QUIETLY)
   endif (CLAMAV_INCLUDES AND CLAMAV_LIBRARIES)
-  
+
   if (CLAMAV_FOUND)
     if (NOT CLAMAV_FIND_QUIETLY)
       message (STATUS "Found components for CLAMAV")
@@ -152,10 +152,10 @@ if (NOT CLAMAV_FOUND)
       message (FATAL_ERROR "Could not find CLAMAV!")
     endif (CLAMAV_FIND_REQUIRED)
   endif (CLAMAV_FOUND)
-  
+
   ##_____________________________________________________________________________
   ## Mark advanced variables
-  
+
   mark_as_advanced (
     CLAMAV_ROOT_DIR
     CLAMAV_INCLUDES
@@ -169,5 +169,5 @@ if (NOT CLAMAV_FOUND)
     CLAMAV_MAIN_CVD
     CLAMAV_MIRRORS_DAT
     )
-  
+
 endif (NOT CLAMAV_FOUND)

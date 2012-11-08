@@ -27,7 +27,7 @@
 #  FERRET_FERRET_VERSION_RB = Location of ferret_version.rb
 
 if (NOT FERRET_FOUND)
-    
+
   if (NOT FERRET_ROOT_DIR)
     set (FERRET_ROOT_DIR ${CMAKE_INSTALL_PREFIX})
   endif (NOT FERRET_ROOT_DIR)
@@ -37,7 +37,7 @@ if (NOT FERRET_FOUND)
 
   ##_____________________________________________________________________________
   ## Check if Ferret is installed as a Gem
-  
+
   if (GEM_EXECUTABLE)
     execute_process (
       COMMAND ${GEM_EXECUTABLE} list ferret
@@ -47,29 +47,29 @@ if (NOT FERRET_FOUND)
       ERROR_VARIABLE GEM_ERROR_VARIABLE
       OUTPUT_STRIP_TRAILING_WHITESPACE
       )
-    
+
     if (GEM_OUTPUT_VARIABLE)
       string (REGEX REPLACE "[a-z\(\)]" "" FERRET_VERSION ${GEM_OUTPUT_VARIABLE})
     endif (GEM_OUTPUT_VARIABLE)
-    
+
   endif (GEM_EXECUTABLE)
-  
+
   ##_____________________________________________________________________________
   ## Check for installed Ruby sources
-  
+
   find_file (FERRET_FERRET_RB ferret.rb
     HINTS ${FERRET_ROOT_DIR}  ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES ruby ruby/site_ruby
     )
-  
+
   find_file (FERRET_FERRET_VERSION_RB ferret_version.rb
     HINTS ${FERRET_ROOT_DIR}  ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES ruby ruby/site_ruby
     )
-  
+
   ##_____________________________________________________________________________
   ## Actions taken when all components have been found
-  
+
   if (FERRET_FOUND)
     if (NOT FERRET_FIND_QUIETLY)
       message (STATUS "Found components for FERRET")
@@ -82,15 +82,15 @@ if (NOT FERRET_FOUND)
       message (FATAL_ERROR "Could not find FERRET!")
     endif (FERRET_FIND_REQUIRED)
   endif (FERRET_FOUND)
-  
+
   ##_____________________________________________________________________________
   ## Mark advanced variables
-  
+
   mark_as_advanced (
     FERRET_ROOT_DIR
     FERRET_FERRET_RB
     FERRET_FERRET_VERSION_RB
     FERRET_VERSION
     )
-  
+
 endif (NOT FERRET_FOUND)

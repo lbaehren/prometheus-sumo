@@ -88,22 +88,21 @@ endif (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 ##
 ## ==============================================================================
 
-##__________________________________________________________
-## Register local additions to collection of modules
+## Augment module path
 
 set (CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/config/cmake" CACHE PATH
   "CMake module path"
   FORCE
   )
 
-##__________________________________________________________
-## Standard CMake modules
+## Load extra modules
 
-include(ExternalProject)
+include (ExternalProject)
+include (DetectOS)
+
+## Find installed packages
+
 find_package (Boost COMPONENTS program_options regex)
-
-##__________________________________________________________
-## Custom inspection
 
 foreach (_cmakeModule
   ClamAV
