@@ -7,7 +7,8 @@ sudo apt-get upgrade
 
 ## Install development packages
 
-sudo apt-get install build-essential cmake git-svn subversion doxygen ruby1.8-dev libboost-dev
+sudo apt-get install build-essential cmake git-svn subversion doxygen
+sudo apt-get install ruby1.8-dev libboost-all-dev
 
 ## Install database server
 

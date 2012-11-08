@@ -39,7 +39,9 @@ __Notes:__
     - Standard system utilities
   - Packages installed after setting up the base system:
 ~~~~
-apt-get install build-essential cmake git-svn subversion doxygen mysql-server ruby1.8-dev
+apt-get install build-essential cmake git-svn subversion doxygen
+apt-get install ruby1.8-dev libboost-all-dev
+apt-get install mysql-server
 ~~~~
   - MySQL server Root password: mysqlR00t
 
@@ -55,7 +57,9 @@ apt-get install build-essential cmake git-svn subversion doxygen mysql-server ru
     - Standard system utilities
   - Packages installed after setting up the base system:
 ~~~~
-apt-get install build-essential cmake git-svn subversion doxygen mysql-server ruby1.8-dev
+apt-get install build-essential cmake git-svn subversion doxygen
+apt-get install ruby1.8-dev libboost-all-dev
+apt-get install mysql-server
 ~~~~
   - MySQL server Root password: mysqlR00t
 
@@ -64,7 +68,9 @@ apt-get install build-essential cmake git-svn subversion doxygen mysql-server ru
   - Installation base: _ubuntu-10.04.4-desktop-i386.iso_
   - Packages installed after setting up the base system:
 ~~~~
-apt-get install build-essential cmake git-svn subversion doxygen mysql-server ruby1.8-dev
+apt-get install build-essential cmake git-svn subversion doxygen
+apt-get install ruby1.8-dev libboost-all-dev
+apt-get install mysql-server
 ~~~~
   - MySQL server Root password: mysqlR00t
 
@@ -73,7 +79,9 @@ apt-get install build-essential cmake git-svn subversion doxygen mysql-server ru
   - Installation base : _ubuntu-12.04-desktop-i386.iso_
   - Packages installed after setting up the base system:
 ~~~~
-apt-get install build-essential cmake git-svn subversion doxygen mysql-server ruby1.8-dev
+apt-get install build-essential cmake git-svn subversion doxygen
+apt-get install ruby1.8-dev libboost-all-dev
+apt-get install mysql-server
 ~~~~
   - MySQL server Root password: mysqlR00t
 
@@ -82,7 +90,9 @@ apt-get install build-essential cmake git-svn subversion doxygen mysql-server ru
   - Installation base : _ubuntu-12.10-desktop-i386.iso_
   - Packages installed after setting up the base system:
 ~~~~
-apt-get install build-essential cmake git-svn subversion doxygen mysql-server ruby1.8-dev libboost-dev
+apt-get install build-essential cmake git-svn subversion doxygen
+apt-get install ruby1.8-dev libboost-all-dev
+apt-get install mysql-server
 ~~~~
   - MySQL server Root password: mysqlR00t
 
