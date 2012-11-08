@@ -18,18 +18,31 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <iomanip>
 #include <Config/Packages.h>
 
+#ifdef WITH_BOOST
 namespace bpo = boost::program_options;
+#endif
 
 /*!
   \file install_packages.cc
   \ingroup prometheus
   \ingroup apps
-  \brief Wraper for the installation of system packages
+  \brief Wrapper for the installation of system packages
   \author Lars Baehren
   \date 2012-11-05
+
+  \b Usage:
+
+  \verbatim
+[install_packages] Available command line options:
+  -H [ --help ]         Show this help message
+  -C [ --config ]       Print summary of configuration settings
+  --gems arg            Install Ruby gems
+  --debian arg          Install Debian packages
+  --osx arg             Install MacPorts packages for OS X
+  --redhat arg          Install Redhat packages
+  \endverbatim
 */
 
 //_______________________________________________________________________________
@@ -106,11 +119,18 @@ int install_packages_redhat (std::string const &filename)
 //
 // ==============================================================================
 
-//! Program main function
+/*!
+  \brief Program main function
+  \return status -- Returns non-zero value, in case an error was encountered; if
+                    the default interface to process command line options is not
+                    present, the program will exit with status -1.
+*/
 int main (int argc, char *argv[])
 {
   int status = 0;
   std::string filename;
+
+#ifdef WITH_BOOST
 
   //________________________________________________________
   // Description of command line options
@@ -118,7 +138,7 @@ int main (int argc, char *argv[])
   bpo::options_description desc ("[install_packages] Available command line options");
 
   desc.add_options ()
-    ("help,H",    "Show help messages")
+    ("help,H",    "Show this help message")
     ("config,C",  "Print summary of configuration settings")
     ("gems",     bpo::value<std::string>(), "Install Ruby gems")
     ("debian",   bpo::value<std::string>(), "Install Debian packages")
@@ -151,6 +171,12 @@ int main (int argc, char *argv[])
     filename = vm["redhat"].as<std::string>();
     status += install_packages_redhat(filename);
   }
+
+#else
+
+  status = -1;
+
+#endif
 
   return status;
 }
