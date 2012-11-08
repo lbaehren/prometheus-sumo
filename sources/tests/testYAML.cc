@@ -26,7 +26,7 @@
 #include <ConfigFileInstitution.h>
 
 /*!
-  \file testYamlReading.cc
+  \file testYAML.cc
   \brief Test reading in configuration data from \ref yaml files
   \author Lars Baehren
 */
@@ -71,6 +71,69 @@ void operator >> (const YAML::Node& node,
 //  Tests functions
 //
 // =============================================================================
+
+//_______________________________________________________________________________
+//                                                                    hello_world
+
+//! Emit a simple message
+int hello_world ()
+{
+  std::cout << "\n[tEmitting::hello_world]\n" << std::endl;
+
+  YAML::Emitter out;
+  out << "Hello, World!";
+
+  std::cout << "Here's the output YAML:\n" << out.c_str() << std::endl;
+
+  return 0;
+}
+
+//_______________________________________________________________________________
+//                                                                      emit_list
+
+//! Emit a simple list of elements
+int emit_list ()
+{
+  std::cout << "\n[tEmitting::emit_list]\n" << std::endl;
+
+  YAML::Emitter out;
+
+  /* Assemble the sequence */
+  out << YAML::BeginSeq;
+  out << "eggs";
+  out << "bread";
+  out << "milk";
+  out << YAML::EndSeq;
+
+  /* Write out the sequence */
+  std::cout << out.c_str() << std::endl;
+
+  return 0;
+}
+
+//_______________________________________________________________________________
+//                                                                       emit_map
+
+//! Emit a simple map of elements
+int emit_map ()
+{
+  std::cout << "\n[tEmitting::emit_map]\n" << std::endl;
+
+  YAML::Emitter out;
+
+  /* Assemble the map */
+  out << YAML::BeginMap;
+  out << YAML::Key << "name";
+  out << YAML::Value << "Barack Obama";
+  out << YAML::Key << "children";
+  out << YAML::Value << YAML::BeginSeq << "Sasha" << "Malia" << YAML::EndSeq;
+  out << YAML::EndMap;
+
+  /* Write the map to standard output */
+  std::cout << out.c_str() << std::endl;
+
+  return 0;
+}
 
 //______________________________________________________________________________
 //                                                                      readList
@@ -216,6 +279,14 @@ int main (int argc,
   std::string filename;
   std::string pathTestData;
 
+  /*
+   *  Test emitting
+   */
+
+  retval += hello_world();
+  retval += emit_list();
+  retval += emit_map();
+  
   /* Check parameter provided from the command line */
   if ( argc>1 ) {
     pathTestData = std::string(argv[1]);

@@ -22,8 +22,7 @@ marks, brackets, braces, and open/close-tags which can be hard for the human eye
 to balance in nested hierarchies.
 
 \test prometheus::config::ConfigFileBase
-\test testYamlReading.cc
-\test tEmitting.cc
+\test testYAML.cc
 
 \section yaml_comparison Comparison to other data structure format languages
 

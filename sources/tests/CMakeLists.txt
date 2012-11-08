@@ -106,30 +106,12 @@ endif (LIBXML2_FOUND)
 
 if (YAML_FOUND)
 
-  ##__________________________________________________________________
-  ## Build test programs
+  add_executable (testYAML testYAML.cc)
 
-  foreach (test_yaml
-      tEmitting.cc
-      testYamlReading.cc
-      )
+  target_link_libraries (testYAML libprometheus)
 
-    ## Strip extension from filename
-    get_filename_component (varFilename ${test_yaml} NAME_WE)
-
-    ## compiler instructions
-    add_executable (${varFilename} ${varFilename}.cc)
-
-    ## linker instructions
-    target_link_libraries (${varFilename} libprometheus)
-
-  endforeach (test_yaml)
-
-  ##__________________________________________________________________
   ## Testing
-
-  add_test (tEmitting tEmitting)
-  add_test (TestYamlReading TestYamlReading ${PROJECT_SOURCE_DIR}/data/tests)
+  add_test (testYAML testYAML ${PROJECT_SOURCE_DIR}/data/tests)
 
 endif (YAML_FOUND)
 
