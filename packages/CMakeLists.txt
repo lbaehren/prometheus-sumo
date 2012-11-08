@@ -119,7 +119,6 @@ include (${CMAKE_CURRENT_SOURCE_DIR}/RubyGems.cmake)
 ##
 ## ==============================================================================
 
-add_subdirectory (ferret)
 add_subdirectory (pandora)
 add_subdirectory (promhp)
 add_subdirectory (rant)

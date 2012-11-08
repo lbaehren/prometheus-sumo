@@ -40,4 +40,7 @@ endif (YAZPP_FOUND)
 
 add_subdirectory (lib)
 add_subdirectory (apps)
-add_subdirectory (tests)
+
+if (ENABLE_TESTING)
+  add_subdirectory (tests)
+endif (ENABLE_TESTING)

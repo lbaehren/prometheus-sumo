@@ -190,19 +190,11 @@ add_subdirectory (packages)
 add_subdirectory (sources)
 add_subdirectory (documentation)
 
-if (ENABLE_TESTING)
-  add_subdirectory (tests)
-endif (ENABLE_TESTING)
-
 ## ==============================================================================
 ##
 ##  Configuration summary
 ##
 ## ==============================================================================
-
-## Generate file with project version number
-
-file (WRITE ${CMAKE_CURRENT_BINARY_DIR}/VERSION "${${CMAKE_PROJECT_NAME}_VERSION}")
 
 ## Display summary of configuration settings
 
