@@ -47,8 +47,11 @@ can be found:
     |   |-- examples            ...  Code examples to be included into the documentation
     |   |-- images              ...  Images to be included into the documentation
     |   `-- pages               ...  Source pages from which the documentation is generated
-    |-- packages                ...  Wrappers for installation of the various packages
+    |-- packages                ...  Wrappers for installation of the various external packages
     `-- sources                 ...  Source files
+        |-- apps
+        |-- lib
+        `-- tests
 
 Not included in this picture yet is the `release` directory (containing the standard set of
 sub-directories, such as `include`, `lib`, etc.), which is set as the default installation

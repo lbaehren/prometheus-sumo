@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 /*!
-  \file TestSourcesKassel.cc
+  \file testSourcesKassel.cc
   \ingroup prometheus
   \ingroup tests
   \author Lars Baehren

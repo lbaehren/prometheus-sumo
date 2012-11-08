@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 /*!
-  \file TestSourcesTheolEik.cc
+  \file testSourcesTheolEik.cc
   \ingroup prometheus
   \ingroup tests
   \author Lars Baehren

@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 /*!
-  \file TestSourcesRobertinum.cc
+  \file testSourcesRobertinum.cc
   \ingroup prometheus
   \ingroup tests
   \author Lars Baehren

@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 /*!
-  \file TestSourcesBeeskow.cc
+  \file testSourcesBeeskow.cc
   \ingroup prometheus
   \ingroup tests
   \author Lars Baehren

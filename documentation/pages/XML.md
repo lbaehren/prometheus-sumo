@@ -18,7 +18,7 @@ ML documents consist entirely of characters from the Unicode repertoire. Except 
 
 XML includes facilities for identifying the encoding of the Unicode characters that make up the document, and for expressing characters that, for one reason or another, cannot be used directly.
 
-\test TestXML.cc TestXMLTree.c TestSourcesKassel.cc TestSourcesRobertinum.cc
+\test testXML.cc testXMLTree.c testSourcesKassel.cc testSourcesRobertinum.cc
 
 \section xml_programming Programming interfaces
 
