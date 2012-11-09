@@ -65,12 +65,6 @@ if (DOXYGEN_EXECUTABLE)
       )
   endif (NOT EXISTS ${DOXYGEN_OUTPUT_DIRECTORY})
 
-  ## Configuration summary page
-  configure_file (
-    ${CMAKE_CURRENT_SOURCE_DIR}/ConfigurationSummary.doxy.in
-    ${CMAKE_CURRENT_BINARY_DIR}/ConfigurationSummary.doxy
-    )
-
   ## Configuration file for Doxygen
   configure_file (
     ${CMAKE_CURRENT_SOURCE_DIR}/doxygen.config.in
