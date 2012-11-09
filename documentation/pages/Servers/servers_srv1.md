@@ -60,6 +60,8 @@ prometheus-web1.uni-koeln.de:/var/local/prometheus/data/images /var/local/promet
 
 \section servers_srv1_cron Cronjobs
 
+* \ref logwatch
+
 ~~~~
 /etc
  ├── cron.d

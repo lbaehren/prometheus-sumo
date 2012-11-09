@@ -80,6 +80,9 @@
     <dt>Icinga</dt>
       <dd>\subpage icinga is an enterprise grade open source monitoring system which keeps watch over networks and any conceivable network resource, notifies the user of errors and recoveries and generates performance data for reporting. Scalable and extensible, Icinga can monitor complex, large environments across dispersed locations.</dd>
 
+    <dt>Logwatch</dt>
+      <dd>\subpage logwatch is a customizable, pluggable log-monitoring system. It will go through your logs for a given period of time and make a report in the areas that you wish with the detail that you wish. Logwatch is being used for Linux and many types of UNIX.</dd>
+
     <dt>Nagios</dt>
       <dd>\subpage nagios is an open source computer system monitor, network monitoring and infrastructure monitoring software application. Nagios offers monitoring and alerting for servers, switches, applications, and services. It watches hosts and services. It alerts users when things go wrong and alerts them again when those wrong things get better/resolved.</dd>
 
