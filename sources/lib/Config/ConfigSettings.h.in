@@ -24,6 +24,33 @@
   \ingroup config
   \brief Common configuration settings
   \author Lars Baehren
+
+  **Configuration summary:**
+
+  \li **System configuration**
+  | Parameter             | Value                     |
+  |-----------------------|---------------------------|
+  | Processor type        | ${CMAKE_SYSTEM_PROCESSOR} |
+  | CMake executable      | ${CMAKE_COMMAND}          |
+  | CMake version         | ${CMAKE_VERSION}          |
+  | System name           | ${CMAKE_SYSTEM}           |
+  | Operating system name | ${CMAKE_OS_NAME}          |
+  | C++ compiler          | ${CMAKE_CXX_COMPILER}     |
+  | C compiler            | ${CMAKE_C_COMPILER}       |
+  | size(void*)           | ${CMAKE_SIZEOF_VOID_P}    |
+
+  \li **Ruby configuration**
+  | Parameter                 | Value                                  |
+  |---------------------------|----------------------------------------|
+  | Required version          | ${REQUIRED_VERSION_RUBY}               |
+  | Ruby executable           | ${RUBY_EXECUTABLE} (${RUBY_VERSION})   |
+  | Ruby library path         | ${RUBY_LIBRARY}                        |
+  | Ruby include directory    | ${RUBY_INCLUDE_DIRS}                   |
+  | Gem executable            | ${GEM_EXECUTABLE} (${GEM_VERSION})     |
+  | Rake executable           | ${RAKE_EXECUTABLE} (${RAKE_VERSION})   |
+  | Rant executable           | ${RANT_EXECUTABLE} (${RANT_VERSION})   |
+  | Rails executable          | ${RAILS_EXECUTABLE} (${RAILS_VERSION}) |
+
 */
 
 #ifndef CONFIG_SETTINGS_H
