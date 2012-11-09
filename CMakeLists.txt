@@ -21,7 +21,8 @@ set (PROJECT_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJEC
 
 ## Commonly used variables
 
-set (REQUIRED_VERSION_RUBY  1.8  )
+set (REQUIRED_VERSION_RUBY    1.8  )
+set (REQUIRED_VERSION_DOXYGEN "100800000")
 set (NOF_SKIPPED_TESTS      0    )
 
 ## ==============================================================================
@@ -141,29 +142,6 @@ foreach (_cmakeModule
   find_package (${_cmakeModule})
 endforeach (_cmakeModule)
 
-## Extract Doxygen version number - this is not done by the standard module
-if (DOXYGEN_EXECUTABLE)
-
-  execute_process(
-    COMMAND ${DOXYGEN_EXECUTABLE} --version
-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-    RESULT_VARIABLE DOXYGEN_RESULT_VARIABLE
-    OUTPUT_VARIABLE DOXYGEN_VERSION
-    ERROR_VARIABLE DOXYGEN_ERROR_VARIABLE
-    OUTPUT_STRIP_TRAILING_WHITESPACE
-    )
-
-  if (DOXYGEN_VERSION)
-    ## Convert string to list of numbers
-    string (REGEX REPLACE "\\." ";" DOXYGEN_VERSION_LIST ${DOXYGEN_VERSION})
-    ## Retrieve individual elements in the list
-    list(GET DOXYGEN_VERSION_LIST 0 DOXYGEN_VERSION_MAJOR)
-    list(GET DOXYGEN_VERSION_LIST 1 DOXYGEN_VERSION_MINOR)
-    list(GET DOXYGEN_VERSION_LIST 2 DOXYGEN_VERSION_PATCH)
-  endif (DOXYGEN_VERSION)
-
-endif (DOXYGEN_EXECUTABLE)
-
 ## Decomposition of Ruby version number - this is not done by the standard module
 
 if (RUBY_VERSION)
@@ -230,7 +208,7 @@ message (STATUS " .. RDoc ........................ = ${RDOC_FOUND} (${RDOC_VERSI
 message (STATUS " .. YARD executable ............. = ${YARD_FOUND} (${YARD_VERSION})" )
 message (STATUS " Processing tools & libraries:"                                 )
 message (STATUS " .. Boost ....................... = ${Boost_FOUND}"             )
-message (STATUS " .. Doxygen ..................... = ${DOXYGEN_FOUND}"           )
+message (STATUS " .. Doxygen ..................... = ${DOXYGEN_FOUND} (${DOXYGEN_VERSION})" )
 message (STATUS " .. Magic ....................... = ${MAGIC_FOUND}"             )
 message (STATUS " .. MySQL ....................... = ${MYSQL_FOUND}"             )
 message (STATUS " .. TinyXML ..................... = ${TINYXML_FOUND}"           )

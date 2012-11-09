@@ -35,7 +35,7 @@ find_file (DOXYGEN_HTML_STYLESHEET stylesheet.css
 ##
 ## ==============================================================================
 
-if (DOXYGEN_EXECUTABLE)
+if (DOXYGEN_FOUND)
 
   set (DOXYGEN_INPUT "${PROJECT_SOURCE_DIR}/documentation ${PROJECT_SOURCE_DIR}/sources ${PROJECT_BINARY_DIR}/sources ${CMAKE_INSTALL_PREFIX}/include")
   set (DOXYGEN_OUTPUT_DIRECTORY "${CMAKE_INSTALL_PREFIX}/share/doc/prometheus")
@@ -99,7 +99,14 @@ if (DOXYGEN_EXECUTABLE)
     add_test (documentation Documentation)
   endif (ENABLE_TESTING)
 
-endif (DOXYGEN_EXECUTABLE)
+else (DOXYGEN_FOUND)
+
+  add_custom_target (Documentation
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    )
+  add_dependencies (Documentation doxygen)
+
+endif (DOXYGEN_FOUND)
 
 ## ==============================================================================
 ##

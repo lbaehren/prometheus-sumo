@@ -44,6 +44,7 @@ include (${CMAKE_CURRENT_SOURCE_DIR}/RubyGems.cmake)
 ##
 ## ==============================================================================
 
+add_subdirectory (doxygen)
 add_subdirectory (pandora)
 add_subdirectory (promhp)
 add_subdirectory (rant)
