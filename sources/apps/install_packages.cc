@@ -59,7 +59,7 @@ int install_ruby_gems (std::string const &filename)
   packages.readConfig(filename);
 
 #ifdef GEM_FOUND
-  return packages.install_packages("sudo gem install");
+  return packages.install_packages("gem install");
 #else
   return 0;
 #endif
@@ -78,7 +78,7 @@ int install_packages_debian (std::string const &filename)
   prometheus::config::Packages packages;
   packages.readConfig(filename);
 
-  return packages.install_packages("sudo apt-get install");
+  return packages.install_packages("apt-get install");
 }
 
 //_______________________________________________________________________________
@@ -94,7 +94,7 @@ int install_packages_osx (std::string const &filename)
   prometheus::config::Packages packages;
   packages.readConfig(filename);
 
-  return packages.install_packages("sudo port install");
+  return packages.install_packages("port install");
 }
 
 //_______________________________________________________________________________
@@ -110,7 +110,7 @@ int install_packages_redhat (std::string const &filename)
   prometheus::config::Packages packages;
   packages.readConfig(filename);
 
-  return packages.install_packages("sudo yum install");
+  return packages.install_packages("yum install");
 }
 
 // ==============================================================================
