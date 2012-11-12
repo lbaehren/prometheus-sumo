@@ -98,6 +98,16 @@
 
 //! Build with Boost library support?
 #cmakedefine WITH_BOOST
+//! Is the Gem executable available?
+#cmakedefine GEM_FOUND
+//! Build with MySQL library support?
+#cmakedefine WITH_MYSQL
+//! Is the Rails application executable available?
+#cmakedefine RAILS_FOUND
+//! Is the Rake executable available?
+#cmakedefine RAKE_FOUND
+//! Build with TinyXML library support?
+#cmakedefine WITH_TINYXML
 //! Build with YAML-C++ library support?
 #cmakedefine WITH_YAML
 //! Build with YAZ++ library support?
@@ -116,8 +126,6 @@
 #include <boost/regex.hpp>
 #endif
 
-//! Is the Gem executable available?
-#cmakedefine GEM_FOUND
 #ifdef GEM_FOUND
 //! Full path to the Gem executable
 #define GEM_EXECUTABLE "${GEM_EXECUTABLE}"
@@ -125,15 +133,11 @@
 #define GEM_VERSION "${GEM_VERSION}"
 #endif
 
-//! Is the Rails application executable available?
-#cmakedefine RAILS_FOUND
 #ifdef RAILS_FOUND
 //! Rails version
 #define RAILS_VERSION "${RAILS_VERSION}"
 #endif
 
-//! Is the Rake executable available?
-#cmakedefine RAKE_FOUND
 #ifdef RAKE_FOUND
 //! Full path to the Rake executable
 #define RAKE_EXECUTABLE "${RAKE_EXECUTABLE}"
