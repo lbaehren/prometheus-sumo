@@ -24,7 +24,7 @@
 #include <set>
 #include <map>
 
-#include <lib/StatisticsReaderHBZ.h>
+#include <Statistics/StatisticsReaderHBZ.h>
 
 // === Main routine =============================================================
 
@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
   //________________________________________________________
   // Process the data file
 
-  StatisticsReaderHBZ reader (filename);
+  prometheus::statistics::StatisticsReaderHBZ reader (filename);
 
   if (reader.processFile()) {
 
