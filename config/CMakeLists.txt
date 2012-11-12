@@ -2,10 +2,15 @@
 ##  Pre-processing of configuration files
 ##
 
-configure_file (
-  ${CMAKE_CURRENT_SOURCE_DIR}/packages_debian.yml.in
-  ${CMAKE_CURRENT_SOURCE_DIR}/packages_debian.yml
-)
+foreach (_configIN
+    packages_debian.yml
+    repositories.yml
+    )
+  configure_file (
+    ${CMAKE_CURRENT_SOURCE_DIR}/${_configIN}.in
+    ${CMAKE_CURRENT_SOURCE_DIR}/${_configIN}
+    )
+endforeach ()
 
 ##
 ##  Configuration files
