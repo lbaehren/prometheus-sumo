@@ -2,9 +2,17 @@
 ## List of required MacPorts packages
 ##
 ---
+- name: cmake
+  url:
+  description: A cross-platform, open-source make system
+  version:
 - name: doxygen
   url:
   description:
+  version:
+- name: libxml2
+  url:
+  description: XML C library developed for the Gnome project
   version:
 - name: mod_ruby
   url:
@@ -12,7 +20,7 @@
   version:
 - name: mysql5-devel
   url:
-  description:
+  description: Multithreaded SQL database server, development files
   version:
 - name: rb-rubygems
   url:
@@ -20,5 +28,5 @@
   version:
 - name: ruby
   url:
-  description:
+  description: Powerful and clean object-oriented scripting language
   version:
