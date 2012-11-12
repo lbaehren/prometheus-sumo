@@ -17,6 +17,14 @@ if (Boost_FOUND)
   list (APPEND libprometheus_link_libraries ${Boost_LIBRARIES})
 endif (Boost_FOUND)
 
+if (MYSQL_FOUND)
+  set (WITH_MYSQL TRUE)
+endif (MYSQL_FOUND)
+
+if (TINYXML_FOUND)
+  set (WITH_TINYXML TRUE)
+endif (TINYXML_FOUND)
+
 if (YAML_FOUND)
   ## Compiler flag(s)
   set (WITH_YAML TRUE)
