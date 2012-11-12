@@ -125,6 +125,7 @@ screen, use the `--print` option instead.
 \section logwatch_references References
 
 * [How to setup Logwatch on Linux](http://photogabble.co.uk/technical/how-to-setup-logwatch-on-linux.html)
+* [Analyzing and Managing System Log Files](http://doc.opensuse.org/documentation/html/openSUSE/opensuse-tuning/cha.tuning.logfiles.html)
 * [How to setup Logwatch on Ubuntu Desktop/Server](http://www.ubuntugeek.com/how-to-setup-logwatch-on-ubuntu-desktopserver.html)
 * [Monitor System Logs with Logwatch on Ubuntu 10.04](http://library.linode.com/server-monitoring/logwatch/ubuntu-10.04-lucid)
 * [How to customize Logwatch](http://www.stellarcore.net/logwatch/tabs/docs/HOWTO-Customize-LogWatch.html)
