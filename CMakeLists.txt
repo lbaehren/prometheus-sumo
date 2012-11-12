@@ -130,7 +130,6 @@ foreach (_cmakeModule
   YAZPP
   ZLIB
   )
-  message (STATUS "Loading CMake module ${_cmakeModule} ...")
   ## Verbosity of module
   if (NOT CONFIGURE_VERBOSE)
     ## Convert module name to upper-case
