@@ -71,6 +71,37 @@ int test_system_commands ()
 }
 
 //_______________________________________________________________________________
+//                                                       test_string_manipulation
+
+/*!
+  \brief Test manipulation of strings
+  \return status -- Return status of the function; returns non-zero value in case
+                    an error is caught.
+*/
+
+int test_string_manipulation ()
+{
+  std::cout << "\n[testCommon::test_string_manipulation]\n" << std::endl;
+
+  int status = 0;
+  
+  std::vector<std::string> testStrings;
+
+  testStrings.push_back("Hello World");
+  testStrings.push_back("HELLO WORLD");
+  testStrings.push_back("Subversion");
+  testStrings.push_back("SVN");
+
+  for (size_t n=0; n<testStrings.size(); ++n) {
+    std::cout << " - " << testStrings[n] << " -> "
+	      << to_lower(testStrings[n])
+	      << std::endl;
+  }
+  
+  return status;
+}
+
+//_______________________________________________________________________________
 //                                                      test_operator_overloading
 
 /*!
@@ -163,6 +194,7 @@ int main ()
   int status = 0;
 
   status += test_system_commands ();
+  status += test_string_manipulation ();
   status += test_operator_overloading ();
 
   return status;

@@ -38,6 +38,30 @@
 
 // ==============================================================================
 //
+//  String manipulation
+//
+// ==============================================================================
+
+/*!
+  \brief Convert string to lower case
+  \param in   -- Input string to convert to lower case.
+  \return out -- String converted to lower case.
+*/
+std::string to_lower (std::string const &in)
+{
+  std::string out = in;
+
+#ifdef WITH_BOOST
+  boost::algorithm::to_lower(out);
+#else
+  std::transform( out.begin(), out.end(), out.begin(), lower_case );
+#endif
+
+  return out;
+}
+
+// ==============================================================================
+//
 //  Operator overloading
 //
 // ==============================================================================

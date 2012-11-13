@@ -137,6 +137,34 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     //
     // ==========================================================================
 
+    bool Repositories::clone ()
+    {
+      bool status = true;
+
+      if (itsRepositoryList.empty()) {
+        std::cerr << "[Repositories::clone] Empty list of repositories!"
+                  << std::endl;
+        status = false;
+      }  else {
+        for (size_t n=0; n<itsRepositoryList.size(); ++n) {
+          status *= clone(itsRepositoryList[n].name);
+        }
+      }
+
+      return status;
+    }
+
+    /*!
+      \param name -- Name of the repository/project for which to check out a
+                     working copy.
+    */
+    bool Repositories::clone (std::string const &name)
+    {
+      bool status = true;
+
+      return status;
+    }
+
     //___________________________________________________________________________
     //                                                                    summary
 

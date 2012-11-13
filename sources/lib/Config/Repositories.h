@@ -92,6 +92,12 @@ namespace prometheus {   // namespace prometheus -- BEGIN
 
       // === Public functions ===================================================
 
+      //! Create local working copy of the listed repositories
+      bool clone ();
+
+      //! Create local working copy of a given repository
+      bool clone (std::string const &name);
+
       //! Provide a summary of the object's internal parameters and status
       inline void summary () {
         summary (std::cout);
