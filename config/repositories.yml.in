@@ -1,0 +1,109 @@
+---
+- name: pandora
+  description: The driving force behind the prometheus image archive
+  type: subversion
+  url: http://prometheus-srv.uni-koeln.de/svn/pandora
+- name: scratch
+  description: Collection of scripts & snippets
+  type: git
+  url: git://github.com/blackwinter/scratch.git
+- name: athena
+  description: Convert database files to various formats
+  type: git
+  url: ${GIT_REPOSITORY_BASE}/athena.git
+- name: cmess
+  description: Assist with handling messed up encodings
+  type: git
+  url: ${GIT_REPOSITORY_BASE}/cmess.git
+- name: flattendb
+  description: Flatten relational databases
+  type: git
+  url: ${GIT_REPOSITORY_BASE}/flattendb.git
+- name: promhp
+  description: Website of prometheus - The digital image archive
+  type: git
+  url: ${GIT_REPOSITORY_BASE}/promhp.git
+- name: perseus_match
+  description: Fuzzy string matching based on linguistic analysis
+  type:
+  url: ${GIT_REPOSITORY_BASE}/perseus_match.git
+##
+## --- [ Apache modules ] --------------------------------------------
+##
+- name: apache_upload_merger
+  description: Apache module providing upload merging functionality
+  type: git
+  url: ${GIT_REPOSITORY_BASE}/apache_upload_merger.git
+- name: apache_image_resizer
+  description: Apache module providing image resizing functionality
+  type: git
+  url: ${GIT_REPOSITORY_BASE}/apache_image_resizer.git
+- name: apache_secure_download
+  description: Apache module providing secure downloading functionality
+  type: git
+  url: ${GIT_REPOSITORY_BASE}/apache_secure_download.git
+- name: log2counter
+  description: Convert (analyse) Apache log files to COUNTER CSV
+  type: git
+  url: ${GIT_REPOSITORY_BASE}/log2counter.git
+##
+## --- [ Jekyll modules/plugins ] ------------------------------------
+##
+- name: jekyll-localization
+  description: Jekyll plugin that adds localization features to the rendering engine
+  type: git
+  url: ${GIT_REPOSITORY_BASE}/jekyll-localization.git
+- name: jekyll-pagination
+  description: Jekyll plugin to extend the pagination generator
+  type: git
+  url: ${GIT_REPOSITORY_BASE}/jekyll-pagination.git
+- name: jekyll-rendering
+  description: Jekyll plugin to provide alternative rendering engines
+  type: git
+  url: ${GIT_REPOSITORY_BASE}/jekyll-rendering.git
+- name: jekyll-tagging
+  description: Jekyll plugin to automatically generate a tag cloud and tag pages
+  type: git
+  url: ${GIT_REPOSITORY_BASE}/jekyll-tagging.git
+- name: JekyllCommander
+  description: A Sinatra based web interface, to maintain a Jekyll website, including
+  type: git
+  url: ${GIT_REPOSITORY_BASE}/JekyllCommander.git
+##
+## --- [ Ruby extensions/modules ] -----------------------------------
+##
+- name: libxml-ext
+  description: LibXML Ruby extensions
+  type: git
+  url: ${GIT_REPOSITORY_BASE}/libxml-ext.git
+- name: ruby-backports
+  description: Backports of newer Ruby features to older versions
+  type: git
+  url: ${GIT_REPOSITORY_BASE}/ruby-backports.git
+- name: ruby-filemagic
+  description: Ruby bindings to the magic(4) library, revised
+  type: git
+  url: ${GIT_REPOSITORY_BASE}/ruby-filemagic.git
+- name: ruby-nuggets
+  description: Some extensions to the Ruby programming language
+  type: git
+  url: ${GIT_REPOSITORY_BASE}/ruby-nuggets.git
+- name: wadl
+  description: Ruby client for the Web Application Description Language
+  type: git
+  url: ${GIT_REPOSITORY_BASE}/wadl.git
+##
+## --- [ Indexing of the prometheus image archive ] ------------------
+##
+- name: lingo
+  description: A full-featured automatic indexing system
+  type: git
+  url: git://github.com/perseus-a/lingo.git
+- name: medusa
+  description: The terminology manager for perseus-a
+  type: git
+  url: git://github.com/perseus-a/medusa.git
+- name: perseus-a
+  description: Automatic indexing of the prometheus image archive
+  type: git
+  url: git://github.com/perseus-a/perseus-a.git

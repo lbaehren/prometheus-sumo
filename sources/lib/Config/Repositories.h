@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef CONFIG_PACKAGES_H
-#define CONFIG_PACKAGES_H
+#ifndef CONFIG_REPOSITORIES_H
+#define CONFIG_REPOSITORIES_H
 
 #include "ConfigFileBase.h"
 
@@ -28,36 +28,35 @@ namespace prometheus {   // namespace prometheus -- BEGIN
   namespace config {   // namespace config -- BEGIN
 
     /*!
-      \file Packages.h
-      \class Packages
+      \file Repositories.h
+      \class Repositories
       \ingroup prometheus
       \ingroup config
-      \brief Configuration settings for required software packages
-      \test testConfigPackages.cc
+      \brief Configuration settings for required software repositories
+      \test testConfigRepositories.cc
 
       \author Lars Baehren
-      \date 2012-10-22
+      \date 2012-11-13
 
       This class provides an adapter to read configuration data on list of
-      required software packages (`.deb`, `.rpm`, MacPorts, Ruby gems), most of
-      which are used for the \ref pandora web application and \ref homepage.
+      repositories hosting source code or documentation.
     */
-    class Packages : public ConfigFileBase {
+    class Repositories : public ConfigFileBase {
 
-      //! Parameters for the package node of the configuration file
-      struct PackageParameters {
-        //! Name of the package
+      //! Parameters for the repository node of the configuration file
+      struct RepositoryParameters {
+        //! Name of the repository
         std::string name;
-        //! URL for package's project page
-        std::string url;
-        //! Description of the package
+        //! Description of the repository
         std::string description;
-        //! Version specification
-        std::string version;
+        //! Type of the repository (Git, Subversion, Mercurial, etc.)
+        std::string type;
+        //! URL for repository's project page
+        std::string url;
       };
 
-      //! List of packages for which parameters are kept
-      std::vector<PackageParameters> itsPackageList;
+      //! List of repositories for which parameters are kept
+      std::vector<RepositoryParameters> itsRepositoryList;
 
       //! Store the data from an individual node
       bool storeNode (YAML::Iterator const &it);
@@ -67,35 +66,31 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       // === Construction =======================================================
 
       //! Default constructor
-      Packages ();
+      Repositories ();
 
       //! Argumented constructor
-      Packages (std::string const &filename);
+      Repositories (std::string const &filename);
 
       // === Parameter access ===================================================
 
-      //! Get the number of packages for which parameters are kept
+      //! Get the number of repositories for which parameters are kept
       inline size_t size () {
-        return itsPackageList.size();
+        return itsRepositoryList.size();
       }
 
-      //! Get the name of the packages
+      //! Get the name of the repositories
       std::set<std::string> names ();
 
-      //! Get version information for the packages
-      std::map<std::string,std::string> versions ();
-
-      //! Get URL for package's project page
-      std::map<std::string,std::string> urls ();
-
-      //! Get description of the packages
+      //! Get description of the repositories
       std::map<std::string,std::string> descriptions ();
 
-      // === Public functions ===================================================
+      //! Get type information for the repositories
+      std::map<std::string,std::string> types ();
 
-      //! Install the packages
-      int install_packages (std::string const &installCommand,
-                            bool const &verbose=false);
+      //! Get URL for repository's project page
+      std::map<std::string,std::string> urls ();
+
+      // === Public functions ===================================================
 
       //! Provide a summary of the object's internal parameters and status
       inline void summary () {

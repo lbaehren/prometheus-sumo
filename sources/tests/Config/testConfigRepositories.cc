@@ -19,14 +19,15 @@
  ***************************************************************************/
 
 #include <iomanip>
-#include <Config/Packages.h>
+#include <Config/Repositories.h>
 
 /*!
-  \file testConfigPackages.cc
+  \file testConfigRepositories.cc
   \ingroup prometheus
   \ingroup tests
-  \brief A collection of tests for the prometheus::config::Packages class
+  \brief A collection of tests for the prometheus::config::Repositories class
   \author Lars Baehren
+  \date 2012-11-13
 */
 
 // === Test procedures ==========================================================
@@ -41,27 +42,27 @@
 */
 int test_constructors (std::string const &filename="ruby_gems.yml")
 {
-  std::cout << "\n[testPackages::test_constructors]\n" << std::endl;
+  std::cout << "\n[testRepositories::test_constructors]\n" << std::endl;
 
   int status = 0;
 
-  std::cout << "[1] Testing Packages() ..." << std::endl;
+  std::cout << "[1] Testing Repositories() ..." << std::endl;
   try {
-    prometheus::config::Packages packages;
+    prometheus::config::Repositories repositories;
     //
-    std::cout << "--> Config file = " << packages.configFile() << std::endl;
-    std::cout << "--> nof. packages   = " << packages.size()    << std::endl;
+    std::cout << "--> Config file = " << repositories.configFile() << std::endl;
+    std::cout << "--> nof. repositories   = " << repositories.size()    << std::endl;
   } catch (std::exception &e) {
     std::cout << "ERROR : " << e.what() << std::endl;
     ++status;
   }
 
-  std::cout << "[2] Testing Packages(std::string) ..." << std::endl;
+  std::cout << "[2] Testing Repositories(std::string) ..." << std::endl;
   try {
-    prometheus::config::Packages packages (filename);
+    prometheus::config::Repositories repositories (filename);
     //
-    std::cout << "--> Config file = " << packages.configFile() << std::endl;
-    std::cout << "--> nof. packages   = " << packages.size()    << std::endl;
+    std::cout << "--> Config file = " << repositories.configFile() << std::endl;
+    std::cout << "--> nof. repositories   = " << repositories.size()    << std::endl;
   } catch (std::exception &e) {
     std::cout << "ERROR : " << e.what() << std::endl;
     ++status;
@@ -74,44 +75,44 @@ int test_constructors (std::string const &filename="ruby_gems.yml")
 //                                                              test_constructors
 
 /*!
-  \brief Test reading list of Ruby packages from configuration file
+  \brief Test reading list of Ruby repositories from configuration file
 */
 int test_read_config (std::string const &filename)
 {
-  std::cout << "\n[testPackages::test_read_config]\n" << std::endl;
+  std::cout << "\n[testRepositories::test_read_config]\n" << std::endl;
 
   int status = 0;
-  prometheus::config::Packages packages;
+  prometheus::config::Repositories repositories;
 
-  std::cout << "[1] Testing Packages::readConfig(std::string) ..." << std::endl;
+  std::cout << "[1] Testing Repositories::readConfig(std::string) ..." << std::endl;
   try {
-    packages.readConfig(filename);
-    packages.summary();
+    repositories.readConfig(filename);
+    repositories.summary();
   } catch (std::exception &e) {
     std::cout << "ERROR : " << e.what() << std::endl;
     ++status;
   }
 
-  std::cout << "[2] Testing Packages::names() ..." << std::endl;
+  std::cout << "[2] Testing Repositories::names() ..." << std::endl;
   try {
-    // Get the names of the packages ...
-    std::set<std::string> names = packages.names();
+    // Get the names of the repositories ...
+    std::set<std::string> names = repositories.names();
     // ... and print them
-    std::cout << "--> nof. packages = " << names.size() << std::endl;
+    std::cout << "--> nof. repositories = " << names.size() << std::endl;
     std::cout << "--> Package names = " << names        << std::endl;
   } catch (std::exception &e) {
     std::cout << "ERROR : " << e.what() << std::endl;
     ++status;
   }
 
-  std::cout << "[3] Testing Packages::versions() ..." << std::endl;
+  std::cout << "[3] Testing Repositories::types() ..." << std::endl;
   try {
     std::map<std::string,std::string>::iterator it;
-    // Get the names of the packages ...
-    std::map<std::string,std::string> versions = packages.versions();
+    // Get the names of the repositories ...
+    std::map<std::string,std::string> types = repositories.types();
     // ... and print them
-    std::cout << "--> nof. packages = " << versions.size() << std::endl;
-    for (it=versions.begin();it!=versions.end();++it) {
+    std::cout << "--> nof. repositories = " << types.size() << std::endl;
+    for (it=types.begin();it!=types.end();++it) {
       std::cout << std::setw(25) << it->first << "  :  " << it->second << std::endl;
     }
   } catch (std::exception &e) {
@@ -119,13 +120,13 @@ int test_read_config (std::string const &filename)
     ++status;
   }
 
-  std::cout << "[4] Testing Packages::descriptions() ..." << std::endl;
+  std::cout << "[4] Testing Repositories::descriptions() ..." << std::endl;
   try {
     std::map<std::string,std::string>::iterator it;
-    // Get the names of the packages ...
-    std::map<std::string,std::string> descriptions = packages.descriptions();
+    // Get the names of the repositories ...
+    std::map<std::string,std::string> descriptions = repositories.descriptions();
     // ... and print them
-    std::cout << "--> nof. packages = " << descriptions.size() << std::endl;
+    std::cout << "--> nof. repositories = " << descriptions.size() << std::endl;
     for (it=descriptions.begin();it!=descriptions.end();++it) {
       std::cout << std::setw(25) << it->first << "  :  " << it->second << std::endl;
     }
@@ -134,13 +135,13 @@ int test_read_config (std::string const &filename)
     ++status;
   }
 
-  std::cout << "[5] Testing Packages::urls() ..." << std::endl;
+  std::cout << "[5] Testing Repositories::urls() ..." << std::endl;
   try {
     std::map<std::string,std::string>::iterator it;
-    // Get the names of the packages ...
-    std::map<std::string,std::string> urls = packages.urls();
+    // Get the names of the repositories ...
+    std::map<std::string,std::string> urls = repositories.urls();
     // ... and print them
-    std::cout << "--> nof. packages = " << urls.size() << std::endl;
+    std::cout << "--> nof. repositories = " << urls.size() << std::endl;
     for (it=urls.begin();it!=urls.end();++it) {
       std::cout << std::setw(25) << it->first << "  :  " << it->second << std::endl;
     }
