@@ -85,19 +85,25 @@ int test_string_manipulation ()
 
   int status = 0;
   
-  std::vector<std::string> testStrings;
+  std::cout << "\n[1] Testing to_lower(std::string)" << std::endl;
+  try {
+    std::vector<std::string> testStrings;
 
-  testStrings.push_back("Hello World");
-  testStrings.push_back("HELLO WORLD");
-  testStrings.push_back("Subversion");
-  testStrings.push_back("SVN");
+    testStrings.push_back("Hello World");
+    testStrings.push_back("HELLO WORLD");
+    testStrings.push_back("Subversion");
+    testStrings.push_back("SVN");
 
-  for (size_t n=0; n<testStrings.size(); ++n) {
-    std::cout << " - " << testStrings[n] << " -> "
-	      << to_lower(testStrings[n])
-	      << std::endl;
+    for (size_t n=0; n<testStrings.size(); ++n) {
+      std::cout << " - " << testStrings[n] << " -> "
+		<< to_lower(testStrings[n])
+		<< std::endl;
+    }
+  } catch (std::exception &e) {
+    std::cerr << "ERROR : " << e.what() << std::endl;
+    ++status;
   }
-  
+
   return status;
 }
 
