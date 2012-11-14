@@ -30,3 +30,7 @@
   url:
   description: Powerful and clean object-oriented scripting language
   version:
+- name: yaml-cpp
+  url: http://code.google.com/p/yaml-cpp
+  description: yaml-cpp is a YAML parser and emitter in C++ written around the YAML 1.2 spec
+  version:
