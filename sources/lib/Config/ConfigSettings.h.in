@@ -108,6 +108,8 @@
 #cmakedefine RAKE_FOUND
 //! Build with TinyXML library support?
 #cmakedefine WITH_TINYXML
+//! Is the VirtualBox application available?
+#cmakedefine VIRTUALBOX_FOUND
 //! Build with YAML-C++ library support?
 #cmakedefine WITH_YAML
 //! Build with YAZ++ library support?
@@ -145,6 +147,11 @@
 //! Rake version
 #define RAKE_VERSION "${RAKE_VERSION}"
 #endif
+
+#ifdef VIRTUALBOX_FOUND
+//! Full path to the VBoxManage executable
+#define VBOXMANAGE_EXECUTABLE "${VBOXMANAGE_EXECUTABLE}"
+#endif VIRTUALBOX_FOUND
 
 // ==============================================================================
 //

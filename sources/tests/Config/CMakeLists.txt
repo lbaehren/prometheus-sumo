@@ -35,14 +35,15 @@ endforeach (_test)
 
 ## === Execution of the tests ===================================================
 
-run_test_config (testConfigAccount        ${config_account_yml}         )
-run_test_config (testConfigInstitution    ${config_institution_yml}     )
-run_test_config (testConfigPackages       ${config_gems_yml}            )
-run_test_config (testConfigUserRoles      ${config_roles_yml}           )
-run_test_config (testConfigTrustedProxies ${config_trusted_proxies_yml} )
-run_test_config (testConfigColumnsFor     ${config_source_yml}          )
-run_test_config (testConfigRepositories   ${config_repositories_yml}    )
-run_test_config (testConfigSource         ${config_source_yml}          )
+run_test_config (testConfigAccount          ${config_account_yml}           )
+run_test_config (testConfigInstitution      ${config_institution_yml}       )
+run_test_config (testConfigPackages         ${config_gems_yml}              )
+run_test_config (testConfigUserRoles        ${config_roles_yml}             )
+run_test_config (testConfigTrustedProxies   ${config_trusted_proxies_yml}   )
+run_test_config (testConfigColumnsFor       ${config_source_yml}            )
+run_test_config (testConfigRepositories     ${config_repositories_yml}      )
+run_test_config (testConfigSource           ${config_source_yml}            )
+run_test_config (testConfigVirtualMachines  ${config_virtual_machines_yml}  )
 
 add_test (testConfigPackagesDebian testConfigPackages ${config_packages_debian_yml} )
 add_test (testConfigPackagesOSX    testConfigPackages ${config_packages_osx_yml}    )
