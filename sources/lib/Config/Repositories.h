@@ -43,8 +43,8 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     */
     class Repositories : public ConfigFileBase {
 
-      //! Parameters for the repository node of the configuration file
-      struct RepositoryParameters {
+      //! Configuration settings for a software/documents repository
+      struct params {
         //! Name of the repository
         std::string name;
         //! Description of the repository
@@ -56,7 +56,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       };
 
       //! List of repositories for which parameters are kept
-      std::vector<RepositoryParameters> itsRepositoryList;
+      std::vector<params> itsRepositoryList;
 
       //! Store the data from an individual node
       bool storeNode (YAML::Iterator const &it);
