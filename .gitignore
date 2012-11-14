@@ -1,6 +1,13 @@
 *~
 build
 release
+#
+# --- Files generated during project configuration ---
+#
+config/repositories.yml
+#
+# --- Working copies of project repositories ---
+#
 data/repositories/JekyllCommander
 data/repositories/apache_image_resizer
 data/repositories/apache_secure_download
