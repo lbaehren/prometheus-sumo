@@ -56,7 +56,7 @@
       <dd>\subpage cmake is an extensible, open-source system that manages the build process in an operating system and compiler independent manner. Unlike many cross-platform systems, CMake is designed to be used in conjunction with the native build environment.</dd>
 
     <dt>Git</dt>
-      <dd>[Git](http://www.git-scm.com) is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.<br>Git is easy to learn and has a tiny footprint with lightning fast performance. It outclasses SCM tools like Subversion, CVS, Perforce, and ClearCase with features like cheap local branching, convenient staging areas, and multiple workflows. </dd>
+      <dd>\subpage git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.<br>Git is easy to learn and has a tiny footprint with lightning fast performance. It outclasses SCM tools like Subversion, CVS, Perforce, and ClearCase with features like cheap local branching, convenient staging areas, and multiple workflows. </dd>
 
     <dt>Rant</dt>
       <dd>\subpage rant is a flexible build tool written entirely in Ruby. The equivalent to a _Makefile_ for _make_ is the _Rantfile_. A _Rantfile_ is actually a valid Ruby script that is read in by the `rant` command.</dd>
