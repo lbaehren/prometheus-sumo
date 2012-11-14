@@ -4,6 +4,7 @@ release
 #
 # --- Files generated during project configuration ---
 #
+config/packages_debian.yml
 config/repositories.yml
 #
 # --- Working copies of project repositories ---
