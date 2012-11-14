@@ -129,10 +129,7 @@ In order to establish an infrastructure able to life outside the framework of th
 \ref pandora web application, some common basic functionality is impemented in
 the form of a C++ library.
 
-    sources/lib/
-    ├── Config           ...  Interface to configuration files
-    ├── Sources          ...  Interface to source models and their parameters
-    └── Statistics       ...  Generation and analysis of statistical information
+\include tree_sources.txt
 
 \subsection sumo_functionality_external Dealing with external resources
 

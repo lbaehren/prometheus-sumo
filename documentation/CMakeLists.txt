@@ -5,11 +5,12 @@
 ##
 ## ==============================================================================
 
-## Path to directory with examples files
+## Generate directory tree figures
 
-find_path (DOXYGEN_EXAMPLE_PATH monsters.yaml
-  PATHS ${PROJECT_SOURCE_DIR}
-  PATH_SUFFIXES documentation documentation/examples
+execute_process (
+  COMMAND tree -d --noreport sources
+  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+  OUTPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/tree_sources.txt
   )
 
 ## Path to directory with image files
