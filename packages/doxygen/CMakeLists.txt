@@ -79,7 +79,7 @@ if (DOXYGEN_EXECUTABLE)
   math (EXPR DOXYGEN_VERSION_PATCH "${DOXYGEN_VERSION_PATCH}*100")
 
   set (DOXYGEN_VERSION_STRING "${DOXYGEN_VERSION_MAJOR}${DOXYGEN_VERSION_MINOR}${DOXYGEN_VERSION_PATCH}")
-  
+
   if (${DOXYGEN_VERSION_STRING} LESS ${REQUIRED_VERSION_DOXYGEN})
     set (DOXYGEN_FOUND FALSE)
     message (STATUS "Checking whether Doxygen version is ok - no")
@@ -138,15 +138,6 @@ if (NOT DOXYGEN_FOUND OR DOXYGEN_FORCE_BUILD)
       )
 
   endif (DOXYGEN_FROM_REPOS)
-
-  ExternalProject_Add_Step (doxygen update_configuration
-    COMMAND ${CMAKE_COMMAND} -E remove CMake*
-    COMMAND ${CMAKE_COMMAND} ..
-    COMMENT "Updating top-level configuration ..."
-    DEPENDEES install
-    DEPENDERS build
-    WORKING_DIRECTORY ${prometheus-sumo_BINARY_DIR}
-  )
 
 else (NOT DOXYGEN_FOUND OR DOXYGEN_FORCE_BUILD)
 

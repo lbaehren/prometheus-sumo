@@ -85,15 +85,6 @@ if (NOT YAML_CPP_FOUND OR YAML_CPP_FORCE_BUILD)
 
   endif (YAML_CPP_FROM_REPOS)
 
-  ExternalProject_Add_Step (yaml-cpp update_configuration
-    COMMAND ${CMAKE_COMMAND} -E remove CMake*
-    COMMAND ${CMAKE_COMMAND} ..
-    COMMENT "Updating top-level configuration ..."
-    DEPENDEES install
-    DEPENDERS build
-    WORKING_DIRECTORY ${prometheus-sumo_BINARY_DIR}
-  )
-
 else (NOT YAML_CPP_FOUND OR YAML_CPP_FORCE_BUILD)
 
   add_custom_target (yaml-cpp
