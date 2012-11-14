@@ -19,20 +19,54 @@ line, the below syntax diagram will be shown. Note that the output will be
 slightly different depending on the host platform; when in doubt, check the
 output of VBoxManage for the commands available on your particular host.
 
-* List the available VMs:
+\subsection vboxmanage_commands_list List the available VMs (list)
+
 ~~~~
 VBoxManage list vms
 ~~~~
 
-* Import VM image
-~~~~
-VBoxManage import <ovf/ova> [--dry-run|-n]
-~~~~
+\subsection vboxmanage_commands_import Import a VM image (import)
 
-* Start a VM
-~~~~
+\verbatim
+VBoxManage import <ovf/ova> [--dry-run|-n]
+\endverbatim
+
+\subsection vboxmanage_commands_startvm Start a VM (startvm)
+
+\verbatim
 VBoxManage startvm <uuid>|<name> [--type gui|sdl|headless]
-~~~~
+\endverbatim
+
+\subsection vboxmanage_commands_export Export a virtual appliance (export)
+
+The `export` command is simple to use: list the machine (or the machines) that
+you would like to export to the same OVF file and specify the target OVF file
+after an additional `--output` or `-o` option. Note that the directory of the
+target OVF file will also receive the exported disk images in the compressed VMDK
+format (regardless of the original format) and should have enough disk space left
+for them.
+
+Beside a simple export of a given virtual machine, you can append several product
+information to the appliance file. Use `--product`, `--producturl`, `--vendor`,
+`--vendorurl` and `--version` to specify this additional information. For legal
+reasons you may add a license text or the content of a license file by using the
+`--eula` and `--eulafile` option respectively. As with OVF import, you must use
+the `--vsys X` option to direct the previously mentioned options to the correct
+virtual machine.
+
+\verbatim
+VBoxManage export <machines> --output|-o <name>.<ovf/ova>
+                            [--legacy09|--ovf09|--ovf10|--ovf20]
+                            [--manifest]
+                            [--vsys <number of virtual system>]
+                            [--product <product name>]
+                            [--producturl <product url>]
+                            [--vendor <vendor name>]
+                            [--vendorurl <vendor url>]
+                            [--version <version info>]
+                            [--eula <license text>]
+                            [--eulafile <filename>]
+\endverbatim
 
 \section vboxmanage_references References
 
