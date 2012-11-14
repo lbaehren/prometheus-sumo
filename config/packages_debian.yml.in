@@ -100,6 +100,10 @@
   url:
   description: image manipulation library - development files
   version:
+- name: libyaz4-dev
+  url: https://www.indexdata.com/yazpp
+  description: The YAZ Z39.50 toolkit (development files)
+  version:
 - name: zlib1g-dev
   url:
   description: compression library - development
