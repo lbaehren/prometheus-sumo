@@ -78,6 +78,9 @@ if (NOT YAML_FOUND)
     endif (YAML_FIND_REQUIRED)
   endif (YAML_FOUND)
   
+  ## Compatibility setting
+  set (YAML_CPP_FOUND ${YAML_FOUND})
+  
   ##_____________________________________________________________________________
   ## Mark advanced variables
   
