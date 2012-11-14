@@ -32,6 +32,8 @@ if (libprometheus_sources)
     OUTPUT_NAME prometheus
     )
 
+  add_dependencies (libprometheus yaml-cpp)
+
 endif (libprometheus_sources)
 
 message (STATUS "Processing directory source/lib - done")
