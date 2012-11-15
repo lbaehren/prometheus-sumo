@@ -151,7 +151,7 @@
 #ifdef VIRTUALBOX_FOUND
 //! Full path to the VBoxManage executable
 #define VBOXMANAGE_EXECUTABLE "${VBOXMANAGE_EXECUTABLE}"
-#endif VIRTUALBOX_FOUND
+#endif
 
 // ==============================================================================
 //
