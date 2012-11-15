@@ -163,25 +163,22 @@ int test_ruby_gems ()
   std::cout << "\n[testPackages::test_ruby_gems]\n" << std::endl;
 
   int status = 0;
-  std::vector<std::string> commands;
+  std::map<std::string,std::string> gems;
+  std::map<std::string,std::string>::iterator it;
   std::string output;
 
-  commands.push_back("gem list unicode");
-  commands.push_back("gem list bliblablub");
-  commands.push_back("apt-get update");
-  commands.push_back("yum update");
-  commands.push_back("date");
+  // Set up the list of gems to use for testing
+  gems["redcarpet"] = "";
+  gems["unicode"]   = ">= 0.1.1";
 
-  std::cout << "[1] Test 'gem list' to find gem ..." << std::endl;
+  std::cout << "[1] Test installation of gem ..." << std::endl;
   try {
-
-    for (size_t n=0; n<commands.size(); ++n) {
-      // Run the command
-      status = run_command (commands[n], output);
-      // Report the results
-      std::cout << "-- Command = " << commands[n] << std::endl;
-      std::cout << "-- Status  = " << status      << std::endl;
-      std::cout << "-- Output  = " << output      << std::endl;
+    for (it=gems.begin(); it!=gems.end(); ++it) {
+      std::string cmd = "gem install " + it->first;
+      if (it->second != "") {
+	cmd += " --version '" + it->second + "'";
+      }
+      std::cout << "-- " << it->first << " : " << cmd << std::endl;
     }
   } catch (std::exception &e) {
     std::cout << "ERROR : " << e.what() << std::endl;
