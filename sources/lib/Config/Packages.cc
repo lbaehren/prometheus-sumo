@@ -151,11 +151,12 @@ namespace prometheus {   // namespace prometheus -- BEGIN
 
       if (!itsPackageList.empty()) {
         for (size_t n=0; n<itsPackageList.size(); ++n) {
-	  std::string command = installCommand + " " + itsPackageList[n].name;
+	  std::string command = installCommand;
 	  /* Check if a specific version is defined */
 	  if (itsPackageList[n].version != "~") {
 	    command += " '" + itsPackageList[n].version + "'";
 	  }
+	  command += " " + itsPackageList[n].name
 	  /* Feedback */
 	  if (verbose) {
 	    std::cout << "--> Installing package "
