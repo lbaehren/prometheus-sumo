@@ -108,6 +108,10 @@
   url:
   description: image manipulation library - development files
   version:
+- name: tree
+  url:
+  description: Display directory tree
+  version:
 - name: libyaz4-dev
   url: https://www.indexdata.com/yazpp
   description: The YAZ Z39.50 toolkit (development files)
