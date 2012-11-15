@@ -154,7 +154,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
 	  std::string command = installCommand + " " + itsPackageList[n].name;
 	  /* Check if a specific version is defined */
 	  if (itsPackageList[n].version != "~") {
-	    command += " '" + itsPackageList[n].version << "'";
+	    command += " '" + itsPackageList[n].version + "'";
 	  }
 	  /* Feedback */
 	  if (verbose) {
