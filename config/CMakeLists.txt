@@ -8,7 +8,7 @@ foreach (_configIN
     )
   configure_file (
     ${CMAKE_CURRENT_SOURCE_DIR}/${_configIN}.in
-    ${CMAKE_CURRENT_SOURCE_DIR}/${_configIN}
+    ${CMAKE_CURRENT_BINARY_DIR}/${_configIN}
     )
 endforeach ()
 
@@ -29,7 +29,7 @@ foreach (_file ${config_yaml})
   ## Store path to configuration file in cache variable
   find_file (${_fileVar}
     NAMES ${_name}
-    PATHS ${PROJECT_SOURCE_DIR}
+    PATHS ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}
     PATH_SUFFIXES config
     )
 

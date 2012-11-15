@@ -22,6 +22,10 @@
   url:
   description: Multithreaded SQL database server, development files
   version:
+- name: rb-rspec
+  url:
+  description: Behaviour Driven Development framework for Ruby
+  version:
 - name: rb-rubygems
   url:
   description:
