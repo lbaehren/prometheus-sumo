@@ -96,6 +96,8 @@ set (CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/config/cmake" CACHE PATH
   FORCE
   )
 
+list (INSERT CMAKE_PROGRAM_PATH 0 ${CMAKE_INSTALL_PREFIX}/bin)
+
 ## Load extra modules
 
 include (ExternalProject)
