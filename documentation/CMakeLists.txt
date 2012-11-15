@@ -7,11 +7,13 @@
 
 ## Generate directory tree figures
 
-execute_process (
-  COMMAND tree -d --noreport sources
-  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-  OUTPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/tree_sources.txt
-  )
+if (TREE_EXECUTABLE)
+  execute_process (
+    COMMAND ${TREE_EXECUTABLE} -d --noreport sources
+    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+    OUTPUT_FILE ${CMAKE_CURRENT_BINARY_DIR}/tree_sources.txt
+    )
+endif (TREE_EXECUTABLE)
 
 ## Path to directory with image files
 

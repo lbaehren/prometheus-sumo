@@ -124,6 +124,7 @@ foreach (_cmakeModule
   Ruby
   Subversion
   TinyXML
+  UnixCommands
   VirtualBox
   Xercesc
   Yaml
