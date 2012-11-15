@@ -16,7 +16,7 @@ endforeach ()
 ##  Configuration files
 ##
 
-file (GLOB config_yaml *.yml)
+file (GLOB config_yaml ${CMAKE_CURRENT_SOURCE_DIR}/*.yml ${CMAKE_CURRENT_BINARY_DIR}/*.yml)
 
 foreach (_file ${config_yaml})
 
