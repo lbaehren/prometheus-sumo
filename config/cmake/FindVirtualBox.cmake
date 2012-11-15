@@ -18,11 +18,10 @@
 # |   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.                 |
 # +-----------------------------------------------------------------------------+
 
-# - Check for the presence of VIRTUALBOX
+# - Check for the presence of VirtualBox
 #
-# The following variables are set when VIRTUALBOX is found:
-#  VIRTUALBOX_FOUND      = Set to true, if all components of VirtualBox
-#                         have been found.
+# The following variables are set when VirtualBox is found:
+#  VIRTUALBOX_FOUND  = Set to true, if all components of VirtualBox have been found.
 
 if (NOT VIRTUALBOX_FOUND)
 
@@ -45,32 +44,40 @@ if (NOT VIRTUALBOX_FOUND)
   endforeach (_program)
 
   ##_____________________________________________________________________________
+  ## Check for available virtual machines
+
+  if (VBOXMANAGE_EXECUTABLE)
+
+    ## Get the list of VMs available on the system
+    execute_process(
+      COMMAND ${VBOXMANAGE_EXECUTABLE} list vms
+      WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+      RESULT_VARIABLE VBOX_RESULT_VARIABLE
+      OUTPUT_VARIABLE VBOX_OUTPUT_VARIABLE
+      OUTPUT_STRIP_TRAILING_WHITESPACE
+      )
+
+  endif (VBOXMANAGE_EXECUTABLE)
+
+  ##_____________________________________________________________________________
   ## Actions taken when all components have been found
 
   if (VIRTUALBOX_EXECUTABLE)
     set (VIRTUALBOX_FOUND TRUE)
   else (VIRTUALBOX_EXECUTABLE)
     set (VIRTUALBOX_FOUND FALSE)
-    if (NOT VIRTUALBOX_FIND_QUIETLY)
-      if (NOT VIRTUALBOX_INCLUDES)
-	message (STATUS "Unable to find VIRTUALBOX header files!")
-      endif (NOT VIRTUALBOX_INCLUDES)
-      if (NOT VIRTUALBOX_LIBRARIES)
-	message (STATUS "Unable to find VIRTUALBOX library files!")
-      endif (NOT VIRTUALBOX_LIBRARIES)
-    endif (NOT VIRTUALBOX_FIND_QUIETLY)
   endif (VIRTUALBOX_EXECUTABLE)
 
   if (VIRTUALBOX_FOUND)
     if (NOT VIRTUALBOX_FIND_QUIETLY)
-      message (STATUS "Found components for VIRTUALBOX")
-      message (STATUS "VIRTUALBOX_ROOT_DIR  = ${VIRTUALBOX_ROOT_DIR}")
-      message (STATUS "VIRTUALBOX_INCLUDES  = ${VIRTUALBOX_INCLUDES}")
-      message (STATUS "VIRTUALBOX_LIBRARIES = ${VIRTUALBOX_LIBRARIES}")
+      message (STATUS "Found components for VirtualBox")
+      message (STATUS "VIRTUALBOX_ROOT_DIR   = ${VIRTUALBOX_ROOT_DIR}")
+      message (STATUS "VIRTUALBOX_EXECUTABLE = ${VIRTUALBOX_EXECUTABLE}")
+      message (STATUS "VBOXMANAGE_EXECUTABLE = ${VBOXMANAGE_EXECUTABLE}")
     endif (NOT VIRTUALBOX_FIND_QUIETLY)
   else (VIRTUALBOX_FOUND)
     if (VIRTUALBOX_FIND_REQUIRED)
-      message (FATAL_ERROR "Could not find VIRTUALBOX!")
+      message (FATAL_ERROR "Could not find VirtualBox!")
     endif (VIRTUALBOX_FIND_REQUIRED)
   endif (VIRTUALBOX_FOUND)
 
@@ -80,6 +87,7 @@ if (NOT VIRTUALBOX_FOUND)
   mark_as_advanced (
     VIRTUALBOX_ROOT_DIR
     VIRTUALBOX_EXECUTABLE
+    VBOXMANAGE_EXECUTABLE
     )
 
 endif (NOT VIRTUALBOX_FOUND)
