@@ -48,26 +48,59 @@ int test_system_commands ()
   int status = 0;
   std::vector<std::string> commands;
 
+  // Line up the command to execute
   commands.push_back("date");
   commands.push_back("ls");
   commands.push_back("pwd");
+  commands.push_back("apt-get update");
+  commands.push_back("yum update");
+  commands.push_back("gem list unicode");
+  commands.push_back("gem list bliblablub");
 
-  std::cout << "-- Checking if processor is available... ";
+  // --- Test 1 ----------------------------------
 
-  if (system(NULL)) {
-    std::cout << "OK" << std::endl;
-  } else {
-    std::cout << "FAIL" << std::endl;
-    exit (EXIT_FAILURE);
+  std::cout << "[1] Testing execution via 'system()' ..." << std::endl;
+  try {
+    std::cout << "-- Checking if processor is available... ";
+
+    if (system(NULL)) {
+      std::cout << "OK" << std::endl;
+    } else {
+      std::cout << "FAIL" << std::endl;
+      exit (EXIT_FAILURE);
+    }
+
+    for (size_t n=0; n<commands.size(); ++n) {
+      // Run the command ...
+      status = system (commands[n].c_str());
+      // ... and report the exit status
+      std::cout << "-- Command = " << commands[n] << std::endl;
+      std::cout << "-- Status  = " << status      << std::endl;
+    }
+  } catch (std::exception &e) {
+    std::cout << "ERROR : " << e.what() << std::endl;
+    ++status;
   }
 
-  for (size_t n=0; n<commands.size(); ++n) {
-    std::cout << "\n[" << n+1 << "] Executing command " << commands[n] << " ..." << std::endl;
-    status = system (commands[n].c_str());
-    std::cout << "--> Return value = " << status << std::endl;
+  // --- Test 2 ----------------------------------
+
+  std::cout << "[2] Testing execution via 'run_command()' ..." << std::endl;
+  try {
+    std::string output;
+
+    for (size_t n=0; n<commands.size(); ++n) {
+      // Run the command
+      status = run_command (commands[n], output);
+      // Report the results
+      std::cout << "-- Command = " << commands[n] << std::endl;
+      std::cout << "-- Status  = " << status      << std::endl;
+      std::cout << "-- Output  = " << output      << std::endl;
+    }
+  } catch (std::exception &e) {
+    std::cout << "ERROR : " << e.what() << std::endl;
   }
 
-  return 0;
+  return status;
 }
 
 //_______________________________________________________________________________
@@ -84,7 +117,7 @@ int test_string_manipulation ()
   std::cout << "\n[testCommon::test_string_manipulation]\n" << std::endl;
 
   int status = 0;
-  
+
   std::cout << "\n[1] Testing to_lower(std::string)" << std::endl;
   try {
     std::vector<std::string> testStrings;

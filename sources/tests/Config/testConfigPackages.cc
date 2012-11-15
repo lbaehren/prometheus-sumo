@@ -71,7 +71,7 @@ int test_constructors (std::string const &filename="ruby_gems.yml")
 }
 
 //_______________________________________________________________________________
-//                                                              test_constructors
+//                                                               test_read_config
 
 /*!
   \brief Test reading list of Ruby packages from configuration file
@@ -152,6 +152,45 @@ int test_read_config (std::string const &filename)
   return status;
 }
 
+//_______________________________________________________________________________
+//                                                                 test_ruby_gems
+
+/*!
+  \brief Test listing and installation of Ruby gems
+ */
+int test_ruby_gems ()
+{
+  std::cout << "\n[testPackages::test_ruby_gems]\n" << std::endl;
+
+  int status = 0;
+  std::vector<std::string> commands;
+  std::string output;
+
+  commands.push_back("gem list unicode");
+  commands.push_back("gem list bliblablub");
+  commands.push_back("apt-get update");
+  commands.push_back("yum update");
+  commands.push_back("date");
+
+  std::cout << "[1] Test 'gem list' to find gem ..." << std::endl;
+  try {
+
+    for (size_t n=0; n<commands.size(); ++n) {
+      // Run the command
+      status = run_command (commands[n], output);
+      // Report the results
+      std::cout << "-- Command = " << commands[n] << std::endl;
+      std::cout << "-- Status  = " << status      << std::endl;
+      std::cout << "-- Output  = " << output      << std::endl;
+    }
+  } catch (std::exception &e) {
+    std::cout << "ERROR : " << e.what() << std::endl;
+    ++status;
+  }
+
+  return status;
+}
+
 // === Program main function ====================================================
 
 //! Program main function
@@ -160,12 +199,18 @@ int main (int argc, char **argv)
   int status       = 0;
   bool haveDataset = false;
 
+  // --- Tests depending on input test data ---
+  
   if (argc >1) {
     status += test_constructors (argv[1]);
     status += test_read_config (argv[1]);
   } else {
     status += test_constructors ();
   }
+
+  // --- Tests independent on input testdata
+
+  status += test_ruby_gems ();
 
   return status;
 }

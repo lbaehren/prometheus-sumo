@@ -45,6 +45,11 @@
 //! Convert string to lower case
 std::string to_lower (std::string const &in);
 
+//! Run system \c command and capure \c output into string
+int run_command (std::string const &command,
+		 std::string &output,
+		 int const &max_buffer=512);
+
 // ==============================================================================
 //
 //  Operator overloading
