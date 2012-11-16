@@ -31,9 +31,9 @@ set (NOF_SKIPPED_TESTS      0    )
 ##
 ## ==============================================================================
 
-option (ENABLE_TESTING        "Enable CTest test driver?"                     NO )
-option (CONFIGURE_VERBOSE     "Increase verbosity during configuration?"      NO )
-option (GIT_REPOSITORIES_RW   "Check out Github repositories for r/w access?" NO )
+option (ENABLE_TESTING       "Enable CTest test driver?"                     NO )
+option (CONFIGURE_VERBOSE    "Increase verbosity during configuration?"      NO )
+option (GIT_REPOSITORIES_RW  "Check out Github repositories for r/w access?" NO )
 
 option (WITH_CLAMAV       "Enable ClamAV antivirus software tool-kit?"      YES )
 option (WITH_PANDORA_DOCS "Enable documentation of pandora source code?"    NO  )
@@ -83,6 +83,12 @@ if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     )
 endif (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 
+## Expose the installation prefix as location to inspect when searching for
+## package header files, libraries and programs.
+
+list (INSERT CMAKE_PREFIX_PATH  0 ${CMAKE_INSTALL_PREFIX}     )
+list (INSERT CMAKE_PROGRAM_PATH 0 ${CMAKE_INSTALL_PREFIX}/bin )
+
 ## ==============================================================================
 ##
 ##  System inspection
@@ -95,8 +101,6 @@ set (CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/config/cmake" CACHE PATH
   "CMake module path"
   FORCE
   )
-
-list (INSERT CMAKE_PROGRAM_PATH 0 ${CMAKE_INSTALL_PREFIX}/bin)
 
 ## Load extra modules
 
