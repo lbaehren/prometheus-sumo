@@ -32,6 +32,9 @@ namespace bpo = boost::program_options;
   \author Lars Baehren
   \date 2012-11-05
 
+  \todo Enable handling of minimum set of command line options without using
+  boost::program_options
+
   \b Usage:
 
   \verbatim
@@ -174,6 +177,9 @@ int main (int argc, char *argv[])
 
 #else
 
+  std::cerr << "WARNING - unable to process extended command line options."
+            << " Missing boost::program_options library!"
+            << std::endl;
   status = -1;
 
 #endif
