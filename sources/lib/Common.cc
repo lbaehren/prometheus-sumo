@@ -34,7 +34,7 @@ std::string to_lower (std::string const &in)
 #ifdef WITH_BOOST
   boost::algorithm::to_lower(out);
 #else
-  std::transform( out.begin(), out.end(), out.begin(), lower_case );
+  std::transform (out.begin(), out.end(), out.begin(), ::tolower);
 #endif
 
   return out;
