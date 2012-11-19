@@ -123,9 +123,9 @@ int emit_map ()
 
   /* Assemble the map */
   out << YAML::BeginMap;
-  out << YAML::Key << "name";
+  out << YAML::Key   << "name";
   out << YAML::Value << "Barack Obama";
-  out << YAML::Key << "children";
+  out << YAML::Key   << "children";
   out << YAML::Value << YAML::BeginSeq << "Sasha" << "Malia" << YAML::EndSeq;
   out << YAML::EndMap;
 
