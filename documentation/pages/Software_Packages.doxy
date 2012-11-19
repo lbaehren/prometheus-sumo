@@ -61,6 +61,9 @@
     <dt>Rant</dt>
       <dd>\subpage rant is a flexible build tool written entirely in Ruby. The equivalent to a _Makefile_ for _make_ is the _Rantfile_. A _Rantfile_ is actually a valid Ruby script that is read in by the `rant` command.</dd>
 
+    <dt>RSpec</dt>
+      <dd>\subpage rspec is a Behavior-Driven Development tool for Ruby programmers. BDD is an approach to software development that combines Test-Driven Development, Domain Driven Design and Acceptance Test-Driven Planning. RSpec helps you do the TDD part of that equation, focusing on the documentation and design aspects of TDD.</dd>
+
     <dt>Subversion</dt>
       <dd>\subpage subversion is a free/open source version control system (VCS). That is, Subversion manages files and directories, and the changes made to them, over time. This allows you to recover older versions of your data or examine the history of how your data changed. In this regard, many people think of a version control system as a sort of “time machine.”<br>Subversion can operate across networks, which allows it to be used by people on different computers. At some level, the ability for various people to modify and manage the same set of data from their respective locations fosters collaboration. Progress can occur more quickly without a single conduit through which all modifications must occur. And because the work is versioned, you need not fear that quality is the trade-off for losing that conduit—if some incorrect change is made to the data, just undo that change.</dd>
 
