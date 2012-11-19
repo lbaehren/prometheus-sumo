@@ -35,6 +35,11 @@
   source:
   homepage: https://rubygems.org/gems/blackwinter-ipaddress
   description: A library designed to make manipulation of IPv4 and IPv6 addresses both powerful and simple.
+- name: bundler
+  version:
+  source:
+  homepage: http://gembundler.com
+  description: Manages an application's dependencies through its entire life.
 - name: capistrano
   version:
   source:
@@ -160,6 +165,11 @@
   source:
   homepage: http://piston.rubyforge.org
   description: Piston makes it easy to merge vendor branches into your own repository.
+- name: rails
+  version: 2.0.2
+  source:
+  homepage: http://rubyonrails.org
+  description: MVC ruby based framework geared for web application development
 - name: rake
   version:
   source:
