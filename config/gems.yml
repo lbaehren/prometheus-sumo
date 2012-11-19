@@ -5,7 +5,7 @@
 ## - version    : Version constraints for the package.
 ## - source     : Specific source from which to retrieve the package; if set the
 ##                parameter will be used as `gem install <name> --source <source>`
-## - url        : Project website.
+## - homepage   : Project website/homepage.
 ## - descripion : A short description of the package.
 ##
 ---
@@ -13,200 +13,200 @@
 - name: apache_image_resizer
   version: '>= 0.0.7'
   source:
-  url: https://github.com/prometheus-ev/apache_image_resizer
+  homepage: https://github.com/prometheus-ev/apache_image_resizer
   description: Apache module providing image resizing functionality.
 - name: apache_secure_download
   version: '>= 0.2.1'
   source:
-  url: https://github.com/prometheus-ev/apache_secure_download
+  homepage: https://github.com/prometheus-ev/apache_secure_download
   description: Apache module providing secure downloading functionality.
 - name: ar_mailer
   version:
   source:
-  url: https://rubygems.org/gems/ar_mailer
+  homepage: https://rubygems.org/gems/ar_mailer
   description: A two-phase delivery agent for ActionMailer.
 - name: blackwinter-gnuplot
   version:
   source:
-  url: https://rubygems.org/gems/blackwinter-gnuplot
+  homepage: https://rubygems.org/gems/blackwinter-gnuplot
   description: Utility library to aid in interacting with Gnuplot.
 - name: blackwinter-ipaddress
   version: '= 0.8.0'
   source:
-  url: https://rubygems.org/gems/blackwinter-ipaddress
+  homepage: https://rubygems.org/gems/blackwinter-ipaddress
   description: A library designed to make manipulation of IPv4 and IPv6 addresses both powerful and simple.
 - name: capistrano
   version:
   source:
-  url: https://rubygems.org/gems/capistrano
+  homepage: https://rubygems.org/gems/capistrano
   description: A utility and framework for executing commands in parallel on multiple remote machines, via SSH.
 - name: exifr
   version:
   source:
-  url: https://rubygems.org/gems/exifr
+  homepage: https://rubygems.org/gems/exifr
   description: EXIF Reader is a module to read EXIF from JPEG images.
 - name: fastercsv
   version:
   source:
-  url: https://rubygems.org/gems/fastercsv
+  homepage: https://rubygems.org/gems/fastercsv
   description: Intended as a complete replacement to the CSV standard library.
 - name: ferret
   version: '= 0.11.8.1'
   source: http://prometheus-app.uni-koeln.de/rubygems
-  url: https://rubygems.org/gems/ferret
+  homepage: https://rubygems.org/gems/ferret
   description: A super fast, highly configurable search library.
 - name: gruff
   version:
   source:
-  url: https://rubygems.org/gems/gruff
+  homepage: https://rubygems.org/gems/gruff
   description: Beautiful graphs for one or multiple datasets.
 - name: highline
   version:
   source:
-  url: http://highline.rubyforge.org
+  homepage: http://highline.rubyforge.org
   description: A high-level IO library that provides validation, type conversion, and more for command-line interfaces.
 - name: hpricot
   version:
   source:
-  url: http://github.com/why/hpricot
+  homepage: http://github.com/why/hpricot
   description: A swift, liberal HTML parser with a fantastic library.
 - name: ipaddress
   version:
   source:
-  url: https://rubygems.org/gems/ipaddress
+  homepage: https://rubygems.org/gems/ipaddress
   description: A library designed to make manipulation \ of IPv4 and IPv6 addresses both powerful and simple.
 - name: jekyll
   version:
   source:
-  url: https://github.com/mojombo/jekyll
+  homepage: https://github.com/mojombo/jekyll
   description: A simple, blog aware, static site generator.
 - name: jekyll-localization
   version:
   source:
-  url: https://github.com/prometheus-ev/jekyll-localization
+  homepage: https://github.com/prometheus-ev/jekyll-localization
   description: Jekyll plugin that adds localization features to the rendering engine.
 - name: jekyll-pagination
   version:
   source:
-  url: https://github.com/prometheus-ev/jekyll-pagination
+  homepage: https://github.com/prometheus-ev/jekyll-pagination
   description: Jekyll plugin to extend the pagination generator.
 - name: jekyll-tagging
   version:
   source:
-  url: https://github.com/prometheus-ev/jekyll-tagging
+  homepage: https://github.com/prometheus-ev/jekyll-tagging
   description: Jekyll plugin to automatically generate a tag cloud and tag pages.
 - name: json
   version:
   source:
-  url: http://flori.github.com/json
+  homepage: http://flori.github.com/json
   description: JSON implementation for Ruby.
 - name: libxml-ext
   version:
   source:
-  url: https://github.com/prometheus-ev/libxml-ext
+  homepage: https://github.com/prometheus-ev/libxml-ext
   description: LibXML Ruby extensions.
 - name: libxml-ruby
   version: '>= 1.1.3'
   source:
-  url: http://xml4r.github.com/libxml-ruby
+  homepage: http://xml4r.github.com/libxml-ruby
   description: Ruby language bindings for the GNOME Libxml2 XML toolkit.
 - name: lockfile
   version:
   source:
-  url: https://github.com/ahoward/lockfile
+  homepage: https://github.com/ahoward/lockfile
   description: A Ruby library for creating NFS safe lockfiles.
 - name: mail
   version:
   source:
-  url: https://rubygems.org/gems/mail
+  homepage: https://rubygems.org/gems/mail
   description: A really Ruby Mail handler.
 - name: mime-types
   version:
   source:
-  url: https://rubygems.org/gems/mime-types
+  homepage: https://rubygems.org/gems/mime-types
   description: Identification of a file's likely MIME content type.
 - name: mongrel
   version:
   source:
-  url: https://rubygems.org/gems/mongrel
+  homepage: https://rubygems.org/gems/mongrel
   description: A small fast HTTP library and server that runs Rails, Camping, Nitro and Iowa apps.
 - name: mongrel_cluster
   version:
   source:
-  url: https://rubygems.org/gems/mongrel_cluster
+  homepage: https://rubygems.org/gems/mongrel_cluster
   description: Mongrel plugin that provides commands and Capistrano tasks for managing multiple Mongrel processes.
 - name: mysql
   version:
   source:
-  url: http://www.tmtm.org/en/mysql/ruby
+  homepage: http://www.tmtm.org/en/mysql/ruby
   description: MySQL API module for Ruby.
 - name: oauth
   version:
   source:
-  url: https://rubygems.org/gems/oauth
+  homepage: https://rubygems.org/gems/oauth
   description: OAuth Core Ruby implementation.
 - name: pbkdf2
   version:
   source:
-  url: https://rubygems.org/gems/pbkdf2
+  homepage: https://rubygems.org/gems/pbkdf2
   description: Password Based Key Derivation Function 2 (PBKDF2) for Ruby.
 - name: pdf-reader
   version:
   source:
-  url: https://rubygems.org/gems/pdf-reader
+  homepage: https://rubygems.org/gems/pdf-reader
   description: A PDF parser conforming as much as possible to the PDF specification from Adobe.
 - name: piston
   version:
   source:
-  url: http://piston.rubyforge.org
+  homepage: http://piston.rubyforge.org
   description: Piston makes it easy to merge vendor branches into your own repository.
 - name: rake
   version:
   source:
-  url: http://docs.rubyrake.org
+  homepage: http://docs.rubyrake.org
   description: A Make-like program implemented in Ruby. Tasks and dependencies arespecified in standard Ruby syntax.
 - name: redcarpet
   version:
   source:
-  url: https://rubygems.org/gems/redcarpet
+  homepage: https://rubygems.org/gems/redcarpet
   description: A fast, safe and extensible Markdown to (X)HTML parser.
 - name: ruby-backports
   version:
   source:
-  url: https://github.com/blackwinter/ruby-backports
+  homepage: https://github.com/blackwinter/ruby-backports
   description: Backports of newer Ruby features to older versions.
 - name: ruby-debug
   version:
   source:
-  url: https://github.com/ruby-debug
+  homepage: https://github.com/ruby-debug
   description: A generic command line interface for ruby-debug.
 - name: ruby-filemagic
   version:
   source:
-  url: https://github.com/prometheus-ev/ruby-filemagic
+  homepage: https://github.com/prometheus-ev/ruby-filemagic
   description: Ruby bindings to the magic(4) library, revised.
 - name: ruby-hmac
   version:
   source:
-  url: http://ruby-hmac.rubyforge.org
+  homepage: http://ruby-hmac.rubyforge.org
   description: Common interface to HMAC functionality.
 - name: ruby-nuggets
   version: '>= 0.8.9'
   source:
-  url: https://github.com/prometheus-ev/ruby-nuggets
+  homepage: https://github.com/prometheus-ev/ruby-nuggets
   description: Some extensions to the Ruby programming language
 - name: unicode
   version: '>= 0.1.1'
   source:
-  url: https://rubygems.org/gems/unicode
+  homepage: https://rubygems.org/gems/unicode
   description: Unicode normalization library.
 - name: wadl
   version:
   source:
-  url: https://github.com/prometheus-ev/wadl
+  homepage: https://github.com/prometheus-ev/wadl
   description: Ruby client for the Web Application Description Language.
 - name: yard
   version:
   source:
-  url: http://yardoc.org
+  homepage: http://yardoc.org
   description: A documentation generation tool for the Ruby programming language.

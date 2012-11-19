@@ -54,7 +54,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       try {
         /* Extract parameters from node ... */
         (*it)["name"]         >> buffer.name;
-        (*it)["url"]          >> buffer.url;
+        (*it)["homepage"]     >> buffer.homepage;
         (*it)["description"]  >> buffer.description;
         (*it)["version"]      >> buffer.version;
         /* .. and store them internally */
@@ -72,15 +72,15 @@ namespace prometheus {   // namespace prometheus -- BEGIN
 
     std::set<std::string> Packages::names ()
     {
-      std::set<std::string> packageNames;
+      std::set<std::string> data;
 
       if (!itsPackageList.empty()) {
         for (size_t n=0; n<itsPackageList.size(); ++n) {
-          packageNames.insert(itsPackageList[n].name);
+          data.insert(itsPackageList[n].name);
         }
       }
 
-      return packageNames;
+      return data;
     }
 
     //___________________________________________________________________________
@@ -88,15 +88,15 @@ namespace prometheus {   // namespace prometheus -- BEGIN
 
     std::map<std::string,std::string> Packages::descriptions ()
     {
-      std::map<std::string,std::string> packageDescriptions;
+      std::map<std::string,std::string> data;
 
       if (!itsPackageList.empty()) {
         for (size_t n=0; n<itsPackageList.size(); ++n) {
-          packageDescriptions[itsPackageList[n].name] = itsPackageList[n].description;
+          data[itsPackageList[n].name] = itsPackageList[n].description;
         }
       }
 
-      return packageDescriptions;
+      return data;
     }
 
     //___________________________________________________________________________
@@ -104,31 +104,31 @@ namespace prometheus {   // namespace prometheus -- BEGIN
 
     std::map<std::string,std::string> Packages::versions ()
     {
-      std::map<std::string,std::string> packageVersions;
+      std::map<std::string,std::string> data;
 
       if (!itsPackageList.empty()) {
         for (size_t n=0; n<itsPackageList.size(); ++n) {
-          packageVersions[itsPackageList[n].name] = itsPackageList[n].version;
+          data[itsPackageList[n].name] = itsPackageList[n].version;
         }
       }
 
-      return packageVersions;
+      return data;
     }
 
     //___________________________________________________________________________
-    //                                                                       urls
+    //                                                                  homepages
 
-    std::map<std::string,std::string> Packages::urls ()
+    std::map<std::string,std::string> Packages::homepages ()
     {
-      std::map<std::string,std::string> packageURL;
+      std::map<std::string,std::string> data;
 
       if (!itsPackageList.empty()) {
         for (size_t n=0; n<itsPackageList.size(); ++n) {
-          packageURL[itsPackageList[n].name] = itsPackageList[n].url;
+          data[itsPackageList[n].name] = itsPackageList[n].homepage;
         }
       }
 
-      return packageURL;
+      return data;
     }
 
     // ==========================================================================

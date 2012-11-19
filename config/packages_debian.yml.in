@@ -1,122 +1,125 @@
 ##
 ## List of required Debian packages
 ##
-## (When making changes, always use the file `packages_debian.yml.in`)
+## - name       : Name of the package, as used when running e.g. `gem install <name>`
+## - version    : Version constraints for the package.
+## - homepage   : Project website/homepage.
+## - descripion : A short description of the package.
 ##
 ---
 - name: bison
-  url:
+  version:
+  homepage:
   description: A parser generator that is compatible with YACC
-  version:
 - name: build-essential
-  url:
+  version:
+  homepage:
   description: Informational list of build-essential packages
-  version:
 - name: cmake
-  url:
+  version:
+  homepage:
   description: a cross-platform, open-source make system
-  version:
 - name: git-svn
-  url:
+  version:
+  homepage:
   description: fast, scalable, distributed revision control system (svn interoperability)
-  version:
 - name: subversion
-  url:
+  version:
+  homepage:
   description: Advanced version control system
-  version:
 - name: doxygen
-  url:
+  version:
+  homepage:
   description: Documentation system for C, C++, Java, Python and other languages
-  version:
 - name: flex
-  url:
+  version:
+  homepage:
   description: A fast lexical analyzer generator
-  version:
 - name: libboost-all-dev
-  url:
+  version:
+  homepage:
   description: Boost C++ Libraries development files
-  version:
 - name: ruby${REQUIRED_VERSION_RUBY}
-  url:
+  version:
+  homepage:
   description: Interpreter of object-oriented scripting language Ruby ${REQUIRED_VERSION_RUBY}
-  version:
 - name: ruby${REQUIRED_VERSION_RUBY}-dev
-  url:
+  version:
+  homepage:
   description: Header files for compiling extension modules for the Ruby ${REQUIRED_VERSION_RUBY}
-  version:
 - name: rubygems
-  url:
+  version:
+  homepage:
   description: package management framework for Ruby libraries/applications
-  version:
 - name: ri
-  url:
+  version:
+  homepage:
   description: Ruby Interactive reference
-  version:
 - name: rake
-  url:
+  version:
+  homepage:
   description: a ruby build program
-  version:
 - name: libmysql-ruby${REQUIRED_VERSION_RUBY}
-  url:
+  version:
+  homepage:
   description: MySQL module for Ruby ${REQUIRED_VERSION_RUBY}
-  version:
 - name: libtermios-ruby${REQUIRED_VERSION_RUBY}
-  url:
-  description:
   version:
+  homepage:
+  description:
 - name: librmagick-ruby${REQUIRED_VERSION_RUBY}
-  url:
-  description:
   version:
+  homepage:
+  description:
 - name: libruby${REQUIRED_VERSION_RUBY}
-  url:
+  version:
+  homepage:
   description: Libraries necessary to run Ruby ${REQUIRED_VERSION_RUBY}
-  version:
 - name: mysql-server
-  url:
+  version:
+  homepage:
   description: MySQL database server
-  version:
 - name: mysql-client
-  url:
+  version:
+  homepage:
   description: MySQL database client
-  version:
 - name: libmysqlclient-dev
-  url:
-  description:
   version:
+  homepage:
+  description:
 - name: apache2
-  url:
-  description:
   version:
+  homepage:
+  description:
 - name: libapache2-mod-ruby
-  url:
-  description:
   version:
+  homepage:
+  description:
 - name: libapache2-mod-proxy-html
-  url:
-  description:
   version:
+  homepage:
+  description:
 - name: libxml2-dev
-  url:
+  version:
+  homepage:
   description:
-  version:
 - name: libmagic-dev
-  url:
+  version:
+  homepage:
   description: File type determination library using "magic" numbers
-  version:
 - name: libmagickwand-dev
-  url:
+  version:
+  homepage:
   description: image manipulation library - development files
-  version:
 - name: tree
-  url:
+  version:
+  homepage:
   description: Display directory tree
-  version:
 - name: libyaz4-dev
-  url: https://www.indexdata.com/yazpp
+  version:
+  homepage: https://www.indexdata.com/yazpp
   description: The YAZ Z39.50 toolkit (development files)
-  version:
 - name: zlib1g-dev
-  url:
-  description: compression library - development
   version:
+  homepage:
+  description: compression library - development

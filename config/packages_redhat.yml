@@ -1,96 +1,102 @@
 ##
 ## List of required MacPorts packages
 ##
+## - name       : Name of the package, as used when running e.g. `gem install <name>`
+## - version    : Version constraints for the package.
+## - homepage   : Project website/homepage.
+## - descripion : A short description of the package.
+##
 ---
 - name: gcc
-  url:
+  version:
+  homepage:
   description: Various compilers (C, C++, Objective-C, Java, ...)
-  version:
 - name: gcc-c++
-  url:
+  version:
+  homepage:
   description: C++ support for GCC
-  version:
 - name: boost-devel
-  url:
+  version:
+  homepage:
   description: The Boost C++ headers and shared development libraries
-  version:
 - name: ruby
-  url: https://apps.fedoraproject.org/packages/ruby
+  version:
+  homepage: https://apps.fedoraproject.org/packages/ruby
   description: An interpreter of object-oriented scripting language
-  version:
 - name: rubygems
-  url: https://apps.fedoraproject.org/packages/rubygems
+  version:
+  homepage: https://apps.fedoraproject.org/packages/rubygems
   description: The Ruby standard for packaging ruby libraries
-  version:
 - name: rubygem-rails
-  url: https://apps.fedoraproject.org/packages/rubygem-rails
+  version:
+  homepage: https://apps.fedoraproject.org/packages/rubygem-rails
   description: Web-application framework
-  version:
 - name: rubygem-rdoc
-  url:
-  description: RDoc produces HTML and command-line documentation for Ruby projects
   version:
+  homepage:
+  description: RDoc produces HTML and command-line documentation for Ruby projects
 - name: ri
-  url:
+  version:
+  homepage:
   description:
   version:
 - name: ruby-irb
-  url:
+  version:
+  homepage:
   description: The Interactive Ruby
-  version:
 - name: eruby
-  url:
+  version:
+  homepage:
   description: An interpreter of embedded Ruby language 
-  version:
 - name: git-svn
-  url:
+  version:
+  homepage:
   description: Git tools for importing Subversion repositories
-  version:
 - name: doxygen
-  url: https://apps.fedoraproject.org/packages/doxygen
+  version:
+  homepage: https://apps.fedoraproject.org/packages/doxygen
   description: A documentation system for C/C++
-  version:
 - name: libxml2-devel
-  url:
-  description:
   version:
+  homepage:
+  description:
 - name: mysql-server
-  url:
-  description:
   version:
+  homepage:
+  description:
 - name: mysql-client
-  url:
-  description:
   version:
+  homepage:
+  description:
 - name: mysql-devel
-  url:
-  description:
   version:
+  homepage:
+  description:
 - name: apache2
-  url:
-  description:
   version:
+  homepage:
+  description:
 - name: postfix
-  url:
+  version:
+  homepage:
   description:
-  version:
 - name: subversion
-  url:
+  version:
+  homepage:
   description: A Modern Concurrent Version Control System
-  version:
 - name: subversion-tools
-  url:
+  version:
+  homepage:
   description: Supplementary tools for Subversion
-  version:
 - name: mod_dav_svn
-  url:
+  version:
+  homepage:
   description: Apache httpd module for Subversion server
-  version:
 - name: ImageMagick
-  url: https://apps.fedoraproject.org/packages/ImageMagick
+  version:
+  homepage: https://apps.fedoraproject.org/packages/ImageMagick
   description: An X application for displaying and manipulating images
-  version:
 - name: ImageMagick-devel
-  url: https://apps.fedoraproject.org/packages/ImageMagick-devel
-  description: Library links and header files for ImageMagick app development
   version:
+  homepage: https://apps.fedoraproject.org/packages/ImageMagick-devel
+  description: Library links and header files for ImageMagick app development

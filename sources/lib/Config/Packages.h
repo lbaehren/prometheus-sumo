@@ -49,7 +49,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
         //! Name of the package
         std::string name;
         //! URL for package's project page
-        std::string url;
+        std::string homepage;
         //! Description of the package
         std::string description;
         //! Version specification
@@ -86,7 +86,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       std::map<std::string,std::string> versions ();
 
       //! Get URL for package's project page
-      std::map<std::string,std::string> urls ();
+      std::map<std::string,std::string> homepages ();
 
       //! Get description of the packages
       std::map<std::string,std::string> descriptions ();

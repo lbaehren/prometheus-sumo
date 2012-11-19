@@ -134,14 +134,14 @@ int test_read_config (std::string const &filename)
     ++status;
   }
 
-  std::cout << "[5] Testing Packages::urls() ..." << std::endl;
+  std::cout << "[5] Testing Packages::homepages() ..." << std::endl;
   try {
     std::map<std::string,std::string>::iterator it;
     // Get the names of the packages ...
-    std::map<std::string,std::string> urls = packages.urls();
+    std::map<std::string,std::string> homepages = packages.homepages();
     // ... and print them
-    std::cout << "--> nof. packages = " << urls.size() << std::endl;
-    for (it=urls.begin();it!=urls.end();++it) {
+    std::cout << "--> nof. packages = " << homepages.size() << std::endl;
+    for (it=homepages.begin();it!=homepages.end();++it) {
       std::cout << std::setw(25) << it->first << "  :  " << it->second << std::endl;
     }
   } catch (std::exception &e) {
