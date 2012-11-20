@@ -165,11 +165,6 @@
   source:
   homepage: http://piston.rubyforge.org
   description: Piston makes it easy to merge vendor branches into your own repository.
-- name: rails
-  version: 2.0.2
-  source:
-  homepage: http://rubyonrails.org
-  description: MVC ruby based framework geared for web application development
 - name: rake
   version:
   source:
