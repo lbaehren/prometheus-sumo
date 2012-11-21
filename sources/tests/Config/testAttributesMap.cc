@@ -38,7 +38,9 @@ int test_construction ()
 
   int status = 0;
 
-  std::cout << "[1] Testing AttributesMap<int,T> ..." << std::endl;
+  // --- Tests for default constructor ---
+
+  std::cout << "[1] Testing AttributesMap<int,T>() ..." << std::endl;
   try {
     prometheus::config::AttributesMap<int,int> map_int_int;
     prometheus::config::AttributesMap<int,short> map_int_short;
@@ -51,7 +53,7 @@ int test_construction ()
     ++status;
   }
 
-  std::cout << "[2] Testing AttributesMap<short,T> ..." << std::endl;
+  std::cout << "[2] Testing AttributesMap<short,T>() ..." << std::endl;
   try {
     prometheus::config::AttributesMap<short,int> map_short_int;
     prometheus::config::AttributesMap<short,short> map_short_short;
@@ -64,7 +66,7 @@ int test_construction ()
     ++status;
   }
 
-  std::cout << "[3] Testing AttributesMap<long,T> ..." << std::endl;
+  std::cout << "[3] Testing AttributesMap<long,T>() ..." << std::endl;
   try {
     prometheus::config::AttributesMap<long,int> map_long_int;
     prometheus::config::AttributesMap<long,short> map_long_short;
@@ -77,7 +79,7 @@ int test_construction ()
     ++status;
   }
 
-  std::cout << "[4] Testing AttributesMap<float,T> ..." << std::endl;
+  std::cout << "[4] Testing AttributesMap<float,T>() ..." << std::endl;
   try {
     prometheus::config::AttributesMap<float,int> map_float_int;
     prometheus::config::AttributesMap<float,short> map_float_short;
@@ -90,7 +92,7 @@ int test_construction ()
     ++status;
   }
 
-  std::cout << "[5] Testing AttributesMap<double,T> ..." << std::endl;
+  std::cout << "[5] Testing AttributesMap<double,T>() ..." << std::endl;
   try {
     prometheus::config::AttributesMap<double,int> map_double_int;
     prometheus::config::AttributesMap<double,short> map_double_short;
@@ -103,7 +105,7 @@ int test_construction ()
     ++status;
   }
 
-  std::cout << "[6] Testing AttributesMap<string,T> ..." << std::endl;
+  std::cout << "[6] Testing AttributesMap<string,T>() ..." << std::endl;
   try {
     prometheus::config::AttributesMap<std::string,int> map_string_int;
     prometheus::config::AttributesMap<std::string,short> map_string_short;
@@ -116,6 +118,59 @@ int test_construction ()
     ++status;
   }
 
+  // --- Tests for argumented constructor ---
+
+  std::cout << "[7] Testing AttributesMap<int,T>(int,T) ..." << std::endl;
+  try {
+    prometheus::config::AttributesMap<int,int> map_int_int (0,1);
+    prometheus::config::AttributesMap<int,short> map_int_short (0,2);
+    prometheus::config::AttributesMap<int,long> map_int_long (0,3);
+    prometheus::config::AttributesMap<int,float> map_int_float (0,4.5);
+    prometheus::config::AttributesMap<int,double> map_int_double (0,5.5);
+    prometheus::config::AttributesMap<int,std::string> map_int_string (0,"Hello");
+  } catch (std::exception &e) {
+    std::cout << "ERROR : " << e.what() << std::endl;
+    ++status;
+  }
+
+  std::cout << "[8] Testing AttributesMap<short,T>(short,T) ..." << std::endl;
+  try {
+    prometheus::config::AttributesMap<short,int> map_short_int (0,1);
+    prometheus::config::AttributesMap<short,short> map_short_short (0,2);
+    prometheus::config::AttributesMap<short,long> map_short_long (0,3);
+    prometheus::config::AttributesMap<short,float> map_short_float (0,4.5);
+    prometheus::config::AttributesMap<short,double> map_short_double (0,5.5);
+    prometheus::config::AttributesMap<short,std::string> map_short_string (0,"Hello");
+  } catch (std::exception &e) {
+    std::cout << "ERROR : " << e.what() << std::endl;
+    ++status;
+  }
+
+  std::cout << "[9] Testing AttributesMap<long,T>() ..." << std::endl;
+  try {
+    prometheus::config::AttributesMap<long,int> map_long_int (0,1);
+    prometheus::config::AttributesMap<long,short> map_long_short (0,2);
+    prometheus::config::AttributesMap<long,long> map_long_long (0,3);
+    prometheus::config::AttributesMap<long,float> map_long_float (0,4.5);
+    prometheus::config::AttributesMap<long,double> map_long_double (0,5.5);
+    prometheus::config::AttributesMap<long,std::string> map_long_string (0,"Hello");
+  } catch (std::exception &e) {
+    std::cout << "ERROR : " << e.what() << std::endl;
+    ++status;
+  }
+
+  std::cout << "[10] Testing AttributesMap<float,T>(float,T) ..." << std::endl;
+  try {
+    prometheus::config::AttributesMap<float,int> map_float_int (0.5,1);
+    prometheus::config::AttributesMap<float,short> map_float_short (0.5,2);
+    prometheus::config::AttributesMap<float,long> map_float_long (0.5,3);
+    prometheus::config::AttributesMap<float,float> map_float_float (0.5,4.5);
+    prometheus::config::AttributesMap<float,double> map_float_double (0.5,5.5);
+    prometheus::config::AttributesMap<float,std::string> map_float_string (0.5,"Hello");
+  } catch (std::exception &e) {
+    std::cout << "ERROR : " << e.what() << std::endl;
+    ++status;
+  }
 
   return status;
 }

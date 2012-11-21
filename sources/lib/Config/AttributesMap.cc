@@ -24,13 +24,6 @@ namespace prometheus {   // namespace prometheus -- BEGIN
 
   namespace config {   // namespace config -- BEGIN
 
-    template <class K, class V>
-    void AttributesMap<K,V>::summary (std::ostream &os)
-    {
-      os << "[AttributesMap] Summary of internal parameters" << std::endl;
-      os << "-- nof. stored attributes = " << size() << std::endl;
-    }
-
   }   // namespace config -- BEGIN
 
 }   // namespace prometheus -- END

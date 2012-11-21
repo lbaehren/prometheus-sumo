@@ -103,7 +103,11 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       }
 
       //! Provide a summary of the object's internal parameters and status
-      void summary (std::ostream &os);
+      void summary (std::ostream &os)
+      {
+        os << "[AttributesMap] Summary of internal parameters" << std::endl;
+        os << "-- nof. stored attributes = " << size() << std::endl;
+      }
 
     };
 
