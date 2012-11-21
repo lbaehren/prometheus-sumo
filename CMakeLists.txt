@@ -117,6 +117,7 @@ foreach (_cmakeModule
   Gem
   Git
   Iconv
+  KWSys
   LATEX
   LibXml2
   MagicLib

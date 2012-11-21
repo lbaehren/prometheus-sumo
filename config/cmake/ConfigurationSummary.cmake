@@ -43,6 +43,7 @@ message (STATUS " .. YARD executable ............. = ${YARD_FOUND} (${YARD_VERSI
 message (STATUS " Processing tools & libraries:"                                 )
 message (STATUS " .. Boost ....................... = ${Boost_FOUND}"             )
 message (STATUS " .. Doxygen ..................... = ${DOXYGEN_FOUND} (${DOXYGEN_VERSION})" )
+message (STATUS " .. KWSys ....................... = ${KWSYS_FOUND}"             )
 message (STATUS " .. Magic ....................... = ${MAGIC_FOUND}"             )
 message (STATUS " .. MySQL ....................... = ${MYSQL_FOUND}"             )
 message (STATUS " .. TinyXML ..................... = ${TINYXML_FOUND}"           )
