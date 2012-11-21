@@ -94,6 +94,15 @@ if (NOT YAZPP_FOUND OR YAZPP_FORCE_BUILD)
 
   endif (YAZPP_FROM_REPOS)
 
+  ExternalProject_Add_Step (yazpp update_configuration
+    COMMAND ${CMAKE_COMMAND} -E remove CMake*
+    COMMAND ${CMAKE_COMMAND} ..
+    COMMENT "Updating top-level configuration ..."
+    DEPENDEES install
+    DEPENDERS build
+    WORKING_DIRECTORY ${prometheus-sumo_BINARY_DIR}
+  )
+
 else (NOT YAZPP_FOUND OR YAZPP_FORCE_BUILD)
 
   add_custom_target (yazpp

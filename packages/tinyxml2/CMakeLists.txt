@@ -85,6 +85,15 @@ if (NOT TINYXML2_FOUND OR TINYXML2_FORCE_BUILD)
 
   endif (TINYXML2_FROM_REPOS)
 
+  ExternalProject_Add_Step (tinyxml2 update_configuration
+    COMMAND ${CMAKE_COMMAND} -E remove CMake*
+    COMMAND ${CMAKE_COMMAND} ..
+    COMMENT "Updating top-level configuration ..."
+    DEPENDEES install
+    DEPENDERS build
+    WORKING_DIRECTORY ${prometheus-sumo_BINARY_DIR}
+  )
+
 else (NOT TINYXML2_FOUND OR TINYXML2_FORCE_BUILD)
 
   add_custom_target (tinyxml2

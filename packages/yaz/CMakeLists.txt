@@ -87,6 +87,15 @@ if (NOT YAZ_FOUND OR YAZ_FORCE_BUILD)
 
   endif (YAZ_FROM_REPOS)
 
+  ExternalProject_Add_Step (yaz update_configuration
+    COMMAND ${CMAKE_COMMAND} -E remove CMake*
+    COMMAND ${CMAKE_COMMAND} ..
+    COMMENT "Updating top-level configuration ..."
+    DEPENDEES install
+    DEPENDERS build
+    WORKING_DIRECTORY ${prometheus-sumo_BINARY_DIR}
+  )
+
 else (NOT YAZ_FOUND OR YAZ_FORCE_BUILD)
 
   add_custom_target (yaz
