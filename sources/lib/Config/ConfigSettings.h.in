@@ -90,6 +90,12 @@
 //! Name of the operating system
 #define CMAKE_OS_NAME "${CMAKE_OS_NAME}"
 
+#cmakedefine DEBIAN_FOUND
+#cmakedefine UBUNTU_FOUND
+#cmakedefine FEDORA_FOUND
+#cmakedefine REDHAT_FOUND
+#cmakedefine MACOSX_FOUND
+
 // ==============================================================================
 //
 //  External libraries & tools

@@ -1,18 +1,5 @@
 
 ##_______________________________________________________________________________
-## Check for required tools
-
-find_program (APT_EXECUTABLE apt-get
-  HINTS ${APT_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
-  PATH_SUFFIXES bin
-  )
-
-find_program (DPKG_EXECUTABLE dpkg
-  HINTS ${APT_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
-  PATH_SUFFIXES bin
-  )
-
-##_______________________________________________________________________________
 ## Installation of the individual packages
 
 if (APT_EXECUTABLE AND DPKG_EXECUTABLE)

@@ -1,9 +1,14 @@
 
+##
+##  Determine the operation system
+##
+
 if (UNIX)
 
   if (APPLE)
 
     set (CMAKE_OS_NAME "OSX" CACHE STRING "Operating system name" FORCE)
+    set (MACOSX_FOUND TRUE)
 
   else (APPLE)
 
@@ -66,3 +71,30 @@ if (UNIX)
   endif (APPLE)
 
 endif (UNIX)
+
+##
+##  Locate OS-specific system tools
+##
+
+if (DEBIAN_FOUND OR UBUNTU_FOUND)
+
+  find_program (APT_EXECUTABLE apt-get
+    HINTS ${APT_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
+    PATH_SUFFIXES bin
+    )
+
+  find_program (DPKG_EXECUTABLE dpkg
+    HINTS ${APT_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
+    PATH_SUFFIXES bin
+    )
+
+endif (DEBIAN_FOUND OR UBUNTU_FOUND)
+
+if (FEDORA_FOUND OR REDHAT_FOUND)
+
+  find_program (YUM_EXECUTABLE yum
+    HINTS ${YARD_ROOT_DIR}  ${CMAKE_INSTALL_PREFIX}
+    PATH_SUFFIXES bin
+    )
+
+endif (FEDORA_FOUND OR REDHAT_FOUND)

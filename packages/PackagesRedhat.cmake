@@ -1,13 +1,5 @@
 
 ##_______________________________________________________________________________
-## Check for required tools
-
-find_program (YUM_EXECUTABLE yum
-  HINTS ${YARD_ROOT_DIR}  ${CMAKE_INSTALL_PREFIX}
-  PATH_SUFFIXES bin
-  )
-
-##_______________________________________________________________________________
 ## Installation of the individual packages
 
 if (YUM_EXECUTABLE)

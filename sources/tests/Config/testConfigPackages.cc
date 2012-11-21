@@ -153,6 +153,44 @@ int test_read_config (std::string const &filename)
 }
 
 //_______________________________________________________________________________
+//                                                           test_debian_packages
+
+/*!
+  \brief Test dealing with Debian packages
+*/
+int test_debian_packages ()
+{
+  std::cout << "\n[testPackages::test_debian_packages]\n" << std::endl;
+
+#ifdef DEBIAN_FOUND
+
+  int status = 0;
+  int retval;
+  std::string output;
+  std::set<std::string> packages;
+  std::set<std::string>::iterator it;
+
+  packages.insert("bison");
+  packages.insert("doxygen");
+  packages.insert("libboost-all-dev");
+
+  /* Check if packages are installed */
+  for (it=packages.begin(); it!=packages.end(); ++it) {
+    std::string command = "dpkg --get-selections " + (*it);
+    retval = run_command(command,output);
+  }
+
+  return status;
+
+#else
+
+  std::cout << "--> Not a Debian system - skipping test!" << std::endl;
+  return 0;
+
+#endif
+}
+
+//_______________________________________________________________________________
 //                                                                 test_ruby_gems
 
 /*!
@@ -197,7 +235,7 @@ int main (int argc, char **argv)
   bool haveDataset = false;
 
   // --- Tests depending on input test data ---
-  
+
   if (argc >1) {
     status += test_constructors (argv[1]);
     status += test_read_config (argv[1]);
@@ -207,6 +245,7 @@ int main (int argc, char **argv)
 
   // --- Tests independent on input testdata
 
+  status += test_debian_packages ();
   status += test_ruby_gems ();
 
   return status;
