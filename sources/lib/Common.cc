@@ -50,8 +50,8 @@ std::string to_lower (std::string const &in)
   \return status 
  */
 int run_command (std::string const &command,
-		 std::string &output,
-		 int const &max_buffer)
+                 std::string &output,
+                 int const &max_buffer)
 {
   int status      = 0;
   std::string cmd = command;

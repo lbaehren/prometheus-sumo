@@ -171,13 +171,17 @@ int test_debian_packages ()
   std::set<std::string>::iterator it;
 
   packages.insert("bison");
+  packages.insert("clang");
   packages.insert("doxygen");
   packages.insert("libboost-all-dev");
 
   /* Check if packages are installed */
   for (it=packages.begin(); it!=packages.end(); ++it) {
     std::string command = "dpkg --get-selections " + (*it);
+    // run the system command ...
     retval = run_command(command,output);
+    // .. amd display the outcome
+    std::cout << command << "  ->  " << retval << "  :  "  << output << std::endl;
   }
 
   return status;
@@ -214,7 +218,7 @@ int test_ruby_gems ()
     for (it=gems.begin(); it!=gems.end(); ++it) {
       std::string cmd = "gem install " + it->first;
       if (it->second != "") {
-	cmd += " --version '" + it->second + "'";
+        cmd += " --version '" + it->second + "'";
       }
       std::cout << "-- " << it->first << " : " << cmd << std::endl;
     }
