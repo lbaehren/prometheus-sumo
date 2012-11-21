@@ -22,24 +22,21 @@ steps along the way.
 
 \subsection pandora_install_packages Installation of system packages
 
-Notes:
+Update systen Ruby gems
 
-\li Update RubyGems:
-\verbatim
-sudo gem update --system
-\endverbatim
+    sudo gem update --system
+
 On Debian:
-\verbatim
-sudo env REALLY_GEM_UPDATE_SYSTEM=1 gem update --system
-\endverbatim
 
-\li Enable Apache modules using the \c a2enmod command - in order to actually activate them, the web server needs to be restarted. 
-\verbatim
-sudo a2enmod rewrite
-sudo a2enmod proxy_balancer
-sudo a2enmod proxy_http
-sudo invoke-rc.d apache2 restart
-\endverbatim
+    sudo env REALLY_GEM_UPDATE_SYSTEM=1 gem update --system
+
+Enable Apache modules using the \c a2enmod command - in order to actually activate
+them, the web server needs to be restarted.
+
+    sudo a2enmod rewrite
+    sudo a2enmod proxy_balancer
+    sudo a2enmod proxy_http
+    sudo invoke-rc.d apache2 restart
 
 \subsection pandora_install_gems Installation of Ruby Gems
 
