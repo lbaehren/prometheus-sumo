@@ -175,6 +175,26 @@ int test_construction ()
   return status;
 }
 
+//! Test access to the parameters stored in the attributes map
+int test_parameter_access ()
+{
+  std::cout << "\n[testAttributesMap::test_parameter_access]\n" << std::endl;
+
+  int status = 0;
+
+  prometheus::config::AttributesMap<std::string,int> attr;
+
+  attr.set("Battleship",2012);
+  attr.set("Battle Los Angeles",2011);
+  attr.set("Prometheus",2012);
+  attr.set("The Abyss",1989);
+
+  attr.summary();
+  attr.show();
+
+  return status;
+}
+
 // === Test program main function ===============================================
 
 //! Test program main function
@@ -183,6 +203,7 @@ int main ()
   int status = 0;
   
   status += test_construction ();
+  status += test_parameter_access ();
 
   return status;
 }
