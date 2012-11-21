@@ -43,6 +43,7 @@ include (${CMAKE_CURRENT_SOURCE_DIR}/RubyGems.cmake)
 
 foreach (_package
   doxygen
+  KWSys
   pandora
   promhp
   rant
