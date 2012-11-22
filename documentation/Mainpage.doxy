@@ -18,7 +18,8 @@
       <td>
         \subpage repositories |
         \subpage issue_tracker |
-        \subpage coding_guidelines
+        \subpage coding_guidelines |
+        \subpage benchmarking
       </td>
     </tr>
 
