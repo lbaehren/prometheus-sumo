@@ -36,16 +36,7 @@ if (YAZ_VERSION_STRING)
   message (STATUS "Checking whether YAZ version is ok")
 
   if (${YAZ_VERSION_STRING} LESS ${YAZ_VERSION_REQUIRED})
-    ## Mark package as not found
     set (YAZ_FOUND FALSE)
-    ## Clear existing variables from configuration cache
-    unset (YAZ_INCLUDES           CACHE )
-    unset (YAZ_LIBRARIES          CACHE )
-    unset (YAZ_YAZ_LIBRARY        CACHE )
-    unset (YAZ_YAZ_ICU_LIBRARY    CACHE )
-    unset (YAZ_YAZ_SERVER_LIBRARY CACHE )
-    unset (YAZ_CLIENT_EXECUTABLE  CACHE )
-    unset (YAZ_CONFIG_EXECUTABLE  CACHE )
     message (STATUS "Checking whether YAZ version is ok - no")
   else ()
     message (STATUS "Checking whether YAZ version is ok - yes")
@@ -60,6 +51,15 @@ endif ()
 ## ==============================================================================
 
 if (NOT YAZ_FOUND OR YAZ_FORCE_BUILD)
+
+  ## Clear existing variables from configuration cache
+  unset (YAZ_INCLUDES           CACHE )
+  unset (YAZ_LIBRARIES          CACHE )
+  unset (YAZ_YAZ_LIBRARY        CACHE )
+  unset (YAZ_YAZ_ICU_LIBRARY    CACHE )
+  unset (YAZ_YAZ_SERVER_LIBRARY CACHE )
+  unset (YAZ_CLIENT_EXECUTABLE  CACHE )
+  unset (YAZ_CONFIG_EXECUTABLE  CACHE )
 
   ## Locate source file to build from
 
