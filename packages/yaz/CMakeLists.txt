@@ -36,7 +36,13 @@ if (YAZ_VERSION_STRING)
   message (STATUS "Checking whether YAZ version is ok")
 
   if (${YAZ_VERSION_STRING} LESS ${YAZ_VERSION_REQUIRED})
+    ## Mark package as not found
     set (YAZ_FOUND FALSE)
+    ## Clear existing variables from configuration cache
+    unset (YAZ_INCLUDES          CACHE)
+    unset (YAZ_LIBRARIES         CACHE)
+    unset (YAZ_CLIENT_EXECUTABLE CACHE)
+    unset (YAZ_CONFIG_EXECUTABLE CACHE)
     message (STATUS "Checking whether YAZ version is ok - no")
   else ()
     message (STATUS "Checking whether YAZ version is ok - yes")
