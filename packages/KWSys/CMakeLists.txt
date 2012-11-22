@@ -5,15 +5,6 @@
 ##
 ## ==============================================================================
 
-## Name of the project handled by CMake
-project (KWSYS)
-
-## Minimum required version of CMake to configure the project
-cmake_minimum_required (VERSION 2.8)
-
-## Enforced CMake policy
-cmake_policy (VERSION 2.8)
-
 ##  Package information
 set (KWSYS_VERSION        "" )
 set (KWSYS_SOURCE_ARCHIVE "" )
@@ -43,7 +34,7 @@ endif (KWSYS_ENABLE_TESTING)
 ##
 ## ==============================================================================
 
-#find_package (KWSys)
+find_package (KWSys)
 
 ## ==============================================================================
 ##
@@ -51,16 +42,12 @@ endif (KWSYS_ENABLE_TESTING)
 ##
 ## ==============================================================================
 
-if (KWSYS_FROM_REPOS)
-  set (KWSYS_FORCE_BUILD TRUE)
-endif (KWSYS_FROM_REPOS)
-
 if (NOT KWSYS_FOUND OR KWSYS_FORCE_BUILD)
 
   ## Locate source file to build from
 
   find_file (KWSYS_SOURCE ${KWSYS_SOURCE_ARCHIVE}
-    PATHS ${PROJECT_SOURCE_DIR}
+    PATHS ${CMAKE_CURRENT_SOURCE_DIR}
     )
 
   if (NOT KWSYS_SOURCE)
@@ -72,7 +59,7 @@ if (NOT KWSYS_FOUND OR KWSYS_FORCE_BUILD)
   if (KWSYS_FROM_REPOS)
 
     ExternalProject_Add (kwsys
-      PREFIX ${PROJECT_BINARY_DIR}
+      PREFIX ${CMAKE_CURRENT_BINARY_DIR}
       DOWNLOAD_DIR download
       SOURCE_DIR source
       GIT_REPOSITORY ${KWSYS_GIT}
@@ -83,7 +70,7 @@ if (NOT KWSYS_FOUND OR KWSYS_FORCE_BUILD)
   else (KWSYS_FROM_REPOS)
 
     ExternalProject_Add (kwsys
-      PREFIX ${PROJECT_BINARY_DIR}
+      PREFIX ${CMAKE_CURRENT_BINARY_DIR}
       DOWNLOAD_DIR download
       SOURCE_DIR source
       URL ${KWSYS_SOURCE}
@@ -99,13 +86,13 @@ if (NOT KWSYS_FOUND OR KWSYS_FORCE_BUILD)
     COMMENT "Updating top-level configuration ..."
     DEPENDEES install
     DEPENDERS build
-    WORKING_DIRECTORY ${prometheus-sumo_BINARY_DIR}
+    WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
   )
 
 else (NOT KWSYS_FOUND OR KWSYS_FORCE_BUILD)
 
   add_custom_target (kwsys
-    WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     COMMENT "[KWSys] Found system-wide installation; skipping rebuild!"
     )
 

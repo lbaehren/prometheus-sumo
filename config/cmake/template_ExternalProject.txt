@@ -51,10 +51,6 @@ find_package (<PACKAGE>)
 ##
 ## ==============================================================================
 
-if (<PACKAGE>_FROM_REPOS)
-  set (<PACKAGE>_FORCE_BUILD TRUE)
-endif (<PACKAGE>_FROM_REPOS)
-
 if (NOT <PACKAGE>_FOUND OR <PACKAGE>_FORCE_BUILD)
 
   ## Locate source file to build from
