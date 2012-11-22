@@ -6,7 +6,8 @@
 ## ==============================================================================
 
 ##  Package information
-set (YAZ_VERSION        "4.2.38" )
+set (YAZ_VERSION          "4.2.38" )
+set (YAZ_VERSION_REQUIRED "400200380" )
 set (YAZ_SOURCE_ARCHIVE "yaz-${YAZ_VERSION}.tar.gz" )
 set (YAZ_URL            "http://ftp.indexdata.dk/pub/yaz/${YAZ_SOURCE_ARCHIVE}" )
 set (YAZ_SVN            "" )
@@ -27,6 +28,21 @@ if (YAZ_ENABLE_TESTING)
   include (CTest)
   enable_testing()
 endif (YAZ_ENABLE_TESTING)
+
+## If YAZ is installed as system package, check of the version is ok
+
+if (YAZ_VERSION_STRING)
+
+  message (STATUS "Checking whether YAZ version is ok")
+
+  if (${YAZ_VERSION_STRING} LESS ${YAZ_VERSION_REQUIRED})
+    set (YAZ_FOUND FALSE)
+    message (STATUS "Checking whether YAZ version is ok - no")
+  else ()
+    message (STATUS "Checking whether YAZ version is ok - yes")
+  endif()
+
+endif ()
 
 ## ==============================================================================
 ##

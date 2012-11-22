@@ -92,6 +92,23 @@ if (NOT YAZ_FOUND)
       ERROR_VARIABLE YAZ_ERROR_VARIABLE
       OUTPUT_STRIP_TRAILING_WHITESPACE
       )
+
+    if (YAZ_VERSION)
+        ## Convert string to list of numbers
+	string (REGEX REPLACE "\\." ";" YAZ_VERSION_LIST ${YAZ_VERSION})
+	## Retrieve individual elements in the list
+	list (GET YAZ_VERSION_LIST 0 YAZ_VERSION_MAJOR)
+	list (GET YAZ_VERSION_LIST 1 YAZ_VERSION_MINOR)
+	list (GET YAZ_VERSION_LIST 2 YAZ_VERSION_PATCH)
+	## Assemble version string, which can be used for comparison
+	math (EXPR YAZ_VERSION_STRING_MAJOR "${YAZ_VERSION_MAJOR}*100")
+	math (EXPR YAZ_VERSION_STRING_MINOR "${YAZ_VERSION_MINOR}*100")
+	math (EXPR YAZ_VERSION_STRING_PATCH "${YAZ_VERSION_PATCH}*100")
+	set (YAZ_VERSION_STRING "${YAZ_VERSION_STRING_MAJOR}")
+	set (YAZ_VERSION_STRING "${YAZ_VERSION_STRING}${YAZ_VERSION_STRING_MINOR}")
+	set (YAZ_VERSION_STRING "${YAZ_VERSION_STRING}${YAZ_VERSION_PATCH}")
+    endif (YAZ_VERSION)
+
   endif (YAZ_CONFIG_EXECUTABLE)
   
   ##_____________________________________________________________________________
