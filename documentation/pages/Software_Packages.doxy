@@ -52,6 +52,9 @@
 
   <dl>
 
+    <dt>Bundler</dt>
+      <dd>\subpage bundler is a tool that maintains a consistent environment for a developer’s code across all machines. When a developer’s code is run on different machines, the libraries the developer originally built their code on may change. This breaks the developer’s application. Bundler ensures that the libraries will remain the same, taping everything together so that the developer’s application runs smoothly on every machine where it is deployed.</dd>
+
     <dt>CMake</dt>
       <dd>\subpage cmake is an extensible, open-source system that manages the build process in an operating system and compiler independent manner. Unlike many cross-platform systems, CMake is designed to be used in conjunction with the native build environment.</dd>
 
