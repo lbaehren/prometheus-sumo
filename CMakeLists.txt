@@ -86,8 +86,10 @@ endif (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 ## Expose the installation prefix as location to inspect when searching for
 ## package header files, libraries and programs.
 
-list (INSERT CMAKE_PREFIX_PATH  0 ${CMAKE_INSTALL_PREFIX}     )
-list (INSERT CMAKE_PROGRAM_PATH 0 ${CMAKE_INSTALL_PREFIX}/bin )
+list (INSERT CMAKE_PREFIX_PATH  0 ${CMAKE_INSTALL_PREFIX}         )
+list (INSERT CMAKE_INCLUDE_PATH 0 ${CMAKE_INSTALL_PREFIX}/include )
+list (INSERT CMAKE_LIBRARY_PATH 0 ${CMAKE_INSTALL_PREFIX}/lib )
+list (INSERT CMAKE_PROGRAM_PATH 0 ${CMAKE_INSTALL_PREFIX}/bin     )
 
 ## ==============================================================================
 ##
