@@ -53,6 +53,14 @@ if (NOT YAZPP_FOUND OR YAZPP_FORCE_BUILD)
     set (YAZPP_SOURCE ${YAZPP_URL})
   endif (NOT YAZPP_SOURCE)
 
+  ## Settings to build against YAZ library
+
+  if (YAZ_CONFIG_EXECUTABLE)
+    get_filename_component(YAZ_CONFIG ${YAZ_CONFIG_EXECUTABLE} PATH)
+  else (YAZ_CONFIG_EXECUTABLE)
+    set (YAZ_CONFIG ${CMAKE_INSTALL_PREFIX}/bin)
+  endif (YAZ_CONFIG_EXECUTABLE)
+
   ## Build package from source
 
   if (YAZPP_FROM_REPOS)
@@ -63,7 +71,7 @@ if (NOT YAZPP_FOUND OR YAZPP_FORCE_BUILD)
       SOURCE_DIR source
       SVN_REPOSITORY ${YAZPP_SVN}
       BUILD_IN_SOURCE 1
-      CONFIGURE_COMMAND ${CMAKE_CURRENT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --with-yaz=${CMAKE_INSTALL_PREFIX}/bin
+      CONFIGURE_COMMAND ${CMAKE_CURRENT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --with-yaz=${YAZ_CONFIG}
       INSTALL_COMMAND ${PORT_INSTALL_COMMAND} make install
       )
 
@@ -75,7 +83,7 @@ if (NOT YAZPP_FOUND OR YAZPP_FORCE_BUILD)
       SOURCE_DIR source
       URL ${YAZPP_SOURCE}
       BUILD_IN_SOURCE 1
-      CONFIGURE_COMMAND ${CMAKE_CURRENT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --with-yaz=${CMAKE_INSTALL_PREFIX}/bin
+      CONFIGURE_COMMAND ${CMAKE_CURRENT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --with-yaz=${YAZ_CONFIG}
       INSTALL_COMMAND ${PORT_INSTALL_COMMAND} make install
       )
 
