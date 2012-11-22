@@ -81,6 +81,7 @@ If you want a different size, we advise you to change the scale of the image you
 
 - [Instructions for use](https://www.rijksmuseum.nl/en/api/instructions-for-use)
 - [Terms and conditions for using the Rijksmuseum API](https://www.rijksmuseum.nl/en/api/terms-and-conditions-of-use)
+- [Sign up for API](https://www.rijksmuseum.nl/en/api/aanmelden)
 - Example projects using the API
   - [PHP classes to access the Rijksmuseum API](https://github.com/hay/rijksmuseumapi)
   - [Rijksmuseum Wallpaper](https://github.com/tacoe/rijksmuseum-wallpaper)
