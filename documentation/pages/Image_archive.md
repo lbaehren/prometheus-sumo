@@ -69,6 +69,7 @@ The registered office of prometheus is located at the Institute of Art History a
 \section image_archive_databases Databases
 
 * \subpage db_arachne
+* \subpage rijksmuseum
 
 \section image_archive_references References
 
