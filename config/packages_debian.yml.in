@@ -119,10 +119,6 @@
   version:
   homepage:
   description: Display directory tree
-- name: libyaz4-dev
-  version:
-  homepage: https://www.indexdata.com/yazpp
-  description: The YAZ Z39.50 toolkit (development files)
 - name: zlib1g-dev
   version:
   homepage:
