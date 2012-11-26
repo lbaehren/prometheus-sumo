@@ -1,11 +1,22 @@
 Convert PDF to JPG    {#benchmark_pdf2jpg}
 ==================
 
-nof. input documents: 1000
-
 \tableofcontents
 
 \section benchmark_pdf2jpg_benchmarks Benchmarks
+
+Size of the test set: 1000 PDF documents
+
+Many of the PDF documents contain multiple layers, which at conversion using
+_pdfimage_ are stored in separate files:
+
+~~~~
+page   num  type   width height color comp bpc  enc interp  object ID
+---------------------------------------------------------------------
+   1     0 image    2536  1848  gray    1   8  jpeg   no        10  0
+   1     1 image    1902  1386  gray    1   8  jpeg   no        11  0
+   1     2 mask     7608  5544  -       1   1  jpeg   no        11  0
+~~~~
 
 \subsection benchmark_pdf2jpg_gs Ghostscript
 
@@ -38,6 +49,11 @@ Timing results:
 
 | Command | real | user | sys |
 |---------|------|------|-----|
+| `gs -dQUIET -sDEVICE=jpeg -o "$FILE".jpg -dJPEGQ=80` | 10m19.721s | 9m10.380s | 0m28.706s |
+|    | 10m13.771s | 9m31.442s | 0m30.525s |
+|    | 10m18.111s | 9m34.676s | 0m30.880s |
+|    |  10m6.984s | 9m15.131s | 0m28.760s |
+|    |  9m53.144s |  9m8.766s | 0m28.565s |
 | `gs -dQUIET -sDEVICE=jpeg -o "$FILE".jpg -dJPEGQ=95 $FILE` | 10m52.783s | 9m23.397s | 0m30.845s |
 |    |  11m5.316s |  9m53.458s | 0m33.303s |
 |    | 10m52.783s |  9m23.397s | 0m30.845s |
@@ -51,6 +67,37 @@ Timing results:
 |    |  12m9.776s |  9m49.003s | 0m33.643s |
 |    | 11m59.953s |  10m2.220s | 0m34.121s |
 |    | 10m56.013s |  9m33.400s | 0m31.229s |
+| `gs -dQUIET -sDEVICE=jpeg -o "$FILE".jpg -dJPEGQ=100 $FILE` | 11m11.836s | 9m31.706s | 0m28.879s |
+|    |  11m5.063s |  9m53.046s | 0m31.230s |
+|    | 12m57.330s | 10m36.744s | 0m34.647s |
+|    | 11m14.513s |  9m43.029s | 0m30.922s |
+|    | 12m36.705s |  10m4.481s | 0m33.370s |
+
+Test runs on `prom-desktop`:
+
+| Command | real | user | sys |
+|---------|------|------|-----|
+| `gs -dQUIET -sDEVICE=jpeg -o "$FILE".jpg -dJPEGQ=100 $FILE` | 10m29.533s | 10m11.702s | 0m18.533s |
+|    | 10m27.588s | 10m10.470s | 0m18.113s |
+|    | 10m27.976s | 10m11.306s | 0m17.633s |
+|    | 10m27.323s | 10m10.622s | 0m17.637s |
+|    | 10m27.662s | 10m10.090s | 0m18.537s |
+|    | 10m27.190s |  10m9.894s | 0m18.241s |
+|    | 10m27.344s |  10m9.890s | 0m18.545s |
+|    | 10m27.486s | 10m10.318s | 0m18.165s |
+|    | 10m27.424s | 10m10.526s | 0m17.861s |
+|    | 10m28.876s | 10m10.422s | 0m19.033s |
+| `gs -dQUIET -sDEVICE=jpeg -o "$FILE".jpg $FILE` | 10m0.389s | 9m43.336s | 0m18.025s |
+
+Timing results on \ref servers_srv1 :
+
+| Command | real | user | sys |
+|---------|------|------|-----|
+| `gs -dQUIET -sDEVICE=jpeg -o "$FILE".jpg -dJPEGQ=95 $FILE` | 11m7.667s | 10m29.075s | 0m23.221s |
+|    | 10m33.518s | 10m10.378s | 0m22.629s |
+|    | 10m46.286s | 10m21.995s | 0m22.729s |
+|    | 10m33.206s | 10m11.138s | 0m21.793s |
+|    | 10m35.929s | 10m14.154s | 0m21.573s |
 
 \subsection benchmark_pdf2jpg_convert ImageMagick convert
 
@@ -58,8 +105,6 @@ Conversion command:
 
 ~~~~
 convert -density 300 "$FILE" "$FILE".jpg
-convert -density 200 "$FILE" "$FILE".jpg
-convert -density 150 "$FILE" "$FILE".jpg
 ~~~~
 
 Timing results:
@@ -99,14 +144,18 @@ Timing results:
 |                                  | 3m36.058s  | 1m4.645s  | 0m15.769s |
 |                                  | 5m19.994s  | 1m5.385s  | 0m16.083s |
 
+\subsection benchmark_podofo PoDoFo
+
+\ref podofo is a library to work with the PDF file format and includes also a few
+tools. The name comes from the first two letters of PDF (Portable Document
+Format).
+
+| Command                    | real       | user     | sys       |
+|----------------------------|------------|----------|-----------|
+| `podofoimgextract $FILE .` | 1m24.301s | 0m16.829s | 0m16.159s |
+
 \section benchmark_pdf2jpg_summary Summary
 
-| Command   | real       | user      | sys       |
-|-----------|------------|-----------|-----------|
-| `convert -density 300 "$FILE" "$FILE".jpg` | 128m10.605s | 116m25.354s | 5m54.815s |
-|                                            | 131m26.716s | 117m50.019s | 5m43.686s |
-| gs        | 11m5.316s  | 9m53.458s | 0m33.303s |
-
-\section benchmark_pdf2jpg_references References
-
-- [PoDoFo](http://podofo.sourceforge.net/about.html) is a library to work with the PDF file format. The name comes from the first letter of PDF (Portable Document Format). A few tools to work with PDF files are already included in the PoDoFo package. 
+Though they clearly are the fastest tools in the field, both `podofoimgextract`
+and `pdfimages` have to be discarded, as both will store layer of an images
+separately, which would require subsequent recombination of these parts.
