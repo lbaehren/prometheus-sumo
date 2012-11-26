@@ -19,6 +19,28 @@ foreach (test_cpp
   add_test (${test_cpp} ${test_cpp})
 endforeach (test_cpp)
 
+##____________________________________________________________________
+##                                              PoDoFo test program(s)
+
+if (PODOFO_FOUND)
+  ## compiler
+  add_executable (testPoDoFo testPoDoFo.cc)
+  ## linker
+  target_link_libraries (testPoDoFo ${PODOFO_LIBRARIES})
+endif (PODOFO_FOUND)
+
+##____________________________________________________________________
+##                                               KWsys test program(s)
+
+if (KWSYS_FOUND)
+  ## compiler
+  add_executable (testKWSys testKWSys.cc)
+  ## linker
+  target_link_libraries (testKWSys ${KWSYS_LIBRARIES})
+  ## testing
+  add_test (testKWSys testKWSys)
+endif (KWSYS_FOUND)
+
 ## ==============================================================================
 ##
 ##  Ruby test programs
