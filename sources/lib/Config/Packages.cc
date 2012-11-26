@@ -49,7 +49,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     bool Packages::storeNode (YAML::Iterator const &it)
     {
       bool status = true;
-      PackageParameters buffer;
+      param buffer;
 
       try {
         /* Extract parameters from node ... */

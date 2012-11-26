@@ -45,7 +45,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
     class Packages : public ConfigFileBase {
 
       //! Parameters for the package node of the configuration file
-      struct PackageParameters {
+      struct param {
         //! Name of the package
         std::string name;
         //! URL for package's project page
@@ -57,7 +57,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       };
 
       //! List of packages for which parameters are kept
-      std::vector<PackageParameters> itsPackageList;
+      std::vector<param> itsPackageList;
 
       //! Store the data from an individual node
       bool storeNode (YAML::Iterator const &it);
