@@ -75,7 +75,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
 
       //! Get the name of the configuration file
       inline std::string configFile () {
-	return itsConfigFile;
+        return itsConfigFile;
       }
 
       // === Public functions ===================================================
@@ -85,12 +85,12 @@ namespace prometheus {   // namespace prometheus -- BEGIN
 
       //! Provide a summary of the object's internal parameters and status
       inline void summary () {
-	summary (std::cout);
+        summary (std::cout);
       }
-      
+
       //! Provide a summary of the object's internal parameters and status
       virtual void summary (std::ostream &os);
-      
+
     };
 
   }   // namespace config -- BEGIN

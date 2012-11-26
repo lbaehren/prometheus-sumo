@@ -63,19 +63,19 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       std::ifstream infile (filename.c_str());
 
       if (infile.is_open()) {
-	/* Book-keeping: store the filename */
-	itsConfigFile = filename;
+        /* Book-keeping: store the filename */
+        itsConfigFile = filename;
         /* Set up the parser */
         YAML::Node node;
         YAML::Parser parser (infile);
         /* Load the data file into the parser */
         parser.GetNextDocument(node);
-	/* Parse the contents of the configuration file */
-	for (YAML::Iterator it=node.begin();it!=node.end();++it) {
-	  storeNode (it);
-	}
+        /* Parse the contents of the configuration file */
+        for (YAML::Iterator it=node.begin();it!=node.end();++it) {
+          storeNode (it);
+        }
       } else {
-	std::cerr << "[RubyGems::readConfig] Failed to open file "
+        std::cerr << "[RubyGems::readConfig] Failed to open file "
                   << filename
                   << std::endl;
         status = false;
