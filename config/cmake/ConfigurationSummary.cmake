@@ -47,6 +47,7 @@ message (STATUS " .. ImageMagick ................. = ${ImageMagick_FOUND} (${Ima
 message (STATUS " .. KWSys ....................... = ${KWSYS_FOUND}"             )
 message (STATUS " .. Magic ....................... = ${MAGIC_FOUND}"             )
 message (STATUS " .. MySQL ....................... = ${MYSQL_FOUND}"             )
+message (STATUS " .. PoDoFo ...................... = ${PODOFO_FOUND}")
 message (STATUS " .. TinyXML ..................... = ${TINYXML_FOUND}"           )
 message (STATUS " .. VirtualBox .................. = ${VIRTUALBOX_FOUND}"        )
 message (STATUS " .. Yaml ........................ = ${YAML_FOUND}"              )

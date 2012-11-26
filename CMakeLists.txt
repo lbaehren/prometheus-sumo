@@ -125,6 +125,7 @@ foreach (_cmakeModule
   LibXml2
   MagicLib
   MySQL
+  PoDoFo
   RDoc
   Rails
   Rake
