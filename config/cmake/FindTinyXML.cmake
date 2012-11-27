@@ -21,29 +21,29 @@
 # - Check for the presence of TINYXML
 #
 # The following variables are set when TINYXML is found:
-#  TINYXML_FOUND      = Set to true, if all components of TINYXML have been
-#                       found.
+#  TINYXML_FOUND      = Set to true, if all components of TINYXML have been found.
 #  TINYXML_INCLUDES   = Include path for the header files of TINYXML
 #  TINYXML_LIBRARIES  = Link these to use TINYXML
 #  TINYXML_LFLAGS     = Linker flags (optional)
 
 if (NOT TINYXML_FOUND)
-    
+
   if (NOT TINYXML_ROOT_DIR)
     set (TINYXML_ROOT_DIR ${CMAKE_INSTALL_PREFIX})
   endif (NOT TINYXML_ROOT_DIR)
-  
+
   ##_____________________________________________________________________________
   ## Check for the header files
-  
-  find_path (TINYXML_INCLUDES tinyxml2.h
-    HINTS ${TINYXML_ROOT_DIR}  ${CMAKE_INSTALL_PREFIX}
+
+  find_path (TINYXML_INCLUDES
+    NAMES tinyxml2.h
+    HINTS ${TINYXML_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES include
     )
-  
+
   ##_____________________________________________________________________________
   ## Check for the library
-  
+
   find_library (TINYXML_LIBRARIES tinyxml2
     HINTS ${TINYXML_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES lib
@@ -51,7 +51,7 @@ if (NOT TINYXML_FOUND)
 
   ##_____________________________________________________________________________
   ## Actions taken when all components have been found
-  
+
   if (TINYXML_INCLUDES AND TINYXML_LIBRARIES)
     set (TINYXML_FOUND TRUE)
   else (TINYXML_INCLUDES AND TINYXML_LIBRARIES)
@@ -65,7 +65,7 @@ if (NOT TINYXML_FOUND)
       endif (NOT TINYXML_LIBRARIES)
     endif (NOT TINYXML_FIND_QUIETLY)
   endif (TINYXML_INCLUDES AND TINYXML_LIBRARIES)
-  
+
   if (TINYXML_FOUND)
     if (NOT TINYXML_FIND_QUIETLY)
       message (STATUS "Found components for TINYXML")
@@ -78,14 +78,14 @@ if (NOT TINYXML_FOUND)
       message (FATAL_ERROR "Could not find TINYXML!")
     endif (TINYXML_FIND_REQUIRED)
   endif (TINYXML_FOUND)
-  
+
   ##_____________________________________________________________________________
   ## Mark advanced variables
-  
+
   mark_as_advanced (
     TINYXML_ROOT_DIR
     TINYXML_INCLUDES
     TINYXML_LIBRARIES
     )
-  
+
 endif (NOT TINYXML_FOUND)

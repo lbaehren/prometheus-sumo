@@ -71,9 +71,11 @@ if (WITH_CLAMAV)
   add_subdirectory (clamav)
 endif (WITH_CLAMAV)
 
-if (MYSQL_FOUND)
-  add_subdirectory (sphinx)
-endif (MYSQL_FOUND)
+if (WITH_SPHINX)
+  if (MYSQL_FOUND)
+    add_subdirectory (sphinx)
+  endif (MYSQL_FOUND)
+endif (WITH_SPHINX)
 
 ## ==============================================================================
 ##

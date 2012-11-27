@@ -1,15 +1,31 @@
 
-##____________________________________________________________________
-##                                                      scan_csv_stats
+## ==============================================================================
+##
+##  Build instructions
+##
+## ==============================================================================
 
-add_executable(scan_csv_stats scan_csv_stats.cc)
-target_link_libraries (scan_csv_stats libprometheus)
+file (GLOB apps_sources *.cc)
 
-##____________________________________________________________________
-##                                                    install_packages
+foreach (_app ${apps_sources})
 
-add_executable (install_packages install_packages.cc)
-target_link_libraries (install_packages libprometheus)
+  ## strip suffix from filename
+  get_filename_component (_program ${_app} NAME_WE)
+  ## compiler
+  add_executable(${_program} ${_app})
+  ## linker
+  target_link_libraries (${_program} libprometheus)
+  ## installation
+  install (
+    TARGETS ${_program}
+    RUNTIME DESTINATION bin
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
+    )
+  
+endforeach ()
+
+## Testing
 
 add_test (install_packages install_packages)
 add_test (install_packages_config install_packages --config)

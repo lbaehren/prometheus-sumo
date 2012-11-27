@@ -27,6 +27,13 @@ if (libprometheus_sources)
 
   add_dependencies (libprometheus yaml-cpp)
 
+  install (
+    TARGETS libprometheus
+    RUNTIME DESTINATION bin
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
+    )
+  
 endif (libprometheus_sources)
 
 message (STATUS "Processing directory source/lib - done")

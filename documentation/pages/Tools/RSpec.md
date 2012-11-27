@@ -16,3 +16,4 @@ In essence, an RSpec developer turns test cases from red (failing) to green (pas
 
 * [Behavior-driven testing with RSpec](http://www.ibm.com/developerworks/web/library/wa-rspec)
 * [RSpec Best Practices](http://www.methodsandtools.com/tools/tools.php?rspec)
+* [An Introduction To RSpec](http://blog.teamtreehouse.com/an-introduction-to-rspec)

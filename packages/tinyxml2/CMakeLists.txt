@@ -5,16 +5,6 @@
 ##
 ## ==============================================================================
 
-## Name of the project handled by CMake
-project (TINYXML2)
-
-## Minimum required version of CMake to configure the project
-cmake_minimum_required (VERSION 2.8)
-
-## Enforced CMake policy
-cmake_policy (VERSION 2.8)
-
-##  Package information
 set (TINYXML2_VERSION        "" )
 set (TINYXML2_SOURCE_ARCHIVE "" )
 set (TINYXML2_URL            "" )
@@ -43,11 +33,7 @@ endif (TINYXML2_ENABLE_TESTING)
 ##
 ## ==============================================================================
 
-if (TINYXML2_FROM_REPOS)
-  set (TINYXML2_FORCE_BUILD TRUE)
-endif (TINYXML2_FROM_REPOS)
-
-if (NOT TINYXML2_FOUND OR TINYXML2_FORCE_BUILD)
+if (NOT TINYXML_FOUND OR TINYXML2_FORCE_BUILD)
 
   ## Locate source file to build from
 
@@ -91,14 +77,14 @@ if (NOT TINYXML2_FOUND OR TINYXML2_FORCE_BUILD)
     COMMENT "Updating top-level configuration ..."
     DEPENDEES install
     DEPENDERS build
-    WORKING_DIRECTORY ${prometheus-sumo_BINARY_DIR}
+    WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
   )
 
-else (NOT TINYXML2_FOUND OR TINYXML2_FORCE_BUILD)
+else (NOT TINYXML_FOUND OR TINYXML2_FORCE_BUILD)
 
   add_custom_target (tinyxml2
     WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
     COMMENT "[tinyxml2] Found system-wide installation; skipping rebuild!"
     )
 
-endif (NOT TINYXML2_FOUND OR TINYXML2_FORCE_BUILD)
+endif (NOT TINYXML_FOUND OR TINYXML2_FORCE_BUILD)
