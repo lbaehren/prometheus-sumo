@@ -44,7 +44,6 @@ include (${CMAKE_CURRENT_SOURCE_DIR}/RubyGems.cmake)
 foreach (_package
   doxygen
   KWSys
-  promhp
   rant
   tinyxml2
   yaml-cpp
