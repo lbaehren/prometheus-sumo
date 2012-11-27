@@ -27,44 +27,11 @@
 
 /*!
   \file testYAML.cc
+  \ingroup prometheus
+  \ingroup test
   \brief Test reading in configuration data from \ref yaml files
   \author Lars Baehren
 */
-
-// =============================================================================
-//
-//  Data stuctures
-//
-// =============================================================================
-
-/*! Data structure to store a node representing a movie */
-struct Movie {
-  //! Title of the movie
-  std::string title;
-  //! Release year of the movie
-  unsigned int release;
-  //! Director of the movie
-  std::string director;
-};
-
-// =============================================================================
-//
-//  Operator overloading
-//
-// =============================================================================
-
-/*!
-  \brief Overloading of the output operator for a node representing a movie.
-  \param node  -- Object container for the node.
-  \param movie -- Data structure into which the node's contents is being stored.
-*/
-void operator >> (const YAML::Node& node,
-		  Movie& movie)
-{
-  node["title"]    >> movie.title;
-  node["release"]  >> movie.release;
-  node["director"] >> movie.director;
-}
 
 // =============================================================================
 //
@@ -193,22 +160,35 @@ int readAssociativeArray (std::string const &filename)
 {
   std::cout << "\n[YamlReader::readAssociativeArray]\n" << std::endl;
 
+  struct Movie {
+    std::string title;
+    unsigned int release;
+    std::string director;
+  };
+
   std::ifstream infile (filename.c_str());
 
   if (infile.is_open()) {
     YAML::Node node;
     YAML::Parser parser(infile);
+    size_t counter (0);
     // Parse data into node
     parser.GetNextDocument(node);
     std::cout << "--> nof. nodes = " << node.size() << std::endl;
     /* Parse the contents of the node */
     for (YAML::Iterator it=node.begin();it!=node.end();++it) {
       Movie movie;
-      *it >> movie;
-      /* Dispay contents of the node */
-      std::cout << "- " << movie.title << " (" << movie.release << ")"
-		<< "\t- " << movie.director
+      // Extract node data ...
+      (*it)["title"]    >> movie.title;
+      (*it)["release"]  >> movie.release;
+      (*it)["director"] >> movie.director;
+      // ... and display them
+      std::cout << " ["<< counter << "] " << movie.director
+		<< " (" << movie.release << ") "
+		<< movie.title
 		<< std::endl;
+      // increment counter
+      ++counter;
     }
   } else {
     std::cerr << "--> Failed to open file " << filename << std::endl;
