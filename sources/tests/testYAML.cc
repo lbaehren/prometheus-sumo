@@ -252,41 +252,34 @@ int readScalarsToSequences (std::string const &filename)
 // =============================================================================
 
 /*! Program main function */
-int main (int argc,
-	  char *argv[])
+int main (int argc, char *argv[])
 {
   int retval = 0;
-  std::string filename;
-  std::string pathTestData;
 
-  /*
-   *  Test emitting
-   */
-
-  retval += hello_world();
-  retval += emit_list();
-  retval += emit_map();
-  
   /* Check parameter provided from the command line */
-  if ( argc>1 ) {
-    pathTestData = std::string(argv[1]);
+  if ( argc>2 ) {
+    // Extract the path to the input test file
+    std::string selection = std::string(argv[1]);
+    std::string filename  = std::string(argv[2]);
+    // show command line options
+    std::cout << "-- Selection = " << selection << std::endl;
+    std::cout << "-- Filename  = " << filename  << std::endl;
+    // Extract the test case selection
+    if (selection == "--list") {
+      retval +=  readList(filename);
+    } else if (selection == "--array") {
+      retval +=  readAssociativeArray(filename);
+    } else if (selection == "--sequence") {
+      retval +=  readScalarsToSequences(filename);
+    } else {
+      retval += hello_world();
+      retval += emit_list();
+      retval += emit_map();
+    }
   } else {
     std::cerr << "[ERROR] No path to directory with test data!" << std::endl;
     return 1;
   }
-
-  /*
-   *  Basic parser testing
-   */
-
-  filename = pathTestData + "/yaml_List.yml";
-  retval +=  readList(filename);
-
-  filename = pathTestData + "/yaml_AssociativeArray.yml";
-  retval +=  readAssociativeArray(filename);
-
-  filename = pathTestData + "/yaml_ScalarsToSequences.yml";
-  retval +=  readScalarsToSequences(filename);
 
   return retval;
 }

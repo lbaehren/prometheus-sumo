@@ -128,12 +128,15 @@ endif (LIBXML2_FOUND)
 
 if (YAML_FOUND)
 
+  ## compiler
   add_executable (testYAML testYAML.cc)
-
+  ## linker
   target_link_libraries (testYAML libprometheus)
-
-  ## Testing
-  add_test (testYAML testYAML ${PROJECT_SOURCE_DIR}/data/tests)
+  ## testing
+  add_test (testYAML_list  testYAML)
+  add_test (testYAML_list  testYAML --list  ${PROJECT_SOURCE_DIR}/data/tests/yaml_List.yml)
+  add_test (testYAML_array testYAML --array ${PROJECT_SOURCE_DIR}/data/tests/yaml_AssociativeArray.yml)
+  add_test (testYAML_sequence testYAML --sequence ${PROJECT_SOURCE_DIR}/data/tests/yaml_ScalarsToSequences.yml)
 
 endif (YAML_FOUND)
 
