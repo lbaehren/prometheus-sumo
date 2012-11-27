@@ -43,7 +43,10 @@ endif (RANT_ENABLE_TESTING)
 ##
 ## ==============================================================================
 
-find_program (RANT_EXECUTABLE rant)
+find_program (RANT_EXECUTABLE rant
+  HINTS ${RANT_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
+  PATH_SUFFIXES bin
+  )
 
 if (RANT_EXECUTABLE)
   set (RANT_FOUND TRUE)
