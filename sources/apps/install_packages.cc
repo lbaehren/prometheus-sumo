@@ -176,12 +176,36 @@ int main (int argc, char *argv[])
   }
 
 #else
-
-  std::cerr << "WARNING - unable to process extended command line options."
-            << " Missing boost::program_options library!"
-            << std::endl;
-  status = -1;
-
+  
+  if ( argc>1 ) {
+    std::string selection = std::string(argv[1]);
+    if (selection == "--config") {
+      prometheus::configuration_summary (std::cout);
+    }
+    if ( argc>2 ) {
+      std::string filename  = std::string(argv[2]);
+      // Extract the test case selection
+      if (selection == "--config") {
+	status += install_ruby_gems(filename);
+      }	else if (selection == "--gems") {
+	status += install_ruby_gems(filename);
+      } else if (selection == "--debian") {
+	status += install_packages_debian(filename);
+      } else if (selection == "--osx") {
+	status += install_packages_osx(filename);
+      } else if (selection == "--redhat") {
+	status += install_packages_redhat(filename);
+      }
+    }
+  } else {
+    std::cout << "[install_packages] Available command line options:" << std::endl;
+    std::cout << " --config         Print summary of configuration settings" << std::endl;
+    std::cout << " --gems arg       Install Ruby gems"                       << std::endl;
+    std::cout << " --debian arg     Install Debian packages"                 << std::endl;
+    std::cout << " --osx arg        Install MacPorts packages for OS X"      << std::endl;
+    std::cout << " --redhat arg     Install Redhat packages"                 << std::endl;
+  }
+  
 #endif
 
   return status;
