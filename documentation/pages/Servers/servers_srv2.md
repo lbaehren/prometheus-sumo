@@ -3,6 +3,23 @@ prometheus-srv2.uni-koeln.de    {#servers_srv2}
 
 \tableofcontents
 
+\section servers_srv2_data Hosted data
+
+~~~~
+/var/local/prometheus
+ ├── bin
+ ├── etc
+ ├── opt
+ ├── srv
+ │   ├── ftp                            ...  FTP upload directory
+ │   └── svn
+ ├── tmp
+ └── web
+     └── www
+~~~~
+
+\section servers_srv2_services Hosted services
+
 \section servers_srv2_nfs NFS mounts
 
 \verbatim
