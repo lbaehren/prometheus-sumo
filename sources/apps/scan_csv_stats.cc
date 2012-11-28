@@ -30,8 +30,6 @@
 
 int main(int argc, char *argv[])
 {
-  using namespace std;
-  using namespace boost;
   using namespace prometheus;
 
   std::string filename = "data.csv";
