@@ -29,10 +29,12 @@
   \brief Collection of commly used routines and functionality
 */
 
+#include <algorithm>
 #include <iostream>
 #include <map>
 #include <set>
 #include <vector>
+#include <stdio.h>
 
 #include <Config/ConfigSettings.h>
 
