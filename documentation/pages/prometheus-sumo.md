@@ -11,19 +11,20 @@ Research and Studies".
 
 \section sumo_dependencies External dependencies
 
-External dependencies are kept to a minimum for this package:
+In order to keep configuration and build simple, we try to keep the number of
+_mandatory_ external dependencies -- which need to be resolved beforehand -- as
+small as possible. Further dependencies - e.g. to support specific functionality
+and features -- are resolved as part of the build procedure, automatically
+pulling in components which are not available as a system-wide installation.
 
 | Package                           | Version   | Relevance | Notes     |
 |-----------------------------------|-----------|-----------|-----------|
-| [Git](http://git-scm.com)         | >= 1.7    | mandatory |           |
-| [CMake](http://www.cmake.org)     | >= 2.8.3  | mandatory |           |
-| [Doxygen](http://www.doxygen.org) | >  1.7    | optional  | Documentation generation  |
-| [yaml-cpp](http://code.google.com/p/yaml-cpp) |    | optional | \ref yaml parsing |
+| [Git](http://git-scm.com)         | >= 1.7    | mandatory | Distributed revision control system |
+| [CMake](http://www.cmake.org)     | >= 2.8.3  | mandatory/provided |           |
+| [Doxygen](http://www.doxygen.org) | >  1.7    | optional/provided | Documentation generation  |
+| [yaml-cpp](http://code.google.com/p/yaml-cpp) |    | optional/provided | \ref yaml parsing |
+| [YAZ](http://www.indexdata.com/yaz) | >= 4.2.30 | optional/provided | \ref yaz developer's toolkit for Z39.50 |
 | [Boost](http://www.boost.org)     | >  1.40   | optional  | \ref xml  and logfile parsing |
-
-Further dependencies, as required when developing the prometheus software
-packages, are handled as part of this tool.
-
 
 \section sumo_directories Organization of the source code
 
@@ -48,9 +49,9 @@ can be found:
         ├── lib
         └── tests
 
-Not included in this picture yet is the `release` directory (containing the standard set of
-sub-directories, such as `include`, `lib`, etc.), which is set as the default installation
-location.
+Not included in this picture yet is the `release` directory (containing the standard
+set of sub-directories, such as `include`, `lib`, etc.), which is set as the default
+\ref sumo_install "installation location".
 
 
 \section sumo_build Configuration and build
@@ -104,6 +105,26 @@ prefix:
     -DCMAKE_INSTALL_PREFIX=<prefix>
 
 
+\section sumo_install Installation
+
+In order to allow installation of all components build -- be it pulled in external
+packages or project code -- by default header files, libraries, application
+executables and configuration data are placed into a `release` directory underneath
+the project's root directory.
+
+    .
+    └── release                         ...  CMAKE_INSTALL_PREFIX
+        ├── bin
+        ├── include
+        ├── etc
+        │   └── prometheus              ...  Configuration data
+        ├── lib
+        └── share
+            └── doc
+                └── prometheus          ...  (Extended) Documentation for prometheus
+                    ├── html
+                    └── xml
+
 \section sumo_functionality Functionality
 
 \subsection sumo_functionality_documentation Documentation
@@ -113,15 +134,7 @@ documentation system. If the latter is available on your system, just type
 
     make Documentation
 
-from within the build directory. The generated pages/documents will can be found within
-
-    .
-    └── release
-        └── share
-            └── doc
-                └── prometheus
-                    ├── html
-                    └── xml
+from within the build directory.
 
 \subsection sumo_functionality_library C++ library
 
