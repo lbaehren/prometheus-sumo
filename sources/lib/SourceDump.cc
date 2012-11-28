@@ -149,6 +149,8 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     std::vector<std::string> items;
     std::string buffer;
     std::ifstream infile (filename.c_str());
+
+#ifdef WITH_BOOST
     boost::regex ex (match);
     
     if ( infile.is_open() ) {
@@ -161,6 +163,11 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
 	}
       }
     }
+#else
+    std::cerr << "[SourceDump::sourceIDs]"
+	      << " Unable to perform pattern matching - missing Boost library!"
+	      << std::endl;
+#endif
     
     return items;
   }
