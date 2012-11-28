@@ -44,7 +44,6 @@ include (${CMAKE_CURRENT_SOURCE_DIR}/RubyGems.cmake)
 foreach (_package
   doxygen
   KWSys
-  rant
   tinyxml2
   yaml-cpp
   yaz
@@ -70,6 +69,10 @@ endforeach (_package)
 if (WITH_CLAMAV)
   add_subdirectory (clamav)
 endif (WITH_CLAMAV)
+
+if (RUBY_EXECUTABLE)
+  add_subdirectory (rant)
+endif (RUBY_EXECUTABLE)
 
 if (WITH_SPHINX)
   if (MYSQL_FOUND)
