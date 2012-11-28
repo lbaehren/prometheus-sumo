@@ -41,34 +41,19 @@ include (${CMAKE_CURRENT_SOURCE_DIR}/RubyGems.cmake)
 ##
 ## ==============================================================================
 
-foreach (_package
-  doxygen
-  KWSys
-  tinyxml2
-  yaml-cpp
-  yaz
-  yazpp
-  )
-  if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_package})
-    ## Add sub-directory
-    add_subdirectory (${_package})
-    ## Update top-level configuration after installation of package
-#    ExternalProject_Add_Step (${_package} update_configuration
-#      COMMAND ${CMAKE_COMMAND} -E remove CMake*
-#      COMMAND ${CMAKE_COMMAND} ..
-#      COMMENT "Updating top-level configuration ..."
-#      DEPENDEES install
-#      DEPENDERS build
-#      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-#    )
-  else (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_package})
-    message (STATUS ">> Skipping package ${_package}")
-  endif (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_package})
-endforeach (_package)
+add_subdirectory (KWSys)
+add_subdirectory (tinyxml2)
+add_subdirectory (yaml-cpp)
+add_subdirectory (yaz)
+add_subdirectory (yazpp)
 
 if (WITH_CLAMAV)
   add_subdirectory (clamav)
 endif (WITH_CLAMAV)
+
+if (WITH_DOXYGEN)
+  add_subdirectory (doxygen)
+endif (WITH_DOXYGEN)
 
 if (RUBY_EXECUTABLE)
   add_subdirectory (rant)
