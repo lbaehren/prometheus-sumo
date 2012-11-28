@@ -26,11 +26,18 @@ foreach (_file ${config_yaml})
   get_filename_component (_filename  ${_file} NAME_WE)
   ## ... to define cache variable
   set (_fileVar "config_${_filename}_yml")
+
   ## Store path to configuration file in cache variable
   find_file (${_fileVar}
     NAMES ${_name}
     PATHS ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}
     PATH_SUFFIXES config
+    )
+
+  ## Installation instructions
+  install (
+    FILES ${_file}
+    DESTINATION etc/prometheus
     )
 
 endforeach (_file)
