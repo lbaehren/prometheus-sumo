@@ -14,7 +14,7 @@ find_file (HAVE_DATA_PANDORA
 find_path (PANDORA_DATA_DIR
   NAMES arachne.xml dresden.xml heidicon.xml kassel.xml
   PATHS ${PROJECT_SOURCE_DIR} ${CMAKE_INSTALL_PREFIX}
-  PATH_SUFFIXES pandora data/pandora app/pandora/data
+  PATH_SUFFIXES pandora data/pandora app/pandora/data dumps
   )
 
 ##____________________________________________________________________
