@@ -27,6 +27,7 @@ foreach (_command
   cat
   cp
   date
+  grep
   gzip
   mv
   rm
