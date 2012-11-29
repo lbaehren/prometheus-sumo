@@ -117,7 +117,9 @@ if (LIBXML2_FOUND)
   ## Linker instructions
   target_link_libraries (testXMLTree ${LIBXML2_LIBRARIES})
   ## Testing
-  add_test (testXMLTree testXMLTree ${xml_dump_beeskow})
+  if (xml_dump_beeskow)
+    add_test (testXMLTree testXMLTree ${xml_dump_beeskow})
+  endif (xml_dump_beeskow)
 endif (LIBXML2_FOUND)
 
 ## ==============================================================================
