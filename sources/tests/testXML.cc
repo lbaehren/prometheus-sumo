@@ -60,7 +60,7 @@ int test_load_file (std::string const &filename="resources/dream.xml")
   \return status -- Return status of the function; returns non-zero in case an
                     an error is caught.
 */
-int test_char_buffer (std::string const &teststring="<element><element/>")
+int test_char_buffer (std::string const &teststring="<gattung>Architektur</gattung>")
 {
   std::cout << "\n[TestXML::test_char_buffer]\n" << std::endl;
 
