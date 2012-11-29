@@ -22,10 +22,10 @@ foreach (_app ${apps_sources})
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
     )
-  
+
 endforeach ()
 
 ## Testing
 
-add_test (install_packages install_packages)
-add_test (install_packages_config install_packages --config)
+add_test (promManagePackages promManagePackages)
+add_test (promManagePackages_config promManagePackages --config)

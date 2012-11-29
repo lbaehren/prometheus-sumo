@@ -125,6 +125,11 @@ the project's root directory.
                     ├── html
                     └── xml
 
+In order to simplify running the installed tools/programs, make the `bin`
+directory is in your `PATH`:
+
+    export PATH=$PATH:<prefix>/bin
+
 \section sumo_functionality Functionality
 
 \subsection sumo_functionality_documentation Documentation
@@ -148,24 +153,13 @@ the form of a C++ library.
 
 \subsubsection sumo_functionality_external_packages Installation of external packages
 
-As the prometheus digital image archive software depends on a number of
-\ref third_party - libraries and tools - a path is required to resolve
-the resulting dependencies; some of these can be taken care of by the system's
-package manager (e.g. `apt-get` on [Debian](http://www.debian.org) and
-[Ubuntu](http://www.ubuntu.com) or `yum` on [Fedora](http://www.fedoraproject.org))
--- however depending on the platform the proper list of packages needs to be
-provided. In order to simplify this process \ref prometheus-sumo provides build
-targets to handle the resolution of external dependencies.
-
-\li Installation of system packages:
-~~~~
-make InstallPackages
-~~~~
-
-\li Installation of Ruby Gems:
-~~~~
-make InstallGems
-~~~~
+In order to keep track of required external dependencies -- and keeping this
+information accessible throughout the code base -- package information is kept
+in a collection of \ref yaml files; which of the therein listed packages needs
+to be pulled in will depend on the platform (e.g. Debian GNU/Linux, Redhat, OS X)
+the software is being build on. In order to simplify this process and provide a
+common configuration path, the `promManagePackages` tool (promManagePackages.cc) allows for the installation
+and update of these dependencies.
 
 \subsubsection sumo_functionality_repositories Repository working copies
 

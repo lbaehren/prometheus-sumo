@@ -25,20 +25,17 @@ namespace bpo = boost::program_options;
 #endif
 
 /*!
-  \file install_packages.cc
+  \file promManagePackages.cc
   \ingroup prometheus
   \ingroup apps
   \brief Wrapper for the installation of system packages
   \author Lars Baehren
   \date 2012-11-05
 
-  \todo Enable handling of minimum set of command line options without using
-  boost::program_options
-
   \b Usage:
 
   \verbatim
-[install_packages] Available command line options:
+[promManagePackages] Available command line options:
   -H [ --help ]         Show this help message
   -C [ --config ]       Print summary of configuration settings
   --gems arg            Install Ruby gems
@@ -134,7 +131,7 @@ int main (int argc, char *argv[])
   //________________________________________________________
   // Description of command line options
 
-  bpo::options_description desc ("[install_packages] Available command line options");
+  bpo::options_description desc ("[promManagePackages] Available command line options");
 
   desc.add_options ()
     ("help,H",    "Show this help message")
