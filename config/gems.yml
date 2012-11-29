@@ -9,7 +9,6 @@
 ## - descripion : A short description of the package.
 ##
 ---
-
 - name: apache_image_resizer
   version: '>= 0.0.7'
   source:

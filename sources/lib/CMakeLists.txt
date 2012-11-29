@@ -25,7 +25,7 @@ if (libprometheus_sources)
     OUTPUT_NAME prometheus
     )
 
-  add_dependencies (libprometheus yaml-cpp)
+  add_dependencies (libprometheus yaml-cpp kwsys)
 
   install (
     TARGETS libprometheus
@@ -33,7 +33,7 @@ if (libprometheus_sources)
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
     )
-  
+
 endif (libprometheus_sources)
 
 message (STATUS "Processing directory source/lib - done")

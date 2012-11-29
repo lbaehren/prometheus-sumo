@@ -210,8 +210,10 @@ int test_ruby_gems ()
   std::string output;
 
   // Set up the list of gems to use for testing
-  gems["redcarpet"] = "";
-  gems["unicode"]   = ">= 0.1.1";
+  gems["redcarpet"]             = "";
+  gems["unicode"]               = ">= 0.1.1";
+  gems["blackwinter-ipaddress"] = "= 0.8.0";
+  gems["ferret"]                = "0.11.8.1";
 
   std::cout << "[1] Test installation of gem ..." << std::endl;
   try {
@@ -220,7 +222,7 @@ int test_ruby_gems ()
       if (it->second != "") {
         cmd += " --version '" + it->second + "'";
       }
-      std::cout << "-- " << it->first << " : " << cmd << std::endl;
+      std::cout  << std::setw(25) << it->first << " : " << cmd << std::endl;
     }
   } catch (std::exception &e) {
     std::cout << "ERROR : " << e.what() << std::endl;
@@ -235,22 +237,20 @@ int test_ruby_gems ()
 //! Program main function
 int main (int argc, char **argv)
 {
-  int status       = 0;
-  bool haveDataset = false;
+  int status = 0;
 
-  // --- Tests depending on input test data ---
+  /* --- Basic tests without the need of external test data --- */
+  
+  status += test_constructors ();
+  status += test_ruby_gems ();
+  status += test_debian_packages ();
 
+  /* --- Test working on test data --- */
+  
   if (argc >1) {
     status += test_constructors (argv[1]);
     status += test_read_config (argv[1]);
-  } else {
-    status += test_constructors ();
   }
-
-  // --- Tests independent on input testdata
-
-  status += test_debian_packages ();
-  status += test_ruby_gems ();
 
   return status;
 }
