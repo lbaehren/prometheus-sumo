@@ -44,7 +44,8 @@ if (NOT TINYXML_FOUND)
   ##_____________________________________________________________________________
   ## Check for the library
 
-  find_library (TINYXML_LIBRARIES tinyxml2
+  find_library (TINYXML_LIBRARIES
+    NAMES libtinyxml.a libtinyxml2.a tinyxml2
     HINTS ${TINYXML_ROOT_DIR} ${CMAKE_INSTALL_PREFIX}
     PATH_SUFFIXES lib
     )
