@@ -140,6 +140,10 @@ if (YAML_FOUND)
   add_test (testYAML_array testYAML --array ${PROJECT_SOURCE_DIR}/data/tests/yaml_AssociativeArray.yml)
   add_test (testYAML_sequence testYAML --sequence ${PROJECT_SOURCE_DIR}/data/tests/yaml_ScalarsToSequences.yml)
 
+  if (config_gems_yml)
+    add_test (testYAML_packages testYAML --packages ${config_gems_yml})
+  endif (config_gems_yml)
+
 endif (YAML_FOUND)
 
 ## ==============================================================================

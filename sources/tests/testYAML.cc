@@ -18,9 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <iomanip>
 #include <fstream>
-/* YAML support */
-#include <yaml-cpp/yaml.h>
 /* Project */
 #include <Common.h>
 #include <ConfigFileInstitution.h>
@@ -245,6 +244,60 @@ int readScalarsToSequences (std::string const &filename)
   return 0;
 }
 
+//______________________________________________________________________________
+//                                                               readPackageList
+
+/*!
+  \brief Read list of software packages from configuration data file
+  \param filename - Path to the configuration file.
+  \return Status of the function; returns non-zero value in case an error was
+          encountered.
+*/
+int readPackageList (std::string const &filename)
+{
+  std::cout << "\n[YamlReader::readPackageList]\n" << std::endl;
+
+  struct Package {
+    std::string name;
+    std::string version;
+    std::string source;
+    std::string homepage;
+    std::string description;
+  };
+
+  std::ifstream infile (filename.c_str());
+
+  if (infile.is_open()) {
+    YAML::Node node;
+    YAML::Parser parser(infile);
+    // Parse data into node
+    parser.GetNextDocument(node);
+    std::cout << "--> nof. nodes = " << node.size() << std::endl;
+    /* Parse the contents of the node */
+    for (YAML::Iterator it=node.begin();it!=node.end();++it) {
+      /* Process the contents of the node */
+      Package tmp;
+      // Extract node data ...
+      (*it)["name"]    >> tmp.name;
+      (*it)["version"] >> tmp.version;
+      (*it)["source"]  >> tmp.source;
+      // ... and display them
+      std::cout << std::setw(25) << tmp.name
+		<< "  ::" << std::setw(12) << tmp.version
+		<< "  ::  " << tmp.source
+		<< std::endl;
+    }
+  } else {
+    std::cerr << "--> Failed to open file " << filename << std::endl;
+    return 1;
+  }
+
+  /* Close the input stream */
+  infile.close();
+
+  return 0;
+}
+
 // =============================================================================
 //
 //  Main program function
@@ -271,6 +324,8 @@ int main (int argc, char *argv[])
       retval +=  readAssociativeArray(filename);
     } else if (selection == "--sequence") {
       retval +=  readScalarsToSequences(filename);
+    } else if (selection == "--packages") {
+      retval +=  readPackageList(filename);
     } else {
       retval += hello_world();
       retval += emit_list();

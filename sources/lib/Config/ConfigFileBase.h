@@ -23,8 +23,6 @@
 
 /* Standard header files */
 #include <fstream>
-/* YAML support */
-#include <yaml-cpp/yaml.h>
 /* Project header files */
 #include <Common.h>
 

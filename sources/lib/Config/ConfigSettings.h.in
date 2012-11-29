@@ -121,18 +121,22 @@
 //! Build with YAZ++ library support?
 #cmakedefine WITH_YAZPP
 
-#ifdef WITH_YAZPP
-//! YAZ++ library version
-#define YAZPP_LIBRARY_VERSION "${YAZPP_VERSION}"
-#include <yaz/options.h>
-#include <yazpp/zoom.h>
-#endif
-
 #ifdef WITH_BOOST
 #include <boost/algorithm/string.hpp>
 #include <boost/algorithm/string/regex.hpp>
 #include <boost/program_options.hpp>
 #include <boost/regex.hpp>
+#endif
+
+#ifdef WITH_YAML
+#include <yaml-cpp/yaml.h>
+#endif
+
+#ifdef WITH_YAZPP
+//! YAZ++ library version
+#define YAZPP_LIBRARY_VERSION "${YAZPP_VERSION}"
+#include <yaz/options.h>
+#include <yazpp/zoom.h>
 #endif
 
 #ifdef GEM_FOUND
