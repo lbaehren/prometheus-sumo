@@ -130,6 +130,12 @@ check_cmake_version ()
 ## ==============================================================================
 
 ##__________________________________________________________
+## Initialize Git submodules
+
+git submodule init
+git submodule update
+
+##__________________________________________________________
 ## Create build directory
 
 cd $cmakeSourceDir
@@ -142,12 +148,6 @@ fi
 ## Run check on installed CMake version
 
 check_cmake_version
-
-##__________________________________________________________
-## Initialize Git submodules
-
-git submodule init
-git submodule update
 
 ##__________________________________________________________
 ## Configure build
