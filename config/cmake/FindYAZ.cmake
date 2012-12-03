@@ -114,19 +114,7 @@ if (NOT YAZ_FOUND)
   ##_____________________________________________________________________________
   ## Actions taken when all components have been found
   
-  if (YAZ_INCLUDES AND YAZ_LIBRARIES)
-    set (YAZ_FOUND TRUE)
-  else (YAZ_INCLUDES AND YAZ_LIBRARIES)
-    set (YAZ_FOUND FALSE)
-    if (NOT YAZ_FIND_QUIETLY)
-      if (NOT YAZ_INCLUDES)
-	message (STATUS "Unable to find YAZ header files!")
-      endif (NOT YAZ_INCLUDES)
-      if (NOT YAZ_LIBRARIES)
-	message (STATUS "Unable to find YAZ library files!")
-      endif (NOT YAZ_LIBRARIES)
-    endif (NOT YAZ_FIND_QUIETLY)
-  endif (YAZ_INCLUDES AND YAZ_LIBRARIES)
+  find_package_handle_standard_args (YAZ DEFAULT_MSG YAZ_YAZ_LIBRARY YAZ_INCLUDES)
   
   if (YAZ_FOUND)
     if (NOT YAZ_FIND_QUIETLY)

@@ -86,19 +86,7 @@ if (NOT YAZPP_FOUND)
   ##_____________________________________________________________________________
   ## Actions taken when all components have been found
 
-  if (YAZPP_INCLUDES AND YAZPP_LIBRARIES)
-    set (YAZPP_FOUND TRUE)
-  else (YAZPP_INCLUDES AND YAZPP_LIBRARIES)
-    set (YAZPP_FOUND FALSE)
-    if (NOT YAZPP_FIND_QUIETLY)
-      if (NOT YAZPP_INCLUDES)
-	message (STATUS "Unable to find YAZPP header files!")
-      endif (NOT YAZPP_INCLUDES)
-      if (NOT YAZPP_LIBRARIES)
-	message (STATUS "Unable to find YAZPP library files!")
-      endif (NOT YAZPP_LIBRARIES)
-    endif (NOT YAZPP_FIND_QUIETLY)
-  endif (YAZPP_INCLUDES AND YAZPP_LIBRARIES)
+  find_package_handle_standard_args (YAZPP DEFAULT_MSG YAZPP_YAZPP_LIBRARY YAZPP_INCLUDES)
 
   if (YAZPP_FOUND)
     if (NOT YAZPP_FIND_QUIETLY)
