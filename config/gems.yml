@@ -9,6 +9,7 @@
 ## - descripion : A short description of the package.
 ##
 ---
+
 - name: apache_image_resizer
   version: '>= 0.0.7'
   source:
@@ -30,7 +31,7 @@
   homepage: https://rubygems.org/gems/blackwinter-gnuplot
   description: Utility library to aid in interacting with Gnuplot.
 - name: blackwinter-ipaddress
-  version: '= 0.8.0'
+  version: '= 0.8.0.1'
   source:
   homepage: https://rubygems.org/gems/blackwinter-ipaddress
   description: A library designed to make manipulation of IPv4 and IPv6 addresses both powerful and simple.
