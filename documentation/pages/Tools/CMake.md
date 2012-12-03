@@ -28,6 +28,13 @@ Using CMake is simple. The build process is controlled by creating one or more
 a project. Each `CMakeLists.txt` consists of one or more commands. Each command
 has the form `COMMAND (args…)` where `COMMAND` is the name of the command, and args is a white-space separated list of arguments. CMake provides many pre-defined commands, but if you need to, you can add your own commands. In addition, the advanced user can add other makefile generators for a particular compiler/OS combination. (While Unix and MSVC++ is supported currently, other developers are adding other compiler/OS support.) You may wish to study the examples page to see more details.
 
+\section cmake_testing Testing
+
+The `ctest` executable is the \ref cmake test driver program. CMake-generated
+build trees created for projects that use the `ENABLE_TESTING` and `ADD_TEST`
+commands have testing support. This program will run the tests and report
+results.
+
 \section cmake_external Building External Projects
 
 The `ExternalProject` module in CMake 2.8 makes it easier to build projects
