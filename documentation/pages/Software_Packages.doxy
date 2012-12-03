@@ -13,29 +13,12 @@
     <dt>Ferret</dt>
       <dd>\subpage ferret is a Ruby port of the Java Lucene search engine. In the same way as Lucene, it is not a standalone application, but a library you can use to index documents and search for things in them later.</dd>
 
-    <dt>Jekyll</dt>
-      <dd>[Jekyll](http://jekyllrb.com) is a simple, blog aware, static site generator. It takes a template directory (representing the raw form of a website), runs it through Textile or Markdown and Liquid converters, and spits out a complete, static website suitable for serving with Apache or your favorite web server. This is also the engine behind GitHub Pages, which you can use to host your project’s page or blog right here from GitHub.</dd>
-
     <dt>MySQL</dt>
       <dd>\subpage mysql is the world's most popular open source database software, with over
   100 million copies of its software downloaded or distributed throughout it's history. With its superior speed, reliability, and ease of use, MySQL has become the preferred choice for Web, Web 2.0, SaaS, ISV, Telecom companies and forward-thinking corporate IT Managers because it eliminates the major problems associated with downtime, maintenance and administration for modern, online applications.<br>MySQL is a key part of LAMP (Linux, Apache, MySQL, PHP / Perl / Python), the fast-growing open source enterprise software stack. More and more companies are using LAMP as an alternative to expensive proprietary software stacks because of its lower cost and freedom from platform lock-in.</dd>
 
     <dt>sed</dt>
       <dd>The \subpage sed "sed" utility reads the specified files, or the standard input if no files are specified, modifying the input as specified by a list of commands.  The input is then written to the standard output.</dd>
-
-    <dt>XML</dt>
-      <dd>\subpage xml (Extensible Markup Language) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable. It is defined in the XML 1.0 Specification produced by the W3C, and several other related specifications, all gratis open standards.</dd>
-
-    <dt>YAML</dt>
-      <dd>\subpage yaml is a human-readable data serialization format
-      that takes concepts from programming languages such as C, Perl, and Python,
-      and ideas from XML and the data format of electronic mail (RFC 2822).</dd>
-
-    <dt>YAZ</dt>
-      <dd>\subpage yaz is a programmers’ toolkit supporting the development of Z39.50/SRW/SRU clients and servers. Z39.50-2003 (version 3) as well as SRW/SRU version 1.1 are supported in both the client and server roles. The SOLR webservice is supported in the client role through the ZOOM API.</dd>
-
-    <dt>ZOOM</dt>
-      <dd>\subpage zoom is the emerging standard API for information retrieval programming using the Z39.50 protocol. ZOOM's Abstract API specifies semantics for classes representing key IR concepts such as connections, queries, result sets and records; and there are various bindings specifying how those concepts should be represented in various programming languages.</dd>
 
   </dl>
 
@@ -45,6 +28,27 @@
 
     <dt>Ruby</dt>
       <dd>[Ruby](http://ruby-lang.org) is a dynamic, reflective, general-purpose object-oriented programming language that combines syntax inspired by Perl with Smalltalk-like features. Ruby originated in Japan during the mid-1990s and was first developed and designed by Yukihiro “Matz” Matsumoto. It was influenced primarily by Perl, Smalltalk, Eiffel, and Lisp.<br>Ruby supports multiple programming paradigms, including functional, object oriented, imperative and reflective. It also has a dynamic type system and automatic memory management; it is therefore similar in varying respects to Smalltalk, Python, Perl, Lisp, Dylan, Pike, and CLU. </dd>
+
+  </dl>
+
+  \section third_party_data Data serialization formats
+
+  <dl>
+
+    <dt>SRU</dt>
+      <dd>\subpage sru is a standard XML-focused search protocol for Internet search queries, utilizing CQL (Contextual Query Language), a standard syntax for representing queries.</dd>
+
+    <dt>XML</dt>
+      <dd>\subpage xml (Extensible Markup Language) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable. It is defined in the XML 1.0 Specification produced by the W3C, and several other related specifications, all gratis open standards.</dd>
+
+    <dt>YAML</dt>
+      <dd>\subpage yaml is a human-readable data serialization format that takes concepts from programming languages such as C, Perl, and Python, and ideas from XML and the data format of electronic mail (RFC 2822).</dd>
+
+    <dt>YAZ</dt>
+      <dd>\subpage yaz is a programmers’ toolkit supporting the development of Z39.50/SRW/SRU clients and servers. Z39.50-2003 (version 3) as well as SRW/SRU version 1.1 are supported in both the client and server roles. The SOLR webservice is supported in the client role through the ZOOM API.</dd>
+
+    <dt>ZOOM</dt>
+      <dd>\subpage zoom is the emerging standard API for information retrieval programming using the Z39.50 protocol. ZOOM's Abstract API specifies semantics for classes representing key IR concepts such as connections, queries, result sets and records; and there are various bindings specifying how those concepts should be represented in various programming languages.</dd>
 
   </dl>
 
@@ -103,6 +107,9 @@
   \section third_party_web Web Applications
 
   <dl>
+
+    <dt>Jekyll</dt>
+      <dd>[Jekyll](http://jekyllrb.com) is a simple, blog aware, static site generator. It takes a template directory (representing the raw form of a website), runs it through Textile or Markdown and Liquid converters, and spits out a complete, static website suitable for serving with Apache or your favorite web server. This is also the engine behind GitHub Pages, which you can use to host your project’s page or blog right here from GitHub.</dd>
 
     <dt>Mongrel</dt>
       <dd>[Mongrel](https://github.com/evan/mongrel) is an open source software HTTP library and web server. It is used to run Ruby web applications and presents a standard HTTP interface. This makes layering other servers in front of it possible using a web proxy, a load balancer, or a combination of both.</dd>
