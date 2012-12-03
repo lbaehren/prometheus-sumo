@@ -1,20 +1,10 @@
 
 ## ==============================================================================
 ##
-##  CMake project settings
+##  Package information
 ##
 ## ==============================================================================
 
-## Name of the project handled by CMake
-project (YAML_CPP)
-
-## Minimum required version of CMake to configure the project
-cmake_minimum_required (VERSION 2.8)
-
-## Enforced CMake policy
-cmake_policy (VERSION 2.8)
-
-##  Package information
 set (YAML_CPP_VERSION        "0.3.0" )
 set (YAML_CPP_SOURCE_ARCHIVE "yaml-cpp-${YAML_CPP_VERSION}.tar.gz" )
 set (YAML_CPP_URL            "http://yaml-cpp.googlecode.com/files/${YAML_CPP_SOURCE_ARCHIVE}" )
@@ -52,7 +42,7 @@ if (NOT YAML_CPP_FOUND OR YAML_CPP_FORCE_BUILD)
   ## Locate source file to build from
 
   find_file (YAML_CPP_SOURCE ${YAML_CPP_SOURCE_ARCHIVE}
-    PATHS ${PROJECT_SOURCE_DIR}
+    PATHS ${CMAKE_CURRENT_SOURCE_DIR}
     )
 
   if (NOT YAML_CPP_SOURCE)
@@ -64,7 +54,7 @@ if (NOT YAML_CPP_FOUND OR YAML_CPP_FORCE_BUILD)
   if (YAML_CPP_FROM_REPOS)
 
     ExternalProject_Add (yaml-cpp
-      PREFIX ${PROJECT_BINARY_DIR}
+      PREFIX ${CMAKE_CURRENT_BINARY_DIR}
       DOWNLOAD_DIR download
       SOURCE_DIR source
       SVN_REPOSITORY ${YAML_CPP_SVN}
@@ -75,7 +65,7 @@ if (NOT YAML_CPP_FOUND OR YAML_CPP_FORCE_BUILD)
   else (YAML_CPP_FROM_REPOS)
 
     ExternalProject_Add (yaml-cpp
-      PREFIX ${PROJECT_BINARY_DIR}
+      PREFIX ${CMAKE_CURRENT_BINARY_DIR}
       DOWNLOAD_DIR download
       SOURCE_DIR source
       URL ${YAML_CPP_SOURCE}
@@ -85,19 +75,19 @@ if (NOT YAML_CPP_FOUND OR YAML_CPP_FORCE_BUILD)
 
   endif (YAML_CPP_FROM_REPOS)
 
-    ExternalProject_Add_Step (yaml-cpp update_configuration
-      COMMAND ${CMAKE_COMMAND} -E remove CMake*
-      COMMAND ${CMAKE_COMMAND} ..
-      COMMENT "Updating top-level configuration ..."
-      DEPENDEES install
-      DEPENDERS build
-      WORKING_DIRECTORY ${prometheus-sumo_BINARY_DIR}
-    )
+  ExternalProject_Add_Step (yaml-cpp update_configuration
+    COMMAND ${CMAKE_COMMAND} -E remove CMake*
+    COMMAND ${CMAKE_COMMAND} ..
+    COMMENT "Updating top-level configuration ..."
+    DEPENDEES install
+    DEPENDERS build
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+  )
 
 else (NOT YAML_CPP_FOUND OR YAML_CPP_FORCE_BUILD)
 
   add_custom_target (yaml-cpp
-    WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     COMMENT "[yaml-cpp] Found system-wide installation; skipping rebuild!"
     )
 
