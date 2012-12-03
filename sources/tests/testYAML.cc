@@ -266,6 +266,7 @@ int readPackageList (std::string const &filename)
   };
 
   std::set<std::string> attributes;
+  std::set<std::string>::iterator itAttr;
   attributes.insert("name");
   attributes.insert("source");
   attributes.insert("version");
@@ -286,15 +287,24 @@ int readPackageList (std::string const &filename)
       Package tmp;
       // Extract node data ...
 
-      if(const YAML::Node *pName = it->FindValue("source")) {
-        *pName >> tmp.source;
+      if(const YAML::Node *pName = it->FindValue("name")) {
+	*pName >> tmp.name;
       } else {
-        tmp.source = "~";
+	tmp.name = "~";
       }
 
-      (*it)["name"]    >> tmp.name;
-      (*it)["version"] >> tmp.version;
-      // (*it)["source"]  >> tmp.source;
+      if(const YAML::Node *pName = it->FindValue("source")) {
+	*pName >> tmp.source;
+      } else {
+	tmp.source = "~";
+      }
+
+      if(const YAML::Node *pName = it->FindValue("version")) {
+	*pName >> tmp.version;
+      } else {
+	tmp.version = "~";
+      }
+
       // ... and display them
       std::cout << std::setw(25) << tmp.name
                 << "  ::"   << std::setw(12) << tmp.version

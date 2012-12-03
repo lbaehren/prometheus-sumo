@@ -31,6 +31,9 @@
 
 // === Test functions ===========================================================
 
+//_______________________________________________________________________________
+//                                                              test_construction
+
 //! Test construction of a prometheus::config::AttributesMap object
 int test_construction ()
 {
@@ -175,6 +178,9 @@ int test_construction ()
   return status;
 }
 
+//_______________________________________________________________________________
+//                                                          test_parameter_access
+
 //! Test access to the parameters stored in the attributes map
 int test_parameter_access ()
 {
@@ -182,15 +188,37 @@ int test_parameter_access ()
 
   int status = 0;
 
-  prometheus::config::AttributesMap<std::string,int> attr;
+  std::cout << "[1] Test accessing parameters of AttributesMap<string,int>" << std::endl;
+  try {
+    prometheus::config::AttributesMap<std::string,int> attr;
 
-  attr.set("Battleship",2012);
-  attr.set("Battle Los Angeles",2011);
-  attr.set("Prometheus",2012);
-  attr.set("The Abyss",1989);
+    attr.set("Battleship",2012);
+    attr.set("Battle Los Angeles",2011);
+    attr.set("Prometheus",2012);
+    attr.set("The Abyss",1989);
 
-  attr.summary();
-  attr.show();
+    attr.summary();
+    attr.show();
+  } catch (std::exception &e) {
+    std::cout << "ERROR : " << e.what() << std::endl;
+    ++status;
+  }
+
+  std::cout << "[2] Test accessing parameters of AttributesMap<string,string>" << std::endl;
+  try {
+    prometheus::config::AttributesMap<std::string,std::string> attr;
+
+    attr.set("apache_image_resizer",">= 0.0.7");
+    attr.set("apache_secure_download",">= 0.2.1");
+    attr.set("blackwinter-ipaddress","= 0.8.0.1");
+    attr.set("ferret","= 0.11.8.1");
+
+    attr.summary();
+    attr.show();
+  } catch (std::exception &e) {
+    std::cout << "ERROR : " << e.what() << std::endl;
+    ++status;
+  }
 
   return status;
 }

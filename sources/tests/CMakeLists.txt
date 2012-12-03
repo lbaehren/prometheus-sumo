@@ -132,6 +132,10 @@ if (YAML_FOUND)
     add_test (testYAML_packages_debian testYAML --packages ${config_packages_debian_yml})
   endif (config_packages_debian_yml)
 
+  if (config_packages_redhat_yml)
+    add_test (testYAML_packages_redhat testYAML --packages ${config_packages_redhat_yml})
+  endif (config_packages_redhat_yml)
+
 endif (YAML_FOUND)
 
 ## ==============================================================================
