@@ -95,6 +95,9 @@ add_custom_target (FetchRepositories
 
 if (GIT_EXECUTABLE)
 
+  ## Collection of CMake find script to search for components of installed packages
+  add_git_repository (git://github.com/lbaehren/CMakeModules.git)
+
   ## Collection of scripts & snippets
   add_git_repository (git://github.com/blackwinter/scratch.git)
 
