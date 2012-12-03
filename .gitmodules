@@ -1,0 +1,3 @@
+[submodule "config/cmake"]
+	path = config/cmake
+	url = git://github.com/lbaehren/CMakeModules.git

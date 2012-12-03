@@ -144,7 +144,13 @@ fi
 check_cmake_version
 
 ##__________________________________________________________
-## Configure LUS build
+## Initialize Git submodules
+
+git submodule init
+git submodule update
+
+##__________________________________________________________
+## Configure build
 
 if test -d $cmakeBinaryDir ; then {
   ## -- change into the build directory
