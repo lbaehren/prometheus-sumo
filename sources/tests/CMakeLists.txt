@@ -83,9 +83,11 @@ if (TINYXML_FOUND)
   add_executable (testXML testXML.cc)
   ## Linker instructions
   target_link_libraries (testXML ${TINYXML_LIBRARIES})
-
-  add_test (testXML testXML ${xml_dump_beeskow})
-
+  ## Test instructions
+  if (xml_dump_beeskow)
+    add_test (testXML testXML ${xml_dump_beeskow})
+  endif (xml_dump_beeskow)
+  
 endif (TINYXML_FOUND)
 
 ##__________________________________________________________
