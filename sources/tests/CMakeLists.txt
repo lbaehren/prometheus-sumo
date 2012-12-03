@@ -125,8 +125,12 @@ if (YAML_FOUND)
   add_test (testYAML_sequence testYAML --sequence ${PROJECT_SOURCE_DIR}/data/tests/yaml_ScalarsToSequences.yml)
 
   if (config_gems_yml)
-    add_test (testYAML_packages testYAML --packages ${config_gems_yml})
+    add_test (testYAML_packages_gems testYAML --packages ${config_gems_yml})
   endif (config_gems_yml)
+
+  if (config_packages_debian_yml)
+    add_test (testYAML_packages_debian testYAML --packages ${config_packages_debian_yml})
+  endif (config_packages_debian_yml)
 
 endif (YAML_FOUND)
 

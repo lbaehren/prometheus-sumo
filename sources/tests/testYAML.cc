@@ -265,6 +265,13 @@ int readPackageList (std::string const &filename)
     std::string description;
   };
 
+  std::set<std::string> attributes;
+  attributes.insert("name");
+  attributes.insert("source");
+  attributes.insert("version");
+  attributes.insert("homepage");
+  attributes.insert("description");
+
   std::ifstream infile (filename.c_str());
 
   if (infile.is_open()) {
@@ -278,14 +285,21 @@ int readPackageList (std::string const &filename)
       /* Process the contents of the node */
       Package tmp;
       // Extract node data ...
+
+      if(const YAML::Node *pName = it->FindValue("source")) {
+        *pName >> tmp.source;
+      } else {
+        tmp.source = "~";
+      }
+
       (*it)["name"]    >> tmp.name;
       (*it)["version"] >> tmp.version;
-      (*it)["source"]  >> tmp.source;
+      // (*it)["source"]  >> tmp.source;
       // ... and display them
       std::cout << std::setw(25) << tmp.name
-		<< "  ::" << std::setw(12) << tmp.version
-		<< "  ::  " << tmp.source
-		<< std::endl;
+                << "  ::"   << std::setw(12) << tmp.version
+                << "  ::  " << tmp.source
+                << std::endl;
     }
   } else {
     std::cerr << "--> Failed to open file " << filename << std::endl;
