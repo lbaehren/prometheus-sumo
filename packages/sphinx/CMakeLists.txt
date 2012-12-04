@@ -1,20 +1,10 @@
 
 ## ==============================================================================
 ##
-##  CMake project settings
+##  Package information
 ##
 ## ==============================================================================
 
-## Name of the project handled by CMake
-project (SPHINX)
-
-## Minimum required version of CMake to configure the project
-cmake_minimum_required (VERSION 2.8)
-
-## Enforced CMake policy
-cmake_policy (VERSION 2.8)
-
-##  Package information
 set (SPHINX_VERSION        "2.0.4" )
 set (SPHINX_SOURCE_ARCHIVE "sphinx-${SPHINX_VERSION}-release.tar.gz" )
 set (SPHINX_URL            "http://sphinxsearch.com/files/${SPHINX_SOURCE_ARCHIVE}" )
@@ -52,7 +42,7 @@ if (NOT SPHINX_FOUND OR SPHINX_FORCE_BUILD)
   ## Locate source file to build from
 
   find_file (SPHINX_SOURCE ${SPHINX_SOURCE_ARCHIVE}
-    PATHS ${PROJECT_SOURCE_DIR}
+    PATHS ${CMAKE_CURRENT_SOURCE_DIR}
     )
 
   if (NOT SPHINX_SOURCE)
@@ -76,8 +66,8 @@ if (NOT SPHINX_FOUND OR SPHINX_FORCE_BUILD)
   endif (ICONV_LIBRARY_PATH)
 
   configure_file (
-    ${PROJECT_SOURCE_DIR}/configure.patch.in
-    ${PROJECT_BINARY_DIR}/configure.patch
+    ${CMAKE_CURRENT_SOURCE_DIR}/configure.patch.in
+    ${CMAKE_CURRENT_BINARY_DIR}/configure.patch
     )
 
   ## Build package from source
@@ -85,34 +75,44 @@ if (NOT SPHINX_FOUND OR SPHINX_FORCE_BUILD)
   if (SPHINX_FROM_REPOS)
 
     ExternalProject_Add (sphinx
-      PREFIX ${PROJECT_BINARY_DIR}
+      PREFIX ${CMAKE_CURRENT_BINARY_DIR}
       DOWNLOAD_DIR download
       SOURCE_DIR source
       SVN_REPOSITORY ${SPHINX_SVN}
       BUILD_IN_SOURCE 1
-      CONFIGURE_COMMAND ${PROJECT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX}
+      CONFIGURE_COMMAND ${CMAKE_CURRENT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX}
       INSTALL_COMMAND ${PORT_INSTALL_COMMAND} make install
       )
 
   else (SPHINX_FROM_REPOS)
 
     ExternalProject_Add (sphinx
-      PREFIX ${PROJECT_BINARY_DIR}
+      PREFIX ${CMAKE_CURRENT_BINARY_DIR}
       DOWNLOAD_DIR download
       SOURCE_DIR source
       URL ${SPHINX_SOURCE}
       BUILD_IN_SOURCE 1
-      PATCH_COMMAND patch < ${PROJECT_BINARY_DIR}/configure.patch
-      CONFIGURE_COMMAND ${PROJECT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --with-mysql-includes=${MYSQL_INCLUDES} --with-mysql-libs=${MYSQL_LIBRARY_PATH}
+      PATCH_COMMAND patch < ${CMAKE_CURRENT_BINARY_DIR}/configure.patch
+      CONFIGURE_COMMAND ${CMAKE_CURRENT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --with-mysql-includes=${MYSQL_INCLUDES} --with-mysql-libs=${MYSQL_LIBRARY_PATH}
       INSTALL_COMMAND ${PORT_INSTALL_COMMAND} make install
       )
 
   endif (SPHINX_FROM_REPOS)
 
+  ## Update top-level project configuration
+  ExternalProject_Add_Step (sphinx update_configuration
+    COMMAND ${CMAKE_COMMAND} -E remove CMake*
+    COMMAND ${CMAKE_COMMAND} ..
+    COMMENT "Updating top-level configuration ..."
+    DEPENDEES install
+    DEPENDERS build
+    WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+  )
+
 else (NOT SPHINX_FOUND OR SPHINX_FORCE_BUILD)
 
   add_custom_target (sphinx
-    WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     COMMENT "[sphinx] Found system-wide installation; skipping rebuild!"
     )
 

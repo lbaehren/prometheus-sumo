@@ -71,6 +71,7 @@ if (NOT TINYXML_FOUND OR TINYXML2_FORCE_BUILD)
 
   endif (TINYXML2_FROM_REPOS)
 
+  ## Update top-level project configuration
   ExternalProject_Add_Step (tinyxml2 update_configuration
     COMMAND ${CMAKE_COMMAND} -E remove CMake*
     COMMAND ${CMAKE_COMMAND} ..

@@ -1,11 +1,15 @@
 
 ## ==============================================================================
 ##
-##  CMake project settings
+##  Package information
 ##
 ## ==============================================================================
 
-##  Package information
+# YAZ is a programmers’ toolkit supporting the development of Z39.50/SRW/SRU
+# clients and servers. Z39.50-2003 (version 3) as well as SRW/SRU version 1.1
+# are supported in both the client and server roles. The SOLR webservice is
+# supported in the client role through the ZOOM API.
+
 set (YAZ_VERSION          "4.2.38" )
 set (YAZ_VERSION_REQUIRED "400200380" )
 set (YAZ_SOURCE_ARCHIVE   "yaz-${YAZ_VERSION}.tar.gz" )
@@ -99,6 +103,7 @@ if (NOT YAZ_FOUND OR YAZ_FORCE_BUILD)
 
   endif (YAZ_FROM_REPOS)
 
+  ## Update top-level project configuration
   ExternalProject_Add_Step (yaz update_configuration
     COMMAND ${CMAKE_COMMAND} -E remove CMake*
     COMMAND ${CMAKE_COMMAND} ..

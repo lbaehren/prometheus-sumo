@@ -1,20 +1,10 @@
 
 ## ==============================================================================
 ##
-##  CMake project settings
+##  Package information
 ##
 ## ==============================================================================
 
-## Name of the project handled by CMake
-project (RANT)
-
-## Minimum required version of CMake to configure the project
-cmake_minimum_required (VERSION 2.8)
-
-## Enforced CMake policy
-cmake_policy (VERSION 2.8)
-
-##  Package information
 set (RANT_VERSION        "0.5.8" )
 set (RANT_SOURCE_ARCHIVE "rant-${RANT_VERSION}.tar.gz" )
 set (RANT_URL            "http://rubyforge.org/frs/download.php/14775/${RANT_SOURCE_ARCHIVE}" )
@@ -69,7 +59,7 @@ if (NOT RANT_FOUND OR RANT_FORCE_BUILD)
   ## Locate source file to build from
 
   find_file (RANT_SOURCE ${RANT_SOURCE_ARCHIVE}
-    PATHS ${PROJECT_SOURCE_DIR}
+    PATHS ${CMAKE_CURRENT_SOURCE_DIR}
     )
 
   if (NOT RANT_SOURCE)
@@ -81,7 +71,7 @@ if (NOT RANT_FOUND OR RANT_FORCE_BUILD)
   if (RANT_FROM_REPOS)
 
     ExternalProject_Add (rant
-      PREFIX ${PROJECT_BINARY_DIR}
+      PREFIX ${CMAKE_CURRENT_BINARY_DIR}
       DOWNLOAD_DIR download
       SOURCE_DIR source
       SVN_REPOSITORY ${RANT_SVN}
@@ -94,7 +84,7 @@ if (NOT RANT_FOUND OR RANT_FORCE_BUILD)
   else (RANT_FROM_REPOS)
 
     ExternalProject_Add (rant
-      PREFIX ${PROJECT_BINARY_DIR}
+      PREFIX ${CMAKE_CURRENT_BINARY_DIR}
       DOWNLOAD_DIR download
       SOURCE_DIR source
       URL ${RANT_SOURCE}
@@ -106,10 +96,20 @@ if (NOT RANT_FOUND OR RANT_FORCE_BUILD)
 
   endif (RANT_FROM_REPOS)
 
+  ## Update top-level project configuration
+  ExternalProject_Add_Step (rant update_configuration
+    COMMAND ${CMAKE_COMMAND} -E remove CMake*
+    COMMAND ${CMAKE_COMMAND} ..
+    COMMENT "Updating top-level configuration ..."
+    DEPENDEES install
+    DEPENDERS build
+    WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+  )
+
 else (NOT RANT_FOUND OR RANT_FORCE_BUILD)
 
   add_custom_target (rant
-    WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     COMMENT "[rant] Found system-wide installation; skipping rebuild!"
     )
 

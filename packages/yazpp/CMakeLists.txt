@@ -1,7 +1,7 @@
 
 ## ==============================================================================
 ##
-##  CMake project settings
+##  Package information
 ##
 ## ==============================================================================
 
@@ -12,7 +12,6 @@
 # ZOOM C++ binding and a generic client/server API based on the Observer/Observable
 # design pattern.
 
-##  Package information
 set (YAZPP_VERSION        "1.3.2" )
 set (YAZPP_SOURCE_ARCHIVE "yazpp-${YAZPP_VERSION}.tar.gz" )
 set (YAZPP_URL            "http://ftp.indexdata.dk/pub/yazpp/${YAZPP_SOURCE_ARCHIVE}" )
@@ -89,6 +88,7 @@ if (NOT YAZPP_FOUND OR YAZPP_FORCE_BUILD)
 
   endif (YAZPP_FROM_REPOS)
 
+  ## Update top-level project configuration
   ExternalProject_Add_Step (yazpp update_configuration
     COMMAND ${CMAKE_COMMAND} -E remove CMake*
     COMMAND ${CMAKE_COMMAND} ..
