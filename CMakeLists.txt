@@ -21,9 +21,11 @@ set (PROJECT_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJEC
 
 ## Commonly used variables
 
-set (REQUIRED_VERSION_RUBY    1.8  )
+set (Ruby_FIND_VERSION_MAJOR  1 )
+set (Ruby_FIND_VERSION_MINOR  8 )
+set (REQUIRED_VERSION_RUBY    "${Ruby_FIND_VERSION_MAJOR}.${Ruby_FIND_VERSION_MINOR}" )
 set (REQUIRED_VERSION_DOXYGEN "100800000")
-set (NOF_SKIPPED_TESTS      0    )
+set (NOF_SKIPPED_TESTS        0    )
 
 ## ==============================================================================
 ##
