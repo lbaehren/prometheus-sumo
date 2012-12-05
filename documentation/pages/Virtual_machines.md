@@ -76,12 +76,10 @@ apt-get install mysql-server
 
 \subsection vm_linux_ubuntu_1204 Ubuntu 12.04 LTS (Precise Pangolin)
 
-  - Installation base : _ubuntu-12.04-desktop-i386.iso_
+  - Installation base : _ubuntu-12.04.1-desktop-i386.iso_
   - Packages installed after setting up the base system:
 ~~~~
-apt-get install build-essential cmake git-svn subversion doxygen
-apt-get install ruby1.8-dev libboost-all-dev
-apt-get install mysql-server
+apt-get install build-essential cmake git-svn mysql-server
 ~~~~
   - MySQL server Root password: mysqlR00t
 
@@ -90,9 +88,7 @@ apt-get install mysql-server
   - Installation base : _ubuntu-12.10-desktop-i386.iso_
   - Packages installed after setting up the base system:
 ~~~~
-apt-get install build-essential cmake git-svn subversion doxygen
-apt-get install ruby1.8-dev libboost-all-dev
-apt-get install mysql-server
+apt-get install build-essential cmake git-svn mysql-server
 ~~~~
   - MySQL server Root password: mysqlR00t
 
