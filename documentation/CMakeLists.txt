@@ -98,8 +98,11 @@ if (DOXYGEN_FOUND)
     endif (LATEX_COMPILER)
   endif (WITH_LATEX_DOC)
 
+  ##________________________________________________________
+  ## Testing
+
   if (ENABLE_TESTING)
-    add_test (documentation Documentation)
+    add_test (DoxygenDocumentation ${CMAKE_BUILD_TOOL} Documentation)
   endif (ENABLE_TESTING)
 
 else (DOXYGEN_FOUND)

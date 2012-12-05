@@ -33,6 +33,8 @@ endif (PODOFO_FOUND)
 ##                                               KWsys test program(s)
 
 if (KWSYS_FOUND)
+  ## header files
+  include_directories (${KWSYS_INCLUDES})
   ## compiler
   add_executable (testKWSys testKWSys.cc)
   ## linker
