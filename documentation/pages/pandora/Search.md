@@ -5,19 +5,23 @@ Search    {#pandora_search}
 
 - \ref ferret
 
-\section pandora_search_ferret Inegration of Ferret search engine
+\section pandora_search_ferret Integration of Ferret search engine
 
 Components providing or using the \ref ferret with \ref pandora :
 
 \verbatim
   pandora
   |-- app
-  |   `-- models
-  |       `-- image.rb
+  |   |-- models
+  |   |   `-- image.rb
+  |   `-- controllers
+  |       `-- search_controller.rb
   |-- config
   |   `-- app
   |       `-- query.yml                 ...  Set default_engine handling queries
   |-- lib
+  |   |-- query.rb
+  |   |-- query_analyzer.rb
   |   |-- engine
   |   |   |-- ferret
   |   |   |   `-- analyzer.rb

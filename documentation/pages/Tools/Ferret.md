@@ -322,6 +322,7 @@ get indexed):
 \section ferret_references References
 
 - [Ferret project page](http://rubyforge.org/projects/ferret) on rubyforge.org
+- [Ferret search library documentation](http://prometheus-srv3.uni-koeln.de/ruby-doc/ferret)
 - [acts_as_ferret](https://github.com/jkraemer/acts_as_ferret) - Rails full text search plugin
 - [acts_as_ferret API documentation](http://rdoc.info/github/jkraemer/acts_as_ferret)
 - Benjamin Krause, Mathias Meyer (2008) [Ferret: Lucene-Nachfolger für Ruby](http://www.heise.de/developer/artikel/Ferret-Lucene-Nachfolger-fuer-Ruby-227116.html)
