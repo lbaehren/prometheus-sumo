@@ -47,23 +47,21 @@ add_subdirectory (yaml-cpp)
 add_subdirectory (yaz)
 add_subdirectory (yazpp)
 
-if (WITH_CLAMAV)
+if (WITH_PACKAGE_CLAMAV)
   add_subdirectory (clamav)
-endif (WITH_CLAMAV)
+endif (WITH_PACKAGE_CLAMAV)
 
 if (WITH_DOXYGEN)
   add_subdirectory (doxygen)
 endif (WITH_DOXYGEN)
 
-if (RUBY_EXECUTABLE)
-  add_subdirectory (rant)
-endif (RUBY_EXECUTABLE)
-
-if (WITH_SPHINX)
+if (WITH_PACKAGE_SPHINX)
   if (MYSQL_FOUND)
     add_subdirectory (sphinx)
+  else (MYSQL_FOUND)
+    message (STATUS "Unable to install build package Sphinx - missing MySQL!")
   endif (MYSQL_FOUND)
-endif (WITH_SPHINX)
+endif (WITH_PACKAGE_SPHINX)
 
 ## ==============================================================================
 ##
