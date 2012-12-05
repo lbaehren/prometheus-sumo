@@ -31,7 +31,7 @@ git config --global alias.st status  # make `git st` work
 git config -l                        # list all configuration options
 \endverbatim
 
-\section git_submodules Sub-Modules
+\section git_submodules Submodules
 
 Large projects are often composed of smaller, self-contained modules. For
 example, an embedded Linux distribution's source tree would include every
@@ -40,15 +40,74 @@ player might need to build against a specific, known-working version of a
 decompression library; several independent programs might all share the same
 build scripts.
 
-With centralized revision control systems this is often accomplished by including every module in one single repository. Developers can check out all modules or only the modules they need to work with. They can even modify files across several modules in a single commit while moving things around or updating APIs and translations.
+With centralized revision control systems this is often accomplished by including
+every module in one single repository. Developers can check out all modules or
+only the modules they need to work with. They can even modify files across several
+modules in a single commit while moving things around or updating APIs and
+translations.
 
-Git does not allow partial checkouts, so duplicating this approach in Git would force developers to keep a local copy of modules they are not interested in touching. Commits in an enormous checkout would be slower than you'd expect as Git would have to scan every directory for changes. If modules have a lot of local history, clones would take forever.
+Git does not allow partial checkouts, so duplicating this approach in Git would
+force developers to keep a local copy of modules they are not interested in
+touching. Commits in an enormous checkout would be slower than you'd expect as
+Git would have to scan every directory for changes. If modules have a lot of
+local history, clones would take forever.
 
-On the plus side, distributed revision control systems can much better integrate with external sources. In a centralized model, a single arbitrary snapshot of the external project is exported from its own revision control and then imported into the local revision control on a vendor branch. All the history is hidden. With distributed revision control you can clone the entire external history and much more easily follow development and re-merge local changes.
+On the plus side, distributed revision control systems can much better integrate
+with external sources. In a centralized model, a single arbitrary snapshot of
+the external project is exported from its own revision control and then imported
+into the local revision control on a vendor branch. All the history is hidden.
+With distributed revision control you can clone the entire external history and
+much more easily follow development and re-merge local changes.
 
 Git's submodule support allows a repository to contain, as a subdirectory, a checkout of an external project. Submodules maintain their own identity; the submodule support just stores the submodule repository location and commit ID, so other developers who clone the containing project (“superproject”) can easily clone all the submodules at the same revision. Partial checkouts of the superproject are possible: you can tell Git to clone none, some or all of the submodules.
 
 The git submodule command is available since Git 1.5.3. Users with Git 1.5.2 can look up the submodule commits in the repository and manually check them out; earlier versions won't recognize the submodules at all.
+
+\verbatim
+  git submodule [--quiet] add [-b branch] [-f|--force]
+                [--reference <repository>] [--] <repository> [<path>]
+  git submodule [--quiet] status [--cached] [--recursive] [--] [<path>...]
+  git submodule [--quiet] init [--] [<path>...]
+  git submodule [--quiet] update [--init] [-N|--no-fetch] [--rebase]
+                [--reference <repository>] [--merge] [--recursive] [--] [<path>...]
+\endverbatim
+
+\section git_subtree Subtrees
+
+Subtrees allow subprojects to be included within a subdirectory of the main
+project, optionally including the subproject's entire history.
+
+For example, you could include the source code for a library as a subdirectory of
+your application.
+
+Subtrees are not to be confused with \ref git_submodules, which are meant for the same task.
+Unlike submodules, subtrees do not need any special constructions (like .gitmodule
+files or gitlinks) be present in your repository, and do not force end-users of
+your repository to do anything special or to understand how subtrees work. A
+subtree is just a subdirectory that can be committed to, branched, and merged along
+with your project in any way you want.
+
+They are also not to be confused with using the subtree merge strategy. The main
+difference is that, besides merging the other project as a subdirectory, you can
+also extract the entire history of a subdirectory from your project and make it
+into a standalone project. Unlike the subtree merge strategy you can alternate back
+and forth between these two operations. If the standalone library gets updated, you
+can automatically merge the changes into your project; if you update the library
+inside your project, you can "split" the changes back out again and merge them back
+into the library project.
+
+For example, if a library you made for one application ends up being useful
+elsewhere, you can extract its entire history and publish that as its own git
+repository, without accidentally intermingling the history of your application
+project.
+
+\verbatim
+  git subtree add   -P <prefix> <commit>
+  git subtree pull  -P <prefix> <repository> <refspec...>
+  git subtree push  -P <prefix> <repository> <refspec...>
+  git subtree merge -P <prefix> <commit>
+  git subtree split -P <prefix> [OPTIONS] [<commit>]
+\endverbatim
 
 \section git_timetracking Time-tracking
 
