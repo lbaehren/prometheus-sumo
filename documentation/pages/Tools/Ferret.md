@@ -70,16 +70,18 @@ To add a document you can simply add a string or an array of strings. This will
 store all the strings in the "" (ie empty string) field (unless you specify the
 default field when you create the index).
 
-    index << "This is a new document to be indexed"
-    index << ["And here", "is another", "new document", "to be indexed"]
+\code
+index << "This is a new document to be indexed"
+index << ["And here", "is another", "new document", "to be indexed"]
+\endcode
 
 But these are pretty simple documents. If this is all you want to index you
 could probably just use SimpleSearch. So let's give our documents some fields;
 
-  \verbatim
-  index << {:title => "Programming Ruby", :content => "blah blah blah"}
-  index << {:title => "Programming Ruby", :content => "yada yada yada"}
-  \endverbatim
+\code
+index << {:title => "Programming Ruby", :content => "blah blah blah"}
+index << {:title => "Programming Ruby", :content => "yada yada yada"}
+\endcode
 
 Note the way that all field-names are Symbols. Although Strings will work,
 this is a best-practice in Ferret. Or if you are indexing data stored in a
@@ -93,22 +95,22 @@ So far we have been storing and tokenizing all of the input data along with
 term vectors. If we want to change this we need to change the way we setup the
 index. You must create a FieldInfos object describing the index:
 
-  \verbatim
-  field_infos = FieldInfos.new(:store => :no,
-                               :index => :untokenized_omit_norms,
-                               :term_vector => :no)
-  \endverbatim
+\code
+field_infos = FieldInfos.new(:store => :no,
+                             :index => :untokenized_omit_norms,
+                             :term_vector => :no)
+\endcode
 
-  The values that you set FieldInfos to have will be used by default by all
-  fields. If you want to change the properties for specific fields, you need to
-  add a FieldInfo to field_infos.
+The values that you set FieldInfos to have will be used by default by all
+fields. If you want to change the properties for specific fields, you need to
+add a `FieldInfo` to `field_infos`.
 
-  \verbatim
+\code
   field_infos.add_field(:title, :store => :yes, :index => :yes, :boost => 10.0)
   field_infos.add_field(:content, :store => :yes,
                                   :index => :yes,
                                   :term_vector => :with_positions_offsets)
-  \endverbatim
+\endcode
 
 If you need to add a field to an already open index you do so like this:
 
