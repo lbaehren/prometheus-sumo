@@ -11,7 +11,7 @@
 # supported in the client role through the ZOOM API.
 
 set (YAZ_VERSION          "4.2.38" )
-set (YAZ_VERSION_REQUIRED "400200380" )
+set (YAZ_VERSION_REQUIRED "40020038" )
 set (YAZ_SOURCE_ARCHIVE   "yaz-${YAZ_VERSION}.tar.gz" )
 set (YAZ_URL              "http://ftp.indexdata.dk/pub/yaz/${YAZ_SOURCE_ARCHIVE}" )
 set (YAZ_SVN              "" )
