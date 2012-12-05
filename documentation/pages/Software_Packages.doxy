@@ -108,11 +108,17 @@
 
   <dl>
 
+    <dt>ClickandBuy</dt>
+      <dd>\subpage clickandbuy is one of the leading payment systems on the internet. More than 16,000 merchants and 13 million users benefit from this complete service in 30 countries, which includes 120 different currencies and 50 different payment methods.</dd>
+
     <dt>Jekyll</dt>
       <dd>[Jekyll](http://jekyllrb.com) is a simple, blog aware, static site generator. It takes a template directory (representing the raw form of a website), runs it through Textile or Markdown and Liquid converters, and spits out a complete, static website suitable for serving with Apache or your favorite web server. This is also the engine behind GitHub Pages, which you can use to host your project’s page or blog right here from GitHub.</dd>
 
     <dt>Mongrel</dt>
       <dd>[Mongrel](https://github.com/evan/mongrel) is an open source software HTTP library and web server. It is used to run Ruby web applications and presents a standard HTTP interface. This makes layering other servers in front of it possible using a web proxy, a load balancer, or a combination of both.</dd>
+
+    <dt>PayPal</dt>
+     <dd>\subpage paypal is a global e-commerce business allowing payments and money transfers to be made through the Internet. Online money transfers serve as electronic alternatives to paying with traditional paper methods, such as checks and money orders.</dd>
 
     <dt>Ruby on Rails</dt>
       <dd>\subpage refman_rails, often shortened to Rails or RoR, is a web application development framework written in the Ruby language. It is designed to make programming web applications easier by making assumptions about what every developer needs to get started. It allows you to write less code while accomplishing more than many other languages and frameworks. Experienced Rails developers also report that it makes web application development more fun.</dd>

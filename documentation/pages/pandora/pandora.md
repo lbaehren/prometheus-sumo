@@ -13,23 +13,12 @@ Software, released under the terms of the [GNU Affero General Public License](ht
 
 \section pandora_pages Related pages
 
-\subsection pandora_pages_local ... local
+- **Development** | \subpage pandora_checkout | \subpage pandora_install | \subpage pandora_testing | \subpage coding_guidelines
 
-\li \subpage pandora_checkout
-\li \subpage pandora_install
-\li \subpage database
-\li \ref database_import
-\li \subpage pandora_testing
-\li \subpage pandora_deployment
-\li \subpage pandora_procedures
-\li \subpage pandora_troubleshooting
-\li \subpage coding_guidelines
-\li \subpage database_import
-\li \subpage database_dumps
-\li \subpage database_suppliers
+- **Implementation** | \subpage pandora_transactions | \subpage pandora_source_model | \subpage pandora_search
 
-\subsection pandora_pages_online ... online
+- **Procedures** | \subpage pandora_deployment | \subpage pandora_procedures
 
-\li [The prometheus image archive API](http://prometheus.uni-koeln.de/pandora/en/api)
-\li [Frequently asked questions](http://prometheus-bildarchiv.de/en/faq)
-\li [Help pages](http://prometheus.uni-koeln.de/pandora/en/help)
+- **Database** | \subpage pandora_database | \subpage database_import | \subpage database_dumps | \subpage database_suppliers
+
+- **Support** | \subpage pandora_troubleshooting | [Frequently asked questions](http://prometheus-bildarchiv.de/en/faq) | [Help pages](http://prometheus.uni-koeln.de/pandora/en/help) | [Image archive API](http://prometheus.uni-koeln.de/pandora/en/api)

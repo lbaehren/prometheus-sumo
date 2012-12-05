@@ -1,82 +1,77 @@
-/*!
+Ferret search engine    {#ferret}
+====================
 
-  \page ferret Ferret search engine
+\tableofcontents
 
-  \tableofcontents
+Ferret is a Ruby port of the [Java Lucene](http://jakarta.apache.org/lucene) search engine. In the same way as Lucene, it is not a standalone application, but a library you can use to index documents and search for things in them later.
 
-  Ferret is a Ruby port of the [Java Lucene](http://jakarta.apache.org/lucene) search engine. In the same way as Lucene, it is not a standalone application, but a library you can use to index documents and search for things in them later.
+\section ferret_install Installation
 
-  \section ferret_install Installation
+If you have gems installed you can simply do;
 
-  If you have gems installed you can simply do;
+\verbatim
+gem install ferret
+\endverbatim
 
-  \verbatim
-  gem install ferret
-  \endverbatim
+Otherwise, you will need Rake installed. De-compress the archive and enter its
+top directory.
 
-  Otherwise, you will need Rake installed. De-compress the archive and enter its
-  top directory.
+\verbatim
+tar zxpvf ferret-<version>.tar.gz
+cd ferret-<version>
+\endverbatim
 
-  \verbatim
-  tar zxpvf ferret-<version>.tar.gz
-  cd ferret-<version>
-  \endverbatim
+Run the following;
 
-  Run the following;
+    $ rake ext
+    $ ruby setup.rb config
+    $ ruby setup.rb setup
+    $ ruby setup.rb install
 
-  \verbatim
-  $ rake ext
-  $ ruby setup.rb config
-  $ ruby setup.rb setup
-  $ ruby setup.rb install
-  \endverbatim
+These simple steps install ferret in the default location of Ruby libraries.
+You can also install files into your favorite directory by supplying setup.rb
+some options. Try;
 
-  These simple steps install ferret in the default location of Ruby libraries.
-  You can also install files into your favorite directory by supplying setup.rb
-  some options. Try;
+\verbatim
+$ ruby setup.rb --help
+\endverbatim
 
-  \verbatim
-  $ ruby setup.rb --help
-  \endverbatim
+\section ferret_basic_operation Basic operation
 
-  \section ferret_basic_operation Basic operation
+\subsection ferret_index Creating an index
 
-  \subsection ferret_index Creating an index
+To create an in memory index is very simple;
 
-  To create an in memory index is very simple;
+\code
+index = Index::Index.new()
+\endcode
 
-  \verbatim
-  index = Index::Index.new()
-  \endverbatim
+To create a persistent index;
 
-  To create a persistent index;
-
-  \verbatim
-  index = Index::Index.new(:path => '/path/to/index')
-  \endverbatim
+\code
+index = Index::Index.new(:path => '/path/to/index')
+\endcode
 
 Both of these methods create new Indexes with the StandardAnalyzer. An
 analyzer is what you use to divide the input data up into tokens which you can
 search for later. If you'd like to use a different analyzer you can specify it
 here, eg;
 
-  \verbatim
-  index = Index::Index.new(:path => '/path/to/index',
-                           :analyzer => Analysis::WhiteSpaceAnalyzer.new)
-  \endverbatim
+\code
+index = Index::Index.new(:path => '/path/to/index',
+                         :analyzer => Analysis::WhiteSpaceAnalyzer.new)
+\endcode
 
-  For more options when creating an Index refer to \c Ferret::Index::Index.
+For more options when creating an Index refer to \c Ferret::Index::Index.
 
-  \subsection ferret_documents Adding Documents
+\subsection ferret_documents Adding Documents
 
 To add a document you can simply add a string or an array of strings. This will
 store all the strings in the "" (ie empty string) field (unless you specify the
 default field when you create the index).
 
-  \verbatim
-  index << "This is a new document to be indexed"
-  index << ["And here", "is another", "new document", "to be indexed"]
-  \endverbatim
+    index << "This is a new document to be indexed"
+    index << ["And here", "is another", "new document", "to be indexed"]
 
 But these are pretty simple documents. If this is all you want to index you
 could probably just use SimpleSearch. So let's give our documents some fields;
@@ -90,9 +85,9 @@ Note the way that all field-names are Symbols. Although Strings will work,
 this is a best-practice in Ferret. Or if you are indexing data stored in a
 database, you'll probably want to store the id;
 
-  \verbatim
-  index << {:id => row.id, :title => row.title, :date => row.date}
-  \endverbatim
+\code
+index << {:id => row.id, :title => row.title, :date => row.date}
+\endcode
 
 So far we have been storing and tokenizing all of the input data along with
 term vectors. If we want to change this we need to change the way we setup the
@@ -115,72 +110,74 @@ index. You must create a FieldInfos object describing the index:
                                   :term_vector => :with_positions_offsets)
   \endverbatim
 
-  If you need to add a field to an already open index you do so like this:
+If you need to add a field to an already open index you do so like this:
 
-  \verbatim
-  index.field_infos.add_field(:new_field, :store => :yes)
-  \endverbatim
+\code
+index.field_infos.add_field(:new_field, :store => :yes)
+\endcode
 
-  \subsection ferret_search Searching
+\subsection ferret_search Searching
 
-  Now that we have data in our index, how do we actually use this index to
-  search the data? The Index offers two search methods, \c Index\#search and
-  \c Index\#search_each. The first method returns a \c Ferret::Index::TopDocs object.
-  The second we'll show here. Lets say we wanted to find all documents with the
-  phrase "quick brown fox" in the content field. We'd write;
+Now that we have data in our index, how do we actually use this index to
+search the data? The Index offers two search methods, \c Index\#search and
+\c Index\#search_each. The first method returns a \c Ferret::Index::TopDocs object.
+The second we'll show here. Lets say we wanted to find all documents with the
+phrase "quick brown fox" in the content field. We'd write;
 
-  \verbatim
-  index.search_each('content:"quick brown fox"') do |id, score|
-    puts "Document #{id} found with a score of #{score}"
-  end
-  \endverbatim
+\code
+index.search_each('content:"quick brown fox"') do |id, score|
+  puts "Document #{id} found with a score of #{score}"
+end
+\endcode
 
 But "fast" has a pretty similar meaning to "quick" and we don't mind if the
 fox is a little red. Also, the phrase could be in the title so we'll search
 there as well. So we could expand our search like this;
 
-    index.search_each('title|content:"quick|fast brown|red fox"') do |id, score|
-      puts "Document #{id} found with a score of #{score}"
-    end
+\code
+index.search_each('title|content:"quick|fast brown|red fox"') do |id, score|
+  puts "Document #{id} found with a score of #{score}"
+end
+\endcode
 
-  What if we want to find all documents entered on or after 5th of September,
-  2005 with the words "ruby" or "rails" in any field. We could type something like;
+What if we want to find all documents entered on or after 5th of September,
+2005 with the words "ruby" or "rails" in any field. We could type something like;
 
-  \verbatim
-  index.search_each('date:( >= 20050905) *:(ruby OR rails)') do |id, score|
-    puts "Document #{index[id][:title]} found with a score of #{score}"
-  end
-  \endverbatim
+\code
+index.search_each('date:( >= 20050905) *:(ruby OR rails)') do |id, score|
+  puts "Document #{index[id][:title]} found with a score of #{score}"
+end
+\endcode
 
-  Ferret has quite a complex query language. To find out more about Ferret's
-  query language, see \c Ferret::QueryParser. You can also construct even more
-  complex queries like \c Ferret::Search::Spans by hand. See \c Ferret::Search::Query
-  for more information.
+Ferret has quite a complex query language. To find out more about Ferret's
+query language, see \c Ferret::QueryParser. You can also construct even more
+complex queries like \c Ferret::Search::Spans by hand. See \c Ferret::Search::Query
+for more information.
 
-  \section ferret_rails Rails plugin: acts_as_ferret
+\section ferret_rails Rails plugin: acts_as_ferret
 
-  Ferret based full text search for any ActiveRecord model
+Ferret based full text search for any ActiveRecord model
 
-  \subsection ferret_rails_install Installation
+\subsection ferret_rails_install Installation
 
-  For system-wide installation with Rubygems run
+For system-wide installation with Rubygems run
 
-  \verbatim
-  sudo gem install acts_as_ferret
-  \endverbatim
+\verbatim
+sudo gem install acts_as_ferret
+\endverbatim
 
-  Inside your \ref refman_rails project you can use the \a plugin script
+Inside your \ref refman_rails project you can use the \a plugin script
 
-  \verbatim
-  script/plugin install svn://projects.jkraemer.net/acts_as_ferret/trunk/plugin/acts_as_ferret
-  \endverbatim
+\verbatim
+script/plugin install svn://projects.jkraemer.net/acts_as_ferret/trunk/plugin/acts_as_ferret
+\endverbatim
 
-  \subsection ferret_rails_config Central configuration file
+\subsection ferret_rails_config Central configuration file
 
-  With this option, all acts_as_ferret indexes are configured in a single file,
-  \c RAILS_ROOT/config/aaf.rb:
+With this option, all acts_as_ferret indexes are configured in a single file,
+\c RAILS_ROOT/config/aaf.rb:
 
-  \verbatim
+\code
 ActsAsFerret::define_index( 'my_index',
                             :models => {
                               SomeModel => {
@@ -197,23 +194,23 @@ ActsAsFerret::define_index( 'some_other_index',
                               Foo => { :fields => { ... } },
                               Bar => { ... },
                             } )
-  \endverbatim
+\endcode
 
-  As you can see for every index you want to define there's a single call, and
-  each model that should go into the index gets it's own ferret options hash
-  (see the acts_as_ferret class method docs for all available options).
+As you can see for every index you want to define there's a single call, and
+each model that should go into the index gets it's own ferret options hash
+(see the acts_as_ferret class method docs for all available options).
 
-  \subsection ferret_rails_usage Basic usage
+\subsection ferret_rails_usage Basic usage
 
-  To use acts_as_ferret in your project, add the following line to your
-  project's \c config/environment.rb:
+To use acts_as_ferret in your project, add the following line to your
+project's \c config/environment.rb:
 
-  \verbatim
-  require 'acts_as_ferret'
-  \endverbatim
+\code
+require 'acts_as_ferret'
+\endcode
 
-  Include the following in your model class (specifiying the fields you want to
-  get indexed):
+Include the following in your model class (specifiying the fields you want to
+get indexed):
 
   \verbatim
   class Member < ActiveRecord::Base
@@ -322,64 +319,10 @@ ActsAsFerret::define_index( 'some_other_index',
   results. If an author result is a direct match, it still may be ranked above
   a title result.
 
-  \section ferret_pandora Integration with pandora
+\section ferret_references References
 
-  Components providing or using Ferret with \ref manual_pandora :
-
-  \verbatim
-  pandora
-  |-- app
-  |   `-- models
-  |       `-- image.rb
-  |-- config
-  |   `-- app
-  |       `-- query.yml                 ...  Set default_engine handling queries
-  |-- lib
-  |   |-- engine
-  |   |   |-- ferret
-  |   |   |   `-- analyzer.rb
-  |   |   `-- ferret.rb
-  |   `-- extensions
-  |       `-- to_ferret_doc.rb
-  `-- vendor
-      `-- plugins
-          `-- acts_as_ferret
-  \endverbatim
-
-  Let's have a closer look at some of the components:
-
-  \li Analyzer (\c lib/engine/ferret/analyzer.rb)
-  \verbatim
-  class Engine::Ferret
-
-    class Analyzer < Ferret::Analysis::Analyzer
-
-      include Ferret::Analysis
-
-      def self.normalize!(str)
-        str.replace_diacritics!
-        str.gsub!(/'/, '’')
-      end
-
-      def token_stream(field, str)
-        self.class.normalize!(str)
-
-        ts = StandardTokenizer.new(str)
-        ts = LowerCaseFilter.new(ts)
-        ts = HyphenFilter.new(ts)
-      end
-
-    end
-
-  end
-  \endverbatim
-
-  \section ferret_references References
-
-  - [Ferret project page](http://rubyforge.org/projects/ferret) on rubyforge.org
-  - [acts_as_ferret](https://github.com/jkraemer/acts_as_ferret) - Rails full text search plugin
-  - [acts_as_ferret API documentation](http://rdoc.info/github/jkraemer/acts_as_ferret)
-  - Benjamin Krause, Mathias Meyer (2008) [Ferret: Lucene-Nachfolger für Ruby](http://www.heise.de/developer/artikel/Ferret-Lucene-Nachfolger-fuer-Ruby-227116.html)
-  - [acts_as_ferret Tutorial](http://www.gleanr.com/gleans/24180_acts_as_ferret_tutorial_rails_envy) (gregg, 2007)
-
-*/
+- [Ferret project page](http://rubyforge.org/projects/ferret) on rubyforge.org
+- [acts_as_ferret](https://github.com/jkraemer/acts_as_ferret) - Rails full text search plugin
+- [acts_as_ferret API documentation](http://rdoc.info/github/jkraemer/acts_as_ferret)
+- Benjamin Krause, Mathias Meyer (2008) [Ferret: Lucene-Nachfolger für Ruby](http://www.heise.de/developer/artikel/Ferret-Lucene-Nachfolger-fuer-Ruby-227116.html)
+- [acts_as_ferret Tutorial](http://www.gleanr.com/gleans/24180_acts_as_ferret_tutorial_rails_envy) (gregg, 2007)
