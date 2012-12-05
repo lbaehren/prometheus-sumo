@@ -157,19 +157,6 @@ foreach (_cmakeModule
   find_package (${_cmakeModule})
 endforeach (_cmakeModule)
 
-## Decomposition of Ruby version number - this is not done by the standard module
-
-if (RUBY_VERSION)
-  ## Convert string to list of numbers
-  string (REGEX REPLACE "\\." ";" RUBY_VERSION_LIST ${RUBY_VERSION})
-  ## Retrieve individual elements in the list
-  list(GET RUBY_VERSION_LIST 0 RUBY_VERSION_MAJOR)
-  list(GET RUBY_VERSION_LIST 1 RUBY_VERSION_MINOR)
-  list(GET RUBY_VERSION_LIST 2 RUBY_VERSION_PATCH)
-  ## Ruby release series
-  set (RUBY_VERSION_SERIES "${RUBY_VERSION_MAJOR}.${RUBY_VERSION_MAJOR}")
-endif (RUBY_VERSION)
-
 ## ==============================================================================
 ##
 ##  Project sub-directories
