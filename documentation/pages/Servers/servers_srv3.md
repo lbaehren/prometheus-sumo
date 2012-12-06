@@ -31,9 +31,6 @@ prometheus-srv3.uni-koeln.de    {#servers_srv3}
  │   ├── lib
  │   └── share
  └── web
-     ├── etc -> ../etc/web
-     └── www
-         └── virtualbox            ...  Virtual box appliances
 ~~~~
 
 \section servers_srv3_doc Hosted documentation

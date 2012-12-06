@@ -24,7 +24,7 @@ prometheus-srv1.uni-koeln.de    {#servers_srv1}
  │   └── redesign2009          ...  Graphics assets for Redesign 2009
  └── web
      └── www
-	 └── virtualbox        ...  VirtualBox VM images
+         └── virtualbox        ...  VirtualBox VM images
 ~~~~
 
 \section servers_srv1_services Hosted services

@@ -25,7 +25,7 @@ Servers    {#servers}
 | 134.95.80.13    | prometheus-test.uni-koeln.de | [pandora-devel](http://prometheus-test.uni-koeln.de/pandora-devel) |
 | 134.95.80.95    | \subpage servers_db1  | Database server                      |
 | 134.95.80.96    | \subpage servers_web1 | Web server                           |
-| 134.95.80.160   | \subpage servers_srv1 | \ref subversion server, Trac, \ref redmine \ref issue_tracker |
+| 134.95.80.160   | \subpage servers_srv1 | \ref subversion server, \ref redmine \ref issue_tracker, \ref virtual_machines |
 | 134.95.80.161   | \subpage servers_srv2 | prometheus-app.uni-koeln.de          |
 | 134.95.80.162   | \subpage servers_srv3 | \ref homepage, \ref JekyllCommander, Documentation |
 | 134.95.80.163   | \subpage servers_srv4 | \ref dilps databases |
