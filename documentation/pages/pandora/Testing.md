@@ -46,7 +46,7 @@ rake db:test:prepare
 Comparison of the output/source code of two functionally equivalent unit tests, one written using RSpec and the other using Test::Unit
 
 * Code under test
-~~~~
+\code{.rb}
 class DeadError < StandardError; end
 
 class Dog
@@ -59,9 +59,9 @@ class Dog
     @dead = true
   end
 end
-~~~~
+\endcode
 * Test::Unit
-~~~~
+\code{.rb}
  require 'test/unit'
   require 'dog'
 
@@ -81,9 +81,9 @@ end
       end
     end
   end
-~~~~
+\endcode
 * RSpec
-~~~~
+\code{.rb}
 require 'rspec'
 require 'dog'
 
@@ -108,7 +108,7 @@ describe Dog do
     end
   end
 end
-~~~~
+\endcode
 * Test::Unit output
 ~~~~
 Ξ code/examples → ruby dog_test.rb --verbose
@@ -157,7 +157,7 @@ In order to get a list of all available tests, use the command
 
 The resulting list should contain entries like this:
 
-  \verbatim
+\verbatim
   rake spec                         Run all specs in spec directory (excluding plugin specs)
   rake spec:clobber_rcov            Remove rcov products for rcov
   rake spec:controllers             Run the code examples in spec/controllers
@@ -174,7 +174,7 @@ The resulting list should contain entries like this:
   rake spec:server:start            start spec_server.
   rake spec:server:stop             stop spec_server.
   rake spec:views                   Run the code examples in spec/views
-  \endverbatim
+\endverbatim
 
 Since essentially the specs are groups into Rake tasks, running them is as
 simple as e.g.
