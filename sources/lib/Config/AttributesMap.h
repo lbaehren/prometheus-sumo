@@ -92,7 +92,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
         if (it==itsAttributes.end()) {
           return false;
         } else {
-          value = it.second;
+          value = it->second;
           return true;
         }
       }
