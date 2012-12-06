@@ -22,6 +22,7 @@
   \file testPackage.cc
   \ingroup prometheus
   \ingroup tests
+  \brief A collection of tests for the prometheus::config::Package class
   \author Lars Baehren
   \date 2012-12-06
 */
@@ -31,6 +32,11 @@
 //_______________________________________________________________________________
 //                                                              test_construction
 
+/*!
+  \brief Test constructors for a new object
+  \param attributes -- Map with a attributes for the package.
+  \return status    -- Returns non-zero value in case an error was encountered.
+*/
 int test_construction (std::map<std::string,std::string> const &attributes)
 {
   std::cout << "\n[testPackage::test_construction]\n" << std::endl;
@@ -61,6 +67,11 @@ int test_construction (std::map<std::string,std::string> const &attributes)
 //_______________________________________________________________________________
 //                                                                test_parameters
 
+/*!
+  \brief Test access to the internal attributes of an object.
+  \param attributes -- Map with a attributes for the package.
+  \return status    -- Returns non-zero value in case an error was encountered.
+*/
 int test_parameters (std::map<std::string,std::string> const &attributes)
 {
   std::cout << "\n[testPackage::test_parameters]\n" << std::endl;
