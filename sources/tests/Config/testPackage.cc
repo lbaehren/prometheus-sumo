@@ -28,6 +28,9 @@
 
 #include <Config/Package.h>
 
+//_______________________________________________________________________________
+//                                                              test_construction
+
 int test_construction (std::map<std::string,std::string> const &attributes)
 {
   std::cout << "\n[testPackage::test_construction]\n" << std::endl;
@@ -55,6 +58,50 @@ int test_construction (std::map<std::string,std::string> const &attributes)
   return status;
 }
 
+//_______________________________________________________________________________
+//                                                                test_parameters
+
+int test_parameters (std::map<std::string,std::string> const &attributes)
+{
+  std::cout << "\n[testPackage::test_parameters]\n" << std::endl;
+
+  int status = 0;
+  prometheus::config::Package package (attributes);
+
+  std::cout << "[1] Testing parameter access shortcuts ..." << std::endl;
+  try {
+    std::cout << "-- name()    => "  << package.name()           << std::endl;
+    std::cout << "-- version() => '" << package.version() << "'" << std::endl;
+    std::cout << "-- source()  => "  << package.source()         << std::endl;
+  } catch (std::exception &e) {
+    std::cout << "ERROR : " << e.what() << std::endl;
+    ++status;
+  }
+
+  std::cout << "[2] Testing generic access methods ..." << std::endl;
+  try {
+    std::string tmp;
+
+    if (package.get(tmp,"name")) {
+      std::cout << "-- name    = " << tmp << std::endl;
+    }
+
+    if (package.get(tmp,"version")) {
+      std::cout << "-- version = '" << tmp << "'" << std::endl;
+    }
+
+    if (package.get(tmp,"source")) {
+      std::cout << "-- source  = " << tmp << std::endl;
+    }
+
+  } catch (std::exception &e) {
+    std::cout << "ERROR : " << e.what() << std::endl;
+    ++status;
+  }
+
+  return status;
+}
+
 // === Test program main function ===============================================
 
 //! Test program main function
@@ -68,6 +115,7 @@ int main (int argc, char* argv[])
   attributes["source"]  = "http://prometheus-app.uni-koeln.de/rubygems";
 
   status += test_construction (attributes);
+  status += test_parameters (attributes);
 
   return status;
 }
