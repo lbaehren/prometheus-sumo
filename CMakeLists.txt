@@ -37,9 +37,10 @@ option (ENABLE_TESTING       "Enable CTest test driver?"                     YES
 option (CONFIGURE_VERBOSE    "Increase verbosity during configuration?"      NO  )
 option (GIT_REPOSITORIES_RW  "Check out Github repositories for r/w access?" NO  )
 
-option (WITH_PACKAGE_CLAMAV "Build ClamAV antivirus software tool-kit?"        NO )
 option (WITH_DOXYGEN        "Build Doxygen documention generator?"             NO )
+option (WITH_PACKAGE_CLAMAV "Build ClamAV antivirus software tool-kit?"        NO )
 option (WITH_PACKAGE_SPHINX "Build Sphinx search server?"                      NO )
+option (WITH_PACKAGE_YAZ    "Build YAZ programmers' toolkit?"                  NO )
 option (WITH_PANDORA_DOCS   "Enable documentation of pandora source code?"     NO )
 option (WITH_LATEX_DOC      "Enable generation of LaTeX output from Doxygen?"  NO )
 

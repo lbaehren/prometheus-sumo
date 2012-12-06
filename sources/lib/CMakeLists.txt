@@ -25,7 +25,7 @@ if (libprometheus_sources)
     OUTPUT_NAME prometheus
     )
 
-  add_dependencies (libprometheus yaml-cpp kwsys yaml-cpp)
+  add_dependencies (libprometheus yaml-cpp kwsys)
 
   install (
     TARGETS libprometheus

@@ -44,8 +44,6 @@ include (${CMAKE_CURRENT_SOURCE_DIR}/RubyGems.cmake)
 add_subdirectory (KWSys)
 add_subdirectory (tinyxml2)
 add_subdirectory (yaml-cpp)
-add_subdirectory (yaz)
-add_subdirectory (yazpp)
 
 if (WITH_PACKAGE_CLAMAV)
   add_subdirectory (clamav)
@@ -63,10 +61,11 @@ if (WITH_PACKAGE_SPHINX)
   endif (MYSQL_FOUND)
 endif (WITH_PACKAGE_SPHINX)
 
-## ==============================================================================
-##
-##  Package dependencies
-##
-## ==============================================================================
+if (WITH_PACKAGE_YAZ)
+  ## directories
+  add_subdirectory (yaz)
+  add_subdirectory (yazpp)
+  ## dependencies
+  add_dependencies(yazpp yaz)
+endif (WITH_PACKAGE_YAZ)
 
-add_dependencies(yazpp yaz)
