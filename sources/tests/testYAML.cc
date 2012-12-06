@@ -34,6 +34,49 @@
 
 // =============================================================================
 //
+//  Helper functions
+//
+// =============================================================================
+
+void showPackageList (std::map<std::string,std::string> &attributes)
+{
+  std::string name;
+  std::string source;
+  std::string version;
+  std::map<std::string,std::string>::iterator it;
+
+  // Extract the name of the package
+  it=attributes.find("name");
+  if (it==attributes.end()) {
+    name = "~";
+  } else {
+    name = it->second;
+  }
+  
+  // Extract the source of the package
+  it=attributes.find("source");
+  if (it==attributes.end()) {
+    source = "~";
+  } else {
+    source = it->second;
+  }
+  
+  // Extract the version of the package
+  it=attributes.find("version");
+  if (it==attributes.end()) {
+    version = "~";
+  } else {
+    version = it->second;
+  }
+  
+  std::cout << std::setw(25) << name
+            << "  ::"   << std::setw(12) << version
+	    << "  ::  " << source
+	    << std::endl;
+}
+
+// =============================================================================
+//
 //  Tests functions
 //
 // =============================================================================
@@ -257,59 +300,40 @@ int readPackageList (std::string const &filename)
 {
   std::cout << "\n[YamlReader::readPackageList]\n" << std::endl;
 
-  struct Package {
-    std::string name;
-    std::string version;
-    std::string source;
-    std::string homepage;
-    std::string description;
-  };
-
-  std::set<std::string> attributes;
-  std::set<std::string>::iterator itAttr;
-  attributes.insert("name");
-  attributes.insert("source");
-  attributes.insert("version");
-  attributes.insert("homepage");
-  attributes.insert("description");
+  std::map<std::string,std::string> attributes;
+  std::map<std::string,std::string>::iterator itAttr;
+  attributes["name"]        = "";
+  attributes["source"]      = "";
+  attributes["version"]     = "";
+  attributes["homepage"]    = "";
+  attributes["description"] = "";
 
   std::ifstream infile (filename.c_str());
 
   if (infile.is_open()) {
     YAML::Node node;
     YAML::Parser parser(infile);
+    std::string tmpKey;
+    std::string tmpVal;
     // Parse data into node
     parser.GetNextDocument(node);
     std::cout << "--> nof. nodes = " << node.size() << std::endl;
     /* Parse the contents of the node */
     for (YAML::Iterator it=node.begin();it!=node.end();++it) {
-      /* Process the contents of the node */
-      Package tmp;
-      // Extract node data ...
 
-      if(const YAML::Node *pName = it->FindValue("name")) {
-	*pName >> tmp.name;
-      } else {
-	tmp.name = "~";
+      for (itAttr=attributes.begin();itAttr!=attributes.end();++itAttr) {
+	/* Extract node data */
+	if(const YAML::Node *pName = it->FindValue(itAttr->first)) {
+	  *pName >> tmpVal;
+	} else {
+	  tmpVal = "~";
+	}
+	/* Store data extracted from node */
+	attributes[itAttr->first] = tmpVal;
       }
 
-      if(const YAML::Node *pName = it->FindValue("source")) {
-	*pName >> tmp.source;
-      } else {
-	tmp.source = "~";
-      }
+      showPackageList (attributes);
 
-      if(const YAML::Node *pName = it->FindValue("version")) {
-	*pName >> tmp.version;
-      } else {
-	tmp.version = "~";
-      }
-
-      // ... and display them
-      std::cout << std::setw(25) << tmp.name
-                << "  ::"   << std::setw(12) << tmp.version
-                << "  ::  " << tmp.source
-                << std::endl;
     }
   } else {
     std::cerr << "--> Failed to open file " << filename << std::endl;
