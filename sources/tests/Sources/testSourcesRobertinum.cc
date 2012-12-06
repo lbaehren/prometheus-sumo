@@ -27,8 +27,6 @@
 
 #include <Sources/Robertinum.h>
 
-using boost::property_tree::ptree;
-
 // === Main function ===========================================================
 
 /*!

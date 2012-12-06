@@ -27,8 +27,6 @@
 
 #include <Sources/Beeskow.h>
 
-using boost::property_tree::ptree;
-
 // === Main function ===========================================================
 
 /*!

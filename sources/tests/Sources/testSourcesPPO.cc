@@ -27,8 +27,6 @@
 
 #include <Sources/PPO.h>
 
-using boost::property_tree::ptree;
-
 // ==============================================================================
 //
 //  Test routines

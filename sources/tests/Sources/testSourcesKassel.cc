@@ -27,8 +27,6 @@
 
 #include <Sources/Kassel.h>
 
-using boost::property_tree::ptree;
-
 // === Main function ===========================================================
 
 /*!
@@ -55,9 +53,9 @@ int main(int argc, char* argv[])
 
       /* Parse the contents of the document */
       try {
-	nofIncompleteItems = dump.readXML (infile, items);
+        nofIncompleteItems = dump.readXML (infile, items);
       } catch (std::exception &e) {
-	std::cout << "[ERROR] " << e.what() << "\n";
+        std::cout << "[ERROR] " << e.what() << "\n";
       }
 
       /* Summary of document contents */

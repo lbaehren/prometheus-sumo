@@ -27,8 +27,6 @@
 
 #include <Sources/TheolEik.h>
 
-using boost::property_tree::ptree;
-
 // === Main function ===========================================================
 
 /*!
