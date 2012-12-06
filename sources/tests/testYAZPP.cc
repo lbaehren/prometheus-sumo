@@ -56,6 +56,7 @@ int convert_rawdata (std::string const &rawdata)
   int status = 0;
   std::vector <std::string> fields;
 
+#ifdef WITH_BOOST
   std::cout << "--> Splitting record into single lines ..." << std::endl;
   boost::split_regex( fields, rawdata, boost::regex( "\u241E" ) );
 
@@ -64,6 +65,9 @@ int convert_rawdata (std::string const &rawdata)
   for (size_t n=0; n<fields.size(); ++n) {
     std::cout << fields[n] << std::endl;
   }
+#else
+  std::cout << "--> Skipping test - missing Boost library." << std::endl;
+#endif
 
   return status;
 }
