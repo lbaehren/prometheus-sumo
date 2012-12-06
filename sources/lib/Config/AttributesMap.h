@@ -60,6 +60,11 @@ namespace prometheus {   // namespace prometheus -- BEGIN
         set(key,value);
       }
 
+      //! Argumented constructor
+      AttributesMap (std::map<K,V> const &attr) {
+	itsAttributes = attr;
+      }
+
       // === Public methods =====================================================
 
       //! Size of the attributes map

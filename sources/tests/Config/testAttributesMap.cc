@@ -121,7 +121,7 @@ int test_construction ()
     ++status;
   }
 
-  // --- Tests for argumented constructor ---
+  // --- Tests for argumented constructor (int,T) ---
 
   std::cout << "[7] Testing AttributesMap<int,T>(int,T) ..." << std::endl;
   try {
@@ -174,6 +174,22 @@ int test_construction ()
     std::cout << "ERROR : " << e.what() << std::endl;
     ++status;
   }
+
+  // --- Tests for argumented constructor (map<int,T>) ---
+
+  std::cout << "[11] Testing AttributesMap<int,T>(int,T) ..." << std::endl;
+  try {
+    // Set up the map
+    std::map<int,std::string> attr;
+    attr[0] = "Hello";
+    attr[1] = "World";
+    // ... and store it
+    prometheus::config::AttributesMap<int,std::string> map_int_string (attr);
+  } catch (std::exception &e) {
+    std::cout << "ERROR : " << e.what() << std::endl;
+    ++status;
+  }
+
 
   return status;
 }
