@@ -45,6 +45,7 @@ run_test_config (testConfigSource           ${config_source_yml}            )
 run_test_config (testConfigVirtualMachines  ${config_virtual_machines_yml}  )
 
 add_test (testAttributesMap        testAttributesMap                                )
+add_test (testPackage              testPackage                                      )
 add_test (testConfigPackages       testConfigPackages                               )
 add_test (testConfigPackagesGems   testConfigPackages ${config_gems_yml}            )
 add_test (testConfigPackagesDebian testConfigPackages ${config_packages_debian_yml} )
