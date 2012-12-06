@@ -98,10 +98,10 @@ int test_read_xml_dump (std::string const &filename)
     /* Summary of document contents */
     for (unsigned int n=0; n<items.size(); ++n) {
       std::cout << "[" << n << "]"
-		<< " : " <<items[n].attribute("image")
-		<< " : " << items[n].attribute("title")
-		<< "\t(" << items[n].attribute("date") << ")"
-		<< std::endl;
+                << " : " <<items[n].attribute("image")
+                << " : " << items[n].attribute("title")
+                << "\t(" << items[n].attribute("date") << ")"
+                << std::endl;
     }
     std::cout << "-- nof. items      = " << items.size()       << std::endl;
     std::cout << "-- nof. incomplete = " << nofIncompleteItems << std::endl;
