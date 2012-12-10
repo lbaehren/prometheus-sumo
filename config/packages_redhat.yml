@@ -1,10 +1,24 @@
 ##
-## List of required MacPorts packages
+## List of required Redhat/Fedora packages (https://apps.fedoraproject.org/packages)
 ##
 ## - name       : Name of the package, as used when running e.g. `gem install <name>`
 ## - version    : Version constraints for the package.
 ## - homepage   : Project website/homepage.
 ## - descripion : A short description of the package.
+##
+## For newer versions of Redhat/Fedora, the the default version of Ruby is 1.9.x,
+## hence you have already installed ruby from a repository, remove it:
+##
+##   yum remove ruby ruby-libs rubygems
+##
+## As root, install RVM, and follow the on-screen instructions:
+##
+##    \curl -L https://get.rvm.io | bash -s stable --ruby
+##
+## Install Ruby 1.8.x and make this the default:
+##
+##    rvm install 1.8.x
+##    rvm use 1.8.6 [--default]
 ##
 ---
 - name: gcc
@@ -23,6 +37,10 @@
   version:
   homepage: https://apps.fedoraproject.org/packages/ruby
   description: An interpreter of object-oriented scripting language
+- name: ruby-devel
+  version:
+  homepage: https://apps.fedoraproject.org/packages/ruby-devel
+  description: Header files and libraries for building an extension library for the Ruby
 - name: rubygems
   version:
   homepage: https://apps.fedoraproject.org/packages/rubygems

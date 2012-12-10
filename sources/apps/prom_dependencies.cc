@@ -131,7 +131,7 @@ int main (int argc, char *argv[])
   //________________________________________________________
   // Description of command line options
 
-  bpo::options_description desc ("[promManagePackages] Available command line options");
+  bpo::options_description desc ("[prom_dependencies] Available command line options");
 
   desc.add_options ()
     ("help,H",    "Show this help message")
@@ -191,7 +191,7 @@ int main (int argc, char *argv[])
       }
     }
   } else {
-    std::cout << "[install_packages] Available command line options:" << std::endl;
+    std::cout << "[prom_dependencies] Available command line options:" << std::endl;
     std::cout << " --config         Print summary of configuration settings" << std::endl;
     std::cout << " --gems arg       Install Ruby gems"                       << std::endl;
     std::cout << " --debian arg     Install Debian packages"                 << std::endl;
