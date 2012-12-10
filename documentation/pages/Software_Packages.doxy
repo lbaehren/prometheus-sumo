@@ -102,6 +102,9 @@
     <dt>pwsafe</dt>
       <dd>\subpage pwsafe is a unix commandline program that manages encrypted password databases.</dd>
 
+    <dt>Ruby Version Manager (RVM)</dt>
+      <dd>\subpage rvm is a command-line tool which allows you to easily install, manage, and work with multiple ruby environments from interpreters to sets of gems.</dd>
+
   </dl>
 
   \section third_party_web Web Applications

@@ -9,19 +9,27 @@ Ruby Version Manager (RVM)    {#rvm}
 
 Install RVM with ruby:
 
-    \curl -L https://get.rvm.io | bash -s stable --ruby
+\verbatim
+\curl -L https://get.rvm.io | bash -s stable --ruby
+\endverbatim
 
 Additionally with rails:
 
-    \curl -L https://get.rvm.io | bash -s stable --rails
+\verbatim
+\curl -L https://get.rvm.io | bash -s stable --rails
+\endverbatim
 
 Or with rubinius, rails and puma:
 
-    \curl -L https://get.rvm.io | bash -s stable --ruby=rbx --gems=rails,puma
+\verbatim
+\curl -L https://get.rvm.io | bash -s stable --ruby=rbx --gems=rails,puma
+\endverbatim
 
 Finally, to install without the "rubygems-bundler" or "rvm" gems:
 
-    \curl -L https://get.rvm.io | bash -s stable --without-gems="rvm rubygems-bundler"
+\verbatim
+\curl -L https://get.rvm.io | bash -s stable --without-gems="rvm rubygems-bundler"
+\endverbatim
 
 Point to be noted is, there is a backslash before curl. This prevents misbehaving if you have aliased it with configuration in your ~/.curlrc file. 
 
