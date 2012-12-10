@@ -27,5 +27,5 @@ endforeach ()
 
 ## Testing
 
-add_test (promManagePackages promManagePackages)
-add_test (promManagePackages_config promManagePackages --config)
+add_test (prom_dependencies prom_dependencies)
+add_test (prom_dependencies_config prom_dependencies --config)

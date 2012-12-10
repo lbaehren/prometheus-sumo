@@ -25,7 +25,7 @@ namespace bpo = boost::program_options;
 #endif
 
 /*!
-  \file promManagePackages.cc
+  \file prom_dependencies.cc
   \ingroup prometheus
   \ingroup apps
   \brief Wrapper for the installation of system packages
@@ -35,7 +35,7 @@ namespace bpo = boost::program_options;
   \b Usage:
 
   \verbatim
-[promManagePackages] Available command line options:
+[prom_dependencies] Available command line options:
   -H [ --help ]         Show this help message
   -C [ --config ]       Print summary of configuration settings
   --gems arg            Install Ruby gems
