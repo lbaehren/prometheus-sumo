@@ -24,7 +24,10 @@ prometheus-srv3.uni-koeln.de    {#servers_srv3}
  │   └── web
  ├── lost+found
  ├── srv
- │   └── promhp
+ │   └── promhp                    ...  prometheus homepage
+ │       ├── live                  ...  Live version of the website
+ │       ├── promhp.git            ...  Git repository
+ │       └── staging               ...  Staging version of website
  ├── tmp
  ├── usr
  │   ├── bin
@@ -35,6 +38,7 @@ prometheus-srv3.uni-koeln.de    {#servers_srv3}
 
 \section servers_srv3_doc Hosted documentation
 
+ - [prometheus-sumo](http://prometheus-srv3.uni-koeln.de/doc/prometheus-sumo)
  - [Capistrano](http://prometheus-srv3.uni-koeln.de/ruby-doc/capistrano)
  - [Ferret Search Library Documentation](http://prometheus-srv3.uni-koeln.de/ruby-doc/ferret)
  - [Ruby Core](http://prometheus-srv3.uni-koeln.de/ruby-doc/core)

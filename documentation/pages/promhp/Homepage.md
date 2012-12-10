@@ -28,24 +28,27 @@ before publishing the modifications made.
 \subsection homepage_repositories_srv3 ... on prometheus-srv3
 
 The repository from which both the \c staging and \c live version of the
-homepage are being build is hosted on \c prometheus-srv3.uni-koeln.de -- it
+homepage are being build is hosted on \ref servers_srv3 -- it
 is there where also the \ref JekyllCommander, which allows editing of the pages
 from within a web browser.
 
 \verbatim
-/var/local/prometheus                        ...  Root of prometheus installation
-           |-- bin
-           |   |-- promhp.post-commit        ... Script run post commit
-           |   `-- promhp.post-receive       ... Script run post receive
-           `-- srv
-               `-- promhp
-                   |-- live                  ...  Live version of the website
-                   |-- promhp.git            ...  Git repository
-                   |   `-- hooks
-                   |       `-- post-receive  ...  Hook script for the "post-receive" event
-                   |-- promhp.git.old
-                   `-- staging               ...  Staging version of website
+/var/local/prometheus
+ ├── bin
+ │   ├── promhp.post-commit        ... Script run post commit
+ │   └── promhp.post-receive       ... Script run post receive
+ └── srv
+     └── promhp
+         ├── live                  ...  Live version of the website
+         ├── promhp.git            ...  Git repository
+         │   └── hooks
+         │       └── post-receive  ...  Hook script for the "post-receive" event
+         └── staging               ...  Staging version of website
 \endverbatim
+
+In order to check out a working copy:
+
+    git clone lbaehren@prom-srv3:/var/local/prometheus/srv/promhp/promhp.git
 
 \subsection homepage_repositories_github ... on Github
 
