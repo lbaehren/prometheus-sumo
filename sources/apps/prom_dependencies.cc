@@ -35,7 +35,7 @@ namespace bpo = boost::program_options;
   \b Usage:
 
   \verbatim
-[prom_dependencies] Available command line options:
+  [prom_dependencies] Available command line options:
   -H [ --help ]         Show this help message
   -C [ --config ]       Print summary of configuration settings
   --gems arg            Install Ruby gems
@@ -44,6 +44,34 @@ namespace bpo = boost::program_options;
   --redhat arg          Install Redhat packages
   \endverbatim
 */
+
+//_______________________________________________________________________________
+//                                                           install_dependencies
+
+/*!
+  \brief Install dependencies
+  \return status  -- Returns non-zero value in case an error was encountered.
+*/
+int install_dependencies ()
+{
+  int status = 0;
+
+  return status;
+}
+
+//_______________________________________________________________________________
+//                                                            update_dependencies
+
+/*!
+  \brief Update dependencies
+  \return status  -- Returns non-zero value in case an error was encountered.
+*/
+int update_dependencies ()
+{
+  int status = 0;
+
+  return status;
+}
 
 //_______________________________________________________________________________
 //                                                              install_ruby_gems
@@ -136,6 +164,8 @@ int main (int argc, char *argv[])
   desc.add_options ()
     ("help,H",    "Show this help message")
     ("config,C",  "Print summary of configuration settings")
+    ("install,I", "Install dependencies")
+    ("update,U",  "Update dependencies")
     ("gems",     bpo::value<std::string>(), "Install Ruby gems")
     ("debian",   bpo::value<std::string>(), "Install Debian packages")
     ("osx",      bpo::value<std::string>(), "Install MacPorts packages for OS X")
@@ -154,6 +184,10 @@ int main (int argc, char *argv[])
     return 0;
   } else if (vm.count("config")) {
     prometheus::configuration_summary (std::cout);
+  } else if (vm.count("install")) {
+    status += install_dependencies();
+  } else if (vm.count("update")) {
+    status += update_dependencies();
   } else if (vm.count("gems")) {
     filename = vm["gems"].as<std::string>();
     status += install_ruby_gems(filename);
