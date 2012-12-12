@@ -1,3 +1,12 @@
+##
+##  List of repositories containing code for the various software package created
+##  under the umbrella of the prometheus digital image archive project.
+##
+## - name       : Name of the package/project
+## - descripion : A short description of the package.
+## - type       : Type of the repository, typically either 'git' or 'subversion'
+## - url        : URL of the repository, as used when checking out a working copy.
+##
 ---
 - name: pandora
   description: The driving force behind the prometheus image archive
