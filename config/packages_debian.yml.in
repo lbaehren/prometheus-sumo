@@ -1,7 +1,7 @@
 ##
 ## List of required Debian packages
 ##
-## - name       : Name of the package, as used when running e.g. `gem install <name>`
+## - name       : Name of the package, as used when running `apt-get install <name>`
 ## - version    : Version constraints for the package.
 ## - homepage   : Project website/homepage.
 ## - descripion : A short description of the package.
