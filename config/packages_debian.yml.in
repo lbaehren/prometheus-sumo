@@ -6,6 +6,9 @@
 ## - homepage   : Project website/homepage.
 ## - descripion : A short description of the package.
 ##
+## This file is processed by CMake during project configuration, substituting
+## variables providing control over e.g. the required version of Ruby.
+##
 ---
 - name: bison
   version:
@@ -111,7 +114,7 @@
   version:
   homepage:
   description: image manipulation library - development files
-- name: rails-ruby1.8
+- name: rails-ruby${REQUIRED_VERSION_RUBY}
   version:
   homepage:
   description: MVC ruby based framework geared for web application development
