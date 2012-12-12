@@ -49,6 +49,8 @@ using namespace ZOOM;
 /*!
   \brief Convert record rawdata to formatted output
 
+  \param rawdata - String of raw data, as retrieved through the connection.
+
   \li [Unicode Character 'SYMBOL FOR RECORD SEPARATOR'](http://www.fileformat.info/info/unicode/char/241e/index.htm)
  */
 int convert_rawdata (std::string const &rawdata)
@@ -120,6 +122,7 @@ int convert_results (std::string const &filename)
   \brief Show results from Z39.50 database search
   \param rs  -- Result set to display.
   \param num -- Number of result sets to display.
+  \param rawdata -- Retrieve and subsequently process raw data?
 */
 int show_results (resultSet &rs,
 		  size_t const &num=5,
@@ -179,6 +182,7 @@ int show_results (resultSet &rs,
   \param pg   -- object representing a query to be submitted to the Z39.50 server
                  configured via the \c conn object.
   \param num  -- Number of result sets to display.
+  \param rawdata -- Retrieve and subsequently process raw data?
 */
 int get_results (connection &conn,
 		 prefixQuery &pq,
