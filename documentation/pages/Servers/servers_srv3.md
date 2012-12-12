@@ -11,7 +11,7 @@ prometheus-srv3.uni-koeln.de    {#servers_srv3}
 
 \section servers_srv3_data Hosted data
 
-~~~~
+\verbatim
 /var/local/prometheus
  ├── app
  │   ├── promhp
@@ -34,7 +34,7 @@ prometheus-srv3.uni-koeln.de    {#servers_srv3}
  │   ├── lib
  │   └── share
  └── web
-~~~~
+\endverbatim
 
 \section servers_srv3_doc Hosted documentation
 
@@ -44,7 +44,7 @@ prometheus-srv3.uni-koeln.de    {#servers_srv3}
  - [Ruby Core](http://prometheus-srv3.uni-koeln.de/ruby-doc/core)
  - [Ruby Standard Library Documentation](http://prometheus-srv3.uni-koeln.de/ruby-doc/core)
 
-~~~~
+\verbatim
 /var/local/prometheus
  └── web
      └── www
@@ -54,5 +54,5 @@ prometheus-srv3.uni-koeln.de    {#servers_srv3}
              ├── ferret            ...  Ferret Search Library Documentation
              ├── globalize
              └── stdlib            ...  Ruby Standard Library Documentation
-~~~~
+\endverbatim
 
