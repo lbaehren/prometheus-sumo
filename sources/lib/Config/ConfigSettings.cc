@@ -28,11 +28,22 @@ namespace prometheus {   //   namespace prometheus -- BEGIN
   */
   void configuration_summary (std::ostream &os)
   {
-    os << "-- Project name    = " << PROJECT_NAME         << std::endl;
-    os << "-- Project version = " << PROJECT_VERSION      << std::endl;
-    os << "-- Install prefix  = " << CMAKE_INSTALL_PREFIX << std::endl;
-    os << "-- CMake version   = " << CMAKE_VERSION        << std::endl;
-    os << "-- System name     = " << CMAKE_SYSTEM         << std::endl;
+    /*
+     *  System configuration summary
+     */
+    os << " System configuration:" << std::endl;
+    os << " .. CMake version   = " << CMAKE_VERSION        << std::endl;
+    os << " .. System name     = " << CMAKE_SYSTEM         << std::endl;
+    /*
+     *  Project configuration summary
+     */
+    os << " Project configuration:" << std::endl;
+    os << " .. Project name    = " << PROJECT_NAME         << std::endl;
+    os << " .. Project version = " << PROJECT_VERSION      << std::endl;
+    os << " .. Install prefix  = " << CMAKE_INSTALL_PREFIX << std::endl;
+    os << " .. Gem version     = " << GEM_VERSION          << std::endl;
+    os << " .. Rake version    = " << RAKE_VERSION         << std::endl;
+    os << " .. Ruby version    = " << RUBY_VERSION         << std::endl;
   }
 
 }   //   namespace prometheus -- END

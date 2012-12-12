@@ -18,43 +18,49 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <Config/Packages.h>
+#include "prom_dependencies.h"
 
-#ifdef WITH_BOOST
-namespace bpo = boost::program_options;
-#endif
-
-/*!
-  \file prom_dependencies.cc
-  \ingroup prometheus
-  \ingroup apps
-  \brief Wrapper for the installation of system packages
-  \author Lars Baehren
-  \date 2012-11-05
-
-  \b Usage:
-
-  \verbatim
-  [prom_dependencies] Available command line options:
-  -H [ --help ]         Show this help message
-  -C [ --config ]       Print summary of configuration settings
-  --gems arg            Install Ruby gems
-  --debian arg          Install Debian packages
-  --osx arg             Install MacPorts packages for OS X
-  --redhat arg          Install Redhat packages
-  \endverbatim
-*/
+// ==============================================================================
+//
+//  Function implementations
+//
+// ==============================================================================
 
 //_______________________________________________________________________________
 //                                                           install_dependencies
 
-/*!
-  \brief Install dependencies
-  \return status  -- Returns non-zero value in case an error was encountered.
-*/
 int install_dependencies ()
 {
   int status = 0;
+  std::string packagelist = CMAKE_INSTALL_PREFIX;
+
+  /* Platform-/OS-dependent installation instructions */
+
+#ifdef DEBIAN_FOUND
+  packagelist += "/etc/prometheus/packages_debian.yml";
+  install_packages_debian (packagelist);
+#endif
+
+#ifdef FEDORA_FOUND
+#endif
+
+#ifdef MACOSX_FOUND
+#endif
+
+#ifdef REDHAT_FOUND
+  packagelist += "/etc/prometheus/packages_redhat.yml";
+  install_packages_redhat (packagelist);
+#endif
+
+#ifdef UBUNTU_FOUND
+  packagelist += "/etc/prometheus/packages_debian.yml";
+  install_packages_debian (packagelist);
+#endif
+
+  /* Installation of Ruby gems */
+
+  packagelist += "/etc/prometheus/gems.yml";
+  install_ruby_gems (packagelist);
 
   return status;
 }
@@ -62,10 +68,6 @@ int install_dependencies ()
 //_______________________________________________________________________________
 //                                                            update_dependencies
 
-/*!
-  \brief Update dependencies
-  \return status  -- Returns non-zero value in case an error was encountered.
-*/
 int update_dependencies ()
 {
   int status = 0;
@@ -76,11 +78,6 @@ int update_dependencies ()
 //_______________________________________________________________________________
 //                                                              install_ruby_gems
 
-/*!
-  \brief Install Ruby gems
-  \param filename -- Name of the configuration file.
-  \return status  -- Returns non-zero value in case an error was encountered.
-*/
 int install_ruby_gems (std::string const &filename)
 {
   prometheus::config::Packages packages;
@@ -92,11 +89,6 @@ int install_ruby_gems (std::string const &filename)
 //_______________________________________________________________________________
 //                                                        install_packages_debian
 
-/*!
-  \brief Install Debian packages
-  \param filename -- Name of the configuration file.
-  \return status  -- Returns non-zero value in case an error was encountered.
-*/
 int install_packages_debian (std::string const &filename)
 {
   prometheus::config::Packages packages;
@@ -108,11 +100,6 @@ int install_packages_debian (std::string const &filename)
 //_______________________________________________________________________________
 //                                                           install_packages_osx
 
-/*!
-  \brief Install OS X packages through MacPorts
-  \param filename -- Name of the configuration file.
-  \return status  -- Returns non-zero value in case an error was encountered.
-*/
 int install_packages_osx (std::string const &filename)
 {
   prometheus::config::Packages packages;
@@ -124,11 +111,6 @@ int install_packages_osx (std::string const &filename)
 //_______________________________________________________________________________
 //                                                        install_packages_redhat
 
-/*!
-  \brief Install Redhat packages
-  \param filename -- Name of the configuration file.
-  \return status  -- Returns non-zero value in case an error was encountered.
-*/
 int install_packages_redhat (std::string const &filename)
 {
   prometheus::config::Packages packages;
@@ -209,6 +191,12 @@ int main (int argc, char *argv[])
     if (selection == "--config") {
       prometheus::configuration_summary (std::cout);
     }
+    if (selection == "--install") {
+      status += install_dependencies();
+    }
+    if (selection == "--update") {
+      status += update_dependencies();
+    }
     if ( argc>2 ) {
       std::string filename  = std::string(argv[2]);
       // Extract the test case selection
@@ -227,6 +215,7 @@ int main (int argc, char *argv[])
   } else {
     std::cout << "[prom_dependencies] Available command line options:" << std::endl;
     std::cout << " --config         Print summary of configuration settings" << std::endl;
+    std::cout << " --install        Install dependencies"                    << std::endl;
     std::cout << " --gems arg       Install Ruby gems"                       << std::endl;
     std::cout << " --debian arg     Install Debian packages"                 << std::endl;
     std::cout << " --osx arg        Install MacPorts packages for OS X"      << std::endl;

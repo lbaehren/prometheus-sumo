@@ -89,6 +89,8 @@
 #define CMAKE_SYSTEM  "${CMAKE_SYSTEM}"
 //! Name of the operating system
 #define CMAKE_OS_NAME "${CMAKE_OS_NAME}"
+//! Processor type
+#define CMAKE_SYSTEM_PROCESSOR "${CMAKE_SYSTEM_PROCESSOR}"
 
 #cmakedefine DEBIAN_FOUND
 #cmakedefine UBUNTU_FOUND
@@ -112,6 +114,8 @@
 #cmakedefine RAILS_FOUND
 //! Is the Rake executable available?
 #cmakedefine RAKE_FOUND
+//! Is the development environment for the Ruby scripting language available?
+#cmakedefine RUBY_FOUND
 //! Build with TinyXML library support?
 #cmakedefine WITH_TINYXML
 //! Is the VirtualBox application available?
@@ -156,6 +160,13 @@
 #define RAKE_EXECUTABLE "${RAKE_EXECUTABLE}"
 //! Rake version
 #define RAKE_VERSION "${RAKE_VERSION}"
+#endif
+
+#ifdef RUBY_FOUND
+//! Full path to the Ruby executable
+#define RUBY_EXECUTABLE "${RUBY_EXECUTABLE}"
+//! Ruby version
+#define RUBY_VERSION "${RUBY_VERSION}"
 #endif
 
 #ifdef VIRTUALBOX_FOUND
