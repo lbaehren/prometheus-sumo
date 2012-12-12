@@ -41,9 +41,15 @@ namespace prometheus {   //   namespace prometheus -- BEGIN
     os << " .. Project name    = " << PROJECT_NAME         << std::endl;
     os << " .. Project version = " << PROJECT_VERSION      << std::endl;
     os << " .. Install prefix  = " << CMAKE_INSTALL_PREFIX << std::endl;
+#ifdef GEM_VERSION
     os << " .. Gem version     = " << GEM_VERSION          << std::endl;
+#endif
+#ifdef RAKE_VERSION
     os << " .. Rake version    = " << RAKE_VERSION         << std::endl;
+#endif
+#ifdef RUBY_VERSION
     os << " .. Ruby version    = " << RUBY_VERSION         << std::endl;
+#endif
   }
 
 }   //   namespace prometheus -- END
