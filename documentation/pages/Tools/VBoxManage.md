@@ -68,6 +68,30 @@ VBoxManage export <machines> --output|-o <name>.<ovf/ova>
                             [--eulafile <filename>]
 \endverbatim
 
+\subsection vboxmanage_commands_guestcontrol Control a guest system (guestcontrol)
+
+The "guestcontrol" commands allow you to control certain things inside a guest from the host. Please see the section called “Guest control” for an introduction.
+
+Generally, the syntax is as follows:
+
+\verbatim
+VBoxManage guestcontrol <command>
+\endverbatim
+
+In order to execute a command/program on the guest system:
+
+\verbatim
+VBoxManage guestcontrol   <vmname>|<uuid>
+                          exec[ute]
+                          --image <path to program>
+                          --username <name> --password <password>
+                          [--dos2unix]
+                          [--environment "<NAME>=<VALUE> [<NAME>=<VALUE>]"]
+                          [--timeout <msec>] [--unix2dos] [--verbose]
+                          [--wait-exit] [--wait-stdout] [--wait-stderr]
+                          [-- [<argument1>] ... [<argumentN>]]
+\endverbatim
+
 \section vboxmanage_references References
 
 * [VBoxManage](http://www.virtualbox.org/manual/ch08.html) -- Chapter from VirtualBox manual

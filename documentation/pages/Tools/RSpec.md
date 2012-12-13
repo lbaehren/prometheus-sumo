@@ -75,4 +75,5 @@ Bootstrap the application:
 * [Behavior-driven testing with RSpec](http://www.ibm.com/developerworks/web/library/wa-rspec)
 * [RSpec Best Practices](http://www.methodsandtools.com/tools/tools.php?rspec)
 * [An Introduction To RSpec](http://blog.teamtreehouse.com/an-introduction-to-rspec)
+* [An introduction to RSpec - Part I](http://blog.davidchelimsky.net/2007/05/14/an-introduction-to-rspec-part-i)
 * [RSpec cheat-sheet](http://cheat.errtheblog.com/s/rspec)
