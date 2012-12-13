@@ -71,3 +71,4 @@ VBoxManage export <machines> --output|-o <name>.<ovf/ova>
 \section vboxmanage_references References
 
 * [VBoxManage](http://www.virtualbox.org/manual/ch08.html) -- Chapter from VirtualBox manual
+* [VirtualBox management commands](http://wiki.inisec.com/index.php/Virtualbox_management_commands)
