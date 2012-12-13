@@ -41,6 +41,27 @@ prometheus2.uni-koeln.de    {#servers_prom2}
 
 * \ref subversion repository for \ref pandora
 
+\verbatim
+/
+|-- etc
+|   |-- inid.d
+|   |   `-- mongrel_cluster             ...  Init script for the Mongrel cluster
+|   `-- mongrel_cluster
+|       |-- pandora_stable.conf
+|       `-- pandora_staging.conf
+`-- var
+    `-- local
+        `-- prometheus
+            `-- app
+                `-- pandora
+                    |--stable           ...  Stable version of pandora application
+                    `-- trunk           ...  Staging version of pandora application
+\endverbatim
+
+Related notes:
+
+* \ref pandora_release_staging
+
 \section servers_prom2_partitions Partitions
 
 \subsection servers_prom2_partitions_local ... local
