@@ -13,7 +13,7 @@ hosted inside a Git repository, from which they can be obtained for editing
 and rendering the resulting pages.
 
 Editing the source files and building the homepage can be done at least in two
-ways, depending on the user's proviciency with SCM tools (such as \ref Git);
+ways, depending on the user's proviciency with SCM tools (such as \ref git);
 aside the more developers-type approach -- i.e. checking out the sources, editing
 them and thereafter committing back the changes -- there also exists a web-based
 tool to aid iterating through a number of changes, allowing to preview them

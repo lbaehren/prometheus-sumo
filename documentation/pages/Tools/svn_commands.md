@@ -21,7 +21,7 @@ SVN commands    {#svn_commands}
 
 \li [svn move](http://svnbook.red-bean.com/nightly/en/svn.ref.svn.c.move.html) \code svn move SRC DEST \endcode or \code svn mv SRC DEST \endcode or \code svn rename SRC DEST \endcode or \code svn ren SRC DEST \endcode This command moves a file from one directory to another or renames a file. The file will be moved on your local sand box immediately as well as on the repository after committing.
 
-\subsection subversion_shortcuts Short-cuts
+\section subversion_shortcuts Short-cuts
 
 Short-cut for combined commit and update (save as, say, ".iu" in "~/bin"):
 

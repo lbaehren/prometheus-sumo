@@ -61,7 +61,7 @@ Again the response includes a single record -- this time a DC record.  Note that
 ~~~~
 http://z3950.loc.gov:7090/voyager?version=1.1&operation=searchRetrieve&query=dinosaur&startRecord=2&maximumRecords=5&recordSchema=dc
 ~~~~
-The response includes five records, each wrapped with a <recordPostition>, two through six.
+The response includes five records, each wrapped with a `<recordPostition>`, two through six.
 6. **Search for "dinosaur" in the title.**
 ~~~~
 http://z3950.loc.gov:7090/voyager?version=1.1&operation=searchRetrieve&query=title=dinosaur

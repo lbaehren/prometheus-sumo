@@ -38,9 +38,10 @@
 
 /*!
   \brief Test reading image IDs from file.
-  \param filename -- Name of the file containing the list of image IDs.
-  \return status  -- Status of the function; returns non-zero value in case and
-                     error was encountered.
+  \param filename   -- Name of the file containing the list of image IDs.
+  \param nofEntries -- nof. entries to display.
+  \return status    -- Status of the function; returns non-zero value in case and
+                       error was encountered.
 */
 int test_read_ids_from_file (std::string const &filename,
                              int const &nofEntries=5)
@@ -119,6 +120,7 @@ int test_read_xml_dump (std::string const &filename)
 
 /*!
   \brief Test querying the PPO database
+  \param filename -- Name of the file with the XML data.
   \return status -- Status of the function; returns non-zero value in case and
                     error was encountered.
 */

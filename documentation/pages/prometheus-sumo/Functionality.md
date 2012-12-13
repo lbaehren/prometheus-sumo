@@ -42,7 +42,7 @@ mechanism to easily obtain a working copy for all of them:
 
 \subsection sumo_functionality_vm Virtual machine images
 
-Part of the \ref infrastructure to aid in the testing across multiple platforms
+Part of the infrastructure to aid in the testing across multiple platforms
 is a set of \ref virtual_machines which can be loaded as appliances directly into
 [VirtualBox](https://www.virtualbox.org); in order to retrieve the most recent
 disk images use the command

@@ -67,6 +67,9 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       //! Get the version of the package
       std::string source ();
 
+      //! Get the description of the package
+      std::string description ();
+
       // === Public functions ===================================================
 
       //! Provide a summary of the object's internal parameters and status

@@ -109,7 +109,7 @@ std::ostream& operator<< (std::ostream &os,
   \brief Overloading of output operator to display std::set<T>
 
   \param os  -- Output stream to which the result will be written to
-  \param vec -- The set to be displayed
+  \param s   -- The set to be displayed
 */
 template <typename T>
 std::ostream& operator<< (std::ostream &os,

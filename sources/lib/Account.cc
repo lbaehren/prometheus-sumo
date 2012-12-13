@@ -48,6 +48,9 @@ namespace prometheus {  //  namespace prometheus -- BEGIN
     \param id    -- Identifier for the account.
     \param email -- Email address for the account.
     \param login -- Login for the account.
+    \param firstname
+    \param lastname
+    \param title
   */
   void Account::init (unsigned int const &id,
 		      std::string const &email,

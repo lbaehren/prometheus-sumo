@@ -19,10 +19,12 @@ The format of the access log is highly configurable. The format is specified usi
 
 A typical configuration for the access log might look as follows.
 
-    LogFormat "%h %l %u %t \"%r\" %>s %b" common
-    CustomLog logs/access_log common
+\verbatim
+LogFormat "%h %l %u %t \"%r\" %>s %b" common
+CustomLog logs/access_log common
+\endverbatim
 
-This defines the nickname common and associates it with a particular log format string. The format string consists of percent directives, each of which tell the server to log a particular piece of information. Literal characters may also be placed in the format string and will be copied directly into the log output. The quote character (") must be escaped by placing a back-slash before it to prevent it from being interpreted as the end of the format string. The format string may also contain the special control characters "\n" for new-line and "\t" for tab.
+This defines the nickname common and associates it with a particular log format string. The format string consists of percent directives, each of which tell the server to log a particular piece of information. Literal characters may also be placed in the format string and will be copied directly into the log output. The quote character (") must be escaped by placing a back-slash before it to prevent it from being interpreted as the end of the format string. The format string may also contain the special control characters `\n` for new-line and `\t` for tab.
 
 The CustomLog directive sets up a new log file using the defined nickname. The filename for the access log is relative to the [ServerRoot](http://httpd.apache.org/docs/1.3/mod/core.html#serverroot) unless it begins with a slash.
 

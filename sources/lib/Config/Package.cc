@@ -45,6 +45,13 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       return val;
     }
 
+    std::string Package::description ()
+    {
+      std::string val = "";
+      get (val,"description");
+      return val;
+    }
+
     void Package::summary (std::ostream &os)
     {
       os << "[Package] Summary of internal parameters" << std::endl;

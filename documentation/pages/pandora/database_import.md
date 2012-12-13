@@ -9,28 +9,11 @@ reading of an \ref xml schema; the latter is either provided directly by the
 maintainer(s) of the external database, or generated from e.g. a SQL dump of the
 original database.
 
-Models or new sources can be found in
+\section pandora_database_xml XML schema for the original data
 
 \verbatim
-  pandora
-  `-- app/models
-          |-- source
-          |   |-- amtub.rb
-          |   |-- arachne.rb
-          |   |-- archgiessen.rb
-          |   |..
-          |-- source.rb
-          `-- xml_source.rb
-\endverbatim
-
-In order ingest a new database, the following building blocks/information are
-required:
-
-\subsection pandora_database_xml XML schema for the original data
-
-  \verbatim
-    <?xml version="1.0" encoding="UTF-8"?>
-    <dataroot>
+<?xml version="1.0" encoding="UTF-8"?>
+  <dataroot>
     <row>
       <bild_nr>G8001</bild_nr>
       <datierung>1783-1786</datierung>
@@ -51,12 +34,26 @@ required:
       <objekt_id>11839</objekt_id>
       <titel>Entwurf zu einer Villa, Grund- und Aufriß der Gartenfassade</titel>
     </row>
-  \endverbatim
+\endverbatim
 
-  \subsection pandora_database_model Source model
+\section pandora_database_model Source model
 
-  Once the XML schema for the new data is available, the information can be
-  accessible to \ref pandora
+Models or new sources can be found in
+
+\verbatim
+  pandora
+  `-- app/models
+          |-- source
+          |   |-- amtub.rb
+          |   |-- arachne.rb
+          |   |-- archgiessen.rb
+          |   |..
+          |-- source.rb
+          `-- xml_source.rb
+\endverbatim
+
+Once the \ref xml schema for the new data is available, the information can be
+accessible to \ref pandora
 
   \verbatim
     class Source

@@ -179,7 +179,7 @@ int show_results (resultSet &rs,
 /*!
   \brief Get results from Z39.50 database search
   \param conn -- object representing an open connection to a Z39.50 server.
-  \param pg   -- object representing a query to be submitted to the Z39.50 server
+  \param pq   -- object representing a query to be submitted to the Z39.50 server
                  configured via the \c conn object.
   \param num  -- Number of result sets to display.
   \param rawdata -- Retrieve and subsequently process raw data?

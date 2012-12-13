@@ -137,7 +137,7 @@ namespace prometheus {   // namespace prometheus -- BEGIN
       }
 
       /*!
-        \param Show the stored attributes
+        \brief Show the stored attributes
         \param os -- Output stream to which the summary of stored attributes will
                      be written.
       */
