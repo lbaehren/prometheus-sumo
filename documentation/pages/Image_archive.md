@@ -12,6 +12,18 @@ The prometheus image archive is a data broker which brings together heterogeneou
 
 User license fees are for administration costs incurred by the University of Cologne in running and expanding the service, and are not based on copyright fees associated with the images and media files themselves.
 
+\section image_archive_contact Contact
+
+<dl>
+
+  <dt>Postal Address</dt>
+    <dd>p r o m e t h e u s <br> Kunsthistorisches Institut der Universität zu Köln <br> Albertus-Magnus-Platz <br> 50923 Köln <br> E-mail: info@prometheus-bildarchiv.de <br> phone: +49 221 470 4476</dd>
+
+  <dt>Visitors Address</dt>
+    <dd>Bernhard-Feilchenfeld-Str.11 <br> 50969 Köln-Zollstock <br> 4.Etage, Raum 4.16 </dd>
+
+</dl>
+
 \section refman_prom_tags Tags
 
 <dl>

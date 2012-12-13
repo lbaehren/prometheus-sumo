@@ -27,7 +27,7 @@ Servers    {#servers}
 | 134.95.80.96    | \subpage servers_web1 | Web server                           |
 | 134.95.80.160   | \subpage servers_srv1 | \ref subversion server, \ref redmine \ref issue_tracker, \ref virtual_machines |
 | 134.95.80.161   | \subpage servers_srv2 | prometheus-app.uni-koeln.de          |
-| 134.95.80.162   | \subpage servers_srv3 | \ref homepage, \ref JekyllCommander, Documentation |
+| 134.95.80.162   | \subpage servers_srv3 | \ref homepage, \ref JekyllCommander, \ref servers_srv3_doc "Documentation" |
 | 134.95.80.163   | \subpage servers_srv4 | \ref dilps databases |
 | 134.95.167.124  | prometheus.khi.uni-koeln.de  |  |
 | 134.95.167.125  | prometheus2.khi.uni-koeln.de |  |

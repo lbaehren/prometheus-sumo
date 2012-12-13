@@ -37,6 +37,7 @@
       <td>
         \subpage image_archive |
         \subpage homepage |
+        \subpage wiki |
         \subpage servers |
         \subpage virtual_machines
       </td>
@@ -45,18 +46,19 @@
     <tr valign="center">
       <td width="25%"><b>Support</b></td>
       <td>
-        \subpage wiki |
         \subpage faq |
-        \subpage bookmarks
+        \subpage bookmarks |
+        [Wiki](http://prometheus-bildarchiv.de/wiki) |
+        [Issue tracker](http://prometheus-app.uni-koeln.de/redmine)
       </td>
     </tr>
 
     <tr valign="center">
-      <td width="25%"><b>Web pages</b></td>
+      <td width="25%"><b>Documentation</b></td>
       <td>
-        [Image archive](http://www.prometheus-bildarchiv.de) |
-        [Wiki](http://prometheus-bildarchiv.de/wiki) |
-        [Issue tracker](http://prometheus-app.uni-koeln.de/redmine)
+        [pandora application](http://prometheus.uni-koeln.de/pandora-doc/app) |
+        [prometheus image archive API](http://prometheus.uni-koeln.de/pandora/en/api) |
+        [Ferret search library](http://prometheus-srv3.uni-koeln.de/ruby-doc/ferret)
       </td>
     </tr>
 
