@@ -17,13 +17,13 @@ The [source code](http://developer.berlios.de/projects/dilps) can be retrieved
 via anonymous SVN access from the \ref subversion repository:
 
   \li via SVN:
-\code
+\verbatim
 svn checkout svn://svn.berlios.de/dilps/trunk
-\endcode
+\endverbatim
   \li via Git:
-\code
+\verbatim
 git svn clone -s svn://svn.berlios.de/dilps dilps
-\endcode
+\endverbatim
 
 \section dilps_prom promDILPS
 
@@ -32,9 +32,9 @@ Since 2006, prometheus offers the use of the promDILPS image database free of ch
 A fork of the DILPS code base that drives the prometheus promDILPS service is
 [hosted on Github](https://github.com/prometheus-ev/promdilps). A copy of the
 source code can be obtained via
-\code
+\verbatim
 git clone git://github.com/prometheus-ev/promdilps.git promdilps
-\endcode
+\endverbatim
 
 promDILPS ist ein Service von uns, der Institutionen und Projekten, die eine Datenbank aufbauen möchten, aber selbst nicht die Möglichkeit haben selbst einen Server zu pflegen, die Möglichkeit bietet, auf unserem Server eine auf der Software DILPS basierte Datenbank aufzubauen. Bei diesen Kooperationen schließen wir einen Vertrag mit dem jeweiligen Partner ab, mit dem Ziel die Datenbank, die auf dem Server aufgebaut wird, in unser Bildarchiv einzubinden und so allen unseren Nutzern zur Verfügung zu stellen.
 
