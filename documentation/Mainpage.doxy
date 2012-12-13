@@ -4,10 +4,9 @@
 
   \section main_intro Introduction
 
-  prometheus ([www.prometheus-bildarchiv.de](http://www.prometheus-bildarchiv.de))
-  is a digital image archive for Art and Cultural Sciences. prometheus enables the
-  convenient search for images on a common user interface within different image
-  archives, variable databases from institutes, research facilities and museums.
+  prometheus is an internet-based service ([www.prometheus-bildarchiv.de](http://www.prometheus-bildarchiv.de)) for artistic and cultural research comprising a publicy accessible area as well as an access restricted, fee-based one. The service is presented by the Association of the same name in cooperation with the University of Cologne. prometheus charges users a license fee which is solely used to make the service available.
+
+The prometheus image archive is a data broker which brings together heterogeneous and distributed image and media databases from a variety of sources. These databases are made available at no cost by public as well as private institutions for non-commercial research and teaching purposes.
 
   \section main_resources Available resources
 
