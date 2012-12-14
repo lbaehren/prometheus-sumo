@@ -80,3 +80,8 @@ Support for VM-Environment: vmqware@uni-koeln.de
 \endverbatim
 
 \image html VMware_vSphere.png
+
+\section servers_references References
+
+* [The seven deadly myths about virtualisation](http://features.techworld.com/virtualisation/119936/the-seven-deadly-myths-about-virtualisation)
+* [10 Years of Virtual Machine Performance (Semi) Demystified](http://www.engineyard.com/blog/2009/10-years-of-virtual-machine-performance-semi-demystified)

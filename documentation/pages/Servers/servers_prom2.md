@@ -3,6 +3,31 @@ prometheus2.uni-koeln.de    {#servers_prom2}
 
 \tableofcontents
 
+\section servers_prom2_services Hosted services
+
+* \ref subversion repository for \ref pandora
+
+\verbatim
+/
+|-- etc
+|   |-- inid.d
+|   |   `-- mongrel_cluster             ...  Init script for the Mongrel cluster
+|   `-- mongrel_cluster
+|       |-- pandora_stable.conf
+|       `-- pandora_staging.conf
+`-- var
+    `-- local
+        `-- prometheus
+            `-- app
+                `-- pandora
+                    |--stable           ...  Stable version of pandora application
+                    `-- trunk           ...  Staging version of pandora application
+\endverbatim
+
+Related notes:
+
+* \ref pandora_deploy "Deploying a new version of pandora"
+
 \section servers_prom2_data Hosted data
 
 \verbatim
@@ -36,31 +61,6 @@ prometheus2.uni-koeln.de    {#servers_prom2}
      |-- log
      `-- www
 \endverbatim
-
-\section servers_prom2_services Hosted services
-
-* \ref subversion repository for \ref pandora
-
-\verbatim
-/
-|-- etc
-|   |-- inid.d
-|   |   `-- mongrel_cluster             ...  Init script for the Mongrel cluster
-|   `-- mongrel_cluster
-|       |-- pandora_stable.conf
-|       `-- pandora_staging.conf
-`-- var
-    `-- local
-        `-- prometheus
-            `-- app
-                `-- pandora
-                    |--stable           ...  Stable version of pandora application
-                    `-- trunk           ...  Staging version of pandora application
-\endverbatim
-
-Related notes:
-
-* \ref pandora_release_staging
 
 \section servers_prom2_partitions Partitions
 
