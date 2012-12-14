@@ -79,8 +79,6 @@ Support for VM-Environment: vmqware@uni-koeln.de
         assets3.pandora-test
 \endverbatim
 
-\image html VMware_vSphere.png
-
 \section servers_references References
 
 * [The seven deadly myths about virtualisation](http://features.techworld.com/virtualisation/119936/the-seven-deadly-myths-about-virtualisation)

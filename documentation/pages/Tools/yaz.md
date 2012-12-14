@@ -7,6 +7,8 @@ YAZ    {#yaz}
 
 \section yaz_toolkit YAZ programmers’ toolkit
 
+\subsection yaz_toolkit_overview Overview
+
 [YAZ](http://www.indexdata.com/yaz) is a programmers’ toolkit supporting the
 development of Z39.50/SRW/SRU clients and servers. Z39.50-2003 (version 3) as
 well as SRW/SRU version 1.1 are supported in both the client and server roles.
@@ -38,7 +40,7 @@ service, the YAZ toolkit has been battle-hardened in every conceivable type of
 employment, and grown in its support for even the more esoteric aspects of the
 Z39.50, SUR/SRW, and lately SOLR protocols.
 
-Who Uses YAZ?
+\subsection yaz_toolkit_users Who Uses YAZ?
 
 More Z39.50 Clients and Servers in use around the world are based on YAZ than
 any other toolkit.
@@ -50,6 +52,8 @@ but an exact percentage is not known. Use statistics gathered in mid 2004 from
 the Z39.50 gateway to the Library of Congress Catalog indicate that a minimum of
 65%, and possibly quite a bit more, of the clients accessing the LC catalog are
 based on the YAZ toolkit.
+
+\section yaz_implementations API Implementations
 
 \subsection yaz_yazpp YAZ++
 

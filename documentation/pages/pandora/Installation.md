@@ -24,19 +24,25 @@ steps along the way.
 
 Update systen Ruby gems
 
-    sudo gem update --system
+\verbatim
+sudo gem update --system
+\endverbatim
 
 On Debian:
 
-    sudo env REALLY_GEM_UPDATE_SYSTEM=1 gem update --system
+\verbatim
+sudo env REALLY_GEM_UPDATE_SYSTEM=1 gem update --system
+\endverbatim
 
 Enable Apache modules using the \c a2enmod command - in order to actually activate
 them, the web server needs to be restarted.
 
-    sudo a2enmod rewrite
-    sudo a2enmod proxy_balancer
-    sudo a2enmod proxy_http
-    sudo invoke-rc.d apache2 restart
+\verbatim
+sudo a2enmod rewrite
+sudo a2enmod proxy_balancer
+sudo a2enmod proxy_http
+sudo invoke-rc.d apache2 restart
+\endverbatim
 
 \subsection pandora_install_gems Installation of Ruby Gems
 
@@ -130,6 +136,7 @@ pandora
 `./config/database.yml` defines the location of the underlying database, as well as the
 access rights to it:
 
+\code
     common: &common
       adapter:  <%= database_adapter %>
       encoding: <%= database_encoding %>
@@ -141,6 +148,7 @@ access rights to it:
     development: &development
       database: <%= database_name %>_development
       <<: *common
+\endcode
 
 \subsection pandora_configuration_sources Image archive sources
 
@@ -148,6 +156,7 @@ access rights to it:
 external database, of which images (and their associated metadata) are available
 through prometheus.
 
+\code
     :dumps: /var/local/prometheus/app/pandora/data
     :paths: /var/local/prometheus/app/pandora/shared/paths_%s.marshal
     :change_pids: /var/local/prometheus/app/pandora/data/change_pids
@@ -156,6 +165,7 @@ through prometheus.
       - Institutional database
       - Research database
       - Museum database
+\endcode
 
 The first entry in the file (``:dumps:``) describes the path to the directory
 containing database dumps; if no dumps can be found on your system, dummy
