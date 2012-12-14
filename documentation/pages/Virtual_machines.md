@@ -153,10 +153,41 @@ Additional software packages:
 
 \section vm_setup Setup procedure
 
+\subsection vm_setup_packages System packages
+
 On Linux systems running Ubuntu (and some degree as well Debian) the basic
 configuration can be handled by running the following set of instructions:
 
-\include vm_base_install.sh
+\code
+#!/bin/bash
+
+## Update the installed system packages
+sudo apt-get update
+sudo apt-get upgrade
+
+## Install development packages
+sudo apt-get install build-essential cmake git-svn subversion doxygen
+sudo apt-get install ruby1.8-dev libboost-all-dev
+
+## Install database server
+sudo apt-get install mysql-server
+\endcode
+
+\subsection vm_setup_repositories Repositories
+
+Prepare directory structure for code development
+
+\verbatim
+#!/bin/bash
+
+cd
+mkdir Development
+
+cd Development
+git clone git://github.com/lbaehren/prometheus-sumo.git prometheus-sumo
+git clone git://github.com/prometheus-ev/promhp.git promhp
+git svn clone -s http://prometheus-srv.uni-koeln.de/svn/pandora pandora
+\endverbatim
 
 The resulting directory structure after the last step will look like this:
 
@@ -167,6 +198,34 @@ $HOME
      ├── promhp
      └── prometheus-sumo
 ~~~~
+
+\subsection vm_setup_network Network interface
+
+In order to access the VM from the outside -- e.g. directing your browser to
+a running installation of \ref pandora -- it is advisable to enable the network
+adapter for a connection to the host system.
+
+\image html VirtualBox__Network_Adapter.png
+
+If you want to have additional control over the IP address, under which the
+services running on the guest system can be found, you might consider its
+network interface settings:
+
+\li On a Debian based system edit `/etc/network/interfaces` to add the following lines. Change the address to your base IP address.
+\verbatim
+auto eth1
+iface eth1 inet static
+address 192.168.56.101
+netmask 255.255.255.0
+\endverbatim
+
+\li On a Redhat based system edit the file `/etc/sysconfig/network-scripts/ifcfg-eth1`. Change the IPADDR to your base IP address.
+\verbatim
+DEVICE=eth1
+BOOTPROTO=static
+IPADDR=192.168.56.101
+NETMASK=255.255.255.0
+\endverbatim
 
 \section vm_references References
 
