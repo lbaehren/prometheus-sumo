@@ -66,5 +66,5 @@ that you can refer to it (include, link, run) from your project.
 
 \section cmake_references References
 
-* [cmake.org](http:/www.cmake.org)
+* [cmake.org](http://www.cmake.org)
 * [Building External Projects with CMake 2.8](http://www.kitware.com/media/html/BuildingExternalProjectsWithCMake2.8.html)
