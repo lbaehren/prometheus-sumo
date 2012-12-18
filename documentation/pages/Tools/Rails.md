@@ -1,12 +1,12 @@
-/*!
 
-  \page refman_rails Ruby on Rails
+Ruby on Rails    {#refman_rails}
+=============
 
-  \tableofcontents
+\tableofcontents
 
-  \section refman_rails_overview Overview
+\section refman_rails_overview Overview
 
-  **Ruby on Rails**, often shortened to Rails or RoR, is a web application development framework written in the Ruby language. It is designed to make programming web applications easier by making assumptions about what every developer needs to get started. It allows you to write less code while accomplishing more than many other languages and frameworks. Experienced Rails developers also report that it makes web application development more fun.
+**Ruby on Rails**, often shortened to Rails or RoR, is a web application development framework written in the Ruby language. It is designed to make programming web applications easier by making assumptions about what every developer needs to get started. It allows you to write less code while accomplishing more than many other languages and frameworks. Experienced Rails developers also report that it makes web application development more fun.
 
 Rails is opinionated software. It makes the assumption that there is a “best” way to do things, and it’s designed to encourage that way – and in some cases to discourage alternatives. If you learn “The Rails Way” you’ll probably discover a tremendous increase in productivity. If you persist in bringing old habits from other languages to your Rails development, and trying to use patterns you learned elsewhere, you may have a less happy experience.
 
@@ -16,84 +16,84 @@ The Rails philosophy includes several guiding principles:
 * Convention Over Configuration – means that Rails makes assumptions about what you want to do and how you’re going to do it, rather than requiring you to specify every little thing through endless configuration files.
 * REST (Representational state transfer) is the best pattern for web applications – organizing your application around resources and standard HTTP verbs is the fastest way to go.
 
-  \section refman_rails_website Creating a new website
+\section refman_rails_website Creating a new website
 
-  Rails provides a simple mechanism to start developing a new website from scratch
+Rails provides a simple mechanism to start developing a new website from scratch
 
-  \code
-  rails new <path>
-  \endcode
+\code
+rails new <path>
+\endcode
 
 where ``path`` is the (absoluet) path to the root directory of the new Rails
 application.
 
 The most common rails commands are:
 
-  | Command   | Description |
-  |-----------|-------------|
-  | \b generate | Generate new code (short-cut alias: "g") |
-  | \b console | Start the Rails console (short-cut alias: "c") |
-  | \b server | Start the Rails server (short-cut alias: "s") |
-  | \b dbconsole | Start a console for the database specified in \c config/database.yml (short-cut alias: "db") |
-  | \b new | Create a new Rails application. "rails new my_app" creates a new application called MyApp in "./my_app" |
+| Command   | Description |
+|-----------|-------------|
+| \b generate | Generate new code (short-cut alias: "g") |
+| \b console | Start the Rails console (short-cut alias: "c") |
+| \b server | Start the Rails server (short-cut alias: "s") |
+| \b dbconsole | Start a console for the database specified in \c config/database.yml (short-cut alias: "db") |
+| \b new | Create a new Rails application. "rails new my_app" creates a new application called MyApp in "./my_app" |
 
 In addition to those, there are:
 
-  | Command   | Description |
-  |-----------|-------------|
-  | \b application | Generate the Rails application code |
-  | \b destroy     | Undo code generated with "generate" (short-cut alias: "d") |
-  | \b benchmarker | See how fast a piece of code runs |
-  | \b profiler    | Get profile information from a piece of code |
-  | \b plugin      | Install a plugin |
-  | \b runner      | Run a piece of code in the application environment (short-cut alias: "r") |
+| Command   | Description |
+|-----------|-------------|
+| \b application | Generate the Rails application code |
+| \b destroy     | Undo code generated with "generate" (short-cut alias: "d") |
+| \b benchmarker | See how fast a piece of code runs |
+| \b profiler    | Get profile information from a piece of code |
+| \b plugin      | Install a plugin |
+| \b runner      | Run a piece of code in the application environment (short-cut alias: "r") |
 
-  \subsection refman_rails_website_structure Directory structure
+\subsection refman_rails_website_structure Directory structure
 
 The basic (directory-) structure set up by Rails will look something like this:
 
-  \verbatim
-    .
-    |-- app
-    |   |-- assets
-    |   |   |-- images
-    |   |   |-- javascripts
-    |   |   `-- stylesheets
-    |   |-- controllers
-    |   |-- helpers
-    |   |-- mailers
-    |   |-- models
-    |   `-- views
-    |       `-- layouts
-    |-- config
-    |   |-- environments
-    |   |-- initializers
-    |   `-- locales
-    |-- db
-    |-- doc
-    |-- lib
-    |   |-- assets
-    |   `-- tasks
-    |-- log
-    |-- public
-    |-- script
-    |-- test
-    |   |-- fixtures
-    |   |-- functional
-    |   |-- integration
-    |   |-- performance
-    |   `-- unit
-    |-- tmp
-    |   `-- cache
-    |       `-- assets
-    `-- vendor
-        |-- assets
-        |   |-- javascripts
-        |   `-- stylesheets
-        `-- plugins
-  \endverbatim
+\verbatim
+  .
+  |-- app
+  |   |-- assets
+  |   |   |-- images
+  |   |   |-- javascripts
+  |   |   `-- stylesheets
+  |   |-- controllers
+  |   |-- helpers
+  |   |-- mailers
+  |   |-- models
+  |   `-- views
+  |       `-- layouts
+  |-- config
+  |   |-- environments
+  |   |-- initializers
+  |   `-- locales
+  |-- db
+  |-- doc
+  |-- lib
+  |   |-- assets
+  |   `-- tasks
+  |-- log
+  |-- public
+  |-- script
+  |-- test
+  |   |-- fixtures
+  |   |-- functional
+  |   |-- integration
+  |   |-- performance
+  |   `-- unit
+  |-- tmp
+  |   `-- cache
+  |       `-- assets
+  `-- vendor
+      |-- assets
+      |   |-- javascripts
+      |   `-- stylesheets
+      `-- plugins
+\endverbatim
 
-  \subsection refman_rails_website_rake Rake tasks
+\subsection refman_rails_website_rake Rake tasks
 
 Along with the directory structure, also an initial setup for Rake will be
 configured; a newly created application will support the following tasks:
@@ -152,38 +152,38 @@ configured; a newly created application will support the following tasks:
 Using the ``create`` command it is possible to create the necessary files for a
 new _model_, _view_ or _controller_:
 
-  \code
-  $ rails generate model Book
-  \endcode
+\code
+$ rails generate model Book
+\endcode
 
 The output from that task reports the files created on disk:
 
-  \verbatim
-      invoke  active_record
-      create    db/migrate/20120426064746_create_book.rb
-      create    app/models/book.rb
-      invoke    test_unit
-      create      test/unit/book_test.rb
-      create      test/fixtures/book.yml
-  \endverbatim
+\verbatim
+  invoke  active_record
+  create    db/migrate/20120426064746_create_book.rb
+  create    app/models/book.rb
+  invoke    test_unit
+  create      test/unit/book_test.rb
+  create      test/fixtures/book.yml
+\endverbatim
 
 The class responsible for implementing the new model at this point is populated
 with the bare minimum of code:
 
-    class Book < ActiveRecord::Base
-      # attr_accessible :title, :body
-    end
+\code{.rb}
+class Book < ActiveRecord::Base
+  # attr_accessible :title, :body
+end
+\endcode
 
-  \subsection refman_rails_website_testing Testing the application
+\subsection refman_rails_website_testing Testing the application
 
-  \section refman_rails_references References
+\section refman_rails_references References
 
-  \li [Ruby on Rails Tutorial](http://ruby.railstutorial.org/ruby-on-rails-tutorial-book)
-  \li [Getting Started with Rails](http://guides.rubyonrails.org/getting_started.html)
-  \li [Ruby on Rails 3.0 und 3.1](http://www.ruby-auf-schienen.de/buch/index.html)
-  \li [A Guide to Testing Rails Applications](http://guides.rubyonrails.org/testing.html])
-  \li [Rails Application Visualizer](http://rav.rubyforge.org)
-  \li [Inspecting a live Ruby process](http://weblog.jamisbuck.org/2006/9/22/inspecting-a-live-ruby-process)
-  \li [Inspecting a live Ruby process, easier if you cheat](http://eigenclass.org/hiki/ruby+live+process+introspection)
-
-*/
+* [Ruby on Rails Tutorial](http://ruby.railstutorial.org/ruby-on-rails-tutorial-book)
+* [Getting Started with Rails](http://guides.rubyonrails.org/getting_started.html)
+* [Ruby on Rails 3.0 und 3.1](http://www.ruby-auf-schienen.de/buch/index.html)
+* [A Guide to Testing Rails Applications](http://guides.rubyonrails.org/testing.html])
+* [Rails Application Visualizer](http://rav.rubyforge.org)
+* [Inspecting a live Ruby process](http://weblog.jamisbuck.org/2006/9/22/inspecting-a-live-ruby-process)
+* [Inspecting a live Ruby process, easier if you cheat](http://eigenclass.org/hiki/ruby+live+process+introspection)
