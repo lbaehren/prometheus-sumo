@@ -17,7 +17,7 @@ Software, released under the terms of the [GNU Affero General Public License](ht
 
 - **Implementation** | \subpage pandora_transactions | \subpage pandora_source_model | \subpage pandora_search
 
-- **Procedures** | \subpage pandora_deployment | \subpage pandora_procedures
+- **Procedures** | \subpage pandora_release | \subpage pandora_deploy | \subpage pandora_procedures
 
 - **Database** | \subpage pandora_database | \subpage database_import | \subpage database_dumps | \subpage database_suppliers
 
