@@ -1,4 +1,4 @@
-Editing the homepage    {#homepage_editing}
+Editing the homepage    {#promhp_editing}
 ====================
 
 \tableofcontents
