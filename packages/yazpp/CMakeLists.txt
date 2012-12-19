@@ -25,14 +25,6 @@ set (YAZPP_SVN            "" )
 
 option (YAZPP_FORCE_BUILD    "Force build and installation of package?" NO )
 option (YAZPP_FROM_REPOS     "Install package from repository?"         NO )
-option (YAZPP_ENABLE_TESTING "Enable testing and experimental builds?"  YES )
-
-## Handle options
-
-if (YAZPP_ENABLE_TESTING)
-  include (CTest)
-  enable_testing()
-endif (YAZPP_ENABLE_TESTING)
 
 ## ==============================================================================
 ##
@@ -95,7 +87,6 @@ if (NOT YAZPP_FOUND OR YAZPP_FORCE_BUILD)
     COMMAND ${CMAKE_COMMAND} ..
     COMMENT "Updating top-level configuration ..."
     DEPENDEES install
-    DEPENDERS build
     WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
   )
 

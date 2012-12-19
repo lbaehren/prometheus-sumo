@@ -18,14 +18,6 @@ set (TINYXML2_GIT            "git://github.com/leethomason/tinyxml2.git" )
 
 option (TINYXML2_FORCE_BUILD    "Force build and installation of package?" NO  )
 option (TINYXML2_FROM_REPOS     "Install package from repository?"         YES )
-option (TINYXML2_ENABLE_TESTING "Enable testing and experimental builds?"  YES )
-
-## Handle options
-
-if (TINYXML2_ENABLE_TESTING)
-  include (CTest)
-  enable_testing()
-endif (TINYXML2_ENABLE_TESTING)
 
 ## ==============================================================================
 ##
@@ -78,7 +70,6 @@ if (NOT TINYXML_FOUND OR TINYXML2_FORCE_BUILD)
     COMMAND ${CMAKE_COMMAND} ..
     COMMENT "Updating top-level configuration ..."
     DEPENDEES install
-    DEPENDERS build
     WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
   )
 

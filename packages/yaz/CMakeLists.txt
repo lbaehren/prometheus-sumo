@@ -24,14 +24,6 @@ set (YAZ_SVN              "" )
 
 option (YAZ_FORCE_BUILD    "Force build and installation of package?" NO )
 option (YAZ_FROM_REPOS     "Install package from repository?"         NO )
-option (YAZ_ENABLE_TESTING "Enable testing and experimental builds?"  YES )
-
-## Handle options
-
-if (YAZ_ENABLE_TESTING)
-  include (CTest)
-  enable_testing()
-endif (YAZ_ENABLE_TESTING)
 
 ## If YAZ is installed as system package, check of the version is ok
 

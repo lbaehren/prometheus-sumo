@@ -221,7 +221,7 @@ message (STATUS " .. MySQL ....................... = ${MYSQL_FOUND}"            
 message (STATUS " .. PoDoFo ...................... = ${PODOFO_FOUND}")
 message (STATUS " .. TinyXML ..................... = ${TINYXML_FOUND}"           )
 message (STATUS " .. VirtualBox .................. = ${VIRTUALBOX_FOUND}"        )
-message (STATUS " .. Yaml ........................ = ${YAML_FOUND}"              )
+message (STATUS " .. YAML ........................ = ${YAML_FOUND}"              )
 message (STATUS " .. YAZ ......................... = ${YAZ_FOUND} (${YAZ_VERSION})"     )
 message (STATUS " .. YAZ++ ....................... = ${YAZPP_FOUND} (${YAZPP_VERSION})" )
 

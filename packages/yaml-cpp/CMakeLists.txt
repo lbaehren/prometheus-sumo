@@ -18,14 +18,6 @@ set (YAML_CPP_SVN            "" )
 
 option (YAML_CPP_FORCE_BUILD    "Force build and installation of package?" NO )
 option (YAML_CPP_FROM_REPOS     "Install package from repository?"         NO )
-option (YAML_CPP_ENABLE_TESTING "Enable testing and experimental builds?"  YES )
-
-## Handle options
-
-if (YAML_CPP_ENABLE_TESTING)
-  include (CTest)
-  enable_testing()
-endif (YAML_CPP_ENABLE_TESTING)
 
 ## ==============================================================================
 ##
@@ -82,7 +74,6 @@ if (NOT YAML_CPP_FOUND OR YAML_CPP_FORCE_BUILD)
     COMMAND ${CMAKE_COMMAND} ..
     COMMENT "Updating top-level configuration ..."
     DEPENDEES install
-    DEPENDERS build
     WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
   )
 

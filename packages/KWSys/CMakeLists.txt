@@ -19,14 +19,6 @@ set (KWSYS_GIT            "git://public.kitware.com/KWSys.git" )
 
 option (KWSYS_FORCE_BUILD    "Force build and installation of package?" NO  )
 option (KWSYS_FROM_REPOS     "Install package from repository?"         YES )
-option (KWSYS_ENABLE_TESTING "Enable testing and experimental builds?"  YES )
-
-## Handle options
-
-if (KWSYS_ENABLE_TESTING)
-  include (CTest)
-  enable_testing()
-endif (KWSYS_ENABLE_TESTING)
 
 ## ==============================================================================
 ##
@@ -86,7 +78,6 @@ if (NOT KWSYS_FOUND OR KWSYS_FORCE_BUILD)
     COMMAND ${CMAKE_COMMAND} ..
     COMMENT "Updating top-level configuration ..."
     DEPENDEES install
-    DEPENDERS build
     WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
   )
 
