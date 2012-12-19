@@ -121,7 +121,6 @@ find_package (Boost COMPONENTS program_options regex)
 foreach (_cmakeModule
   ClamAV
   Doxygen
-  Gem
   Git
   Iconv
   ImageMagick
@@ -136,6 +135,7 @@ foreach (_cmakeModule
   Rake
   Rant
   Ruby
+  RubyGems
   Subversion
   TinyXML
   UnixCommands
