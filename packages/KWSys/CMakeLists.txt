@@ -81,7 +81,8 @@ if (NOT KWSYS_FOUND OR KWSYS_FORCE_BUILD)
   endif (KWSYS_FROM_REPOS)
 
   ExternalProject_Add_Step (kwsys update_configuration
-    COMMAND ${CMAKE_COMMAND} -E remove CMake* sources
+    COMMAND ${CMAKE_COMMAND} -E remove CMake*
+    COMMAND ${CMAKE_COMMAND} -E remove_directory sources
     COMMAND ${CMAKE_COMMAND} ..
     COMMENT "Updating top-level configuration ..."
     DEPENDEES install
