@@ -54,8 +54,10 @@ int test_system_commands ()
   commands.push_back("pwd");
   commands.push_back("apt-get update");
   commands.push_back("yum update");
+#ifdef GEM_FOUND
   commands.push_back("gem list unicode");
   commands.push_back("gem list bliblablub");
+#endif
 
   // --- Test 1 ----------------------------------
 
