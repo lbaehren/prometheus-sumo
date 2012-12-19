@@ -30,9 +30,6 @@ else (APPLE)
   endif (REDHAT_FOUND OR FEDORA_FOUND)
 endif (APPLE)
 
-##__________________________________________________________
-## Installation of Ruby Gems
-
 include (${CMAKE_CURRENT_SOURCE_DIR}/RubyGems.cmake)
 
 ## ==============================================================================

@@ -3,8 +3,6 @@ add_custom_target (InstallGems
   COMMENT "Installing required system packages..."
   )
 
-find_package (RubyGems)
-
 ##_______________________________________________________________________________
 ## Installation of the individual packages
 
@@ -50,9 +48,7 @@ if (GEM_EXECUTABLE)
       if (GEM_OUTPUT_VARIABLE)
 
         ## Feedback
-        if (CONFIGURE_VERBOSE)
-          message ("   [OK] ${varPackage}")
-        endif (CONFIGURE_VERBOSE)
+        message ("   [OK] ${varPackage}")
         ## Counter update
         math (EXPR NOF_GEMS_FOUND "${NOF_GEMS_FOUND}+1")
 
