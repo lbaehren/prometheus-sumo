@@ -89,7 +89,7 @@ if (TINYXML_FOUND)
   if (xml_dump_beeskow)
     add_test (testXML testXML ${xml_dump_beeskow})
   endif (xml_dump_beeskow)
-  
+
 endif (TINYXML_FOUND)
 
 ##__________________________________________________________
@@ -137,6 +137,10 @@ if (YAML_FOUND)
   if (config_packages_redhat_yml)
     add_test (testYAML_packages_redhat testYAML --packages ${config_packages_redhat_yml})
   endif (config_packages_redhat_yml)
+
+else (YAML_FOUND)
+
+  message (STATUS "YAML not found - skipping tests!")
 
 endif (YAML_FOUND)
 
