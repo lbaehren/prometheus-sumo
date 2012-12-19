@@ -90,7 +90,7 @@ if (NOT YAZPP_FOUND OR YAZPP_FORCE_BUILD)
 
   ## Update top-level project configuration
   ExternalProject_Add_Step (yazpp update_configuration
-    COMMAND ${CMAKE_COMMAND} -E remove CMake*
+    COMMAND ${CMAKE_COMMAND} -E remove CMake* sources
     COMMAND ${CMAKE_COMMAND} ..
     COMMENT "Updating top-level configuration ..."
     DEPENDEES install
