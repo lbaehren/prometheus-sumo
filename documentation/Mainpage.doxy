@@ -26,6 +26,7 @@ The prometheus image archive is a data broker which brings together heterogeneou
       <td width="25%"><b>Software packages</b></td>
       <td>
         \subpage pandora |
+        \subpage homepage "promhp" |
         \subpage prometheus-sumo |
         \subpage third_party
       </td>
