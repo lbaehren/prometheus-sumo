@@ -61,6 +61,8 @@ much more easily follow development and re-merge local changes.
 
 Git's submodule support allows a repository to contain, as a subdirectory, a checkout of an external project. Submodules maintain their own identity; the submodule support just stores the submodule repository location and commit ID, so other developers who clone the containing project (“superproject”) can easily clone all the submodules at the same revision. Partial checkouts of the superproject are possible: you can tell Git to clone none, some or all of the submodules.
 
+\subsection git_submodules_usage Command usage
+
 The git submodule command is available since Git 1.5.3. Users with Git 1.5.2 can look up the submodule commits in the repository and manually check them out; earlier versions won't recognize the submodules at all.
 
 \verbatim
@@ -70,6 +72,50 @@ The git submodule command is available since Git 1.5.3. Users with Git 1.5.2 can
   git submodule [--quiet] init [--] [<path>...]
   git submodule [--quiet] update [--init] [-N|--no-fetch] [--rebase]
                 [--reference <repository>] [--merge] [--recursive] [--] [<path>...]
+\endverbatim
+
+\subsection git_submodules_recipes Recipes
+
+Note: the `[main]$` bits on each line represents your bash prompt. You should
+only type the stuff after the `$`.
+
+ * Set up the submodule for the first time:
+\verbatim
+ [~]$  cd ~/main/
+ [main]$  git submodule add git://github.com/my/submodule.git ./subm
+ [main]$  git submodule update --init
+ [main]$  git commit ./submodule -m "Added submodule as ./subm"
+\endverbatim
+ * Fetch submodules after cloning a repository:
+\verbatim
+ [~]$  git clone git://github.com/my/main.git ~/main
+ [~]$  cd ~/main/
+ [main]$  git submodule update --init
+\endverbatim
+ * Pull upstream main repo changes and update submodule contents:
+\verbatim
+ [main]$  git pull origin/master
+ [main]$  git submodule update
+\endverbatim
+ * Pull upstream changes to the submodule:
+\verbatim
+ [main]$  cd ./subm
+ [subm]$  git pull origin/master   # or fetch then merge
+ [subm]$  cd ..
+ [main]$  git commit ./subm -m "Updated submodule reference"
+\endverbatim
+ * Edit and commit files in your submodule:
+\verbatim
+ [main]$  cd ./subm
+ [subm]$  edit whatever.rb
+ [subm]$  git commit whatever.rb -m "Updated whatever.rb"
+ [subm]$  cd ..
+ [main]$  git commit ./subm -m "Updated submodule reference"
+\endverbatim
+ * Push your submodule changes to the submodule upstream:
+\verbatim
+ [main]$  cd ./subm
+ [subm]$  git push origin master
 \endverbatim
 
 \section git_subtree Subtrees
@@ -134,6 +180,7 @@ Current timer commands:
 
  * [Git](http://www.git-scm.com)
  * [Understanding Git submodules](http://speirs.org/blog/2009/5/11/understanding-git-submodules.html)
+ * [Git Submodules Cheat Sheet](http://blog.jacius.info/git-submodule-cheat-sheet)
  * [git-svn Manual pages](http://kernel.org/pub/software/scm/git/docs/git-svn.html)
  * [Git Community Book](http://book.git-scm.com)
  * [git SVN Tutorial](http://trac.parrot.org/parrot/wiki/git-svn-tutorial)
