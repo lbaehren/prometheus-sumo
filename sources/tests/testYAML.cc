@@ -52,7 +52,7 @@ void showPackageList (std::map<std::string,std::string> &attributes)
   } else {
     name = it->second;
   }
-  
+
   // Extract the source of the package
   it=attributes.find("source");
   if (it==attributes.end()) {
@@ -60,7 +60,7 @@ void showPackageList (std::map<std::string,std::string> &attributes)
   } else {
     source = it->second;
   }
-  
+
   // Extract the version of the package
   it=attributes.find("version");
   if (it==attributes.end()) {
@@ -68,11 +68,11 @@ void showPackageList (std::map<std::string,std::string> &attributes)
   } else {
     version = it->second;
   }
-  
+
   std::cout << std::setw(25) << name
             << "  ::"   << std::setw(12) << version
-	    << "  ::  " << source
-	    << std::endl;
+            << "  ::  " << source
+            << std::endl;
 }
 
 // =============================================================================
