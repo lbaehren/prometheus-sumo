@@ -52,7 +52,7 @@ endif (PODOFO_FOUND)
 ##__________________________________________________________
 ## Parsing via Boost library
 
-if(Boost_FOUND)
+if (Boost_FOUND)
 
   ## Header files
   include_directories(${Boost_INCLUDE_DIRS})
@@ -72,7 +72,7 @@ if(Boost_FOUND)
     add_test (testApacheLogs testApacheLogs ${apache_access_log})
   endif (apache_access_log)
 
-endif()
+endif (Boost_FOUND)
 
 ##__________________________________________________________
 ## Parsing via TinyXML library
@@ -114,13 +114,14 @@ endif (LIBXML2_FOUND)
 ##
 ## ==============================================================================
 
-if (YAML_FOUND)
+if (YAML_LIBRARIES)
 
-  ## compiler
+  ## Compiler instructions
   add_executable (testYAML testYAML.cc)
-  ## linker
-  target_link_libraries (testYAML libprometheus)
-  ## testing
+  ## Linker instructions
+  target_link_libraries (testYAML ${YAML_LIBRARIES})
+
+  ## Testing
   add_test (testYAML_list  testYAML)
   add_test (testYAML_list  testYAML --list  ${PROJECT_SOURCE_DIR}/data/tests/yaml_List.yml)
   add_test (testYAML_array testYAML --array ${PROJECT_SOURCE_DIR}/data/tests/yaml_AssociativeArray.yml)
@@ -138,11 +139,7 @@ if (YAML_FOUND)
     add_test (testYAML_packages_redhat testYAML --packages ${config_packages_redhat_yml})
   endif (config_packages_redhat_yml)
 
-else (YAML_FOUND)
-
-  message (STATUS "YAML not found - skipping tests!")
-
-endif (YAML_FOUND)
+endif (YAML_LIBRARIES)
 
 ## ==============================================================================
 ##
@@ -174,7 +171,11 @@ endif (YAZPP_FOUND)
 
 message (STATUS "Processing directory source/tests - done")
 
-## === Project sub-directories ==================================================
+## ==============================================================================
+##
+##  Project sub-directories
+##
+## ==============================================================================
 
 add_subdirectory (Config)
 add_subdirectory (Sources)

@@ -28,7 +28,7 @@ endif (TINYXML_FOUND)
 if (YAML_FOUND)
   ## Compiler flag(s)
   set (WITH_YAML TRUE)
-  ## YAZ++ header files
+  ## YAML header files
   include_directories (${YAML_INCLUDES})
   ## Linker instructions
   list (APPEND libprometheus_link_libraries ${YAML_LIBRARIES})
