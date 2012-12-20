@@ -20,7 +20,7 @@
 
 /*!
   \file testOpenCV.cc
-  \brief Test working with OpenCV library
+  \brief Test working with \ref opencv library
   \ingroup prometheus
   \ingroup tests
   \author Lars Baehren
