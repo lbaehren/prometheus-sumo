@@ -31,9 +31,15 @@
 
   </dl>
 
-  \section third_party_data Data serialization formats
+  \section third_party_data Data processing & serialization
 
   <dl>
+
+    <dt>OpenCV</dt>
+      <dd>\subpage opencv (Open Source Computer Vision Library) is a library of programming functions mainly aimed at real-time computer vision, developed by Intel, and now supported by Willow Garage and Itseez. It is free for use under the open source BSD license. The library is cross-platform. It focuses mainly on real-time image processing. If the library finds Intel's Integrated Performance Primitives on the system, it will use these proprietary optimized routines to accelerate itself.</dd>
+
+    <dt>PoDoFo</dt>
+      <dd>\subpage podofo is a library to work with the PDF file format. The name comes from the first letter of PDF (Portable Document Format). A few tools to work with PDF files are already included in the PoDoFo package.</dd>
 
     <dt>SRU</dt>
       <dd>\subpage sru is a standard XML-focused search protocol for Internet search queries, utilizing CQL (Contextual Query Language), a standard syntax for representing queries.</dd>
