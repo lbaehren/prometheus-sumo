@@ -17,11 +17,22 @@ if (Boost_FOUND)
   list (APPEND libprometheus_link_libraries ${Boost_LIBRARIES})
 endif (Boost_FOUND)
 
+if (KWSYS_FOUND)
+  include_directories (${KWSYS_INCLUDES})
+  set (WITH_KWSYS TRUE)
+endif (KWSYS_FOUND)
+
 if (MYSQL_FOUND)
   set (WITH_MYSQL TRUE)
 endif (MYSQL_FOUND)
 
+if (LIBXML2_FOUND)
+  include_directories (${LIBXML2_INCLUDE_DIR})
+  set (WITH_LIBXML2 TRUE)
+endif (LIBXML2_FOUND)
+
 if (TINYXML_FOUND)
+  include_directories (${TINYXML_INCLUDES})
   set (WITH_TINYXML TRUE)
 endif (TINYXML_FOUND)
 

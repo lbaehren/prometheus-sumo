@@ -22,16 +22,14 @@ endforeach (test_cpp)
 ##____________________________________________________________________
 ##                                               KWsys test program(s)
 
-if (KWSYS_FOUND)
-  ## header files
-  include_directories (${KWSYS_INCLUDES})
-  ## compiler
-  add_executable (testKWSys testKWSys.cc)
-  ## linker
+add_executable (testKWSys testKWSys.cc)
+add_dependencies (testKWSys kwsys)
+
+if (KWSYS_LIBRARIES)
   target_link_libraries (testKWSys ${KWSYS_LIBRARIES})
-  ## testing
-  add_test (testKWSys testKWSys)
-endif (KWSYS_FOUND)
+endif (KWSYS_LIBRARIES)
+
+add_test (testKWSys testKWSys)
 
 ##____________________________________________________________________
 ##                                              PoDoFo test program(s)
@@ -77,20 +75,15 @@ endif (Boost_FOUND)
 ##__________________________________________________________
 ## Parsing via TinyXML library
 
-if (TINYXML_FOUND)
+add_executable (testXML testXML.cc)
 
-  ## Header files
-  include_directories (${TINYXML_INCLUDES})
-  ## Compiler instructions
-  add_executable (testXML testXML.cc)
-  ## Linker instructions
+if (TINYXML_LIBRARIES)
   target_link_libraries (testXML ${TINYXML_LIBRARIES})
-  ## Test instructions
-  if (xml_dump_beeskow)
-    add_test (testXML testXML ${xml_dump_beeskow})
-  endif (xml_dump_beeskow)
+endif (TINYXML_LIBRARIES)
 
-endif (TINYXML_FOUND)
+if (xml_dump_beeskow)
+  add_test (testXML testXML ${xml_dump_beeskow})
+endif (xml_dump_beeskow)
 
 ##__________________________________________________________
 ## Parsing via libxml2 library
@@ -114,18 +107,19 @@ endif (LIBXML2_FOUND)
 ##
 ## ==============================================================================
 
+add_executable (testYAML testYAML.cc)
+add_dependencies (testYAML yaml-cpp)
+
 if (YAML_LIBRARIES)
-
-  ## Compiler instructions
-  add_executable (testYAML testYAML.cc)
-  ## Linker instructions
   target_link_libraries (testYAML ${YAML_LIBRARIES})
+endif (YAML_LIBRARIES)
 
-  ## Testing
-  add_test (testYAML_list  testYAML)
-  add_test (testYAML_list  testYAML --list  ${PROJECT_SOURCE_DIR}/data/tests/yaml_List.yml)
-  add_test (testYAML_array testYAML --array ${PROJECT_SOURCE_DIR}/data/tests/yaml_AssociativeArray.yml)
-  add_test (testYAML_sequence testYAML --sequence ${PROJECT_SOURCE_DIR}/data/tests/yaml_ScalarsToSequences.yml)
+## --- Testing ---
+
+add_test (testYAML_list  testYAML)
+add_test (testYAML_list  testYAML --list  ${PROJECT_SOURCE_DIR}/data/tests/yaml_List.yml)
+add_test (testYAML_array testYAML --array ${PROJECT_SOURCE_DIR}/data/tests/yaml_AssociativeArray.yml)
+add_test (testYAML_sequence testYAML --sequence ${PROJECT_SOURCE_DIR}/data/tests/yaml_ScalarsToSequences.yml)
 
   if (config_gems_yml)
     add_test (testYAML_packages_gems testYAML --packages ${config_gems_yml})
@@ -138,8 +132,6 @@ if (YAML_LIBRARIES)
   if (config_packages_redhat_yml)
     add_test (testYAML_packages_redhat testYAML --packages ${config_packages_redhat_yml})
   endif (config_packages_redhat_yml)
-
-endif (YAML_LIBRARIES)
 
 ## ==============================================================================
 ##

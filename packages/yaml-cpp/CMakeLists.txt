@@ -69,8 +69,7 @@ if (NOT YAML_CPP_FOUND OR YAML_CPP_FORCE_BUILD)
 
   ## Update top-level project configuration
   ExternalProject_Add_Step (yaml-cpp update_configuration
-    COMMAND ${CMAKE_COMMAND} -E remove CMake*
-    COMMAND ${CMAKE_COMMAND} -E remove_directory sources
+    COMMAND ${CMAKE_COMMAND} -E remove CMakeCache.txt
     COMMAND ${CMAKE_COMMAND} ..
     COMMENT "Updating top-level configuration ..."
     DEPENDEES install
