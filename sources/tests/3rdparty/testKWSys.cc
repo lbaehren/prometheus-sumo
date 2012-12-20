@@ -20,6 +20,7 @@
 
 /*!
   \file testKWSys.cc
+  \brief Test working with KWSys library
   \ingroup prometheus
   \ingroup tests
   \author Lars Baehren

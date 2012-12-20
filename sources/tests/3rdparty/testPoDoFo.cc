@@ -20,6 +20,7 @@
 
 /*!
   \file testPoDoFo.cc
+  \brief Test working with PoDoFo library
   \ingroup prometheus
   \ingroup tests
   \author Lars Baehren

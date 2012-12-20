@@ -27,6 +27,7 @@ using namespace tinyxml2;
 
 /*!
   \file testXML.cc
+  \brief Test working with TinyXML library
   \ingroup prometheus
   \ingroup tests
   \author Lars Baehren

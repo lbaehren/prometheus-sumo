@@ -20,6 +20,7 @@
 
 /*!
   \file testOpenCV.cc
+  \brief Test working with OpenCV library
   \ingroup prometheus
   \ingroup tests
   \author Lars Baehren
@@ -28,6 +29,24 @@
 
 #include <iostream>
 #include <opencv2/highgui/highgui_c.h>
+
+// === Helper functions =========================================================
+
+/*!
+  \brief Show contents of IPL image header
+  \param img -- IPL image.
+*/
+void show_image_info (IplImage* img)
+{
+  std::cout << "Summary of image properties:" << std::endl;
+  std::cout << "-- sizeof(IplImage) = " << img->nSize     << std::endl;
+  std::cout << "-- Dimensions [w,h] = " << img->width << " x " << img->height << " pixels" << std::endl;
+  std::cout << "-- Data size        = " << img->imageSize << " bytes" << std::endl;
+  std::cout << "-- nof. channels    = " << img->nChannels << std::endl;
+  std::cout << "-- Alpha channel    = " << img->alphaChannel << std::endl;
+  std::cout << "-- Pixel depth      = " << img->depth     << std::endl;
+  std::cout << "-- Data order       = " << img->dataOrder << std::endl;
+}
 
 // === Program main function ===================================================
 
@@ -38,10 +57,13 @@ int main (int argc, char *argv[])
   std::string filename;
 
   /* Check for command line arguments */
-  if (argc>2) {
-    filename = std::string(argv[2]);
-    //load image from directory
+  if (argc>1) {
+    filename = std::string(argv[1]);
+    // Load image ...
+    std::cout << "--> Loading image " << filename << std::endl;
     IplImage* img = cvLoadImage(filename.c_str());
+    // ... and provide a short summary
+    show_image_info (img);
   } else {
     std::cerr << "Now input image specified - aborting!" << std::endl;
     status = -1;
