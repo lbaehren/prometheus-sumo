@@ -129,6 +129,7 @@ foreach (_cmakeModule
   LibXml2
   MagicLib
   MySQL
+  OpenCV
   PoDoFo
   RDoc
   Rails
