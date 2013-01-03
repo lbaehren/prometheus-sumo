@@ -46,6 +46,10 @@ if (WITH_PACKAGE_CLAMAV)
   add_subdirectory (clamav)
 endif (WITH_PACKAGE_CLAMAV)
 
+if (WITH_PACKAGE_FERRET)
+  add_subdirectory (ferret)
+endif (WITH_PACKAGE_FERRET)
+
 if (WITH_DOXYGEN)
   add_subdirectory (doxygen)
 endif (WITH_DOXYGEN)

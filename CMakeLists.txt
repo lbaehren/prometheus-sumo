@@ -39,6 +39,7 @@ option (GIT_REPOSITORIES_RW  "Check out Github repositories for r/w access?" NO 
 
 option (WITH_DOXYGEN        "Build Doxygen documention generator?"             NO )
 option (WITH_PACKAGE_CLAMAV "Build ClamAV antivirus software tool-kit?"        NO )
+option (WITH_PACKAGE_FERRET "Build Ferret search library and gem?"             NO )
 option (WITH_PACKAGE_SPHINX "Build Sphinx search server?"                      NO )
 option (WITH_PACKAGE_YAZ    "Build YAZ programmers' toolkit?"                  NO )
 option (WITH_PANDORA_DOCS   "Enable documentation of pandora source code?"     NO )
