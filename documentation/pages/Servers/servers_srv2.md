@@ -16,6 +16,8 @@ prometheus-srv2.uni-koeln.de    {#servers_srv2}
  ├── tmp
  └── web
      └── www
+         └── rubygems                   ...  Collection of customized Ruby gems
+             └── gems
 ~~~~
 
 \section servers_srv2_services Hosted services
