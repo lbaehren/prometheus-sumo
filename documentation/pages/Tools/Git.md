@@ -155,6 +155,26 @@ project.
   git subtree split -P <prefix> [OPTIONS] [<commit>]
 \endverbatim
 
+\subsection git_subtree_branch Extract a subtree using branch
+
+Suppose you have a source directory with many files and subdirectories, and you
+want to extract the lib directory to its own git project. Here's a short way to do
+it:
+
+First, make the new repository wherever you want:
+\verbatim
+<go to the new location>
+git init --bare
+\endverbatim
+Back in your original directory:
+\verbatim
+git subtree split --prefix=lib --annotate="(split)" -b split
+\endverbatim
+Then push the new branch onto the new empty repository:
+\verbatim
+git push <new-repo> split:master
+\endverbatim
+
 \section git_timetracking Time-tracking
 
 Usage:
@@ -186,3 +206,4 @@ Current timer commands:
  * [git SVN Tutorial](http://trac.parrot.org/parrot/wiki/git-svn-tutorial)
  * [An introduction to git-svn](http://utsl.gen.nz/talks/git-svn/intro.html)
  * [Intro to distributed version control](http://betterexplained.com/articles/intro-to-distributed-version-control-illustrated)
+ * [Sharing code between projects with git subtree](http://psionides.eu/2010/02/04/sharing-code-between-projects-with-git-subtree)
