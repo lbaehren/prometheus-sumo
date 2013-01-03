@@ -77,10 +77,27 @@ int test_parameters (std::map<std::string,std::string> const &attributes)
   std::cout << "\n[testPackage::test_parameters]\n" << std::endl;
 
   int status = 0;
-  prometheus::config::Package package (attributes);
 
-  std::cout << "[1] Testing parameter access shortcuts ..." << std::endl;
+  std::cout << "[1] Testing Package::set() ..." << std::endl;
   try {
+    prometheus::config::Package package;
+    std::map<std::string,std::string> attr = attributes;
+    std::map<std::string,std::string>::iterator it;
+
+    for (it=attr.begin(); it!=attr.end(); ++it) {
+      std::cout << "-- set(" << it->first << ")" << std::endl;
+      package.set(it->first, it->second);
+    }
+  } catch (std::exception &e) {
+    std::cout << "ERROR : " << e.what() << std::endl;
+    ++status;
+  }
+
+  std::cout << "[2] Testing parameter access shortcuts ..." << std::endl;
+  try {
+    // Create object ...
+    prometheus::config::Package package (attributes);
+    // ... and get internal data
     std::cout << "-- name()    => "  << package.name()           << std::endl;
     std::cout << "-- version() => '" << package.version() << "'" << std::endl;
     std::cout << "-- source()  => "  << package.source()         << std::endl;
@@ -89,9 +106,10 @@ int test_parameters (std::map<std::string,std::string> const &attributes)
     ++status;
   }
 
-  std::cout << "[2] Testing generic access methods ..." << std::endl;
+  std::cout << "[1] Testing generic access methods ..." << std::endl;
   try {
     std::string tmp;
+    prometheus::config::Package package (attributes);
 
     if (package.get(tmp,"name")) {
       std::cout << "-- name    = " << tmp << std::endl;
@@ -130,4 +148,3 @@ int main (int argc, char* argv[])
 
   return status;
 }
-
