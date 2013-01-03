@@ -3,6 +3,32 @@ prometheus1.uni-koeln.de    {#servers_prom1}
 
 \tableofcontents
 
+\section servers_prom1_data Hosted data
+
+\verbatim
+/var/local/prometheus
+ |-- app
+ |   |-- lost+found
+ |   `-- pandora
+ |       |-- current -> releases/...
+ |       `-- releases
+ |-- bin
+ |   `-- kleio
+ |-- data
+ |   |-- images
+ |   `-- pandora -> ../app/pandora/data
+ |-- etc
+ |   |-- mongrel_cluster
+ |   `-- web
+ |-- tmp
+ |   |-- mod_proxy_balancer_by_busyness
+ |   `-- pandora                        ...  Zip archives for download of images
+ `-- web
+     |-- etc -> ../etc/web
+     |-- log
+     `-- www
+\endverbatim
+
 \section servers_prom1_services Hosted services
 
 * Production system of the \ref pandora application
