@@ -38,7 +38,7 @@
   \param attributes -- Map with a attributes for the package.
   \return status    -- Returns non-zero value in case an error was encountered.
 */
-int test_construction (std::map<std::string,std::string> const &attributes)
+int test_construction (std::vector<std::map<std::string,std::string> > const &packages)
 {
   std::cout << "\n[testPackage::test_construction]\n" << std::endl;
 
@@ -55,8 +55,10 @@ int test_construction (std::map<std::string,std::string> const &attributes)
 
   std::cout << "[2] Testing Package(map<string,string>) ..." << std::endl;
   try {
-    prometheus::config::Package package (attributes);
-    package.summary();
+    for (size_t n=0; n<packages.size(); ++n) {
+      prometheus::config::Package package (packages[n]);
+      package.summary();
+    }
   } catch (std::exception &e) {
     std::cout << "ERROR : " << e.what() << std::endl;
     ++status;
@@ -140,6 +142,7 @@ int main (int argc, char* argv[])
   int status = 0;
   std::vector<std::map<std::string,std::string> > packages;
 
+  /* Set up some data for testing */
   try {
     std::map<std::string,std::string> ferret;
     ferret["name"]    = "ferret";
@@ -161,8 +164,8 @@ int main (int argc, char* argv[])
     std::cout << "ERROR : " << e.what() << std::endl;
   }
 
-  status += test_construction (packages[0]);
-  status += test_parameters (packages[2]);
+  status += test_construction (packages);
+  status += test_parameters (packages[0]);
 
   return status;
 }
