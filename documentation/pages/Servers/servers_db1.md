@@ -19,11 +19,11 @@ prometheus-db1.uni-koeln.de    {#servers_db1}
          │   ├── modules.conf
          │   ├── prometheus.conf
          │   └── svn.conf
-	 ├── prometheus-test.www
+         ├── prometheus-test.www
          │   ├── httpd.conf
          │   ├── modules.conf
          │   └── prometheus.conf
-	 └── prometheus.www
+         └── prometheus.www
              ├── httpd.conf
              ├── modules.conf
              └── prometheus.conf

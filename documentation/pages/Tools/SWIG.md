@@ -93,3 +93,4 @@ This creates a file `example_wrap.c` (`example_wrap.cxx` if compiling a C++ exte
 * [SWIG Basics](http://www.swig.org/Doc2.0/SWIG.html)
 * [SWIG and C++](http://www.swig.org/Doc2.0/SWIGPlus.html)
 * [SWIG and Ruby](http://www.swig.org/Doc2.0/Ruby.html)
+* [Include existing C/C++ libraries in Ruby](http://www.ruby-forum.com/topic/75976) (Ruby Forum)
