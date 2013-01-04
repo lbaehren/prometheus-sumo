@@ -70,6 +70,46 @@ Bootstrap the application:
     rake spec/models/mymodel_spec.rb # run a single spec file
     rake spec/models/mymodel_spec.rb:27 # run a single example or group on line 27
 
+\section rspec_matchers Matchers
+
+  * `obj.should be_true`, `obj.should be_false`, `obj.should be_nil`, obj.should be_empty – the first three of these could be done by == true, etc. be_empty will be true if `obj.empty?` is true.
+  * `obj.should exist` – does this object even exist yet?
+  * `obj.should have_at_most(n).items`, `object.should have_at_least(n).items` – like have, but will pass if there are more or fewer than n items, respectively.
+  * `obj.should include(a[,b,...])` – are one or more items in an array?
+  * `obj.should match(string_or_regex)` – does the object match the string or regex?
+  * `obj.should raise_exception(error)` – does this method raise an error when called?
+  * `obj.should respond_to(method_name)` – does this object have this method? Can take more than one method name, in either strings or symbols.
+
+\section rspec_output Output formats
+
+\verbatim
+  -f, --format FORMATTER           Choose a formatter.
+                                     [p]rogress (default - dots)
+                                     [d]ocumentation (group and example names)
+                                     [h]tml
+                                     [t]extmate
+                                     custom formatter class name
+  -o, --out FILE                   Write output to a file instead of STDOUT. This option applies
+                                     to the previously specified --format, or the default format
+                                     if no format is specified.
+  -b, --backtrace                  Enable full backtrace.
+  -c, --[no-]color, --[no-]colour  Enable color in the output.
+  -p, --profile                    Enable profiling of examples and list 10 slowest examples.
+\endverbatim
+
+You can change the output of your specs by placing flags in a `spec/spec.opts`
+file in your rails app.
+
+\verbatim
+--colour
+--format progress
+--format specdoc:spec/spec_full_report.txt
+--format failing_examples:spec/spec_failing_examples.txt
+--format html:spec/spec_report.html
+--loadby mtime
+--reverse
+\endverbatim
+
 \section rspec_ref References
 
 * [Behavior-driven testing with RSpec](http://www.ibm.com/developerworks/web/library/wa-rspec)

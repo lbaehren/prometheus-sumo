@@ -94,6 +94,10 @@ top-level directory of the \ref rails application
 
     rake pandora:setup
 
+To also set up the test database, run
+
+    rake db:test:setup
+
 For a list of all available rake tasks type
 
     rake -T

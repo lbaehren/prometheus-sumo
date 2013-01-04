@@ -41,7 +41,7 @@ rake db:test:prepare
 
 * MiniTest
 * TestUnit
-* Rspec
+* \ref rspec
 
 Comparison of the output/source code of two functionally equivalent unit tests, one written using RSpec and the other using Test::Unit
 
