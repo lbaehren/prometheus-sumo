@@ -1,10 +1,10 @@
 
-Ruby on Rails    {#refman_rails}
+Ruby on Rails    {#rails}
 =============
 
 \tableofcontents
 
-\section refman_rails_overview Overview
+\section rails_overview Overview
 
 **Ruby on Rails**, often shortened to Rails or RoR, is a web application development framework written in the Ruby language. It is designed to make programming web applications easier by making assumptions about what every developer needs to get started. It allows you to write less code while accomplishing more than many other languages and frameworks. Experienced Rails developers also report that it makes web application development more fun.
 
@@ -16,7 +16,19 @@ The Rails philosophy includes several guiding principles:
 * Convention Over Configuration – means that Rails makes assumptions about what you want to do and how you’re going to do it, rather than requiring you to specify every little thing through endless configuration files.
 * REST (Representational state transfer) is the best pattern for web applications – organizing your application around resources and standard HTTP verbs is the fastest way to go.
 
-\section refman_rails_website Creating a new website
+\section rails_mvc Model-View-Controller (MVC) pattern
+
+Understanding the [MVC pattern](http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) is key to understanding Rails. MVC divides your application into three layers, each with a specific responsibility.
+
+The View layer is composed of “templates” that are responsible for providing appropriate representations of your application’s resources. Templates can come in a variety of formats, but most view templates are HTML with embedded Ruby code (.erb files).
+
+The Model layer represents your domain model (such as Account, Product, Person, Post) and encapsulates the business logic that is specific to your application. In Rails, database-backed model classes are derived from ActiveRecord::Base. Active Record allows you to present the data from database rows as objects and embellish these data objects with business logic methods. Although most Rails models are backed by a database, models can also be ordinary Ruby classes, or Ruby classes that implement a set of interfaces as provided by the ActiveModel module. You can read more about Active Record in its [README](http://api.rubyonrails.org/files/activerecord/README_rdoc.html).
+
+The Controller layer is responsible for handling incoming HTTP requests and providing a suitable response. Usually this means returning HTML, but Rails controllers can also generate XML, JSON, PDFs, mobile-specific views, and more. Controllers manipulate models and render view templates in order to generate the appropriate HTTP response.
+
+In Rails, the Controller and View layers are handled together by Action Pack. These two layers are bundled in a single package due to their heavy interdependence. This is unlike the relationship between Active Record and Action Pack which are independent. Each of these packages can be used independently outside of Rails. You can read more about Action Pack in its [README](http://api.rubyonrails.org/files/actionpack/README_rdoc.html).
+
+\section rails_website Creating a new website
 
 Rails provides a simple mechanism to start developing a new website from scratch
 
@@ -48,7 +60,7 @@ In addition to those, there are:
 | \b plugin      | Install a plugin |
 | \b runner      | Run a piece of code in the application environment (short-cut alias: "r") |
 
-\subsection refman_rails_website_structure Directory structure
+\subsection rails_website_structure Directory structure
 
 The basic (directory-) structure set up by Rails will look something like this:
 
@@ -93,7 +105,7 @@ The basic (directory-) structure set up by Rails will look something like this:
       `-- plugins
 \endverbatim
 
-\subsection refman_rails_website_rake Rake tasks
+\subsection rails_website_rake Rake tasks
 
 Along with the directory structure, also an initial setup for Rake will be
 configured; a newly created application will support the following tasks:
@@ -147,7 +159,7 @@ configured; a newly created application will support the following tasks:
                             # tmp:sessions:clear, tmp:cache:clear, tmp:sockets:clear)
     rake tmp:create         # Creates tmp directories for sessions, cache, sockets, and pids
 
-  \subsection refman_rails_website_model Creating a new model
+  \subsection rails_website_model Creating a new model
 
 Using the ``create`` command it is possible to create the necessary files for a
 new _model_, _view_ or _controller_:
@@ -176,9 +188,9 @@ class Book < ActiveRecord::Base
 end
 \endcode
 
-\subsection refman_rails_website_testing Testing the application
+\subsection rails_website_testing Testing the application
 
-\section refman_rails_references References
+\section rails_references References
 
 * [Ruby on Rails Tutorial](http://ruby.railstutorial.org/ruby-on-rails-tutorial-book)
 * [Getting Started with Rails](http://guides.rubyonrails.org/getting_started.html)

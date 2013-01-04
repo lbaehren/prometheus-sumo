@@ -6,7 +6,7 @@ Testing    {#pandora_testing}
 
 \section pandora_testing_intro Introduction
 
-Testing support was woven into the \ref refman_rails "Rails" fabric from the
+Testing support was woven into the \ref rails "Rails" fabric from the
 beginning. It wasn’t an “oh! let’s bolt on support for running tests because
 they're new and cool” epiphany. Just about every Rails application interacts
 heavily with a database - and, as a result, your tests will need a database to

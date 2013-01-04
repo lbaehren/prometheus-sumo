@@ -90,7 +90,7 @@ working copy.
 \subsection pandora_install_setup Run the setup scripts
 
 In order to initialize your \ref pandora installation, run the following from the
-top-level directory of the \ref refman_rails application
+top-level directory of the \ref rails application
 
     rake pandora:setup
 

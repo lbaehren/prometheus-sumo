@@ -8,7 +8,7 @@ pandora    {#pandora}
 [pandora](http://prometheus.uni-koeln.de/pandora/en/about) (The prometheus
 digital image archive software) is the successor to \kleio (\ref kleio) as the
 driving force behind the prometheus image archive. It's being developed since
-late fall of 2006, on top of the \ref refman_rails framework. pandora is Free
+late fall of 2006, on top of the \ref rails framework. pandora is Free
 Software, released under the terms of the [GNU Affero General Public License](http://www.gnu.org/licenses/#AGPL).
 
 \section pandora_pages Related pages

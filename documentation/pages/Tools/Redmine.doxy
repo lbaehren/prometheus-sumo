@@ -46,7 +46,7 @@
 It is recommended that the majority of users install the proper point releases of
 redmine. Redmine currently releases a new version every 6 months, and these
 releases are considered very usable and stable. It is not recommended to install
-redmine from trunk, unless you are deeply familiar with \ref refman_rails
+redmine from trunk, unless you are deeply familiar with \ref rails
 and keep up with the changes - Trunk does break from time-to-time.
 
   \subsection redmine_install_osx  ... on Mac OS X

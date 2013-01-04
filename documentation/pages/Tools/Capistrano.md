@@ -11,7 +11,7 @@ process of making a new version of an application available on one or more web
 servers, including supporting tasks such as changing databases.
 
 Capistrano is written in the Ruby language and is distributed using the RubyGems
-distribution channel. It is an outgrowth of the \ref refman_rails web application
+distribution channel. It is an outgrowth of the \ref rails web application
 framework, but has also been used to deploy web applications written using other
 frameworks, including ones written in PHP.
 

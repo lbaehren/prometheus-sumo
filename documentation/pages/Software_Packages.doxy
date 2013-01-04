@@ -130,7 +130,7 @@
      <dd>\subpage paypal is a global e-commerce business allowing payments and money transfers to be made through the Internet. Online money transfers serve as electronic alternatives to paying with traditional paper methods, such as checks and money orders.</dd>
 
     <dt>Ruby on Rails</dt>
-      <dd>\subpage refman_rails, often shortened to Rails or RoR, is a web application development framework written in the Ruby language. It is designed to make programming web applications easier by making assumptions about what every developer needs to get started. It allows you to write less code while accomplishing more than many other languages and frameworks. Experienced Rails developers also report that it makes web application development more fun.</dd>
+      <dd>\subpage rails, often shortened to Rails or RoR, is a web application development framework written in the Ruby language. It is designed to make programming web applications easier by making assumptions about what every developer needs to get started. It allows you to write less code while accomplishing more than many other languages and frameworks. Experienced Rails developers also report that it makes web application development more fun.</dd>
 
   </dl>
 

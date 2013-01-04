@@ -168,7 +168,7 @@ For system-wide installation with Rubygems run
 sudo gem install acts_as_ferret
 \endverbatim
 
-Inside your \ref refman_rails project you can use the \a plugin script
+Inside your \ref rails project you can use the \a plugin script
 
 \verbatim
 script/plugin install svn://projects.jkraemer.net/acts_as_ferret/trunk/plugin/acts_as_ferret
@@ -273,7 +273,7 @@ get indexed):
   \subsection ferret_rails_pagination Pagination of search results
 
   It appears that it’s quite easy to integrate \c acts_as_ferret with
-  \c will_paginate, the officially recommended pagination plugin for \ref refman_rails.
+  \c will_paginate, the officially recommended pagination plugin for \ref rails.
 
   First, a patch is needed (e.g. in \c vendor/plugins/patches/lib); it could
   also go in some of existing application files, e.g. bottom of \c environment.rb:
