@@ -27,6 +27,7 @@
   \date 2012-12-06
 */
 
+#include <vector>
 #include <Config/Package.h>
 
 //_______________________________________________________________________________
@@ -137,14 +138,31 @@ int test_parameters (std::map<std::string,std::string> const &attributes)
 int main (int argc, char* argv[])
 {
   int status = 0;
+  std::vector<std::map<std::string,std::string> > packages;
 
-  std::map<std::string,std::string> attributes;
-  attributes["name"]    = "ferret";
-  attributes["version"] = "= 0.11.8.1";
-  attributes["source"]  = "http://prometheus-app.uni-koeln.de/rubygems";
+  try {
+    std::map<std::string,std::string> ferret;
+    ferret["name"]    = "ferret";
+    ferret["version"] = "= 0.11.8.1";
+    ferret["source"]  = "http://prometheus-app.uni-koeln.de/rubygems";
 
-  status += test_construction (attributes);
-  status += test_parameters (attributes);
+    std::map<std::string,std::string> bundler;
+    bundler["name"]    = "bundler";
+
+    std::map<std::string,std::string> exifr;
+    exifr["name"]    = "exifr";
+    exifr["homepage"]    = "https://rubygems.org/gems/exifr";
+    exifr["description"]    = "EXIF Reader is a module to read EXIF from JPEG images";
+
+    packages.push_back(ferret);
+    packages.push_back(bundler);
+    packages.push_back(exifr);
+  } catch (std::exception &e) {
+    std::cout << "ERROR : " << e.what() << std::endl;
+  }
+
+  status += test_construction (packages[0]);
+  status += test_parameters (packages[2]);
 
   return status;
 }
