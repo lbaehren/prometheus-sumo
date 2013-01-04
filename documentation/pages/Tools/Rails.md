@@ -217,6 +217,8 @@ in order to get a table with the lines of code:
 
 \section rails_references References
 
+* [Ruby on Rails](http://rubyonrails.org) open-source web framework
+* Release notes: [2.2](http://guides.rubyonrails.org/2_2_release_notes.html) | [2.3](http://guides.rubyonrails.org/2_3_release_notes.html) | [3.0](http://guides.rubyonrails.org/3_0_release_notes.html) | [3.1](http://guides.rubyonrails.org/3_1_release_notes.html) | [3.2](http://guides.rubyonrails.org/3_2_release_notes.html)
 * [Ruby on Rails Tutorial](http://ruby.railstutorial.org/ruby-on-rails-tutorial-book)
 * [Getting Started with Rails](http://guides.rubyonrails.org/getting_started.html)
 * [Ruby on Rails 3.0 und 3.1](http://www.ruby-auf-schienen.de/buch/index.html)
