@@ -24,7 +24,7 @@
 #include <exception>
 #include <fstream>
 
-#include "Image.h"
+#include "Models/Image.h"
 
 #ifdef WITH_BOOST
 #include <boost/foreach.hpp>

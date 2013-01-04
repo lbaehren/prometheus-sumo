@@ -27,7 +27,7 @@
 
 #include <map>
 #include <set>
-#include <Image.h>
+#include <Models/Image.h>
 
 //______________________________________________________________________________
 //                                                             test_construction
