@@ -165,6 +165,11 @@
   source:
   homepage: http://piston.rubyforge.org
   description: Piston makes it easy to merge vendor branches into your own repository.
+- name: rack
+  version:
+  source:
+  homepage: http://rack.github.com
+  description: A minimal, modular and adaptable interface for developing web applications in Ruby
 - name: rake
   version:
   source:
