@@ -190,6 +190,31 @@ end
 
 \subsection rails_website_testing Testing the application
 
+Rails, via Rake, has the build-in capability to generate statistics concerning
+the test coverage: run
+\verbatim
+rake stats
+\endverbatim
+in order to get a table with the lines of code:
+\verbatim
++----------------------+-------+-------+---------+---------+-----+-------+
+| Name                 | Lines |   LOC | Classes | Methods | M/C | LOC/M |
++----------------------+-------+-------+---------+---------+-----+-------+
+| Controllers          |  6156 |  3683 |      23 |     279 |  12 |    11 |
+| Helpers              |  2064 |   852 |       0 |     132 |   0 |     4 |
+| Models               | 16476 |  9111 |     195 |    1884 |   9 |     2 |
+| Libraries            | 12482 |  5711 |      57 |     664 |  11 |     6 |
+| Model specs          |  3204 |  2294 |       0 |       4 |   0 |   571 |
+| View specs           |     0 |     0 |       0 |       0 |   0 |     0 |
+| Controller specs     |  2216 |  1541 |       1 |      44 |  44 |    33 |
+| Helper specs         |     0 |     0 |       0 |       0 |   0 |     0 |
+| Library specs        |     0 |     0 |       0 |       0 |   0 |     0 |
++----------------------+-------+-------+---------+---------+-----+-------+
+| Total                | 42598 | 23192 |     276 |    3007 |  10 |     5 |
++----------------------+-------+-------+---------+---------+-----+-------+
+  Code LOC: 19357     Test LOC: 3835     Code to Test Ratio: 1:0.2
+\endverbatim
+
 \section rails_references References
 
 * [Ruby on Rails Tutorial](http://ruby.railstutorial.org/ruby-on-rails-tutorial-book)
