@@ -131,8 +131,7 @@ check_git_submodules ()
 
 if test ! -d $cmakeSourceDir/config/cmake ; then
   print_message "Initializing Git submodules"
-  git submodule add git://github.com/lbaehren/CMakeModules.git ./config/cmake
-  git submodule update --init
+  git subtree add --prefix=config/cmake --squash git://github.com/lbaehren/CMakeModules.git master
 else
   # Pull upstream changes to the submodule:
   cd $cmakeSourceDir/config/cmake
