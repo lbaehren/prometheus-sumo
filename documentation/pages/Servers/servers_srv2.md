@@ -22,6 +22,9 @@ prometheus-srv2.uni-koeln.de    {#servers_srv2}
 
 \section servers_srv2_services Hosted services
 
+* FTP server for upload of database dumps
+* Mail-server
+
 \section servers_srv2_nfs NFS mounts
 
 \verbatim
