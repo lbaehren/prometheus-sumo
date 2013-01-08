@@ -109,21 +109,25 @@ int test_parameters (std::map<std::string,std::string> const &attributes)
     ++status;
   }
 
-  std::cout << "[1] Testing generic access methods ..." << std::endl;
+  std::cout << "[3] Testing generic access methods ..." << std::endl;
   try {
     std::string tmp;
     prometheus::config::Package package (attributes);
 
     if (package.get(tmp,"name")) {
-      std::cout << "-- name    = " << tmp << std::endl;
+      std::cout << "-- name        = " << tmp << std::endl;
     }
 
     if (package.get(tmp,"version")) {
-      std::cout << "-- version = '" << tmp << "'" << std::endl;
+      std::cout << "-- version     = '" << tmp << "'" << std::endl;
     }
 
     if (package.get(tmp,"source")) {
-      std::cout << "-- source  = " << tmp << std::endl;
+      std::cout << "-- source      = " << tmp << std::endl;
+    }
+
+    if (package.get(tmp,"description")) {
+      std::cout << "-- description = '" << tmp << "'" << std::endl;
     }
 
   } catch (std::exception &e) {
@@ -145,17 +149,18 @@ int main (int argc, char* argv[])
   /* Set up some data for testing */
   try {
     std::map<std::string,std::string> ferret;
-    ferret["name"]    = "ferret";
-    ferret["version"] = "= 0.11.8.1";
-    ferret["source"]  = "http://prometheus-app.uni-koeln.de/rubygems";
+    ferret["name"]        = "ferret";
+    ferret["version"]     = "= 0.11.8.1";
+    ferret["source"]      = "http://prometheus-app.uni-koeln.de/rubygems";
+    ferret["description"] = "A super fast, highly configurable search library";
 
     std::map<std::string,std::string> bundler;
     bundler["name"]    = "bundler";
 
     std::map<std::string,std::string> exifr;
-    exifr["name"]    = "exifr";
+    exifr["name"]        = "exifr";
     exifr["homepage"]    = "https://rubygems.org/gems/exifr";
-    exifr["description"]    = "EXIF Reader is a module to read EXIF from JPEG images";
+    exifr["description"] = "EXIF Reader is a module to read EXIF from JPEG images";
 
     packages.push_back(ferret);
     packages.push_back(bundler);
