@@ -13,10 +13,6 @@
     <dt>Ferret</dt>
       <dd>\subpage ferret is a Ruby port of the Java Lucene search engine. In the same way as Lucene, it is not a standalone application, but a library you can use to index documents and search for things in them later.</dd>
 
-    <dt>MySQL</dt>
-      <dd>\subpage mysql is the world's most popular open source database software, with over
-  100 million copies of its software downloaded or distributed throughout it's history. With its superior speed, reliability, and ease of use, MySQL has become the preferred choice for Web, Web 2.0, SaaS, ISV, Telecom companies and forward-thinking corporate IT Managers because it eliminates the major problems associated with downtime, maintenance and administration for modern, online applications.<br>MySQL is a key part of LAMP (Linux, Apache, MySQL, PHP / Perl / Python), the fast-growing open source enterprise software stack. More and more companies are using LAMP as an alternative to expensive proprietary software stacks because of its lower cost and freedom from platform lock-in.</dd>
-
     <dt>sed</dt>
       <dd>The \subpage sed "sed" utility reads the specified files, or the standard input if no files are specified, modifying the input as specified by a list of commands.  The input is then written to the standard output.</dd>
 
@@ -28,6 +24,19 @@
 
     <dt>Ruby</dt>
       <dd>[Ruby](http://ruby-lang.org) is a dynamic, reflective, general-purpose object-oriented programming language that combines syntax inspired by Perl with Smalltalk-like features. Ruby originated in Japan during the mid-1990s and was first developed and designed by Yukihiro “Matz” Matsumoto. It was influenced primarily by Perl, Smalltalk, Eiffel, and Lisp.<br>Ruby supports multiple programming paradigms, including functional, object oriented, imperative and reflective. It also has a dynamic type system and automatic memory management; it is therefore similar in varying respects to Smalltalk, Python, Perl, Lisp, Dylan, Pike, and CLU. </dd>
+
+  </dl>
+
+  \section third_party_databases Databases
+
+  <dl>
+
+    <dt>MySQL</dt>
+      <dd>\subpage mysql is the world's most popular open source database software, with over
+  100 million copies of its software downloaded or distributed throughout it's history. With its superior speed, reliability, and ease of use, MySQL has become the preferred choice for Web, Web 2.0, SaaS, ISV, Telecom companies and forward-thinking corporate IT Managers because it eliminates the major problems associated with downtime, maintenance and administration for modern, online applications.<br>MySQL is a key part of LAMP (Linux, Apache, MySQL, PHP / Perl / Python), the fast-growing open source enterprise software stack. More and more companies are using LAMP as an alternative to expensive proprietary software stacks because of its lower cost and freedom from platform lock-in.</dd>
+
+    <dt>PostgreSQL</dt>
+      <dd>\subpage postgresql is a powerful, open source object-relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. It runs on all major operating systems, including Linux, UNIX (AIX, BSD, HP-UX, SGI IRIX, Mac OS X, Solaris, Tru64), and Windows. It is fully ACID compliant, has full support for foreign keys, joins, views, triggers, and stored procedures (in multiple languages). It includes most SQL:2008 data types, including INTEGER, NUMERIC, BOOLEAN, CHAR, VARCHAR, DATE, INTERVAL, and TIMESTAMP. It also supports storage of binary large objects, including pictures, sounds, or video. It has native programming interfaces for C/C++, Java, .Net, Perl, Python, Ruby, Tcl, ODBC, among others, and exceptional documentation. </dd>
 
   </dl>
 
