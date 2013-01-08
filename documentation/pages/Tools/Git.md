@@ -207,3 +207,4 @@ Current timer commands:
  * [An introduction to git-svn](http://utsl.gen.nz/talks/git-svn/intro.html)
  * [Intro to distributed version control](http://betterexplained.com/articles/intro-to-distributed-version-control-illustrated)
  * [Sharing code between projects with git subtree](http://psionides.eu/2010/02/04/sharing-code-between-projects-with-git-subtree)
+ * [Modular git with "git subtree"](http://log.pardus.de/2012/08/modular-git-with-git-subtree.html)
