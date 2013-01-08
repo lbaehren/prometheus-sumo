@@ -208,3 +208,5 @@ Current timer commands:
  * [Intro to distributed version control](http://betterexplained.com/articles/intro-to-distributed-version-control-illustrated)
  * [Sharing code between projects with git subtree](http://psionides.eu/2010/02/04/sharing-code-between-projects-with-git-subtree)
  * [Modular git with "git subtree"](http://log.pardus.de/2012/08/modular-git-with-git-subtree.html)
+ * [A new alternative to git submodules: git subtree](http://apenwarr.ca/log/?m=200904#30)
+ * [Git subtree notes and workflows](http://www.tipstank.com/2011/02/21/git-subtree-notes-and-workflows)
