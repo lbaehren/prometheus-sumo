@@ -31,6 +31,9 @@
 
   <dl>
 
+    <dt>DILPS</dt>
+      <dd>\subpage dilps "DILPS" is an image database system for the management and search of digital images.</dd>
+
     <dt>MySQL</dt>
       <dd>\subpage mysql is the world's most popular open source database software, with over
   100 million copies of its software downloaded or distributed throughout it's history. With its superior speed, reliability, and ease of use, MySQL has become the preferred choice for Web, Web 2.0, SaaS, ISV, Telecom companies and forward-thinking corporate IT Managers because it eliminates the major problems associated with downtime, maintenance and administration for modern, online applications.<br>MySQL is a key part of LAMP (Linux, Apache, MySQL, PHP / Perl / Python), the fast-growing open source enterprise software stack. More and more companies are using LAMP as an alternative to expensive proprietary software stacks because of its lower cost and freedom from platform lock-in.</dd>
@@ -43,6 +46,9 @@
   \section third_party_data Data processing & serialization
 
   <dl>
+
+    <dt>MAchine Readable Cataloging (MARC)</dt>
+      <dd>\subpage marc - a standard format for bibliographic records. (A catalog card is an example of a bibliographic record.) MARC records have pieces of information "tagged," or labeled in such a way that the software reading them knows exactly what kind of information it's looking for, or looking at. For example, we know John Grisham as an author; the MARC record tags John Grisham as 100 (or main entry--personal name field); what we call a title is MARC's 245. The MARC tag is also used by the computer software to locate the piece of information within the bibliographic record. This system allows computers to work with the information more efficiently.</dd>
 
     <dt>OpenCV</dt>
       <dd>\subpage opencv (Open Source Computer Vision Library) is a library of programming functions mainly aimed at real-time computer vision, developed by Intel, and now supported by Willow Garage and Itseez. It is free for use under the open source BSD license. The library is cross-platform. It focuses mainly on real-time image processing. If the library finds Intel's Integrated Performance Primitives on the system, it will use these proprietary optimized routines to accelerate itself.</dd>
@@ -127,6 +133,9 @@
 
     <dt>ClickandBuy</dt>
       <dd>\subpage clickandbuy is one of the leading payment systems on the internet. More than 16,000 merchants and 13 million users benefit from this complete service in 30 countries, which includes 120 different currencies and 50 different payment methods.</dd>
+
+    <dt>Hidden Automatic Navigator (HAN)</dt>
+      <dd>\subpage han can be seen as a gateway for the HTTP data flow between the browser und the WWW-Server, substituting parts of the HTML pages, i.e. every link points to HAN. In this way the HAN-Server can automatically authenticate by the providers of e-journals or online-databases, navigating the way to the destination page and skip unimportant pages.</dd>
 
     <dt>Jekyll</dt>
       <dd>[Jekyll](http://jekyllrb.com) is a simple, blog aware, static site generator. It takes a template directory (representing the raw form of a website), runs it through Textile or Markdown and Liquid converters, and spits out a complete, static website suitable for serving with Apache or your favorite web server. This is also the engine behind GitHub Pages, which you can use to host your project’s page or blog right here from GitHub.</dd>

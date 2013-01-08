@@ -1,5 +1,5 @@
-DILPS    {#dilps}
-=================
+DILPS (Distributed Image Library Processing System)    {#dilps}
+===================================================
 
 \tableofcontents
 
