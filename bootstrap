@@ -124,22 +124,14 @@ check_cmake_version ()
 }
 
 ##____________________________________________________________________
-##                                                check_git_submodules
+##                                                check_git_subtrees
 
-check_git_submodules ()
+check_git_subtrees ()
 {
-
-if test ! -d $cmakeSourceDir/config/cmake ; then
-  print_message "Initializing Git submodules"
-  git subtree add --prefix=config/cmake --squash git://github.com/lbaehren/CMakeModules.git master
-else
-  # Pull upstream changes to the submodule:
-  cd $cmakeSourceDir/config/cmake
-  git checkout master
-  git pull
-  cd ..
-  git commit ./cmake -m "Updated cmake submodule reference"
-fi
+  if test ! -d $cmakeSourceDir/config/cmake ; then
+    print_message "Initializing Git subtree config/cmake ..."
+    git subtree add --prefix=config/cmake --squash git://github.com/lbaehren/CMakeModules.git master
+  fi
 }
 
 ## ==============================================================================
@@ -149,9 +141,9 @@ fi
 ## ==============================================================================
 
 ##__________________________________________________________
-## Git submodules
+## Git subtrees
 
-check_git_submodules
+check_git_subtrees
 
 ##__________________________________________________________
 ## Create build directory
