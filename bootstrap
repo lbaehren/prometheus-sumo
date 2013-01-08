@@ -131,6 +131,8 @@ check_git_subtrees ()
   if test ! -d $cmakeSourceDir/config/cmake ; then
     print_message "Initializing Git subtree config/cmake ..."
     git subtree add --prefix=config/cmake --squash git://github.com/lbaehren/CMakeModules.git master
+  else
+    git subtree pull --squash -P config/cmake git://github.com/lbaehren/CMakeModules.git master
   fi
 }
 
