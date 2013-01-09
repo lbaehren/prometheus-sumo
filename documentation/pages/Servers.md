@@ -20,8 +20,8 @@ Servers    {#servers}
 | IP address      | Hostname                     | Hosted service             |
 |-----------------|------------------------------|----------------------------|
 | 134.95.19.39    | www.prometheus-bildarchiv.de | \ref image_archive         |
-| 134.95.80.11    | \subpage servers_prom1 | Production system                    |
-| 134.95.80.12    | \subpage servers_prom2 | Development system                   |
+| 134.95.80.11    | \subpage servers_prom1 | Production system for \ref pandora |
+| 134.95.80.12    | \subpage servers_prom2 | Development system for \ref pandora |
 | 134.95.80.13    | prometheus-test.uni-koeln.de | [pandora-devel](http://prometheus-test.uni-koeln.de/pandora-devel) |
 | 134.95.80.95    | \subpage servers_db1  | Database server                      |
 | 134.95.80.96    | \subpage servers_web1 | Web server                           |
