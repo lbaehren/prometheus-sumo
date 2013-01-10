@@ -15,6 +15,8 @@ prometheus-srv3.uni-koeln.de    {#servers_srv3}
 /var/local/prometheus
  ├── app
  │   ├── promhp
+ │   │   ├── config.yaml           ...  Configuration for the Application
+ │   │   └── tmp                   ...  Temporary for individual users
  │   └── vimtips
  ├── bin
  │   └── kleio

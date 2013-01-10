@@ -10,8 +10,14 @@ prometheus1.uni-koeln.de    {#servers_prom1}
  |-- app
  |   |-- lost+found
  |   `-- pandora
- |       |-- current -> releases/...
- |       `-- releases
+ |       |-- current -> releases/...         ...  Pointer to the current release
+ |       |-- data                            ...  Dumps from the image databases
+ |       |-- log
+ |       |-- releases                        ...  Released versions of pandora
+ |       |   |-- 20121102164126
+ |       |   `-- 20121211141003
+ |       |-- shared
+ |       `-- stats
  |-- bin
  |   `-- kleio
  |-- data

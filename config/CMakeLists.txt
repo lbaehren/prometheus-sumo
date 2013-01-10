@@ -1,6 +1,6 @@
-##
-##  Pre-processing of configuration files
-##
+
+##_______________________________________________________________________________
+##                                          Pre-processing of configuration files
 
 foreach (_configIN
     packages_debian.yml
@@ -12,9 +12,8 @@ foreach (_configIN
     )
 endforeach ()
 
-##
-##  Configuration files
-##
+##_______________________________________________________________________________
+##                                                            Configuration files
 
 file (GLOB config_yaml ${CMAKE_CURRENT_SOURCE_DIR}/*.yml ${CMAKE_CURRENT_BINARY_DIR}/*.yml)
 
