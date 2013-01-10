@@ -36,4 +36,19 @@ if (libprometheus_sources)
 
 endif (libprometheus_sources)
 
+##_______________________________________________________________________________
+## Wrapper for the library
+
+if (SWIG_FOUND AND libprometheus_sources)
+
+  include (${SWIG_USE_FILE})
+
+  set (CMAKE_SWIG_FLAGS "")
+
+  SET_SOURCE_FILES_PROPERTIES (bindings.i PROPERTIES CPLUSPLUS ON)
+  SET_SOURCE_FILES_PROPERTIES (bindings.i PROPERTIES SWIG_FLAGS "-includeall")
+#  SWIG_ADD_MODULE (bindings ruby bindings.i bindings_wrap.c)
+
+endif (SWIG_FOUND AND libprometheus_sources)
+
 message (STATUS "Processing directory source/lib - done")

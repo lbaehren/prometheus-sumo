@@ -139,6 +139,7 @@ foreach (_cmakeModule
   Ruby
   RubyGems
   Subversion
+  SWIG
   TinyXML
   UnixCommands
   VirtualBox
@@ -220,11 +221,13 @@ message (STATUS " .. ImageMagick ................. = ${ImageMagick_FOUND} (${Ima
 message (STATUS " .. KWSys ....................... = ${KWSYS_FOUND}"             )
 message (STATUS " .. Magic ....................... = ${MAGIC_FOUND}"             )
 message (STATUS " .. MySQL ....................... = ${MYSQL_FOUND}"             )
-message (STATUS " .. PoDoFo ...................... = ${PODOFO_FOUND}")
+message (STATUS " .. PoDoFo ...................... = ${PODOFO_FOUND}"            )
+message (STATUS " .. SWIG ........................ = ${SWIG_FOUND} (${SWIG_VERSION})" )
 message (STATUS " .. TinyXML ..................... = ${TINYXML_FOUND}"           )
 message (STATUS " .. VirtualBox .................. = ${VIRTUALBOX_FOUND}"        )
 message (STATUS " .. YAML ........................ = ${YAML_FOUND}"              )
 message (STATUS " .. YAZ ......................... = ${YAZ_FOUND} (${YAZ_VERSION})"     )
 message (STATUS " .. YAZ++ ....................... = ${YAZPP_FOUND} (${YAZPP_VERSION})" )
+message (STATUS " .. ZLIB ........................ = ${ZLIB_FOUND}"              )
 
 message (STATUS "------------------------------------------------------------ "  )
