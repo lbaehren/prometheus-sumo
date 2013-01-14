@@ -16,7 +16,7 @@ concepts should be represented in various programming languages.
 
 \section zoom_cpp C++ bindings for ZOOM
 
-The YAZ++ library includes an implementation of the C++ binding for ZOOM, enabling
+The \ref yaz_yazpp library includes an implementation of the C++ binding for ZOOM, enabling
 quick, easy development of client applications.
 
 For example, here is a tiny Z39.50 client that fetches and displays the MARC
