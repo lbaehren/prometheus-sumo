@@ -147,13 +147,13 @@ elsewhere, you can extract its entire history and publish that as its own git
 repository, without accidentally intermingling the history of your application
 project.
 
-\verbatim
+~~~~
   git subtree add   -P <prefix> <commit>
   git subtree pull  -P <prefix> <repository> <refspec...>
   git subtree push  -P <prefix> <repository> <refspec...>
   git subtree merge -P <prefix> <commit>
   git subtree split -P <prefix> [OPTIONS] [<commit>]
-\endverbatim
+~~~~
 
 \subsection git_subtree_branch Extract a subtree using branch
 
@@ -162,18 +162,18 @@ want to extract the lib directory to its own git project. Here's a short way to 
 it:
 
 First, make the new repository wherever you want:
-\verbatim
+~~~~
 <go to the new location>
 git init --bare
-\endverbatim
+~~~~
 Back in your original directory:
-\verbatim
+~~~~
 git subtree split --prefix=lib --annotate="(split)" -b split
-\endverbatim
+~~~~
 Then push the new branch onto the new empty repository:
-\verbatim
+~~~~
 git push <new-repo> split:master
-\endverbatim
+~~~~
 
 \section git_timetracking Time-tracking
 
@@ -185,7 +185,7 @@ git timetrack command [options]
 
 Current timer commands:
 
-\verbatim
+~~~~
   -s, --start                start/continue counting time spent
   -k, --start-hacking        start/continue counting time spent, won't stop (only reset) on commit
   -p, --stop                 stop/pause counting time spent
@@ -194,7 +194,7 @@ Current timer commands:
   -e, --set <minutes>        set time spent in minutes
   -ts, --timesince           set time spent since last commit
   -c, --current              time spent currently in next commit
-\endverbatim
+~~~~
 
 \section git_references References
 
